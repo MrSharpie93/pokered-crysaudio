@@ -1884,7 +1884,9 @@ AnimationWavyScreen:
 	ld e, SCREEN_HEIGHT_PX - 1
 	ld c, $ff
 	ld hl, WavyScreenLineOffsets
-.loop
+.loop ; ~$~FIXED: Whole screen waves during this animation. ~$~
+	ld a, [hl]
+	ldh [hSCX], a
 	push hl
 .innerLoop
 	call WavyScreen_SetSCX
@@ -1901,6 +1903,7 @@ AnimationWavyScreen:
 	dec c
 	jr nz, .loop
 	xor a
+	ldh [hSCX], a
 	ldh [hWY], a
 	call SaveScreenTilesToBuffer2
 	call ClearScreen
