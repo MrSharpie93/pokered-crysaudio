@@ -69,11 +69,7 @@ GateUpstairsScript_PrintIfFacingUp:
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_UP
 	jr z, .up
-	ld a, TRUE
-	jr .done
+	ld hl, TVWrongSideText ; ~$~FIXED: Binoculars don't freeze NPCs if viewed from the sides.~$~
 .up
 	call PrintText
-	xor a
-.done
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd

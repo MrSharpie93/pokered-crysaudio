@@ -1,7 +1,7 @@
 AnimateHealingMachine:
 	ld de, PokeCenterFlashingMonitorAndHealBall
 	ld hl, vChars0 tile $7c
-	lb bc, BANK(PokeCenterFlashingMonitorAndHealBall), 3 ; should be 2
+	lb bc, BANK(PokeCenterFlashingMonitorAndHealBall), 2 ; ~$~FIXED: Should be 2, and is.~$~
 	call CopyVideoData
 	ld hl, wUpdateSpritesEnabled
 	ld a, [hl]
@@ -31,7 +31,7 @@ AnimateHealingMachine:
 	call CopyHealingMachineOAM
 	ld a, SFX_HEALING_MACHINE
 	call PlaySound
-	ld c, 30
+	ld c, 5 ; ~$~Hurry this shit up.~$~
 	call DelayFrames
 	dec b
 	jr nz, .partyLoop

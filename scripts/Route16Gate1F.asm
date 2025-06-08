@@ -57,6 +57,7 @@ Route16Gate1FPlayerMovingUpScript:
 	ret nz
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
+	call UpdateSprites ; ~$~FIXED: NPCs don't load into the screen corner on entering an area.~$~
 
 Route16Gate1FGuardScript:
 	ld a, TEXT_ROUTE16GATE1F_GUARD

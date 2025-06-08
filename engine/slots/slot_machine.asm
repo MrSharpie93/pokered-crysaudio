@@ -1,4 +1,4 @@
-PromptUserToPlaySlots:
+PromptUserToPlaySlots: ; ~$~CHANGED: Fixed bugs, and pulled various snippets from both PureRGB and Kanto Expansion Pak to make slots less miserable.~$~
 	call SaveScreenTilesToBuffer2
 	ld a, BANK(DisplayTextIDInit)
 	assert BANK(DisplayTextIDInit) == 1 << BIT_NO_AUTO_TEXT_BOX
@@ -305,7 +305,7 @@ SlotMachine_StopWheel1Early:
 .loop
 	ld a, [hli]
 	cp HIGH(SLOTS7)
-	jr c, .stopWheel ; condition never true
+	jr z, .stopWheel
 	dec c
 	jr nz, .loop
 	ret
@@ -330,9 +330,13 @@ SlotMachine_StopWheel2Early:
 ; player's odds.
 .sevenAndBarMode
 	call SlotMachine_FindWheel1Wheel2Matches
+	ret nz
 	ld a, [de]
 	cp HIGH(SLOTSBAR) + 1
-	ret nc
+	jr c, .stopWheel
+	ld a, [wSlotMachineFlags]
+	bit BIT_SLOTS_CAN_WIN, a
+	ret z
 .stopWheel
 	xor a
 	ld [wSlotMachineWheel2SlipCounter], a
@@ -421,16 +425,16 @@ SlotMachine_CheckForMatches:
 	call SlotMachine_AnimWheel3
 	call DelayFrame
 	jp SlotMachine_CheckForMatches
-.foundMatch
-	ld a, [wSlotMachineFlags]
-	and (1 << BIT_SLOTS_CAN_WIN) | (1 << BIT_SLOTS_CAN_WIN_WITH_7_OR_BAR)
-	jr z, .rollWheel3DownByOneSymbol ; roll wheel if player isn't allowed to win
-	and 1 << BIT_SLOTS_CAN_WIN_WITH_7_OR_BAR
-	jr nz, .acceptMatch
+.foundMatch ; PureRGBchange: always accept matches
+	;ld a, [wSlotMachineFlags]
+	;and $c0
+	;jr z, .rollWheel3DownByOneSymbol ; roll wheel if player isn't allowed to win
+	;and $80
+	;jr nz, .acceptMatch
 ; if 7/bar matches aren't enabled and the match was a 7/bar symbol, roll wheel
-	ld a, [hl]
-	cp HIGH(SLOTSBAR) + 1
-	jr c, .rollWheel3DownByOneSymbol
+	;ld a, [hl]
+	;cp HIGH(SLOTSBAR) + 1
+	;jr c, .rollWheel3DownByOneSymbol
 .acceptMatch
 	ld a, [hl]
 	sub $2
@@ -508,16 +512,16 @@ SlotRewardPointers:
 	dw SlotReward15Text
 
 SlotReward300Text:
-	db "300@"
+	db "900@"
 
 SlotReward100Text:
-	db "100@"
+	db "300@"
 
 SlotReward8Text:
-	db "8@"
+	db "15@"
 
 SlotReward15Text:
-	db "15@"
+	db "50@"
 
 NotThisTimeText:
 	text_far _NotThisTimeText
@@ -571,7 +575,7 @@ SlotReward8Func:
 	dec [hl]
 .skip
 	ld b, $2
-	ld de, 8
+	ld de, 15
 	ret
 
 SlotReward15Func:
@@ -582,7 +586,7 @@ SlotReward15Func:
 	dec [hl]
 .skip
 	ld b, $4
-	ld de, 15
+	ld de, 50
 	ret
 
 SlotReward100Func:
@@ -591,7 +595,7 @@ SlotReward100Func:
 	xor a
 	ld [wSlotMachineFlags], a
 	ld b, $8
-	ld de, 100
+	ld de, 300
 	ret
 
 SlotReward300Func:
@@ -607,7 +611,7 @@ SlotReward300Func:
 .skip
 	ld [wSlotMachineAllowMatchesCounter], a
 	ld b, $14
-	ld de, 300
+	ld de, 900
 	ret
 
 YeahText:
@@ -665,7 +669,14 @@ SlotMachine_PayCoinsToPlayer:
 	ld hl, wTempCoins1
 	xor a
 	ld [hli], a
-	inc a
+	ld a, [wSlotMachineWinningSymbol]
+	cp HIGH(SLOTSBAR) + 1
+	jr c, .tenAtATime
+	ld a, 1
+	jr .loadTemp
+.tenAtATime
+	ld a, 10
+.loadTemp
 	ld [hl], a
 
 	ld a, 5
@@ -680,7 +691,15 @@ SlotMachine_PayCoinsToPlayer:
 	ld h, a
 	or l
 	ret z
+	
+	ld a, [wSlotMachineWinningSymbol]
+	cp HIGH(SLOTSBAR) + 1
+	jr c, .tenAtATime2
 	ld de, -1
+	jr .doSubtract
+.tenAtATime2
+	ld de, -10
+.doSubtract
 	add hl, de
 	ld a, l
 	ld [wPayoutCoins + 1], a
@@ -706,10 +725,10 @@ SlotMachine_PayCoinsToPlayer:
 .skip1
 	ld [wAnimCounter], a
 	ld a, [wSlotMachineWinningSymbol]
-	cp HIGH(SLOTSBAR) + 1
+	cp HIGH(SLOTSCHERRY) - 2
 	ld c, 8
-	jr nc, .skip2
-	srl c ; c = 4 (make the the coins transfer faster if the symbol was 7 or bar)
+	jr z, .skip2
+	srl c ; c = 4 (make the the coins transfer faster if the symbol wasn't cherries)
 .skip2
 	call DelayFrames
 	jr .loop
@@ -854,7 +873,7 @@ LoadSlotMachineTiles:
 	call DisableLCD
 	ld hl, SlotMachineTiles2
 	ld de, vChars0
-	ld bc, $1c tiles ; should be SlotMachineTiles2End - SlotMachineTiles2, or $18 tiles
+	ld bc, SlotMachineTiles2End - SlotMachineTiles2
 	ld a, BANK(SlotMachineTiles2)
 	call FarCopyData2
 	ld hl, SlotMachineTiles1
@@ -864,7 +883,7 @@ LoadSlotMachineTiles:
 	call FarCopyData2
 	ld hl, SlotMachineTiles2
 	ld de, vChars2 tile $25
-	ld bc, $1c tiles ; should be SlotMachineTiles2End - SlotMachineTiles2, or $18 tiles
+	ld bc, SlotMachineTiles2End - SlotMachineTiles2
 	ld a, BANK(SlotMachineTiles2)
 	call FarCopyData2
 	ld hl, SlotMachineMap

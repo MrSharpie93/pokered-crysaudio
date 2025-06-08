@@ -20,6 +20,8 @@ EvolutionAfterBattle:
 	push hl
 	push bc
 	push de
+	ld hl, wStartBattleLevels ; ~$~FIXED: No weird item evolutions.~$~
+	push hl
 	ld hl, wPartyCount
 	push hl
 
@@ -27,11 +29,16 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld hl, wWhichPokemon
 	inc [hl]
 	pop hl
+	pop de ; ~$~FIXED: No weird item evolutions.~$~
+	ld a, [de]
+	ld [wTempCoins1], a
+	inc de
 	inc hl
 	ld a, [hl]
 	cp $ff ; have we reached the end of the party?
 	jp z, .done
 	ld [wEvoOldSpecies], a
+	push de
 	push hl
 	ld a, [wWhichPokemon]
 	ld c, a
@@ -92,8 +99,11 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, Evolution_PartyMonLoop ; if so, go the next mon
 	jr .doEvolution
-.checkItemEvo
+.checkItemEvo ; ~$~FIXED: No weird stone-related evolutions.~$~
+	ld a, [wIsInBattle] ; are we in battle?
+	and a
 	ld a, [hli]
+	jp nz, .nextEvoEntry1 ; don't evolve if we're in a battle as wCurItem could be holding the last mon sent out
 	ld b, a ; evolution item
 	ld a, [wCurItem]
 	cp b ; was the evolution item in this entry used?

@@ -63,11 +63,11 @@ BikeShopClerkText:
 	call PlaceString
 	ld hl, BikeShopClerkDoYouLikeItText
 	call PrintText
+	ld hl, wStatusFlags5 ; ~$~FIXED: Yellow fix for Bike Clerk instant tex.~$~
+	res BIT_NO_TEXT_DELAY, [hl]
 	call HandleMenuInput
 	bit BIT_B_BUTTON, a
 	jr nz, .cancel
-	ld hl, wStatusFlags5
-	res BIT_NO_TEXT_DELAY, [hl]
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .cancel

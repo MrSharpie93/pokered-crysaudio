@@ -78,6 +78,9 @@ CheckForHiddenObject::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	push hl ; ~$~FIXED: NPCs don't load into the screen corner on entering an area.~$~
+	call UpdateSprites
+	pop hl
 	ret
 .noMatch
 	ld a, $ff
