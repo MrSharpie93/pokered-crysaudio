@@ -650,7 +650,7 @@ StartMenu_SaveReset::
 	jp nz, Init
 	predef SaveSAV ; save the game
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
-	jp HoldTextDisplayOpen
+	jp CloseStartMenu ; ~$~FIXED: No holding save dialog onscreen.~$~
 
 StartMenu_Option::
 	xor a

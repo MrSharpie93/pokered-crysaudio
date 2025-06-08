@@ -6,7 +6,7 @@ Route15GateLeftBinoculars:
 	tx_pre Route15UpstairsBinocularsText
 	ld a, ARTICUNO
 	ld [wCurPartySpecies], a
-	call PlayCry
+;	call PlayCry ; ~$~FIXED: Articuno cry is not distorted.~$~
 	jp DisplayMonFrontSpriteInBox
 
 Route15UpstairsBinocularsText::
