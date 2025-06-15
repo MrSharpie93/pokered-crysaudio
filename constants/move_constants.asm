@@ -173,8 +173,9 @@
 	const STRUGGLE     ; a5
 DEF NUM_ATTACKS EQU const_value - 1
 
-	; Moves do double duty as animation identifiers.
-
+	; ~$~CHANGED: Separate move anims from other battle anims.~$~
+	const_def
+	const NO_ANIM
 	const SHOWPIC_ANIM
 	const STATUS_AFFECTED_ANIM
 	const ANIM_A8
@@ -213,4 +214,4 @@ DEF NUM_ATTACKS EQU const_value - 1
 	const ROCK_ANIM ; throw rock
 	const BAIT_ANIM ; throw bait
 
-DEF NUM_ATTACK_ANIMS EQU const_value - 1
+DEF NUM_ALT_ANIMS EQU const_value - 1

@@ -40,13 +40,20 @@ _AddPartyMon::
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData
-	ld a, [wMonDataLocation]
-	and a
-	jr nz, .skipNaming
+;	ld a, [wMonDataLocation]
+;	and a
+;	jr nz, .skipNaming
 	ld hl, wPartyMonNicks
 	ldh a, [hNewPartyLength]
 	dec a
 	call SkipFixedLengthTextEntries
+; RedStar/BlueStar code. ~Sharpie
+	ld a, [wMonDataLocation]
+	cp $f0
+	jp z, .useRealName
+	and a
+	jr nz, .skipNaming
+; ^^^
 	ld a, NAME_MON_SCREEN
 	ld [wNamingScreenType], a
 	predef AskName
@@ -244,6 +251,18 @@ _AddPartyMon::
 .done
 	scf
 	ret
+; RedStar/BlueStar code. ~Sharpie
+.useRealName
+	ld a, [wCurPartySpecies]
+	ld [wNamedObjectIndex], a
+	call GetMonName
+	ld d, h
+	ld e, l
+	ld hl, wNameBuffer
+	ld bc, NAME_LENGTH
+	call CopyData
+	jp .skipNaming
+; ^^^
 
 LoadMovePPs:
 	call GetPredefRegisters

@@ -709,7 +709,7 @@ AIUseXSpeed:
 AIUseXSpecial:
 	ld b, $D
 	ld a, X_SPECIAL
-	; fallthrough
+	jr AIIncreaseStat
 
 AIIncreaseStat:
 	ld [wAIItem], a
@@ -723,6 +723,7 @@ AIIncreaseStat:
 	push af
 	push hl
 	ld a, XSTATITEM_DUPLICATE_ANIM
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld [hli], a
 	ld [hl], b
 	callfar StatModifierUpEffect

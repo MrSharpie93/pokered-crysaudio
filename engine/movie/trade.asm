@@ -849,7 +849,7 @@ TradeforText:
 	text_end
 
 Trade_ShowAnimation:
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	xor a
 	ld [wAnimationType], a
 	predef_jump MoveAnimation

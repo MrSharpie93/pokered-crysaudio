@@ -273,16 +273,26 @@ OverworldLoopLessDelay::
 .noSpinning
 	call UpdateSprites
 
-.moveAhead2
+.moveAhead2		;joenote - rewriting this to implement running functionality
 	ld hl, wMiscFlags
 	res BIT_TURNING, [hl]
-	ld a, [wWalkBikeSurfState]
-	dec a ; riding a bike?
-	jr nz, .normalPlayerSpriteAdvancement
+	;ld a, [wWalkBikeSurfState]
+	;dec a ; riding a bike?
+	;jr nz, .normalPlayerSpriteAdvancement
 	ld a, [wMovementFlags]
 	bit BIT_LEDGE_OR_FISHING, a
 	jr nz, .normalPlayerSpriteAdvancement
+	;call DoBikeSpeedup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	call TrackRunBikeSpeed
+.speedloop
+	ld a, [wRunningBit]
+	dec a
+	ld [wRunningBit], a
+	jr z, .normalPlayerSpriteAdvancement
 	call DoBikeSpeedup
+	jr .speedloop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .normalPlayerSpriteAdvancement
 	call AdvancePlayerSprite
 	ld a, [wWalkCounter]
@@ -356,6 +366,41 @@ OverworldLoopLessDelay::
 	ld [wIsInBattle], a
 	call RunMapScript
 	jp HandleBlackOut
+	
+; ~$~ADDED: Implementing jojobear13's version of running shoes, because I really want the faster spinners.~$~
+;this function handles tracking of how fast to go on or off a bike
+;biking ORs with $2
+;running by holding B ORs with $1
+TrackRunBikeSpeed:
+	xor a
+	ld[wRunningBit], a
+	ld a, [wWalkBikeSurfState]
+	dec a ; riding a bike? (0 value = TRUE)
+	call z, IsRidingBike
+	ld a, [hJoyHeld]
+	and B_BUTTON	;holding B to speed up? (non-zero value = TRUE)
+	call nz, IsRunning
+	ld a, [wMovementFlags]
+	bit 7, a
+	call nz, IsSpinArrow	;player sprite spinning due to spin tiles (Rocket hideout / Viridian Gym)
+	ld a, [wRunningBit]
+	cp 2	;is biking without speedup being done?
+	jr z, .skip	;if not make the states a value from 1 to 4 (excluding biking without speedup, which needs to be 2)
+	inc a	
+.skip
+	ld[wRunningBit], a
+	ret
+IsRidingBike:
+	ld a, [wRunningBit]
+	or $2
+	ld[wRunningBit], a
+	ret
+IsRunning:
+IsSpinArrow:
+	ld a, [wRunningBit]
+	or $1
+	ld[wRunningBit], a
+	ret
 
 ; function to determine if there will be a battle and execute it (either a trainer battle or wild battle)
 ; sets carry if a battle occurred and unsets carry if not
@@ -551,6 +596,8 @@ CheckMapConnections::
 	cp $ff
 	jr nz, .checkEastMap
 	ld a, [wWestConnectedMap]
+	cp $ff ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	jr z, .checkEastMap
 	ld [wCurMap], a
 	ld a, [wWestConnectedMapXAlignment] ; new X coordinate upon entering west map
 	ld [wXCoord], a
@@ -588,6 +635,8 @@ CheckMapConnections::
 	cp b
 	jr nz, .checkNorthMap
 	ld a, [wEastConnectedMap]
+	cp $ff ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	jr z, .checkNorthMap
 	ld [wCurMap], a
 	ld a, [wEastConnectedMapXAlignment] ; new X coordinate upon entering east map
 	ld [wXCoord], a
@@ -624,6 +673,8 @@ CheckMapConnections::
 	cp $ff
 	jr nz, .checkSouthMap
 	ld a, [wNorthConnectedMap]
+	cp $ff ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	jr z, .checkSouthMap
 	ld [wCurMap], a
 	ld a, [wNorthConnectedMapYAlignment] ; new Y coordinate upon entering north map
 	ld [wYCoord], a
@@ -652,6 +703,8 @@ CheckMapConnections::
 	cp b
 	jr nz, .didNotEnterConnectedMap
 	ld a, [wSouthConnectedMap]
+	cp $ff ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	jr z, .didNotEnterConnectedMap
 	ld [wCurMap], a
 	ld a, [wSouthConnectedMapYAlignment] ; new Y coordinate upon entering south map
 	ld [wYCoord], a
@@ -1224,6 +1277,8 @@ CollisionCheckOnLand::
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	jr nz, .noCollision ; no collisions when the player's movements are being controlled by the game
+	call DebugPressedOrHeldB ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	jr nz, .noCollision
 	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
 	ld d, a
 	ld a, [wSpritePlayerStateData1CollisionData]

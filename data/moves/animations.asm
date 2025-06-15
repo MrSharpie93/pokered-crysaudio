@@ -166,6 +166,8 @@ AttackAnimationPointers:
 	dw SubstituteAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
+AltAnimationPointers: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
+	table_width 2, AltAnimationPointers
 	dw ShowPicAnim
 	dw EnemyFlashAnim
 	dw PlayerFlashAnim
@@ -203,7 +205,7 @@ AttackAnimationPointers:
 	dw HidePicAnim
 	dw ThrowRockAnim
 	dw ThrowBaitAnim
-	assert_table_length NUM_ATTACK_ANIMS
+	assert_table_length NUM_ALT_ANIMS
 	dw ZigZagScreenAnim
 
 ; each animation is a list of subanimations

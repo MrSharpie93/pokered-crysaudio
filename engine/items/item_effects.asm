@@ -421,7 +421,7 @@ ItemUseBall:
 
 ; Do the animation.
 	ld a, TOSS_ANIM
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a
 	xor a
 	ldh [hWhoseTurn], a
 	ld [wAnimationType], a
@@ -1462,7 +1462,7 @@ ItemUseRock:
 	ld de, wSafariBaitFactor ; bait factor
 
 BaitRockCommon:
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a
 	xor a
 	ld [wAnimationType], a
 	ldh [hWhoseTurn], a
@@ -1655,11 +1655,12 @@ ItemUseXStat:
 	push af ; save [wPlayerMoveEffect]
 	push hl
 	ld a, [wCurItem]
-	sub X_ATTACK - ATTACK_UP1_EFFECT
+	sub X_ATTACK - ATTACK_UP2_EFFECT ; ~$~CHANGED: X items raise two stat stages.~$~
 	ld [hl], a ; store player move effect
 	call PrintItemUseTextAndRemoveItem
 	ld a, XSTATITEM_ANIM ; X stat item animation ID
 	ld [wPlayerMoveNum], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
 	call Delay3
 	xor a
@@ -2301,7 +2302,7 @@ ThrowBallAtTrainerMon:
 	call LoadScreenTilesFromBuffer1 ; restore saved screen
 	call Delay3
 	ld a, TOSS_ANIM
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	predef MoveAnimation ; do animation
 	ld hl, ThrowBallAtTrainerMonText1
 	call PrintText

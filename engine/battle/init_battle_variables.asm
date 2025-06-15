@@ -2,6 +2,7 @@ InitBattleVariables:
 	ldh a, [hTileAnimations]
 	ld [wSavedTileAnimations], a
 	xor a
+	ld [wWasTrainerBattle], a ; ~$~CHANGED: Trainers are not Pokemon.~$~
 	ld [wActionResultOrTookBattleTurn], a
 	ld [wBattleResult], a
 	ld hl, wPartyAndBillsPCSavedMenuItem

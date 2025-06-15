@@ -1,3 +1,9 @@
+This is a Red/Blue ROMHack project I've been working on for a little while now behind-the-scenes.
+
+I started it to learn more about making games, and how they're programmed, and now feel capable enough to start working on it seriously.
+
+I will keep the original ReadMe below until I have a better write-up for the project.
+
 # Pokémon Red and Blue [![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon Red and Blue.

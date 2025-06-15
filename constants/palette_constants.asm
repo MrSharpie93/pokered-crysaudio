@@ -70,4 +70,18 @@ DEF SET_PAL_DEFAULT EQU $ff
 	const PAL_BADGE     ; $22
 	const PAL_CAVE      ; $23
 	const PAL_GAMEFREAK ; $24
+; ~$~ADDED: New palettes for color diversity.~$~
+	const PAL_PIKAMON
+	const PAL_BLUEMON_Y
+	const PAL_REDMON_Y
+	const PAL_CYANMON_Y
+	const PAL_PURPLEMON_Y
+	const PAL_BROWNMON_Y
+	const PAL_GREENMON_Y
+	const PAL_PINKMON_Y
+	const PAL_YELLOWMON_Y
+	const PAL_GREYMON_Y
+	const PAL_GREYSCALE
+	const PAL_SUDOWOODO
+	const PAL_UMBREON
 DEF NUM_SGB_PALS EQU const_value

@@ -69,5 +69,6 @@ RedsHouse1FTVText:
 	text_end
 
 .WrongSideText:
+TVWrongSideText:
 	text_far _RedsHouse1FTVWrongSideText
 	text_end

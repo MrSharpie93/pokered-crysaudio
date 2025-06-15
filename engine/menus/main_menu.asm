@@ -317,8 +317,13 @@ StartNewGame:
 	; Debug mode persists in saved games for both debug and non-debug builds, and is
 	; only reset here by the main menu.
 	res BIT_DEBUG_MODE, [hl]
-	; fallthrough
+	jr _StartNewGame ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
 StartNewGameDebug:
+	ld a, TEXT_DELAY_FAST ; fast speed
+	ld [wOptions], a
+	ld hl, wStatusFlags6
+	set BIT_DEBUG_MODE, [hl]
+_StartNewGame:
 	call OakSpeech
 	ld c, 20
 	call DelayFrames

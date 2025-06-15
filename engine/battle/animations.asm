@@ -142,9 +142,14 @@ DrawFrameBlock:
 	jr z, .advanceFrameBlockDestAddr ; skip cleaning OAM buffer
 	cp FRAMEBLOCKMODE_04
 	jr z, .done ; skip cleaning OAM buffer and don't advance the frame block destination address
+;;; Need to "CleanOAM" if using an alternative animation
+	ld a, [wAltAnimationID] ; ~$~CHANGED: Separate move anims from other battle anims.~$~
+	and a
+	jr nz, .skipGrowlCheck
 	ld a, [wAnimationID]
 	cp GROWL
 	jr z, .resetFrameBlockDestAddr
+.skipGrowlCheck
 	call AnimationCleanOAM
 .resetFrameBlockDestAddr
 	ld hl, wShadowOAM
@@ -161,16 +166,22 @@ DrawFrameBlock:
 .done
 	ret
 
-PlayAnimation:
+PlayAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	xor a
 	ldh [hROMBankTemp], a ; it looks like nothing reads this
 	ld [wSubAnimTransform], a
+; If [wAltAnimationID] = 0, then we play an attack animation
+	ld a, [wAltAnimationID]
+	and a
+	ld de, AltAnimationPointers
+	jr nz, .gotAnimationType
 	ld a, [wAnimationID] ; get animation number
-	dec a
+	ld de, AttackAnimationPointers  ; animation command stream pointers
+.gotAnimationType
+	dec a	
 	ld l, a
 	ld h, 0
 	add hl, hl
-	ld de, AttackAnimationPointers  ; animation command stream pointers
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -265,6 +276,9 @@ PlayAnimation:
 	vc_hook Stop_reducing_move_anim_flashing_Guillotine
 	jr .animationLoop
 .AnimationOver
+;;; make sure we zero out the alt animation ID after we're finished with the animation.
+	xor a
+	ld [wAltAnimationID], a
 	ret
 
 LoadSubanimation:
@@ -400,18 +414,24 @@ IF DEF(_BLUE)
 ENDC
 SlotMachineTiles2End:
 
-MoveAnimation:
+MoveAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	push hl
 	push de
 	push bc
 	push af
 	call WaitForSoundToFinish
 	call SetAnimationPalette
+; check alt animation first
+	ld a, [wAltAnimationID]
+	and a
+	jr nz, .checkTossAnimation
 	ld a, [wAnimationID]
 	and a
 	jr z, .animationFinished
+	jr .moveAnimation
 
 	; if throwing a Poké Ball, skip the regular animation code
+.checkTossAnimation
 	cp TOSS_ANIM
 	jr nz, .moveAnimation
 	ld de, .animationFinished
@@ -658,12 +678,17 @@ AnimationCleanOAM:
 
 ; this runs after each frame block is drawn in a subanimation
 ; it runs a particular special effect based on the animation ID
-DoSpecialEffectByAnimationId:
+DoSpecialEffectByAnimationId: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	push hl
 	push de
 	push bc
+	ld a, [wAltAnimationID]
+	and a
+	ld hl, AltAnimationIdSpecialEffects
+	jr nz, .usingAltAnimation
 	ld a, [wAnimationID]
 	ld hl, AnimationIdSpecialEffects
+.usingAltAnimation
 	ld de, 3
 	call IsInArray
 	jr nc, .done
@@ -2257,8 +2282,11 @@ GetMoveSound:
 	and a
 	ret
 
-IsCryMove:
+IsCryMove: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 ; set carry if the move animation involves playing a monster cry
+	ld a, [wAltAnimationID]
+	and a
+	ret nz
 	ld a, [wAnimationID]
 	cp GROWL
 	jr z, .CryMove
@@ -2632,7 +2660,7 @@ TossBallAnimation:
 .done
 	ld a, b
 .PlayNextAnimation
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	push bc
 	push hl
 	call PlayAnimation
@@ -2649,12 +2677,12 @@ TossBallAnimation:
 
 .BlockBall
 	ld a, TOSS_ANIM
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	call PlayAnimation
 	ld a, SFX_FAINT_THUD
 	call PlaySound
 	ld a, BLOCKBALL_ANIM
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	jp PlayAnimation
 
 PlayApplyingAttackSound:

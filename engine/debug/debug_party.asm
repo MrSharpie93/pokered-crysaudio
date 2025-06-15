@@ -1,3 +1,4 @@
+; ~$~CHANGED: Made several modifications to debug mode to accomodate my testing.~$~
 SetDebugNewGameParty: ; unreferenced except in _DEBUG
 	ld de, DebugNewGameParty
 .loop
@@ -13,42 +14,59 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 	jr .loop
 
 DebugNewGameParty: ; unreferenced except in _DEBUG
-	; Exeggutor is the only debug party member shared with Red, Green, and Japanese Blue.
-	; "Tsunekazu Ishihara: Exeggutor is my favorite. That's because I was
-	; always using this character while I was debugging the program."
-	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
-	db EXEGGUTOR, 90
-IF DEF(_DEBUG)
-	db MEW, 5
-ELSE
-	db MEW, 20
-ENDC
+	db MEWTWO, 90
+	db MEOWTH, 93
 	db JOLTEON, 56
 	db DUGTRIO, 56
 	db ARTICUNO, 57
-IF DEF(_DEBUG)
 	db PIKACHU, 5
-ENDC
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
 IF DEF(_DEBUG)
-	xor a ; PLAYER_PARTY_DATA
+	ld a, $f0
 	ld [wMonDataLocation], a
 
 	; Fly anywhere.
-	dec a ; $ff (all bits)
+	ld a, $ff
 	ld [wTownVisitedFlag], a
 	ld [wTownVisitedFlag + 1], a
 
 	; Get all badges except Earth Badge.
 	ld a, ~(1 << BIT_EARTHBADGE)
 	ld [wObtainedBadges], a
+	
+	; Get ¥999999.
+	ld a, $99
+	ld hl, wPlayerMoney
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 
 	call SetDebugNewGameParty
 
-	; Exeggutor gets four HM moves.
+	; Mewtwo gets four moves for speedrunning battles.
 	ld hl, wPartyMon1Moves
+	ld a, PSYCHIC_M
+	ld [hli], a
+	ld a, THUNDERBOLT
+	ld [hli], a
+	ld a, ICE_BEAM
+	ld [hli], a
+	ld a, RECOVER
+	ld [hl], a
+	ld hl, wPartyMon1PP
+	ld a, 20
+	ld [hli], a
+;	ld a, 15
+	ld [hli], a
+;	ld a, 5
+	ld [hli], a
+;	ld a, 15
+	ld [hl], a
+	
+	; Meowth gets four HM moves.
+	ld hl, wPartyMon2Moves
 	ld a, FLY
 	ld [hli], a
 	ld a, CUT
@@ -57,13 +75,14 @@ IF DEF(_DEBUG)
 	ld [hli], a
 	ld a, STRENGTH
 	ld [hl], a
-	ld hl, wPartyMon1PP
-	ld a, 15
+	ld hl, wPartyMon2PP
+	ld a, 20
 	ld [hli], a
-	ld a, 30
+;	ld a, 15
 	ld [hli], a
-	ld a, 15
+;	ld a, 5
 	ld [hli], a
+;	ld a, 15
 	ld [hl], a
 
 	; Jolteon gets Thunderbolt.
@@ -141,11 +160,13 @@ DebugItemsList:
 	db ESCAPE_ROPE, 99
 	db RARE_CANDY, 99
 	db MASTER_BALL, 99
+	db NUGGET, 99
 	db TOWN_MAP, 1
 	db SECRET_KEY, 1
 	db CARD_KEY, 1
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
+	db SILPH_SCOPE, 1
 	db -1 ; end
 
 DebugUnusedList:

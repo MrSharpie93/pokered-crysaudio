@@ -1365,7 +1365,9 @@ wTempTilesetNumTiles:: db
 ; so that it can be restored when the player is done with the pokemart NPC
 wSavedListScrollOffset:: db
 
-	ds 2
+wAltAnimationID:: db ; ~$~CHANGED: Separate move anims from other battle anims.~$~
+
+	ds 1
 
 ; base coordinates of frame block
 wBaseCoordX:: db
@@ -1548,7 +1550,7 @@ wMonHBackSprite:: dw
 wMonHMoves:: ds NUM_MOVES
 wMonHGrowthRate:: db
 wMonHLearnset:: flag_array NUM_TMS + NUM_HMS
-	ds 1
+wMonHPicBank:: db ; ~$~CHANGED: Upgrades to pic banks.~$~
 wMonHeaderEnd::
 
 ; saved at the start of a battle and then written back at the end of the battle
@@ -1569,6 +1571,7 @@ wMoveNum:: db
 
 wMovesString:: ds 56
 
+wRunningBit:: ; ~$~ADDED: Used with jojobear13's running shoes code, better label.~$~
 wUnusedCurMapTilesetCopy:: db
 
 ; wWalkBikeSurfState is sometimes copied here, but it doesn't seem to be used for anything
@@ -1712,7 +1715,9 @@ wPseudoItemID:: db
 
 wUnusedAlreadyOwnedFlag:: db
 
-	ds 2
+wIsTrainerBattle:: db ; ~$~CHANGED: Trainers are not Pokemon.~$~
+
+wWasTrainerBattle:: db
 
 wEvoStoneItemID:: db
 

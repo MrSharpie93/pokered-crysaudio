@@ -99,6 +99,7 @@ TryDoWildEncounter:
 	ret
 .willEncounter
 	xor a
+	ld [wIsTrainerBattle], a ; ~$~CHANGED: Trainers are not Pokemon.~$~
 	ret
 
 INCLUDE "data/wild/probabilities.asm"

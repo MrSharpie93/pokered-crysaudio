@@ -1,0 +1,52 @@
+# Trainer Sprite Credits
+
+- Youngster: MollyChan
+- Bug Catcher: MollyChan
+- Lass: MollyChan
+- Sailor: MollyChan
+- Jr. Trainer♂: MollyChan
+- Jr. Trainer♀: MollyChan
+- Pokemaniac: MollyChan
+- Super Nerd: MollyChan
+- Hiker: MollyChan
+- Biker: MollyChan
+- Burglar: MollyChan
+- Engineer: MollyChan
+- Fisher: MollyChan
+- Swimmer: MollyChan
+- Cue Ball: MollyChan
+- Gambler: MollyChan
+- Beauty: MollyChan
+- Psychic: MollyChan
+- Rocker: MollyChan
+- Juggler: MollyChan
+- Tamer: MollyChan
+- Bird Keeper: MollyChan
+- Blackbelt: MollyChan
+- Blue: MollyChan
+- Prof. Oak: MollyChan
+- Chief: Sharpie93
+- Scientist: MollyChan
+- Giovanni: MollyChan
+- Rocket: MollyChan
+- CoolTrainer♂: MollyChan
+- CoolTrainer♀: MollyChan
+- Bruno: MollyChan
+- Brock: MollyChan
+- Misty: MollyChan
+- Lt. Surge: MollyChan
+- Erika: MollyChan
+- Koga: MollyChan
+- Blaine: MollyChan
+- Sabrina: MollyChan
+- Gentleman: MollyChan
+- Red: MollyChan
+- Green: MollyChan
+- Lorelei: MollyChan
+- Channeler: MollyChan
+- Agatha: MollyChan
+- Lance: MollyChan
+- Jessie, James & Meowth: MollyChan
+
+- Protagonists: MollyChan
+- Old Man backsprite: MollyChan

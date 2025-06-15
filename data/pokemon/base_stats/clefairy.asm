@@ -3,7 +3,7 @@
 	db  70,  45,  48,  35,  60
 	;   hp  atk  def  spd  spc
 
-	db NORMAL, NORMAL ; type
+	db FAIRY, FAIRY ; type
 	db 150 ; catch rate
 	db 68 ; base exp
 
@@ -23,4 +23,5 @@
 	     SUBSTITUTE,   STRENGTH,     FLASH
 	; end
 
-	db 0 ; padding
+	db BANK(ClefairyPicFront)
+	assert BANK(ClefairyPicFront) == BANK(ClefairyPicBack)

@@ -383,6 +383,8 @@ OaksLabRivalStartBattleScript:
 	ret nz
 
 	; define which team rival uses, and fight it
+	ld a, 1 ; ~$~CHANGED: Trainers are not Pokemon.~$~
+	ld [wIsTrainerBattle], a
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
@@ -417,6 +419,8 @@ OaksLabRivalStartBattleScript:
 	ret
 
 OaksLabRivalEndBattleScript:
+	xor a ; ~$~CHANGED: Trainers are not Pokemon.~$~
+	ld [wIsTrainerBattle], a
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_UP

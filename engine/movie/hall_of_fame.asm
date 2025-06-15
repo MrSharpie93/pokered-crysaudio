@@ -195,9 +195,11 @@ HoFLoadPlayerPics:
 	ld de, RedPicBack
 	ld a, BANK(RedPicBack)
 	call UncompressSpriteFromDE
-	predef ScaleSpriteByTwo
+	ld a, $66 ; ~$~CHANGED: 48x48 back sprites.~$~
 	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers
+	push de
+	jp LoadUncompressedBackSprite
+	nop
 	ld c, $1
 
 HoFLoadMonPlayerPicTileIDs:

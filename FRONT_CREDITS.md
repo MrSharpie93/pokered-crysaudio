@@ -1,0 +1,155 @@
+# Front Sprite Credits
+
+- Bulbasaur: Pia Carrot
+- Ivysaur: Pia Carrot
+- Venusaur: Game Freak
+- Charmander: E▲SY
+- Charmeleon: Game Freak
+- Charizard: E▲SY
+- Squirtle: E▲SY
+- Wartortle: Game Freak
+- Blastoise: E▲SY
+- Caterpie: E▲SY
+- Metapod: Pia Carrot
+- Butterfree: Game Freak
+- Weedle: Game Freak
+- Kakuna: Game Freak
+- Beedrill: E▲SY
+- Pidgey: Game Freak
+- Pidgeotto: Game Freak
+- Pidgeot: Game Freak
+- Rattata: Game Freak
+- Raticate: Game Freak
+- Spearow: Game Freak
+- Fearow: Game Freak
+- Ekans: Pia Carrot
+- Arbok: Game Freak
+- Pikachu: Game Freak
+- Raichu: Pia Carrot
+- Sandshrew: Pia Carrot
+- Sandslash: Game Freak
+- Nidoran♀: Pia Carrot
+- Nidorina: Game Freak
+- Nidoqueen: ???
+- Nidoran♂: Pia Carrot
+- Nidorino: Game Freak
+- Nidoking: Game Freak
+- Clefairy: Pia Carrot
+- Clefable: Game Freak
+- Vulpix: Pia Carrot
+- Ninetales: E▲SY
+- Jigglypuff: E▲SY
+- Wigglytuff: Pia Carrot
+- Zubat: Game Freak
+- Golbat: Game Freak
+- Oddish: E▲SY
+- Gloom: Game Freak
+- Vileplume: Game Freak
+- Paras: Pia Carrot
+- Parasect: Game Freak
+- Venonat: Game Freak
+- Venomoth: Game Freak
+- Diglett: Pia Carrot
+- Dugtrio: Pia Carrot
+- Meowth: Game Freak
+- Persian: Game Freak
+- Psyduck: Game Freak
+- Golduck: Pia Carrot
+- Mankey: Pia Carrot
+- Primeape: Pia Carrot
+- Growlithe: Game Freak
+- Arcanine: Game Freak
+- Poliwag: Pia Carrot
+- Poliwhirl: Game Freak
+- Poliwrath: Game Freak
+- Abra: Pia Carrot
+- Kadabra: Game Freak
+- Alakazam: E▲SY
+- Machop: Game Freak
+- Machoke: E▲SY
+- Machamp: Game Freak
+- Bellsprout: ???
+- Weepinbell: ???
+- Victreebel: ???
+- Tentacool: E▲SY
+- Tentacruel: E▲SY
+- Geodude: Pia Carrot
+- Graveler: Game Freak
+- Golem: Game Freak
+- Ponyta: Game Freak
+- Rapidash: Pia Carrot
+- Slowpoke: Game Freak
+- Slowbro: ???
+- Magnemite: E▲SY
+- Magneton: Game Freak
+- Farfetch'd: Game Freak
+- Doduo: Game Freak
+- Dodrio: Game Freak
+- Seel: Game Freak
+- Dewgong: Game Freak
+- Grimer: Game Freak
+- Muk: Game Freak
+- Shellder: Game Freak
+- Cloyster: Game Freak
+- Gastly: ???
+- Haunter: E▲SY
+- Gengar: Pia Carrot
+- Onix: Game Freak
+- Drowzee: Game Freak
+- Hypno: Game Freak
+- Krabby: Game Freak
+- Kingler: Game Freak
+- Voltorb: Pia Carrot
+- Electrode: Game Freak
+- Exeggcute: Game Freak
+- Exeggutor: E▲SY
+- Cubone: Game Freak
+- Marowak: Game Freak
+- Hitmonlee: E▲SY
+- Hitmonchan: E▲SY
+- Lickitung: Game Freak
+- Koffing: Game Freak
+- Weezing: Game Freak
+- Rhyhorn: Game Freak
+- Rhydon: Game Freak
+- Chansey: E▲SY
+- Tangela: ???
+- Kangaskhan: Game Freak
+- Horsea: Game Freak
+- Seadra: Game Freak
+- Goldeen: Game Freak
+- Seaking: Game Freak
+- Staryu: Game Freak
+- Starmie: Game Freak
+- Mr.Mime: Game Freak
+- Scyther: E▲SY
+- Jynx: MollyChan
+- Electabuzz: Pia Carrot
+- Magmar: ???
+- Pinsir: Game Freak
+- Tauros: Game Freak
+- Magikarp: Game Freak
+- Gyarados: Game Freak
+- Lapras: Game Freak
+- Ditto: Game Freak
+- Eevee: Game Freak
+- Vaporeon: Game Freak
+- Jolteon: E▲SY
+- Flareon: Game Freak
+- Porygon: Game Freak
+- Omanyte: E▲SY
+- Omastar: Game Freak
+- Kabuto: E▲SY
+- Kabutops: Game Freak
+- Aerodactyl: Game Freak
+- Snorlax: Game Freak
+- Articuno: E▲SY
+- Zapdos: Game Freak
+- Moltres: Pia Carrot
+- Dratini: Pia Carrot
+- Dragonair: Pia Carrot
+- Dragonite: ???
+- Mewtwo: Game Freak
+- Mew: Game Freak
+
+Reshading of Game Freak sprites currently unknown.

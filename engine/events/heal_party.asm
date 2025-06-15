@@ -35,7 +35,7 @@ HealParty:
 	push bc
 
 	ld hl, Moves
-	ld de, hl ; ~$~FIXED: Failsafe for glitch moves.~$~
+	ld de, Moves ; ~$~FIXED: Failsafe for glitch moves.~$~
 	ld bc, MOVE_LENGTH
 	call AddNTimes
 	

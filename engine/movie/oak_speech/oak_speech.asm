@@ -106,6 +106,9 @@ OakSpeech:
 	lb bc, BANK(RedPicFront), $00
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
+	ld a, [wStatusFlags6] ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
+	bit BIT_DEBUG_MODE, a
+	jr nz, .next
 	ld a, [wStatusFlags3]
 	and a ; ???
 	jr nz, .next
