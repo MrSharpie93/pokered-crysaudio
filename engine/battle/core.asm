@@ -2882,7 +2882,7 @@ PrintMenuItem:
 	hlcoord 1, 10
 	ld de, DisabledText
 	call PlaceString
-	jr .moveDisabled
+	jp .moveDisabled
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -2910,14 +2910,31 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wBattleMenuCurrentPP], a
-; print TYPE/<type> and <curPP>/<maxPP>
-	hlcoord 1, 9
-	ld de, TypeText
+; ~$~ADDED: Red++'s version of the Physical/Special split.~$~
+	ld a, [wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp a,$02
+	jp z, .OtherTextShow
+	cp a,$01
+	jp nz, .PhysicalTextShow
+	coord hl, 1, 9
+	ld de,SpecialText
 	call PlaceString
+	jp .RestOfTheRoutineThing
+.PhysicalTextShow
+	coord hl, 1,9
+	ld de,PhysicalText
+	call PlaceString
+	jr .RestOfTheRoutineThing
+.OtherTextShow
+	coord hl, 1,9
+	ld de,OtherText
+	call PlaceString
+.RestOfTheRoutineThing
 	hlcoord 7, 11
 	ld [hl], "/"
-	hlcoord 5, 9
-	ld [hl], "/"
+;	hlcoord 5, 9
+;	ld [hl], "/"
 	hlcoord 5, 11
 	ld de, wBattleMenuCurrentPP
 	lb bc, 1, 2
@@ -2935,10 +2952,16 @@ PrintMenuItem:
 	jp Delay3
 
 DisabledText:
-	db "disabled!@"
+	db "DISABLED!@"
 
-TypeText:
-	db "TYPE@"
+OtherText:
+	db "STATUS@"
+
+PhysicalText: ; Added for PS Split
+	db "PHYSICAL@"
+
+SpecialText: ; added for PS Split
+	db "SPECIAL@"
 
 SelectEnemyMove:
 	ld a, [wLinkState]
@@ -3742,11 +3765,7 @@ PrintMonName1Text:
 	ld hl, MonName1Text
 	jp PrintText
 
-; this function wastes time calling DetermineExclamationPointTextNum
-; and choosing between Used1Text and Used2Text, even though
-; those text strings are identical and both continue at PrintInsteadText
-; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
+; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
 MonName1Text:
 	text_far _MonName1Text
 	text_asm
@@ -3760,25 +3779,11 @@ MonName1Text:
 .playerTurn
 	ld [hl], a
 	ld [wMoveGrammar], a
-	call DetermineExclamationPointTextNum
-	ld a, [wMonIsDisobedient]
-	and a
-	ld hl, Used2Text
-	ret nz
-	ld a, [wMoveGrammar]
-	cp 3
-	ld hl, Used2Text
-	ret c
-	ld hl, Used1Text
+	ld hl, UsedText
 	ret
 
-Used1Text:
-	text_far _Used1Text
-	text_asm
-	jr PrintInsteadText
-
-Used2Text:
-	text_far _Used2Text
+UsedText:
+	text_far _UsedText
 	text_asm
 	; fall through
 
@@ -3798,79 +3803,17 @@ PrintMoveName:
 	ld hl, _PrintMoveName
 	ret
 
-_PrintMoveName:
+_PrintMoveName: ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
 	text_far _MoveNameText
 	text_asm
-	ld hl, ExclamationPointPointerTable
-	ld a, [wMoveGrammar]
-	add a
-	push bc
-	ld b, $0
-	ld c, a
-	add hl, bc
-	pop bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, ExclamationPointText
 	ret
 
-ExclamationPointPointerTable:
-	dw ExclamationPoint1Text
-	dw ExclamationPoint2Text
-	dw ExclamationPoint3Text
-	dw ExclamationPoint4Text
-	dw ExclamationPoint5Text
-
-ExclamationPoint1Text:
-	text_far _ExclamationPoint1Text
+ExclamationPointText:
+	text_far _ExclamationPointText
 	text_end
 
-ExclamationPoint2Text:
-	text_far _ExclamationPoint2Text
-	text_end
-
-ExclamationPoint3Text:
-	text_far _ExclamationPoint3Text
-	text_end
-
-ExclamationPoint4Text:
-	text_far _ExclamationPoint4Text
-	text_end
-
-ExclamationPoint5Text:
-	text_far _ExclamationPoint5Text
-	text_end
-
-; this function does nothing useful
-; if the move being used is in set [1-4] from ExclamationPointMoveSets,
-; use ExclamationPoint[1-4]Text
-; otherwise, use ExclamationPoint5Text
-; but all five text strings are identical
-; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
-DetermineExclamationPointTextNum:
-	push bc
-	ld a, [wMoveGrammar] ; move ID
-	ld c, a
-	ld b, $0
-	ld hl, ExclamationPointMoveSets
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .done
-	cp c
-	jr z, .done
-	and a
-	jr nz, .loop
-	inc b
-	jr .loop
-.done
-	ld a, b
-	ld [wMoveGrammar], a
-	pop bc
-	ret
-
-INCLUDE "data/moves/grammar.asm"
+ ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
 
 PrintMoveFailureText:
 	ld de, wPlayerMoveEffect
@@ -3887,7 +3830,7 @@ PrintMoveFailureText:
 	ld a, [wCriticalHitOrOHKO]
 	cp $ff
 	jr nz, .gotTextToPrint
-	ld hl, UnaffectedText
+	ld hl, IsUnaffectedText
 .gotTextToPrint
 	push de
 	call PrintText
@@ -3937,9 +3880,9 @@ KeptGoingAndCrashedText:
 	text_far _KeptGoingAndCrashedText
 	text_end
 
-UnaffectedText:
-	text_far _UnaffectedText
-	text_end
+;UnaffectedText: ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
+;	text_far _UnaffectedText
+;	text_end
 
 PrintDoesntAffectText:
 	ld hl, DoesntAffectMonText
@@ -4194,9 +4137,11 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wPlayerMoveType]
-	cp SPECIAL ; types >= SPECIAL are all special
-	jr nc, .specialAttack
+; ~$~ADDED: Red++'s version of the Physical/Special split.~$~
+	ld a, [wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp SPECIAL
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
@@ -4307,9 +4252,11 @@ GetDamageVarsForEnemyAttack:
 	ld d, a ; d = move power
 	and a
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wEnemyMoveType]
-	cp SPECIAL ; types >= SPECIAL are all special
-	jr nc, .specialAttack
+; ~$~ADDED: Red++'s version of the Physical/Special split.~$~
+	ld a, [wPlayerSelectedMove]
+	call PhysicalSpecialSplit
+	cp SPECIAL
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wBattleMonDefense
 	ld a, [hli]
@@ -4627,7 +4574,7 @@ JumpToOHKOMoveEffect:
 	dec a
 	ret
 
-INCLUDE "data/battle/unused_critical_hit_moves.asm"
+;INCLUDE "data/battle/unused_critical_hit_moves.asm"
 
 ; determines if attack is a critical hit
 ; Azure Heights claims "the fastest pokémon (who are, not coincidentally,
@@ -4704,7 +4651,7 @@ CriticalHitTest:
 INCLUDE "data/battle/critical_hit_moves.asm"
 
 ; function to determine if Counter hits and if so, how much damage it does
-HandleCounterMove:
+HandleCounterMove: ; ~$~CHANGED: Counter now functions like later games. Some code pulled from Red++.~$~
 ; The variables checked by Counter are updated whenever the cursor points to a new move in the battle selection menu.
 ; This is irrelevant for the opponent's side outside of link battles, since the move selection is controlled by the AI.
 ; However, in the scenario where the player switches out and the opponent uses Counter,
@@ -4736,11 +4683,14 @@ HandleCounterMove:
 ; check if the move the target last selected was Normal or Fighting type
 	inc de
 	ld a, [de]
-	and a ; normal type
+	cp GHOST ; Ghost-types are immune to Counter
+	jr z, .targetGhost
+	ld a, [hl]
+	call PhysicalSpecialSplit ;~$~Call Red++'s Physical/Special split function to check for physical moves.~$~
+	cp PHYSICAL
 	jr z, .counterableType
-	cp FIGHTING
-	jr z, .counterableType
-; if the move wasn't Normal or Fighting type, miss
+; if the move wasn't physical, miss
+.targetGhost
 	xor a
 	ret
 .counterableType
@@ -6188,10 +6138,15 @@ LoadEnemyMonData:
 	jr nz, .storeDVs
 	ld a, [wIsInBattle]
 	cp $2 ; is it a trainer battle?
-; fixed DVs for trainer mon
-	ld a, ATKDEFDV_TRAINER
-	ld b, SPDSPCDV_TRAINER
-	jr z, .storeDVs
+	jr nz, .notTrainer
+; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar.~$~
+; get DVs for trainer mon
+	farcall GetTrainerMonDVs
+	ld hl, wTempDVs
+	ld a, [hli]
+	ld b, [hl]
+	jr .storeDVs
+.notTrainer
 ; random DVs for wild mon
 	call BattleRandom
 	ld b, a
@@ -6264,18 +6219,15 @@ LoadEnemyMonData:
 	call CopyData
 	jr .loadMovePPs
 .copyStandardMoves
-; for a wild mon, first copy default moves from the mon header
-	ld hl, wMonHMoves
-	ld a, [hli]
+; ~$~CHANGED: Red++'s Move Tutor functionality.~$~
+; for a wild mon, first clear the moves before copying
+	xor a
 	ld [de], a
 	inc de
-	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hl]
 	ld [de], a
 	dec de
 	dec de
@@ -6379,18 +6331,29 @@ SwapPlayerAndEnemyLevels:
 	pop bc
 	ret
 
-; loads either red back pic or old man back pic
-; also writes OAM data and loads tile patterns for the Red or Old Man back sprite's head
+; loads either player back pic or old man back pic
+; also writes OAM data and loads tile patterns for the Player or Old Man back sprite's head
 ; (for use when scrolling the player sprite and enemy's silhouettes on screen)
 LoadPlayerBackPic:
 	ld a, [wBattleType]
 	dec a ; is it the old man tutorial?
-	ld de, RedPicBack
-	jr nz, .next
-	ld de, OldManPicBack
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, OldManPicBack   ; Load the old man back sprite preemptively
+	ld a, BANK(PlayerPicBack) ; Masculine player back sprite will be used as a means to load in the Old Man back sprite
+	jr z, .next
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .MascBack
+	ld de, PlayerFPicBack
+	ld a, BANK(PlayerFPicBack)
+	jr .next
+.MascBack
+	ld de, PlayerPicBack
+	ld a, BANK(PlayerPicBack)
 .next
-	ld a, BANK(RedPicBack)
-	ASSERT BANK(RedPicBack) == BANK(OldManPicBack)
+	ASSERT BANK(PlayerFPicBack) == BANK(OldManPicBack) ; These two ASSERTs make sure to cover
+	ASSERT BANK(PlayerPicBack) == BANK(OldManPicBack)   ; both sprite cases
+;;;
 	call UncompressSpriteFromDE
 	call LoadBackSpriteUnzoomed ; ~$~CHANGED: 48x48 back sprites.~$~
 	ld hl, wShadowOAM
@@ -6983,7 +6946,7 @@ _LoadTrainerPic:
 	ld d, a ; de contains pointer to trainer pic
 	ld a, [wLinkState]
 	and a
-	jr nz, .useRed ; ~$~CHANGED: Code from somewhere for pulling trainer pics from multiple banks.~$~
+	jr nz, .useRed ; ~$~CHANGED: Code from RedStar/BlueStar for pulling trainer pics from multiple banks.~$~
 	ld a, [wTrainerClass]
 	cp COOLTRAINER_M ; first trainer class in "Trainer Pics 2"
 	ld a, Bank("Trainer Pics 2")
@@ -6991,7 +6954,7 @@ _LoadTrainerPic:
 	ld a, Bank("Trainer Pics 1")
 	jr .loadSprite
 .useRed
-	ld a, Bank(RedPicFront)
+	ld a, Bank(PlayerPicFront)
 .loadSprite
 	call UncompressSpriteFromDE
 	ld de, vFrontPic
@@ -7127,3 +7090,13 @@ LoadBackSpriteUnzoomed: ; ~$~CHANGED: 48x48 back sprites.~$~
 	ld de, vBackPic
 	push de
 	jp LoadUncompressedBackSprite
+	
+; ~$~ADDED: Red++'s version of the Physical/Special split.~$~
+; Determine if a move is Physical, Special, or Status
+; INPUT: Move ID in register a
+; OUTPUT: Move Physical/Special/Status type in register a
+PhysicalSpecialSplit:
+	ld [wTempMoveID], a
+	callfar _PhysicalSpecialSplit
+	ld a, [wTempMoveID]
+	ret

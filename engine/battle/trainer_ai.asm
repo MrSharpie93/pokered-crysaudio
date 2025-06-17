@@ -283,7 +283,7 @@ INCLUDE "engine/battle/misc.asm"
 
 INCLUDE "engine/battle/read_trainer_party.asm"
 
-INCLUDE "data/trainers/special_moves.asm"
+;INCLUDE "data/trainers/special_moves.asm" ; ~$~REMOVED: Levels/Moves trainers from RedStar/BlueStar.~$~
 
 INCLUDE "data/trainers/parties.asm"
 

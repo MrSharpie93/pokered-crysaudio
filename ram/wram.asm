@@ -202,6 +202,8 @@ ENDU
 SECTION "Overworld Map", WRAM0
 
 UNION
+wTempDVs:: ; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar.~$~
+wTempMoveID:: ; ~$~ADDED: Red++'s Move Tutor functionality.~$~
 wOverworldMap:: ds 1300
 wOverworldMapEnd::
 
@@ -404,7 +406,14 @@ wSlotMachineSevenAndBarModeChance:: db
 	ds 2
 ; ROM back to return to when the player is done with the slot machine
 wSlotMachineSavedROMBank:: db
-	ds 166
+; Move Buffer stuff for JustRegularLuna's code
+wMoveBuffer::
+wRelearnableMoves::
+	ds 164
+; Try not to use this stack. 
+; A good amount of space is needed to store data for the move relearner.
+; If it's like, 2, it'll lag like crazy and show garbage from elsewhere.	
+
 wLuckySlotHiddenObjectIndex:: db
 
 NEXTU
@@ -1266,9 +1275,8 @@ wBattleType:: db
 ; bit 7: STAB
 wDamageMultipliers:: db
 
-; which entry in LoneAttacks to use
-; it's actually the same thing as ^
-wLoneAttackNo::
+; ~$~ REMOVED: wLoneAttackNo label was removed, as it is not needed anymore.~$~
+; which gym leader is being battled (brock = 1, misty = 2, etc)
 wGymLeaderNo:: db
 ; which instance of [youngster, lass, etc] is this?
 wTrainerNo:: db
@@ -1938,6 +1946,9 @@ wSavedSpriteImageIndex:: db
 ; terminated with $FF
 wMissableObjectList:: ds 16 * 2 + 1
 
+wPlayerStyle::  ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	; $00 = Masculine
+	; $01 = Feminine
 	ds 1
 
 wGameProgressFlags::
@@ -2119,6 +2130,7 @@ wDungeonWarpDestinationMap:: db
 ; which dungeon warp within the source map was used
 wWhichDungeonWarp:: db
 
+; ~$~ Use this for storing potential damage later.~$~
 wUnusedCardKeyGateID:: db
 
 	ds 8

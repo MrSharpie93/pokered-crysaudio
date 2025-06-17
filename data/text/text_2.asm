@@ -139,7 +139,8 @@ _GymStatueText1::
 	text_start
 
 	para "WINNING TRAINERS:"
-	line "<RIVAL>"
+	line "BLUE"
+	cont "RED"
 	done
 
 _GymStatueText2::
@@ -151,7 +152,8 @@ _GymStatueText2::
 	text_start
 
 	para "WINNING TRAINERS:"
-	line "<RIVAL>"
+	line "BLUE"
+	cont "RED"
 	cont "<PLAYER>"
 	done
 
@@ -1079,12 +1081,7 @@ _MonName1Text::
 	text "<USER>@"
 	text_end
 
-_Used1Text::
-	text_start
-	line "used @"
-	text_end
-
-_Used2Text::
+_UsedText:: ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
 	text_start
 	line "used @"
 	text_end
@@ -1098,23 +1095,7 @@ _MoveNameText::
 	text_ram wStringBuffer
 	text "@"
 
-_ExclamationPoint1Text::
-	text "!"
-	done
-
-_ExclamationPoint2Text::
-	text "!"
-	done
-
-_ExclamationPoint3Text::
-	text "!"
-	done
-
-_ExclamationPoint4Text::
-	text "!"
-	done
-
-_ExclamationPoint5Text::
+_ExclamationPointText:: ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
 	text "!"
 	done
 
@@ -1129,10 +1110,10 @@ _KeptGoingAndCrashedText::
 	cont "crashed!"
 	prompt
 
-_UnaffectedText::
-	text "<TARGET>'s"
-	line "unaffected!"
-	prompt
+;_UnaffectedText:: ; ~$~REMOVED: Japanese grammar thing the US version doesn't need.~$~
+;	text "<TARGET>'s"
+;	line "unaffected!"
+;	prompt
 
 _DoesntAffectMonText::
 	text "It doesn't affect"
@@ -1730,13 +1711,14 @@ _IntroducePlayerText::
 	prompt
 
 _IntroduceRivalText::
-	text "This is my grand-"
-	line "son. He's been"
-	cont "your rival since"
-	cont "you were a baby."
+	text "Hmm, who is this?"
+	
+	para "They're no kin of"
+	line "mine. Someone you"
+	cont "know, perhaps?"
 
-	para "...Erm, what is"
-	line "his name again?"
+	para "What might their"
+	line "name be?"
 	prompt
 
 _OakSpeechText3::
@@ -1750,6 +1732,11 @@ _OakSpeechText3::
 	line "and adventures"
 	cont "with #MON"
 	cont "awaits! Let's go!"
+	done
+	
+_PlayerStyleText:: ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	text "Choose the style"
+	line "that suits you."
 	done
 
 _DoYouWantToNicknameText::
@@ -1766,9 +1753,8 @@ _YourNameIsText::
 	prompt
 
 _HisNameIsText::
-	text "That's right! I"
-	line "remember now! His"
-	cont "name is <RIVAL>!"
+	text "I see, then her"
+	line "name is <RIVAL>!"
 	prompt
 
 _WillBeTradedText::

@@ -102,3 +102,31 @@ _BoxIsFullText::
 	para "Change the BOX at"
 	line "a #MON CENTER!"
 	done
+	
+_TeachTutorMoveText::
+	text "For ¥500, I can"
+	line "teach the move"
+	cont "@"
+	text_ram wStringBuffer
+	text " to"
+	cont "your #MON."
+	
+	para "Interested?"
+	done
+
+_MoveTutorComeAgainText::
+	text "Come again!"
+	done
+
+_MonCannotLearnTutorMoveText::
+	text "That #MON"
+	line "cannot learn"
+	cont "@"
+	text_ram wStringBuffer
+	text "."
+	prompt
+
+_MoveTutorNotEnoughMoneyText::
+	text "You don't have"
+	line "enough money!"
+	done

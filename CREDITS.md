@@ -8,10 +8,12 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - [pret](https://github.com/pret): Decomp, many bug fixes and tutorials.
 - [dannye](https://github.com/dannye): Crystal audio engine, Crystal Tracker.
 - [Sanqui](https://github.com/Sanqui): Crystal audio engine.
-- [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners.
+- [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners, restoring Gym Leader names on trainer card, Move Reminder and Move Deleter.
 - [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, optimizations.
 - [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework.
-- [Rangi42](https://github.com/Rangi42): Debug mode improvements, Tilemap Studio and Polished Map.
+- [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, Tilemap Studio and Polished Map.
+- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split.
+- [ShiraTheMogul](https://github.com/ShiraTheMogul): Move Reminder and Move Deleter.
 
 ## Art
 

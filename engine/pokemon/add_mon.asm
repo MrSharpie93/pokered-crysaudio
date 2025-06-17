@@ -82,8 +82,19 @@ _AddPartyMon::
 	push hl
 	ld a, [wMonDataLocation]
 	and $f
-	ld a, ATKDEFDV_TRAINER  ; set enemy trainer mon IVs to fixed average values
-	ld b, SPDSPCDV_TRAINER
+; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar.~$~
+	push hl
+	push de
+	push bc
+	push af
+	farcall GetTrainerMonDVs
+	pop af
+	pop bc
+	pop de
+	ld hl, wTempDVs
+	ld a, [hli]
+	ld b, [hl]
+	pop hl
 	jr nz, .next4
 
 ; If the mon is being added to the player's party, update the pokedex.
@@ -177,18 +188,16 @@ _AddPartyMon::
 	inc de
 	ld a, [hli]       ; catch rate (held item in gen 2)
 	ld [de], a
-	ld hl, wMonHMoves
-	ld a, [hli]
+; ~$~CHANGED: Red++'s Move Tutor functionality.~$~
+	; blank moves first
+	xor a
 	inc de
 	push de
 	ld [de], a
-	ld a, [hli]
 	inc de
 	ld [de], a
-	ld a, [hli]
 	inc de
 	ld [de], a
-	ld a, [hli]
 	inc de
 	ld [de], a
 	push de

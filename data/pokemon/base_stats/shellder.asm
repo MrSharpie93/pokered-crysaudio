@@ -10,7 +10,11 @@
 	INCBIN "gfx/pokemon/front/shellder.pic", 0, 1 ; sprite dimensions
 	dw ShellderPicFront, ShellderPicBack
 
-	db TACKLE, WITHDRAW, NO_MOVE, NO_MOVE ; level 1 learnset
+	; move tutor compatibility flags
+	m_tutor 0
+	m_tutor 0
+	m_tutor 0
+	m_tutor 0
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset

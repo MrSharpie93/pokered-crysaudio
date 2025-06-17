@@ -1,15 +1,29 @@
 ChoosePlayerName:
 	call OakSpeechSlidePicRight
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld a, [wPlayerStyle]
+	and a
+	jr nz, .Feminine ; Skip to other name choices
 	ld de, DefaultNamesPlayer
 	call DisplayIntroNameTextBox
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
 	ld hl, DefaultNamesPlayerList
+.continueNaming
 	call GetDefaultName
 	ld de, wPlayerName
 	call OakSpeechSlidePicLeft
 	jr .done
+.Feminine
+	ld de, DefaultNamesPlayerF
+	call DisplayIntroNameTextBox
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .customName
+	ld hl, DefaultNamesPlayerFList
+	jr .continueNaming
+;;;
 .customName
 	ld hl, wPlayerName
 	xor a ; NAME_PLAYER_SCREEN
@@ -20,12 +34,20 @@ ChoosePlayerName:
 	jr z, .customName
 	call ClearScreen
 	call Delay3
-	ld de, RedPicFront
-	ld b, BANK(RedPicFront)
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerPicFront
+	ld b, BANK(PlayerPicFront)
+	ld a, [wPlayerStyle]
+	and a      ; Added gender check
+	jr z, .Masculine
+	ld de, PlayerFPicFront
+	ld b, BANK(PlayerFPicFront)
+.Masculine
 	call IntroDisplayPicCenteredOrUpperRight
 .done
 	ld hl, YourNameIsText
 	jp PrintText
+;;;
 
 YourNameIsText:
 	text_far _YourNameIsText

@@ -480,10 +480,17 @@ StartMenu_TrainerInfo::
 	jp RedisplayStartMenu
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
-DrawTrainerInfo:
-	ld de, RedPicFront
-	lb bc, BANK(RedPicFront), $01
+DrawTrainerInfo: ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerPicFront
+	lb bc, BANK(PlayerPicFront), $01
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine
+	ld de, PlayerFPicFront
+	lb bc, BANK(PlayerFPicFront), $01
+.Masculine
 	predef DisplayPicCenteredOrUpperRight
+;;;
 	call DisableLCD
 	hlcoord 0, 2
 	ld a, " "
@@ -498,10 +505,14 @@ DrawTrainerInfo:
 	ld de, vChars2 tile $77
 	ld bc, 8 tiles
 	push bc
-	call TrainerInfo_FarCopyData
+	call TrainerInfo_FarCopyData ;joenote - do the circle tile separately from name tiles
 	ld hl, BlankLeaderNames
 	ld de, vChars2 tile $60
-	ld bc, $17 tiles
+	ld bc, $15 tiles ;joenote - going to restore the names which uses 16 less bytes
+	call TrainerInfo_FarCopyData
+	ld hl, CircleTile
+	ld de, vChars2 + $760
+	ld bc, $10
 	call TrainerInfo_FarCopyData
 	pop bc
 	ld hl, BadgeNumbersTileGraphics  ; badge number tile patterns

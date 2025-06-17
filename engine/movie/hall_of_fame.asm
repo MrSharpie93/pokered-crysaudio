@@ -182,9 +182,17 @@ HoFMonInfoText:
 	next "TYPE1/"
 	next "TYPE2/@"
 
-HoFLoadPlayerPics:
-	ld de, RedPicFront
-	ld a, BANK(RedPicFront)
+HoFLoadPlayerPics: ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld a, [wPlayerStyle]
+	and a
+	jr nz, .FemStuff1
+	ld de, PlayerPicFront
+	ld a, BANK(PlayerPicFront)
+	jr .Routine ; go to main routine
+.FemStuff1
+	ld de, PlayerFPicFront
+	ld a, BANK(PlayerFPicFront)
+.Routine ; resume original routine
 	call UncompressSpriteFromDE
 	ld hl, sSpriteBuffer1
 	ld de, sSpriteBuffer0
@@ -192,8 +200,16 @@ HoFLoadPlayerPics:
 	call CopyData
 	ld de, vFrontPic
 	call InterlaceMergeSpriteBuffers
-	ld de, RedPicBack
-	ld a, BANK(RedPicBack)
+	ld a, [wPlayerStyle]
+	and a
+	jr nz, .FemStuff2
+	ld de, PlayerPicBack
+	ld a, BANK(PlayerPicBack)
+	jr .routine2 ; skip the girl stuff and continue original routine if guy
+.FemStuff2
+	ld de, PlayerFPicBack
+	ld a, BANK(PlayerFPicBack)
+.routine2 ; original routine
 	call UncompressSpriteFromDE
 	ld a, $66 ; ~$~CHANGED: 48x48 back sprites.~$~
 	ld de, vBackPic

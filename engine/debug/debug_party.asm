@@ -16,8 +16,8 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
-	db JOLTEON, 56
-	db DUGTRIO, 56
+	db HITMONCHAN, 35
+	db BLASTOISE, 60
 	db ARTICUNO, 57
 	db PIKACHU, 5
 	db -1 ; end
@@ -85,13 +85,13 @@ IF DEF(_DEBUG)
 ;	ld a, 15
 	ld [hl], a
 
-	; Jolteon gets Thunderbolt.
-	ld hl, wPartyMon3Moves + 3
-	ld a, THUNDERBOLT
-	ld [hl], a
-	ld hl, wPartyMon3PP + 3
-	ld a, 15
-	ld [hl], a
+;	; Jolteon gets Thunderbolt.
+;	ld hl, wPartyMon3Moves + 3
+;	ld a, THUNDERBOLT
+;	ld [hl], a
+;	ld hl, wPartyMon3PP + 3
+;	ld a, 15
+;	ld [hl], a
 
 	; Articuno gets Fly.
 	ld hl, wPartyMon5Moves

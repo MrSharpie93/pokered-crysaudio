@@ -405,14 +405,14 @@ MoveAnimationTiles2:
 MoveAnimationTiles1:
 	INCBIN "gfx/battle/move_anim_1.2bpp"
 
-SlotMachineTiles2:
-IF DEF(_RED)
-	INCBIN "gfx/slots/red_slots_2.2bpp"
-ENDC
-IF DEF(_BLUE)
-	INCBIN "gfx/slots/blue_slots_2.2bpp"
-ENDC
-SlotMachineTiles2End:
+;SlotMachineTiles2: ; ~$~MOVED: Put these GFX in "Text 11" to free bank space in 1E.~$~
+;IF DEF(_RED)
+;	INCBIN "gfx/slots/red_slots_2.2bpp"
+;ENDC
+;IF DEF(_BLUE)
+;	INCBIN "gfx/slots/blue_slots_2.2bpp"
+;ENDC
+;SlotMachineTiles2End:
 
 MoveAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	push hl

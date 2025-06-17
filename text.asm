@@ -266,6 +266,7 @@ INCLUDE "data/text/text_6.asm"
 SECTION "Text 11", ROMX
 
 INCLUDE "data/text/text_7.asm"
+INCLUDE "engine/battle/slot_machine_gfx.asm" ; ~$~MOVED: Put these GFX in "Text 11" to free bank space in 1E.~$~
 
 
 SECTION "Pokédex Text", ROMX

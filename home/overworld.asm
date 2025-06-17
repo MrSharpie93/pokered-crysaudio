@@ -2043,8 +2043,13 @@ RunMapScript::
 .return
 	ret
 
-LoadWalkingPlayerSpriteGraphics::
-	ld de, RedSprite
+LoadWalkingPlayerSpriteGraphics::  ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerSprite
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine1
+	ld de, PlayerFSprite
+.Masculine1
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
@@ -2054,13 +2059,18 @@ LoadSurfingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadBikePlayerSpriteGraphics::
-	ld de, RedBikeSprite
+	ld de, PlayerBikeSprite
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine2
+	ld de, PlayerFBikeSprite
+.Masculine2
 	ld hl, vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::
 	push de
 	push hl
-	lb bc, BANK(RedSprite), $0c
+	lb bc, BANK(PlayerSprite), $0c
 	call CopyVideoData
 	pop hl
 	pop de
@@ -2071,7 +2081,7 @@ LoadPlayerSpriteGraphicsCommon::
 	inc d
 .noCarry
 	set 3, h ; add $800 ($80 tiles) to hl (1 << 3 == $8)
-	lb bc, BANK(RedSprite), $0c
+	lb bc, BANK(PlayerSprite), $0c
 	jp CopyVideoData
 
 ; function to load data from the map header
@@ -2464,7 +2474,7 @@ ResetUsingStrengthOutOfBattleBit:
 	ret
 
 ForceBikeOrSurf::
-	ld b, BANK(RedSprite)
+	ld b, BANK(PlayerSprite)
 	ld hl, LoadPlayerSpriteGraphics ; in bank 0
 	call Bankswitch
 	jp PlayDefaultMusic ; update map/player state?

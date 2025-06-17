@@ -64,6 +64,14 @@ OakSpeech:
 	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld hl, PlayerStyleText  ; added to the same file as the other oak text
+  	call PrintText     ; show this text
+  	call PlayerStyleChoice ; added routine at the end of this file
+   	ld a, [wCurrentMenuItem]
+   	ld [wPlayerStyle], a ; store player's appearance. 00 for masculine, 01 for feminine
+   	call ClearScreen ; clear the screen before resuming normal intro
+;;;	
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight
@@ -83,9 +91,17 @@ OakSpeech:
 	call PrintText
 	call GBFadeOutToWhite
 	call ClearScreen
-	ld de, RedPicFront
-	lb bc, BANK(RedPicFront), $00
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerPicFront
+	lb bc, BANK(PlayerPicFront), $00
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine1
+	ld de, PlayerFPicFront
+	lb bc, BANK(PlayerFPicFront), $00
+	.Masculine1:
 	call IntroDisplayPicCenteredOrUpperRight
+;;;
 	call MovePicLeft
 	ld hl, IntroducePlayerText
 	call PrintText
@@ -102,9 +118,17 @@ OakSpeech:
 .skipSpeech
 	call GBFadeOutToWhite
 	call ClearScreen
-	ld de, RedPicFront
-	lb bc, BANK(RedPicFront), $00
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerPicFront
+	lb bc, BANK(PlayerPicFront), $00
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine2
+	ld de, PlayerFPicFront
+	lb bc, BANK(PlayerFPicFront), $00
+	.Masculine2:
 	call IntroDisplayPicCenteredOrUpperRight
+;;;
 	call GBFadeInFromWhite
 	ld a, [wStatusFlags6] ; ~$~CHANGED: RedStar/BlueStar debug changes.~$~
 	bit BIT_DEBUG_MODE, a
@@ -124,13 +148,22 @@ OakSpeech:
 	ld [MBC1RomBank], a
 	ld c, 4
 	call DelayFrames
-	ld de, RedSprite
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld de, PlayerSprite
 	ld hl, vSprites
-	lb bc, BANK(RedSprite), $0C
+	lb bc, BANK(PlayerSprite), $0C
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .Masculine3
+	ld de, PlayerFSprite
+	lb bc, BANK(PlayerFSprite), $0C
+.Masculine3
+	ld hl, vSprites
 	call CopyVideoData
-	ld de, ShrinkPic1
+	ld de,ShrinkPic1
 	lb bc, BANK(ShrinkPic1), $00
 	call IntroDisplayPicCenteredOrUpperRight
+;;;
 	ld c, 4
 	call DelayFrames
 	ld de, ShrinkPic2
@@ -169,7 +202,7 @@ OakSpeechText1:
 	text_end
 OakSpeechText2:
 	text_far _OakSpeechText2A
-	; BUG: The cry played does not match the sprite displayed.
+	;~$~FIXED~$~ BUG: The cry played does not match the sprite displayed.
 	sound_cry_nidorina
 	text_far _OakSpeechText2B
 	text_end
@@ -181,6 +214,9 @@ IntroduceRivalText:
 	text_end
 OakSpeechText3:
 	text_far _OakSpeechText3
+	text_end
+PlayerStyleText: ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	text_far _PlayerStyleText
 	text_end
 
 FadeInIntroPic:
@@ -244,3 +280,22 @@ IntroDisplayPicCenteredOrUpperRight:
 	xor a
 	ldh [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
+	
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+PlayerStyleChoice::
+	call SaveScreenTilesToBuffer1
+	call InitPlayerStyleTextBoxParameters
+	jr DisplayPlayerStyleChoice
+
+InitPlayerStyleTextBoxParameters::
+	ld a, $1 ; loads the value for the unused North/West choice, but that was changed.
+	ld [wTwoOptionMenuID], a
+	coord hl, 13, 7 
+	ld bc, $80e
+	ret
+
+	DisplayPlayerStyleChoice::
+   	   ld a, $14
+   	   ld [wTextBoxID], a
+   	   call DisplayTextBoxID
+   	   jp LoadScreenTilesFromBuffer1

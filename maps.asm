@@ -449,6 +449,9 @@ INCLUDE "data/maps/headers/CeladonMansion2F.asm"
 INCLUDE "scripts/CeladonMansion2F.asm"
 INCLUDE "data/maps/objects/CeladonMansion2F.asm"
 CeladonMansion2F_Blocks: INCBIN "maps/CeladonMansion2F.blk"
+; JustRegularLuna's move relearner/deleter files
+INCLUDE "scripts/move_deleter.asm"
+INCLUDE "scripts/move_relearner.asm"
 
 INCLUDE "data/maps/headers/CeladonMansion3F.asm"
 INCLUDE "scripts/CeladonMansion3F.asm"

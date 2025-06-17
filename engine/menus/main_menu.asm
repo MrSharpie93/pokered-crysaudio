@@ -406,7 +406,7 @@ PrintSaveScreenText:
 	call PrintPlayTime
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
-	ld c, 30
+	ld c, 5 ; ~$~CHANGED: Save faster, please.~$~
 	jp DelayFrames
 
 PrintNumBadges:

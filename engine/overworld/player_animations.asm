@@ -385,13 +385,32 @@ FishingAnim:
 	call DelayFrames
 	ld hl, wMovementFlags
 	set BIT_LEDGE_OR_FISHING, [hl]
-	ld de, RedSprite
-	ld hl, vNPCSprites tile $00
-	lb bc, BANK(RedSprite), 12
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .MascSpriteLoad
+	ld de, PlayerFSprite
+	ld hl, vNPCSprites
+	ld bc, (BANK(PlayerFSprite) << 8) + $0c
+	jr .KeepLoadingSpriteStuff
+.MascSpriteLoad
+	ld de, PlayerSprite
+	ld hl, vNPCSprites
+	lb bc, BANK(PlayerSprite), $c
+.KeepLoadingSpriteStuff
 	call CopyVideoData
+	ld a, [wPlayerStyle]
+	and a
+	jr z, .MascTiles ; skip loading PlayerF's stuff if you're Player
 	ld a, $4
-	ld hl, RedFishingTiles
+	ld hl, PlayerFFishingTiles
+	jr .ContinueRoutine ; go back to main routine after loading PlayerF's stuff
+.MascTiles ; alternately, load Player's stuff
+	ld a, $4
+	ld hl, PlayerFishingTiles
+.ContinueRoutine
 	call LoadAnimSpriteGfx
+;;;
 	ld a, [wSpritePlayerStateData1ImageIndex]
 	ld c, a
 	ld b, $0
@@ -487,11 +506,17 @@ MACRO fishing_gfx
 	dw vNPCSprites tile \3
 ENDM
 
-RedFishingTiles:
-	fishing_gfx RedFishingTilesFront, 2, $02
-	fishing_gfx RedFishingTilesBack,  2, $06
-	fishing_gfx RedFishingTilesSide,  2, $0a
-	fishing_gfx RedFishingRodTiles,   3, $fd
+PlayerFishingTiles:
+	fishing_gfx PlayerFishingTilesFront, 2, $02
+	fishing_gfx PlayerFishingTilesBack,  2, $06
+	fishing_gfx PlayerFishingTilesSide,  2, $0a
+	fishing_gfx PlayerFishingRodTiles,   2, $fd
+	
+PlayerFFishingTiles: ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	fishing_gfx PlayerFFishingTilesFront, 2, $02
+	fishing_gfx PlayerFFishingTilesBack,  2, $06
+	fishing_gfx PlayerFFishingTilesSide,  2, $0a
+	fishing_gfx PlayerFishingRodTiles,   2, $fd
 
 _HandleMidJump::
 	ld a, [wPlayerJumpingYScreenCoordsIndex]

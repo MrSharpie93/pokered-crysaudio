@@ -18,6 +18,8 @@ Route4_TextPointers:
 	dw_const Route4CooltrainerF1Text, TEXT_ROUTE4_COOLTRAINER_F1
 	dw_const Route4CooltrainerF2Text, TEXT_ROUTE4_COOLTRAINER_F2
 	dw_const PickUpItemText,          TEXT_ROUTE4_TM_WHIRLWIND
+	dw_const Route4Hiker2Text,        TEXT_ROUTE4_HIKER2
+	dw_const Route4Hiker3Text,        TEXT_ROUTE4_HIKER3
 	dw_const PokeCenterSignText,      TEXT_ROUTE4_POKECENTER_SIGN
 	dw_const Route4MtMoonSignText,    TEXT_ROUTE4_MT_MOON_SIGN
 	dw_const Route4SignText,          TEXT_ROUTE4_SIGN
@@ -57,3 +59,19 @@ Route4MtMoonSignText:
 Route4SignText:
 	text_far _Route4SignText
 	text_end
+	
+Route4Hiker2Text:
+	text_far _MegaPunchGuyText
+	text_asm
+	ld a, 4
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
+	
+Route4Hiker3Text:
+	text_far _MegaKickGuyText
+	text_asm
+	ld a, 5
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd

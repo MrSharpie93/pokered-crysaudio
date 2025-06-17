@@ -7,10 +7,10 @@ GetTrainerName_::
 	ld a, [wTrainerClass]
 	cp RIVAL1
 	jr z, .foundName
-	cp RIVAL2
-	jr z, .foundName
-	cp RIVAL3
-	jr z, .foundName
+;	cp RIVAL2 ; ~$~REMOVED: RIVAL2 and RIVAL3 are now Blue and Red, and don't need this.~$~
+;	jr z, .foundName
+;	cp RIVAL3
+;	jr z, .foundName
 	ld [wNameListIndex], a
 	ld a, TRAINER_NAME
 	ld [wNameListType], a

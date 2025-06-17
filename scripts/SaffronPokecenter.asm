@@ -8,6 +8,7 @@ SaffronPokecenter_TextPointers:
 	dw_const SaffronPokecenterBeautyText,           TEXT_SAFFRONPOKECENTER_BEAUTY
 	dw_const SaffronPokecenterGentlemanText,        TEXT_SAFFRONPOKECENTER_GENTLEMAN
 	dw_const SaffronPokecenterLinkReceptionistText, TEXT_SAFFRONPOKECENTER_LINK_RECEPTIONIST
+	dw_const SaffronPokecenterMoveTutorText,        TEXT_SAFFRONPOKECENTER_MOVE_TUTOR
 
 SaffronPokecenterNurseText:
 	script_pokecenter_nurse
@@ -22,3 +23,9 @@ SaffronPokecenterGentlemanText:
 
 SaffronPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
+	
+SaffronPokecenterMoveTutorText:
+	text_far _ElementalPunchTutorText
+	text_asm
+	callfar MoveTutorScriptSpecial
+	jp TextScriptEnd

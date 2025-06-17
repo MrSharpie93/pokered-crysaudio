@@ -20,7 +20,7 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const MONEY_BOX_TEMPLATE                ; $0f
 	const MENU_TEMPLATE_10                  ; $10 unused
 	const MON_SPRITE_POPUP                  ; $11
-	const JP_AH_MENU_TEMPLATE               ; $12
+	const STARTER_CHOICE                    ; $12 ; ~$~CHANGED: Changing how starter is chosen for story reasons.~$~
 	const MONEY_BOX                         ; $13
 	const TWO_OPTION_MENU                   ; $14
 	const BUY_SELL_QUIT_MENU                ; $15
@@ -71,6 +71,7 @@ DEF CHOSE_SECOND_ITEM EQU 2
 	const TMHM_PARTY_MENU      ; $03
 	const SWAP_MONS_PARTY_MENU ; $04
 	const EVO_STONE_PARTY_MENU ; $05
+	const MOVE_TUTOR_MENU      ; $06 ; ~$~ADDED: Red++'s Move Tutor functionality.~$~
 ; party menu message IDs
 ; PartyMenuItemUseMessagePointers indexes (see engine/menus/party_menu.asm)
 	const_next $F0

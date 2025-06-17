@@ -36,6 +36,17 @@ MACRO tmhm
 	ENDR
 ENDM
 
+MACRO m_tutor ; ~$~ADDED: Red++'s Move Tutor functionality.~$~
+DEF x = 0
+	REPT _NARG
+IF \1 != 0
+DEF x = x | (1 << ((\1 - 1) % 8))
+ENDC
+	SHIFT
+	ENDR
+	db x
+ENDM
+
 
 ; Constant data (db, dw, dl) macros
 

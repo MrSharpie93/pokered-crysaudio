@@ -23,7 +23,7 @@
 - Tamer: MollyChan
 - Bird Keeper: MollyChan
 - Blackbelt: MollyChan
-- Blue: MollyChan
+- Green: MollyChan
 - Prof. Oak: MollyChan
 - Chief: Sharpie93
 - Scientist: MollyChan
@@ -40,13 +40,13 @@
 - Blaine: MollyChan
 - Sabrina: MollyChan
 - Gentleman: MollyChan
+- Blue: MollyChan
 - Red: MollyChan
-- Green: MollyChan
 - Lorelei: MollyChan
 - Channeler: MollyChan
 - Agatha: MollyChan
 - Lance: MollyChan
 - Jessie, James & Meowth: MollyChan
 
-- Protagonists: MollyChan
+- Protagonists (front, back and all overworld sprites): MollyChan
 - Old Man backsprite: MollyChan

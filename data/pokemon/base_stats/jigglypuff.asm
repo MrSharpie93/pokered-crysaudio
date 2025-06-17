@@ -10,7 +10,11 @@
 	INCBIN "gfx/pokemon/front/jigglypuff.pic", 0, 1 ; sprite dimensions
 	dw JigglypuffPicFront, JigglypuffPicBack
 
-	db SING, NO_MOVE, NO_MOVE, NO_MOVE ; level 1 learnset
+	; move tutor compatibility flags
+	m_tutor 1,2,3,4,5
+	m_tutor 0
+	m_tutor 0
+	m_tutor 0
 	db GROWTH_FAST ; growth rate
 
 	; tm/hm learnset

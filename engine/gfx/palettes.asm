@@ -147,6 +147,8 @@ SetPal_Overworld:
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
+	cp POWER_PLANT
+	jr z, .powerPlant
 	cp CERULEAN_CAVE_2F
 	jr c, .normalDungeonOrBuilding
 	cp CERULEAN_CAVE_1F + 1
@@ -177,6 +179,9 @@ SetPal_Overworld:
 	jr .town
 .Lorelei
 	xor a
+	jr .town
+.powerPlant
+	ld a, PAL_GREYMON_Y - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen
@@ -271,7 +276,7 @@ BadgeBlkDataLengths:
 
 DeterminePaletteID:
 	bit TRANSFORMED, a ; a is battle status 3
-	ld a, PAL_GREYMON  ; if the mon has used Transform, use Ditto's palette
+	ld a, PAL_PINKMON  ; if the mon has used Transform, use Ditto's palette
 	ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:

@@ -201,7 +201,8 @@ DrowzeePicBack::     INCBIN "gfx/pokemon/back/drowzeeb.pic"
 HypnoPicFront::      INCBIN "gfx/pokemon/front/hypno.pic"
 HypnoPicBack::       INCBIN "gfx/pokemon/back/hypnob.pic"
 
-RedPicBack::           INCBIN "gfx/player/redb.pic"
+PlayerPicBack::        INCBIN "gfx/player/playerb.pic"
+PlayerFPicBack::       INCBIN "gfx/player/player_fb.pic"
 OldManPicBack::        INCBIN "gfx/battle/oldmanb.pic"
 
 
@@ -273,9 +274,9 @@ RockerPic::        INCBIN "gfx/trainers/rocker.pic"
 TamerPic::         INCBIN "gfx/trainers/tamer.pic"
 BirdKeeperPic::    INCBIN "gfx/trainers/birdkeeper.pic"
 BlackbeltPic::     INCBIN "gfx/trainers/blackbelt.pic"
-Rival1Pic::        INCBIN "gfx/trainers/rival1.pic"
+Rival1Pic::        INCBIN "gfx/trainers/green.pic" ;Green
 ProfOakPic::       INCBIN "gfx/trainers/prof.oak.pic"
-ChiefPic::
+ChiefPic::         INCBIN "gfx/trainers/chief.pic"
 ScientistPic::     INCBIN "gfx/trainers/scientist.pic"
 GiovanniPic::      INCBIN "gfx/trainers/giovanni.pic"
 RocketPic::        INCBIN "gfx/trainers/rocket.pic"
@@ -293,8 +294,8 @@ KogaPic::          INCBIN "gfx/trainers/koga.pic"
 BlainePic::        INCBIN "gfx/trainers/blaine.pic"
 SabrinaPic::       INCBIN "gfx/trainers/sabrina.pic"
 GentlemanPic::     INCBIN "gfx/trainers/gentleman.pic"
-Rival2Pic::        INCBIN "gfx/trainers/rival2.pic"
-Rival3Pic::        INCBIN "gfx/trainers/rival3.pic"
+Rival2Pic::        INCBIN "gfx/trainers/blue.pic" ;Blue
+Rival3Pic::        INCBIN "gfx/trainers/red.pic" ;Red
 LoreleiPic::       INCBIN "gfx/trainers/lorelei.pic"
 ChannelerPic::     INCBIN "gfx/trainers/channeler.pic"
 AgathaPic::        INCBIN "gfx/trainers/agatha.pic"

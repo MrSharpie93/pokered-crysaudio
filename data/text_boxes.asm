@@ -33,7 +33,7 @@ TextBoxTextAndCoordTable:
 	text_box_text SWITCH_STATS_CANCEL_MENU_TEMPLATE, 11, 11, 19, 17, SwitchStatsCancelText,   13, 12
 	text_box_text BUY_SELL_QUIT_MENU_TEMPLATE,        0,  0, 10,  6, BuySellQuitText,          2,  1
 	text_box_text MONEY_BOX_TEMPLATE,                11,  0, 19,  2, MoneyText,               13,  0
-	text_box_text JP_AH_MENU_TEMPLATE,                7,  6, 11, 10, JapaneseAhText,           8,  8
+	text_box_text STARTER_CHOICE,                    13,  6, 19, 12, StarterChoiceText,       15,  7 ; ~$~CHANGED: Changing how starter is chosen for story reasons.~$~
 	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, JapanesePokedexMenu,     12, 10
 
 BuySellQuitText:
@@ -78,8 +78,10 @@ SwitchStatsCancelText:
 	next "STATS"
 	next "CANCEL@"
 
-JapaneseAhText:
-	db "アッ！@"
+StarterChoiceText: ; ~$~CHANGED: Changing how starter is chosen for story reasons.~$~
+	db   "GREEN"
+	next "RED"
+	next "BLUE@"
 
 JapanesePokedexMenu:
 	db   "データをみる"

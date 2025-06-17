@@ -25,7 +25,7 @@ GetTrainerInformation::
 	jp BankswitchBack
 .linkBattle
 	ld hl, wTrainerPicPointer
-	ld de, RedPicFront
+	ld de, PlayerPicFront
 	ld [hl], e
 	inc hl
 	ld [hl], d
