@@ -37,6 +37,7 @@ UsedCut:
 	call GBPalWhiteOutWithDelay3
 	call ClearSprites
 	call RestoreScreenTilesAndReloadTilePatterns
+	call ReloadMapData ; ~$~CHANGED: Overworld HM usage.~$~
 	ld a, SCREEN_HEIGHT_PX
 	ldh [hWY], a
 	call Delay3
@@ -46,6 +47,9 @@ UsedCut:
 	call Delay3
 	xor a
 	ldh [hWY], a
+; fallthrough
+	
+Cut2:: ; ~$~CHANGED: Overworld HM usage.~$~
 	ld hl, UsedCutText
 	call PrintText
 	call LoadScreenTilesFromBuffer2

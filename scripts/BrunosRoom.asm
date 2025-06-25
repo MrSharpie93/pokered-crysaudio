@@ -129,6 +129,8 @@ BrunosRoomBrunoText:
 	text_asm
 	ld hl, BrunosRoomTrainerHeader0
 	call TalkToTrainer
+	ld a, $a ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
+	ld [wGymLeaderNo], a
 	jp TextScriptEnd
 
 BrunoBeforeBattleText:

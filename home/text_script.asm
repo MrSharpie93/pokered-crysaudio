@@ -208,11 +208,10 @@ PlayerBlackedOutText::
 	text_far _PlayerBlackedOutText
 	text_end
 
-DisplayRepelWoreOffText::
-	ld hl, RepelWoreOffText
-	call PrintText
-	jp AfterDisplayingTextID
+DisplayRepelWoreOffText:: ; ~$~CHANGED: Auto repel system.~$~
+	callfar _DisplayRepelWoreOffText
+	jp HoldTextDisplayOpen
 
-RepelWoreOffText::
-	text_far _RepelWoreOffText
-	text_end
+;RepelWoreOffText::
+;	text_far _RepelWoreOffText
+;	text_end

@@ -14,7 +14,7 @@ ChampionsRoom_Object:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  2, SPRITE_BLUE, STAY, DOWN, TEXT_CHAMPIONSROOM_RIVAL
+	object_event  4,  2, SPRITE_RED, STAY, DOWN, TEXT_CHAMPIONSROOM_RIVAL
 	object_event  3,  7, SPRITE_OAK, STAY, UP, TEXT_CHAMPIONSROOM_OAK
 
 	def_warps_to CHAMPIONS_ROOM

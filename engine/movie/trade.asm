@@ -375,9 +375,8 @@ Trade_ShowEnemyMon:
 	call ClearScreenArea
 	jp PrintTradeTakeCareText
 
-Trade_AnimLeftToRight:
+Trade_AnimLeftToRight: ; ~$~CHANGED: New icons. Code from Rangi42 and ShantyTown.~$~
 ; Animates the mon moving from the left GB to the right one.
-	call Trade_InitGameboyTransferGfx
 	ld a, $1
 	ld [wTradedMonMovingRight], a
 	ld a, %11100100
@@ -387,7 +386,8 @@ Trade_AnimLeftToRight:
 	ld a, $1c
 	ld [wBaseCoordY], a
 	ld a, [wLeftGBMonSpecies]
-	ld [wMonPartySpriteSpecies], a
+	ld [wCurPartySpecies], a
+	call Trade_InitGameboyTransferGfx
 	call Trade_WriteCircledMonOAM
 	call Trade_DrawLeftGameboy
 	call Trade_CopyTileMapToVRAM
@@ -409,9 +409,8 @@ Trade_AnimLeftToRight:
 	call Trade_AnimMonMoveVertical
 	jp ClearSprites
 
-Trade_AnimRightToLeft:
+Trade_AnimRightToLeft: ; ~$~CHANGED: New icons. Code from Rangi42 and ShantyTown.~$~
 ; Animates the mon moving from the right GB to the left one.
-	call Trade_InitGameboyTransferGfx
 	xor a
 	ld [wTradedMonMovingRight], a
 	ld a, $64
@@ -419,7 +418,8 @@ Trade_AnimRightToLeft:
 	ld a, $44
 	ld [wBaseCoordY], a
 	ld a, [wRightGBMonSpecies]
-	ld [wMonPartySpriteSpecies], a
+	ld [wCurPartySpecies], a
+	call Trade_InitGameboyTransferGfx
 	call Trade_WriteCircledMonOAM
 	call Trade_DrawRightGameboy
 	call Trade_CopyTileMapToVRAM
@@ -590,7 +590,7 @@ Trade_AnimMonMoveHorizontal:
 	jr nz, Trade_AnimMonMoveHorizontal
 	ret
 
-Trade_AnimCircledMon:
+Trade_AnimCircledMon: ; ~$~CHANGED: New icons. Code from Rangi42 and ShantyTown.~$~
 ; Cycles between the two animation frames of the mon party sprite, cycles
 ; between a circle and an oval around the mon sprite, and makes the cable flash.
 	push de
@@ -600,6 +600,20 @@ Trade_AnimCircledMon:
 	xor $3c ; make link cable flash
 	ldh [rBGP], a
 	ld hl, wShadowOAMSprite00TileID
+	ld a, [hl]
+	bit 2, a
+	jr z, .firstFrame
+	sub 8
+.firstFrame
+	add 4
+	ld bc, 4
+rept 3
+	ld [hl], a
+	add hl, bc
+	inc a
+endr
+	ld [hl], a
+	add hl, bc
 	ld de, $4
 	ld c, $14
 .loop
@@ -702,7 +716,7 @@ MACRO trade_circle_oam
 	db \2, \3
 ENDM
 
-Trade_CircleOAMPointers:
+Trade_CircleOAMPointers: ; ~$~CHANGED: New icons. Code from Rangi42 and ShantyTown.~$~
 	; oam pointer, upper-left x coord, upper-left y coord
 	trade_circle_oam Trade_CircleOAM0, $08, $08
 	trade_circle_oam Trade_CircleOAM1, $18, $08
@@ -710,20 +724,20 @@ Trade_CircleOAMPointers:
 	trade_circle_oam Trade_CircleOAM3, $18, $18
 
 Trade_CircleOAM0:
-	dbsprite  2,  7,  0,  0, ICON_TRADEBUBBLE << 2 + 1, OAM_OBP1
-	dbsprite  2,  7,  0,  2, ICON_TRADEBUBBLE << 2 + 3, OAM_OBP1
+	dbsprite  2,  7,  0,  0, $39, OAM_OBP1
+	dbsprite  2,  7,  0,  2, $3b, OAM_OBP1
 
 Trade_CircleOAM1:
-	dbsprite  6,  7,  0,  1, ICON_TRADEBUBBLE << 2 + 0, OAM_OBP1 | OAM_HFLIP
-	dbsprite  6,  7,  0,  3, ICON_TRADEBUBBLE << 2 + 2, OAM_OBP1 | OAM_HFLIP
+	dbsprite  6,  7,  0,  1, $38, OAM_OBP1 | OAM_HFLIP
+	dbsprite  6,  7,  0,  3, $3a, OAM_OBP1 | OAM_HFLIP
 
 Trade_CircleOAM2:
-	dbsprite 10,  7,  0,  2, ICON_TRADEBUBBLE << 2 + 3, OAM_OBP1 | OAM_VFLIP
-	dbsprite 10,  7,  0,  0, ICON_TRADEBUBBLE << 2 + 1, OAM_OBP1 | OAM_VFLIP
+	dbsprite 10,  7,  0,  2, $3b, OAM_OBP1 | OAM_VFLIP
+	dbsprite 10,  7,  0,  0, $39, OAM_OBP1 | OAM_VFLIP
 
 Trade_CircleOAM3:
-	dbsprite 14,  7,  0,  3, ICON_TRADEBUBBLE << 2 + 2, OAM_OBP1 | OAM_HFLIP | OAM_VFLIP
-	dbsprite 14,  7,  0,  1, ICON_TRADEBUBBLE << 2 + 0, OAM_OBP1 | OAM_HFLIP | OAM_VFLIP
+	dbsprite 14,  7,  0,  3, $3a, OAM_OBP1 | OAM_HFLIP | OAM_VFLIP
+	dbsprite 14,  7,  0,  1, $38, OAM_OBP1 | OAM_HFLIP | OAM_VFLIP
 
 ; a = species
 Trade_LoadMonSprite:

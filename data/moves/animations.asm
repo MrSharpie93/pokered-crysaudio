@@ -1,3 +1,4 @@
+; ~$~CHANGED: Many move animations have been altered to accommodate photosensitive individuals, as well as optimization.~$~
 AttackAnimationPointers:
 	table_width 2, AttackAnimationPointers
 	dw PoundAnim
@@ -254,7 +255,10 @@ CometPunchAnim:
 	db -1 ; end
 
 MegaPunchAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim MEGA_PUNCH, SUBANIM_1_STAR_BIG_MOVING, 1, 6
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 PayDayAnim:
@@ -288,7 +292,10 @@ VicegripAnim:
 	db -1 ; end
 
 GuillotineAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim GUILLOTINE, SUBANIM_0_SLICE_BOTH_SIDES, 0, 6
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 RazorWindAnim:
@@ -349,7 +356,10 @@ DoubleKickAnim:
 	db -1 ; end
 
 MegaKickAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim MEGA_KICK, SUBANIM_1_STAR_BIG_MOVING, 1, 6
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 JumpKickAnim:
@@ -394,7 +404,6 @@ TackleAnim:
 
 BodySlamAnim:
 	battle_anim LEECH_SEED, SE_MOVE_MON_HORIZONTALLY
-	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_RESET_MON_POSITION
 	db -1 ; end
@@ -448,8 +457,8 @@ PinMissileAnim:
 	db -1 ; end
 
 LeerAnim:
+DisableAnim:
 	battle_anim LEECH_SEED, SE_DARK_SCREEN_PALETTE
-	battle_anim LEER, SE_DARK_SCREEN_FLASH
 	battle_anim LEER, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
@@ -483,13 +492,6 @@ SonicBoomAnim:
 	battle_anim ROAR, SUBANIM_1_SHOUT, 1, 6
 	battle_anim GUST, SUBANIM_1_TORNADO, 1, 6
 	battle_anim NO_MOVE, SUBANIM_1_STAR_BIG, 1, 6
-	db -1 ; end
-
-DisableAnim:
-	battle_anim LEECH_SEED, SE_DARK_SCREEN_PALETTE
-	battle_anim LEER, SE_DARK_SCREEN_FLASH
-	battle_anim LEER, SE_DARK_SCREEN_FLASH
-	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 AcidAnim:
@@ -533,8 +535,11 @@ IceBeamAnim:
 	db -1 ; end
 
 BlizzardAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim BLIZZARD, SUBANIM_0_ICE_FALL, 0, 4
-	battle_anim HYDRO_PUMP, SUBANIM_0_ICE_FALL, 0, 4
+	battle_anim NO_MOVE, SUBANIM_0_ICE_RISE, 0, 16
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 PsyBeamAnim:
@@ -557,8 +562,7 @@ HyperBeamAnim:
 	battle_anim NO_MOVE, SE_SPIRAL_BALLS_INWARD
 	battle_anim HYPER_BEAM, SUBANIM_0_BEAM, 0, 2
 	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
-	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
-	battle_anim MEGA_PUNCH, SUBANIM_1_STAR_BIG_MOVING, 1, 6
+	battle_anim NO_MOVE, SUBANIM_1_STAR_BIG_MOVING, 1, 6
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
@@ -686,8 +690,11 @@ ThunderShockAnim:
 	db -1 ; end
 
 ThunderBoltAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim THUNDERBOLT, SUBANIM_1_LIGHTNING_BALL, 1, 1
 	battle_anim THUNDERBOLT, SUBANIM_1_LIGHTNING_BALL, 1, 1
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 ThunderWaveAnim:
@@ -826,10 +833,7 @@ SmokeScreenAnim:
 	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
 	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
-	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
-	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
-	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
-	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
+; ~$~CHANGED: Why does this animation have so many delay calls?~$~
 	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
 	battle_anim NO_MOVE, SE_DARKEN_MON_PALETTE
 	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
@@ -913,10 +917,6 @@ EggBombAnim:
 	battle_anim EGG_BOMB, SUBANIM_1_EXPLOSION_SMALL_ENEMY, 1, 4
 	db -1 ; end
 
-LickAnim:
-	battle_anim SLUDGE, SUBANIM_1_BLOB_DRIP_ENEMY, 1, 6
-	db -1 ; end
-
 SmogAnim:
 	battle_anim LEECH_SEED, SE_DARKEN_MON_PALETTE
 	battle_anim SMOG, SUBANIM_1_CLOUD_TOSS, 1, 6
@@ -925,6 +925,7 @@ SmogAnim:
 
 SludgeAnim:
 	battle_anim SLUDGE, SUBANIM_1_BLOB_TOSS, 1, 6
+LickAnim:
 	battle_anim SLUDGE, SUBANIM_1_BLOB_DRIP_ENEMY, 1, 6
 	db -1 ; end
 
@@ -996,7 +997,6 @@ HiJumpKickAnim:
 GlareAnim:
 	battle_anim LEECH_SEED, SE_DARK_SCREEN_PALETTE
 	battle_anim GLARE, SE_DARK_SCREEN_FLASH
-	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
@@ -1060,7 +1060,6 @@ SporeAnim:
 FlashAnim:
 	battle_anim LEECH_SEED, SE_LIGHT_SCREEN_PALETTE
 	battle_anim GLARE, SE_DARK_SCREEN_FLASH
-	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
@@ -1083,7 +1082,10 @@ CrabHammerAnim:
 	db -1 ; end
 
 ExplosionAnim:
+	battle_anim NO_MOVE, SE_DARK_SCREEN_PALETTE
 	battle_anim EXPLOSION, SUBANIM_1_SELFDESTRUCT, 1, 3
+	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
 FurySwipesAnim:

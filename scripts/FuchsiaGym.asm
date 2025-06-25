@@ -123,7 +123,7 @@ FuchsiaGymKogaText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedSoulBadgeText
-	ld de, .ReceivedSoulBadgeText
+	ld de, .KogaVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -144,6 +144,10 @@ FuchsiaGymKogaText:
 
 .ReceivedSoulBadgeText:
 	text_far _FuchsiaGymKogaReceivedSoulBadgeText
+	text_end
+	
+.KogaVictoryText:
+	text_far _FuchsiaGymKogaVictoryText
 	text_end
 
 .PostBattleAdviceText:

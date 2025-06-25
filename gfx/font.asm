@@ -29,3 +29,7 @@ WorldMapTileGraphicsEnd:
 
 PlayerCharacterTitleGraphics: INCBIN "gfx/title/player.2bpp"
 PlayerCharacterTitleGraphicsEnd:
+
+; ~$~ADDED: EXP bar in battle.~$~
+EXPBarGraphics::  INCBIN "gfx/battle/exp_bar.2bpp"
+EXPBarGraphicsEnd::

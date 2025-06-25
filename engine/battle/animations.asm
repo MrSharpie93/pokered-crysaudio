@@ -1,3 +1,5 @@
+; ~$~CHANGED: Removed several VC hooks for move animations, as the animations are less severe now.~$~
+
 ; Draws a "frame block". Frame blocks are blocks of tiles that are put
 ; together to form frames in battle animations.
 DrawFrameBlock:
@@ -187,12 +189,12 @@ PlayAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld h, [hl]
 	ld l, a
 .animationLoop
-	vc_hook Stop_reducing_move_anim_flashing_Thunderbolt
+;	vc_hook Stop_reducing_move_anim_flashing_Thunderbolt
 	ld a, [hli]
-	vc_hook_red Stop_reducing_move_anim_flashing_Reflect
-	vc_hook_blue Stop_reducing_move_anim_flashing_Self_Destruct
+;	vc_hook_red Stop_reducing_move_anim_flashing_Reflect
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Self_Destruct
 	cp -1
-	vc_hook_blue Stop_reducing_move_anim_flashing_Reflect
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Reflect
 	jr z, .AnimationOver
 	cp FIRST_SE_ID ; is this subanimation or a special effect?
 	jr c, .playSubanimation
@@ -261,19 +263,19 @@ PlayAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld a, [wAnimPalette]
 	ldh [rOBP0], a
 	call LoadMoveAnimationTiles
-	vc_hook Reduce_move_anim_flashing_Mega_Punch_Self_Destruct_Explosion
+;	vc_hook Reduce_move_anim_flashing_Mega_Punch_Self_Destruct_Explosion
 	call LoadSubanimation
 	call PlaySubanimation
-	vc_hook_red Stop_reducing_move_anim_flashing_Mega_Punch
-	vc_hook_blue Stop_reducing_move_anim_flashing_Mega_Punch_Explosion
+;	vc_hook_red Stop_reducing_move_anim_flashing_Mega_Punch
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Mega_Punch_Explosion
 	pop af
-	vc_hook_red Stop_reducing_move_anim_flashing_Blizzard
+;	vc_hook_red Stop_reducing_move_anim_flashing_Blizzard
 	ldh [rOBP0], a
 .nextAnimationCommand
-	vc_hook_red Stop_reducing_move_anim_flashing_Hyper_Beam
-	vc_hook_blue Stop_reducing_move_anim_flashing_Bubblebeam_Hyper_Beam_Blizzard
+;	vc_hook_red Stop_reducing_move_anim_flashing_Hyper_Beam
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Bubblebeam_Hyper_Beam_Blizzard
 	pop hl
-	vc_hook Stop_reducing_move_anim_flashing_Guillotine
+;	vc_hook Stop_reducing_move_anim_flashing_Guillotine
 	jr .animationLoop
 .AnimationOver
 ;;; make sure we zero out the alt animation ID after we're finished with the animation.
@@ -282,39 +284,39 @@ PlayAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ret
 
 LoadSubanimation:
-	vc_hook Reduce_move_anim_flashing_Guillotine
+;	vc_hook Reduce_move_anim_flashing_Guillotine
 	ld a, [wSubAnimAddrPtr + 1]
-	vc_hook Reduce_move_anim_flashing_Mega_Kick
+;	vc_hook Reduce_move_anim_flashing_Mega_Kick
 	ld h, a
-	vc_hook_red Reduce_move_anim_flashing_Blizzard
+;	vc_hook_red Reduce_move_anim_flashing_Blizzard
 	ld a, [wSubAnimAddrPtr]
-	vc_hook_red Reduce_move_anim_flashing_Self_Destruct
+;	vc_hook_red Reduce_move_anim_flashing_Self_Destruct
 	ld l, a
 	ld a, [hli]
 	ld e, a
-	vc_hook Reduce_move_anim_flashing_Explosion
+;	vc_hook Reduce_move_anim_flashing_Explosion
 	ld a, [hl]
-	vc_hook Reduce_move_anim_flashing_Thunderbolt
+;	vc_hook Reduce_move_anim_flashing_Thunderbolt
 	ld d, a ; de = address of subanimation
 	ld a, [de]
-	vc_hook_blue Reduce_move_anim_flashing_Rock_Slide
+;	vc_hook_blue Reduce_move_anim_flashing_Rock_Slide
 	ld b, a
-	vc_hook Reduce_move_anim_flashing_Spore
+;	vc_hook Reduce_move_anim_flashing_Spore
 	and %00011111
-	vc_hook Reduce_move_anim_flashing_Bubblebeam
+;	vc_hook Reduce_move_anim_flashing_Bubblebeam
 	ld [wSubAnimCounter], a ; number of frame blocks
-	vc_hook_red Reduce_move_anim_flashing_Rock_Slide
-	vc_hook_blue Reduce_move_anim_flashing_Self_Destruct
+;	vc_hook_red Reduce_move_anim_flashing_Rock_Slide
+;	vc_hook_blue Reduce_move_anim_flashing_Self_Destruct
 	ld a, b
 	and %11100000
 	cp SUBANIMTYPE_ENEMY << 5
-	vc_hook_blue Reduce_move_anim_flashing_Blizzard
+;	vc_hook_blue Reduce_move_anim_flashing_Blizzard
 	jr nz, .isNotType5
 .isType5
 	call GetSubanimationTransform2
 	jr .saveTransformation
 .isNotType5
-	vc_hook Reduce_move_anim_flashing_Hyper_Beam
+;	vc_hook Reduce_move_anim_flashing_Hyper_Beam
 	call GetSubanimationTransform1
 .saveTransformation
 ; place the upper 3 bits of a into bits 0-2 of a before storing
@@ -345,7 +347,7 @@ LoadSubanimation:
 ; sets the transform to SUBANIMTYPE_NORMAL if it's the player's turn
 ; sets the transform to the subanimation type if it's the enemy's turn
 GetSubanimationTransform1:
-	vc_hook Reduce_move_anim_flashing_Reflect
+;	vc_hook Reduce_move_anim_flashing_Reflect
 	ld b, a
 	ldh a, [hWhoseTurn]
 	and a
@@ -445,15 +447,15 @@ MoveAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	jr nz, .animationsDisabled
 	call ShareMoveAnimations
 	call PlayAnimation
-	vc_hook_red Stop_reducing_move_anim_flashing_Bubblebeam_Mega_Kick
-	vc_hook_blue Stop_reducing_move_anim_flashing_Spore
+;	vc_hook_red Stop_reducing_move_anim_flashing_Bubblebeam_Mega_Kick
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Spore
 	jr .next4
 .animationsDisabled
 	ld c, 30
 	call DelayFrames
 .next4
 	vc_hook_red Stop_reducing_move_anim_flashing
-	vc_hook_blue Stop_reducing_move_anim_flashing_Rock_Slide_Dream_Eater
+;	vc_hook_blue Stop_reducing_move_anim_flashing_Rock_Slide_Dream_Eater
 	call PlayApplyingAttackAnimation ; shake the screen or flash the pic in and out (to show damage)
 .animationFinished
 	call WaitForSoundToFinish
@@ -591,7 +593,7 @@ SetAnimationPalette:
 .notSGB
 	ld a, $e4
 	ld [wAnimPalette], a
-	vc_hook Reduce_move_anim_flashing_Dream_Eater
+;	vc_hook Reduce_move_anim_flashing_Dream_Eater
 	ldh [rOBP0], a
 	ld a, $6c
 	ldh [rOBP1], a
@@ -808,8 +810,8 @@ DoRockSlideSpecialEffects:
 	ret nc
 	cp 8
 	jr nc, .shakeScreen
-	cp 1
-	jp z, AnimationFlashScreen ; if it's the end of the subanimation, flash the screen
+;	cp 1
+;	jp z, AnimationFlashScreen ; if it's the end of the subanimation, flash the screen
 	ret
 ; if the subanimation counter is between 8 and 11, shake the screen horizontally and vertically
 .shakeScreen
@@ -820,14 +822,14 @@ DoRockSlideSpecialEffects:
 
 FlashScreenEveryEightFrameBlocks:
 	ld a, [wSubAnimCounter]
-	and 7 ; is the subanimation counter exactly 8?
+	and 14 ; ~$~CHANGED: Reduced flashing.~$~
 	call z, AnimationFlashScreen ; if so, flash the screen
 	ret
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
 	ld a, [wSubAnimCounter]
-	and 3
+	and 14 ; ~$~CHANGED: Reduced flashing.~$~
 	call z, AnimationFlashScreen
 	ret
 
@@ -835,23 +837,23 @@ FlashScreenEveryFourFrameBlocks:
 DoExplodeSpecialEffects:
 	ld a, [wSubAnimCounter]
 	cp 1 ; is it the end of the subanimation?
-	jr nz, FlashScreenEveryFourFrameBlocks
+;	jr nz, FlashScreenEveryFourFrameBlocks
 ; if it's the end of the subanimation, make the attacking pokemon disappear
 	hlcoord 1, 5
 	jp AnimationHideMonPic ; make pokemon disappear
 
 ; flashes the screen when subanimation counter is 1 modulo 4
-DoBlizzardSpecialEffects:
-	ld a, [wSubAnimCounter]
-	cp 13
-	jp z, AnimationFlashScreen
-	cp 9
-	jp z, AnimationFlashScreen
-	cp 5
-	jp z, AnimationFlashScreen
-	cp 1
-	jp z, AnimationFlashScreen
-	ret
+;DoBlizzardSpecialEffects:
+;	ld a, [wSubAnimCounter]
+;	cp 13
+;	jp z, AnimationFlashScreen
+;	cp 9
+;	jp z, AnimationFlashScreen
+;	cp 5
+;	jp z, AnimationFlashScreen
+;	cp 1
+;	jp z, AnimationFlashScreen
+;	ret
 
 ; flashes the screen at 3 points in the subanimation
 ; unused
@@ -990,7 +992,7 @@ CallWithTurnFlipped:
 
 ; flashes the screen for an extended period (48 frames)
 AnimationFlashScreenLong:
-	ld a, 3 ; cycle through the palettes 3 times
+	ld a, 2 ; ~$~CHANGED: Cycle through the palettes twice.~$~
 	ld [wFlashScreenLongCounter], a
 	ld a, [wOnSGB] ; running on SGB?
 	and a
@@ -1067,11 +1069,11 @@ AnimationFlashScreen:
 	push af ; save initial palette
 	ld a, %00011011 ; 0, 1, 2, 3 (inverted colors)
 	ldh [rBGP], a
-	ld c, 2
+	ld c, 10 ; ~$~CHANGED: Reduced flashing.~$~
 	call DelayFrames
 	xor a ; white out background
 	ldh [rBGP], a
-	ld c, 2
+	ld c, 10 ; ~$~CHANGED: Reduced flashing.~$~
 	call DelayFrames
 	pop af
 	ldh [rBGP], a ; restore initial palette
@@ -1383,7 +1385,7 @@ AnimationBlinkEnemyMon:
 AnimationBlinkMon:
 ; Make the mon's sprite blink on and off for a second or two.
 	push af
-	ld c, 6
+	ld c, 4 ; ~$~CHANGED: Less blinking.~$~
 .loop
 	push bc
 	call AnimationHideMonPic

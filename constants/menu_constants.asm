@@ -1,4 +1,4 @@
-DEF BAG_ITEM_CAPACITY EQU 20
+DEF BAG_ITEM_CAPACITY EQU 50 ; ~$~CHANGED: Increased bag space.~$~
 DEF PC_ITEM_CAPACITY  EQU 50
 
 ; text box IDs
@@ -8,7 +8,7 @@ DEF PC_ITEM_CAPACITY  EQU 50
 	const MENU_TEMPLATE_03                  ; $03 unused
 	const FIELD_MOVE_MON_MENU               ; $04
 	const JP_MOCHIMONO_MENU_TEMPLATE        ; $05
-	const USE_TOSS_MENU_TEMPLATE            ; $06
+	const USE_INFO_TOSS_MENU_TEMPLATE       ; $06 ; ~$~CHANGED: Item descriptions.~$~
 	const MENU_TEMPLATE_07                  ; $07 unused
 	const JP_SAVE_MESSAGE_MENU_TEMPLATE     ; $08
 	const JP_SPEED_OPTIONS_MENU_TEMPLATE    ; $09

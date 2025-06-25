@@ -29,6 +29,11 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 	para "You earned the"
 	line "MARSHBADGE!@"
 	text_end
+	
+_SaffronGymSabrinaVictoryText::
+	text "Hmph."
+	line "As predicted..."
+	done
 
 _SaffronGymSabrinaPostBattleAdviceText::
 	text "Everyone has"

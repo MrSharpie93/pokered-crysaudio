@@ -24,3 +24,10 @@ _FuchsiaGymKogaReceivedSoulBadgeText::
 	para "Here! Take the"
 	line "SOULBADGE!"
 	prompt
+	
+_FuchsiaGymKogaVictoryText::
+	text "You"
+	line "are no match for"
+	cont "the skill of a"
+	cont "ninja master!"
+	prompt

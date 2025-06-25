@@ -37,8 +37,7 @@ SleepEffect:
 	bit NEEDS_TO_RECHARGE, a ; does the target need to recharge? (hyper beam)
 	res NEEDS_TO_RECHARGE, a ; target no longer needs to recharge
 	ld [bc], a
-	jr nz, .setSleepCounter ; if the target had to recharge, all hit tests will be skipped
-	                        ; including the event where the target already has another status
+; ~$~FIXED: Sleep moves interact correctly with recharging Mons.~$~
 	ld a, [de]
 	ld b, a
 	and $7
@@ -56,9 +55,11 @@ SleepEffect:
 	and a
 	jr nz, .didntAffect
 .setSleepCounter
-; set target's sleep counter to a random number between 1 and 7
+; ~$~CHANGED: Set target's sleep counter to a random number between 1 and 6.~$~
 	call BattleRandom
 	and $7
+	jr z, .setSleepCounter
+	cp $7
 	jr z, .setSleepCounter
 	ld [de], a
 	call PlayCurrentMoveAnimation2
@@ -485,7 +486,16 @@ UpdateStatDone:
 	call nz, Bankswitch
 	pop de
 .notMinimize
+	ldh a, [hWhoseTurn] ; ~$~CHANGED: Check base power before skipping damage calculation.~$~
+	and a
+	ld a, [wPlayerMovePower]
+	jr z, .gotUsersPower1
+	ld a, [wEnemyMovePower]
+.gotUsersPower1
+	and a ; Skip animation if damage dealing move
+	jr nz, .skipAnimation
 	call PlayCurrentMoveAnimation
+.skipAnimation
 	ld a, [de]
 	cp MINIMIZE
 	jr nz, .applyBadgeBoostsAndStatusPenalties
@@ -497,9 +507,9 @@ UpdateStatDone:
 	pop af
 	call nz, Bankswitch
 .applyBadgeBoostsAndStatusPenalties
-	ldh a, [hWhoseTurn]
-	and a
-	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
+;	ldh a, [hWhoseTurn] ; ~$~REMOVED: Badge boosts are a mess, just get rid of them.~$~
+;	and a
+;	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
 	                             ; even to those not affected by the stat-up move (will be boosted further)
 	ld hl, MonsStatsRoseText
 	call PrintText
@@ -549,12 +559,12 @@ StatModifierDownEffect:
 	ld hl, wPlayerMonStatMods
 	ld de, wEnemyMoveEffect
 	ld bc, wPlayerBattleStatus1
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jr z, .statModifierDownEffect
-	call BattleRandom
-	cp 25 percent + 1 ; chance to miss by in regular battle
-	jp c, MoveMissed
+;	ld a, [wLinkState] ; ~$~REMOVED: AI no longer programmed to miss debuffs 25% of the time.~$~
+;	cp LINK_STATE_BATTLING
+;	jr z, .statModifierDownEffect
+;	call BattleRandom
+;	cp 25 percent + 1 ; chance to miss by in regular battle
+;	jp c, MoveMissed
 .statModifierDownEffect
 	call CheckTargetSubstitute ; can't hit through substitute
 	jp nz, MoveMissed
@@ -685,11 +695,20 @@ UpdateLoweredStatDone:
 	ld a, [de]
 	cp $44
 	jr nc, .ApplyBadgeBoostsAndStatusPenalties
+ ; ~$~CHANGED: Check base power before skipping damage calculation.~$~
+	ldh a, [hWhoseTurn] ; check who is using the move
+	and a
+	ld a, [wPlayerMovePower]
+	jr z, .gotUsersPower2
+	ld a, [wEnemyMovePower]
+.gotUsersPower2
+	and a ; Skip animation if damage dealing move
+	jr nz, .ApplyBadgeBoostsAndStatusPenalties
 	call PlayCurrentMoveAnimation2
 .ApplyBadgeBoostsAndStatusPenalties
-	ldh a, [hWhoseTurn]
-	and a
-	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
+;	ldh a, [hWhoseTurn] ; ~$~REMOVED: Badge boosts are a mess, just get rid of them.~$~
+;	and a
+;	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
 	                              ; even to those not affected by the stat-up move (will be boosted further)
 	ld hl, MonsStatsFellText
 	call PrintText

@@ -3,6 +3,13 @@ MACRO anim_special_effect
 	dw \2
 ENDM
 
+; ~$~ADDED: Abridged comments from Kanto Expansion Pak regarding move animations and photosensitivity.~$~
+;;;
+; RBY has a lot of animations designed for the natural cover of the non-backlit Game Boy.
+; When played on an emulator, these animations will trigger potentially dangerous medical reactions from photosensitive individuals, such as dizziness or even seizures.
+;;;
+;~$~ I've implemented KEP's versions of these animations for accessibility.
+
 AnimationIdSpecialEffects: ; ~$~CHANGED: Removing the bulk of these, as they are not photosensitive-friendly.~$~
 	; animation id, effect routine address
 ;	anim_special_effect MEGA_PUNCH,            AnimationFlashScreen

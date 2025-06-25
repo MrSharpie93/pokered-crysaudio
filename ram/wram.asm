@@ -202,6 +202,7 @@ ENDU
 SECTION "Overworld Map", WRAM0
 
 UNION
+wTempLevel:: ; ~$~ADDED: Ported KEP's port of Red++'s level-up move learning code.~$~
 wTempDVs:: ; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar.~$~
 wTempMoveID:: ; ~$~ADDED: Red++'s Move Tutor functionality.~$~
 wOverworldMap:: ds 1300
@@ -530,7 +531,14 @@ wLowHealthAlarmDisabled:: db
 
 wPlayerMonMinimized:: db
 
-	ds 13
+	ds 2
+
+; ~$~ Put this here, so I could move wChannel5 and 6 where they used to be.~$~
+wEXPBarPixelLength::  ds 1
+wEXPBarBaseEXP::      ds 3
+wEXPBarCurEXP::       ds 3
+wEXPBarNeededEXP::    ds 3
+wEXPBarKeepFullFlag:: ds 1
 
 ; number of hits by enemy in attacks like Double Slap, etc.
 wEnemyNumHits:: ; db
@@ -1773,9 +1781,11 @@ wPokedexOwnedEnd::
 wPokedexSeen:: flag_array NUM_POKEMON
 wPokedexSeenEnd::
 
-wNumBagItems:: db
+;wNumBagItems:: db
 ; item, quantity
-wBagItems:: ds BAG_ITEM_CAPACITY * 2 + 1
+;wBagItems:: ds BAG_ITEM_CAPACITY * 2 + 1
+; ~$~CHANGED: Moved this further down to accommodate larger bag space.~$~
+ds 42
 
 wPlayerMoney:: ds 3 ; BCD
 
@@ -1851,11 +1861,18 @@ wWarpEntries:: ds 32 * 4 ; Y, X, warp ID, map ID
 wDestinationWarpID:: db
 
 UNION
+; original size of this empty space
 	ds 128
+; ~$~CHANGED: Increased bag space.~$~
 NEXTU
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
+wNumBagItems:: db
+; item, quantity
+wBagItems:: ds BAG_ITEM_CAPACITY * 2 + 1 ; now holds 50 items
+;;;;
+; 26 bytes left to use
+
 ENDU
+;;;;;;;;;;
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -2282,11 +2299,15 @@ wBoxMonNicksEnd::
 
 wBoxDataEnd::
 
+; ~$~CHANGED: Moved these down here to accommodate larger bag space.~$~
+wChannel5:: channel_struct wChannel5
+wChannel6:: channel_struct wChannel6
+
 
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
-	ds $100 - 1
+	ds $99 - 1
 wStack:: db
 
 ENDSECTION

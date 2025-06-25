@@ -124,7 +124,7 @@ SaffronGymSabrinaText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedMarshBadgeText
-	ld de, .ReceivedMarshBadgeText
+	ld de, .SabrinaVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -145,6 +145,10 @@ SaffronGymSabrinaText:
 	text_far _SaffronGymSabrinaReceivedMarshBadgeText
 	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	text_promptbutton
+	text_end
+	
+.SabrinaVictoryText:
+	text_far _SaffronGymSabrinaVictoryText
 	text_end
 
 .PostBattleAdviceText:

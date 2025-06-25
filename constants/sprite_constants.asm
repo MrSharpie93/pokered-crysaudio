@@ -2,7 +2,7 @@
 ; SpriteSheetPointerTable indexes (see data/sprites/sprites.asm)
 	const_def
 	const SPRITE_NONE                    ; $00
-	const SPRITE_RED                     ; $01
+	const SPRITE_PLAYER                  ; $01
 	const SPRITE_BLUE                    ; $02
 	const SPRITE_OAK                     ; $03
 	const SPRITE_YOUNGSTER               ; $04
@@ -32,7 +32,7 @@
 	const SPRITE_MIDDLE_AGED_WOMAN       ; $1c
 	const SPRITE_BRUNETTE_GIRL           ; $1d
 	const SPRITE_LANCE                   ; $1e
-	const SPRITE_UNUSED_SCIENTIST        ; $1f
+	const SPRITE_RED                     ; $1f
 	const SPRITE_SCIENTIST               ; $20
 	const SPRITE_ROCKER                  ; $21
 	const SPRITE_SWIMMER                 ; $22

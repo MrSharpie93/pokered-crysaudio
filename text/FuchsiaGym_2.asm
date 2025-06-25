@@ -9,16 +9,12 @@ _FuchsiaGymKogaPostBattleAdviceText::
 	line "terrorize foes!"
 	done
 
-_FuchsiaGymKogaSoulBadgeInfoText::
+_FuchsiaGymKogaSoulBadgeInfoText:: ; ~$~CHANGED: Removed reference to badge boosts.~$~
 	text "Now that you have"
 	line "the SOULBADGE,"
-	cont "the DEFENSE of"
-	cont "your #MON"
-	cont "increases!"
-
-	para "It also lets you"
-	line "SURF outside of"
-	cont "battle!"
+	cont "your #MON can"
+	cont "now use SURF out-"
+	cont "side of battle!"
 
 	para "Ah! Take this"
 	line "too!"

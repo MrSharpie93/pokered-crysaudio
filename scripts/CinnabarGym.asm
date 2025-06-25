@@ -226,7 +226,7 @@ CinnabarGymBlaineText:
 	ld hl, .PreBattleText
 	call PrintText
 	ld hl, .ReceivedVolcanoBadgeText
-	ld de, .ReceivedVolcanoBadgeText
+	ld de, .BlaineVictoryText
 	call SaveEndBattleTextPointers
 	ld a, $7
 	ld [wGymLeaderNo], a
@@ -240,6 +240,10 @@ CinnabarGymBlaineText:
 	text_far _CinnabarGymBlaineReceivedVolcanoBadgeText
 	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	text_waitbutton
+	text_end
+	
+.BlaineVictoryText:
+	text_far _CinnabarGymBlaineVictoryText
 	text_end
 
 .PostBattleAdviceText:

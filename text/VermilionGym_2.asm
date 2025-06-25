@@ -10,10 +10,10 @@ _VermilionGymLTSurgePostBattleAdviceText::
 	cont "type #MON!"
 	done
 
-_VermilionGymLTSurgeThunderBadgeInfoText::
-	text "The THUNDERBADGE"
-	line "cranks up your"
-	cont "#MON's SPEED!"
+_VermilionGymLTSurgeThunderBadgeInfoText:: ; ~$~CHANGED: Line from HGSS instead of no longer correct remark about badge boosts.~$~
+	text "That THUNDERBADGE"
+	line "suits those who've"
+	cont "defeated me!"
 
 	para "It also lets your"
 	line "#MON FLY any"
@@ -53,6 +53,12 @@ _VermilionGymLTSurgeReceivedThunderBadgeText::
 
 	para "Fine then, take"
 	line "the THUNDERBADGE!"
+	prompt
+	
+_VermilionGymLTSurgeVictoryText::
+	text "What"
+	line "is your major"
+	cont "malfunction?!"
 	prompt
 
 _VermilionGymGentlemanBattleText::

@@ -1192,8 +1192,8 @@ _GainedText::
 	text_end
 
 _WithExpAllText::
-	text "with EXP.ALL,"
-	cont "@"
+	text "Party gained" ; ~$~CHANGED: Reworks to EXP system.~$~
+	next "@"
 	text_end
 
 _BoostedText::
@@ -1774,3 +1774,21 @@ _TextIDErrorText::
 _ContCharText::
 	text "<_CONT>@"
 	text_end
+
+ ; ~$~ADDED: Overworld HM usage.~$~
+_PromptToSurfText::
+	text "The water is calm."
+	line "Would you like to"
+	cont "SURF?"
+	done
+	
+_ExplainCutText::
+	text "This tree can be"
+	line "CUT!"
+	done
+	
+_PromptToCutText::
+	text "Would you like to"
+	line "use CUT?"
+	done
+;;;

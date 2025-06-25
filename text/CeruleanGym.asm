@@ -1,4 +1,4 @@
-_CeruleanGymMistyPreBattleText::
+_CeruleanGymMistyPreBattleText:: ; ~$~CHANGED: Combined her Yellow speech with her more condescending remark from earlier in the localization's development.~$~
 	text "Hi, you're a new"
 	line "face!"
 
@@ -7,14 +7,21 @@ _CeruleanGymMistyPreBattleText::
 	cont "to have a policy"
 	cont "about #MON!"
 
-	para "What is your"
-	line "approach when you"
-	cont "catch #MON?"
+	para "Do you even have"
+	line "a policy about"
+	cont "raising #MON?"
 
 	para "My policy is an"
 	line "all-out offensive"
-	cont "with water-type"
+	cont "with WATER-type"
 	cont "#MON!"
+
+	para "MISTY, the world-"
+	line "famous beauty, is"
+	cont "your host!"
+
+	para "Are you ready,"
+	line "sweetie?"
 	done
 
 _CeruleanGymMistyTM11ExplanationText::
@@ -65,6 +72,12 @@ _CeruleanGymMistyReceivedCascadeBadgeText::
 	line "CASCADEBADGE to"
 	cont "show you beat me!@"
 	text_end
+	
+_CeruleanGymMistyVictoryText::
+	text "Looks"
+	line "like you're all"
+	cont "washed up!"
+	prompt
 
 _CeruleanGymBattleText1::
 	text "I'm more than good"

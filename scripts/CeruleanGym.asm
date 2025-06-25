@@ -109,7 +109,7 @@ CeruleanGymMistyText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, CeruleanGymMistyReceivedCascadeBadgeText
-	ld de, CeruleanGymMistyReceivedCascadeBadgeText
+	ld de, CeruleanGymMistyVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -149,6 +149,10 @@ CeruleanGymMistyReceivedCascadeBadgeText:
 	text_far _CeruleanGymMistyReceivedCascadeBadgeText
 	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	text_promptbutton
+	text_end
+	
+CeruleanGymMistyVictoryText:
+	text_far _CeruleanGymMistyVictoryText
 	text_end
 
 CeruleanGymCooltrainerFText:

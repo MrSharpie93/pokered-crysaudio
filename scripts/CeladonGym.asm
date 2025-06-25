@@ -123,7 +123,7 @@ CeladonGymErikaText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedRainbowBadgeText
-	ld de, .ReceivedRainbowBadgeText
+	ld de, .ErikaVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -143,6 +143,10 @@ CeladonGymErikaText:
 
 .ReceivedRainbowBadgeText:
 	text_far _CeladonGymErikaReceivedRainbowBadgeText
+	text_end
+	
+.ErikaVictoryText:
+	text_far _CeladonGymErikaVictoryText
 	text_end
 
 .PostBattleAdviceText:

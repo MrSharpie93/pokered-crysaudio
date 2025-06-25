@@ -20,6 +20,13 @@ _CinnabarGymBlaineReceivedVolcanoBadgeText::
 	para "You have earned"
 	line "the VOLCANOBADGE!@"
 	text_end
+	
+_CinnabarGymBlaineVictoryText::
+	text "Hah!"
+
+	para "Can't take the"
+	line "heat, youngster?"
+	prompt
 
 _CinnabarGymBlainePostBattleAdviceText::
 	text "FIRE BLAST is the"
@@ -30,13 +37,12 @@ _CinnabarGymBlainePostBattleAdviceText::
 	line "water #MON!"
 	done
 
-_CinnabarGymBlaineVolcanoBadgeInfoText::
+_CinnabarGymBlaineVolcanoBadgeInfoText:: ; ~$~CHANGED: Removed reference to badge boosts.~$~
 	text "Hah!"
 
 	para "The VOLCANOBADGE"
-	line "heightens the"
-	cont "SPECIAL abilities"
-	cont "of your #MON!"
+	line "is proof of your"
+	cont "burning ambition!"
 
 	para "Here, you can"
 	line "have this too!"

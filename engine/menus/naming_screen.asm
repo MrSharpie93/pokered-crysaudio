@@ -34,6 +34,7 @@ AskName:
 	and a
 	jr nz, .inBattle
 	call ReloadMapSpriteTilePatterns
+	call ReloadMapData ; ~$~CHANGED: New icons. Code from Rangi42 and ShantyTown.~$~
 .inBattle
 	call LoadScreenTilesFromBuffer1
 	pop hl
@@ -117,7 +118,10 @@ DisplayNamingScreen:
 	ld [wAnimCounter], a
 .selectReturnPoint
 	call PrintAlphabet
-	call GBPalNormal
+; ~$~CHANGED: Dannye mod for full-color icons.~$~
+	ld a, %11100100 ; 3210
+	ldh [rBGP], a
+	ldh [rOBP0], a
 .ABStartReturnPoint
 	ld a, [wNamingScreenSubmitName]
 	and a
@@ -230,13 +234,13 @@ DisplayNamingScreen:
 	ld a, [hl]
 	ld [wNamingScreenLetter], a
 	call CalcStringLength
-	ld a, [wNamingScreenLetter]
-	cp "ﾞ"
-	ld de, Dakutens
-	jr z, .dakutensAndHandakutens
-	cp "ﾟ"
-	ld de, Handakutens
-	jr z, .dakutensAndHandakutens
+;	ld a, [wNamingScreenLetter] ;~$~REMOVED: English language does not use these.~$~
+;	cp "ﾞ"
+;	ld de, Dakutens
+;	jr z, .dakutensAndHandakutens
+;	cp "ﾟ"
+;	ld de, Handakutens
+;	jr z, .dakutensAndHandakutens
 	ld a, [wNamingScreenType]
 	cp NAME_MON_SCREEN
 	jr nc, .checkMonNameLength
@@ -250,12 +254,12 @@ DisplayNamingScreen:
 	jr c, .addLetter
 	ret
 
-.dakutensAndHandakutens
-	push hl
-	call DakutensAndHandakutens
-	pop hl
-	ret nc
-	dec hl
+;.dakutensAndHandakutens ;~$~REMOVED: English language does not use these.~$~
+;	push hl
+;	call DakutensAndHandakutens
+;	pop hl
+;	ret nc
+;	dec hl
 .addLetter
 	ld a, [wNamingScreenLetter]
 	ld [hli], a
@@ -420,21 +424,21 @@ PrintNicknameAndUnderscores:
 	ld [hl], $77 ; raised underscore tile id
 	ret
 
-DakutensAndHandakutens:
-	push de
-	call CalcStringLength
-	dec hl
-	ld a, [hl]
-	pop hl
-	ld de, $2
-	call IsInArray
-	ret nc
-	inc hl
-	ld a, [hl]
-	ld [wNamingScreenLetter], a
-	ret
+;DakutensAndHandakutens: ;~$~REMOVED: English language does not use these.~$~
+;	push de
+;	call CalcStringLength
+;	dec hl
+;	ld a, [hl]
+;	pop hl
+;	ld de, $2
+;	call IsInArray
+;	ret nc
+;	inc hl
+;	ld a, [hl]
+;	ld [wNamingScreenLetter], a
+;	ret
 
-INCLUDE "data/text/dakutens.asm"
+;INCLUDE "data/text/dakutens.asm"
 
 ; calculates the length of the string at wStringBuffer and stores it in c
 CalcStringLength:

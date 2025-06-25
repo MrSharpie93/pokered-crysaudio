@@ -913,7 +913,7 @@ ItemUseMedicine:
 	xor a
 	ld [wCalculateWhoseStats], a
 	callfar CalculateModifiedStats
-	callfar ApplyBadgeStatBoosts
+;	callfar ApplyBadgeStatBoosts ; ~$~REMOVED: Badge boosts are a mess, just get rid of them.~$~
 	jp .doneHealing
 .healHP
 	inc hl ; hl = address of current HP
@@ -2196,13 +2196,7 @@ ItemUseTMHM:
 	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
-	ld a, b
-	and a
-	ret z
-	ld a, [wCurItem]
-	call IsItemHM
-	ret c
-	jp RemoveUsedItem
+	ret ; ~$~CHANGED: Infinite TMs.~$~
 
 BootedUpTMText:
 	text_far _BootedUpTMText
@@ -2574,7 +2568,7 @@ IsKeyItem_::
 	ld [wIsKeyItem], a
 	ld a, [wCurItem]
 	cp HM01 ; is the item an HM or TM?
-	jr nc, .checkIfItemIsHM
+	ret nc ; ~$~CHANGED: Infinite TMs.~$~
 ; if the item is not an HM or TM
 	push af
 	ld hl, KeyItemFlags
@@ -2591,10 +2585,7 @@ IsKeyItem_::
 	ld a, c
 	and a
 	ret nz
-.checkIfItemIsHM
-	ld a, [wCurItem]
-	call IsItemHM
-	ret c
+; ~$~CHANGED: Infinite TMs.~$~
 	xor a
 	ld [wIsKeyItem], a
 	ret
@@ -2890,6 +2881,8 @@ CheckMapForMon:
 	ld a, c
 	ld [de], a
 	inc de
+	inc hl ; ~$~CHANGED: Pokedex area function doesn't overflow.~$~
+	ret
 .nextEntry
 	inc hl
 	inc hl

@@ -9,7 +9,7 @@ HiddenItems:
 	predef FlagActionPredef
 	ld a, c
 	and a
-	ret nz
+	jr nz, .nope ; ~$~CHANGED: Overworld HM usage.~$~
 	call EnableAutoTextBoxDrawing
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -17,6 +17,9 @@ HiddenItems:
 	ld [wNamedObjectIndex], a
 	call GetItemName
 	tx_pre_jump FoundHiddenItemText
+.nope  ; ~$~CHANGED: Overworld HM usage.~$~
+	predef TryFieldMove
+	ret
 
 INCLUDE "data/events/hidden_item_coords.asm"
 

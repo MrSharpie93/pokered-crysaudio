@@ -131,7 +131,7 @@ VermilionGymLTSurgeText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, VermilionGymLTSurgeReceivedThunderBadgeText
-	ld de, VermilionGymLTSurgeReceivedThunderBadgeText
+	ld de, VermilionGymLTSurgeVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -171,6 +171,10 @@ VermilionGymLTSurgeTM24NoRoomText:
 
 VermilionGymLTSurgeReceivedThunderBadgeText:
 	text_far _VermilionGymLTSurgeReceivedThunderBadgeText
+	text_end
+	
+VermilionGymLTSurgeVictoryText:
+	text_far _VermilionGymLTSurgeVictoryText
 	text_end
 
 VermilionGymGentlemanText:

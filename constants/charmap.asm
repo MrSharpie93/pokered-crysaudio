@@ -68,7 +68,7 @@
 
 	charmap "<to>",      $70 ; narrow "to"
 
-	charmap "『",         $72 ; Japanese opening quote, unused
+	charmap "<BOLD_P>",  $72 ; ~$~CHANGED: Was Japanese opening quote, now PP.~$~
 	charmap "<ID>",      $73
 	charmap "№",         $74
 
@@ -77,9 +77,6 @@
 	; needed for ShowPokedexDataInternal (see engine/menus/pokedex.asm)
 	charmap "′",         $60 ; gfx/pokedex/pokedex.png
 	charmap "″",         $61 ; gfx/pokedex/pokedex.png
-
-	; needed for StatusScreen (see engine/pokemon/status_screen.asm)
-	charmap "<BOLD_P>",  $72 ; gfx/font/P.1bpp
 
 	; needed for LoadTownMap_Fly (see engine/items/town_map.asm)
 	charmap "▲",         $ed ; gfx/town_map/up_arrow.1bpp
@@ -170,8 +167,8 @@
 	charmap ".",         $e8
 
 	charmap "ァ",         $e9 ; katakana small a, unused
-	charmap "ゥ",         $ea ; katakana small u, unused
-	charmap "ェ",         $eb ; katakana small e, unused
+	charmap "&",         $ea ; ~$~CHANGED: Was katakana small u, now ampersand.~$~
+	charmap "<BALL>",    $eb ; ~$~CHANGED: Was katakana small e, now caught indicator.~$~
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed

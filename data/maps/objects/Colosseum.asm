@@ -9,6 +9,6 @@ Colosseum_Object:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  2, SPRITE_RED, STAY, ANY_DIR, TEXT_COLOSSEUM_OPPONENT
+	object_event  2,  2, SPRITE_PLAYER, STAY, ANY_DIR, TEXT_COLOSSEUM_OPPONENT
 
 	def_warps_to COLOSSEUM

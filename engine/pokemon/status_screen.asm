@@ -97,10 +97,10 @@ StatusScreen:
 	ld hl, vChars2 tile $76
 	lb bc, BANK(BattleHudTiles3), 2
 	call CopyVideoDataDouble ; ─ ┘
-	ld de, PTile
-	ld hl, vChars2 tile $72
-	lb bc, BANK(PTile), 1
-	call CopyVideoDataDouble ; bold P (for PP)
+;	ld de, PTile ;~$~REMOVED: No longer needed, p for PP handled differently.~$~
+;	ld hl, vChars2 tile $72
+;	lb bc, BANK(PTile), 1
+;	call CopyVideoDataDouble ; bold P (for PP)
 	ldh a, [hTileAnimations]
 	push af
 	xor a
@@ -244,7 +244,7 @@ DrawLineBox:
 	ld [hl], $6f ; ← (halfarrow ending)
 	ret
 
-PTile: INCBIN "gfx/font/P.1bpp"
+;PTile: INCBIN "gfx/font/P.1bpp" ;~$~REMOVED: No longer needed, p for PP handled differently.~$~
 
 PrintStatsBox:
 	ld a, d

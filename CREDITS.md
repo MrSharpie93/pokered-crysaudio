@@ -6,19 +6,22 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 
 - Game Freak: Original game.
 - [pret](https://github.com/pret): Decomp, many bug fixes and tutorials.
-- [dannye](https://github.com/dannye): Crystal audio engine, Crystal Tracker.
+- [dannye](https://github.com/dannye): Crystal audio engine, menu icons use 4 colors, Crystal Tracker.
 - [Sanqui](https://github.com/Sanqui): Crystal audio engine.
 - [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners, restoring Gym Leader names on trainer card, Move Reminder and Move Deleter.
-- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, optimizations.
-- [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework.
-- [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, Tilemap Studio and Polished Map.
-- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split.
+- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, optimizations.
+- [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework, better move learn on level-up, photosensitivity-friendly move animations.
+- [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, expanded menu icons, defense division by 0 bug fix, overworld HM shortcuts, Tilemap Studio and Polished Map.
+- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel.
 - [ShiraTheMogul](https://github.com/ShiraTheMogul): Move Reminder and Move Deleter.
+- Xillicis: Most of the battle engine tutorials.
+- [ShantyTown](https://github.com/huderlem): Expanded menu icons, auto repel.
 
 ## Art
 
 - Game Freak: Basis for all sprites.
 - [E▲SY](https://www.deviantart.com/e-sy): Pokemon front/back sprites.
+- [FrenchOrange](https://www.deviantart.com/frenchorange): Development sprite reconstruction.
 - [MollyChan](https://www.spriters-resource.com/submitter/MollyChan/): Pokemon front sprites, trainer sprites.
 - [Pia Carrot](https://www.deviantart.com/piacarrot): Pokemon front sprites.
 - [Sharpie93](https://github.com/MrSharpie93): Pokemon back sprites, trainer sprites.

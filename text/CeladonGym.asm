@@ -35,6 +35,14 @@ _CeladonGymErikaReceivedRainbowBadgeText::
 	para "I must confer you"
 	line "the RAINBOWBADGE."
 	prompt
+	
+_CeladonGymErikaVictoryText::
+	text "Oh..."
+	line "Is that all?"
+	
+	para "I fear I may doze"
+	line "off..."
+	prompt
 
 _CeladonGymErikaPostBattleAdviceText::
 	text "You are cataloging"
@@ -68,7 +76,7 @@ _CeladonGymReceivedTM21Text::
 	text "!@"
 	text_end
 
-_TM21ExplanationText::
+_TM21ExplanationText:: ;~$~CHANGED: Added extra line about TM from FRLG.~$~
 	text_start
 
 	para "TM21 contains"
@@ -78,6 +86,10 @@ _TM21ExplanationText::
 	line "it inflicts is"
 	cont "drained to heal"
 	cont "your #MON!"
+	
+	para "Wouldn't you agree"
+	line "it is a wonderful"
+	cont "technique?"
 	done
 
 _CeladonGymTM21NoRoomText::

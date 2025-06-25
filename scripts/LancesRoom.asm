@@ -140,6 +140,8 @@ LancesRoomLanceText:
 	text_asm
 	ld hl, LancesRoomTrainerHeader0
 	call TalkToTrainer
+	ld a, $c ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
+	ld [wGymLeaderNo], a
 	jp TextScriptEnd
 
 LancesRoomLanceBeforeBattleText:

@@ -1,14 +1,21 @@
-_PewterGymBrockPostBattleAdviceText::
+_PewterGymBrockPostBattleAdviceText:: ; ~$~CHANGED: Yellow version of speech.~$~
 	text "There are all"
 	line "kinds of trainers"
 	cont "in the world!"
 
-	para "You appear to be"
-	line "very gifted as a"
-	cont "#MON trainer!"
+	para "Some raise #MON"
+	line "for fights. Some"
+	cont "see them as pets."
 
-	para "Go to the GYM in"
-	line "CERULEAN and test"
+	para "I'm in training to"
+	line "become a #MON"
+	cont "breeder."
+
+	para "If you take your"
+	line "#MON training"
+	cont "seriously, go"
+	cont "visit the GYM in"
+	cont "CERULEAN and test"
 	cont "your abilities!"
 	done
 
@@ -22,7 +29,7 @@ _PewterGymReceivedTM34Text::
 	line "TM34!@"
 	text_end
 
-_TM34ExplanationText::
+_TM34ExplanationText:: ; ~$~CHANGED: Updated Brock's speech about TMs to reflect them being infinite-use.~$~
 	text_start
 
 	para "A TM contains a"
@@ -30,12 +37,10 @@ _TM34ExplanationText::
 	cont "can be taught to"
 	cont "#MON!"
 
-	para "A TM is good only"
-	line "once! So when you"
-	cont "use one to teach"
-	cont "a new technique,"
-	cont "pick the #MON"
-	cont "carefully!"
+	para "TMs can be used"
+	line "repeatedly, so"
+	cont "use them however"
+	cont "you like!"
 
 	para "TM34 contains"
 	line "BIDE!"
@@ -62,6 +67,13 @@ _PewterGymBrockReceivedBoulderBadgeText::
 	para "<PLAYER> received"
 	line "the BOULDERBADGE!@"
 	text_end
+	
+_PewterGymBrockVictoryText::
+	text "What's"
+	line "wrong? Couldn't"
+	cont "get past my rock-"
+	cont "solid defense?"
+	prompt
 
 _PewterGymBrockBoulderBadgeInfoText::
 	text_start
@@ -70,9 +82,9 @@ _PewterGymBrockBoulderBadgeInfoText::
 	line "#MON LEAGUE"
 	cont "BADGE!"
 
-	para "Its bearer's"
-	line "#MON become"
-	cont "more powerful!"
+;	para "Its bearer's" ; ~$~REMOVED: Cut this line out for now. Maybe rewrite it later.~$~
+;	line "#MON become"
+;	cont "more powerful!"
 
 	para "The technique"
 	line "FLASH can now be"

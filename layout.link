@@ -188,7 +188,7 @@ WRAM0
 	"Party Data"
 	"Main Data"
 	"Current Box Data"
-	org $df00
+	org $df67
 	"Stack"
 VRAM
 	"VRAM"

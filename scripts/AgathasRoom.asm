@@ -132,6 +132,8 @@ AgathasRoomAgathaText:
 	text_asm
 	ld hl, AgathasRoomTrainerHeader0
 	call TalkToTrainer
+	ld a, $b ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
+	ld [wGymLeaderNo], a
 	jp TextScriptEnd
 
 AgathaBeforeBattleText:

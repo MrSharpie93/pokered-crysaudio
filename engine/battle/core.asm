@@ -308,7 +308,7 @@ MainInBattleLoop:
 	and a
 	ret nz ; return if pokedoll was used to escape from battle
 	ld a, [wBattleMonStatus]
-	and (1 << FRZ) | SLP_MASK
+	and (1 << FRZ); | SLP_MASK ;~$~CHANGED: Can still pick moves while asleep.~$~
 	jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wPlayerBattleStatus1]
 	and (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap
@@ -367,28 +367,14 @@ MainInBattleLoop:
 .specialMoveNotUsed
 	callfar SwitchEnemyMon
 .noLinkBattle
-	ld a, [wPlayerSelectedMove]
-	cp QUICK_ATTACK
-	jr nz, .playerDidNotUseQuickAttack
-	ld a, [wEnemySelectedMove]
-	cp QUICK_ATTACK
-	jr z, .compareSpeed  ; if both used Quick Attack
-	jp .playerMovesFirst ; if player used Quick Attack and enemy didn't
-.playerDidNotUseQuickAttack
-	ld a, [wEnemySelectedMove]
-	cp QUICK_ATTACK
-	jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
-	ld a, [wPlayerSelectedMove]
-	cp COUNTER
-	jr nz, .playerDidNotUseCounter
-	ld a, [wEnemySelectedMove]
-	cp COUNTER
+	call HandleMovePriority ; ~$~CHANGED: Better move priority system.~$~
+	; c = player priority, e = enemy priority
+	ld a, c
+	cp e
 	jr z, .compareSpeed ; if both used Counter
-	jr .enemyMovesFirst ; if player used Counter and enemy didn't
-.playerDidNotUseCounter
-	ld a, [wEnemySelectedMove]
-	cp COUNTER
-	jr z, .playerMovesFirst ; if enemy used Counter and player didn't
+	jr c, .enemyMovesFirst
+	jr .playerMovesFirst
+;;;
 .compareSpeed
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
@@ -466,6 +452,50 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
+	
+HandleMovePriority: ; ~$~ADDED: Better move priority system.~$~
+; This subroutine modifies registers a, hl, bc, and de
+; The player's priority value will be stored in register c and 
+; the enemy's priority value will be stored in register e.
+; These values will be compared after the 'ret' instruction is called
+
+        ld a, [wPlayerSelectedMove]
+        ld b, a
+        ld hl, PriorityMovesList
+        ld c, 7           ; no priority is 7
+.playerPriorityMoveLoop
+        ld a, [hli]       ; load the move ID from priority list and 
+                          ; increment address to the priority value address
+        cp b              ; compare with move being used
+        jr z, .playerUsingPriorityMove
+        inc a             ; if at end of list: -1 + 1 = 0xFF + 0x01 = 0
+        jr z, .noPlayerPriorityMove
+        inc hl            ; increment address to the next move
+        jr .playerPriorityMoveLoop
+.playerUsingPriorityMove
+        ld c, [hl]        ; get new priority value 
+.noPlayerPriorityMove
+
+; Now check enemy priority 
+        ld a, [wEnemySelectedMove]
+        ld d, a
+        ld hl, PriorityMovesList
+        ld e, 7           ; no priority is 7
+.enemyPriorityMoveLoop
+        ld a, [hli]       ; load the move ID from priority list and 
+                          ; increment address to the priority value address
+        cp d              ; compare with move being used
+        jr z, .enemyUsingPriorityMove
+        inc a             ; if at end of list: -1 + 1 = 0xFF + 0x01 = 0
+        jr z, .noEnemyPriorityMove
+        inc hl            ; increment address to the next move
+        jr .enemyPriorityMoveLoop
+.enemyUsingPriorityMove
+        ld e, [hl]        ; get new priority value 
+.noEnemyPriorityMove
+        ret
+
+INCLUDE "data/battle/priority_moves.asm"
 
 HandlePoisonBurnLeechSeed:
 	ld hl, wBattleMonHP
@@ -562,8 +592,8 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 	rr c
 	srl b
 	rr c
-	srl c
-	srl c         ; c = max HP/16 (assumption: HP < 1024)
+;	srl c
+	srl c         ; c = max HP/8 (assumption: HP < 1024) ~$~CHANGED~$~
 	ld a, c
 	and a
 	jr nz, .nonZeroDamage
@@ -579,6 +609,13 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 .playersTurn
 	bit BADLY_POISONED, [hl]
 	jr z, .noToxic
+; ~$~CHANGED: Toxic does incrementing 16ths damage, while poison, burn and leech does 1/8.~$~
+	srl c         ; c = max HP/16 (assumption: HP < 1024)
+	ld a, c
+	and a
+	jr nz, .nonZeroDamageAgain
+	inc c
+.nonZeroDamageAgain
 	ld a, [de]    ; increment toxic counter
 	inc a
 	ld [de], a
@@ -1150,17 +1187,17 @@ HandlePlayerBlackOut:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .notRival1Battle
-	ld a, [wCurOpponent]
-	cp OPP_RIVAL1
-	jr nz, .notRival1Battle
+; ~$~CHANGED: Loss text for trainers.~$~
+	ld a, [wIsInBattle] ; are we in a battle?
+	dec a ; is the battle a wild battle (without a trainer?)?
+	jr z, .notRival1Battle ;if yes, don't print our message.
 	hlcoord 0, 0  ; rival 1 battle
 	lb bc, 8, 21
 	call ClearScreenArea
 	call ScrollTrainerPicAfterBattle
 	ld c, 40
 	call DelayFrames
-	ld hl, Rival1WinText
-	call PrintText
+	call PrintEndBattleText ; ~$~CHANGED: Loss text for trainers.~$~
 	ld a, [wCurMap]
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
@@ -1680,7 +1717,7 @@ LoadBattleMonFromParty:
 	ld bc, 1 + NUM_STATS * 2
 	call CopyData
 	call ApplyBurnAndParalysisPenaltiesToPlayer
-	call ApplyBadgeStatBoosts
+;	call ApplyBadgeStatBoosts ; ~$~REMOVED: Badge boosts are a mess, just get rid of them.~$~
 	ld a, $7 ; default stat modifier
 	ld b, NUM_STAT_MODS
 	ld hl, wPlayerMonAttackMod
@@ -1848,6 +1885,7 @@ DrawPlayerHUDAndHPBar:
 	hlcoord 10, 7
 	call CenterMonName
 	call PlaceString
+	callfar PrintEXPBar ; ~$~ADDED: EXP bar in battle.~$~
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies
@@ -1903,6 +1941,25 @@ DrawEnemyHUDAndHPBar:
 	lb bc, 4, 12
 	call ClearScreenArea
 	callfar PlaceEnemyHUDTiles
+; ~$~ADDED: Icon for caught Mons on the HUD.~$~
+	push hl
+	ld a, [wEnemyMonSpecies2]
+	ld [wPokedexNum], a
+	callfar IndexToPokedex
+	ld a, [wPokedexNum]
+	dec a
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPokedexOwned
+	predef FlagActionPredef
+	ld a, c
+	and a
+	jr z, .notOwned
+	hlcoord 1, 1
+	ld [hl], "<BALL>"
+.notOwned
+	pop hl
+;;;
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
 	call CenterMonName
@@ -2931,6 +2988,10 @@ PrintMenuItem:
 	ld de,OtherText
 	call PlaceString
 .RestOfTheRoutineThing
+	hlcoord 1, 11 ; ~$~ADDED: PP now prints in battle.~$~
+	ld a, "<BOLD_P>"
+	ld [hli], a
+	ld [hl], "<BOLD_P>"
 	hlcoord 7, 11
 	ld [hl], "/"
 ;	hlcoord 5, 9
@@ -3263,7 +3324,11 @@ MirrorMoveCheck:
 	ld hl, ResidualEffects2
 	ld de, 1
 	call IsInArray
-	jp c, JumpMoveEffect ; done here after executing effects of ResidualEffects2
+	jr nc, .notResidual2Effect ; ~$~CHANGED: Check base power before skipping damage calculation.~$~
+	ld a, [wPlayerMovePower]
+	and a ; check if zero base power
+	jp z, JumpMoveEffect
+.notResidual2Effect
 	ld a, [wMoveMissed]
 	and a
 	jr z, .moveDidNotMiss
@@ -3395,6 +3460,7 @@ CheckPlayerStatusConditions:
 .WakeUp
 	ld hl, WokeUpText
 	call PrintText
+	jr .FrozenCheck ; ~$~CHANGED: Can attack after waking up.~$~
 .sleepDone
 	xor a
 	ld [wPlayerUsedMove], a
@@ -4159,19 +4225,33 @@ GetDamageVarsForPlayerAttack:
 	and a ; check for critical hit
 	jr z, .scaleStats
 ; in the case of a critical hit, reset the player's attack and the enemy's defense to their base values
+; ~$~CHANGED: Red++ code for crits not being detrimental.~$~
+; only revert player stat if you have lowered stats
+; only revert opponent stat if they have boosted stats
+	; does the opponent have lowered def?
+	ld a, [wEnemyMonDefenseMod]
+	cp 7 ; neutral
+	jr c, .dontNegateDefense
 	ld c, STAT_DEFENSE
 	call GetEnemyMonStat
 	ldh a, [hProduct + 2]
 	ld b, a
 	ldh a, [hProduct + 3]
 	ld c, a
+.dontNegateDefense
 	push bc
+; does the player have boosted attack?
+	ld a, [wPlayerMonAttackMod]
+	cp 7 ; neutral
+	jr nc, .dontNegateAttack
 	ld hl, wPartyMon1Attack
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
+.dontNegateAttack
 	pop bc
 	jr .scaleStats
+;;;
 .specialAttack
 	ld hl, wEnemyMonSpecial
 	ld a, [hli]
@@ -4191,18 +4271,32 @@ GetDamageVarsForPlayerAttack:
 	and a ; check for critical hit
 	jr z, .scaleStats
 ; in the case of a critical hit, reset the player's and enemy's specials to their base values
+; ~$~CHANGED: Red++ code for crits not being detrimental.~$~
+; only revert player stat if you have lowered stats
+; only revert opponent stat if they have boosted stats
+	; does the enemy have lowered special?
+	ld a, [wEnemyMonSpecialMod]
+	cp 7 ; neutral
+	jr c, .dontNegateSpecial1
 	ld c, STAT_SPECIAL
 	call GetEnemyMonStat
 	ldh a, [hProduct + 2]
 	ld b, a
 	ldh a, [hProduct + 3]
 	ld c, a
+.dontNegateSpecial1
 	push bc
+; does the player have boosted special?
+	ld a, [wPlayerMonSpecialMod]
+	cp 7 ; neutral
+	jr nc, .dontNegateSpecial2
 	ld hl, wPartyMon1Special
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
+.dontNegateSpecial2
 	pop bc
+;;;
 ; if either the offensive or defensive stat is too large to store in a byte, scale both stats by dividing them by 4
 ; this allows values with up to 10 bits (values up to 1023) to be handled
 ; anything larger will wrap around
@@ -4217,7 +4311,12 @@ GetDamageVarsForPlayerAttack:
 	rr c
 	srl b
 	rr c
-; defensive stat can actually end up as 0, leading to a division by 0 freeze during damage calculation
+; ~$~FIXED: RedStar/BlueStar fix for division by 0.~$~
+	ld a, c
+	or b ; is the enemy's defensive stat 0?
+	jr nz, .player
+	inc c ; if the enemy's defensive stat is 0, bump it up to 1
+.player
 ; hl /= 4 (scale player's offensive stat)
 	srl h
 	rr l
@@ -4274,6 +4373,14 @@ GetDamageVarsForEnemyAttack:
 	and a ; check for critical hit
 	jr z, .scaleStats
 ; in the case of a critical hit, reset the player's defense and the enemy's attack to their base values
+; ~$~CHANGED: Red++ code for crits not being detrimental.~$~
+; only revert player stat if you have boosted stats
+; only revert opponent if they have lowered stats
+	; does the player have lowered def?
+	ld a, [wPlayerMonDefenseMod]
+	cp 7 ; neutral
+	jr c, .dontNegateDefense
+	push hl
 	ld hl, wPartyMon1Defense
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
@@ -4281,12 +4388,20 @@ GetDamageVarsForEnemyAttack:
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	pop hl
+.dontNegateDefense
 	push bc
+	; does the opponent have boosted attack?
+	ld a, [wEnemyMonAttackMod]
+	cp 7 ; neutral
+	jr nc, .dontNegateAttack
 	ld c, STAT_ATTACK
 	call GetEnemyMonStat
 	ld hl, hProduct + 2
+.dontNegateAttack
 	pop bc
 	jr .scaleStats
+;;;
 .specialAttack
 	ld hl, wBattleMonSpecial
 	ld a, [hli]
@@ -4306,6 +4421,14 @@ GetDamageVarsForEnemyAttack:
 	and a ; check for critical hit
 	jr z, .scaleStats
 ; in the case of a critical hit, reset the player's and enemy's specials to their base values
+; ~$~CHANGED: Red++ code for crits not being detrimental.~$~
+; only revert player stat if you have boosted stats
+; only revert opponent if they have lowered stats
+	; does the player have lowered special?
+	ld a, [wPlayerMonSpecialMod]
+	cp 7 ; neutral
+	jr c, .dontNegateSpecial1
+	push hl
 	ld hl, wPartyMon1Special
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
@@ -4313,11 +4436,19 @@ GetDamageVarsForEnemyAttack:
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	pop hl
+.dontNegateSpecial1
 	push bc
+	; does the opponent have boosted special?
+	ld a, [wEnemyMonSpecialMod]
+	cp 7 ; neutral
+	jr nc, .dontNegateSpecial2
 	ld c, STAT_SPECIAL
 	call GetEnemyMonStat
 	ld hl, hProduct + 2
+.dontNegateSpecial2
 	pop bc
+;;;
 ; if either the offensive or defensive stat is too large to store in a byte, scale both stats by dividing them by 4
 ; this allows values with up to 10 bits (values up to 1023) to be handled
 ; anything larger will wrap around
@@ -4332,7 +4463,12 @@ GetDamageVarsForEnemyAttack:
 	rr c
 	srl b
 	rr c
-; defensive stat can actually end up as 0, leading to a division by 0 freeze during damage calculation
+; ~$~FIXED: RedStar/BlueStar fix for division by 0.~$~
+	ld a, c
+	or b ; is the player's defensive stat 0?
+	jr nz, .enemy
+	inc c ; if the player's defensive stat is 0, bump it up to 1
+.enemy
 ; hl /= 4 (scale enemy's offensive stat)
 	srl h
 	rr l
@@ -4651,7 +4787,7 @@ CriticalHitTest:
 INCLUDE "data/battle/critical_hit_moves.asm"
 
 ; function to determine if Counter hits and if so, how much damage it does
-HandleCounterMove: ; ~$~CHANGED: Counter now functions like later games. Some code pulled from Red++.~$~
+HandleCounterMove: ; ~$~CHANGED: Counter functions like later games. Some code from Red++.~$~
 ; The variables checked by Counter are updated whenever the cursor points to a new move in the battle selection menu.
 ; This is irrelevant for the opponent's side outside of link battles, since the move selection is controlled by the AI.
 ; However, in the scenario where the player switches out and the opponent uses Counter,
@@ -5369,25 +5505,26 @@ MoveHitTest:
 .dreamEaterCheck
 	ld a, [de]
 	cp DREAM_EATER_EFFECT
-	jr nz, .swiftCheck
+	jr nz, .checkForDigOrFlyStatus
 	ld a, [bc]
 	and SLP_MASK
 	jp z, .moveMissed
+.checkForDigOrFlyStatus ; ~$~CHANGED: Swift effect moves can't hit flying/underground opponents.~$~
+	bit INVULNERABLE, [hl]
+	jp nz, .moveMissed
 .swiftCheck
 	ld a, [de]
 	cp SWIFT_EFFECT
 	ret z ; Swift never misses (this was fixed from the Japanese versions)
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
-	jr z, .checkForDigOrFlyStatus
+	jr z, .noSubstitute
 ; ~$~FIXED: Substitutes and drain moves interact correctly.~$~
 	ld a, [de]
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
 	jp z, .moveMissed
-.checkForDigOrFlyStatus
-	bit INVULNERABLE, [hl]
-	jp nz, .moveMissed
+.noSubstitute
 	ldh a, [hWhoseTurn]
 	and a
 	jr nz, .enemyTurn
@@ -5748,7 +5885,11 @@ EnemyCheckIfMirrorMoveEffect:
 	ld hl, ResidualEffects2
 	ld de, $1
 	call IsInArray
-	jp c, JumpMoveEffect
+	jr nc, .notResidual2EffectEnemy ; ~$~CHANGED: Check base power before skipping damage calculation.~$~
+	ld a, [wEnemyMovePower]
+	and a ; Check if zero base power
+	jp z, JumpMoveEffect
+.notResidual2EffectEnemy
 	ld a, [wMoveMissed]
 	and a
 	jr z, .moveDidNotMiss
@@ -5827,6 +5968,7 @@ CheckEnemyStatusConditions:
 .wokeUp
 	ld hl, WokeUpText
 	call PrintText
+	jr .checkIfFrozen ; ~$~CHANGED: Can attack after waking up.~$~
 .sleepDone
 	xor a
 	ld [wEnemyUsedMove], a
@@ -6597,29 +6739,29 @@ CalculateModifiedStat:
 	pop bc
 	ret
 
-ApplyBadgeStatBoosts:
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	ret z ; return if link battle
-	ld a, [wObtainedBadges]
-	ld b, a
-	ld hl, wBattleMonAttack
-	ld c, $4
-; the boost is applied for badges whose bit position is even
-; the order of boosts matches the order they are laid out in RAM
-; Boulder (bit 0) - attack
-; Thunder (bit 2) - defense
-; Soul (bit 4) - speed
-; Volcano (bit 6) - special
-.loop
-	srl b
-	call c, .applyBoostToStat
-	inc hl
-	inc hl
-	srl b
-	dec c
-	jr nz, .loop
-	ret
+; ApplyBadgeStatBoosts: ; ~$~REMOVED: Badge boosts are a mess, just get rid of them.~$~
+	; ld a, [wLinkState]
+	; cp LINK_STATE_BATTLING
+	; ret z ; return if link battle
+	; ld a, [wObtainedBadges]
+	; ld b, a
+	; ld hl, wBattleMonAttack
+	; ld c, $4
+; ; the boost is applied for badges whose bit position is even
+; ; the order of boosts matches the order they are laid out in RAM
+; ; Boulder (bit 0) - attack
+; ; Thunder (bit 2) - defense
+; ; Soul (bit 4) - speed
+; ; Volcano (bit 6) - special
+; .loop
+	; srl b
+	; call c, .applyBoostToStat
+	; inc hl
+	; inc hl
+	; srl b
+	; dec c
+	; jr nz, .loop
+	; ret
 
 ; multiply stat at hl by 1.125
 ; cap stat at MAX_STAT_VALUE

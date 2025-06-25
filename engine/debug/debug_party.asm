@@ -167,6 +167,15 @@ DebugItemsList:
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1
+	db POKE_FLUTE, 1
+	db EXP_ALL, 1
+	db OLD_ROD, 1
+	db GOOD_ROD, 1
+	db SUPER_ROD, 1
+	db COIN_CASE, 1
+	db REPEL, 2
+	db SUPER_REPEL, 1
+	db MAX_REPEL, 3
 	db -1 ; end
 
 DebugUnusedList:

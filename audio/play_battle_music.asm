@@ -19,10 +19,10 @@ PlayBattleMusic::
 	ld a, [wCurOpponent]
 	cp OPP_RIVAL3
 	jr z, .finalBattle
-	cp OPP_LANCE
-	jr nz, .normalTrainerBattle
-	ld a, MUSIC_GYM_LEADER_BATTLE ; lance also plays gym leader theme
-	jr .playSong
+;	cp OPP_LANCE ; ~$~CHANGED: Handled differently now.~$~
+;	jr nz, .normalTrainerBattle
+;	ld a, MUSIC_GYM_LEADER_BATTLE ; lance also plays gym leader theme
+;	jr .playSong
 .normalTrainerBattle
 	ld a, MUSIC_TRAINER_BATTLE
 	jr .playSong

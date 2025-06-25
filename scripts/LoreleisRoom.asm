@@ -131,6 +131,8 @@ LoreleisRoomLoreleiText:
 	text_asm
 	ld hl, LoreleisRoomTrainerHeader0
 	call TalkToTrainer
+	ld a, $9 ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
+	ld [wGymLeaderNo], a
 	jp TextScriptEnd
 
 LoreleisRoomLoreleiBeforeBattleText:

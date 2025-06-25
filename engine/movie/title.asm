@@ -123,10 +123,10 @@ DisplayTitleScreen:
 	call EnableLCD
 
 IF DEF(_RED)
-	ld a, STARTER1 ; which Pokemon to show first on the title screen
+	ld a, CHARIZARD ; which Pokemon to show first on the title screen
 ENDC
 IF DEF(_BLUE)
-	ld a, STARTER2 ; which Pokemon to show first on the title screen
+	ld a, BLASTOISE ; which Pokemon to show first on the title screen
 ENDC
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite
@@ -274,12 +274,10 @@ TitleScreenPickNewMon:
 .loop
 ; Keep looping until a mon different from the current one is picked.
 	call Random
-	and $f
-	ld c, a
-	ld b, 0
-	ld hl, TitleMons
-	add hl, bc
-	ld a, [hl]
+	and a
+	jp z, .loop        ; Make sure it isn't 0
+	cp NUM_POKEMON + 1 ; Make sure it's a valid mon
+	jr nc, .loop       ; If it isn't, try again
 	ld hl, wTitleMonSpecies
 
 ; Can't be the same as before.
@@ -401,13 +399,14 @@ PrintGameVersionOnTitleScreen:
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
+; ~$~ CHANGED: New title screen GFX.~$~
 VersionOnTitleScreenText:
-IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
-ENDC
-IF DEF(_BLUE)
+;IF DEF(_RED)
+;	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+;ENDC
+;IF DEF(_BLUE)
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
-ENDC
+;ENDC
 
 DebugNewGamePlayerName:
 	db "SHARPIE@"

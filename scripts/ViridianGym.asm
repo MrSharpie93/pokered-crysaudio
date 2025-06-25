@@ -233,7 +233,7 @@ ViridianGymGiovanniText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedEarthBadgeText
-	ld de, .ReceivedEarthBadgeText
+	ld de, .GiovanniVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -253,6 +253,10 @@ ViridianGymGiovanniText:
 .ReceivedEarthBadgeText:
 	text_far _ViridianGymGiovanniReceivedEarthBadgeText
 	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	text_end
+	
+.GiovanniVictoryText:
+	text_far _ViridianGymGiovanniVictoryText
 	text_end
 
 .PostBattleAdviceText:

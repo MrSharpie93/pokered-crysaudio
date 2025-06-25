@@ -251,6 +251,7 @@ INCLUDE "engine/events/hidden_objects/indigo_plateau_hq.asm"
 SECTION "Battle Engine 9", ROMX
 
 INCLUDE "engine/battle/experience.asm"
+INCLUDE "engine/gfx/exp_bar.asm" ; ~$~ADDED: EXP bar in battle.~$~
 
 
 SECTION "Diploma", ROMX
@@ -359,3 +360,10 @@ SECTION "New Features", ROMX
 
 INCLUDE "scripts/move_tutor.asm"
 INCLUDE "engine/battle/physical_special_split.asm"
+INCLUDE "engine/menus/item_descriptions.asm"
+INCLUDE "engine/overworld/auto_repel.asm"
+INCLUDE "engine/overworld/field_moves.asm"
+
+SECTION "Mon Icons", ROMX
+
+INCLUDE "gfx/icons.asm"

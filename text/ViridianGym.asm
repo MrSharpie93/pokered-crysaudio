@@ -26,6 +26,12 @@ _ViridianGymGiovanniReceivedEarthBadgeText::
 	cont "As proof, here is"
 	cont "the EARTHBADGE!@"
 	text_end
+	
+_ViridianGymGiovanniVictoryText::
+	text "A mere"
+	line "child like you"
+	cont "can never compete"
+	cont "with me. Begone!"
 
 _ViridianGymGiovanniPostBattleAdviceText::
 	text "Having lost, I"

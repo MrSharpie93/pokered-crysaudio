@@ -115,7 +115,7 @@ PewterGymBrockText:
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, PewterGymBrockReceivedBoulderBadgeText
-	ld de, PewterGymBrockReceivedBoulderBadgeText
+	ld de, PewterGymBrockVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -157,6 +157,10 @@ PewterGymBrockReceivedBoulderBadgeText:
 	text_far _PewterGymBrockReceivedBoulderBadgeText
 	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	text_far _PewterGymBrockBoulderBadgeInfoText ; Text to tell that the flash technique can be used
+	text_end
+	
+PewterGymBrockVictoryText:
+	text_far _PewterGymBrockVictoryText
 	text_end
 
 PewterGymCooltrainerMText:
