@@ -88,3 +88,51 @@ _Route24Youngster2AfterBattleText::
 	text "I did my best, I"
 	line "have no regrets!"
 	done
+	
+	_Route24DamianText1::
+	text "I'm not good at"
+	line "raising #MON."
+
+	para "I should release"
+	line "my CHARMANDER"
+	cont "because I haven't"
+	cont "raised it well..."
+
+	para "If you promise me"
+	line "you'll care for"
+	cont "it, it's yours."
+	done
+
+_Route24DamianText2::
+	text "Take good care of"
+	line "my CHARMANDER!@"
+	text_end
+
+_Route24DamianText3::
+	text "Oh... I'd better"
+	line "release it then."
+	done
+
+_Route24DamianText4::
+	text "How's CHARMANDER"
+	line "doing?"
+	done
+	
+_Route24DamianText5::
+	text "I'm not good at"
+	line "raising #MON."
+
+	para "But it looks like"
+	line "you are, your"
+	cont "CHARMANDER seems"
+	cont "to love you."
+	
+	para "You should have"
+	line "this as a symbol"
+	cont "of your bond."
+	prompt
+
+_Route24DamianText6::
+	text "Your bag has no"
+	line "room for this!"
+	done

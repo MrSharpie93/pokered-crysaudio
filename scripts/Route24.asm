@@ -87,6 +87,7 @@ Route24_TextPointers:
 	dw_const Route24CooltrainerF2Text, TEXT_ROUTE24_COOLTRAINER_F2
 	dw_const Route24Youngster2Text,    TEXT_ROUTE24_YOUNGSTER2
 	dw_const PickUpItemText,           TEXT_ROUTE24_TM_THUNDER_WAVE
+	dw_const Route24CooltrainerM4Text, TEXT_ROUTE24_DAMIAN
 
 Route24TrainerHeaders:
 	def_trainers 2
@@ -279,4 +280,89 @@ Route24Youngster2EndBattleText:
 
 Route24Youngster2AfterBattleText:
 	text_far _Route24Youngster2AfterBattleText
+	text_end
+	
+Route24CooltrainerM4Text:
+	text_asm
+	CheckEvent EVENT_GOT_CHARMANDER_FROM_DAMIAN
+	jr nz, .gotStarter
+	ld a, [wPlayerStarter]
+	cp STARTER1
+	jr z, .giveHeartStone
+	ld hl, DamianNotGoodAtRaisingText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld a, STARTER1
+	ld [wNamedObjectIndex], a
+	ld [wCurPartySpecies], a
+	call GetMonName
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	lb bc, STARTER1, 10
+	call GivePokemon
+	jp nc, TextScriptEnd
+	ld a, [wAddedToParty]
+	and a
+	call z, WaitForTextScrollButtonPress
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, DamianTakeCareOfStarterText
+	call PrintText
+	SetEvent EVENT_GOT_CHARMANDER_FROM_DAMIAN
+	jp TextScriptEnd
+.giveHeartStone
+	ld hl, DamianHeartStoneText
+	call PrintText
+	lb bc, RARE_CANDY, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, DamianGotHeartStoneText
+	call PrintText
+	SetEvent EVENT_GOT_CHARMANDER_FROM_DAMIAN
+	jp TextScriptEnd
+.bag_full
+	ld hl, DamianBagFullText
+	jr .done
+
+.refused
+	ld hl, DamianBetterReleaseItText
+	jr .done
+
+.gotStarter
+	ld hl, DamianHowIsStarterText
+.done
+	call PrintText
+	jp TextScriptEnd
+
+DamianNotGoodAtRaisingText:
+	text_far _Route24DamianText1
+	text_end
+
+DamianTakeCareOfStarterText:
+	text_far _Route24DamianText2
+	text_waitbutton
+	text_end
+
+DamianBetterReleaseItText:
+	text_far _Route24DamianText3
+	text_end
+
+DamianHowIsStarterText:
+	text_far _Route24DamianText4
+	text_end
+	
+DamianHeartStoneText:
+	text_far _Route24DamianText5
+	text_end
+	
+DamianGotHeartStoneText:
+	text_far _Route24CooltrainerM1ReceivedNuggetText
+	sound_get_item_1
+	text_end
+	
+DamianBagFullText:
+	text_far _Route24DamianText6
 	text_end

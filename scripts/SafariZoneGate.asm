@@ -145,7 +145,7 @@ SafariZoneGateSafariZoneWorker1Text:
 	text_far _SafariZoneGateSafariZoneWorker1Text
 	text_end
 
-SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
+SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText: ; ~$~CHANGED: Poor Man's discount added from Yellow.~$~
 	text_far _SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText
 	text_asm
 	ld a, MONEY_BOX
@@ -155,6 +155,17 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jp nz, .PleaseComeAgain
+	ld hl, wPlayerMoney
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	jr nz, .has_positive_balance
+	call SafariZoneEntranceGetLowCostAdmissionText
+	jr c, .CantPayWalkDown
+	jr .poor_mans_discount
+
+.has_positive_balance
 	xor a
 	ldh [hMoney], a
 	ld a, $05
@@ -165,7 +176,9 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	jr nc, .success
 	ld hl, .NotEnoughMoneyText
 	call PrintText
-	jr .CantPayWalkDown
+	call SafariZoneEntranceCalculateLowCostAdmission
+	jr c, .CantPayWalkDown
+	jr .poor_mans_discount
 
 .success
 	xor a
@@ -178,16 +191,21 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText:
 	ld de, wPlayerMoney + 2
 	ld c, 3
 	predef SubBCDPredef
+	ld a, SFX_PURCHASE
+	call PlaySoundWaitForCurrent
+	call WaitForSoundToFinish
 	ld a, MONEY_BOX
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld hl, .MakePaymentText
 	call PrintText
 	ld a, 30
+	ld hl, 502
+.poor_mans_discount
 	ld [wNumSafariBalls], a
-	ld a, HIGH(502)
+	ld a, h
 	ld [wSafariSteps], a
-	ld a, LOW(502)
+	ld a, l
 	ld [wSafariSteps + 1], a
 	ld a, D_UP
 	ld c, 3
@@ -294,3 +312,120 @@ SafariZoneGateSafariZoneWorker2Text:
 .YoureARegularHereText
 	text_far _SafariZoneGateSafariZoneWorker2YoureARegularHereText
 	text_end
+	
+SafariZoneEntranceCalculateLowCostAdmission: ; ~$~ADDED: Poor Man's discount added from Yellow.~$~
+	ld hl, wPlayerMoney
+	ld de, hMoney
+	ld bc, $3
+	call CopyData
+	xor a
+	ldh [hDivideBCDDivisor], a
+	ldh [hDivideBCDDivisor + 1], a
+	ld a, 23
+	ldh [hDivideBCDDivisor + 2], a
+	predef DivideBCDPredef3
+	ldh a, [hDivideBCDQuotient + 2]
+	call SafariZoneEntranceConvertBCDtoNumber
+	push af
+	ld hl, wPlayerMoney
+	xor a
+	ld bc, $3
+	call FillMemory
+	ld hl, SafariZonePayMeWhatYouHaveText
+	call PrintText_NoCreatingTextBox
+	ld a, MONEY_BOX
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld hl, SafariZoneCantGiveAll30BallsText
+	call PrintText
+	pop af
+	inc a
+	jr z, .max_balls
+	cp 29
+	jr c, .load_balls
+.max_balls
+	ld a, 29
+.load_balls
+	ld hl, 502
+	and a
+	ret
+
+SafariZonePayMeWhatYouHaveText:
+	text_far _SafariZonePayMeWhatYouHaveText
+	text_end
+
+SafariZoneCantGiveAll30BallsText:
+	text_far _SafariZoneCantGiveAll30BallsText
+	text_end
+
+SafariZoneEntranceGetLowCostAdmissionText:
+	ld hl, wSafariSteps
+	ld a, [hl]
+	push af
+	inc [hl]
+	ld e, a
+	ld d, $0
+	ld hl, Pointers_f2100
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call PrintText
+	pop af
+	cp $3
+	jr z, .give_one_ball
+	scf
+	ret
+
+.give_one_ball
+	ld hl, SafariZonePersistentArentYouText
+	call PrintText_NoCreatingTextBox
+	ld a, $1
+	ld hl, 502
+	and a
+	ret
+
+SafariZonePersistentArentYouText:
+	text_far _SafariZonePersistentArentYouText
+	sound_get_item_1
+	text_far _SafariZoneLowCostText4
+	text_end
+
+Pointers_f2100:
+	dw SafariZoneSorryButYouHaveToPayText
+	dw SafariZoneYouCantEnterWithoutPayingText
+	dw SafariZoneNoMoneyNoEntryText
+	dw SafariZoneReadMyLipsNoText
+	dw SafariZoneReadMyLipsNoText
+
+SafariZoneSorryButYouHaveToPayText:
+	text_far _SafariZoneSorryButYouHaveToPayText
+	text_end
+
+SafariZoneYouCantEnterWithoutPayingText:
+	text_far _SafariZoneYouCantEnterWithoutPayingText
+	text_end
+
+SafariZoneNoMoneyNoEntryText:
+	text_far _SafariZoneNoMoneyNoEntryText
+	text_end
+
+SafariZoneReadMyLipsNoText:
+	text_far _SafariZoneReadMyLipsNoText
+	text_end
+
+SafariZoneEntranceConvertBCDtoNumber:
+	push hl
+	ld c, a
+	and $f
+	ld l, a
+	ld h, $0
+	ld a, c
+	and $f0
+	swap a
+	ld bc, 10
+	call AddNTimes
+	ld a, l
+	pop hl
+	ret

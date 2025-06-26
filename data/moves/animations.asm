@@ -166,6 +166,96 @@ AttackAnimationPointers:
 	dw SlashAnim
 	dw SubstituteAnim
 	dw StruggleAnim
+; ~$~ADDED: New moves.~$~
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
+	dw PlaceholderAnim
 	assert_table_length NUM_ATTACKS
 AltAnimationPointers: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	table_width 2, AltAnimationPointers
@@ -237,6 +327,7 @@ ZigZagScreenAnim:
 
 PoundAnim:
 StruggleAnim:
+PlaceholderAnim:
 	battle_anim POUND, SUBANIM_0_STAR_TWICE, 0, 8
 	db -1 ; end
 

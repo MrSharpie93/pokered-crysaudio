@@ -95,3 +95,51 @@ _SafariZoneGateSafariZoneWorker2YoureARegularHereText::
 	text "Sorry, you're a"
 	line "regular here!"
 	done
+
+_SafariZonePayMeWhatYouHaveText:: ; ~$~ADDED: Poor Man's discount added from Yellow.~$~
+	text_start
+
+	para "Oh, all right, pay"
+	line "me what you have."
+	prompt
+
+_SafariZoneCantGiveAll30BallsText::
+	text "But, I can't give"
+	line "you all 30 BALLs."
+	done
+
+_SafariZonePersistentArentYouText::
+	text_start
+
+	para "You're persistent,"
+	line "aren't you?"
+
+	para "OK, you can go in"
+	line "for free, but"
+	cont "just this once!@"
+	text_end
+
+_SafariZoneLowCostText4::
+	text_start
+	done
+
+_SafariZoneSorryButYouHaveToPayText::
+	text "I'm sorry, but you"
+	line "have to pay to"
+	cont "enter."
+	done
+
+_SafariZoneYouCantEnterWithoutPayingText::
+	text "You can't enter"
+	line "without paying!"
+	done
+
+_SafariZoneNoMoneyNoEntryText::
+	text "I said, no money,"
+	line "no entry!"
+	done
+
+_SafariZoneReadMyLipsNoText::
+	text "Read my lips, NO!"
+	line "Get it?"
+	done

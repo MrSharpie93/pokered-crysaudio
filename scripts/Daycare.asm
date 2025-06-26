@@ -4,6 +4,7 @@ Daycare_Script:
 Daycare_TextPointers:
 	def_text_pointers
 	dw_const DaycareGentlemanText, TEXT_DAYCARE_GENTLEMAN
+	dw_const DaycareMelanieText,   TEXT_DAYCARE_MELANIE
 
 DaycareGentlemanText:
 	text_asm
@@ -267,4 +268,105 @@ DaycareGentlemanText:
 
 .NotEnoughMoneyText:
 	text_far _DaycareGentlemanNotEnoughMoneyText
+	text_end
+	
+DaycareMelanieText:
+	text_asm
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	CheckEvent EVENT_GOT_BULBASAUR_IN_CERULEAN
+	jp nz, .gotStarter
+	ld a, [wPlayerStarter]
+	cp STARTER3
+	jr z, .giveHeartStone
+	ld hl, MelanieITakeCareOfPokemonText
+	call PrintText
+	ld a, [wBeatGymFlags]
+	bit BIT_CASCADEBADGE, a
+	jr z, .done
+	ld hl, MelanieOffersStarterText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld a, STARTER3
+	ld [wNamedObjectIndex], a
+	ld [wCurPartySpecies], a
+	call GetMonName
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	lb bc, STARTER3, 10
+	call GivePokemon
+	jr nc, .done
+	ld a, [wAddedToParty]
+	and a
+	call z, WaitForTextScrollButtonPress
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, MelanieTakeCareOfStarterText
+	call PrintText
+	SetEvent EVENT_GOT_BULBASAUR_IN_CERULEAN
+.done
+	jp TextScriptEnd
+.giveHeartStone
+	ld hl, MelanieHeartStoneText
+	call PrintText
+	lb bc, RARE_CANDY, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, MelanieGotHeartStoneText
+	call PrintText
+	SetEvent EVENT_GOT_BULBASAUR_IN_CERULEAN
+	jp TextScriptEnd
+.bag_full
+	ld hl, MelanieBagFullText
+	jr .done
+
+.refused
+	ld hl, MelanieRefusedText
+	jr .done2
+.gotStarter
+	ld hl, MelanieHowIsStarterText
+.done2
+	call PrintText
+	jp TextScriptEnd
+
+MelanieITakeCareOfPokemonText:
+	text_far MelanieText1
+	text_waitbutton
+	text_end
+
+MelanieOffersStarterText:
+	text_far MelanieText2
+	text_end
+
+MelanieTakeCareOfStarterText:
+	text_far MelanieText3
+	text_waitbutton
+	text_end
+
+MelanieHowIsStarterText:
+	text_far MelanieText4
+	text_waitbutton
+	text_end
+
+MelanieRefusedText:
+	text_far MelanieText5
+	text_waitbutton
+	text_end
+	
+MelanieHeartStoneText:
+	text_far _MelanieText6
+	text_end
+	
+MelanieGotHeartStoneText:
+	text_far _VermilionCityReceivedHeartStoneText
+	sound_get_item_1
+	text_end
+	
+MelanieBagFullText:
+	text_far _MelanieText7
 	text_end

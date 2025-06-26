@@ -86,6 +86,70 @@ _VermilionCitySailor2Text::
 	para "We visit VERMILION"
 	line "once a year."
 	done
+	
+_GuardText1::
+	text "I just caught a"
+	line "SQUIRTLE that was"
+	cont "always getting"
+	cont "into mischief."
+
+	para "I think it needs a"
+	line "good trainer to"
+	cont "set it straight."
+	done
+
+_GuardText2::
+	text "You have the"
+	line "THUNDERBADGE!?"
+
+	para "You must be a"
+	line "good trainer!"
+
+	para "I just caught a"
+	line "SQUIRTLE that was"
+	cont "always getting"
+	cont "into mischief."
+
+	para "Would you take"
+	line "good care of it?"
+	done
+
+_GuardText3::
+	text "OK! Please treat"
+	line "SQUIRTLE right!@"
+	text_end
+
+_GuardText4::
+	text "Oh... What am I"
+	line "to do now?"
+	done
+
+_GuardText5::
+	text "How is SQUIRTLE"
+	line "doing?"
+	done
+	
+_GuardText6::
+	text "That SQUIRTLE of"
+	line "yours seems to"
+	cont "admire you a lot."
+	
+	para "You should have"
+	line "this as a symbol"
+	cont "of your bond."
+	prompt
+	
+_VermilionCityReceivedHeartStoneText::
+	text "<PLAYER> received"
+	line "a @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_GuardText7::
+	text "Your bag has no"
+	line "room for this!"
+	done
 
 _VermilionCitySignText::
 	text "VERMILION CITY"

@@ -166,5 +166,95 @@ MoveSoundTable:
 	db SFX_NOT_VERY_EFFECTIVE, $01, $ff ; SLASH
 	db SFX_BATTLE_2C,          $d8, $04 ; SUBSTITUTE
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
+; ~$~ADDED: New moves.~$~
+	db SFX_BATTLE_0B,          $00, $80 ; CURSE"
+	db SFX_BATTLE_0B,          $00, $80 ; COTTON SPORE
+	db SFX_BATTLE_0B,          $00, $80 ; POWDER SNOW
+	db SFX_BATTLE_0B,          $00, $80 ; MACH PUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; SCARY FACE
+	db SFX_BATTLE_0B,          $00, $80 ; FEINT ATTACK
+	db SFX_BATTLE_0B,          $00, $80 ; SWEET KISS
+	db SFX_BATTLE_0B,          $00, $80 ; SLUDGE BOMB
+	db SFX_BATTLE_0B,          $00, $80 ; MUD-SLAP
+	db SFX_BATTLE_0B,          $00, $80 ; ZAP CANNON
+	db SFX_BATTLE_0B,          $00, $80 ; ICY WIND
+	db SFX_BATTLE_0B,          $00, $80 ; CHARM
+	db SFX_BATTLE_0B,          $00, $80 ; SPARK
+	db SFX_BATTLE_0B,          $00, $80 ; STEEL WING
+	db SFX_BATTLE_0B,          $00, $80 ; HEAL BELL
+	db SFX_BATTLE_0B,          $00, $80 ; SAFEGUARD
+	db SFX_BATTLE_0B,          $00, $80 ; DYNAMICPUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; MEGAHORN
+	db SFX_BATTLE_0B,          $00, $80 ; RAPID SPIN
+	db SFX_BATTLE_0B,          $00, $80 ; IRON TAIL
+	db SFX_BATTLE_0B,          $00, $80 ; METAL CLAW
+	db SFX_BATTLE_0B,          $00, $80 ; CROSS CHOP
+	db SFX_BATTLE_0B,          $00, $80 ; TWISTER
+	db SFX_BATTLE_0B,          $00, $80 ; CRUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; MIRROR COAT
+	db SFX_BATTLE_0B,          $00, $80 ; EXTREMESPEED
+	db SFX_BATTLE_0B,          $00, $80 ; ANCIENTPOWER
+	db SFX_BATTLE_0B,          $00, $80 ; SHADOW BALL
+	db SFX_BATTLE_0B,          $00, $80 ; WILL-O-WISP
+	db SFX_BATTLE_0B,          $00, $80 ; HYPER VOICE
+	db SFX_BATTLE_0B,          $00, $80 ; FAKE TEARS
+	db SFX_BATTLE_0B,          $00, $80 ; ROCK TOMB
+	db SFX_BATTLE_0B,          $00, $80 ; SILVER WIND
+	db SFX_BATTLE_0B,          $00, $80 ; METAL SOUND
+	db SFX_BATTLE_0B,          $00, $80 ; SIGNAL BEAM
+	db SFX_BATTLE_0B,          $00, $80 ; SAND TOMB
+	db SFX_BATTLE_0B,          $00, $80 ; SHEER COLD
+	db SFX_BATTLE_0B,          $00, $80 ; AERIAL ACE
+	db SFX_BATTLE_0B,          $00, $80 ; MUD SHOT
+	db SFX_BATTLE_0B,          $00, $80 ; MAGICAL LEAF
+	db SFX_BATTLE_0B,          $00, $80 ; DRAGON DANCE
+	db SFX_BATTLE_0B,          $00, $80 ; SHOCK WAVE
+	db SFX_BATTLE_0B,          $00, $80 ; SUCKER PUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; FLARE BLITZ
+	db SFX_BATTLE_0B,          $00, $80 ; POISON JAB
+	db SFX_BATTLE_0B,          $00, $80 ; DARK PULSE
+	db SFX_BATTLE_0B,          $00, $80 ; NIGHT SLASH
+	db SFX_BATTLE_0B,          $00, $80 ; AIR SLASH
+	db SFX_BATTLE_0B,          $00, $80 ; X-SCISSOR
+	db SFX_BATTLE_0B,          $00, $80 ; BUG BUZZ
+	db SFX_BATTLE_0B,          $00, $80 ; DRAGON PULSE
+	db SFX_BATTLE_0B,          $00, $80 ; POWER GEM
+	db SFX_BATTLE_0B,          $00, $80 ; DRAIN PUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; FOCUS BLAST
+	db SFX_BATTLE_0B,          $00, $80 ; ENERGY BALL
+	db SFX_BATTLE_0B,          $00, $80 ; EARTH POWER
+	db SFX_BATTLE_0B,          $00, $80 ; NASTY PLOT
+	db SFX_BATTLE_0B,          $00, $80 ; ICE SHARD
+	db SFX_BATTLE_0B,          $00, $80 ; SHADOW CLAW
+	db SFX_BATTLE_0B,          $00, $80 ; THUNDER FANG
+	db SFX_BATTLE_0B,          $00, $80 ; ICE FANG
+	db SFX_BATTLE_0B,          $00, $80 ; FIRE FANG
+	db SFX_BATTLE_0B,          $00, $80 ; SHADOW SNEAK
+	db SFX_BATTLE_0B,          $00, $80 ; FLASH CANNON
+	db SFX_BATTLE_0B,          $00, $80 ; POWER WHIP
+	db SFX_BATTLE_0B,          $00, $80 ; ROCK WRECKER
+	db SFX_BATTLE_0B,          $00, $80 ; GUNK SHOT
+	db SFX_BATTLE_0B,          $00, $80 ; IRON HEAD
+	db SFX_BATTLE_0B,          $00, $80 ; STONE EDGE
+	db SFX_BATTLE_0B,          $00, $80 ; OMINOUS WIND
+	db SFX_BATTLE_0B,          $00, $80 ; FLAME CHARGE
+	db SFX_BATTLE_0B,          $00, $80 ; SCALD
+	db SFX_BATTLE_0B,          $00, $80 ; HEX
+	db SFX_BATTLE_0B,          $00, $80 ; INFERNO
+	db SFX_BATTLE_0B,          $00, $80 ; BULLDOZE
+	db SFX_BATTLE_0B,          $00, $80 ; ELECTROWEB
+	db SFX_BATTLE_0B,          $00, $80 ; WILD CHARGE
+	db SFX_BATTLE_0B,          $00, $80 ; PSYSTRIKE
+	db SFX_BATTLE_0B,          $00, $80 ; SNARL
+	db SFX_BATTLE_0B,          $00, $80 ; ICICLE CRASH
+	db SFX_BATTLE_0B,          $00, $80 ; DISARM.VOICE
+	db SFX_BATTLE_0B,          $00, $80 ; DRAIN KISS
+	db SFX_BATTLE_0B,          $00, $80 ; PLAY ROUGH
+	db SFX_BATTLE_0B,          $00, $80 ; MOONBLAST
+	db SFX_BATTLE_0B,          $00, $80 ; BOOMBURST
+	db SFX_BATTLE_0B,          $00, $80 ; DAZZLINGLEAM
+	db SFX_BATTLE_0B,          $00, $80 ; INFESTATION
+	db SFX_BATTLE_0B,          $00, $80 ; BRUTAL SWING
+	db SFX_BATTLE_0B,          $00, $80 ; LIQUIDATION
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80

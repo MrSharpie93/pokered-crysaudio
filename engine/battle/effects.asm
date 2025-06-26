@@ -23,22 +23,30 @@ _JumpMoveEffect:
 
 INCLUDE "data/moves/effects_pointers.asm"
 
-SleepEffect:
-	ld de, wEnemyMonStatus
+SleepEffect: ; ~$~CHANGED: Grass-types are immune to Sleep Powder and Spore.
+	ld hl, wEnemyMonStatus
+	ld de, wPlayerMoveType
 	ld bc, wEnemyBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
 	jp z, .sleepEffect
-	ld de, wBattleMonStatus
+	ld hl, wBattleMonStatus
+	ld de, wEnemyMoveType
 	ld bc, wPlayerBattleStatus2
 
 .sleepEffect
+	call CheckTargetSubstitute
+	jr nz, .didntAffect ; ~$~Can't inflict sleep on a substitute target.~$~
+	ld a, [de]
+	cp GRASS
+	jr z, .grassCheck ; ~$~Prevents Sleep Power or Spore from working on Grass-types.~$~
+.resume
 	ld a, [bc]
 	bit NEEDS_TO_RECHARGE, a ; does the target need to recharge? (hyper beam)
 	res NEEDS_TO_RECHARGE, a ; target no longer needs to recharge
 	ld [bc], a
 ; ~$~FIXED: Sleep moves interact correctly with recharging Mons.~$~
-	ld a, [de]
+	ld a, [hl]
 	ld b, a
 	and $7
 	jr z, .notAlreadySleeping ; can't affect a mon that is already asleep
@@ -48,9 +56,9 @@ SleepEffect:
 	ld a, b
 	and a
 	jr nz, .didntAffect ; can't affect a mon that is already statused
-	push de
+	push hl
 	call MoveHitTest ; apply accuracy tests
-	pop de
+	pop hl
 	ld a, [wMoveMissed]
 	and a
 	jr nz, .didntAffect
@@ -61,12 +69,30 @@ SleepEffect:
 	jr z, .setSleepCounter
 	cp $7
 	jr z, .setSleepCounter
-	ld [de], a
+	set 1, a ; ~$~CHANGED: From Red++: Always at least 2, since 1 is now functionally 0.~$~
+	ld [hl], a
 	call PlayCurrentMoveAnimation2
 	ld hl, FellAsleepText
 	jp PrintText
 .didntAffect
 	jp PrintDidntAffectText
+.doesntAffect
+	pop bc
+	jp PrintDoesntAffectText
+.grassCheck
+	push bc
+	ld b, h
+	ld c, l
+	inc bc
+	ld a, [bc]
+	cp GRASS
+	jr z, .doesntAffect
+	inc bc
+	ld a, [bc]
+	cp GRASS
+	jr z, .doesntAffect
+	pop bc
+	jr .resume
 
 FellAsleepText:
 	text_far _FellAsleepText
@@ -94,15 +120,19 @@ PoisonEffect:
 	ld a, [hli]
 	cp POISON ; can't poison a poison-type target
 	jr z, .noEffect
+	cp STEEL ; can't poison a steel-type target
+	jr z, .noEffect
 	ld a, [hld]
 	cp POISON ; can't poison a poison-type target
 	jr z, .noEffect
+	cp STEEL ; can't poison a steel-type target
+	jr z, .noEffect
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1
-	ld b, 20 percent + 1 ; chance of poisoning
+	ld b, 30 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for modern probabilities.~$~
 	jr z, .sideEffectTest
 	cp POISON_SIDE_EFFECT2
-	ld b, 40 percent + 1 ; chance of poisoning
+	ld b, 50 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for Poison Fang. Smog gets it too, but it could use the buff,anyway.~$~
 	jr z, .sideEffectTest
 	push hl
 	push de
@@ -203,14 +233,7 @@ FreezeBurnParalyzeEffect:
 	ld a, [wEnemyMonStatus]
 	and a
 	jp nz, CheckDefrost ; can't inflict status if opponent is already statused
-	ld a, [wPlayerMoveType]
-	ld b, a
-	ld a, [wEnemyMonType1]
-	cp b ; do target type 1 and move type match?
-	ret z  ; return if they match (an ice move can't freeze an ice-type, body slam can't paralyze a normal-type, etc.)
-	ld a, [wEnemyMonType2]
-	cp b ; do target type 2 and move type match?
-	ret z  ; return if they match
+; ~$~CHANGED: No paralyzing Electric-types, burning Fire-types or freezing Ice-types.~$~
 	ld a, [wPlayerMoveEffect]
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
@@ -229,7 +252,13 @@ FreezeBurnParalyzeEffect:
 	jr z, .burn1
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze1
-; .paralyze1
+.paralyze1
+	ld a, [wEnemyMonType1]
+	cp ELECTRIC
+	ret z  ; cannot paralyze Electric-types
+	ld a, [wEnemyMonType2]
+	cp ELECTRIC
+	ret z  ; cannot paralyze Electric-types
 	ld a, 1 << PAR
 	ld [wEnemyMonStatus], a
 	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
@@ -237,6 +266,12 @@ FreezeBurnParalyzeEffect:
 	call PlayAlternativeAnimation
 	jp PrintMayNotAttackText ; print paralysis text
 .burn1
+	ld a, [wEnemyMonType1]
+	cp FIRE
+	ret z  ; cannot burn Fire-types
+	ld a, [wEnemyMonType2]
+	cp FIRE
+	ret z  ; cannot burn Fire-types
 	ld a, 1 << BRN
 	ld [wEnemyMonStatus], a
 	call HalveAttackDueToBurn ; halve attack of affected mon
@@ -245,6 +280,12 @@ FreezeBurnParalyzeEffect:
 	ld hl, BurnedText
 	jp PrintText
 .freeze1
+	ld a, [wEnemyMonType1]
+	cp ICE
+	ret z  ; cannot freeze Ice-types
+	ld a, [wEnemyMonType2]
+	cp ICE
+	ret z  ; cannot freeze Ice-types
 	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
 	ld a, 1 << FRZ
 	ld [wEnemyMonStatus], a
@@ -256,14 +297,7 @@ FreezeBurnParalyzeEffect:
 	ld a, [wBattleMonStatus] ; mostly same as above with addresses swapped for opponent
 	and a
 	jp nz, CheckDefrost
-	ld a, [wEnemyMoveType]
-	ld b, a
-	ld a, [wBattleMonType1]
-	cp b
-	ret z
-	ld a, [wBattleMonType2]
-	cp b
-	ret z
+; ~$~CHANGED: No paralyzing Electric-types, burning Fire-types or freezing Ice-types.~$~
 	ld a, [wEnemyMoveEffect]
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
@@ -282,18 +316,36 @@ FreezeBurnParalyzeEffect:
 	jr z, .burn2
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze2
-; .paralyze2
+.paralyze2
+	ld a, [wBattleMonType1]
+	cp ELECTRIC
+	ret z  ; cannot paralyze Electric-types
+	ld a, [wBattleMonType2]
+	cp ELECTRIC
+	ret z  ; cannot paralyze Electric-types
 	ld a, 1 << PAR
 	ld [wBattleMonStatus], a
 	call QuarterSpeedDueToParalysis
 	jp PrintMayNotAttackText
 .burn2
+	ld a, [wBattleMonType1]
+	cp FIRE
+	ret z  ; cannot burn Fire-types
+	ld a, [wBattleMonType2]
+	cp FIRE
+	ret z  ; cannot burn Fire-types
 	ld a, 1 << BRN
 	ld [wBattleMonStatus], a
 	call HalveAttackDueToBurn
 	ld hl, BurnedText
 	jp PrintText
 .freeze2
+	ld a, [wBattleMonType1]
+	cp ICE
+	ret z  ; cannot freeze Ice-types
+	ld a, [wBattleMonType2]
+	cp ICE
+	ret z  ; cannot freeze Ice-types
 ; ~$~FIXED: Hyper Beam bits are reset for opponent's side.~$~
 	call ClearHyperBeam
 	ld a, 1 << FRZ
@@ -552,13 +604,13 @@ RoseText:
 StatModifierDownEffect:
 	ld hl, wEnemyMonStatMods
 	ld de, wPlayerMoveEffect
-	ld bc, wEnemyBattleStatus1
+	ld bc, wEnemyBattleStatus2
 	ldh a, [hWhoseTurn]
 	and a
 	jr z, .statModifierDownEffect
 	ld hl, wPlayerMonStatMods
 	ld de, wEnemyMoveEffect
-	ld bc, wPlayerBattleStatus1
+	ld bc, wPlayerBattleStatus2
 ;	ld a, [wLinkState] ; ~$~REMOVED: AI no longer programmed to miss debuffs 25% of the time.~$~
 ;	cp LINK_STATE_BATTLING
 ;	jr z, .statModifierDownEffect
@@ -571,8 +623,11 @@ StatModifierDownEffect:
 	ld a, [de]
 	cp ATTACK_DOWN_SIDE_EFFECT
 	jr c, .nonSideEffect
+	ld a, [bc] ; ~$~CHANGED: Mist protects from side effect debuffs.~$~
+	bit PROTECTED_BY_MIST, a
+	ret nz
 	call BattleRandom
-	cp 33 percent + 1 ; chance for side effects
+	cp 20 percent + 1 ; chance for side effects ~$~CHANGED: Made 20% to reflect modern probabilities.~$~
 	jp nc, CantLowerAnymore
 	ld a, [de]
 	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
@@ -588,6 +643,10 @@ StatModifierDownEffect:
 	ld a, [wMoveMissed]
 	and a
 	jp nz, MoveMissed
+	ld a, [bc] ; ~$~CHANGED: Mist blocks debuffs on attacks with guaranteed debuffs without blocking the attack.~$~
+	bit PROTECTED_BY_MIST, a
+	ret nz
+	dec bc
 	ld a, [bc]
 	bit INVULNERABLE, a ; fly/dig
 	jp nz, MoveMissed
@@ -1005,6 +1064,9 @@ FlinchSideEffect:
 	cp FLINCH_SIDE_EFFECT1
 	ld b, 10 percent + 1 ; chance of flinch (FLINCH_SIDE_EFFECT1)
 	jr z, .gotEffectChance
+	cp FLINCH_SIDE_EFFECT2 ; ~$~ADDED: Flinch moves have a 10, 20 or 30% chance.~$~
+	ld b, 20 percent + 1 ; chance of flinch (FLINCH_SIDE_EFFECT2)
+	jr z, .gotEffectChance
 	ld b, 30 percent + 1 ; chance of flinch otherwise
 .gotEffectChance
 	call BattleRandom
@@ -1145,7 +1207,7 @@ ConfusionSideEffect:
 	call BattleRandom
 	cp 10 percent ; chance of confusion
 	ret nc
-	jr ConfusionSideEffectSuccess
+;	jr ConfusionSideEffectSuccess ; fallthrough to correctly fail against substitutes?~$~
 
 ConfusionEffect:
 	call CheckTargetSubstitute
@@ -1372,9 +1434,10 @@ DisableEffect:
 	jr z, .pickMoveToDisable ; pick another move if this one had 0 PP
 .playerTurnNotLinkBattle
 ; non-link battle enemies have unlimited PP so the previous checks aren't needed
-	call BattleRandom
-	and $7
-	inc a ; 1-8 turns disabled
+	;	call BattleRandom
+;	and $7
+;	inc a ; 1-8 turns disabled
+	ld a, $5 ; ~$~CHANGED: Disable always works for 4 turns.~$~
 	inc c ; move 1-4 will be disabled
 	swap c
 	add c ; map disabled move to high nibble of wEnemyDisabledMove / wPlayerDisabledMove

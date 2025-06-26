@@ -23,7 +23,7 @@
 - Tamer: MollyChan
 - Bird Keeper: MollyChan
 - Blackbelt: MollyChan
-- Green: MollyChan
+- Green (front and overworld): MollyChan
 - Prof. Oak: MollyChan
 - Chief: Sharpie93
 - Scientist: MollyChan

@@ -122,6 +122,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityGambler2Text,           TEXT_VERMILIONCITY_GAMBLER2
 	dw_const VermilionCityMachopText,             TEXT_VERMILIONCITY_MACHOP
 	dw_const VermilionCitySailor2Text,            TEXT_VERMILIONCITY_SAILOR2
+	dw_const VermilionCityOfficerJennyText,       TEXT_VERMILIONCITY_OFFICERJENNY
 	dw_const VermilionCitySignText,               TEXT_VERMILIONCITY_SIGN
 	dw_const VermilionCityNoticeSignText,         TEXT_VERMILIONCITY_NOTICE_SIGN
 	dw_const MartSignText,                        TEXT_VERMILIONCITY_MART_SIGN
@@ -236,6 +237,103 @@ VermilionCityMachopText:
 
 VermilionCitySailor2Text:
 	text_far _VermilionCitySailor2Text
+	text_end
+	
+VermilionCityOfficerJennyText:
+	text_asm
+	CheckEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
+	jr nz, .gotStarter
+	ld a, [wPlayerStarter]
+	cp STARTER2
+	jr z, .giveHeartStone
+	ld a, [wBeatGymFlags]
+	bit BIT_THUNDERBADGE, a
+	jr nz, .haveThunderbadge
+	ld hl, GuardNoThunderBadgeText
+	jr .done
+
+.haveThunderbadge
+	ld hl, GuardHaveThunderBadgeText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .refused
+	ld a, STARTER2
+	ld [wNamedObjectIndex], a
+	ld [wCurPartySpecies], a
+	call GetMonName
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	lb bc, STARTER2, 10
+	call GivePokemon
+	ret nc
+	ld a, [wAddedToParty]
+	and a
+	call z, WaitForTextScrollButtonPress
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, GuardTreatStarterRightText
+	call PrintText
+	SetEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
+	jr .done2
+.giveHeartStone
+	ld hl, GuardHeartStoneText
+	call PrintText
+	lb bc, RARE_CANDY, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, GuardGotHeartStoneText
+	call PrintText
+	SetEvent EVENT_GOT_SQUIRTLE_FROM_OFFICER_JENNY
+	jp TextScriptEnd
+.bag_full
+	ld hl, GuardBagFullText
+	jr .done
+
+.refused
+	ld hl, GuardRefusedText
+	jr .done
+
+.gotStarter
+	ld hl, GuardHowIsStarterText
+.done
+	call PrintText
+.done2
+	jp TextScriptEnd
+
+GuardNoThunderBadgeText:
+	text_far _GuardText1
+	text_end
+
+GuardHaveThunderBadgeText:
+	text_far _GuardText2
+	text_end
+
+GuardTreatStarterRightText:
+	text_far _GuardText3
+	text_waitbutton
+	text_end
+
+GuardRefusedText:
+	text_far _GuardText4
+	text_end
+
+GuardHowIsStarterText:
+	text_far _GuardText5
+	text_end
+	
+GuardHeartStoneText:
+	text_far _GuardText6
+	text_end
+	
+GuardGotHeartStoneText:
+	text_far _VermilionCityReceivedHeartStoneText
+	sound_get_item_1
+	text_end
+	
+GuardBagFullText:
+	text_far _GuardText7
 	text_end
 
 VermilionCitySignText:

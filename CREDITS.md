@@ -12,7 +12,7 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, optimizations.
 - [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework, better move learn on level-up, photosensitivity-friendly move animations.
 - [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, expanded menu icons, defense division by 0 bug fix, overworld HM shortcuts, Tilemap Studio and Polished Map.
-- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel.
+- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel, sleep turn counter improvement.
 - [ShiraTheMogul](https://github.com/ShiraTheMogul): Move Reminder and Move Deleter.
 - Xillicis: Most of the battle engine tutorials.
 - [ShantyTown](https://github.com/huderlem): Expanded menu icons, auto repel.
