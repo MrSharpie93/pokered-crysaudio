@@ -27,7 +27,7 @@ ENDM
 	trainer_const BIKER          ; $0A
 	trainer_const BURGLAR        ; $0B
 	trainer_const ENGINEER       ; $0C
-	trainer_const UNUSED_JUGGLER ; $0D
+	trainer_const JESSIE_JAMES   ; $0D ; ~$~CHANGED: Was duplicate Juggler/Jacky.~$~
 	trainer_const FISHER         ; $0E
 	trainer_const SWIMMER        ; $0F
 	trainer_const CUE_BALL       ; $10
@@ -62,6 +62,12 @@ ENDM
 	trainer_const CHANNELER      ; $2D
 	trainer_const AGATHA         ; $2E
 	trainer_const LANCE          ; $2F
+; ~$~ADDED: New trainers.~$~
+	trainer_const SWIMMER_F      ; $30
+	trainer_const OFFICER        ; $31
+	trainer_const GEORGE         ; $32
+	trainer_const IMAKUNI        ; $33
+	trainer_const ZINNIA         ; $34
 DEF NUM_TRAINERS EQU const_value - 1
 
 ; ~$~CHANGED: Levels/Moves trainers from RedStar/BlueStar.~$~

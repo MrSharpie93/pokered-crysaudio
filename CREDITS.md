@@ -22,8 +22,9 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - Game Freak: Basis for all sprites.
 - [E▲SY](https://www.deviantart.com/e-sy): Pokemon front/back sprites.
 - [FrenchOrange](https://www.deviantart.com/frenchorange): Development sprite reconstruction.
+- [LunaMaddalena](https://www.deviantart.com/lunamaddalena): Trainer sprites.
 - [MollyChan](https://www.spriters-resource.com/submitter/MollyChan/): Pokemon front sprites, trainer sprites.
-- [Pia Carrot](https://www.deviantart.com/piacarrot): Pokemon front sprites.
+- [Pia Carrot](https://www.deviantart.com/piacarrot): Pokemon front sprites, trainer sprites.
 - [Sharpie93](https://github.com/MrSharpie93): Pokemon back sprites, trainer sprites.
 
 Precise art credits can be found in [FRONT_CREDITS.md](FRONT_CREDITS.md), [BACK_CREDITS.md](BACK_CREDITS.md) and [TRAINER_CREDITS.md](TRAINER_CREDITS.md).

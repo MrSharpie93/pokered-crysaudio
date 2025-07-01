@@ -12,9 +12,9 @@ TrainerNames::
 	li "BIKER"
 	li "BURGLAR"
 	li "ENGINEER"
-	li "JUGGLER"
+	li "JESSIE&JAMES"
 	li "FISHERMAN"
-	li "SWIMMER"
+	li "SWIMMER♂"
 	li "CUE BALL"
 	li "GAMBLER"
 	li "BEAUTY"
@@ -47,4 +47,10 @@ TrainerNames::
 	li "CHANNELER"
 	li "AGATHA"
 	li "LANCE"
+; ~$~ADDED: New trainers.~$~
+	li "SWIMMER♀"
+	li "OFFICER"
+	li "GEORGE"
+	li "IMAKUNI?"
+	li "ZINNIA"
 	assert_list_length NUM_TRAINERS

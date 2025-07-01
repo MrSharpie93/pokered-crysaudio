@@ -12,6 +12,7 @@
 - Biker: MollyChan
 - Burglar: MollyChan
 - Engineer: MollyChan
+- Jessie, James & Meowth: MollyChan
 - Fisher: MollyChan
 - Swimmer: MollyChan
 - Cue Ball: MollyChan
@@ -46,7 +47,11 @@
 - Channeler: MollyChan
 - Agatha: MollyChan
 - Lance: MollyChan
-- Jessie, James & Meowth: MollyChan
+- Swimmer♀: Game Freak
+- Officer Jenny: Pia Carrot
+- George: Game Freak
+- Imakuni: LunaMaddalena
+- Zinnia: Pia Carrot
 
 - Protagonists (front, back and all overworld sprites): MollyChan
 - Old Man backsprite: MollyChan

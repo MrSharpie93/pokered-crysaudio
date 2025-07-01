@@ -12,7 +12,7 @@ TrainerDataPointers:
 	dw BikerData
 	dw BurglarData
 	dw EngineerData
-	dw UnusedJugglerData
+	dw JessieJamesData
 	dw FisherData
 	dw SwimmerData
 	dw CueBallData
@@ -47,6 +47,12 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+; ~$~ADDED: New trainers.~$~
+	dw SwimmerFData
+	dw OfficerData
+	dw GeorgeData
+	dw ImakuniData
+	dw ZinniaData
 	assert_table_length NUM_TRAINERS
 
 ; if first byte != LEVELS, then
@@ -310,8 +316,12 @@ EngineerData:
 	db 21, MAGNEMITE, -1
 	db 18, MAGNEMITE, MAGNEMITE, MAGNETON, -1
 
-UnusedJugglerData:
-; none
+JessieJamesData:
+; Placeholders
+	db 14, EKANS, MEOWTH, KOFFING, -1 ; Mt. Moon B2F
+	db 25, KOFFING, MEOWTH, EKANS, -1 ; Rocket Hideout B4F
+	db 27, MEOWTH, ARBOK, WEEZING, -1 ; Pokémon Tower 7F
+	db 31, WEEZING, ARBOK, MEOWTH, -1 ; Silph Co. 11F
 
 FisherData:
 ; SS Anne 2F Rooms
@@ -380,6 +390,7 @@ GamblerData:
 	db 24, GROWLITHE, VULPIX, -1
 
 BeautyData:
+SwimmerFData:
 ; Celadon Gym
 	db 21, ODDISH, BELLSPROUT, ODDISH, BELLSPROUT, -1
 	db 24, BELLSPROUT, BELLSPROUT, -1
@@ -827,3 +838,10 @@ LanceData:
 		db 60,AERODACTYL,SKY_ATTACK,REFLECT,ROCK_SLIDE,HYPER_BEAM
 		db 62,DRAGONITE,BLIZZARD,FIRE_BLAST,THUNDER,HYPER_BEAM
 	db -1
+	
+OfficerData:
+GeorgeData:
+ImakuniData:
+ZinniaData:
+	; Placeholders
+	db 5, BULBASAUR, CHARMANDER, SQUIRTLE, -1

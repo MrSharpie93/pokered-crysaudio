@@ -21,7 +21,7 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1       ; BIKER
 	move_choices 1, 3    ; BURGLAR
 	move_choices 1       ; ENGINEER
-	move_choices 1, 2    ; UNUSED_JUGGLER
+	move_choices 1       ; JESSIE_JAMES
 	move_choices 1, 3    ; FISHER
 	move_choices 1, 3    ; SWIMMER
 	move_choices         ; CUE_BALL
@@ -56,4 +56,10 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1       ; CHANNELER
 	move_choices 1       ; AGATHA
 	move_choices 1, 3    ; LANCE
+; ~$~ADDED: New trainers.~$~
+	move_choices 1, 3    ; SWIMMER_F
+	move_choices 1       ; OFFICER
+	move_choices 1, 3    ; GEORGE
+	move_choices 1, 3    ; IMAKUNI
+	move_choices 1, 3    ; ZINNIA
 	assert_list_length NUM_TRAINERS
