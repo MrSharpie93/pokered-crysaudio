@@ -380,8 +380,8 @@ WaitPlaySFX::
 ; Wait for sound to finish playing
 WaitForSoundToFinish::
 WaitSFX::
-	ld a, [wLowHealthAlarm]
-	and a
+	ld a, [wLowHealthTonePairs] ; ~$~CHANGED: Used with changes to low health alarm.~$~
+	bit 7, a ; set if low health alarm sound is currently playing
 	ret nz
 	ld a, [wSFXDontWait]
 	and a

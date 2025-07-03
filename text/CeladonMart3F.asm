@@ -66,27 +66,40 @@ _CeladonMart3FLittleBoyText::
 	done
 
 _CeladonMart3FSNESText::
-	text "It's an SNES!"
+	text "It's an N64!"
 	done
 
 _CeladonMart3FRPGText::
-	text "An RPG! There's"
-	line "no time for that!"
+	text "PAPER MARIO!"
+	
+	para "A really fun RPG,"
+	line "but there's no"
+	cont "time to play one"
+	cont "of those."
 	done
 
 _CeladonMart3FSportsGameText::
-	text "A sports game!"
-	line "Dad'll like that!"
+	text "WAYNE GRETZKY's"
+	line "3D HOCKEY!"
+	
+	para "..."
+	
+	para "...I guess Dad"
+	line "would like that."
 	done
 
 _CeladonMart3FPuzzleGameText::
-	text "A puzzle game!"
-	line "Looks addictive!"
+	text "THE NEW TETRIS!"
+	
+	para "Same as the old"
+	line "TETRIS."
 	done
 
 _CeladonMart3FFightingGameText::
-	text "A fighting game!"
-	line "Looks tough!"
+	text "#MON STADIUM!"
+	
+	para "Seeing them in 3D"
+	line "is so cool!"
 	done
 
 _CeladonMart3FCurrentFloorSignText::
@@ -95,5 +108,5 @@ _CeladonMart3FCurrentFloorSignText::
 
 _CeladonMart3FPokemonPosterText::
 	text "Red and Blue!"
-	line "Both are #MON!"
+	line "Both are colors!"
 	done

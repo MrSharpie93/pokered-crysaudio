@@ -16,7 +16,7 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
-	db HITMONCHAN, 35
+	db HITMONLEE, 45
 	db BLASTOISE, 60
 	db ARTICUNO, 57
 	db PIKACHU, 5

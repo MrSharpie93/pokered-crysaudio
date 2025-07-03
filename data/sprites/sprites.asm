@@ -67,6 +67,31 @@ SpriteSheetPointerTable:
 	overworld_sprite BrunoSprite, 12            ; SPRITE_BRUNO
 	overworld_sprite LoreleiSprite, 12          ; SPRITE_LORELEI
 	overworld_sprite SeelSprite, 12             ; SPRITE_SEEL
+; ~$~ADDED: New overworld sprites.~$~
+	overworld_sprite BlackbeltSprite, 12        ; SPRITE_BLACKBELT
+	overworld_sprite SwimmerFSprite, 12         ; SPRITE_SWIMMER_F
+	overworld_sprite BrockSprite, 12            ; SPRITE_BROCK
+	overworld_sprite MistySprite, 12            ; SPRITE_MISTY
+	overworld_sprite SurgeSprite, 12            ; SPRITE_SURGE
+	overworld_sprite ErikaSprite, 12            ; SPRITE_ERIKA
+	overworld_sprite SabrinaSprite, 12          ; SPRITE_SABRINA
+	overworld_sprite BlaineSprite, 12           ; SPRITE_BLAINE
+	overworld_sprite BillSprite, 12             ; SPRITE_BILL
+	overworld_sprite JamesSprite, 12            ; SPRITE_JAMES
+	overworld_sprite JessieSprite, 12           ; SPRITE_JESSIE
+	overworld_sprite ImakuniSprite, 12          ; SPRITE_IMAKUNI
+	overworld_sprite CaraLissSprite, 12         ; SPRITE_CARA_LISS
+	overworld_sprite ZinniaSprite, 12           ; SPRITE_ZINNIA
+	overworld_sprite PikachuSprite, 12          ; SPRITE_PIKACHU
+	overworld_sprite LaprasSprite, 12           ; SPRITE_LAPRAS
+	overworld_sprite SandshrewSprite, 12        ; SPRITE_SANDSHREW
+	overworld_sprite OddishSprite, 12           ; SPRITE_ODDISH
+	overworld_sprite BulbasaurSprite, 12        ; SPRITE_BULBASAUR
+	overworld_sprite JigglypuffSprite, 12       ; SPRITE_JIGGLYPUFF
+	overworld_sprite PoliwrathSprite, 12        ; SPRITE_POLIWRATH
+	overworld_sprite ChanseySprite, 12          ; SPRITE_CHANSEY
+	overworld_sprite CatSprite, 12              ; SPRITE_CAT
+;;;
 	overworld_sprite PokeBallSprite, 4          ; SPRITE_POKE_BALL
 	overworld_sprite FossilSprite, 4            ; SPRITE_FOSSIL
 	overworld_sprite BoulderSprite, 4           ; SPRITE_BOULDER
@@ -74,9 +99,10 @@ SpriteSheetPointerTable:
 	overworld_sprite PokedexSprite, 4           ; SPRITE_POKEDEX
 	overworld_sprite ClipboardSprite, 4         ; SPRITE_CLIPBOARD
 	overworld_sprite SnorlaxSprite, 4           ; SPRITE_SNORLAX
-	overworld_sprite OldAmberSprite, 4          ; SPRITE_UNUSED_OLD_AMBER
+	overworld_sprite SudowoodoSprite, 4         ; SPRITE_SUDOWOODO
 	overworld_sprite OldAmberSprite, 4          ; SPRITE_OLD_AMBER
-	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_1
-	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_UNUSED_GAMBLER_ASLEEP_2
+	overworld_sprite SlowpokeSprite, 4          ; SPRITE_SLOWPOKE
+	overworld_sprite RegiSprite, 4              ; SPRITE_REGI
 	overworld_sprite GamblerAsleepSprite, 4     ; SPRITE_GAMBLER_ASLEEP
+	overworld_sprite MissingnoSprite, 4         ; SPRITE_MISSINGNO
 	assert_table_length NUM_SPRITES

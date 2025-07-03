@@ -82,6 +82,9 @@ DEF HOF_TEAM_CAPACITY EQU 50
 	const EVOLVE_LEVEL ; 1
 	const EVOLVE_ITEM  ; 2
 	const EVOLVE_TRADE ; 3
+; ~$~ADDED: Red++ evolution methods.~$~
+	const EVOLVE_MAP   ; 4
+	const EVOLVE_MOVE  ; 5
 
 
 ; wMonHGrowthRate values

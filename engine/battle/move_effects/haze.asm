@@ -1,4 +1,4 @@
-HazeEffect_:
+HazeEffect_: ; ~$~CHANGED: Code from pokered-restored to improve Haze.~$~
 	ld a, $7
 ; store 7 on every stat mod
 	ld hl, wPlayerMonAttackMod
@@ -12,26 +12,13 @@ HazeEffect_:
 	ld hl, wEnemyMonUnmodifiedAttack
 	ld de, wEnemyMonAttack
 	call ResetStats
-; cure non-volatile status, but only for the target
-	ld hl, wEnemyMonStatus
-	ld de, wEnemySelectedMove
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .cureStatuses
-	ld hl, wBattleMonStatus
-	dec de ; wPlayerSelectedMove
 
-.cureStatuses
-	ld a, [hl]
-	ld [hl], $0
-	and (1 << FRZ) | SLP_MASK
-	jr z, .cureVolatileStatuses
-; prevent the Pokemon from executing a move if it was asleep or frozen
-	ld a, $ff
-	ld [de], a
-
-.cureVolatileStatuses
+;cure statuses for both pokemon
 	xor a
+	ld [wEnemyMonStatus], a 
+	ld [wEnemyToxicCounter], a	
+	ld [wPlayerToxicCounter], a	
+	ld [wBattleMonStatus], a 
 	ld [wPlayerDisabledMove], a
 	ld [wEnemyDisabledMove], a
 	ld hl, wPlayerDisabledMoveNumber

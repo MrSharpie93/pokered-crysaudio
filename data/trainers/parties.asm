@@ -170,7 +170,7 @@ JrTrainerMData:
 	db 29, NIDORAN_M, NIDORINO, -1
 
 JrTrainerFData:
-; Cerulean Gym
+; Cerulean Gym ~$~Now unused.~$~
 	db 19, GOLDEEN, -1
 ; Route 6
 	db 16, RATTATA, PIKACHU, -1
@@ -342,7 +342,7 @@ FisherData:
 	db 24, MAGIKARP, MAGIKARP, -1
 
 SwimmerData:
-; Cerulean Gym
+; Cerulean Gym ~$~Now unused.~$~
 	db 16, HORSEA, SHELLDER, -1
 ; Route 19
 	db 30, TENTACOOL, SHELLDER, -1
@@ -413,6 +413,9 @@ SwimmerFData:
 	db 29, STARYU, STARYU, STARYU, -1
 ; Route 20
 	db 30, SEADRA, HORSEA, SEADRA, -1
+; Cerulean Gym ~$~ADDED~$~
+	db 16, HORSEA, SHELLDER, -1
+	db 19, GOLDEEN, -1
 
 PsychicData:
 ; Saffron Gym

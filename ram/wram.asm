@@ -2147,13 +2147,13 @@ wDungeonWarpDestinationMap:: db
 ; which dungeon warp within the source map was used
 wWhichDungeonWarp:: db
 
-; ~$~ Use this for storing potential damage later.~$~
+wDamageIntention:: ; ~$~ ADDED: Stores crash damage.~$~
 wUnusedCardKeyGateID:: db
 
 	ds 8
 
 wStatusFlags1:: db
-	ds 1
+wLowHealthTonePairs:: db ; ~$~ADDED: Used to shut the low health alarm up.~$~
 wBeatGymFlags:: db ; redundant because it matches wObtainedBadges
 	ds 1
 wStatusFlags2:: db

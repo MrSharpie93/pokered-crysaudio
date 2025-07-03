@@ -17,7 +17,7 @@ TrainerClassDVs: ; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar
 	dvs  9,  8,  8,  8 ; BIKER
 	dvs  9,  8,  8,  8 ; BURGLAR
 	dvs  9,  8,  8,  8 ; ENGINEER
-	dvs  7,  8,  8,  8 ; SWIMMER_F
+	dvs 13,  8, 10,  8 ; JESSIE_JAMES
 	dvs  9,  8,  8,  8 ; FISHER
 	dvs  9,  8,  8,  8 ; SWIMMER
 	dvs  9,  8,  8,  8 ; CUE_BALL
@@ -33,7 +33,7 @@ TrainerClassDVs: ; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar
 	dvs  9,  8,  8,  8 ; PROF_OAK
 	dvs  9,  8,  8,  8 ; CHIEF
 	dvs  9,  8,  8,  8 ; SCIENTIST
-	dvs 13, 12, 13, 13 ; GIOVANNI
+	dvs 15, 15, 15, 15 ; GIOVANNI
 	dvs 13,  8, 10,  8 ; ROCKET
 	dvs 13,  8, 12,  8 ; COOLTRAINER_M
 	dvs  7, 12, 12,  8 ; COOLTRAINER_F
@@ -46,9 +46,15 @@ TrainerClassDVs: ; ~$~ADDED: Trainers have individual DVs, from RedStar/BlueStar
 	dvs 13, 12, 13, 13 ; BLAINE
 	dvs  7, 10, 10, 14 ; SABRINA
 	dvs  9,  8,  8,  8 ; GENTLEMAN
-	dvs 13, 13, 13, 13 ; BLUE
-	dvs 15, 13, 13, 14 ; RED
+	dvs 13, 15, 15, 15 ; BLUE
+	dvs 15, 15, 15, 15 ; RED
 	dvs  7, 15, 13, 15 ; LORELEI
 	dvs  7,  8,  8,  8 ; CHANNELER
 	dvs  7, 15, 13, 15 ; AGATHA
 	dvs 13, 12, 13, 13 ; LANCE
+; ~$~ADDED: New trainers.~$~
+	dvs  9,  8,  8,  8 ; SWIMMER_F
+	dvs  9,  8,  8,  8 ; OFFICER
+	dvs 13, 12, 13,  0 ; GEORGE
+	dvs  8, 12, 12, 10 ; IMAKUNI
+	dvs 15, 15, 15, 15 ; ZINNIA

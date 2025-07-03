@@ -134,6 +134,7 @@ StartBattle:
 	ld [wPartyGainExpFlags], a
 	ld [wPartyFoughtCurrentEnemyFlags], a
 	ld [wActionResultOrTookBattleTurn], a
+	ld [wLowHealthTonePairs], a ; shinpokerednote: FIXED: low health alarm sanity: clear low health tone tracker
 	inc a
 	ld [wFirstMonsNotOutYet], a
 	ld hl, wEnemyMon1HP
@@ -2168,9 +2169,18 @@ DisplayBattleMenu::
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
 	ld [hl], D_RIGHT | A_BUTTON ; wMenuWatchedKeys
+; ~$~CHANGED: Pressing B in wild encounters quick-selects RUN.~$~
+	ld a, [wIsInBattle]
+	dec a
+	jr nz, .leftColumn_WaitForInput_BPressedIgnore
+	ld [hl], D_RIGHT | A_BUTTON | B_BUTTON ; wMenuWatchedKeys
+.leftColumn_WaitForInput_BPressedIgnore
 	call HandleMenuInput
 	bit BIT_D_RIGHT, a
 	jr nz, .rightColumn
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
+;;;
 	jr .AButtonPressed ; the A button was pressed
 .rightColumn ; put cursor in right column of menu
 	ld a, [wBattleType]
@@ -2200,14 +2210,27 @@ DisplayBattleMenu::
 	inc hl
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
+; ~$~CHANGED: Pressing B in wild encounters quick-selects RUN.~$~
+	ld a, [wIsInBattle]
+	dec a
 	ld a, D_LEFT | A_BUTTON
+	jr nz, .rightColumn_WaitForInput_BPressedIgnore
+	ld a, D_LEFT | A_BUTTON | B_BUTTON
+.rightColumn_WaitForInput_BPressedIgnore
 	ld [hli], a ; wMenuWatchedKeys
 	call HandleMenuInput
 	bit BIT_D_LEFT, a
-	jr nz, .leftColumn ; if left was pressed, jump
+	jp nz, .leftColumn ; if left was pressed, jump
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
 	ld a, [wCurrentMenuItem]
 	add $2 ; if we're in the right column, the actual id is +2
 	ld [wCurrentMenuItem], a
+	jr .AButtonPressed
+.BButtonPressed
+	ld a, $1
+	ld [wCurrentMenuItem], a
+	jr .rightColumn
 .AButtonPressed
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wBattleType]
@@ -3910,17 +3933,20 @@ PrintMoveFailureText:
 	ret nz
 
 	; if you get here, the mon used jump kick or hi jump kick and missed
-	ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
+	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
 	                ; even if it was intended to be potential damage/8.
+
+	ld hl, wDamageIntention ; PureRGBnote: FIXED: this address now stores the damage that would have been done if it didn't miss
 	ld a, [hli]
 	ld b, [hl]
 	srl a
 	rr b
+	;srl a ; PureRGBnote: CHANGED: due to the increased base attack of hi jump kick, increase the recoil damage to 1/4 the damage it would have done
+	;rr b
 	srl a
 	rr b
-	srl a
-	rr b
+	ld hl, wDamage+1
 	ld [hl], b
 	dec hl
 	ld [hli], a
@@ -5602,6 +5628,15 @@ MoveHitTest:
 	jr nc, .moveMissed
 	ret
 .moveMissed
+;;;;;;;;;;;;;;;;;;;;
+;shinpokerednote: FIXED: if a move misses, store the damage it threatened into wDamageIntention.
+;this is so the Jump Kick effect works correctly
+	ld hl, wDamageIntention
+	ld a, [wDamage]
+	ld [hli], a
+	ld a, [wDamage + 1]
+	ld [hl], a
+;;;;;;;;;;;;;;;;;;;;
 	xor a
 	ld hl, wDamage ; zero the damage
 	ld [hli], a

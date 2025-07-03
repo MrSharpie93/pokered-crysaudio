@@ -24,7 +24,7 @@
 - Tamer: MollyChan
 - Bird Keeper: MollyChan
 - Blackbelt: MollyChan
-- Green (front and overworld): MollyChan
+- Green: MollyChan
 - Prof. Oak: MollyChan
 - Chief: Sharpie93
 - Scientist: MollyChan
@@ -53,5 +53,21 @@
 - Imakuni: LunaMaddalena
 - Zinnia: Pia Carrot
 
-- Protagonists (front, back and all overworld sprites): MollyChan
+- Protagonists: MollyChan
 - Old Man backsprite: MollyChan
+
+# Overworld Sprite Credits
+
+All overworld sprites aside from the below listed: Game Freak
+
+- Protagonists: MollyChan
+- Green: MollyChan
+- Misty: FrenchOrange
+- Erika: Game Freak (some edits by Sharpie93)
+- Sabrina: Game Freak (some edits by Sharpie93)
+- Cara Liss: Sharpie93
+- Cat: FrenchOrange
+- Jigglypuff: Game Freak (some edits by Sharpie93)
+- Missingno.: Sharpie93
+- Regi: Sharpie93
+- Zinnia: Sharpie93

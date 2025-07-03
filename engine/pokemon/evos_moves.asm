@@ -82,13 +82,18 @@ Evolution_PartyMonLoop: ; loop over party mons
 	jr z, Evolution_PartyMonLoop ; if trading, go the next mon
 	ld a, b
 	cp EVOLVE_ITEM
-	jr z, .checkItemEvo
+	jp z, .checkItemEvo
 	ld a, [wForceEvolution]
 	and a
 	jr nz, Evolution_PartyMonLoop
 	ld a, b
 	cp EVOLVE_LEVEL
-	jr z, .checkLevel
+	jp z, .checkLevel
+	cp EVOLVE_MAP ; ~$~ADDED: Red++ evolution methods.~$~
+	jp z, .checkMapEvo
+	cp EVOLVE_MOVE
+	jp z, .checkMoveEvo
+	
 .checkTradeEvo
 	ld a, [wLinkState]
 	cp LINK_STATE_TRADING
@@ -99,6 +104,26 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, Evolution_PartyMonLoop ; if so, go the next mon
 	jr .doEvolution
+ ; ~$~ADDED: Red++ evolution methods.~$~
+.checkMapEvo
+	ld a, [hli]
+	ld b, a ; Map to evolve on
+	ld a, [wCurMap]
+	cp b ; Are we on the right map?
+	jp nz, .nextEvoEntry2
+	ld a, [wLoadedMonLevel] ; This has to be in "a" for the evolution to work properly
+	jp .doEvolution; Do evolution
+	
+.checkMoveEvo
+	ld a, [hli] ; get the move number
+	ld [wMoveNum],a ; store it here to hang onto it
+	push hl ; We don't want to lose our place
+	call CheckForMove ; New routine based on the one used by TMs
+	pop hl ; Get our place back
+	jp nc, .nextEvoEntry2 ; If they didn't know the move, go to next evolution
+	ld a, [wLoadedMonLevel] ; This has to be in "a" for the evolution to work properly
+	jp .doEvolution; If they did know it, do the evolution
+;;;	
 .checkItemEvo ; ~$~FIXED: No weird stone-related evolutions.~$~
 	ld a, [wIsInBattle] ; are we in battle?
 	and a
@@ -174,7 +199,11 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld bc, BASE_DATA_SIZE
 	call AddNTimes
 	ld de, wMonHeader
-	call CopyData
+; ~$~CHANGED: Red++ code for moving BaseStats elsewhere.~$~
+; New thing to move BaseStats into another bank
+	ld a, BANK(BaseStats)
+	call FarCopyData
+;End new thing
 	ld a, [wCurSpecies]
 	ld [wMonHIndex], a
 	pop af
@@ -631,6 +660,27 @@ PrepareRelearnableMoveList:: ; I don't know how the fuck you're a single colon i
 	ld [hl], a
 	ld hl, wMoveBuffer
 	ld [hl], c
+	ret
+
+; ~$~ADDED: Red++ function for evolving by move.~$~	
+CheckForMove: ; New routine used by EV_MOVE
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMon1Moves
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld a, [wMoveNum]
+	ld b, a
+	ld c, NUM_MOVES
+.loop
+	ld a, [hli]
+	cp b
+	jr z, .known
+	dec c
+	jr nz, .loop
+	and a
+	ret
+.known
+	scf
 	ret
 	
 INCLUDE "data/pokemon/evos_moves.asm"

@@ -62,17 +62,42 @@
 	const SPRITE_BRUNO                   ; $3a
 	const SPRITE_LORELEI                 ; $3b
 	const SPRITE_SEEL                    ; $3c
+; ~$~ADDED: New overworld sprites.~$~
+	const SPRITE_BLACKBELT               ; $3d
+	const SPRITE_SWIMMER_F               ; $3e
+	const SPRITE_BROCK                   ; $3f
+	const SPRITE_MISTY                   ; $40
+	const SPRITE_SURGE                   ; $41
+	const SPRITE_ERIKA                   ; $42
+	const SPRITE_SABRINA                 ; $43
+	const SPRITE_BLAINE                  ; $44
+	const SPRITE_BILL                    ; $45
+	const SPRITE_JAMES                   ; $46
+	const SPRITE_JESSIE                  ; $47
+	const SPRITE_IMAKUNI                 ; $48
+	const SPRITE_CARA_LISS               ; $49
+	const SPRITE_ZINNIA                  ; $4a
+	const SPRITE_PIKACHU                 ; $4b
+	const SPRITE_LAPRAS                  ; $4c
+	const SPRITE_SANDSHREW               ; $4d
+	const SPRITE_ODDISH                  ; $4e
+	const SPRITE_BULBASAUR               ; $4f
+	const SPRITE_JIGGLYPUFF              ; $50
+	const SPRITE_POLIWRATH               ; $51
+	const SPRITE_CHANSEY                 ; $52
+	const SPRITE_CAT                     ; $53
 DEF FIRST_STILL_SPRITE EQU const_value
-	const SPRITE_POKE_BALL               ; $3d
-	const SPRITE_FOSSIL                  ; $3e
-	const SPRITE_BOULDER                 ; $3f
-	const SPRITE_PAPER                   ; $40
-	const SPRITE_POKEDEX                 ; $41
-	const SPRITE_CLIPBOARD               ; $42
-	const SPRITE_SNORLAX                 ; $43
-	const SPRITE_UNUSED_OLD_AMBER        ; $44
-	const SPRITE_OLD_AMBER               ; $45
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_1 ; $46
-	const SPRITE_UNUSED_GAMBLER_ASLEEP_2 ; $47
-	const SPRITE_GAMBLER_ASLEEP          ; $48
+	const SPRITE_POKE_BALL               ; $54
+	const SPRITE_FOSSIL                  ; $55
+	const SPRITE_BOULDER                 ; $56
+	const SPRITE_PAPER                   ; $57
+	const SPRITE_POKEDEX                 ; $58
+	const SPRITE_CLIPBOARD               ; $59
+	const SPRITE_SNORLAX                 ; $5a
+	const SPRITE_SUDOWOODO               ; $5b ; ~$~CHANGED: Was unused Old Amber copy.~$~
+	const SPRITE_OLD_AMBER               ; $5c
+	const SPRITE_SLOWPOKE                ; $5d ; ~$~CHANGED: Was unused drunk old man copy 1.~$~
+	const SPRITE_REGI                    ; $5e ; ~$~CHANGED: Was unused drunk old man copy 2.~$~
+	const SPRITE_GAMBLER_ASLEEP          ; $5f
+	const SPRITE_MISSINGNO               ; $60 ; ~$~ADDED: New stationary overworld sprite.~$~
 DEF NUM_SPRITES EQU const_value - 1
