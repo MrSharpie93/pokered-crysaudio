@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,13,15
+	m_tutor 17
 	m_tutor 0
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     RAGE,         MEGA_DRAIN,   SOLARBEAM,    DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         SKULL_BASH,   REST,         \
-	     SUBSTITUTE,   CUT
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      GIGA_DRAIN,   \
+	     SOLARBEAM,    \
+	     DIG,          \
+	     X_SCISSOR,    DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     SLUDGE_BOMB,  AERIAL_ACE,   \
+	     BULLET_SEED,  REST,         \
+	     \
+	     CUT,          FLASH
 	; end
 
 	db BANK(ParasPicFront)

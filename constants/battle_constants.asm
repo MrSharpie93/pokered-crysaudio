@@ -78,7 +78,7 @@ DEF EFFECTIVENESS_MASK EQU %01111111
 
 ; wPlayerBattleStatus1 or wEnemyBattleStatus1 bit flags
 	const_def
-	const STORING_ENERGY           ; 0 ; Bide
+	const PROTECTING_SELF          ; 0 ; ~$~ Was STORING_ENERGY.~$~
 	const THRASHING_ABOUT          ; 1 ; Thrash, Petal Dance
 	const ATTACKING_MULTIPLE_TIMES ; 2 ; e.g. Double Kick, Fury Attack
 	const FLINCHED                 ; 3
@@ -95,7 +95,7 @@ DEF EFFECTIVENESS_MASK EQU %01111111
 	const_skip                ; 3 ; unused
 	const HAS_SUBSTITUTE_UP   ; 4
 	const NEEDS_TO_RECHARGE   ; 5 ; Hyper Beam
-	const USING_RAGE          ; 6
+	const CURSED              ; 6 ; ~$~ Was USING_RAGE.~$~
 	const SEEDED              ; 7 ; Leech Seed
 
 ; wPlayerBattleStatus3 or wEnemyBattleStatus3 bit flags
@@ -104,3 +104,4 @@ DEF EFFECTIVENESS_MASK EQU %01111111
 	const HAS_LIGHT_SCREEN_UP ; 1
 	const HAS_REFLECT_UP      ; 2
 	const TRANSFORMED         ; 3
+	const HAS_SAFEGUARD_UP    ; 4 ; ~$~ADDED~$~

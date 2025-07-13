@@ -11,18 +11,24 @@
 	dw CubonePicFront, CubonePicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,7,8
+	m_tutor 9,10,13
+	m_tutor 17,18,20,22,24
+	m_tutor 29,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         EARTHQUAKE,   \
-	     FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     FIRE_BLAST,   SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
+	tmhm DRAIN_PUNCH,  SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      FOCUS_BLAST,  \
+	     IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(CubonePicFront)

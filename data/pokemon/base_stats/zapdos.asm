@@ -11,17 +11,24 @@
 	dw ZapdosPicFront, ZapdosPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13,14
+	m_tutor 19,21
+	m_tutor 26,27,30
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         THUNDERBOLT,  THUNDER,      MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         SWIFT,        SKY_ATTACK,   \
-	     REST,         THUNDER_WAVE, SUBSTITUTE,   FLY,          FLASH
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     SCALD,        HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     FLASH_CANNON, THUNDERBOLT,  THUNDER,      \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     HURRICANE,    REST,         THUNDER_WAVE, \
+	     STEEL_WING,   \
+	     FLY,          FLASH
 	; end
 
 	db BANK(ZapdosPicFront)

@@ -11,18 +11,24 @@
 	dw MachampPicFront, MachampPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,8
+	m_tutor 9,10,13
+	m_tutor 18,20,22
+	m_tutor 28,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
-	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         METRONOME,    FIRE_BLAST,   SKULL_BASH,   \
-	     REST,         ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
+; tm/hm learnset
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  POISON_JAB,   FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(MachampPicFront)

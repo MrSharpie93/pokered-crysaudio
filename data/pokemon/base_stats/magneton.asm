@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,12,13,14
+	m_tutor 19
+	m_tutor 26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   RAGE,         \
-	     THUNDERBOLT,  THUNDER,      TELEPORT,     MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         SWIFT,        REST,         THUNDER_WAVE, \
-	     SUBSTITUTE,   FLASH
+	tmhm CURSE,        \
+	     TOXIC,        GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      \
+	     FLASH_CANNON, THUNDERBOLT,  THUNDER,      \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     REST,         THUNDER_WAVE, \
+	     \
+	     FLASH
 	; end
 
 	db BANK(MagnetonPicFront)

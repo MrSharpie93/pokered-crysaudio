@@ -11,18 +11,24 @@
 	dw PrimeapePicFront, PrimeapePicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,8
+	m_tutor 9,10,13,14
+	m_tutor 17,18,19,20,22
+	m_tutor 26,28,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   PAY_DAY,      SUBMISSION,   COUNTER,      \
-	     SEISMIC_TOSS, RAGE,         THUNDERBOLT,  THUNDER,      DIG,          \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         METRONOME,    SWIFT,        \
-	     SKULL_BASH,   REST,         ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     EARTHQUAKE,   FISSURE,      DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  POISON_JAB,   \
+	     SLUDGE_BOMB,  ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(PrimeapePicFront)

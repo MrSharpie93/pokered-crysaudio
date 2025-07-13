@@ -11,20 +11,24 @@
 	dw NidokingPicFront, NidokingPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,7,8
+	m_tutor 9,10,13,14,16
+	m_tutor 17,18,19,20,22,23,24
+	m_tutor 25,29,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        HORN_DRILL,   BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     \
-	     BLIZZARD,     HYPER_BEAM,   PAY_DAY,      SUBMISSION,   COUNTER,      \
-	     SEISMIC_TOSS, RAGE,         THUNDERBOLT,  THUNDER,      EARTHQUAKE,   \
-	     FISSURE,      MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     FIRE_BLAST,   SKULL_BASH,   REST,         ROCK_SLIDE,   SUBSTITUTE,   \
-	     SURF,         STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     EARTHQUAKE,   FISSURE,      DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   FLAMETHROWER, \
+	     SLUDGE_BOMB,  FIRE_BLAST,   ROCK_TOMB,    \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   ICICLE_CRASH, \
+	     CUT,          SURF,         STRENGTH
 	; end
 
 	db BANK(NidokingPicFront)

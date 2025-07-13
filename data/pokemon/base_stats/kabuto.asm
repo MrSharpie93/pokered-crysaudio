@@ -11,17 +11,24 @@
 	dw KabutoPicFront, KabutoPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,7
+	m_tutor 10,13
+	m_tutor 20,24
+	m_tutor 25
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         REST,         SUBSTITUTE,   \
-	     SURF
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      GIGA_DRAIN,   \
+	     \
+	     DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     ROCK_TOMB,    AERIAL_ACE,   \
+	     REST,         \
+	     ROCK_SLIDE,   \
+	     SURF,         WATERFALL
 	; end
 
 	db BANK(KabutoPicFront)

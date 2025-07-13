@@ -11,17 +11,24 @@
 	dw OnixPicFront, OnixPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,12,13,16
+	m_tutor 18,20,22,24
+	m_tutor 31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  \
-	     BIDE,         SELFDESTRUCT, SKULL_BASH,   REST,         EXPLOSION,    \
-	     ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
+; tm/hm learnset
+	tmhm CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      \
+	     FLASH_CANNON, IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  \
+	     ROCK_TOMB,    \
+	     REST,         \
+	     ROCK_SLIDE,   \
+	     CUT,          STRENGTH
 	; end
 
 	db BANK(OnixPicFront)

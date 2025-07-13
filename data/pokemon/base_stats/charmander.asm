@@ -11,18 +11,24 @@
 	dw CharmanderPicFront, CharmanderPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,3,4,5,6,8
+	m_tutor 9,10,13,16
+	m_tutor 17,18,22
+	m_tutor 26,29,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   SWORDS_DANCE, MEGA_KICK,    TOXIC,        BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         DRAGON_RAGE,  DIG,          MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   \
-	     REST,         SUBSTITUTE,   CUT,          STRENGTH
+	tmhm DRAIN_PUNCH,  DRAGON_CLAW,  SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      FOCUS_BLAST,  \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     CUT,          STRENGTH,     FLASH
 	; end
 
 	db BANK(CharmanderPicFront)

@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,13
+	m_tutor 19
+	m_tutor 26,29
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   \
+	     REST,         \
+	     \
+	     STRENGTH,     FLASH
 	; end
 
 	db BANK(RapidashPicFront)

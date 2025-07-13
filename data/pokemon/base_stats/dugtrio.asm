@@ -11,16 +11,24 @@
 	dw DugtrioPicFront, DugtrioPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13
+	m_tutor 17,18,20,22,24
 	m_tutor 0
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
-	     RAGE,         EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         REST,         ROCK_SLIDE,   SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      \
+	     \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  \
+	     SLUDGE_BOMB,  ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     CUT
 	; end
 
 	db BANK(DugtrioPicFront)

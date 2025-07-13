@@ -11,17 +11,24 @@
 	dw HitmonleePicFront, HitmonleePicBack
 
 	; move tutor compatibility flags
-	m_tutor 5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 5,8
+	m_tutor 9,10,13
+	m_tutor 18,20,22
+	m_tutor 26,28,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         METRONOME,    SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     \
+	     EARTHQUAKE,   FISSURE,      \
+	     DOUBLE_TEAM,  POISON_JAB,   \
+	     ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(HitmonleePicFront)

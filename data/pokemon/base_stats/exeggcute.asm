@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
+	m_tutor 10,11,12,13,15
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 32
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         PSYCHIC_M,    \
-	     TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     SELFDESTRUCT, EGG_BOMB,     REST,         PSYWAVE,      EXPLOSION,    \
-	     SUBSTITUTE
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      GIGA_DRAIN,   \
+	     SOLARBEAM,    \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     SLUDGE_BOMB,  \
+	     BULLET_SEED,  REST,         \
+	     \
+	     STRENGTH,     FLASH
 	; end
 
 	db BANK(ExeggcutePicFront)

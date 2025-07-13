@@ -11,19 +11,24 @@
 	dw CharizardPicFront, CharizardPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,3,4,5,6,8
+	m_tutor 9,10,13,16
+	m_tutor 17,18,22,24
+	m_tutor 26,29,30,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   SWORDS_DANCE, MEGA_KICK,    TOXIC,        BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      \
-	     SEISMIC_TOSS, RAGE,         DRAGON_RAGE,  EARTHQUAKE,   FISSURE,      \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE,   \
-	     CUT,          STRENGTH
+	tmhm DRAIN_PUNCH,  DRAGON_CLAW,  SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, HURRICANE,    REST,         \
+	     STEEL_WING,   ROCK_SLIDE,   \
+	     CUT,          FLY,          STRENGTH,     FLASH
 	; end
 
 	db BANK(CharizardPicFront)

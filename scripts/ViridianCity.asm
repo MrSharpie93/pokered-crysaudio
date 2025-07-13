@@ -232,44 +232,12 @@ ViridianCityOldManSleepyText:
 	text_end
 
 ViridianCityFisherText:
-	text_asm
-	CheckEvent EVENT_GOT_TM42
-	jr nz, .got_item
-	ld hl, .YouCanHaveThisText
-	call PrintText
-	lb bc, TM_DREAM_EATER, 1
-	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM42Text
-	call PrintText
-	SetEvent EVENT_GOT_TM42
-	jr .done
-.bag_full
-	ld hl, .TM42NoRoomText
-	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM42ExplanationText
-	call PrintText
-.done
-	jp TextScriptEnd
-
-.YouCanHaveThisText:
 	text_far ViridianCityFisherYouCanHaveThisText
-	text_end
-
-.ReceivedTM42Text:
-	text_far _ViridianCityFisherReceivedTM42Text
-	sound_get_item_2
-	text_end
-
-.TM42ExplanationText:
-	text_far _ViridianCityFisherTM42ExplanationText
-	text_end
-
-.TM42NoRoomText:
-	text_far _ViridianCityFisherTM42NoRoomText
-	text_end
+	text_asm
+	ld a, 11 ; DREAM_EATER
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
 
 ViridianCityOldManText:
 	text_asm

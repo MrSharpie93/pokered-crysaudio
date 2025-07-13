@@ -11,17 +11,24 @@
 	dw EkansPicFront, EkansPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13,16
+	m_tutor 18,23
+	m_tutor 31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     MEGA_DRAIN,   EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         SKULL_BASH,   REST,         ROCK_SLIDE,   \
-	     SUBSTITUTE,   STRENGTH
+	tmhm CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      GIGA_DRAIN,   \
+	     IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     SLUDGE_BOMB,  ROCK_TOMB,    \
+	     REST,         \
+	     DARK_PULSE,   ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(EkansPicFront)

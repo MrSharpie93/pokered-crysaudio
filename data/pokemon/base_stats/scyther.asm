@@ -11,16 +11,24 @@
 	dw ScytherPicFront, ScytherPicBack
 
 	; move tutor compatibility flags
+	m_tutor 8
+	m_tutor 10,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 26,30
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
-	     RAGE,         MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   CUT
+	tmhm SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     \
+	     \
+	     X_SCISSOR,    DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     ZEN_HEADBUTT, HURRICANE,    REST,         \
+	     STEEL_WING,   \
+	     CUT,          FLY,          STRENGTH
 	; end
 
 	db BANK(ScytherPicFront)

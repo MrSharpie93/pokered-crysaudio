@@ -11,18 +11,23 @@
 	dw HypnoPicFront, HypnoPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
+	m_tutor 1,2,3,4,5,8
+	m_tutor 9,10,11,13,14
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 27,28
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         PSYCHIC_M,    TELEPORT,     MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         METRONOME,    SKULL_BASH,   DREAM_EATER,  \
-	     REST,         THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   SUBSTITUTE,   \
+; tm/hm learnset
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      FOCUS_BLAST,  \
+	     \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     ZEN_HEADBUTT, REST,         THUNDER_WAVE, \
+	     DARK_PULSE,   DAZZLINGLEAM, \
 	     FLASH
 	; end
 

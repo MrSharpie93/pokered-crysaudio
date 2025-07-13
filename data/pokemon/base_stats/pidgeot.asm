@@ -11,16 +11,23 @@
 	dw PidgeotPicFront, PidgeotPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13
+	m_tutor 21
+	m_tutor 26,30
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SWIFT,        SKY_ATTACK,   REST,         SUBSTITUTE,   \
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      \
+	     \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     HURRICANE,    REST,         \
+	     STEEL_WING,   \
 	     FLY
 	; end
 

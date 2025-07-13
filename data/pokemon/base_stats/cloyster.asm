@@ -11,18 +11,25 @@
 	dw CloysterPicFront, CloysterPicBack
 
 	; move tutor compatibility flags
+	m_tutor 7
+	m_tutor 10,12,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,26,27
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    \
-	     ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   RAGE,         TELEPORT,     \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         SELFDESTRUCT, \
-	     SWIFT,        REST,         EXPLOSION,    TRI_ATTACK,   SUBSTITUTE,   \
-	     SURF
+	tmhm CURSE,        \
+	     TOXIC,        GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     \
+	     DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     \
+	     REST,         \
+	     ICICLE_CRASH, \
+	     CUT,          SURF,         \
+	     WATERFALL
 	; end
 
 	db BANK(CloysterPicFront)

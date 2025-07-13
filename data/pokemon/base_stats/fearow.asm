@@ -11,16 +11,24 @@
 	dw FearowPicFront, FearowPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13
+	m_tutor 21
+	m_tutor 26,30,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     SWIFT,        SKY_ATTACK,   REST,         SUBSTITUTE,   FLY
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      \
+	     \
+	     \
+	     DOUBLE_TEAM,  \
+	     AERIAL_ACE,   \
+	     HURRICANE,    REST,         \
+	     STEEL_WING,   \
+	     FLY
 	; end
 
 	db BANK(FearowPicFront)

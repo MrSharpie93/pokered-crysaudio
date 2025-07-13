@@ -14,7 +14,7 @@ _CeladonGymErikaPreBattleText::
 	para "I teach the art of"
 	line "flower arranging."
 	cont "My #MON are of"
-	cont "the grass-type."
+	cont "the GRASS-type."
 
 	para "Oh, I'm sorry, I"
 	line "had no idea that"
@@ -79,8 +79,8 @@ _CeladonGymReceivedTM21Text::
 _TM21ExplanationText:: ;~$~CHANGED: Added extra line about TM from FRLG.~$~
 	text_start
 
-	para "TM21 contains"
-	line "MEGA DRAIN."
+	para "TM19 contains"
+	line "GIGA DRAIN."
 
 	para "Half the damage"
 	line "it inflicts is"
@@ -93,15 +93,14 @@ _TM21ExplanationText:: ;~$~CHANGED: Added extra line about TM from FRLG.~$~
 	done
 
 _CeladonGymTM21NoRoomText::
-	text "You should make"
-	line "room for this."
+	text "You should arrange" ; pun
+	line "space for this."
 	done
 
-_CeladonGymBattleText2::
-	text "Hey!"
-
-	para "You are not"
-	line "allowed in here!"
+_CeladonGymBattleText2:: ; ~$~CHANGED: Crystal text used to acommodate masc/fem protag choices.~$~
+	text "Do you think a"
+	line "girls-only GYM"
+	cont "is rare?"
 	done
 
 _CeladonGymEndBattleText2::
@@ -126,18 +125,19 @@ _CeladonGymEndBattleText3::
 	prompt
 
 _CeladonGymAfterBattleText3::
-	text "Grass-type #MON"
+	text "GRASS-type #MON"
 	line "are tough against"
-	cont "the water-type!"
+	cont "the WATER-type!"
 
 	para "They also have an"
-	line "edge on rock and"
-	cont "ground #MON!"
+	line "edge on ROCK and"
+	cont "GROUND #MON!"
 	done
 
-_CeladonGymBattleText4::
-	text "Aren't you the"
-	line "peeping Tom?"
+_CeladonGymBattleText4:: ; ~$~CHANGED: Crystal text used to acommodate masc/fem protag choices.~$~
+	text "Were you looking"
+	line "at these flowers"
+	cont "or at me?"
 	done
 
 _CeladonGymEndBattleText4::
@@ -145,14 +145,23 @@ _CeladonGymEndBattleText4::
 	line "in shock!"
 	prompt
 
-_CeladonGymAfterBattleText4::
-	text "Oh, you weren't"
-	line "peeping? We get a"
-	cont "lot of gawkers!"
+_CeladonGymAfterBattleText4:: ; ~$~CHANGED: Modified text to hint at fighting pervert outside.~$~
+	text "You know, our GYM"
+	line "gets a lot of un-"
+	cont "wanted attention."
+	
+	para "Like that weird"
+	line "old man gawking"
+	cont "at us through"
+	cont "the window."
+	
+	para "I wish someone"
+	line "would deal with"
+	cont "him..."
 	done
 
 _CeladonGymBattleText5::
-	text "Look at my grass"
+	text "Look at my GRASS"
 	line "#MON!"
 
 	para "They're so easy"
@@ -164,7 +173,7 @@ _CeladonGymEndBattleText5::
 	prompt
 
 _CeladonGymAfterBattleText5::
-	text "We only use grass-"
+	text "We only use GRASS-"
 	line "type #MON at"
 	cont "our GYM!"
 
@@ -175,7 +184,7 @@ _CeladonGymAfterBattleText5::
 
 _CeladonGymBattleText6::
 	text "Don't bring any"
-	line "bugs or fire"
+	line "BUG or FIRE-type"
 	cont "#MON in here!"
 	done
 

@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,13
+	m_tutor 19,22
+	m_tutor 26,29
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     DRAGON_RAGE,  DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      FOCUS_BLAST,  SAFEGUARD,    \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     STRENGTH
 	; end
 
 	db BANK(GrowlithePicFront)

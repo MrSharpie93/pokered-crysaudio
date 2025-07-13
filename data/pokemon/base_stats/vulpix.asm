@@ -12,15 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
+	m_tutor 10,11,13,15
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 26,29
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     DIG,          PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   \
+	     ZEN_HEADBUTT, REST,         \
+	     DARK_PULSE,   \
+	     FLASH
 	; end
 
 	db BANK(VulpixPicFront)

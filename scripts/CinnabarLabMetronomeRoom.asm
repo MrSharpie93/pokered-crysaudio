@@ -9,45 +9,13 @@ CinnabarLabMetronomeRoom_TextPointers:
 	dw_const CinnabarLabMetronomeRoomPCText,         TEXT_CINNABARLABMETRONOMEROOM_PC_MONITOR
 	dw_const CinnabarLabMetronomeRoomAmberPipeText,  TEXT_CINNABARLABMETRONOMEROOM_AMBER_PIPE
 
-CinnabarLabMetronomeRoomScientist1Text:
-	text_asm
-	CheckEvent EVENT_GOT_TM35
-	jr nz, .got_item
-	ld hl, .Text
-	call PrintText
-	lb bc, TM_METRONOME, 1
-	call GiveItem
-	jr nc, .bag_full
-	ld hl, .ReceivedTM35Text
-	call PrintText
-	SetEvent EVENT_GOT_TM35
-	jr .done
-.bag_full
-	ld hl, .TM35NoRoomText
-	call PrintText
-	jr .done
-.got_item
-	ld hl, .TM35ExplanationText
-	call PrintText
-.done
-	jp TextScriptEnd
-
-.Text:
+CinnabarLabMetronomeRoomScientist1Text: ; ~$~Will be moved.~$~
 	text_far _CinnabarLabMetronomeRoomScientist1Text
-	text_end
-
-.ReceivedTM35Text:
-	text_far _CinnabarLabMetronomeRoomScientist1ReceivedTM35Text
-	sound_get_item_1
-	text_end
-
-.TM35ExplanationText:
-	text_far _CinnabarLabMetronomeRoomScientist1TM35ExplanationText
-	text_end
-
-.TM35NoRoomText:
-	text_far _CinnabarLabMetronomeRoomScientist1TM35NoRoomText
-	text_end
+	text_asm
+	ld a, 28 ; METRONOME
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
 
 CinnabarLabMetronomeRoomScientist2Text:
 	text_far _CinnabarLabMetronomeRoomScientist2Text

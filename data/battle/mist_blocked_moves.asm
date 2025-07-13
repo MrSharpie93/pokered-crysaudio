@@ -1,0 +1,15 @@
+MistBlockedMoves:
+	db SAND_ATTACK
+	db TAIL_WHIP
+	db LEER
+	db GROWL
+	db SMOKESCREEN
+	db STRING_SHOT
+	db SCREECH
+	db FLASH
+	db COTTON_SPORE
+	db SCARY_FACE
+	db CHARM
+	db FAKE_TEARS
+	db METAL_SOUND
+	db -1

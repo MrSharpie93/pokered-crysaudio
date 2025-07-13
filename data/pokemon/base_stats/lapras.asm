@@ -11,19 +11,25 @@
 	dw LaprasPicFront, LaprasPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 7
+	m_tutor 10,11,13,14,16
+	m_tutor 18,22
+	m_tutor 25,27
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
-	     RAGE,         SOLARBEAM,    DRAGON_RAGE,  THUNDERBOLT,  THUNDER,      \
-	     PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     SKULL_BASH,   REST,         PSYWAVE,      SUBSTITUTE,   SURF,         \
-	     STRENGTH
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     SOLARBEAM,    IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     FISSURE,      PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     ZEN_HEADBUTT, REST,         \
+	     DAZZLINGLEAM, ICICLE_CRASH, \
+	     SURF,         STRENGTH,     FLASH,        \
+	     WATERFALL
 	; end
 
 	db BANK(LaprasPicFront)

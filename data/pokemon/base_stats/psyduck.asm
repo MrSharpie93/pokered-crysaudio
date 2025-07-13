@@ -11,18 +11,25 @@
 	dw PsyduckPicFront, PsyduckPicBack
 
 	; move tutor compatibility flags
-	m_tutor 2,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 2,4,5,6,7,8
+	m_tutor 9,10,13
+	m_tutor 17
+	m_tutor 25,26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     PAY_DAY,      SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   SURF,         STRENGTH
+; tm/hm learnset
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     IRON_TAIL,    \
+	     DIG,          PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     SURF,         STRENGTH,     FLASH,        \
+	     WATERFALL
 	; end
 
 	db BANK(PsyduckPicFront)

@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
+	m_tutor 10,13,15
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 26,27,30,32
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm RAZOR_WIND,   WHIRLWIND,    TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   RAGE,         MEGA_DRAIN,   SOLARBEAM,    PSYCHIC_M,    \
-	     TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     SWIFT,        REST,         PSYWAVE,      SUBSTITUTE
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      GIGA_DRAIN,   SAFEGUARD,    \
+	     SOLARBEAM,    \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     HURRICANE,    REST,         \
+	     DAZZLINGLEAM, \
+	     FLY,          FLASH
 	; end
 
 	db BANK(ButterfreePicFront)

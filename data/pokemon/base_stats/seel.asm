@@ -11,17 +11,24 @@
 	dw SeelPicFront, SeelPicBack
 
 	; move tutor compatibility flags
+	m_tutor 7
+	m_tutor 10,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     PAY_DAY,      \
-	     RAGE,         MIMIC,        DOUBLE_TEAM,  BIDE,         SKULL_BASH,   \
-	     REST,         SUBSTITUTE,   SURF,         STRENGTH
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      SAFEGUARD,    \
+	     IRON_TAIL,    \
+	     SHADOW_BALL,  \
+	     DOUBLE_TEAM,  \
+	     \
+	     ZEN_HEADBUTT, REST,         \
+	     DAZZLINGLEAM, ICICLE_CRASH, \
+	     SURF,         STRENGTH,     WATERFALL
 	; end
 
 	db BANK(SeelPicFront)

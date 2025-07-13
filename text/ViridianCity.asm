@@ -73,30 +73,28 @@ ViridianCityFisherYouCanHaveThisText::
 	para "I had this dream"
 	line "about a DROWZEE"
 	cont "eating my dream."
-	cont "What's this?"
-	cont "Where did this TM"
-	cont "come from?"
+	
+	para "And..."
 
-	para "This is spooky!"
-	line "Here, you can"
-	cont "have this TM."
+	para "I learned how to"
+	line "eat dreams."
 	prompt
 
-_ViridianCityFisherReceivedTM42Text::
-	text "<PLAYER> received"
-	line "TM42!@"
-	text_end
+;_ViridianCityFisherReceivedTM42Text::
+;	text "<PLAYER> received"
+;	line "TM42!@"
+;	text_end
 
-_ViridianCityFisherTM42ExplanationText::
-	text "TM42 contains"
-	line "DREAM EATER..."
-	cont "...Snore..."
-	done
+;_ViridianCityFisherTM42ExplanationText::
+;	text "TM42 contains"
+;	line "DREAM EATER..."
+;	cont "...Snore..."
+;	done
 
-_ViridianCityFisherTM42NoRoomText::
-	text "You have too much"
-	line "stuff already."
-	done
+;_ViridianCityFisherTM42NoRoomText::
+;	text "You have too much"
+;	line "stuff already."
+;	done
 
 _ViridianCityOldManHadMyCoffeeNowText::
 	text "Ahh, I've had my"

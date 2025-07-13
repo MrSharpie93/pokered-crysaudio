@@ -54,14 +54,14 @@ IF DEF(_BLUE)
 ENDC
 	db "@"
 
-PrizeMenuTMsEntries:
-	db TM_DRAGON_RAGE
+PrizeMenuTMsEntries: ; Replace these later, now that TMs are infinite.
+	db TM_GIGA_IMPACT
 	db TM_HYPER_BEAM
-	db TM_SUBSTITUTE
+	db TM_DRAGON_CLAW
 	db "@"
 
 PrizeMenuTMsCost:
-	bcd2 3300
 	bcd2 5500
-	bcd2 7700
+	bcd2 5500
+	bcd2 4500
 	db "@"

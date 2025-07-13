@@ -11,19 +11,24 @@
 	dw GengarPicFront, GengarPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,7,8
+	m_tutor 9,10,11,12,13,15
+	m_tutor 17,23
+	m_tutor 28,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         MEGA_DRAIN,   THUNDERBOLT,  THUNDER,      PSYCHIC_M,    \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         METRONOME,    SELFDESTRUCT, \
-	     SKULL_BASH,   DREAM_EATER,  REST,         PSYWAVE,      EXPLOSION,    \
-	     SUBSTITUTE,   STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  GIGA_DRAIN,   \
+	     THUNDERBOLT,  THUNDER,      \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  POISON_JAB,   \
+	     SLUDGE_BOMB,  WILL_O_WISP,  \
+	     REST,         THUNDER_WAVE, \
+	     DARK_PULSE,   DAZZLINGLEAM, \
+	     STRENGTH
 	; end
 
 	db BANK(GengarPicFront)

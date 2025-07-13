@@ -26,7 +26,7 @@ _PewterGymBrockWaitTakeThisText::
 
 _PewterGymReceivedTM34Text::
 	text "<PLAYER> received"
-	line "TM34!@"
+	line "TM39!@"
 	text_end
 
 _TM34ExplanationText:: ; ~$~CHANGED: Updated Brock's speech about TMs to reflect them being infinite-use.~$~
@@ -42,13 +42,12 @@ _TM34ExplanationText:: ; ~$~CHANGED: Updated Brock's speech about TMs to reflect
 	cont "use them however"
 	cont "you like!"
 
-	para "TM34 contains"
-	line "BIDE!"
+	para "TM39 contains"
+	line "ROCK TOMB!"
 
-	para "Your #MON will"
-	line "absorb damage in"
-	cont "battle then pay"
-	cont "it back double!"
+	para "It hurls boulders"
+	line "at the foe and"
+	cont "lowers its SPEED."
 	done
 
 _PewterGymTM34NoRoomText::

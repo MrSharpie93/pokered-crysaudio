@@ -2292,7 +2292,9 @@ IsCryMove: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld a, [wAnimationID]
 	cp GROWL
 	jr z, .CryMove
-	cp ROAR
+	cp HOWL
+	jr z, .CryMove
+	cp DISARM_VOICE ; ~$~ADDED~$~
 	jr z, .CryMove
 	and a ; clear carry
 	ret

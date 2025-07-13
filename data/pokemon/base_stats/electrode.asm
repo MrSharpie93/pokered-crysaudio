@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,12,13,14,15
+	m_tutor 19
+	m_tutor 26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    HYPER_BEAM,   RAGE,         THUNDERBOLT,  \
-	     THUNDER,      TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SELFDESTRUCT, SWIFT,        SKULL_BASH,   REST,         \
-	     THUNDER_WAVE, EXPLOSION,    SUBSTITUTE,   FLASH
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      \
+	     FLASH_CANNON, THUNDERBOLT,  THUNDER,      \
+	     SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     REST,         THUNDER_WAVE, \
+	     DAZZLINGLEAM, \
+	     FLASH
 	; end
 
 	db BANK(ElectrodePicFront)

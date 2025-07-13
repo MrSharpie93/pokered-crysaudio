@@ -11,20 +11,24 @@
 	dw RhydonPicFront, RhydonPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,7,8
+	m_tutor 9,10,13,14,16
+	m_tutor 17,18,20,22,24
+	m_tutor 31
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        HORN_DRILL,   BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     \
-	     BLIZZARD,     HYPER_BEAM,   PAY_DAY,      SUBMISSION,   COUNTER,      \
-	     SEISMIC_TOSS, RAGE,         THUNDERBOLT,  THUNDER,      EARTHQUAKE,   \
-	     FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     FIRE_BLAST,   SKULL_BASH,   REST,         ROCK_SLIDE,   SUBSTITUTE,   \
-	     SURF,         STRENGTH
+	tmhm DRAIN_PUNCH,  DRAGON_CLAW,  SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  POISON_JAB,   FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   ICICLE_CRASH, \
+	     CUT,          SURF,         STRENGTH
 	; end
 
 	db BANK(RhydonPicFront)

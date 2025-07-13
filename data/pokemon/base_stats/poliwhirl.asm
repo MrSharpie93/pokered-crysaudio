@@ -11,19 +11,24 @@
 	dw PoliwhirlPicFront, PoliwhirlPicBack
 
 	; move tutor compatibility flags
-	m_tutor 2,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 2,4,5,6,7,8
+	m_tutor 9,10,13
+	m_tutor 18,24
+	m_tutor 25,28
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         EARTHQUAKE,   \
-	     FISSURE,      PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  BIDE,         \
-	     METRONOME,    SKULL_BASH,   REST,         PSYWAVE,      SUBSTITUTE,   \
-	     SURF,         STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      \
+	     \
+	     EARTHQUAKE,   FISSURE,      DIG,          PSYCHIC_M,    \
+	     DOUBLE_TEAM,  \
+	     \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     SURF,         STRENGTH,     WATERFALL
 	; end
 
 	db BANK(PoliwhirlPicFront)

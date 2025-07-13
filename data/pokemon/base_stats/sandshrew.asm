@@ -11,18 +11,24 @@
 	dw SandshrewPicFront, SandshrewPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,8
+	m_tutor 9,10,13
+	m_tutor 17,18,20,22,24
+	m_tutor 26
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     SUBMISSION,   SEISMIC_TOSS, RAGE,         EARTHQUAKE,   FISSURE,      \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         ROCK_SLIDE,   SUBSTITUTE,   CUT,          \
-	     STRENGTH
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      SAFEGUARD,    \
+	     IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     X_SCISSOR,    DOUBLE_TEAM,  POISON_JAB,   \
+	     ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     CUT,          STRENGTH
 	; end
 
 	db BANK(SandshrewPicFront)

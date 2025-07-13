@@ -63,7 +63,7 @@ Route4SignText:
 Route4Hiker2Text:
 	text_far _MegaPunchGuyText
 	text_asm
-	ld a, 4
+	ld a, 4 ; MEGA_PUNCH
 	ld [wWhichTrade], a
 	callfar MoveTutorScript
 	jp TextScriptEnd
@@ -71,7 +71,7 @@ Route4Hiker2Text:
 Route4Hiker3Text:
 	text_far _MegaKickGuyText
 	text_asm
-	ld a, 5
+	ld a, 5 ; MEGA_KICK
 	ld [wWhichTrade], a
 	callfar MoveTutorScript
 	jp TextScriptEnd

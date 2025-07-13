@@ -858,6 +858,11 @@ _HurtByLeechSeedText::
 	text "LEECH SEED saps"
 	line "<USER>!"
 	prompt
+	
+_HurtByCurseText::
+	text "<USER>'s"
+	line "hurt by CURSE!"
+	prompt
 
 _EnemyMonFaintedText::
 	text "Enemy @"
@@ -1067,6 +1072,16 @@ _AttackContinuesText::
 _CantMoveText::
 	text "<USER>"
 	line "can't move!"
+	prompt
+	
+_IceMeltedText::
+	text "<USER>"
+	line "was defrosted!"
+	prompt
+	
+_MonFreedText::
+	text "<USER> is"
+	line "no longer trapped!"
 	prompt
 
 _MoveIsDisabledText::

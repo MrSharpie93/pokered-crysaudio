@@ -11,18 +11,24 @@
 	dw GyaradosPicFront, GyaradosPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 7
+	m_tutor 10,13,14,16
+	m_tutor 18,20,22,24
+	m_tutor 25,26,29,30,31
 	db GROWTH_SLOW ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   RAGE,         \
-	     DRAGON_RAGE,  THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         FIRE_BLAST,   SKULL_BASH,   REST,         \
-	     SUBSTITUTE,   SURF,         STRENGTH
+; tm/hm learnset
+	tmhm CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     EARTHQUAKE,   FISSURE,      \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, HURRICANE,    REST,         THUNDER_WAVE, \
+	     DARK_PULSE,   ROCK_SLIDE,   ICICLE_CRASH, \
+	     FLY,          SURF,         STRENGTH,     WATERFALL
 	; end
 
 	db BANK(GyaradosPicFront)

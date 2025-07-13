@@ -8,8 +8,8 @@
 	const NO_MOVE      ; 00
 	const POUND        ; 01
 	const KARATE_CHOP  ; 02
-	const DOUBLESLAP   ; 03 DOUBLE_HIT
-	const COMET_PUNCH  ; 04 BULLET_PUNCH
+	const DOUBLE_HIT   ; 03 was DOUBLESLAP
+	const BULLET_PUNCH ; 04 was COMET_PUNCH
 	const MEGA_PUNCH   ; 05
 	const PAY_DAY      ; 06
 	const FIRE_PUNCH   ; 07
@@ -23,24 +23,24 @@
 	const CUT          ; 0f
 	const GUST         ; 10
 	const WING_ATTACK  ; 11
-	const WHIRLWIND    ; 12 HURRICANE
+	const HURRICANE    ; 12 was WHIRLWIND
 	const FLY          ; 13
 	const BIND         ; 14 also WRAP
-	const SLAM         ; 15 BREAK_SWIPE
+	const BREAK_SWIPE  ; 15 was SLAM
 	const VINE_WHIP    ; 16
 	const STOMP        ; 17
 	const DOUBLE_KICK  ; 18
 	const MEGA_KICK    ; 19
-	const JUMP_KICK    ; 1a BLAZE_KICK
+	const BLAZE_KICK   ; 1a was JUMP_KICK
 	const ROLLING_KICK ; 1b
 	const SAND_ATTACK  ; 1c
 	const HEADBUTT     ; 1d
 	const HORN_ATTACK  ; 1e
 	const FURY_ATTACK  ; 1f also FURY_SWIPES
-	const HORN_DRILL   ; 20 SMART_STRIKE
+	const SMART_STRIKE ; 20 was HORN_DRILL
 	const TACKLE       ; 21
 	const BODY_SLAM    ; 22
-	const WRAP         ; 23 WHIRLPOOL
+	const WHIRLPOOL    ; 23 was WRAP
 	const TAKE_DOWN    ; 24
 	const THRASH       ; 25
 	const DOUBLE_EDGE  ; 26
@@ -51,7 +51,7 @@
 	const LEER         ; 2b
 	const BITE         ; 2c
 	const GROWL        ; 2d
-	const ROAR         ; 2e HOWL
+	const HOWL         ; 2e was ROAR
 	const SING         ; 2f
 	const SUPERSONIC   ; 30
 	const SONICBOOM    ; 31
@@ -72,11 +72,11 @@
 	const PECK         ; 40
 	const DRILL_PECK   ; 41
 	const SUBMISSION   ; 42 sorta-kinda also SUPERPOWER, CLOSE_COMBAT
-	const LOW_KICK     ; 43 LOW_SWEEP
+	const LOW_SWEEP    ; 43 was LOW_KICK
 	const COUNTER      ; 44
 	const SEISMIC_TOSS ; 45
 	const STRENGTH     ; 46
-	const ABSORB       ; 47 GIGA_DRAIN
+	const GIGA_DRAIN   ; 47 was ABSORB
 	const MEGA_DRAIN   ; 48
 	const LEECH_SEED   ; 49
 	const GROWTH       ; 4a
@@ -87,7 +87,7 @@
 	const SLEEP_POWDER ; 4f
 	const PETAL_DANCE  ; 50
 	const STRING_SHOT  ; 51
-	const DRAGON_RAGE  ; 52 DRAGONBREATH
+	const DRAGONBREATH ; 52 was DRAGON_RAGE
 	const FIRE_SPIN    ; 53
 	const THUNDERSHOCK ; 54
 	const THUNDERBOLT  ; 55
@@ -104,7 +104,7 @@
 	const MEDITATE     ; 60
 	const AGILITY      ; 61
 	const QUICK_ATTACK ; 62
-	const RAGE         ; 63 OUTRAGE
+	const OUTRAGE      ; 63 was RAGE
 	const TELEPORT     ; 64
 	const NIGHT_SHADE  ; 65
 	const MIMIC        ; 66
@@ -115,14 +115,14 @@
 	const MINIMIZE     ; 6b
 	const SMOKESCREEN  ; 6c
 	const CONFUSE_RAY  ; 6d
-	const WITHDRAW     ; 6e IRON_DEFENSE
-	const DEFENSE_CURL ; 6f PROTECT
+	const IRON_DEFENSE ; 6e was WITHDRAW
+	const PROTECT      ; 6f was DEFENSE_CURL
 	const BARRIER      ; 70
 	const LIGHT_SCREEN ; 71
 	const HAZE         ; 72
 	const REFLECT      ; 73
 	const FOCUS_ENERGY ; 74
-	const BIDE         ; 75 METEOR_MASH
+	const METEOR_MASH  ; 75 was BIDE
 	const METRONOME    ; 76
 	const MIRROR_MOVE  ; 77 also COPYCAT
 	const SELFDESTRUCT ; 78
@@ -135,35 +135,35 @@
 	const WATERFALL    ; 7f
 	const CLAMP        ; 80
 	const SWIFT        ; 81
-	const SKULL_BASH   ; 82 GIGA_IMPACT
-	const SPIKE_CANNON ; 83 ICICLE_SPEAR
-	const CONSTRICT    ; 84 ASTONISH
+	const GIGA_IMPACT  ; 82 was SKULL_BASH
+	const ICICLE_SPEAR ; 83 was SPIKE_CANNON
+	const ASTONISH     ; 84 was CONSTRICT
 	const AMNESIA      ; 85
-	const KINESIS      ; 86 COSMIC_POWER
+	const COSMIC_POWER ; 86 was KINESIS
 	const SOFTBOILED   ; 87 also MILK_DRINK
 	const HI_JUMP_KICK ; 88
 	const GLARE        ; 89
 	const DREAM_EATER  ; 8a
 	const POISON_GAS   ; 8b
-	const BARRAGE      ; 8c BULLET_SEED
+	const BULLET_SEED  ; 8c was BARRAGE
 	const LEECH_LIFE   ; 8d
 	const LOVELY_KISS  ; 8e
 	const SKY_ATTACK   ; 8f also BRAVE_BIRD
 	const TRANSFORM    ; 90
-	const BUBBLE       ; 91 WATER_PULSE
+	const WATER_PULSE  ; 91 was BUBBLE
 	const DIZZY_PUNCH  ; 92
 	const SPORE        ; 93
 	const FLASH        ; 94
-	const PSYWAVE      ; 95 ZEN_HEADBUTT
+	const ZEN_HEADBUTT ; 95 was PSYWAVE
 	const SPLASH       ; 96
 	const ACID_ARMOR   ; 97
 	const CRABHAMMER   ; 98
 	const EXPLOSION    ; 99
-	const FURY_SWIPES  ; 9a DRAGON_CLAW
+	const DRAGON_CLAW  ; 9a was FURY_SWIPES
 	const BONEMERANG   ; 9b
 	const REST         ; 9c
 	const ROCK_SLIDE   ; 9d
-	const HYPER_FANG   ; 9e POISON_FANG
+	const POISON_FANG  ; 9e was HYPER_FANG
 	const SHARPEN      ; 9f works like HONE_CLAWS
 	const CONVERSION   ; a0
 	const TRI_ATTACK   ; a1

@@ -11,16 +11,23 @@
 	dw GastlyPicFront, GastlyPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,7 ; Gastly can learn the elemental punches via breeding or tutoring...somehow.
+	m_tutor 10,11,12,13,15
+	m_tutor 23
+	m_tutor 31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        RAGE,         MEGA_DRAIN,   THUNDERBOLT,  THUNDER,      \
-	     PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  BIDE,         SELFDESTRUCT, \
-	     DREAM_EATER,  REST,         PSYWAVE,      EXPLOSION,    SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      FOCUS_BLAST,  GIGA_DRAIN,   \
+	     THUNDERBOLT,  THUNDER,      \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  \
+	     SLUDGE_BOMB,  WILL_O_WISP,  \
+	     REST,         THUNDER_WAVE, \
+	     DARK_PULSE,   DAZZLINGLEAM
 	; end
 
 	db BANK(GastlyPicFront)

@@ -11,18 +11,24 @@
 	dw MagmarPicFront, MagmarPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,3,4,5,6,8
+	m_tutor 9,10,13
+	m_tutor 24
+	m_tutor 28,29,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         PSYCHIC_M,    TELEPORT,     MIMIC,        DOUBLE_TEAM,  \
-	     BIDE,         METRONOME,    FIRE_BLAST,   SKULL_BASH,   REST,         \
-	     PSYWAVE,      SUBSTITUTE,   STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     SOLARBEAM,    IRON_TAIL,    \
+	     PSYCHIC_M,    \
+	     DOUBLE_TEAM,  FLAMETHROWER, \
+	     WILL_O_WISP,  FIRE_BLAST,   \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     STRENGTH,     FLASH
 	; end
 
 	db BANK(MagmarPicFront)

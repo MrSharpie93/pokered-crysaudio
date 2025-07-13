@@ -7,24 +7,24 @@ _CeladonMart3FClerkTM18PreReceiveText::
 	cont "useful!"
 	prompt
 
-_CeladonMart3FClerkReceivedTM18Text::
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
+;_CeladonMart3FClerkReceivedTM18Text::
+;	text "<PLAYER> received"
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!@"
+;	text_end
 
-_CeladonMart3FClerkTM18ExplanationText::
-	text "TM18 is COUNTER!"
-	line "Not like the one"
-	cont "I'm leaning on,"
-	cont "mind you!"
-	done
+;_CeladonMart3FClerkTM18ExplanationText::
+;	text "TM18 is COUNTER!"
+;	line "Not like the one"
+;	cont "I'm leaning on,"
+;	cont "mind you!"
+;	done
 
-_CeladonMart3FClerkTM18NoRoomText::
-	text "Your pack is full"
-	line "of items!"
-	done
+;_CeladonMart3FClerkTM18NoRoomText::
+;	text "Your pack is full"
+;	line "of items!"
+;	done
 
 _CeladonMart3FGameBoyKid1Text::
 	text "Captured #MON"

@@ -146,7 +146,7 @@ AIMoveChoiceModification1:
 	jr .nextMove
 
 StatusAilmentMoveEffects:
-	db EFFECT_01 ; unused sleep effect
+	db BURN_EFFECT
 	db SLEEP_EFFECT
 	db POISON_EFFECT
 	db PARALYZE_EFFECT
@@ -174,7 +174,7 @@ AIMoveChoiceModification2:
 	ld a, [wEnemyMoveEffect]
 	cp ATTACK_UP1_EFFECT
 	jr c, .nextMove
-	cp BIDE_EFFECT
+	cp BURN_EFFECT ; ~$~Use effect that occupies BIDE_EFFECT's old slot.~$~
 	jr c, .preferMove
 	cp ATTACK_UP2_EFFECT
 	jr c, .nextMove

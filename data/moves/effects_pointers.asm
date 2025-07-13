@@ -1,7 +1,7 @@
 MoveEffectPointerTable:
 ; entries correspond to *_EFFECT constants
 	table_width 2, MoveEffectPointerTable
-	dw SleepEffect               ; EFFECT_01
+	dw CurseEffect               ; CURSE_EFFECT
 	dw PoisonEffect              ; POISON_SIDE_EFFECT1
 	dw DrainHPEffect             ; DRAIN_HP_EFFECT
 	dw FreezeBurnParalyzeEffect  ; BURN_SIDE_EFFECT1
@@ -26,11 +26,11 @@ MoveEffectPointerTable:
 	dw StatModifierDownEffect    ; EVASION_DOWN1_EFFECT
 	dw ConversionEffect          ; CONVERSION_EFFECT
 	dw HazeEffect                ; HAZE_EFFECT
-	dw BideEffect                ; BIDE_EFFECT
+	dw BurnEffect                ; BURN_EFFECT
 	dw ThrashPetalDanceEffect    ; THRASH_PETAL_DANCE_EFFECT
 	dw SwitchAndTeleportEffect   ; SWITCH_AND_TELEPORT_EFFECT
 	dw TwoToFiveAttacksEffect    ; TWO_TO_FIVE_ATTACKS_EFFECT
-	dw TwoToFiveAttacksEffect    ; EFFECT_1E
+	dw ProtectEffect             ; PROTECT_EFFECT
 	dw FlinchSideEffect          ; FLINCH_SIDE_EFFECT1
 	dw SleepEffect               ; SLEEP_EFFECT
 	dw PoisonEffect              ; POISON_SIDE_EFFECT2
@@ -74,17 +74,33 @@ MoveEffectPointerTable:
 	dw StatModifierDownEffect    ; SPECIAL_DOWN_SIDE_EFFECT
 	dw StatModifierDownEffect    ; unused effect
 	dw StatModifierDownEffect    ; unused effect
-	dw StatModifierDownEffect    ; unused effect
-	dw StatModifierDownEffect    ; unused effect
+	dw FlinchSideEffect          ; FLINCH_SIDE_EFFECT3
+	dw RapidSpinEffect           ; RAPID_SPIN_EFFECT
 	dw ConfusionSideEffect       ; CONFUSION_SIDE_EFFECT
 	dw TwoToFiveAttacksEffect    ; TWINEEDLE_EFFECT
-	dw NULL                      ; unused effect
+	dw ReflectLightScreenEffect  ; SAFEGUARD_EFFECT
 	dw SubstituteEffect          ; SUBSTITUTE_EFFECT
 	dw HyperBeamEffect           ; HYPER_BEAM_EFFECT
-	dw RageEffect                ; RAGE_EFFECT
+	dw TriAttackEffect           ; TRI_ATTACK_EFFECT
 	dw MimicEffect               ; MIMIC_EFFECT
 	dw NULL                      ; METRONOME_EFFECT
 	dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	dw SplashEffect              ; SPLASH_EFFECT
 	dw DisableEffect             ; DISABLE_EFFECT
+; ~$~ADDED: New move effects.~$~
+	dw AttackUpSideEffect        ; ATTACK_UP_SIDE_EFFECT
+	dw DefenseUpSideEffect       ; DEFENSE_UP_SIDE_EFFECT
+	dw AllStatsUpEffect          ; ALL_STATS_UP_EFFECT
+	dw HoneClawsEffect           ; HONE_CLAWS_EFFECT
+	dw DragonDanceEffect         ; DRAGON_DANCE_EFFECT
+	dw GrowthEffect              ; GROWTH_EFFECT
+	dw CosmicPowerEffect         ; COSMIC_POWER_EFFECT
+	dw RecoilStatusEffect        ; RECOIL_STATUS_EFFECT
+	dw ConfusionEffect           ; DYNAMICPUNCH_EFFECT
+	dw ParalyzeEffect            ; ZAP_CANNON_EFFECT
+	dw BurnEffect                ; INFERNO_EFFECT
+	dw FangEffect                ; FIRE_FANG_EFFECT
+	dw FangEffect                ; ICE_FANG_EFFECT
+	dw FangEffect                ; THUNDER_FANG_EFFECT
+	dw HealBellEffect            ; HEAL_BELL_EFFECT
 	assert_table_length NUM_MOVE_EFFECTS

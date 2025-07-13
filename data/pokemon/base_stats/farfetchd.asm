@@ -11,17 +11,24 @@
 	dw FarfetchdPicFront, FarfetchdPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,13
+	m_tutor 21
+	m_tutor 26,30
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm RAZOR_WIND,   SWORDS_DANCE, WHIRLWIND,    TOXIC,        BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE,   CUT,          FLY
+	tmhm SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      \
+	     IRON_TAIL,    \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     AERIAL_ACE,   \
+	     HURRICANE,    REST,         \
+	     STEEL_WING,   \
+	     CUT,          FLY
 	; end
 
 	db BANK(FarfetchdPicFront)

@@ -1,4 +1,4 @@
-ParalyzeEffect_: ; ~$~CHANGED: Heavily modified to disallow paralysis of Electric-types, as well as provide Grass-types immunity to Stun Spore.~$~
+BurnEffect_:
 	ld hl, wEnemyMonStatus
 	ld de, wPlayerMoveType
 	ldh a, [hWhoseTurn]
@@ -10,7 +10,7 @@ ParalyzeEffect_: ; ~$~CHANGED: Heavily modified to disallow paralysis of Electri
 	ld a, [hl]
 	and a ; does the target already have a status ailment?
 	jr nz, .didntAffect
-; ~$~ADDED: Checks to prevent inflicting paralysis on a safeguarding or substituted opponent.~$~
+; ~$~ADDED: Checks to prevent inflicting burn on a safeguarding or substituted opponent.~$~
 	push hl
 	callfar CheckTargetSubstitute
 	pop hl
@@ -20,29 +20,15 @@ ParalyzeEffect_: ; ~$~CHANGED: Heavily modified to disallow paralysis of Electri
 	pop hl
 	jr nz, .didntAffect
 ;;;
-; check if the target is immune due to types
 	ld b, h
 	ld c, l
 	inc bc
 	ld a, [bc]
-	cp ELECTRIC
+	cp FIRE
 	jr z, .doesntAffect
 	inc bc
 	ld a, [bc]
-	cp ELECTRIC
-	jr z, .doesntAffect
-	dec bc
-	ld a, [de]
-	cp GRASS
-	jr z, .grassCheck
-	cp ELECTRIC
-	jr nz, .hitTest
-	ld a, [bc]
-	cp GROUND
-	jr z, .doesntAffect
-	inc bc
-	ld a, [bc]
-	cp GROUND
+	cp FIRE
 	jr z, .doesntAffect
 .hitTest
 	push hl
@@ -51,12 +37,12 @@ ParalyzeEffect_: ; ~$~CHANGED: Heavily modified to disallow paralysis of Electri
 	ld a, [wMoveMissed]
 	and a
 	jr nz, .didntAffect
-	set PAR, [hl]
-	callfar QuarterSpeedDueToParalysis
+	set BRN, [hl]
+	callfar HalveAttackDueToBurn
 	ld c, 30
 	call DelayFrames
 	callfar PlayCurrentMoveAnimation
-	jpfar PrintMayNotAttackText
+	jpfar PrintBurnedText
 .didntAffect
 	ld c, 50
 	call DelayFrames
@@ -65,12 +51,3 @@ ParalyzeEffect_: ; ~$~CHANGED: Heavily modified to disallow paralysis of Electri
 	ld c, 50
 	call DelayFrames
 	jpfar PrintDoesntAffectText
-.grassCheck
-	ld a, [bc]
-	cp GRASS
-	jr z, .doesntAffect
-	inc bc
-	ld a, [bc]
-	cp GRASS
-	jr z, .doesntAffect
-	jr .hitTest

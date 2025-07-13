@@ -11,19 +11,25 @@
 	dw BlastoisePicFront, BlastoisePicBack
 
 	; move tutor compatibility flags
-	m_tutor 2,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 2,4,5,6,7,8
+	m_tutor 9,10,13,16
+	m_tutor 18,22,24
+	m_tutor 25,27,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         SKULL_BASH,   REST,         SUBSTITUTE,   \
-	     SURF,         STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     FLASH_CANNON, IRON_TAIL,    \
+	     EARTHQUAKE,   FISSURE,      DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     ROCK_TOMB,    \
+	     ZEN_HEADBUTT, REST,         \
+	     DARK_PULSE,   ROCK_SLIDE,   ICICLE_CRASH, \
+	     SURF,         STRENGTH,     \
+	     WATERFALL
 	; end
 
 	db BANK(BlastoisePicFront)

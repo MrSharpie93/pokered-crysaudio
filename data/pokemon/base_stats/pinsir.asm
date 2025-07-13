@@ -11,17 +11,24 @@
 	dw PinsirPicFront, PinsirPicBack
 
 	; move tutor compatibility flags
-	m_tutor 4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 4,5,6,8
+	m_tutor 9,10,13
+	m_tutor 18,20,22
+	m_tutor 31
 	db GROWTH_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         REST,         SUBSTITUTE,   CUT,          \
-	     STRENGTH
+	tmhm DRAIN_PUNCH,  SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      FOCUS_BLAST,  \
+	     \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     X_SCISSOR,    DOUBLE_TEAM,  REFLECT,      \
+	     ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     CUT,          STRENGTH
 	; end
 
 	db BANK(PinsirPicFront)

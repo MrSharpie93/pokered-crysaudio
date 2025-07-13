@@ -11,17 +11,24 @@
 	dw NidorinoPicFront, NidorinoPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,8
+	m_tutor 10,13,14
+	m_tutor 17,23
+	m_tutor 25,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         \
-	     THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SKULL_BASH,   REST,         SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   FLAMETHROWER, \
+	     SLUDGE_BOMB,  FIRE_BLAST,   \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     CUT,          STRENGTH
 	; end
 
 	db BANK(NidorinoPicFront)

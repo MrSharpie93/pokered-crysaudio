@@ -42,44 +42,12 @@ CeladonCityGramps2Text:
 	text_end
 
 CeladonCityGramps3Text:
-	text_asm
-	CheckEvent EVENT_GOT_TM41
-	jr nz, .gotTM41
-	ld hl, .Text
-	call PrintText
-	lb bc, TM_SOFTBOILED, 1
-	call GiveItem
-	jr c, .Success
-	ld hl, .TM41NoRoomText
-	call PrintText
-	jr .Done
-.Success
-	ld hl, .ReceivedTM41Text
-	call PrintText
-	SetEvent EVENT_GOT_TM41
-	jr .Done
-.gotTM41
-	ld hl, .TM41ExplanationText
-	call PrintText
-.Done
-	jp TextScriptEnd
-
-.Text:
 	text_far _CeladonCityGramps3Text
-	text_end
-
-.ReceivedTM41Text:
-	text_far _CeladonCityGramps3ReceivedTM41Text
-	sound_get_item_1
-	text_end
-
-.TM41ExplanationText:
-	text_far _CeladonCityGramps3TM41ExplanationText
-	text_end
-
-.TM41NoRoomText:
-	text_far _CeladonCityGramps3TM41NoRoomText
-	text_end
+	text_asm
+	ld a, 30 ; RAZOR_WIND
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
 
 CeladonCityFisherText:
 	text_far _CeladonCityFisherText

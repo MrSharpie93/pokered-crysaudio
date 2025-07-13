@@ -11,17 +11,24 @@
 	dw PoliwagPicFront, PoliwagPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,7
+	m_tutor 10,13
+	m_tutor 24
+	m_tutor 25
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         PSYCHIC_M,    \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         SKULL_BASH,   REST,         \
-	     PSYWAVE,      SUBSTITUTE,   SURF
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      \
+	     \
+	     PSYCHIC_M,    \
+	     DOUBLE_TEAM,  \
+	     \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     SURF,         WATERFALL
 	; end
 
 	db BANK(PoliwagPicFront)

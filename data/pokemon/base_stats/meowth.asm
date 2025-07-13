@@ -11,17 +11,24 @@
 	dw MeowthPicFront, MeowthPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6
+	m_tutor 10,11,13,14
+	m_tutor 17,23
+	m_tutor 25,26
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    PAY_DAY,      RAGE,         THUNDERBOLT,  THUNDER,      \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        SKULL_BASH,   \
-	     REST,         SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   \
+	     PROTECT,      \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  \
+	     AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         \
+	     DARK_PULSE,   \
+	     CUT,          FLASH
 	; end
 
 	db BANK(MeowthPicFront)

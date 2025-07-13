@@ -11,17 +11,24 @@
 	dw RattataPicFront, RattataPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,7,8
+	m_tutor 10,13,14
+	m_tutor 19,23
+	m_tutor 26,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    BLIZZARD,     RAGE,         THUNDERBOLT,  THUNDER,      \
-	     DIG,          MIMIC,        DOUBLE_TEAM,  BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  \
+	     \
+	     BULLET_SEED,  ZEN_HEADBUTT, REST,         THUNDER_WAVE, \
+	     \
+	     CUT,          STRENGTH
 	; end
 
 	db BANK(RattataPicFront)

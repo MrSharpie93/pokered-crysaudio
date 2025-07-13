@@ -11,17 +11,24 @@
 	dw OmanytePicFront, OmanytePicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,7
+	m_tutor 9,10,13
+	m_tutor 20,24
+	m_tutor 25
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         REST,         SUBSTITUTE,   \
-	     SURF
+	tmhm CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      \
+	     \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     ROCK_TOMB,    \
+	     REST,         \
+	     ROCK_SLIDE,   ICICLE_CRASH, \
+	     SURF,         FLASH,        WATERFALL
 	; end
 
 	db BANK(OmanytePicFront)

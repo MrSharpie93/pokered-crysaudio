@@ -11,18 +11,24 @@
 	dw GolemPicFront, GolemPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,3,4,5,6,8
+	m_tutor 9,10,12,13
+	m_tutor 18,20,22,24
+	m_tutor 28,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, \
-	     RAGE,         EARTHQUAKE,   FISSURE,      DIG,          MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         METRONOME,    SELFDESTRUCT, FIRE_BLAST,   \
-	     REST,         EXPLOSION,    ROCK_SLIDE,   SUBSTITUTE,   STRENGTH
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      \
+	     \
+	     EARTHQUAKE,   FISSURE,      DIG,          \
+	     DOUBLE_TEAM,  FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    \
+	     ZEN_HEADBUTT, REST,         \
+	     ROCK_SLIDE,   \
+	     STRENGTH
 	; end
 
 	db BANK(GolemPicFront)

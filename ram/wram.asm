@@ -1297,7 +1297,7 @@ wCriticalHitOrOHKO:: db
 
 wMoveMissed:: db
 
-; always 0
+wPlayerProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
 wPlayerStatsToDouble:: db
 ; always 0
 wPlayerStatsToHalve:: db
@@ -1306,7 +1306,7 @@ wPlayerBattleStatus1:: db
 wPlayerBattleStatus2:: db
 wPlayerBattleStatus3:: db
 
-; always 0
+wEnemyProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
 wEnemyStatsToDouble:: db
 ; always 0
 wEnemyStatsToHalve:: db

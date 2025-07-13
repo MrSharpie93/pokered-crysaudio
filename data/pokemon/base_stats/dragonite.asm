@@ -11,19 +11,24 @@
 	dw DragonitePicFront, DragonitePicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,5,6,7
+	m_tutor 9,10,13,14,16
+	m_tutor 18,19,20,22,24
+	m_tutor 25,26,29,30
 	db GROWTH_SLOW ; growth rate
 
-	; tm/hm learnset
-	tmhm RAZOR_WIND,   TOXIC,        HORN_DRILL,   BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     HYPER_BEAM,   RAGE,         DRAGON_RAGE,  THUNDERBOLT,  THUNDER,      \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         FIRE_BLAST,   \
-	     SWIFT,        SKULL_BASH,   REST,         THUNDER_WAVE, SUBSTITUTE,   \
-	     SURF,         STRENGTH
+; tm/hm learnset
+	tmhm DRAIN_PUNCH,  DRAGON_CLAW,  CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      FOCUS_BLAST,  SAFEGUARD,    \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     EARTHQUAKE,   FISSURE,      \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     FIRE_BLAST,   ROCK_TOMB,    AERIAL_ACE,   \
+	     ZEN_HEADBUTT, HURRICANE,    REST,         THUNDER_WAVE, \
+	     STEEL_WING,   ROCK_SLIDE,   \
+	     CUT,          FLY,          SURF,         STRENGTH,     WATERFALL
 	; end
 
 	db BANK(DragonitePicFront)

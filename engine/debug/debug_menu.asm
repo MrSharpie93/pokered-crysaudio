@@ -60,10 +60,10 @@ IF DEF(_DEBUG)
 	jp StartNewGameDebug
 
 DebugBattlePlayerName:
-	db "Tom@"
+	db "Ass@"
 
 DebugBattleRivalName:
-	db "Juerry@"
+	db "Guarry@"
 
 DebugMenuOptions:
 	db   "FIGHT"
@@ -72,9 +72,26 @@ ELSE
 	ret
 ENDC
 
+; ~$~CHANGED: Ported over KEP's Debug Battle code, so I can actually make use of it.~$~
 TestBattle: ; unreferenced except in _DEBUG
 .loop
 	call GBPalNormal
+	
+	; Get some debug items.
+	ld hl, wNumBagItems
+	ld de, BattleDebugItemsList
+.items_loop
+	ld a, [de]
+	cp -1
+	jr z, .items_end
+	ld [wCurItem], a
+	inc de
+	ld a, [de]
+	inc de
+	ld [wItemQuantity], a
+	call AddItemToInventory
+	jr .items_loop
+.items_end
 
 	; Don't mess around with obedience.
 	ld a, 1 << BIT_EARTHBADGE
@@ -83,12 +100,6 @@ TestBattle: ; unreferenced except in _DEBUG
 	ld hl, wStatusFlags7
 	set BIT_TEST_BATTLE, [hl]
 
-	; wNumBagItems and wBagItems are not initialized here,
-	; and their garbage values happen to act as if EXP_ALL
-	; is in the bag at the end of the test battle.
-	; pokeyellow fixes this by initializing them with a
-	; list of items.
-
 	; Reset the party.
 	ld hl, wPartyCount
 	xor a
@@ -96,8 +107,8 @@ TestBattle: ; unreferenced except in _DEBUG
 	dec a
 	ld [hl], a
 
-	; Give the player a level 20 Rhydon.
-	ld a, RHYDON
+	; Player's Pokemon.
+	ld a, BLASTOISE
 	ld [wCurPartySpecies], a
 	ld a, 20
 	ld [wCurEnemyLevel], a
@@ -105,16 +116,44 @@ TestBattle: ; unreferenced except in _DEBUG
 	ld [wMonDataLocation], a
 	ld [wCurMap], a
 	call AddPartyMon
+	
+	; This function gives you a way to waste a turn, never know when you'll need it.
+	; Alternatively, add a move to test.
+	ld hl, wPartyMon1Moves
+	ld a, ZAP_CANNON ; New move animation test
+	ld [hli], a
+	ld a, INFERNO ; New move animation test
+	ld [hli], a
+	ld a, DYNAMICPUNCH ; New move animation test
+	ld [hli], a
+	ld a, PROTECT ; Skip turn, New move animation test
+	ld [hli], a
 
-	; Fight against a level 20 Rhydon.
-	ld a, RHYDON
+	; Opponent's Pokemon.
+	ld a, METAPOD
 	ld [wCurOpponent], a
+	ld a, 50 ; Set the level you want here.
+	ld [wCurEnemyLevel], a
 
 	predef InitOpponent
 
-	; When the battle ends, do it all again.
-	; There are some graphical quirks in SGB mode.
+	; When the battle ends,
+	; do it all again.
 	ld a, 1
 	ld [wUpdateSpritesEnabled], a
 	ldh [hAutoBGTransferEnabled], a
 	jr .loop
+
+BattleDebugItemsList:
+	db X_ACCURACY, 99
+	db FULL_RESTORE, 99
+	db MAX_ELIXER, 99
+	db FULL_HEAL, 99
+	db X_ATTACK, 99
+	db X_SPECIAL, 99
+	db X_DEFEND, 99
+	db X_SPEED, 99
+	db DIRE_HIT, 99
+	db GUARD_SPEC, 99
+	db POKE_FLUTE, 1
+	db -1 ; end

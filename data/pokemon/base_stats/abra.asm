@@ -11,18 +11,24 @@
 	dw AbraPicFront, AbraPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,5
+	m_tutor 1,2,3,4,5,7,8
+	m_tutor 9,10,11,13,14,15
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,26,27,28,32
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     PSYCHIC_M,    TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         METRONOME,    SKULL_BASH,   REST,         THUNDER_WAVE, \
-	     PSYWAVE,      TRI_ATTACK,   SUBSTITUTE,   FLASH
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      FOCUS_BLAST,  SAFEGUARD,    \
+	     IRON_TAIL,    \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     WILL_O_WISP,  \
+	     ZEN_HEADBUTT, REST,         THUNDER_WAVE, \
+	     DAZZLINGLEAM, \
+	     FLASH
 	; end
 
 	db BANK(AbraPicFront)

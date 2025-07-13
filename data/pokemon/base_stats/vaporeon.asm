@@ -11,17 +11,24 @@
 	dw VaporeonPicFront, VaporeonPicBack
 
 	; move tutor compatibility flags
+	m_tutor 6,7
+	m_tutor 10,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   RAGE,         \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE,   SURF
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      \
+	     IRON_TAIL,    \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     REST,         \
+	     \
+	     SURF,         STRENGTH,     WATERFALL
 	; end
 
 	db BANK(VaporeonPicFront)

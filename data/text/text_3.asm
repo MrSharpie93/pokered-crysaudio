@@ -89,8 +89,8 @@ _FrozenText::
 	prompt
 
 _FireDefrostedText::
-	text "Fire defrosted"
-	line "<TARGET>!"
+	text "<TARGET>"
+	line "was defrosted!"
 	prompt
 
 _MonsStatsRoseText::
@@ -107,6 +107,15 @@ _GreatlyRoseText::
 _RoseText::
 	text " rose!"
 	prompt
+	
+_WontRiseAnymoreText::
+	text "<USER>'s"
+	line "@"
+	text_ram wStringBuffer
+	text "@"
+	text " won't go"
+	cont "any higher!"
+	prompt
 
 _MonsStatsFellText::
 	text "<TARGET>'s"
@@ -121,6 +130,15 @@ _GreatlyFellText::
 
 _FellText::
 	text " fell!"
+	prompt
+	
+_WontFallAnymoreText::
+	text "<TARGET>'s"
+	line "@"
+	text_ram wStringBuffer
+	text "@"
+	text " won't go"
+	cont "any lower!"
 	prompt
 
 _RanFromBattleText::
@@ -214,6 +232,22 @@ _IsUnaffectedText::
 	text "<TARGET>"
 	line "is unaffected!"
 	prompt
+	
+_ProtectedSelfText::
+	text "<USER>"
+	line "is protected!"
+	prompt
+	
+_CursedText::
+	text "<TARGET>"
+	line "was cursed!"
+	prompt
+	
+_CurseNotEnoughHPText::
+	text "<USER>'s"
+	line "too weak to lay"
+	cont "a curse!"
+	prompt
 
 _ParalyzedMayNotAttackText::
 	text "<TARGET>'s"
@@ -270,6 +304,11 @@ _StatusChangesEliminatedText::
 	text "All STATUS changes"
 	line "are eliminated!"
 	prompt
+	
+_ShedLeechSeedText::
+	text "<USER>"
+	line "shed LEECH SEED!"
+	prompt
 
 _StartedSleepingEffect::
 	text "<USER>"
@@ -281,6 +320,10 @@ _FellAsleepBecameHealthyText::
 	line "fell asleep and"
 	cont "became healthy!"
 	done
+	
+_BellChimedText::
+	text "A bell chimed!"
+	prompt
 
 _RegainedHealthText::
 	text "<USER>"
@@ -305,6 +348,11 @@ _ReflectGainedArmorText::
 	text "<USER>"
 	line "gained armor!"
 	prompt
+	
+_SafeguardText::
+	text "<USER>'s"
+	line "covered by a veil!"
+	prompt
 
 _ShroudedInMistText::
 	text "<USER>'s"
@@ -322,8 +370,8 @@ _DreamWasEatenText::
 	prompt
 
 _TradeCenterOpponentText::
-	text "!"
-	done
+;	text "!" ; Redundant
+;	done
 
 _ColosseumOpponentText::
 	text "!"

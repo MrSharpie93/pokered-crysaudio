@@ -11,18 +11,24 @@
 	dw PikachuPicFront, PikachuPicBack
 
 	; move tutor compatibility flags
-	m_tutor 3,4,5
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 3,4,5,6,8
+	m_tutor 9,10,13,14
+	m_tutor 19
+	m_tutor 26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  PAY_DAY,      SUBMISSION,   SEISMIC_TOSS, RAGE,         \
-	     THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SWIFT,        SKULL_BASH,   REST,         THUNDER_WAVE, \
-	     SUBSTITUTE,   FLASH
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     DIG,          \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     ZEN_HEADBUTT, REST,         THUNDER_WAVE, \
+	     \
+	     FLY,          SURF,         STRENGTH,     FLASH
 	; end
 
 	db BANK(PikachuPicFront)

@@ -11,16 +11,23 @@
 	dw HaunterPicFront, HaunterPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 1,2,3,4,7
+	m_tutor 10,11,12,13,15
+	m_tutor 17,23
+	m_tutor 28,31
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        RAGE,         MEGA_DRAIN,   THUNDERBOLT,  THUNDER,      \
-	     PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  BIDE,         SELFDESTRUCT, \
-	     DREAM_EATER,  REST,         PSYWAVE,      EXPLOSION,    SUBSTITUTE
+	tmhm DRAIN_PUNCH,  CURSE,        \
+	     TOXIC,        OMINOUS_WIND, DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      FOCUS_BLAST,  GIGA_DRAIN,   \
+	     THUNDERBOLT,  THUNDER,      \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  POISON_JAB,   \
+	     SLUDGE_BOMB,  WILL_O_WISP,  \
+	     REST,         THUNDER_WAVE, \
+	     DARK_PULSE,   DAZZLINGLEAM
 	; end
 
 	db BANK(HaunterPicFront)

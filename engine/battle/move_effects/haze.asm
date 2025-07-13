@@ -66,3 +66,23 @@ ResetStats:
 StatusChangesEliminatedText:
 	text_far _StatusChangesEliminatedText
 	text_end
+	
+RapidSpinEffect_: ; ~$~ADDED~$~
+	ldh a, [hWhoseTurn]
+	and a
+	ld hl, wPlayerBattleStatus2
+	jr z, .rapidSpinEffect
+	ld hl, wEnemyBattleStatus2
+.rapidSpinEffect
+	bit SEEDED, [hl]
+	ret z
+	res SEEDED, [hl]
+	push hl
+	ld hl, ShedLeechSeedText
+;	call PrintText
+; Shit for speed up 1 effect goes here
+	jp PrintText
+	
+ShedLeechSeedText:
+	text_far _ShedLeechSeedText
+	text_end

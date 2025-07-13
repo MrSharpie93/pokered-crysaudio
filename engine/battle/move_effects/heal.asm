@@ -35,7 +35,7 @@ HealEffect_:
 .restEffect
 	ld a, [hl]
 	and a
-	ld [hl], 2 ; clear status and set number of turns asleep to 2
+	ld [hl], 3 ; clear status and set number of turns asleep to functionally 2
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status
@@ -118,4 +118,39 @@ FellAsleepBecameHealthyText:
 
 RegainedHealthText:
 	text_far _RegainedHealthText
+	text_end
+	
+HealBellEffect_: ; ~$~ADDED~$~
+	ld hl, wPlayerBattleStatus3
+	ld de, wPartyMon1Status
+	ld bc, wBattleMonStatus
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .healBellEffect
+	ld hl, wEnemyBattleStatus3
+	ld de, wEnemyMon1Status
+	ld bc, wEnemyMonStatus
+.healBellEffect
+	res BADLY_POISONED, [hl]
+	ld [hl], a
+	xor a
+	ld [bc], a
+	ld h, d
+	ld l, e
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld d, PARTY_LENGTH
+.loop
+	ld [hl], a
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ld hl, PlayCurrentMoveAnimation
+	call EffectCallBattleCore
+
+	ld hl, BellChimedText
+	call PrintText
+	jp CalcStats
+	
+BellChimedText:
+	text_far _BellChimedText
 	text_end

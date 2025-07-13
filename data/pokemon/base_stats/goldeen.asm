@@ -11,17 +11,24 @@
 	dw GoldeenPicFront, GoldeenPicBack
 
 	; move tutor compatibility flags
+	m_tutor 6,7
+	m_tutor 10,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        HORN_DRILL,   TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         SWIFT,        SKULL_BASH,   REST,         \
-	     SUBSTITUTE,   SURF
+; tm/hm learnset
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     \
+	     PROTECT,      \
+	     \
+	     \
+	     DOUBLE_TEAM,  \
+	     AERIAL_ACE,   \
+	     REST,         \
+	     \
+	     SURF,         WATERFALL
 	; end
 
 	db BANK(GoldeenPicFront)

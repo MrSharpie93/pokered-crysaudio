@@ -62,16 +62,19 @@ _SaffronGymSabrinaMarshBadgeInfoText::
 
 _SaffronGymSabrinaReceivedTM46Text::
 	text "<PLAYER> received"
-	line "TM46!@"
+	line "TM42!@"
 	text_end
 
 _TM46ExplanationText::
 	text_start
 
-	para "TM46 is PSYWAVE!"
-	line "It uses powerful"
-	cont "psychic waves to"
-	cont "inflict damage!"
+	para "TM42 contains"
+	line "ZEN HEADBUTT!"
+	
+	para "The user focuses"
+	line "psychic energy to"
+	cont "its head, and"
+	cont "attacks!"
 	done
 
 _SaffronGymSabrinaTM46NoRoomText::
@@ -84,12 +87,12 @@ _SaffronGymGuideChampInMakingText::
 	line "making!"
 
 	para "SABRINA's #MON"
-	line "use psychic power"
+	line "use PSYCHIC power"
 	cont "instead of force!"
 
-	para "Fighting #MON"
+	para "FIGHTING #MON"
 	line "are weak against"
-	cont "psychic #MON!"
+	cont "PSYCHIC #MON!"
 
 	para "They get creamed"
 	line "before they can"

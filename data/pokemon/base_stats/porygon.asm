@@ -11,18 +11,24 @@
 	dw PorygonPicFront, PorygonPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 7
+	m_tutor 10,11,13,14,15
+	m_tutor 22
+	m_tutor 26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  ICE_BEAM,     BLIZZARD,     \
-	     HYPER_BEAM,   RAGE,         THUNDERBOLT,  THUNDER,      PSYCHIC_M,    \
-	     TELEPORT,     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         \
-	     SWIFT,        SKULL_BASH,   REST,         THUNDER_WAVE, PSYWAVE,      \
-	     TRI_ATTACK,   SUBSTITUTE,   FLASH
+	tmhm CURSE,        \
+	     TOXIC,        GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     FLASH_CANNON, SOLARBEAM,    IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     AERIAL_ACE,   \
+	     ZEN_HEADBUTT, REST,         THUNDER_WAVE, \
+	     \
+	     FLASH
 	; end
 
 	db BANK(PorygonPicFront)

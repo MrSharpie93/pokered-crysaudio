@@ -27,10 +27,11 @@ _CeladonMartRoofLittleGirlTM13ExplanationText::
 	para "@"
 	text_ram wStringBuffer
 	text " contains"
-	line "ICE BEAM!"
+	line "REFLECT!"
 
-	para "It can freeze the"
-	line "target sometimes!@"
+	para "It weakens the"
+	line "power of the foe's"
+	line "physical attacks!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYaySodaPopText::
@@ -57,10 +58,11 @@ _CeladonMartRoofLittleGirlTM48ExplanationText::
 	para "@"
 	text_ram wStringBuffer
 	text " contains"
-	line "ROCK SLIDE!"
+	line "LIGHT SCREEN!"
 
-	para "It can spook the"
-	line "target sometimes!@"
+	para "It weakens the"
+	line "power of the foe's"
+	line "special attacks!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYayLemonadeText::
@@ -83,7 +85,11 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
 	para "TM49 contains"
-	line "TRI ATTACK!@"
+	line "SAFEGUARD!"
+	
+	para "It prevents status"
+	line "problems for your"
+	line "#MON!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::

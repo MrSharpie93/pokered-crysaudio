@@ -16,7 +16,7 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
-	db HITMONLEE, 45
+	db CHANSEY, 15
 	db BLASTOISE, 60
 	db ARTICUNO, 57
 	db PIKACHU, 5
@@ -176,6 +176,7 @@ DebugItemsList:
 	db REPEL, 2
 	db SUPER_REPEL, 1
 	db MAX_REPEL, 3
+	db HM_WATERFALL, 1
 	db -1 ; end
 
 DebugUnusedList:

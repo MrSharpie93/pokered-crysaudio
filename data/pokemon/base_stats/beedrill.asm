@@ -12,16 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,13
+	m_tutor 23
+	m_tutor 26
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   \
-	     RAGE,         MEGA_DRAIN,   MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE,   \
-	     CUT
+	tmhm SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      GIGA_DRAIN,   \
+	     SOLARBEAM,    \
+	     \
+	     X_SCISSOR,    DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     SLUDGE_BOMB,  AERIAL_ACE,   \
+	     REST,         \
+	     \
+	     CUT,          FLY
 	; end
 
 	db BANK(BeedrillPicFront)

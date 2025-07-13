@@ -12,15 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,11,13,15
+	m_tutor 23
+	m_tutor 26,27
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         MEGA_DRAIN,   \
-	     SOLARBEAM,    PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         REST,         PSYWAVE,      SUBSTITUTE
+	tmhm CURSE,        \
+	     TOXIC,        DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      GIGA_DRAIN,   SAFEGUARD,    \
+	     SOLARBEAM,    \
+	     PSYCHIC_M,    SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     SLUDGE_BOMB,  \
+	     ZEN_HEADBUTT, REST,         \
+	     \
+	     FLASH
 	; end
 
 	db BANK(VenonatPicFront)

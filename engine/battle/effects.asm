@@ -37,6 +37,8 @@ SleepEffect: ; ~$~CHANGED: Grass-types are immune to Sleep Powder and Spore.
 .sleepEffect
 	call CheckTargetSubstitute
 	jr nz, .didntAffect ; ~$~Can't inflict sleep on a substitute target.~$~
+	call CheckTargetSafeguard ; ~$~Or on a safeguarding target.~$~
+	jr nz, .didntAffect
 	ld a, [de]
 	cp GRASS
 	jr z, .grassCheck ; ~$~Prevents Sleep Power or Spore from working on Grass-types.~$~
@@ -113,6 +115,8 @@ PoisonEffect:
 .poisonEffect
 	call CheckTargetSubstitute
 	jr nz, .noEffect ; can't poison a substitute target
+	call CheckTargetSafeguard
+	jr nz, .noEffect ; can't poison a safeguarded target
 	ld a, [hli]
 	ld b, a
 	and a
@@ -132,7 +136,7 @@ PoisonEffect:
 	ld b, 30 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for modern probabilities.~$~
 	jr z, .sideEffectTest
 	cp POISON_SIDE_EFFECT2
-	ld b, 50 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for Poison Fang. Smog gets it too, but it could use the buff,anyway.~$~
+	ld b, 50 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for Poison Fang. Smog gets it too, but it could use the buff anyway.~$~
 	jr z, .sideEffectTest
 	push hl
 	push de
@@ -163,8 +167,11 @@ PoisonEffect:
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
 .ok
+	cp POISON_FANG ; ~$~ADDED: Poison Fang should inflict Toxic.~$~
+	jr z, .badPoison
 	cp TOXIC
 	jr nz, .normalPoison ; done if move is not Toxic
+.badPoison
 	set BADLY_POISONED, [hl] ; else set Toxic battstatus
 	xor a
 	ld [de], a
@@ -221,12 +228,36 @@ ExplodeEffect:
 	res SEEDED, a ; clear mon's leech seed status
 	ld [de], a
 	ret
+	
+; ~$~ADDED: Red++ code for Tri Attack's effect.~$~
+TriAttackEffect:
+	ld b, BURN_SIDE_EFFECT1
+	ld a, [hRandomSub] ; grab a random number
+	cp 85 ; 85 / 256 chance = 33%
+	jr c, .gotStatusEffect
+	inc b ; FREEZE_SIDE_EFFECT
+	cp 170 ; (170-85) / 256 chance = 33%
+	jr c, .gotStatusEffect
+	inc b ; PARALYZE_SIDE_EFFECT1 ; remaining 33%
+.gotStatusEffect
+	ld a, [hWhoseTurn] ; check if it is the player's turn or the opponent's
+	and a
+	ld a, b ; get the effect we chose earlier
+	jr nz, .opponent
+	ld [wPlayerMoveEffect], a ; store it as the player's move effect if player's turn
+	jr FreezeBurnParalyzeEffect
+.opponent
+	ld [wEnemyMoveEffect], a ; store it as the enemy's move effect if enemy's turn
+; fallthrough to FreezeBurnParalyzeEffect
+;;;
 
 FreezeBurnParalyzeEffect:
 	xor a
 	ld [wAnimationType], a
 	call CheckTargetSubstitute
 	ret nz ; return if they have a substitute, can't effect them
+	call CheckTargetSafeguard
+	ret nz ; return if they used safeguard, can't effect them
 	ldh a, [hWhoseTurn]
 	and a
 	jp nz, .opponentAttacker
@@ -238,7 +269,15 @@ FreezeBurnParalyzeEffect:
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
 	jr c, .regular_effectiveness
-; extra effectiveness
+; ~$~ADDED: Modified Red++ code snippet for Fang Effects.~$~
+	cp PARALYZE_SIDE_EFFECT2 + 1
+	jr c, .extra_effectiveness
+	; otherwise, it's a fang effect
+	sub FIRE_FANG_EFFECT - BURN_SIDE_EFFECT1
+	ld b, 10 percent + 1
+	jr .regular_effectiveness
+;;;
+.extra_effectiveness
 	ld b, 30 percent + 1
 	sub BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1 ; treat extra effective as regular from now on
 .regular_effectiveness
@@ -252,6 +291,15 @@ FreezeBurnParalyzeEffect:
 	jr z, .burn1
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze1
+; ~$~ADDED: Code to make Wild Charge/Flare Blitz work.~$~
+	cp PARALYZE_SIDE_EFFECT1
+	jr z, .paralyze1
+	ld a, [wPlayerSelectedMove]
+	cp FLARE_BLITZ
+	jr z, .burn1
+	cp WILD_CHARGE
+	ret nz
+;;;
 .paralyze1
 	ld a, [wEnemyMonType1]
 	cp ELECTRIC
@@ -302,7 +350,15 @@ FreezeBurnParalyzeEffect:
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
 	jr c, .regular_effectiveness2
-; extra effectiveness
+; ~$~ADDED: Modified Red++ code snippet for Fang Effects.~$~
+	cp PARALYZE_SIDE_EFFECT2 + 1
+	jr c, .extra_effectiveness2
+	; otherwise, it's a fang effect
+	sub FIRE_FANG_EFFECT - BURN_SIDE_EFFECT1
+	ld b, 10 percent + 1
+	jr .regular_effectiveness2
+;;;
+.extra_effectiveness2
 	ld b, 30 percent + 1
 	sub BURN_SIDE_EFFECT2 - BURN_SIDE_EFFECT1 ; treat extra effective as regular from now on
 .regular_effectiveness2
@@ -316,6 +372,15 @@ FreezeBurnParalyzeEffect:
 	jr z, .burn2
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze2
+; ~$~ADDED: Code to make Wild Charge/Flare Blitz work.~$~
+	cp PARALYZE_SIDE_EFFECT1
+	jr z, .paralyze2
+	ld a, [wEnemySelectedMove]
+	cp FLARE_BLITZ
+	jr z, .burn2
+	cp WILD_CHARGE
+	ret nz
+;;;
 .paralyze2
 	ld a, [wBattleMonType1]
 	cp ELECTRIC
@@ -574,8 +639,11 @@ RestoreOriginalStatModifier:
 	pop hl
 	dec [hl]
 
-PrintNothingHappenedText:
-	ld hl, NothingHappenedText
+PrintNothingHappenedText: ; ~$~CHANGED: Red++ code to print "[STAT] won't rise anymore!" instead of "Nothing happened!"~$~
+	ld b, c
+	inc b
+	call PrintStatText
+	ld hl, WontRiseAnymoreText
 	jp PrintText
 
 MonsStatsRoseText:
@@ -599,6 +667,10 @@ GreatlyRoseText:
 ; fallthrough
 RoseText:
 	text_far _RoseText
+	text_end
+	
+WontRiseAnymoreText:
+	text_far _WontRiseAnymoreText
 	text_end
 
 StatModifierDownEffect:
@@ -783,11 +855,14 @@ CantLowerAnymore_Pop:
 	pop hl
 	inc [hl]
 
-CantLowerAnymore:
+CantLowerAnymore: ; ~$~CHANGED: Red++ code to print "[STAT] won't fall anymore!" instead of "Nothing happened!"~$~
 	ld a, [de]
 	cp ATTACK_DOWN_SIDE_EFFECT
 	ret nc
-	ld hl, NothingHappenedText
+	ld b, c
+	inc b
+	call PrintStatText
+	ld hl, WontFallAnymoreText
 	jp PrintText
 
 MoveMissed:
@@ -807,7 +882,7 @@ MonsStatsFellText:
 	ld a, [wEnemyMoveEffect]
 .playerTurn
 ; check if the move's effect decreases a stat by 2
-	cp BIDE_EFFECT
+	cp BURN_EFFECT ; ~$~CHANGED: This effect is positioned where BIDE_EFFECT used to be.~$~
 	ret c
 	cp ATTACK_DOWN_SIDE_EFFECT
 	ret nc
@@ -820,6 +895,10 @@ GreatlyFellText:
 ; fallthrough
 FellText:
 	text_far _FellText
+	text_end
+	
+WontFallAnymoreText:
+	text_far _WontFallAnymoreText
 	text_end
 
 PrintStatText:
@@ -842,32 +921,35 @@ INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
 
-BideEffect:
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerBideAccumulatedDamage
-	ld bc, wPlayerNumAttacksLeft
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .bideEffect
-	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyBideAccumulatedDamage
-	ld bc, wEnemyNumAttacksLeft
-.bideEffect
-	set STORING_ENERGY, [hl] ; mon is now using bide
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	ld [wPlayerMoveEffect], a
-	ld [wEnemyMoveEffect], a
-	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [bc], a ; set Bide counter to 2 or 3 at random
-	ldh a, [hWhoseTurn]
-	add XSTATITEM_ANIM
-	jp PlayBattleAnimation2
+BurnEffect:
+	jpfar BurnEffect_
+
+;BideEffect: ~$~REMOVED~$~
+;	ld hl, wPlayerBattleStatus1
+;	ld de, wPlayerBideAccumulatedDamage
+;	ld bc, wPlayerNumAttacksLeft
+;	ldh a, [hWhoseTurn]
+;	and a
+;	jr z, .bideEffect
+;	ld hl, wEnemyBattleStatus1
+;	ld de, wEnemyBideAccumulatedDamage
+;	ld bc, wEnemyNumAttacksLeft
+;.bideEffect
+;	set STORING_ENERGY, [hl] ; mon is now using bide
+;	xor a
+;	ld [de], a
+;	inc de
+;	ld [de], a
+;	ld [wPlayerMoveEffect], a
+;	ld [wEnemyMoveEffect], a
+;	call BattleRandom
+;	and $1
+;	inc a
+;	inc a
+;	ld [bc], a ; set Bide counter to 2 or 3 at random
+;	ldh a, [hWhoseTurn]
+;	add XSTATITEM_ANIM
+;	jp PlayBattleAnimation2
 
 ThrashPetalDanceEffect:
 	ld hl, wPlayerBattleStatus1
@@ -888,120 +970,21 @@ ThrashPetalDanceEffect:
 	add SHRINKING_SQUARE_ANIM
 	jp PlayAlternativeAnimation2
 
-SwitchAndTeleportEffect:
-	ldh a, [hWhoseTurn]
-	and a
-	jr nz, .handleEnemy
-	ld a, [wIsInBattle]
-	dec a
-	jr nz, .notWildBattle1
-	ld a, [wCurEnemyLevel]
-	ld b, a
-	ld a, [wBattleMonLevel]
-	cp b ; is the player's level greater than the enemy's level?
-	jr nc, .playerMoveWasSuccessful ; if so, teleport will always succeed
-	add b
-	ld c, a
-	inc c ; c = playerLevel + enemyLevel + 1
-.rejectionSampleLoop1
-	call BattleRandom
-	cp c ; get a random number between 0 and c
-	jr nc, .rejectionSampleLoop1
-	srl b
-	srl b  ; b = enemyLevel / 4
-	cp b ; is rand[0, playerLevel + enemyLevel] >= (enemyLevel / 4)?
-	jr nc, .playerMoveWasSuccessful ; if so, allow teleporting
-	ld c, 50
-	call DelayFrames
-	ld a, [wPlayerMoveNum]
-	cp TELEPORT
-	jp nz, PrintDidntAffectText
-	jp PrintButItFailedText_
-.playerMoveWasSuccessful
-	call ReadPlayerMonCurHPAndStatus
-	xor a
-	ld [wAnimationType], a
-	inc a
-	ld [wEscapedFromBattle], a
-	ld a, [wPlayerMoveNum]
-	jr .playAnimAndPrintText
-.notWildBattle1
-	ld c, 50
-	call DelayFrames
-	ld hl, IsUnaffectedText
-	ld a, [wPlayerMoveNum]
-	cp TELEPORT
-	jp nz, PrintText
-	jp PrintButItFailedText_
-.handleEnemy
-	ld a, [wIsInBattle]
-	dec a
-	jr nz, .notWildBattle2
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wCurEnemyLevel]
-	cp b
-	jr nc, .enemyMoveWasSuccessful
-	add b
-	ld c, a
-	inc c
-.rejectionSampleLoop2
-	call BattleRandom
-	cp c
-	jr nc, .rejectionSampleLoop2
-	srl b
-	srl b
-	cp b
-	jr nc, .enemyMoveWasSuccessful
-	ld c, 50
-	call DelayFrames
-	ld a, [wEnemyMoveNum]
-	cp TELEPORT
-	jp nz, PrintDidntAffectText
-	jp PrintButItFailedText_
-.enemyMoveWasSuccessful
-	call ReadPlayerMonCurHPAndStatus
-	xor a
-	ld [wAnimationType], a
-	inc a
-	ld [wEscapedFromBattle], a
-	ld a, [wEnemyMoveNum]
-	jr .playAnimAndPrintText
-.notWildBattle2
-	ld c, 50
-	call DelayFrames
-	ld hl, IsUnaffectedText
-	ld a, [wEnemyMoveNum]
-	cp TELEPORT
-	jp nz, PrintText
-	jp ConditionalPrintButItFailed
-.playAnimAndPrintText
-	push af
-	call PlayBattleAnimation
-	ld c, 20
-	call DelayFrames
-	pop af
-	ld hl, RanFromBattleText
-	cp TELEPORT
-	jr z, .printText
-	ld hl, RanAwayScaredText
-	cp ROAR
-	jr z, .printText
-	ld hl, WasBlownAwayText
-.printText
-	jp PrintText
+SwitchAndTeleportEffect: ; Roar and Whirlwind were removed, and this will eventually be replaced with an effect that functions like Teleport does in LGPE and on.~$~
+	call PlayCurrentMoveAnimation
+	jp PrintNoEffectText
 
 RanFromBattleText:
 	text_far _RanFromBattleText
 	text_end
 
-RanAwayScaredText:
-	text_far _RanAwayScaredText
-	text_end
+;RanAwayScaredText:
+;	text_far _RanAwayScaredText
+;	text_end
 
-WasBlownAwayText:
-	text_far _WasBlownAwayText
-	text_end
+;WasBlownAwayText:
+;	text_far _WasBlownAwayText
+;	text_end
 
 TwoToFiveAttacksEffect:
 	ld hl, wPlayerBattleStatus1
@@ -1048,6 +1031,75 @@ TwoToFiveAttacksEffect:
 	ld a, POISON_SIDE_EFFECT1
 	ld [hl], a ; set Twineedle's effect to poison effect
 	jr .saveNumberOfHits
+	
+ProtectEffect: ; ~$~ADDED~$~
+	call ProtectChance
+	ret c
+	ld hl, wPlayerBattleStatus1
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .protectEffect
+	ld hl, wEnemyBattleStatus1
+.protectEffect
+	set PROTECTING_SELF, [hl] ; mon is now invulnerable to typical attacks
+	call PlayCurrentMoveAnimation
+	ld hl, ProtectedSelfText
+	jp PrintText
+	
+ProtectChance:
+	ld hl, wPlayerBattleStatus2
+	ld de, wPlayerProtectCount
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .got_count
+	ld hl, wEnemyBattleStatus2
+	ld de, wEnemyProtectCount
+.got_count
+; Can't have a substitute.
+	ld a, [hl]
+	bit HAS_SUBSTITUTE_UP, a
+	jr nz, .failed
+; Halve the chance of a successful Protect for each consecutive use.
+	ld b, $ff
+	ld a, [de]
+	ld c, a
+.loop
+	ld a, c
+	and a
+	jr z, .done
+	dec c
+	srl b
+	ld a, b
+	and a
+	jr nz, .loop
+	jr .failed
+.done
+.rand
+	call BattleRandom
+	and a
+	jr z, .rand
+	dec a
+	cp b
+	jr nc, .failed
+; Another consecutive Protect use.
+	ld a, [de]
+	inc a
+	ld [de], a
+	and a
+	ret
+.failed
+	xor a
+	ld [de], a
+	ld c, 50
+	call DelayFrames
+	ld hl, ButItFailedText
+	call PrintText
+	scf
+	ret
+
+ProtectedSelfText:
+	text_far _ProtectedSelfText
+	text_end
 
 FlinchSideEffect:
 	call CheckTargetSubstitute
@@ -1121,22 +1173,22 @@ ChargeEffect: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld hl, ChargeMoveEffectText
 	jp PrintText
 
-ChargeMoveEffectText:
+ChargeMoveEffectText: ; ~$~CHANGED: Removed checks for moves that are either removed, or no longer a charge move.~$~
 	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
-	cp RAZOR_WIND
-	ld hl, MadeWhirlwindText
-	jr z, .gotText
+;	cp RAZOR_WIND
+;	ld hl, MadeWhirlwindText
+;	jr z, .gotText
 	cp SOLARBEAM
 	ld hl, TookInSunlightText
 	jr z, .gotText
-	cp SKULL_BASH
-	ld hl, LoweredItsHeadText
-	jr z, .gotText
-	cp SKY_ATTACK
-	ld hl, SkyAttackGlowingText
-	jr z, .gotText
+;	cp SKULL_BASH
+;	ld hl, LoweredItsHeadText
+;	jr z, .gotText
+;	cp SKY_ATTACK
+;	ld hl, SkyAttackGlowingText
+;	jr z, .gotText
 	cp FLY
 	ld hl, FlewUpHighText
 	jr z, .gotText
@@ -1145,21 +1197,21 @@ ChargeMoveEffectText:
 .gotText
 	ret
 
-MadeWhirlwindText:
-	text_far _MadeWhirlwindText
-	text_end
+;MadeWhirlwindText:
+;	text_far _MadeWhirlwindText
+;	text_end
 
 TookInSunlightText:
 	text_far _TookInSunlightText
 	text_end
 
-LoweredItsHeadText:
-	text_far _LoweredItsHeadText
-	text_end
+;LoweredItsHeadText:
+;	text_far _LoweredItsHeadText
+;	text_end
 
-SkyAttackGlowingText:
-	text_far _SkyAttackGlowingText
-	text_end
+;SkyAttackGlowingText:
+;	text_far _SkyAttackGlowingText
+;	text_end
 
 FlewUpHighText:
 	text_far _FlewUpHighText
@@ -1250,12 +1302,17 @@ BecameConfusedText:
 ConfusionEffectFailed:
 	cp CONFUSION_SIDE_EFFECT
 	ret z
+	cp DYNAMICPUNCH_EFFECT
+	ret z
 	ld c, 50
 	call DelayFrames
 	jp ConditionalPrintButItFailed
 
 ParalyzeEffect:
 	jpfar ParalyzeEffect_
+	
+RapidSpinEffect: ; ~$~Located in "engine/battle/move_effects/haze.asm".~$~
+	jpfar RapidSpinEffect_
 
 SubstituteEffect:
 	jpfar SubstituteEffect_
@@ -1282,15 +1339,15 @@ ClearHyperBeam:
 	pop hl
 	ret
 
-RageEffect:
-	ld hl, wPlayerBattleStatus2
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .player
-	ld hl, wEnemyBattleStatus2
-.player
-	set USING_RAGE, [hl] ; mon is now in "rage" mode
-	ret
+;RageEffect: ~$~REMOVED~$~
+;	ld hl, wPlayerBattleStatus2
+;	ldh a, [hWhoseTurn]
+;	and a
+;	jr z, .player
+;	ld hl, wEnemyBattleStatus2
+;.player
+;	set USING_RAGE, [hl] ; mon is now in "rage" mode
+;	ret
 
 MimicEffect:
 	ld c, 50
@@ -1480,6 +1537,116 @@ TransformEffect:
 
 ReflectLightScreenEffect:
 	jpfar ReflectLightScreenEffect_
+	
+; ~$~ADDED: Various buff effects from Red++.~$~
+AttackUpSideEffect:
+; 20% chance to boost stat
+	call BattleRandom
+	cp 20 percent + 1 ; chance for side effects
+	ret nc
+	ld a, [hWhoseTurn]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	xor a
+	ld [wEnemyMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	jp StatModifierUpEffect
+.notEnemyTurn
+	xor a
+	ld [wPlayerMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierUpEffect
+
+DefenseUpSideEffect:
+; 20% chance to boost stat
+	call BattleRandom
+	cp 20 percent + 1 ; chance for side effects
+	ret nc
+	ld a, [hWhoseTurn]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	xor a
+	ld [wEnemyMoveNum], a
+	ld a, DEFENSE_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	jp StatModifierUpEffect
+.notEnemyTurn
+	xor a
+	ld [wPlayerMoveNum], a
+	ld a, DEFENSE_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierUpEffect
+	
+AllStatsUpEffect:
+; 10% chance to boost all stats
+	call BattleRandom
+	cp 10 percent + 1
+	ret nc
+	
+	ld a, [hWhoseTurn]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	xor a
+	ld [wEnemyMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	call StatModifierUpEffect
+	ld a, DEFENSE_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	call StatModifierUpEffect
+	ld a, SPEED_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	call StatModifierUpEffect
+	ld a, SPECIAL_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	jp StatModifierUpEffect
+.notEnemyTurn
+	xor a
+	ld [wPlayerMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	call StatModifierUpEffect
+	ld a, DEFENSE_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	call StatModifierUpEffect
+	ld a, SPEED_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	call StatModifierUpEffect
+	ld a, SPECIAL_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierUpEffect
+;;;
+
+HoneClawsEffect:
+	jpfar HoneClawsEffect_
+
+GrowthEffect:
+	jpfar GrowthEffect_
+
+DragonDanceEffect:
+	jpfar DragonDanceEffect_
+
+CosmicPowerEffect:
+	jpfar CosmicPowerEffect_
+	
+CurseEffect:
+	jpfar CurseEffect_
+	
+FangEffect:
+	call FlinchSideEffect
+	jp FreezeBurnParalyzeEffect
+
+RecoilStatusEffect:
+	call RecoilEffect
+	jp FreezeBurnParalyzeEffect
+	
+HealBellEffect: ; ~$~Located in "engine/battle/move_effects/heal.asm".~$~
+	jpfar HealBellEffect_
 
 NothingHappenedText:
 	text_far _NothingHappenedText
@@ -1521,6 +1688,10 @@ IsUnaffectedText:
 PrintMayNotAttackText:
 	ld hl, ParalyzedMayNotAttackText
 	jp PrintText
+	
+PrintBurnedText:
+	ld hl, BurnedText
+	jp PrintText
 
 ParalyzedMayNotAttackText:
 	text_far _ParalyzedMayNotAttackText
@@ -1535,6 +1706,18 @@ CheckTargetSubstitute:
 	ld hl, wPlayerBattleStatus2
 .next1
 	bit HAS_SUBSTITUTE_UP, [hl]
+	pop hl
+	ret
+	
+CheckTargetSafeguard: ; ~$~ADDED: Copied Substitute's routine and modified it to check for having used Safeguard.~$~
+	push hl
+	ld hl, wEnemyBattleStatus3
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .next2
+	ld hl, wPlayerBattleStatus3
+.next2
+	bit HAS_SAFEGUARD_UP, [hl]
 	pop hl
 	ret
 

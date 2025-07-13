@@ -11,17 +11,24 @@
 	dw KinglerPicFront, KinglerPicBack
 
 	; move tutor compatibility flags
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 6,7
+	m_tutor 10,13
+	m_tutor 18
+	m_tutor 25
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
-	     BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
-	     RAGE,         MIMIC,        DOUBLE_TEAM,  BIDE,         REST,         \
-	     SUBSTITUTE,   CUT,          SURF,         STRENGTH
+	tmhm SWORDS_DANCE, CURSE,        \
+	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     PROTECT,      \
+	     \
+	     DIG,          \
+	     X_SCISSOR,    DOUBLE_TEAM,  REFLECT,      \
+	     ROCK_TOMB,    \
+	     REST,         \
+	     ROCK_SLIDE,   ICICLE_CRASH, \
+	     CUT,          SURF,         STRENGTH
 	; end
 
 	db BANK(KinglerPicFront)

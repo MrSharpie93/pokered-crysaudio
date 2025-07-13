@@ -9,14 +9,15 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - [dannye](https://github.com/dannye): Crystal audio engine, menu icons use 4 colors, Crystal Tracker.
 - [Sanqui](https://github.com/Sanqui): Crystal audio engine.
 - [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners, restoring Gym Leader names on trainer card, Move Reminder and Move Deleter, shut up low health alarm, crash damage not 1 HP.
-- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, optimizations, shut up low health alarm, crash damage not 1 HP.
-- [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework, better move learn on level-up, photosensitivity-friendly move animations.
+- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, optimizations, shut up low health alarm, crash damage not 1 HP, Mist rework.
+- [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework, better move learn on level-up, photosensitivity-friendly move animations, test battle overhaul.
 - [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, expanded menu icons, defense division by 0 bug fix, overworld HM shortcuts, Tilemap Studio and Polished Map.
-- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel, sleep turn counter improvement, new evo methods.
+- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel, sleep turn counter improvement, new evo methods, several move effects, better text for reaching stat caps.
 - [ShiraTheMogul](https://github.com/ShiraTheMogul): Move Reminder and Move Deleter.
 - Xillicis: Most of the battle engine tutorials.
 - [ShantyTown](https://github.com/huderlem): Expanded menu icons, auto repel.
 - [Chatot4444](https://github.com/Chatot4444): Haze rework.
+- [longlostsoul](https://github.com/longlostsoul): Mirror Coat effect.
 
 ## Art
 

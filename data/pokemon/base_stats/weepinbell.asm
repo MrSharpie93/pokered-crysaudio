@@ -12,15 +12,23 @@
 
 	; move tutor compatibility flags
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 10,13,15
+	m_tutor 23
+	m_tutor 32
 	db GROWTH_MEDIUM_SLOW ; growth rate
 
 	; tm/hm learnset
-	tmhm SWORDS_DANCE, TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     MEGA_DRAIN,   SOLARBEAM,    MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         REST,         SUBSTITUTE,   CUT
+	tmhm SWORDS_DANCE, CURSE,        BRUTAL_SWING, \
+	     TOXIC,        DOUBLE_EDGE,  \
+	     \
+	     LIGHT_SCREEN, PROTECT,      GIGA_DRAIN,   \
+	     SOLARBEAM,    \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      POISON_JAB,   \
+	     SLUDGE_BOMB,  \
+	     BULLET_SEED,  REST,         \
+	     \
+	     CUT,          FLASH
 	; end
 
 	db BANK(WeepinbellPicFront)

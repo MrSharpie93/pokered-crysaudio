@@ -11,18 +11,24 @@
 	dw DratiniPicFront, DratiniPicBack
 
 	; move tutor compatibility flags
+	m_tutor 7
+	m_tutor 10,13,14,16
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 25,26
 	db GROWTH_SLOW ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         DRAGON_RAGE,  \
-	     THUNDERBOLT,  THUNDER,      MIMIC,        DOUBLE_TEAM,  REFLECT,      \
-	     BIDE,         FIRE_BLAST,   SWIFT,        SKULL_BASH,   REST,         \
-	     THUNDER_WAVE, SUBSTITUTE,   SURF
+; tm/hm learnset
+	tmhm CURSE,        BRUTAL_SWING, \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     BUBBLEBEAM,   SCALD,        ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+	     LIGHT_SCREEN, PROTECT,      SAFEGUARD,    \
+	     IRON_TAIL,    THUNDERBOLT,  THUNDER,      \
+	     \
+	     DOUBLE_TEAM,  REFLECT,      FLAMETHROWER, \
+	     FIRE_BLAST,   \
+	     REST,         THUNDER_WAVE, \
+	     \
+	     SURF,         WATERFALL
 	; end
 
 	db BANK(DratiniPicFront)

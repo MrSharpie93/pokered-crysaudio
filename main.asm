@@ -367,6 +367,11 @@ INCLUDE "engine/menus/item_descriptions.asm"
 INCLUDE "engine/overworld/auto_repel.asm"
 INCLUDE "engine/overworld/field_moves.asm"
 
+SECTION "New Move Effects", ROMX
+
+INCLUDE "engine/battle/move_effects/burn.asm"
+INCLUDE "engine/battle/move_effects/curse.asm"
+
 SECTION "Mon Icons", ROMX
 
 INCLUDE "gfx/icons.asm"

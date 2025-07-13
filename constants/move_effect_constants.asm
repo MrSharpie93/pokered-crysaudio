@@ -5,7 +5,7 @@
 ; MoveEffectPointerTable indexes (see data/moves/effects_pointers.asm)
 	const_def
 	const NO_ADDITIONAL_EFFECT       ; $00
-	const EFFECT_01                  ; $01 unused
+	const CURSE_EFFECT               ; $01 ; ~$~ Was unused.~$~
 	const POISON_SIDE_EFFECT1        ; $02
 	const DRAIN_HP_EFFECT            ; $03
 	const BURN_SIDE_EFFECT1          ; $04
@@ -30,26 +30,26 @@
 	const EVASION_DOWN1_EFFECT       ; $17
 	const CONVERSION_EFFECT          ; $18
 	const HAZE_EFFECT                ; $19
-	const BIDE_EFFECT                ; $1A
+	const BURN_EFFECT                ; $1A ; ~$~ Was BIDE_EFFECT.~$~
 	const THRASH_PETAL_DANCE_EFFECT  ; $1B
 	const SWITCH_AND_TELEPORT_EFFECT ; $1C
 	const TWO_TO_FIVE_ATTACKS_EFFECT ; $1D
-	const EFFECT_1E                  ; $1E unused
+	const PROTECT_EFFECT             ; $1E ; ~$~ Was unused.~$~
 	const FLINCH_SIDE_EFFECT1        ; $1F
 	const SLEEP_EFFECT               ; $20
 	const POISON_SIDE_EFFECT2        ; $21
 	const BURN_SIDE_EFFECT2          ; $22
-	const_skip                       ; $23
+	const_skip                       ; $23 ; Would be FREEZE_SIDE_EFFECT2
 	const PARALYZE_SIDE_EFFECT2      ; $24
 	const FLINCH_SIDE_EFFECT2        ; $25
 	const OHKO_EFFECT                ; $26 moves like Horn Drill
 	const CHARGE_EFFECT              ; $27 moves like Solar Beam
 	const SUPER_FANG_EFFECT          ; $28
-	const SPECIAL_DAMAGE_EFFECT      ; $29 Seismic Toss, Night Shade, Sonic Boom, Dragon Rage, Psywave
-	const TRAPPING_EFFECT            ; $2A moves like Wrap
+	const SPECIAL_DAMAGE_EFFECT      ; $29 Seismic Toss, Night Shade, Sonic Boom
+	const TRAPPING_EFFECT            ; $2A moves like Bind
 	const FLY_EFFECT                 ; $2B
 	const ATTACK_TWICE_EFFECT        ; $2C
-	const JUMP_KICK_EFFECT           ; $2D Jump Kick and Hi Jump Kick effect
+	const JUMP_KICK_EFFECT           ; $2D Take Down and Hi Jump Kick effect
 	const MIST_EFFECT                ; $2E
 	const FOCUS_ENERGY_EFFECT        ; $2F
 	const RECOIL_EFFECT              ; $30 moves like Double Edge
@@ -76,19 +76,35 @@
 	const DEFENSE_DOWN_SIDE_EFFECT   ; $45
 	const SPEED_DOWN_SIDE_EFFECT     ; $46
 	const SPECIAL_DOWN_SIDE_EFFECT   ; $47
-	const_skip                       ; $48
-	const_skip                       ; $49
-	const_skip                       ; $4A
-	const_skip                       ; $4B
+	const_skip                       ; $48 ; Would be ACCURACY_DOWN_SIDE_EFFECT
+	const_skip                       ; $49 ; Would be EVASION_DOWN_SIDE_EFFECT
+	const FLINCH_SIDE_EFFECT3        ; $4A ; ~$~ADDED~$~
+	const RAPID_SPIN_EFFECT          ; $4B ; ~$~ADDED~$~
 	const CONFUSION_SIDE_EFFECT      ; $4C
 	const TWINEEDLE_EFFECT           ; $4D
-	const_skip                       ; $4E
+	const SAFEGUARD_EFFECT           ; $4E ; ~$~ADDED~$~
 	const SUBSTITUTE_EFFECT          ; $4F
 	const HYPER_BEAM_EFFECT          ; $50
-	const RAGE_EFFECT                ; $51
+	const TRI_ATTACK_EFFECT          ; $51 ; ~$~ Was RAGE_EFFECT.~$~
 	const MIMIC_EFFECT               ; $52
 	const METRONOME_EFFECT           ; $53
 	const LEECH_SEED_EFFECT          ; $54
 	const SPLASH_EFFECT              ; $55
 	const DISABLE_EFFECT             ; $56
+; ~$~ADDED: New move effects.~$~
+	const ATTACK_UP_SIDE_EFFECT      ; $57
+	const DEFENSE_UP_SIDE_EFFECT     ; $58
+	const ALL_STATS_UP_EFFECT        ; $59
+	const HONE_CLAWS_EFFECT          ; $5A
+	const DRAGON_DANCE_EFFECT        ; $5B
+	const GROWTH_EFFECT              ; $5C
+	const COSMIC_POWER_EFFECT        ; $5D
+	const RECOIL_STATUS_EFFECT       ; $5E
+	const DYNAMICPUNCH_EFFECT        ; $5F
+	const ZAP_CANNON_EFFECT          ; $61
+	const INFERNO_EFFECT             ; $62
+	const FIRE_FANG_EFFECT           ; $63
+	const ICE_FANG_EFFECT            ; $64
+	const THUNDER_FANG_EFFECT        ; $65
+	const HEAL_BELL_EFFECT           ; $66
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

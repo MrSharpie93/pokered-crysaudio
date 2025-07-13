@@ -11,16 +11,22 @@
 	dw EeveePicFront, EeveePicBack
 
 	; move tutor compatibility flags
+	m_tutor 6
+	m_tutor 10,13
 	m_tutor 0
-	m_tutor 0
-	m_tutor 0
-	m_tutor 0
+	m_tutor 26
 	db GROWTH_MEDIUM_FAST ; growth rate
 
-	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      BIDE,         SWIFT,        \
-	     SKULL_BASH,   REST,         SUBSTITUTE
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        BODY_SLAM,    DOUBLE_EDGE,  \
+	     \
+	     PROTECT,      \
+	     IRON_TAIL,    \
+	     DIG,          SHADOW_BALL,  \
+	     DOUBLE_TEAM,  REFLECT,      \
+	     \
+	     REST
 	; end
 
 	db BANK(EeveePicFront)
