@@ -232,6 +232,9 @@ Museum1FScientist3Text:
 	text_asm
 	ld hl, .Text
 	call PrintText
+	ld a, 9 ; SEISMIC_TOSS
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
 	jp TextScriptEnd
 
 .Text:

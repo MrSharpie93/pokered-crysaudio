@@ -323,20 +323,9 @@ _GameOverText::
 _CinnabarGymQuizIntroText::
 	text "#MON Quiz!"
 
-	para "Get it right and"
-	line "the door opens to"
-	cont "the next room!"
-
-	para "Get it wrong and"
-	line "face a trainer!"
-
-	para "If you want to"
-	line "conserve your"
-	cont "#MON for the"
-	cont "GYM LEADER..."
-
-	para "Then get it right!"
-	line "Here we go!"
+	para "Get it right or"
+	line "catch a whupping!"
+	cont "Here we go!"
 	prompt
 
 _CinnabarQuizQuestionsText1::
@@ -382,7 +371,7 @@ _CinnabarGymQuizCorrectText::
 	text_end
 
 _CinnabarGymQuizIncorrectText::
-	text "Sorry! Bad call!"
+	text "You fool!"
 	prompt
 
 _MagazinesText::
@@ -463,8 +452,11 @@ _GameCornerOutToLunchText::
 	done
 
 _GameCornerSomeonesKeysText::
-	text "Someone's keys!"
-	line "They'll be back."
+	text "Keys for a TRUCK!"
+	
+	para "Don't get any"
+	line "ideas, you don't"
+	cont "have a license."
 	done
 
 _JustAMomentText::
@@ -746,8 +738,9 @@ _VermilionGymTrashSuccessText3::
 _VermilionGymTrashFailText::
 	text "Nope! There's"
 	line "only trash here."
-	cont "Hey! The electric"
-	cont "locks were reset!@"
+	
+	para "Aw shoot, here we"
+	line "go again...@"
 	text_end
 
 _FoundHiddenItemText::
@@ -1049,15 +1042,15 @@ _ConfusedNoMoreText::
 	line "confused no more!"
 	prompt
 
-_SavingEnergyText::
-	text "<USER>"
-	line "is saving energy!"
-	prompt
+;_SavingEnergyText::
+;	text "<USER>"
+;	line "is saving energy!"
+;	prompt
 
-_UnleashedEnergyText::
-	text "<USER>"
-	line "unleashed energy!"
-	prompt
+;_UnleashedEnergyText::
+;	text "<USER>"
+;	line "unleashed energy!"
+;	prompt
 
 _ThrashingAboutText::
 	text "<USER>'s"
@@ -1184,10 +1177,10 @@ _SubstituteBrokeText::
 	line "SUBSTITUTE broke!"
 	prompt
 
-_BuildingRageText::
-	text "<USER>'s"
-	line "RAGE is building!"
-	prompt
+;_BuildingRageText::
+;	text "<USER>'s"
+;	line "RAGE is building!"
+;	prompt
 
 _MirrorMoveFailedText::
 	text "The MIRROR MOVE"
@@ -1368,7 +1361,7 @@ _PartyMenuBattleText::
 	done
 
 _PartyMenuUseTMText::
-	text "Use TM on which"
+	text "Teach to which"
 	line "#MON?"
 	done
 

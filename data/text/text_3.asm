@@ -101,6 +101,7 @@ _MonsStatsRoseText::
 	text_end
 
 _GreatlyRoseText::
+_GreatlyFellText::
 	text "<SCROLL>greatly@"
 	text_end
 
@@ -124,9 +125,9 @@ _MonsStatsFellText::
 	text "@"
 	text_end
 
-_GreatlyFellText::
-	text "<SCROLL>greatly@"
-	text_end
+;_GreatlyFellText::
+;	text "<SCROLL>greatly@"
+;	text_end
 
 _FellText::
 	text " fell!"
@@ -145,40 +146,35 @@ _RanFromBattleText::
 	text "<USER>"
 	line "ran from battle!"
 	prompt
-
-_RanAwayScaredText::
-	text "<TARGET>"
-	line "ran away scared!"
-	prompt
-
-_WasBlownAwayText::
-	text "<TARGET>"
-	line "was blown away!"
+	
+_TeleportedAwayText::
+	text "<USER>"
+	line "teleported away!"
 	prompt
 
 _ChargeMoveEffectText::
 	text "<USER>@"
 	text_end
 
-_MadeWhirlwindText::
-	text_start
-	line "made a whirlwind!"
-	prompt
+;_MadeWhirlwindText::
+;	text_start
+;	line "made a whirlwind!"
+;	prompt
 
 _TookInSunlightText::
 	text_start
 	line "took in sunlight!"
 	prompt
 
-_LoweredItsHeadText::
-	text_start
-	line "lowered its head!"
-	prompt
+;_LoweredItsHeadText::
+;	text_start
+;	line "lowered its head!"
+;	prompt
 
-_SkyAttackGlowingText::
-	text_start
-	line "is glowing!"
-	prompt
+;_SkyAttackGlowingText::
+;	text_start
+;	line "is glowing!"
+;	prompt
 
 _FlewUpHighText::
 	text_start

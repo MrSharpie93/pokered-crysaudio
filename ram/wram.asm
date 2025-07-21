@@ -707,7 +707,7 @@ wRivalStarterBallSpriteIndex:: db
 NEXTU
 wFlyAnimUsingCoordList:: db
 ; $ff sentinel values at each end
-wFlyLocationsList:: ds NUM_CITY_MAPS + 2
+wFlyLocationsList:: ds NUM_CITY_MAPS + 4 ; edited, to allow fly to Route 4 and Route 10
 
 NEXTU
 wWhichTownMapLocation:: db
@@ -898,7 +898,9 @@ wRightGBMonSpecies:: db
 
 wMiscFlags:: db
 
-	ds 9
+wSum:: ; ~$~ADDED: Used with new stats screen for Pokedex.~$~
+
+	ds 8
 
 ; This has overlapping related uses.
 ; When the player tries to use an item or use certain field moves, 0 is stored
@@ -1846,7 +1848,14 @@ wSpriteSetID:: db
 
 wObjectDataPointerTemp:: dw
 
+; ~$~ADDED: Variables for printing DVs/Stat EXP on the status screen.~$~
+; Used on the new status screen
+wDVCalcVar1::
 	ds 2
+	
+wDVCalcVar2::
+	ds 4
+;;;
 
 ; the tile shown outside the boundaries of the map
 wMapBackgroundTile:: db
@@ -1862,7 +1871,7 @@ wDestinationWarpID:: db
 
 UNION
 ; original size of this empty space
-	ds 128
+	ds 124
 ; ~$~CHANGED: Increased bag space.~$~
 NEXTU
 wNumBagItems:: db
@@ -2103,7 +2112,7 @@ wWalkBikeSurfState:: db
 
 	ds 10
 
-wTownVisitedFlag:: flag_array NUM_CITY_MAPS
+wTownVisitedFlag:: flag_array NUM_CITY_MAPS + 2
 
 ; starts at 502
 wSafariSteps:: dw

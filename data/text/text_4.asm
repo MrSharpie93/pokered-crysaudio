@@ -118,11 +118,11 @@ _TryingToLearnText::
 	text_ram wStringBuffer
 	text "!"
 
-	para "But, @"
-	text_ram wLearnMoveMonName
-	text_start
-	line "can't learn more"
-	cont "than 4 moves!"
+;	para "But, @"
+;	text_ram wLearnMoveMonName
+;	text_start
+;	line "can't learn more"
+;	cont "than 4 moves!"
 
 	para "Delete an older"
 	line "move to make room"
@@ -152,8 +152,8 @@ _ForgotAndText::
 	prompt
 
 _HMCantDeleteText::
-	text "HM techniques"
-	line "can't be deleted!"
+	text "HM moves can't"
+	line "be deleted here!"
 	prompt
 
 _PokemonCenterWelcomeText::

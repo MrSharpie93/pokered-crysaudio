@@ -114,4 +114,7 @@ SFX:
 	dba SFX_Shooting_Star
 
 	dba SFX_PokefluteInBattle
+; ~$~ADDED: New SFX.~$~
+	dba Sfx_ZapCannon
+	dba Sfx_HealBell
 	assert_table_length NUM_SFX

@@ -18,16 +18,31 @@ PlayBattleMusic::
 	jr z, .wildBattle
 	ld a, [wCurOpponent]
 	cp OPP_RIVAL3
-	jr z, .finalBattle
-;	cp OPP_LANCE ; ~$~CHANGED: Handled differently now.~$~
-;	jr nz, .normalTrainerBattle
-;	ld a, MUSIC_GYM_LEADER_BATTLE ; lance also plays gym leader theme
-;	jr .playSong
+	jr z, .redBattle
+	cp OPP_RIVAL2
+	jr z, .blueBattle
+	cp OPP_RIVAL1
+	jr z, .greenBattle
+	cp OPP_ROCKET
+	jr z, .rocketBattle
+	cp OPP_JESSIE_JAMES
+	jr z, .rocketBattle
+	cp OPP_GIOVANNI
+	jr z, .rocketBattle
 .normalTrainerBattle
 	ld a, MUSIC_TRAINER_BATTLE
 	jr .playSong
-.finalBattle
+.redBattle
+	ld a, MUSIC_RED_BATTLE
+	jr .playSong
+.blueBattle
 	ld a, MUSIC_FINAL_BATTLE
+	jr .playSong
+.greenBattle
+	ld a, MUSIC_GREEN_BATTLE
+	jr .playSong
+.rocketBattle
+	ld a, MUSIC_ROCKET_BATTLE
 	jr .playSong
 .wildBattle
 	ld a, MUSIC_WILD_BATTLE

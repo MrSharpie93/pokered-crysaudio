@@ -84,3 +84,16 @@ _MelanieText7::
 	text "Oh dear, your"
 	line "bag is full!"
 	done
+	
+_BulbasaurText::
+	text "BULBASAUR: Bubba!"
+	line "Zoar!@"
+	text_end
+
+_OddishText::
+	text "ODDISH: Orddissh!@"
+	text_end
+
+_SandshrewText::
+	text "SANDSHREW: Pikii!@"
+	text_end

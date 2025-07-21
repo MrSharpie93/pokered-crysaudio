@@ -5,6 +5,9 @@ Daycare_TextPointers:
 	def_text_pointers
 	dw_const DaycareGentlemanText, TEXT_DAYCARE_GENTLEMAN
 	dw_const DaycareMelanieText,   TEXT_DAYCARE_MELANIE
+	dw_const BulbasaurText,        TEXT_DAYCARE_BULBASAUR
+	dw_const OddishText,           TEXT_DAYCARE_ODDISH
+	dw_const SandshrewText,        TEXT_DAYCARE_SANDSHREW
 
 DaycareGentlemanText:
 	text_asm
@@ -370,3 +373,24 @@ MelanieGotHeartStoneText:
 MelanieBagFullText:
 	text_far _MelanieText7
 	text_end
+	
+BulbasaurText:
+	text_far _BulbasaurText
+	text_asm
+	ld a, BULBASAUR
+	call PlayCry
+	jp TextScriptEnd
+
+OddishText:
+	text_far _OddishText
+	text_asm
+	ld a, ODDISH
+	call PlayCry
+	jp TextScriptEnd
+
+SandshrewText:
+	text_far _SandshrewText
+	text_asm
+	ld a, SANDSHREW
+	call PlayCry
+	jp TextScriptEnd

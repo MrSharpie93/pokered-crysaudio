@@ -124,7 +124,7 @@ TestBattle: ; unreferenced except in _DEBUG
 	ld [hli], a
 	ld a, INFERNO ; New move animation test
 	ld [hli], a
-	ld a, DYNAMICPUNCH ; New move animation test
+	ld a, CURSE ; New move animation test
 	ld [hli], a
 	ld a, PROTECT ; Skip turn, New move animation test
 	ld [hli], a

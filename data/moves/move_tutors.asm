@@ -27,10 +27,10 @@ MoveTutorMoves: ; A list of all moves taught by move tutors, their location as a
 	db EARTH_POWER  ; placeholder
 ; bit 4
 	db WATER_PULSE  ; placeholder
-	db SWIFT        ; placeholder
+	db SWIFT        ; Route 12 Gate 2F
 	db SIGNAL_BEAM  ; placeholder
 	db METRONOME    ; placeholder
 	db FLARE_BLITZ  ; placeholder
-	db RAZOR_WIND   ; placeholder
+	db RAZOR_WIND   ; Celadon City (Softboiled Guy)
 	db SCARY_FACE   ; placeholder
 	db MAGICAL_LEAF ; placeholder

@@ -167,95 +167,95 @@ AttackAnimationPointers:
 	dw SubstituteAnim
 	dw StruggleAnim
 ; ~$~ADDED: New moves.~$~
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
-	dw PlaceholderAnim
+	dw PlaceholderAnim;CURSE
+	dw CottonSporeAnim;COTTON_SPORE
+	dw PowderSnowAnim;POWDER_SNOW
+	dw PlaceholderAnim;MACH_PUNCH
+	dw PlaceholderAnim;SCARY_FACE
+	dw PlaceholderAnim;FEINT_ATTACK
+	dw PlaceholderAnim;SWEET_KISS
+	dw PlaceholderAnim;SLUDGE_BOMB
+	dw PlaceholderAnim;MUD_SLAP
+	dw PlaceholderAnim;ZAP_CANNON
+	dw IcyWindAnim;ICY_WIND
+	dw CharmAnim;CHARM
+	dw SparkAnim;SPARK
+	dw SteelWingAnim;STEEL_WING
+	dw HealBellAnim;HEAL_BELL
+	dw PlaceholderAnim;SAFEGUARD
+	dw PlaceholderAnim;DYNAMICPUNCH
+	dw PlaceholderAnim;MEGAHORN
+	dw PlaceholderAnim;RAPID_SPIN
+	dw IronTailAnim;IRON_TAIL
+	dw MetalClawAnim;METAL_CLAW
+	dw PlaceholderAnim;CROSS_CHOP
+	dw TwisterAnim;TWISTER
+	dw PlaceholderAnim;CRUNCH
+	dw PlaceholderAnim;MIRROR_COAT
+	dw PlaceholderAnim;EXTREMESPEED
+	dw PlaceholderAnim;ANCIENTPOWER
+	dw PlaceholderAnim;SHADOW_BALL
+	dw PlaceholderAnim;WILL_O_WISP
+	dw PlaceholderAnim;HYPER_VOICE
+	dw PlaceholderAnim;FAKE_TEARS
+	dw PlaceholderAnim;ROCK_TOMB
+	dw PlaceholderAnim;SILVER_WIND
+	dw PlaceholderAnim;METAL_SOUND
+	dw PlaceholderAnim;SIGNAL_BEAM
+	dw PlaceholderAnim;SAND_TOMB
+	dw PlaceholderAnim;SHEER_COLD
+	dw PlaceholderAnim;AERIAL_ACE
+	dw PlaceholderAnim;MUD_SHOT
+	dw PlaceholderAnim;MAGICAL_LEAF
+	dw PlaceholderAnim;DRAGON_DANCE
+	dw PlaceholderAnim;SHOCK_WAVE
+	dw PlaceholderAnim;SUCKER_PUNCH
+	dw PlaceholderAnim;FLARE_BLITZ
+	dw PlaceholderAnim;POISON_JAB
+	dw PlaceholderAnim;DARK_PULSE
+	dw PlaceholderAnim;NIGHT_SLASH
+	dw PlaceholderAnim;AIR_SLASH
+	dw PlaceholderAnim;X_SCISSOR
+	dw PlaceholderAnim;BUG_BUZZ
+	dw PlaceholderAnim;DRAGON_PULSE
+	dw PlaceholderAnim;POWER_GEM
+	dw PlaceholderAnim;DRAIN_PUNCH
+	dw PlaceholderAnim;FOCUS_BLAST
+	dw PlaceholderAnim;ENERGY_BALL
+	dw PlaceholderAnim;EARTH_POWER
+	dw PlaceholderAnim;NASTY_PLOT
+	dw PlaceholderAnim;ICE_SHARD
+	dw PlaceholderAnim;SHADOW_CLAW
+	dw PlaceholderAnim;THUNDER_FANG
+	dw PlaceholderAnim;ICE_FANG
+	dw PlaceholderAnim;FIRE_FANG
+	dw PlaceholderAnim;SHADOW_SNEAK
+	dw PlaceholderAnim;FLASH_CANNON
+	dw PlaceholderAnim;POWER_WHIP
+	dw PlaceholderAnim;ROCK_WRECKER
+	dw PlaceholderAnim;GUNK_SHOT
+	dw PlaceholderAnim;IRON_HEAD
+	dw PlaceholderAnim;STONE_EDGE
+	dw PlaceholderAnim;OMINOUS_WIND
+	dw PlaceholderAnim;FLAME_CHARGE
+	dw PlaceholderAnim;SCALD
+	dw PlaceholderAnim;HEX
+	dw PlaceholderAnim;INFERNO
+	dw PlaceholderAnim;BULLDOZE
+	dw PlaceholderAnim;ELECTROWEB
+	dw PlaceholderAnim;WILD_CHARGE
+	dw PlaceholderAnim;PSYSTRIKE
+	dw PlaceholderAnim;SNARL
+	dw PlaceholderAnim;ICICLE_CRASH
+	dw PlaceholderAnim;DISARM_VOICE
+	dw PlaceholderAnim;DRAIN_KISS
+	dw PlaceholderAnim;PLAY_ROUGH
+	dw PlaceholderAnim;MOONBLAST
+	dw PlaceholderAnim;BOOMBURST
+	dw PlaceholderAnim;DAZZLINGLEAM
+	dw PlaceholderAnim;INFESTATION
+	dw PlaceholderAnim;BRUTAL_SWING
+	dw PlaceholderAnim;LIQUIDATION
 	assert_table_length NUM_ATTACKS
 AltAnimationPointers: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	table_width 2, AltAnimationPointers
@@ -364,7 +364,7 @@ FirePunchAnim:
 
 IcePunchAnim:
 	battle_anim ICE_PUNCH, SUBANIM_0_STAR_THRICE, 0, 6
-	battle_anim NO_MOVE, SUBANIM_0_ICE_RISE, 0, 16
+	battle_anim PAY_DAY, SUBANIM_0_ICE_RISE, 0, 16
 	db -1 ; end
 
 ThunderPunchAnim:
@@ -374,6 +374,8 @@ ThunderPunchAnim:
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 
+MetalClawAnim:
+	battle_anim PAY_DAY, SE_DARK_SCREEN_FLASH
 ScratchAnim:
 	battle_anim SCRATCH, SUBANIM_0_SCRATCHES, 0, 6
 	db -1 ; end
@@ -405,10 +407,13 @@ CutAnim:
 	db -1 ; end
 
 GustAnim:
+TwisterAnim:
 	battle_anim GUST, SUBANIM_1_TORNADO, 1, 6
 	battle_anim NO_MOVE, SUBANIM_0_STAR_THRICE, 0, 6
 	db -1 ; end
 
+SteelWingAnim:
+	battle_anim PAY_DAY, SE_DARK_SCREEN_FLASH
 WingAttackAnim:
 	battle_anim WING_ATTACK, SUBANIM_1_STAR_BIG_MOVING, 1, 6
 	db -1 ; end
@@ -428,8 +433,10 @@ BindAnim:
 	battle_anim BIND, SUBANIM_0_BIND, 0, 4
 	db -1 ; end
 
+IronTailAnim:
+	battle_anim PAY_DAY, SE_DARK_SCREEN_FLASH
 BreakSwipeAnim:
-	battle_anim BREAK_SWIPE, SUBANIM_0_STAR_THRICE, 0, 6
+	battle_anim BREAK_SWIPE, SUBANIM_0_SLICE, 0, 4
 	db -1 ; end
 
 VineWhipAnim:
@@ -500,9 +507,8 @@ BodySlamAnim:
 	db -1 ; end
 
 WhirlpoolAnim:
-	battle_anim BIND, SUBANIM_0_BIND, 0, 4
-	battle_anim BIND, SUBANIM_0_BIND, 0, 4
-	battle_anim BIND, SUBANIM_0_BIND, 0, 4
+	battle_anim SURF, SUBANIM_1_TORNADO, 1, 8
+	battle_anim NO_MOVE, SE_WAVY_SCREEN
 	db -1 ; end
 
 TakeDownAnim:
@@ -525,6 +531,7 @@ DoubleEdgeAnim:
 	db -1 ; end
 
 TailWhipAnim:
+CharmAnim:
 	battle_anim AMNESIA, SE_MOVE_MON_HORIZONTALLY
 	battle_anim NO_MOVE, SE_DELAY_ANIMATION_10
 	battle_anim AMNESIA, SE_RESET_MON_POSITION
@@ -559,7 +566,8 @@ BiteAnim:
 	db -1 ; end
 
 GrowlAnim:
-	battle_anim GROWL, SUBANIM_0_HEART_1_MUSIC, 1, 6
+HealBellAnim:
+	battle_anim HEAL_BELL, SUBANIM_0_HEART_1_MUSIC, 1, 6
 	db -1 ; end
 
 HowlAnim:
@@ -601,6 +609,7 @@ FlamethrowerAnim:
 	db -1 ; end
 
 MistAnim:
+IcyWindAnim:
 	battle_anim NO_MOVE, SE_LIGHT_SCREEN_PALETTE
 	battle_anim SURF, SE_WATER_DROPLETS_EVERYWHERE
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
@@ -750,6 +759,7 @@ StunSporeAnim:
 	db -1 ; end
 
 SleepPowderAnim:
+PowderSnowAnim:
 	battle_anim SLEEP_POWDER, SUBANIM_0_CIRCLES_FALLING, 0, 6
 	db -1 ; end
 
@@ -777,6 +787,7 @@ FireSpinAnim:
 	db -1 ; end
 
 ThunderShockAnim:
+SparkAnim:
 	battle_anim THUNDERSHOCK, SUBANIM_1_LIGHTNING_BALL, 1, 2
 	db -1 ; end
 
@@ -807,16 +818,13 @@ RockThrowAnim:
 	battle_anim ROCK_THROW, SUBANIM_0_ROCKS_FALL_ENEMY, 0, 4
 	db -1 ; end
 
-EarthquakeAnim:
-	battle_anim EARTHQUAKE, SE_SHAKE_SCREEN
-	battle_anim EARTHQUAKE, SE_SHAKE_SCREEN
-	db -1 ; end
-
 FissureAnim:
 	battle_anim FISSURE, SE_DARK_SCREEN_FLASH
 	battle_anim NO_MOVE, SE_SHAKE_SCREEN
 	battle_anim FISSURE, SE_DARK_SCREEN_FLASH
-	battle_anim NO_MOVE, SE_SHAKE_SCREEN
+EarthquakeAnim:
+	battle_anim EARTHQUAKE, SE_SHAKE_SCREEN
+	battle_anim EARTHQUAKE, SE_SHAKE_SCREEN
 	db -1 ; end
 
 DigAnim:
@@ -1145,6 +1153,7 @@ DizzyPunchAnim:
 	db -1 ; end
 
 SporeAnim:
+CottonSporeAnim:
 	battle_anim SPORE, SUBANIM_0_CIRCLES_FALLING, 0, 6
 	db -1 ; end
 
@@ -1325,13 +1334,13 @@ UnusedAnim:
 	db -1 ; end
 
 ParalyzeAnim:
-	battle_anim BIND, SUBANIM_0_STATUS_PARALYZED, 0, 4
-	battle_anim BIND, SUBANIM_0_STATUS_PARALYZED, 0, 4
+	battle_anim ZAP_CANNON, SUBANIM_0_STATUS_PARALYZED, 0, 4
+	battle_anim NO_MOVE, SUBANIM_0_STATUS_PARALYZED, 0, 4
 	db -1 ; end
 
 PoisonAnim:
-	battle_anim BIND, SUBANIM_0_STATUS_POISONED, 0, 8
-	battle_anim BIND, SUBANIM_0_STATUS_POISONED, 0, 8
+	battle_anim CURSE, SUBANIM_0_STATUS_POISONED, 0, 8
+	battle_anim CURSE, SUBANIM_0_STATUS_POISONED, 0, 8
 	db -1 ; end
 
 SleepPlayerAnim:

@@ -286,7 +286,7 @@ DEF CANNOT_MOVE EQU $ff
 	const ANIM_B5
 	const ANIM_B6
 	const ANIM_B7
-	const ANIM_B8
+	const PARALYSIS_ANIM ; ~$~Renamed this to clarify what it points to.~$~
 	const ANIM_B9
 	const BURN_PSN_ANIM ; Plays when a monster is burned or poisoned
 	const ANIM_BB

@@ -167,7 +167,7 @@ MoveSoundTable:
 	db SFX_BATTLE_2C,          $d8, $04 ; SUBSTITUTE
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 ; ~$~ADDED: New moves.~$~
-	db SFX_BATTLE_0B,          $00, $80 ; CURSE"
+	db SFX_POISONED,           $00, $80 ; CURSE (used for poison anim)
 	db SFX_BATTLE_0B,          $00, $80 ; COTTON SPORE
 	db SFX_BATTLE_0B,          $00, $80 ; POWDER SNOW
 	db SFX_BATTLE_0B,          $00, $80 ; MACH PUNCH
@@ -176,12 +176,12 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; SWEET KISS
 	db SFX_BATTLE_0B,          $00, $80 ; SLUDGE BOMB
 	db SFX_BATTLE_0B,          $00, $80 ; MUD-SLAP
-	db SFX_BATTLE_0B,          $00, $80 ; ZAP CANNON
+	db SFX_ZAP_CANNON,         $00, $80 ; ZAP CANNON (also used for paralysis anim)
 	db SFX_BATTLE_0B,          $00, $80 ; ICY WIND
 	db SFX_BATTLE_0B,          $00, $80 ; CHARM
 	db SFX_BATTLE_0B,          $00, $80 ; SPARK
 	db SFX_BATTLE_0B,          $00, $80 ; STEEL WING
-	db SFX_BATTLE_0B,          $00, $80 ; HEAL BELL
+	db SFX_HEAL_BELL,          $00, $80 ; HEAL BELL
 	db SFX_BATTLE_0B,          $00, $80 ; SAFEGUARD
 	db SFX_BATTLE_0B,          $00, $80 ; DYNAMICPUNCH
 	db SFX_BATTLE_0B,          $00, $80 ; MEGAHORN

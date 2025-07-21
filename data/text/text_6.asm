@@ -175,16 +175,16 @@ _TeachMachineMoveText::
 
 _MonCannotLearnMachineMoveText::
 	text_ram wNameBuffer
-	text " is not"
-	line "compatible with"
+	text " can't"
+	line "learn the move"
 	cont "@"
 	text_ram wStringBuffer
 	text "."
 
-	para "It can't learn"
-	line "@"
-	text_ram wStringBuffer
-	text "."
+;	para "It can't learn"
+;	line "@"
+;	text_ram wStringBuffer
+;	text "."
 	prompt
 
 _ItemUseNotTimeText::

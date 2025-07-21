@@ -333,7 +333,7 @@ _HM02Description::
 	prompt
 
 _HM03Description::
-	text "A strong water-"
+	text "A strong WATER-"
 	next "type attack."
 	prompt
 
@@ -346,15 +346,20 @@ _HM05Description::
 	text "Blinds the foe to"
 	next "reduce accuracy."
 	prompt
+	
+_HM06Description::
+	text "An aquatic charge"
+	next "attack."
+	prompt
 
 _TM01Description::
-	text "A powerful punch"
-	next "thrown very hard."
+	text "Steals life-force"
+	next "with a punch."
 	prompt
 
 _TM02Description::
-	text "1st turn: Prepare"
-	next "2nd turn: Attack"
+	text "Slashes the foe"
+	next "with sharp claws."
 	prompt
 
 _TM03Description::
@@ -363,13 +368,13 @@ _TM03Description::
 	prompt
 
 _TM04Description::
-	text "Blows away the foe"
-	next "and ends battle."
+	text "Works differently"
+	next "for GHOST-types."
 	prompt
 
 _TM05Description::
-	text "A powerful kicking"
-	next "attack."
+	text "Swings violently"
+	next "to attack."
 	prompt
 
 _TM06Description::
@@ -378,8 +383,8 @@ _TM06Description::
 	prompt
 
 _TM07Description::
-	text "A one-hit KO,"
-	next "drill attack."
+	text "An attack that may"
+	next "raise all stats."
 	prompt
 
 _TM08Description::
@@ -388,8 +393,8 @@ _TM08Description::
 	prompt
 
 _TM09Description::
-	text "A tackle that also"
-	next "hurts the user."
+	text "Full-force charge."
+	next "User rests after."
 	prompt
 
 _TM10Description::
@@ -398,87 +403,87 @@ _TM10Description::
 	prompt
 
 _TM11Description::
-	text "An attack that may"
+	text "Fires bubbles. May"
 	next "lower SPEED."
 	prompt
 
 _TM12Description::
-	text "Squirts water to"
-	next "attack."
+	text "Sprays boiling"
+	next "water to attack."
 	prompt
 
 _TM13Description::
-	text "An attack that may"
-	next "freeze the foe."
+	text "Fires an icy beam."
+	next "May freeze foe."
 	prompt
 
 _TM14Description::
-	text "An attack that may"
-	next "freeze the foe."
+	text "Attacks with a"
+	next "brutal snowstorm."
 	prompt
 
 _TM15Description::
-	text "1st turn: Attack"
-	next "2nd turn: Rest"
+	text "Destructive beam."
+	next "User rests after."
 	prompt
 
 _TM16Description::
-	text "Throws coins. Gets"
-	next "them back later."
+	text "Lowers damage from"
+	next "special moves."
 	prompt
 
 _TM17Description::
-	text "An attack that al-"
-	next "so hurts the user."
+	text "Foils attack that"
+	next "turn. It may fail."
 	prompt
 
 _TM18Description::
-	text "Returns a physical"
-	next "blow double."
+	text "Powerful blast of"
+	next "FIGHTING energy."
 	prompt
 
 _TM19Description::
-	text "The user's level"
-	next "equals damage HP."
+	text "Absorbs nutrients"
+	next "from the target."
 	prompt
 
 _TM20Description::
-	text "Raises ATTACK if"
-	next "the user is hit."
+	text "Prevents all"
+	next "status problems."
 	prompt
 
 _TM21Description::
-	text "Steals 1/2 of the"
-	next "damage inflicted."
+	text "Fires a blast of"
+	next "light energy."
 	prompt
 
 _TM22Description::
-	text "1st turn: Prepare"
-	next "2nd turn: Attack"
+	text "Absorbs sunlight,"
+	next "then fires a beam."
 	prompt
 
 _TM23Description::
-	text "Always inflicts"
-	next "40HP damage."
+	text "Slams foe with a"
+	next "STEEL-hard tail."
 	prompt
 
 _TM24Description::
-	text "An attack that may"
-	next "cause paralysis."
+	text "Looses 100,000"
+	next "volts on the foe."
 	prompt
 
 _TM25Description::
-	text "An attack that may"
-	next "cause paralysis."
+	text "Strongest ELECTRIC"
+	next "attack of all."
 	prompt
 
 _TM26Description::
 	text "Tough but useless"
-	next "vs. flying foes."
+	next "vs. FLYING foes."
 	prompt
 
 _TM27Description::
-	text "A ground-type,"
+	text "A GROUND-type,"
 	next "one-hit KO attack."
 	prompt
 
@@ -488,18 +493,18 @@ _TM28Description::
 	prompt
 
 _TM29Description::
-	text "An attack that may"
-	next "lower SPECIAL."
+	text "Attacks with tele-"
+	next "kinetic force."
 	prompt
 
 _TM30Description::
-	text "A move for fleeing"
-	next "from battle."
+	text "Hurls a shadowy"
+	next "blob at the foe."
 	prompt
 
 _TM31Description::
-	text "Copies a move used"
-	next "by the foe."
+	text "Slashes foe akin"
+	next "to scissors."
 	prompt
 
 _TM32Description::
@@ -508,58 +513,58 @@ _TM32Description::
 	prompt
 
 _TM33Description::
-	text "Raises DEFENSE"
-	next "with a barrier."
+	text "Lowers damage from"
+	next "physical moves."
 	prompt
 
 _TM34Description::
-	text "Waits 2-3 turns to"
-	next "hit back double."
+	text "Stabs foe with a"
+	next "poisonous limb."
 	prompt
 
 _TM35Description::
-	text "Randomly uses any"
-	next "#MON move."
+	text "Scorches foe with"
+	next "intense flames."
 	prompt
 
 _TM36Description::
-	text "Powerful but makes"
-	next "the user faint."
+	text "Hurls vile sludge."
+	next "May poison foe."
 	prompt
 
 _TM37Description::
-	text "Eggs are hurled at"
-	next "the foe."
+	text "Burns foe with an"
+	next "eerie flame."
 	prompt
 
 _TM38Description::
-	text "An attack that"
-	next "may cause a burn."
+	text "Incinerates every-"
+	next "thing it strikes."
 	prompt
 
 _TM39Description::
-	text "An attack that"
-	next "never misses."
+	text "Hurls boulders to"
+	next "lower SPEED."
 	prompt
 
 _TM40Description::
-	text "1st turn: Prepare"
-	next "2nd turn: Attack"
+	text "A quick and un-"
+	next "avoidable attack."
 	prompt
 
 _TM41Description::
-	text "Restores HP by 1/2"
-	next "the user's max HP."
+	text "Fires 2-5 volleys"
+	next "of seeds."
 	prompt
 
 _TM42Description::
-	text "Steals HP from a"
-	next "sleeping victim."
+	text "A headbutt charged"
+	next "with PSI energy."
 	prompt
 
 _TM43Description::
-	text "1st turn: Prepare"
-	next "2nd turn: Attack"
+	text "Attacks with a"
+	next "fierce windstorm."
 	prompt
 
 _TM44Description::
@@ -568,33 +573,33 @@ _TM44Description::
 	prompt
 
 _TM45Description::
-	text "A move that may"
-	next "cause paralysis."
+	text "An electric jolt,"
+	next "sure to paralyze."
 	prompt
 
 _TM46Description::
-	text "An attack with"
-	next "variable power."
+	text "Attacks with a"
+	next "horrible aura."
 	prompt
 
 _TM47Description::
-	text "Very powerful but"
-	next "makes user faint."
+	text "Stiff wings strike"
+	next "the foe."
 	prompt
 
 _TM48Description::
-	text "An attack that may"
-	next "cause flinching."
+	text "Attacks with a"
+	next "rocky avalanche."
 	prompt
 
 _TM49Description::
-	text "Fires three kinds"
-	next "of beams at once."
+	text "Fires a mystical"
+	next "flash of light."
 	prompt
 
 _TM50Description::
-	text "Makes a decoy with"
-	next "1/4 user's max HP."
+	text "Harshly drops an"
+	next "icicle on the foe."
 	prompt
 
 _UnusedItemDescription::

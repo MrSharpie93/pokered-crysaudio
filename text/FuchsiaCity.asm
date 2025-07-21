@@ -28,7 +28,7 @@ _FuchsiaCityYoungster2Text::
 	done
 
 _FuchsiaCityPokemonText::
-	text "!"
+	text "hey how's it goin?"
 	done
 
 _FuchsiaCitySignText::
@@ -94,7 +94,7 @@ _FuchsiaCitySlowpokeSignText::
 _FuchsiaCityLaprasSignText::
 	text "Name: LAPRAS"
 
-	para "A.K.A. the king"
+	para "A.K.A. the ruler"
 	line "of the seas."
 	prompt
 
@@ -117,3 +117,20 @@ _FuchsiaCityFossilSignKabutoText::
 _FuchsiaCityFossilSignUndeterminedText::
 	text "..."
 	done
+	
+_SubstituteMoveTutorText::
+	text "Aww, I wish I was"
+	line "a KANGASKHAN baby."
+
+	para "I'd love to be a"
+	line "substitute for"
+	cont "the baby, and"
+	cont "snuggle in the"
+	cont "mother's pouch..."
+	
+	para "But only #MON"
+	line "can use the move"
+	cont "SUBSTITUTE..."
+	
+	para "Like yours!"
+	prompt

@@ -4,8 +4,14 @@ _PewterSpeechHouseGamblerText::
 	cont "they grow!"
 
 	para "But, some moves"
-	line "must be taught by"
-	cont "the trainer!"
+	line "must be taught,"
+	cont "either by the"
+	cont "trainer or a"
+	cont "special tutor."
+	
+	para "Speaking of, come"
+	line "see me after you"
+	cont "get BOULDERBADGE."
 	done
 
 _PewterSpeechHouseYoungsterText::
@@ -17,3 +23,8 @@ _PewterSpeechHouseYoungsterText::
 	para "But, it's not a"
 	line "sure thing!"
 	done
+	
+_MudSlapTutorText::
+	text "Hello! I am a"
+	line "MOVE TUTOR."
+	prompt

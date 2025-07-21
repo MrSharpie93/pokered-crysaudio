@@ -371,6 +371,7 @@ SECTION "New Move Effects", ROMX
 
 INCLUDE "engine/battle/move_effects/burn.asm"
 INCLUDE "engine/battle/move_effects/curse.asm"
+INCLUDE "engine/battle/move_effects/teleport.asm"
 
 SECTION "Mon Icons", ROMX
 

@@ -1788,15 +1788,18 @@ ItemUseOldRod:
 	ld a, $1 ; set bite
 	jr RodResponse
 
+; ~$~CHANGED: Reworked fishing using various bits from shinpokered, PureRGB and Red++.~$~
+; ~$~ Fishing with Good/Super Rod now has only a 25% failure rate, the Good Rod can now pull from a pool of 6 different Pokemon, and all rods have level variance.~$~
 ItemUseGoodRod:
 	call FishingInit
 	jp c, ItemUseNotTime
 .RandomLoop
 	call Random
-	srl a
-	jr c, .SetBite
 	and %11
-	cp 2
+	jp z, RodResponse ;25% chance of no bite
+	call Random
+	and %111
+	cp 6
 	jr nc, .RandomLoop
 	; choose which monster appears
 	ld hl, GoodRodMons
@@ -1808,10 +1811,7 @@ ItemUseGoodRod:
 	inc hl
 	ld c, [hl]
 	and a
-.SetBite
-	ld a, 0
-	rla
-	xor 1
+	ld a, 1
 	jr RodResponse
 
 INCLUDE "data/wild/good_rod.asm"
@@ -1829,7 +1829,12 @@ RodResponse:
 	; if yes, store level and species data
 	ld a, 1
 	ld [wMoveMissed], a
-	ld a, b ; level
+;	ld a, b ; level
+; ~$~ADDED: Level variance for fishing encounters.~$~
+	call Random
+	and 5
+	add b
+;;;
 	ld [wCurEnemyLevel], a
 	ld a, c ; species
 	ld [wCurOpponent], a
@@ -2811,12 +2816,15 @@ ReadSuperRodData:
 	ld b, [hl] ; how many mons in group
 	inc hl ; point to data
 	ld e, $0 ; no bite yet
+	
+	call Random
+;;;;;;;;;; PureRGBnote: CHANGED: fishing rods now have a hard 1/4 chance of not catching a pokemon instead of a repeated 1/2 chance.
+	and %11 ; 2-bit random number
+	ret z ; 25% chance of no battle (25% chance of 2 bits being 00)
+;;;;;;;;;;
 
 .RandomLoop
 	call Random
-	srl a
-	ret c ; 50% chance of no battle
-
 	and %11 ; 2-bit random number
 	cp b
 	jr nc, .RandomLoop ; if a is greater than the number of mons, regenerate

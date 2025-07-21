@@ -27,15 +27,25 @@ HealEffect_:
 	push af
 	ld c, 50
 	call DelayFrames
-	ld hl, wBattleMonStatus
+; ~$~CHANGED: Red++ snippet for clearing Toxic when using Rest.~$~
+	ld bc, wBattleMonStatus
+	ld de, wPlayerToxicCounter
+	ld hl, wPlayerBattleStatus3
 	ldh a, [hWhoseTurn]
 	and a
 	jr z, .restEffect
-	ld hl, wEnemyMonStatus
+	ld bc, wEnemyMonStatus
+	ld de, wEnemyToxicCounter
+	ld hl, wEnemyBattleStatus3
 .restEffect
-	ld a, [hl]
+	xor a
+	ld [de], a
+	res BADLY_POISONED, [hl]
+	ld a, [bc]
 	and a
-	ld [hl], 3 ; clear status and set number of turns asleep to functionally 2
+	ld a, 3 ; Number of turns from Rest
+	ld [bc], a
+;;;
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status

@@ -1,6 +1,6 @@
 ; ~$~ADDED: Red++'s Move Tutor functionality.~$~
 ; Handles Move Tutor functionality
-; Costs ¥500, the same as the Move Relearner
+; Costs ¥1000, the same as the Move Relearner
 ; To make a person a tutor, have their Text Pointer point to a structure like this example
 
 ;ExamplePersonScript:
@@ -85,10 +85,10 @@ DisplayTeachTutorMoveText:
 	
 .checkMoney ; If you said yes, Make sure you have money
 	xor a
-	ldh [$9f], a
-	ldh [$a1], a
-	ld a, 5
-	ldh [$a0], a  ; 500 money
+	ld [hMoney], a	
+	ld [hMoney + 2], a
+	ld a, $0A
+	ld [hMoney + 1], a
 	call HasEnoughMoney
 	jr nc, .chooseMon ; Go ahead if you have enough
 	
@@ -139,13 +139,13 @@ DisplayTeachTutorMoveText:
 	and a ; did you learn the move, or cancel learning?
 	jr z, .done
 
-	; Charge 500 money if you learned it
+	; Charge 1000 money if you learned it
 	xor a
-	ld [wWhichTrade], a
-	ld [wTrainerFacingDirection], a
-	ld a, $5
-	ld [wTrainerEngageDistance], a
-	ld hl, wTrainerFacingDirection
+	ld [wPriceTemp], a
+	ld [wPriceTemp + 2], a	
+	ld a, $0A
+	ld [wPriceTemp + 1], a	
+	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2
 	ld c, $3
 	predef SubBCDPredef

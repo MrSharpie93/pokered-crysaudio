@@ -586,9 +586,18 @@ AISwitchIfEnoughMons:
 	jp nc, SwitchEnemyMon
 	and a
 	ret
+; ~$~ADDED: Code from PureRGB to make the Teleport effect work.~$~
+SwitchEnemyMonNoText:
+	call SwitchEnemyMonCommon
+	jp SwitchEnemyMonCommon2
 
 SwitchEnemyMon:
+	call SwitchEnemyMonCommon
+	ld hl, AIBattleWithdrawText
+	call PrintText
+	jp SwitchEnemyMonCommon2
 
+SwitchEnemyMonCommon:
 ; prepare to withdraw the active monster: copy hp, number, and status to roster
 
 	ld a, [wEnemyMonPartyPos]
@@ -600,10 +609,10 @@ SwitchEnemyMon:
 	ld hl, wEnemyMonHP
 	ld bc, 4
 	call CopyData
+	ret
 
-	ld hl, AIBattleWithdrawText
-	call PrintText
-
+SwitchEnemyMonCommon2:
+;;;
 	; This wFirstMonsNotOutYet variable is abused to prevent the player from
 	; switching in a new mon in response to this switch.
 	ld a, 1

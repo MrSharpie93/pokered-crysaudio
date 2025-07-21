@@ -13,8 +13,8 @@ FuchsiaCity_TextPointers:
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_SLOWPOKE
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_LAPRAS
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_FOSSIL
+	dw_const SubstituteMoveTutorText,        TEXT_FUCHSIACITY_MOVE_TUTOR
 	dw_const FuchsiaCitySignText,            TEXT_FUCHSIACITY_SIGN1
-	dw_const FuchsiaCitySignText,            TEXT_FUCHSIACITY_SIGN2
 	dw_const FuchsiaCitySafariGameSignText,  TEXT_FUCHSIACITY_SAFARI_GAME_SIGN
 	dw_const MartSignText,                   TEXT_FUCHSIACITY_MART_SIGN
 	dw_const PokeCenterSignText,             TEXT_FUCHSIACITY_POKECENTER_SIGN
@@ -47,6 +47,14 @@ FuchsiaCityYoungster2Text:
 FuchsiaCityPokemonText:
 	text_far _FuchsiaCityPokemonText
 	text_end
+	
+SubstituteMoveTutorText:
+	text_far _SubstituteMoveTutorText
+	text_asm
+	ld a, 13 ; SUBSTITUTE
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
 
 FuchsiaCitySignText:
 	text_far _FuchsiaCitySignText

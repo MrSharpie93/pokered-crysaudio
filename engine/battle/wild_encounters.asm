@@ -74,6 +74,12 @@ TryDoWildEncounter:
 	ld b, 0
 	add hl, bc
 	ld a, [hli]
+; ~$~ADDED: Level variance for wild encounters.~$~
+	ld b, a
+	call Random
+	and 3
+	add b
+;;;
 	ld [wCurEnemyLevel], a
 	ld a, [hl]
 	ld [wCurPartySpecies], a

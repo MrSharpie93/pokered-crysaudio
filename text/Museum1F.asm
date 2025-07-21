@@ -16,8 +16,8 @@ _Museum1FScientist1ThankYouText::
 	done
 
 _Museum1FScientist1DontHaveEnoughMoneyText::
-	text "You don't have"
-	line "enough money."
+	text "You don't even"
+	line "have ¥50?!"
 	prompt
 
 _Museum1FScientist1DoYouKnowWhatAmberIsText::
@@ -38,8 +38,8 @@ _Museum1FScientist1TheresALabSomewhereText::
 	done
 
 _Museum1FScientist1AmberIsFossilizedTreeSapText::
-	text "AMBER is fossil-"
-	line "ized tree sap."
+	text "Pay attention in"
+	line "school, then."
 	done
 
 _Museum1FScientist1GoToOtherSideText::
@@ -96,11 +96,23 @@ _Museum1FScientist2YouDontHaveSpaceText::
 	done
 
 _Museum1FScientist3Text::
-	text "We are proud of 2"
-	line "fossils of very"
-	cont "rare, prehistoric"
-	cont "#MON!"
-	done
+	text "The secrets of"
+	line "space..."
+	
+	para "The mysteries of"
+	line "Earth..."
+	
+	para "We know so little"
+	line "about so much."
+	
+	para "But that should"
+	line "spur us to study"
+	cont "more, not toss"
+	cont "in the towel."
+	
+	para "Earth, toss..."
+	line "I have an idea!"
+	prompt
 
 _Museum1FOldAmberText::
 	text "The AMBER is"

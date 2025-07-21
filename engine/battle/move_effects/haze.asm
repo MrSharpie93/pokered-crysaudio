@@ -71,17 +71,22 @@ RapidSpinEffect_: ; ~$~ADDED~$~
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerBattleStatus2
+	ld de, wPlayerMoveEffect
 	jr z, .rapidSpinEffect
 	ld hl, wEnemyBattleStatus2
+	ld de, wEnemyMoveEffect
 .rapidSpinEffect
+	push de
 	bit SEEDED, [hl]
-	ret z
+	jr z, .notSeeded
 	res SEEDED, [hl]
-	push hl
 	ld hl, ShedLeechSeedText
-;	call PrintText
-; Shit for speed up 1 effect goes here
-	jp PrintText
+	call PrintText
+.notSeeded
+	pop de
+	ld a, SPEED_UP1_EFFECT
+	ld [de], a
+	jpfar StatModifierUpEffect
 	
 ShedLeechSeedText:
 	text_far _ShedLeechSeedText

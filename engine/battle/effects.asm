@@ -41,7 +41,7 @@ SleepEffect: ; ~$~CHANGED: Grass-types are immune to Sleep Powder and Spore.
 	jr nz, .didntAffect
 	ld a, [de]
 	cp GRASS
-	jr z, .grassCheck ; ~$~Prevents Sleep Power or Spore from working on Grass-types.~$~
+	jr z, .grassCheck ; ~$~Prevents Sleep Powder or Spore from working on Grass-types.~$~
 .resume
 	ld a, [bc]
 	bit NEEDS_TO_RECHARGE, a ; does the target need to recharge? (hyper beam)
@@ -106,24 +106,24 @@ AlreadyAsleepText:
 
 PoisonEffect:
 	ld hl, wEnemyMonStatus
-	ld de, wPlayerMoveEffect
+	ld de, wPlayerMoveNum
 	ldh a, [hWhoseTurn]
 	and a
 	jr z, .poisonEffect
 	ld hl, wBattleMonStatus
-	ld de, wEnemyMoveEffect
+	ld de, wEnemyMoveNum
 .poisonEffect
 	call CheckTargetSubstitute
-	jr nz, .noEffect ; can't poison a substitute target
+	jp nz, .noEffect ; can't poison a substitute target
 	call CheckTargetSafeguard
-	jr nz, .noEffect ; can't poison a safeguarded target
+	jp nz, .noEffect ; can't poison a safeguarded target
 	ld a, [hli]
 	ld b, a
 	and a
-	jr nz, .noEffect ; miss if target is already statused
+	jp nz, .noEffect ; miss if target is already statused
 	ld a, [hli]
 	cp POISON ; can't poison a poison-type target
-	jr z, .noEffect
+	jp z, .noEffect
 	cp STEEL ; can't poison a steel-type target
 	jr z, .noEffect
 	ld a, [hld]
@@ -131,6 +131,19 @@ PoisonEffect:
 	jr z, .noEffect
 	cp STEEL ; can't poison a steel-type target
 	jr z, .noEffect
+; ~$~CHANGED: Code snippet from pokered-restored to grant Grass-types immunity to Poisonpowder.~$~
+	ld a, [de]
+	inc de
+	cp POISONPOWDER
+	jr nz, .notPoisonPowder
+	ld a, [hli]
+	cp GRASS
+	jp z, .noEffect
+	ld a, [hld]
+	cp GRASS
+	jp z, .noEffect
+.notPoisonPowder
+;;;
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1
 	ld b, 30 percent + 1 ; chance of poisoning ~$~CHANGED: Adjusted for modern probabilities.~$~
@@ -970,21 +983,18 @@ ThrashPetalDanceEffect:
 	add SHRINKING_SQUARE_ANIM
 	jp PlayAlternativeAnimation2
 
-SwitchAndTeleportEffect: ; Roar and Whirlwind were removed, and this will eventually be replaced with an effect that functions like Teleport does in LGPE and on.~$~
-	call PlayCurrentMoveAnimation
-	jp PrintNoEffectText
-
-RanFromBattleText:
-	text_far _RanFromBattleText
-	text_end
-
-;RanAwayScaredText:
-;	text_far _RanAwayScaredText
-;	text_end
-
-;WasBlownAwayText:
-;	text_far _WasBlownAwayText
-;	text_end
+SwitchAndTeleportEffect: ; ~$~CHANGED: Teleport now functions like LGPE and later games. Function moved to own file.~$~
+	jpfar SwitchAndTeleportEffect_
+	
+TeleportWildPokemon:: ; ~$~CHANGED: Separated from teleport effect and kept in core due to BattleRandom call.~$~
+.rejectionSampleLoop
+	call BattleRandom
+	cp e
+	jr nc, .rejectionSampleLoop
+	srl d
+	srl d
+	cp d
+	ret
 
 TwoToFiveAttacksEffect:
 	ld hl, wPlayerBattleStatus1
@@ -1222,14 +1232,38 @@ DugAHoleText:
 	text_end
 
 TrappingEffect:
+;;;;;;;;;; PureRGBnote: FIXED: trapping state won't be set if the pokemon is immune to the attack
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .player
+	call AIGetImmediateTypeEffectiveness
+	jr .retIfImmune
+.player
+	call GetPlayerTypeEffectiveness
+.retIfImmune
+	; wTypeEffectiveness still in a here
+	and a
+	ret z
+;;;;;;;;;;
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
+	ld bc, wEnemyMonType1
 	ldh a, [hWhoseTurn]
 	and a
 	jr z, .trappingEffect
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft
+	ld bc, wBattleMonType1
 .trappingEffect
+; ~$~CHANGED: Ghost-types cannot be trapped.~$~
+	ld a, [bc]
+	cp GHOST
+	ret z
+	inc bc
+	ld a, [bc]
+	cp GHOST
+	ret z
+;;;
 	bit USING_TRAPPING_MOVE, [hl]
 	ret nz
 	call ClearHyperBeam ; since this effect is called before testing whether the move will hit,

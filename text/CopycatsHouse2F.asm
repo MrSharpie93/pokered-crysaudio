@@ -22,30 +22,17 @@ _CopycatsHouse2FCopycatTM31PreReceiveText::
 	para "For me?"
 	line "Thank you!"
 
-	para "You can have"
-	line "this, then!"
+	para "As thanks, I'll"
+	line "do an impression"
+	cont "of a MOVE TUTOR,"
+	cont "just for you!"
 	prompt
-
-_CopycatsHouse2FCopycatReceivedTM31Text::
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
-
-_CopycatsHouse2FCopycatTM31Explanation1Text::
-	text_start
-
-	para "TM31 contains my"
-	line "favorite, MIMIC!"
-
-	para "Use it on a good"
-	line "#MON!@"
-	text_end
 
 _CopycatsHouse2FCopycatTM31Explanation2Text::
 	text "<PLAYER>: Hi!"
-	line "Thanks for TM31!"
+	line "Can you teach"
+	cont "MIMIC to one of"
+	cont "my #MON again?"
 
 	para "<PLAYER>: Pardon?"
 
@@ -55,12 +42,10 @@ _CopycatsHouse2FCopycatTM31Explanation2Text::
 
 	para "COPYCAT: You bet!"
 	line "It's a scream!"
-	done
-
-_CopycatsHouse2FCopycatTM31NoRoomText::
-	text "Don't you want"
-	line "this?@"
-	text_end
+	
+	para "...But sure, no"
+	line "problem."
+	prompt
 
 _CopycatsHouse2FDoduoText::
 	text "DODUO: Giiih!"
@@ -79,8 +64,8 @@ _CopycatsHouse2FRareDollText::
 
 _CopycatsHouse2FSNESText::
 	text "A game with MARIO"
-	line "wearing a bucket"
-	cont "on his head!"
+	line "fighting LINK and"
+	cont "YOSHI!"
 	done
 
 _CopycatsHouse2FPCMySecretsText::

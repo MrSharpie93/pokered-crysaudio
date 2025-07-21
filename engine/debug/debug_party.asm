@@ -18,8 +18,8 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEOWTH, 93
 	db CHANSEY, 15
 	db BLASTOISE, 60
-	db ARTICUNO, 57
-	db PIKACHU, 5
+	db GENGAR, 57
+	db ABRA, 5
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -93,21 +93,21 @@ IF DEF(_DEBUG)
 ;	ld a, 15
 ;	ld [hl], a
 
-	; Articuno gets Fly.
-	ld hl, wPartyMon5Moves
-	ld a, FLY
-	ld [hl], a
-	ld hl, wPartyMon5PP
-	ld a, 15
-	ld [hl], a
+;	; Articuno gets Fly.
+;	ld hl, wPartyMon5Moves
+;	ld a, FLY
+;	ld [hl], a
+;	ld hl, wPartyMon5PP
+;	ld a, 15
+;	ld [hl], a
 
-	; Pikachu gets Surf.
-	ld hl, wPartyMon6Moves + 2
-	ld a, SURF
-	ld [hl], a
-	ld hl, wPartyMon6PP + 2
-	ld a, 15
-	ld [hl], a
+;	; Pikachu gets Surf.
+;	ld hl, wPartyMon6Moves + 2
+;	ld a, SURF
+;	ld [hl], a
+;	ld hl, wPartyMon6PP + 2
+;	ld a, 15
+;	ld [hl], a
 
 	; Get some debug items.
 	ld hl, wNumBagItems

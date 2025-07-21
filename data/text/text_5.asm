@@ -104,7 +104,7 @@ _BoxIsFullText::
 	done
 	
 _TeachTutorMoveText::
-	text "For ¥500, I can"
+	text "For ¥1000, I can"
 	line "teach the move"
 	cont "@"
 	text_ram wStringBuffer

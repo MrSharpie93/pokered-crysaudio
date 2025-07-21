@@ -8,9 +8,9 @@ PewterNidoranHouse_TextPointers:
 	dw_const PewterNidoranHouseMiddleAgedManText, TEXT_PEWTERNIDORANHOUSE_MIDDLE_AGED_MAN
 
 PewterNidoranHouseNidoranText:
-	text_far _PewterNidoranHouseNidoranText
+	text_far _SandshrewText
 	text_asm
-	ld a, NIDORAN_M
+	ld a, SANDSHREW
 	call PlayCry
 	call WaitForSoundToFinish
 	jp TextScriptEnd

@@ -404,7 +404,7 @@ MainInBattleLoop:
 	jr c, .AIActionUsedEnemyFirst
 	call ExecuteEnemyMove
 	ld a, [wEscapedFromBattle]
-	and a ; was Teleport, Roar, or Whirlwind used to escape from battle?
+	and a ; was Teleport used to escape from battle?
 	ret nz ; if so, return
 	ld a, b
 	and a
@@ -415,7 +415,7 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	call ExecutePlayerMove
 	ld a, [wEscapedFromBattle]
-	and a ; was Teleport, Roar, or Whirlwind used to escape from battle?
+	and a ; was Teleport used to escape from battle?
 	ret nz ; if so, return
 	ld a, b
 	and a
@@ -1165,6 +1165,17 @@ ChooseNextMon:
 .monChosen
 	call HasMonFainted
 	jr z, .goBackToPartyMenu ; if mon fainted, you have to choose another
+;;;;;;;;; PureRGBnote: ADDED: Code for TELEPORT - prevents selecting the pokemon that's currently out 
+;;;;;;;;; (will not matter in other scenarios since the current pokemon will be fainted and that will be caught by the previous check)
+	ld hl, wPlayerMonNumber
+	ld a, [wWhichPokemon]
+	cp [hl]
+	jr nz, .notSamePokemon
+	ld hl, AlreadyOutText
+	call PrintText
+	jr .goBackToPartyMenu
+.notSamePokemon
+;;;;;;;;;
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr nz, .notLinkBattle
@@ -2705,18 +2716,24 @@ SelectMenuItem:
 	jr z, .battleselect
 	dec a
 	jr nz, .select
+	; MIMIC-specific code only
+;;;;;;;;;; PureRGBnote: FIXED: bug with displaying the mimic menu's WHICH TECHNIQUE? text. The bottom line of text wasn't erased. It should be.
+	hlcoord 1, 14
+	lb bc, 3, 18
+	call ClearScreenArea
+;;;;;;;;;;
 	hlcoord 1, 14
 	ld de, WhichTechniqueString
 	call PlaceString
 	jr .select
 .battleselect
 	; Hide move swap cursor in TestBattle.
-	ld a, [wStatusFlags7]
-	bit BIT_TEST_BATTLE, a
+;	ld a, [wStatusFlags7]
+;	bit BIT_TEST_BATTLE, a
 	; This causes PrintMenuItem to not run in TestBattle.
 	; MoveSelectionMenu still draws part of its window, an issue
 	; which did not seem to exist in the Japanese versions.
-	jr nz, .select
+;	jr nz, .select
 	call PrintMenuItem
 	ld a, [wMenuItemToSwap]
 	and a
@@ -3094,9 +3111,9 @@ SelectEnemyMove:
 	ld a, [hl]
 	and (1 << CHARGING_UP) | (1 << THRASHING_ABOUT) ; using a charging move or thrash/petal dance
 	ret nz
-	ld a, [wEnemyMonStatus]
-	and (1 << FRZ) | SLP_MASK
-	ret nz
+;	ld a, [wEnemyMonStatus] ; ~$~CHANGED: Remove this check, so AI move choice isn't affected by freeze/sleep.~$~
+;	and (1 << FRZ) | SLP_MASK
+;	ret nz
 	ld a, [wEnemyBattleStatus1]
 	and (1 << USING_TRAPPING_MOVE) ; using a trapping move like wrap
 	ret nz
@@ -3288,7 +3305,15 @@ PlayerCalcMoveDamage:
 	ld hl, SetDamageEffects
 	ld de, 1
 	call IsInArray
-	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
+; ~$~ ADDED: Red++ snippet to prevent set damage moves from hitting Pokemon immune to them.~$~
+	jp nc,.notSetDamageMove
+	set 5, a ; Set wDamage to an arbitrary non-zero number, so that AdjustDamageForMoveType
+			 ; won't result in 0 damage for set-damage moves, causing the attack to miss.
+	ld [wDamage + 1], a
+	jr .skipCalc
+;	jp c,.moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
+.notSetDamageMove
+;;;
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, handleIfPlayerMoveMissed
@@ -3296,6 +3321,7 @@ PlayerCalcMoveDamage:
 	call CalculateDamage
 	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
 	               ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
+.skipCalc ; Jumps here instead of the old place, so hopefully it will miss properly
 	call AdjustDamageForMoveType
 	call RandomizeDamage
 .moveHitTest
@@ -3381,8 +3407,12 @@ MirrorMoveCheck:
 	jp ExecutePlayerMoveDone ; otherwise, we're done if the move missed
 .moveDidNotMiss
 	call ApplyAttackToEnemyPokemon
+	ld a, [wPlayerMovePower] ; ~$~CHANGED: Snippet from shinpokered to prevent gimmick moves from printing crit/effectiveness text.~$~
+	cp 2
+	jr c, .zeropower_or_staticmove
 	call PrintCriticalOHKOText
 	callfar DisplayEffectiveness
+.zeropower_or_staticmove
 	ld a, 1
 	ld [wMoveDidntMiss], a
 .notDone
@@ -3641,7 +3671,12 @@ CheckPlayerStatusConditions:
 	jr nc, .BideCheck
 	ld hl, FullyParalyzedText
 	call PrintText
-
+; ~$~ADDED: Use the paralysis animation already in the game for something.~$~
+	xor a
+	ld [wAnimationType], a
+	ld a, PARALYSIS_ANIM
+	call PlayAltAnimation
+;;;
 .MonHurtItselfOrFullyParalysed
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
@@ -3812,13 +3847,13 @@ ConfusedNoMoreText:
 	text_far _ConfusedNoMoreText
 	text_end
 
-SavingEnergyText:
-	text_far _SavingEnergyText
-	text_end
+;SavingEnergyText:
+;	text_far _SavingEnergyText
+;	text_end
 
-UnleashedEnergyText:
-	text_far _UnleashedEnergyText
-	text_end
+;UnleashedEnergyText:
+;	text_far _UnleashedEnergyText
+;	text_end
 
 ThrashingAboutText:
 	text_far _ThrashingAboutText
@@ -4302,6 +4337,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Reflect, double the enemy's defense
 	sla c
 	rl b
+	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 .physicalAttackCritCheck
 	ld hl, wBattleMonAttack
 	ld a, [wCriticalHitOrOHKO]
@@ -4346,6 +4382,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Light Screen, double the enemy's special
 	sla c
 	rl b
+	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 ; reflect and light screen boosts do not cap the stat at MAX_STAT_VALUE, so weird things will happen during stats scaling
 ; if a Pokemon with 512 or more Defense has used Reflect, or if a Pokemon with 512 or more Special has used Light Screen
 .specialAttackCritCheck
@@ -4422,6 +4459,15 @@ GetDamageVarsForPlayerAttack:
 	ld a, 1
 	and a
 	ret
+	
+; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
+CapBCAt1023:
+	ld a, b
+	cp 4
+	ret c
+	lb bc, 3, 255
+	ret
+;;;
 
 ; sets b, c, d, and e for the CalculateDamage routine in the case of an attack by the enemy mon
 GetDamageVarsForEnemyAttack:
@@ -4451,6 +4497,7 @@ GetDamageVarsForEnemyAttack:
 ; if the player has used Reflect, double the player's defense
 	sla c
 	rl b
+	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 .physicalAttackCritCheck
 	ld hl, wEnemyMonAttack
 	ld a, [wCriticalHitOrOHKO]
@@ -4497,6 +4544,7 @@ GetDamageVarsForEnemyAttack:
 ; if the player has used Light Screen, double the player's special
 	sla c
 	rl b
+	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 ; reflect and light screen boosts do not cap the stat at MAX_STAT_VALUE, so weird things will happen during stats scaling
 ; if a Pokemon with 512 or more Defense has used Reflect, or if a Pokemon with 512 or more Special has used Light Screen
 .specialAttackCritCheck
@@ -5253,8 +5301,20 @@ AttackSubstitute:
 	jr z, .nullifyEffect
 	ld hl, wEnemyMoveEffect ; value for enemy's turn
 .nullifyEffect
+; ~$~CHANGED: Red++ snippet preventing certain move effects from being canceled by breaking a substitute.~$~
+	ld a, [hl] ; some effects don't need to be removed
+	cp HYPER_BEAM_EFFECT
+	jr z, .done
+	cp EXPLODE_EFFECT
+	jr z, .done
+	cp RECOIL_EFFECT
+	jr z, .done
+	cp RECOIL_STATUS_EFFECT
+	jr z, .done
+	; if it wasn't one of those, nullify the effect
 	xor a
 	ld [hl], a ; zero the effect of the attacker's move
+.done
 	jp DrawHUDsAndHPBars
 
 SubstituteTookDamageText:
@@ -5266,7 +5326,7 @@ SubstituteBrokeText:
 	text_end
 
 ; this function raises the attack modifier of a pokemon using Rage when that pokemon is attacked
-HandleBuildingRage: ; ~$~REMOVED: Rage removed, no longer needed.~$~
+; HandleBuildingRage: ; ~$~REMOVED: Rage removed, no longer needed.~$~
 ; ; values for the player turn
 	; ld hl, wEnemyBattleStatus2
 	; ld de, wEnemyMonStatMods
@@ -5306,7 +5366,7 @@ HandleBuildingRage: ; ~$~REMOVED: Rage removed, no longer needed.~$~
 	; ldh a, [hWhoseTurn]
 	; xor $01 ; flip turn back to the way it was
 	; ldh [hWhoseTurn], a
-	ret
+	; ret
 
 ;BuildingRageText:
 ;	text_far _BuildingRageText
@@ -5558,6 +5618,27 @@ AdjustDamageForMoveType:
 	jp .loop
 .done
 	ret
+	
+; ~$~ADDED: Functions from PureRGB to prevent Pokemon immune to damage from certain trapping moves still being trapped.~$~
+GetPlayerTypeEffectiveness:
+	ld a, [wPlayerMoveType]
+	ld hl, wEnemyBattleStatus2
+	ld a, [wPlayerMoveType]
+	ld d, a                    ; d = type of enemy move
+	ld a, [wEnemyMonType1]
+	ld b, a
+	ld a, [wEnemyMonType2]
+	ld c, a
+	jr AIGetTypeEffectiveness.load
+
+AIGetImmediateTypeEffectiveness:
+	ld a, [wEnemyMoveType]
+	ld d, a                    ; d = type of enemy move
+	ld a, [wBattleMonType1]
+	ld b, a
+	ld a, [wBattleMonType2]
+	ld c, a
+	jr AIGetTypeEffectiveness.load
 
 ; function to tell how effective the type of an enemy attack is on the player's current pokemon
 ; this doesn't take into account the effects that dual types can have
@@ -5572,7 +5653,8 @@ AIGetTypeEffectiveness:
 	inc hl
 	ld c, [hl]                 ; c = type 2 of player's pokemon
 	; initialize to neutral effectiveness
-	ld a, $10 ; bug: should be EFFECTIVE (10)
+.load
+	ld a, EFFECTIVE
 	ld [wTypeEffectiveness], a
 	ld hl, TypeEffects
 .loop
@@ -5654,8 +5736,14 @@ MoveHitTest:
 .skipEnemyMistCheck
 	ld a, [wPlayerBattleStatus2]
 	bit USING_X_ACCURACY, a ; is the player using X Accuracy?
-	ret nz ; if so, always hit regardless of accuracy/evasion
-	jr .calcHitChance
+	jr z, .calcHitChance
+	;if so, always hit regardless of accuracy/evasion
+.player_ohko_xacc	;joenote - player ohko moves now ignore x accuracy 
+	;this section is entered if the player is using x accuracy
+	ld a, [wPlayerMoveEffect]	;load the move effect 
+	cp OHKO_EFFECT	;check if it's an ohko move
+	ret	nz ;if not, the x accuracy skips hit chance
+	jr .calcHitChance	;else do normal accuracy checks
 .enemyTurn
 ; similar to enemy mist check
 ; ~$~CHANGED: Using PureRGB's improvements to Mist.~$~
@@ -5668,7 +5756,14 @@ MoveHitTest:
 .skipPlayerMistCheck
 	ld a, [wEnemyBattleStatus2]
 	bit USING_X_ACCURACY, a ; is the enemy using X Accuracy?
-	ret nz ; if so, always hit regardless of accuracy/evasion
+	jr z, .calcHitChance
+	;if so, always hit regardless of accuracy/evasion
+.enemy_ohko_xacc	;joenote - enemy ohko moves now ignore x accuracy 
+	;this section is entered if the enemy is using x accuracy
+	ld a, [wEnemyMoveEffect]	;load the move effect 
+	cp OHKO_EFFECT	;check if it's an ohko move
+	ret	nz ;if not, the x accuracy skips hit chance
+	;jr .calcHitChance	;else do normal accuracy checks
 .calcHitChance
 	call CalcHitChance ; scale the move accuracy according to attacker's accuracy and target's evasion
 	ld a, [wPlayerMoveAccuracy]
@@ -5907,7 +6002,14 @@ EnemyCalcMoveDamage:
 	ld hl, SetDamageEffects
 	ld de, $1
 	call IsInArray
-	jp c, EnemyMoveHitTest
+; ~$~ ADDED: Red++ snippet to prevent set damage moves from hitting Pokemon immune to them.~$~
+	jp nc,.notSetDamageMove
+	set 5, a ; Set wDamage to an arbitrary non-zero number, so that AdjustDamageForMoveType
+			 ; won't result in 0 damage for set-damage moves, causing the attack to miss.
+	ld [wDamage + 1], a
+	jr .skipCalc
+;	jp c, EnemyMoveHitTest
+.notSetDamageMove
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, handleIfEnemyMoveMissed
@@ -5916,6 +6018,7 @@ EnemyCalcMoveDamage:
 	call SwapPlayerAndEnemyLevels
 	call CalculateDamage
 	jp z, EnemyCheckIfFlyOrChargeEffect
+.skipCalc ; Jumps here instead of the old place, so hopefully it will miss properly
 	call AdjustDamageForMoveType
 	call RandomizeDamage
 
@@ -6009,8 +6112,12 @@ EnemyCheckIfMirrorMoveEffect:
 	jp ExecuteEnemyMoveDone
 .moveDidNotMiss
 	call ApplyAttackToPlayerPokemon
+	ld a, [wEnemyMovePower] ; ~$~CHANGED: Snippet from shinpokered to prevent gimmick moves from printing crit/effectiveness text.~$~
+	cp 2
+	jr c, .zeropower_or_staticmove
 	call PrintCriticalOHKOText
 	callfar DisplayEffectiveness
+.zeropower_or_staticmove
 	ld a, 1
 	ld [wMoveDidntMiss], a
 .handleExplosionMiss
@@ -6108,7 +6215,7 @@ CheckEnemyStatusConditions:
 	jp .enemyReturnToHL
 .enemyDefrost
 	xor a
-	ld [wBattleMonStatus], a
+	ld [wEnemyMonStatus], a
 	ld hl, IceMeltedText
 	call PrintText
 ;	--fallthrough--
@@ -6248,6 +6355,12 @@ CheckEnemyStatusConditions:
 	jr nc, .checkIfUsingBide
 	ld hl, FullyParalyzedText
 	call PrintText
+; ~$~ADDED: Use the paralysis animation already in the game for something.~$~
+	xor a
+	ld [wAnimationType], a
+	ld a, PARALYSIS_ANIM
+	call PlayAltAnimation
+;;;
 .monHurtItselfOrFullyParalysed
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
@@ -6734,34 +6847,20 @@ ApplyBurnAndParalysisPenalties:
 	call QuarterSpeedDueToParalysis
 	jp HalveAttackDueToBurn
 
+; PureRGBnote: CHANGED: this subroutine was optimized a lot but does the same thing.
 QuarterSpeedDueToParalysis:
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playerTurn
-.enemyTurn ; quarter the player's speed
-	ld a, [wBattleMonStatus]
-	and 1 << PAR
-	ret z ; return if player not paralysed
-	ld hl, wBattleMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .storePlayerSpeed
-	ld b, 1 ; give the player a minimum of at least one speed point
-.storePlayerSpeed
-	ld [hl], b
-	ret
-.playerTurn ; quarter the enemy's speed
+	; if player's turn, we will run this on the enemy's data
 	ld a, [wEnemyMonStatus]
-	and 1 << PAR
-	ret z ; return if enemy not paralysed
 	ld hl, wEnemyMonSpeed + 1
+	jr z, .gotTurn
+	; if enemy's turn, we will run this on the player's data
+	ld a, [wBattleMonStatus]
+	ld hl, wBattleMonSpeed + 1
+.gotTurn ; quarter the target's speed
+	and 1 << PAR
+	ret z ; return if target not paralyzed
 	ld a, [hld]
 	ld b, a
 	ld a, [hl]
@@ -6771,38 +6870,26 @@ QuarterSpeedDueToParalysis:
 	rr b
 	ld [hli], a
 	or b
-	jr nz, .storeEnemySpeed
-	ld b, 1 ; give the enemy a minimum of at least one speed point
-.storeEnemySpeed
+	jr nz, .storeSpeed
+	inc b ; give target at least 1 speed
+.storeSpeed
 	ld [hl], b
 	ret
 
+; PureRGBnote: CHANGED: this subroutine was optimized a lot but does the same thing.
 HalveAttackDueToBurn:
 	ldh a, [hWhoseTurn]
 	and a
-	jr z, .playerTurn
-.enemyTurn ; halve the player's attack
-	ld a, [wBattleMonStatus]
-	and 1 << BRN
-	ret z ; return if player not burnt
-	ld hl, wBattleMonAttack + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .storePlayerAttack
-	ld b, 1 ; give the player a minimum of at least one attack point
-.storePlayerAttack
-	ld [hl], b
-	ret
-.playerTurn ; halve the enemy's attack
+	; if player's turn, we will run this on the enemy's data
 	ld a, [wEnemyMonStatus]
-	and 1 << BRN
-	ret z ; return if enemy not burnt
 	ld hl, wEnemyMonAttack + 1
+	jr z, .gotTurn
+	; if enemy's turn, we will run this on the player's data
+	ld a, [wBattleMonStatus]
+	ld hl, wBattleMonAttack + 1
+.gotTurn ; halve the target's attack
+	and 1 << BRN
+	ret z ; return if target not burnt
 	ld a, [hld]
 	ld b, a
 	ld a, [hl]
@@ -6810,9 +6897,9 @@ HalveAttackDueToBurn:
 	rr b
 	ld [hli], a
 	or b
-	jr nz, .storeEnemyAttack
-	ld b, 1 ; give the enemy a minimum of at least one attack point
-.storeEnemyAttack
+	jr nz, .storeAttack
+	inc b ; give the target a minimum of at least one attack point
+.storeAttack
 	ld [hl], b
 	ret
 
@@ -6929,34 +7016,34 @@ CalculateModifiedStat:
 	; jr nz, .loop
 	; ret
 
-; multiply stat at hl by 1.125
-; cap stat at MAX_STAT_VALUE
-.applyBoostToStat
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-	ld a, [hld]
-	sub LOW(MAX_STAT_VALUE)
-	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE)
-	ret c
-	ld a, HIGH(MAX_STAT_VALUE)
-	ld [hli], a
-	ld a, LOW(MAX_STAT_VALUE)
-	ld [hld], a
-	ret
+; ; multiply stat at hl by 1.125
+; ; cap stat at MAX_STAT_VALUE
+; .applyBoostToStat
+	; ld a, [hli]
+	; ld d, a
+	; ld e, [hl]
+	; srl d
+	; rr e
+	; srl d
+	; rr e
+	; srl d
+	; rr e
+	; ld a, [hl]
+	; add e
+	; ld [hld], a
+	; ld a, [hl]
+	; adc d
+	; ld [hli], a
+	; ld a, [hld]
+	; sub LOW(MAX_STAT_VALUE)
+	; ld a, [hl]
+	; sbc HIGH(MAX_STAT_VALUE)
+	; ret c
+	; ld a, HIGH(MAX_STAT_VALUE)
+	; ld [hli], a
+	; ld a, LOW(MAX_STAT_VALUE)
+	; ld [hld], a
+	; ret
 
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns

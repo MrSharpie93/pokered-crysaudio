@@ -12,68 +12,46 @@ CopycatsHouse2F_TextPointers:
 	dw_const CopycatsHouse2FPCText,           TEXT_COPYCATSHOUSE2F_PC
 
 CopycatsHouse2FCopycatText:
-	text_far _CopycatsHouse2FCopycatTM31PreReceiveText
 	text_asm
+	CheckEvent EVENT_GOT_TM31
+	jr nz, .got_item
+	ld a, TRUE
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .DoYouLikePokemonText
+	call PrintText
+	ld b, POKE_DOLL
+	call IsItemInBag
+	jr z, .done
+	ld hl, .TM31PreReceiveText
+	call PrintText
 	ld a, 10 ; MIMIC
 	ld [wWhichTrade], a
 	callfar MoveTutorScript
+	ld a, POKE_DOLL
+	ldh [hItemToRemoveID], a
+	farcall RemoveItemByID
+	SetEvent EVENT_GOT_TM31
+	jr .done
+.got_item
+	ld hl, .TM31Explanation2Text
+	call PrintText
+	ld a, 10 ; MIMIC
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+.done
 	jp TextScriptEnd
-;	text_asm ; Need this for later to script move tutor requiring Poke Doll first.
-;	CheckEvent EVENT_GOT_TM31
-;	jr nz, .got_item
-;	ld a, TRUE
-;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-;	ld hl, .DoYouLikePokemonText
-;	call PrintText
-;	ld b, POKE_DOLL
-;	call IsItemInBag
-;	jr z, .done
-;	ld hl, .TM31PreReceiveText
-;	call PrintText
-;	lb bc, TM_MIMIC, 1
-;	call GiveItem
-;	jr nc, .bag_full
-;	ld hl, .ReceivedTM31Text
-;	call PrintText
-;	ld a, POKE_DOLL
-;	ldh [hItemToRemoveID], a
-;	farcall RemoveItemByID
-;	SetEvent EVENT_GOT_TM31
-;	jr .done
-;.bag_full
-;	ld hl, .TM31NoRoomText
-;	call PrintText
-;	jr .done
-;.got_item
-;	ld hl, .TM31Explanation2Text
-;	call PrintText
-;.done
-;	jp TextScriptEnd
 
-;.DoYouLikePokemonText:
-;	text_far _CopycatsHouse2FCopycatDoYouLikePokemonText
-;	text_end
+.DoYouLikePokemonText:
+	text_far _CopycatsHouse2FCopycatDoYouLikePokemonText
+	text_end
 
-;.TM31PreReceiveText:
-;	text_far _CopycatsHouse2FCopycatTM31PreReceiveText
-;	text_end
+.TM31PreReceiveText:
+	text_far _CopycatsHouse2FCopycatTM31PreReceiveText
+	text_end
 
-;.ReceivedTM31Text:
-;	text_far _CopycatsHouse2FCopycatReceivedTM31Text
-;	sound_get_item_1
-;.TM31Explanation1Text:
-;	text_far _CopycatsHouse2FCopycatTM31Explanation1Text
-;	text_waitbutton
-;	text_end
-
-;.TM31Explanation2Text:
-;	text_far _CopycatsHouse2FCopycatTM31Explanation2Text
-;	text_end
-
-;.TM31NoRoomText:
-;	text_far _CopycatsHouse2FCopycatTM31NoRoomText
-;	text_waitbutton
-;	text_end
+.TM31Explanation2Text:
+	text_far _CopycatsHouse2FCopycatTM31Explanation2Text
+	text_end
 
 CopycatsHouse2FDoduoText:
 	text_far _CopycatsHouse2FDoduoText
