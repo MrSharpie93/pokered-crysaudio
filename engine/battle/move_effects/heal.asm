@@ -38,6 +38,13 @@ HealEffect_:
 	ld de, wEnemyToxicCounter
 	ld hl, wEnemyBattleStatus3
 .restEffect
+	push hl
+	push de
+	push bc
+	callfar UndoBurnParStats ; ~$~CHANGED: Using Rest should also restore stats.~$~
+	pop bc
+	pop de
+	pop hl
 	xor a
 	ld [de], a
 	res BADLY_POISONED, [hl]

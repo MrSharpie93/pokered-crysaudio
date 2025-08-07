@@ -74,12 +74,12 @@ _MaxPotionDescription::
 
 _HyperPotionDescription::
 	text "Restores #MON"
-	next "HP by 200."
+	next "HP by 120."
 	prompt
 
 _SuperPotionDescription::
 	text "Restores #MON"
-	next "HP by 50."
+	next "HP by 60."
 	prompt
 
 _PotionDescription::
@@ -204,17 +204,17 @@ _DireHitDescription::
 
 _FreshWaterDescription::
 	text "Restores #MON"
-	next "HP by 50."
+	next "HP by 30."
 	prompt
 
 _SodaPopDescription::
 	text "Restores #MON"
-	next "HP by 60."
+	next "HP by 50."
 	prompt
 
 _LemonadeDescription::
 	text "Restores #MON"
-	next "HP by 80."
+	next "HP by 70."
 	prompt
 
 _SSTicketDescription::

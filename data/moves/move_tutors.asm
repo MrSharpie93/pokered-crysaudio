@@ -4,7 +4,7 @@ MoveTutorMoves: ; A list of all moves taught by move tutors, their location as a
 	db THUNDERPUNCH ; Saffron Pokecenter
 	db MEGA_PUNCH   ; Outside Mt. Moon
 	db MEGA_KICK    ; Outside Mt. Moon
-	db MUD_SLAP     ; Pewter Speech House
+	db MUD_SLAP     ; Pewter Speech House (After beating Brock)
 	db ICY_WIND     ; Cerulean Badge House
 	db COUNTER      ; Celadon Dept. Store 3F
 ; bit 2

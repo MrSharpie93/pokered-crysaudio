@@ -1,8 +1,8 @@
 ; special effects that are part of move animations
 ; SpecialEffectPointers associates them with effect routines (see data/battle_anims/special_effect_pointers.asm)
-	const_def $C0
+	const_def $D8 ; ~$~CHANGED: New battle anim tileset.~$~
 DEF FIRST_SE_ID EQU const_value
-	const_skip $18
+;	const_skip $18
 	const SE_WAVY_SCREEN               ; $D8 used in Psywave/Night Shade/Psychic etc.
 	const SE_SUBSTITUTE_MON            ; $D9 used in Substitute (turns the pokemon into a mini sprite)
 	const SE_SHAKE_BACK_AND_FORTH      ; $DA used in Double Team
@@ -99,14 +99,14 @@ DEF FIRST_SE_ID EQU const_value
 	const SUBANIM_0_ICE_RISE
 	const SUBANIM_0_ROCKS_FALL_ENEMY
 	const SUBANIM_0_SOUND_WAVE
-	const SUBANIM_0_CIRCLE_1_SQUARE_HALF_TOSS ; unused
+	const SUBANIM_3_FIST ; was SUBANIM_0_CIRCLE_1_SQUARE_HALF_TOSS
 	const SUBANIM_1_BARRIER
 	const SUBANIM_1_SELFDESTRUCT
 	const SUBANIM_0_WATER_BUBBLES
 	const SUBANIM_0_CIRCLES_FALLING
 	const SUBANIM_0_STRING_SHOT
 	const SUBANIM_0_ICE_FALL
-	const SUBANIM_0_CIRCLE_1_SQUARE_APPEARS ; unused
+	const SUBANIM_3_BELL ; was SUBANIM_0_CIRCLE_1_SQUARE_APPEARS
 	const SUBANIM_0_STATUS_SLEEP
 	const SUBANIM_0_STATUS_SLEEP_ENEMY
 	const SUBANIM_0_WATER_1_FIRE_BARRIER ; unused

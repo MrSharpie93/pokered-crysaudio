@@ -225,7 +225,7 @@ IntroClearCommon:
 	ret
 
 IntroPlaceBlackTiles:
-	ld a, 1
+	ld a, 1 ; make this $16 when new Gengar tiles added
 .loop
 	ld [hli], a
 	dec c
@@ -327,6 +327,16 @@ PlayShootingStar:
 	push af
 	pop af
 	jr c, .next ; skip the delay if the user interrupted the animation
+; ~$~CHANGED: Restored "PRESENTS" under Game Freak logo.~$~
+	hlcoord 7, 11   ; starting coordinate
+	ld a, $67       ; starting tile ID ; $75 when new Gengar tiles
+	ld c, $06       ; number of tiles
+.loop
+	ld [hli], a
+	inc a
+	dec c
+	jr nz, .loop
+;;;
 	ld c, 40
 	call DelayFrames
 .next
@@ -433,8 +443,8 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
-	INCBIN "gfx/splash/gamefreak_presents.2bpp"
-	INCBIN "gfx/splash/gamefreak_logo.2bpp"
+	INCBIN "gfx/splash/sharpie_presents.2bpp"
+	INCBIN "gfx/splash/sharpie_logo.2bpp"
 	ds 16, $00 ; blank tile
 GameFreakIntroEnd:
 

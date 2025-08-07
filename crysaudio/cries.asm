@@ -2108,3 +2108,9 @@ Cry_Rattata_Ch8:
 	noise_note 1, 10, 2, 57
 	noise_note 8, 9, 1, 73
 	sound_ret
+	
+Cry_Unused:
+	channel_count 3
+	channel 5, Cry_Unused_Ch5
+	channel 6, Cry_Unused_Ch6
+	channel 8, Cry_Unused_Ch8

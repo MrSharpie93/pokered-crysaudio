@@ -1,4 +1,4 @@
-MtMoonB2F_Script:
+MtMoonB2F_Script: ; ~$~FIXED: No battles softlock prevention with this script added.~$~
 	call EnableAutoTextBoxDrawing
 	ld hl, MtMoon3TrainerHeaders
 	ld de, MtMoonB2F_ScriptPointers
@@ -9,12 +9,14 @@ MtMoonB2F_Script:
 	ret z
 	ld hl, MtMoonB2FFossilAreaCoords
 	call ArePlayerCoordsInArray
-	jr nc, .enable_battles
 	ld hl, wStatusFlags4
+	jr nc, .enable_battles
+	ld a, [wStatusFlags6]
+	bit BIT_ESCAPE_WARP, a
+	jr nz, .enable_battles
 	set BIT_NO_BATTLES, [hl]
 	ret
 .enable_battles
-	ld hl, wStatusFlags4
 	res BIT_NO_BATTLES, [hl]
 	ret
 

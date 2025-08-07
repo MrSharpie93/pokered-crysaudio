@@ -1,6 +1,6 @@
 	db DEX_HITMONLEE ; pokedex id
 
-	db  50, 120,  53,  87,  35
+	db  60, 125,  63,  92,  45
 	;   hp  atk  def  spd  spc
 
 	db FIGHTING, FIGHTING ; type
@@ -11,14 +11,14 @@
 	dw HitmonleePicFront, HitmonleePicBack
 
 	; move tutor compatibility flags
-	m_tutor 5,8
+	m_tutor 4,5,6,8
 	m_tutor 9,10,13
 	m_tutor 18,20,22
 	m_tutor 26,28,31
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 ; tm/hm learnset
-	tmhm CURSE,        \
+	tmhm DRAIN_PUNCH,  CURSE,        \
 	     TOXIC,        BODY_SLAM,    GIGA_IMPACT,  DOUBLE_EDGE,  \
 	     HYPER_BEAM,   \
 	     PROTECT,      FOCUS_BLAST,  \

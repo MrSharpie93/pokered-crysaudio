@@ -186,20 +186,26 @@ SECTION "Battle Engine 7", ROMX
 
 INCLUDE "data/moves/moves.asm"
 ;INCLUDE "data/pokemon/cries.asm"
-INCLUDE "engine/battle/unused_stats_functions.asm"
+;INCLUDE "engine/battle/unused_stats_functions.asm" ~$~MOVED: Now in "New Move Effects."~$~
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "gfx/trade.asm"
-INCLUDE "engine/pokemon/evos_moves.asm"
+;INCLUDE "engine/pokemon/evos_moves.asm"
 INCLUDE "engine/battle/move_effects/heal.asm"
 INCLUDE "engine/battle/move_effects/transform.asm"
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
 
 
+SECTION "Engine Evos Moves", ROMX
+
+INCLUDE "engine/pokemon/evos_moves.asm" ; ~$~MOVED: Now in own section.~$~
+
+
 SECTION "Base Stats", ROMX
 
 INCLUDE "data/pokemon/base_stats.asm" ; ~$~MOVED: Base stats now in own section.~$~
+
 
 SECTION "Battle Core", ROMX
 
@@ -359,6 +365,10 @@ INCLUDE "engine/movie/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
 INCLUDE "engine/items/tm_prices.asm"
 
+SECTION "bankBattleAnim", ROMX
+
+INCLUDE "engine/battle/load_move_animation_tiles.asm"
+
 SECTION "New Features", ROMX
 
 INCLUDE "scripts/move_tutor.asm"
@@ -369,6 +379,7 @@ INCLUDE "engine/overworld/field_moves.asm"
 
 SECTION "New Move Effects", ROMX
 
+INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/move_effects/burn.asm"
 INCLUDE "engine/battle/move_effects/curse.asm"
 INCLUDE "engine/battle/move_effects/teleport.asm"

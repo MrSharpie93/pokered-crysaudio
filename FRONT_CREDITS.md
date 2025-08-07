@@ -24,8 +24,10 @@
 - Fearow: Game Freak
 - Ekans: Pia Carrot
 - Arbok: Game Freak
+- Pichu: Game Freak
 - Pikachu: Game Freak
 - Raichu: Pia Carrot
+- Gorochu: LunaMaddalena
 - Sandshrew: Pia Carrot
 - Sandslash: Game Freak
 - Nidoran♀: Pia Carrot
@@ -34,34 +36,54 @@
 - Nidoran♂: Pia Carrot
 - Nidorino: Game Freak
 - Nidoking: Game Freak
+- Cleffa: Game Freak
 - Clefairy: Pia Carrot
 - Clefable: Game Freak
 - Vulpix: Pia Carrot
 - Ninetales: E▲SY
+- Igglybuff: Game Freak
 - Jigglypuff: E▲SY
 - Wigglytuff: Pia Carrot
+- Togepi: Game Freak
+- Togetic: Game Freak
+- Togekiss: Blue Emerald
 - Zubat: Game Freak
-- Golbat: Game Freak
+- Golbat: LunaMaddalena
+- Crobat: Game Freak
 - Oddish: E▲SY
 - Gloom: Game Freak
 - Vileplume: Game Freak
+- Bellossom: Game Freak
+- Hoppip: Game Freak
+- Skiploom: Game Freak
+- Jumpluff: Game Freak
 - Paras: Pia Carrot
 - Parasect: Game Freak
 - Venonat: Game Freak
 - Venomoth: Game Freak
+- Joltik: COMBOY
+- Galvantula: COMBOY
 - Diglett: Pia Carrot
 - Dugtrio: Pia Carrot
 - Meowth: Game Freak
 - Persian: Game Freak
+- Chimeow: Game Freak (some edits by Sharpie93)
+- Belluna: Game Freak (some edits by Sharpie93)
+- Mareep: Game Freak
+- Flaaffy: Game Freak
+- Ampharos: Game Freak
 - Psyduck: Game Freak
 - Golduck: Pia Carrot
 - Mankey: Pia Carrot
 - Primeape: Pia Carrot
 - Growlithe: Game Freak
 - Arcanine: Game Freak
+- Houndour: Game Freak
+- Houndoom: Game Freak
 - Poliwag: Pia Carrot
 - Poliwhirl: Game Freak
 - Poliwrath: Game Freak
+- Politoed: Game Freak
 - Abra: Pia Carrot
 - Kadabra: Game Freak
 - Alakazam: E▲SY
@@ -76,25 +98,52 @@
 - Geodude: Pia Carrot
 - Graveler: Game Freak
 - Golem: Game Freak
+- Whismur: Blue Emerald
+- Loudred: Blue Emerald
+- Exploud: Blue Emerald
+- Croagunk: Blue Emerald
+- Toxicroak: Blue Emerald
 - Ponyta: Game Freak
 - Rapidash: Pia Carrot
+- Salandit: Pia Carrot
+- Salazzle: TBD
 - Slowpoke: Game Freak
 - Slowbro: ???
+- Slowking: Game Freak
 - Magnemite: E▲SY
 - Magneton: Game Freak
+- Magnezone: Solo993
 - Farfetch'd: Game Freak
 - Doduo: Game Freak
 - Dodrio: Game Freak
+- Murkrow: Game Freak
+- Honchkrow: Blue Emerald
+- Skarmory: Game Freak
 - Seel: Game Freak
 - Dewgong: Game Freak
+- Sneasel: Game Freak
+- Weavile: Blue Emerald
+- Swinub: Game Freak
+- Piloswine: Game Freak
+- Mamoswine: Blue Emerald
 - Grimer: Game Freak
 - Muk: Game Freak
 - Shellder: Game Freak
 - Cloyster: Game Freak
+- Turban: Game Freak
 - Gastly: ???
 - Haunter: E▲SY
 - Gengar: Pia Carrot
+- Duskull: Blue Emerald
+- Dusclops: Blue Emerald
+- Dusknoir: COMBOY
+- Litwick: COMBOY
+- Lampent: COMBOY
+- Chandelure: COMBOY
 - Onix: Game Freak
+- Steelix: Game Freak
+- Gligar: Game Freak
+- Gliscor: Blue Emerald
 - Drowzee: Game Freak
 - Hypno: Game Freak
 - Krabby: Game Freak
@@ -105,29 +154,52 @@
 - Exeggutor: E▲SY
 - Cubone: Game Freak
 - Marowak: Game Freak
+- Mawile: Matdemo159
+- Trapinch: Blue Emerald
+- Vibrava: Blue Emerald
+- Flygon: Blue Emerald
+- Noibat: Solo993
+- Noivern: Solo993
+- Tyrogue: Game Freak
 - Hitmonlee: E▲SY
 - Hitmonchan: E▲SY
+- Hitmontop: Game Freak
 - Lickitung: Game Freak
+- Lickilicky: Blue Emerald
 - Koffing: Game Freak
 - Weezing: Game Freak
 - Rhyhorn: Game Freak
 - Rhydon: Game Freak
+- Rhyperior: Blue Emerald
+- Happiny: Blue Emerald
 - Chansey: E▲SY
+- Blissey: Game Freak
 - Tangela: ???
+- Tangrowth: Blue Emerald
 - Kangaskhan: Game Freak
 - Horsea: Game Freak
 - Seadra: Game Freak
+- Kingdra: Game Freak
 - Goldeen: Game Freak
 - Seaking: Game Freak
 - Staryu: Game Freak
 - Starmie: Game Freak
-- Mr.Mime: Game Freak
+- Mime Jr.: Blue Emerald
+- Mr. Mime: Game Freak
 - Scyther: E▲SY
+- Scizor: E▲SY
+- Smoochum: ???
 - Jynx: MollyChan
+- Elekid: Game Freak
 - Electabuzz: Pia Carrot
+- Electivire: ChaosRush
+- Magby:  ???
 - Magmar: ???
+- Magmortar: ???
 - Pinsir: Game Freak
+- Heracross: Game Freak
 - Tauros: Game Freak
+- Miltank: Game Freak
 - Magikarp: Game Freak
 - Gyarados: Game Freak
 - Lapras: Game Freak
@@ -136,20 +208,49 @@
 - Vaporeon: Game Freak
 - Jolteon: E▲SY
 - Flareon: Game Freak
+- Espeon: Game Freak
+- Umbreon: E▲SY
+- Leafeon: Blue Emerald
+- Glaceon: Blue Emerald
+- Sylveon: Albatross/MementoMartha
 - Porygon: Game Freak
+- Porygon2: Game Freak
+- PorygonZ: Blue Emerald
 - Omanyte: E▲SY
 - Omastar: Game Freak
 - Kabuto: E▲SY
 - Kabutops: Game Freak
 - Aerodactyl: Game Freak
+- Munchlax: Blue Emerald
 - Snorlax: Game Freak
+- Bonsly: Blue Emerald
+- Sudowoodo: Game Freak
+- Spiritomb: Solo993
 - Articuno: E▲SY
 - Zapdos: Game Freak
 - Moltres: Pia Carrot
+- Thu-Fi-Zer: ???
+- Regirock: Blue Emerald
+- Regice: Blue Emerald
+- Registeel: Blue Emerald
+- Skeletops: Game Freak
+- Ossidactyl: Game Freak
 - Dratini: Pia Carrot
 - Dragonair: Pia Carrot
 - Dragonite: ???
+- Larvitar: E▲SY
+- Pupitar: Game Freak
+- Tyranitar: Game Freak
+- Bagon: COMBOY
+- Shelgon: Blue Emerald
+- Salamence: COMBOY
+- Beldum: Blue Emerald
+- Metang: Blue Emerald
+- Metagross: Blue Emerald
+- Regigigas: Blue Emerald
 - Mewtwo: Game Freak
 - Mew: Game Freak
+- Yoshi: Freakyplanet
+- Missingno.: Game Freak?
 
 Reshading of Game Freak sprites currently unknown.

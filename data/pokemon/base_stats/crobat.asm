@@ -1,0 +1,35 @@
+	db DEX_CROBAT ; pokedex id
+
+	db  85,  90,  80, 130,  80
+	;   hp  atk  def  spd  spc
+
+	db POISON, FLYING ; type
+	db 90 ; catch rate
+	db 204 ; base exp
+
+	INCBIN "gfx/pokemon/front/crobat.pic", 0, 1 ; sprite dimensions
+	dw CrobatPicFront, CrobatPicBack
+
+	; move tutor compatibility flags
+	m_tutor 0
+	m_tutor 10,13
+	m_tutor 21,23
+	m_tutor 26,30,31
+	db GROWTH_MEDIUM_FAST ; growth rate
+
+; tm/hm learnset
+	tmhm CURSE,        \
+	     TOXIC,        OMINOUS_WIND, GIGA_IMPACT,  DOUBLE_EDGE,  \
+	     HYPER_BEAM,   \
+	     PROTECT,      GIGA_DRAIN,   \
+	     \
+	     SHADOW_BALL,  \
+	     X_SCISSOR,    DOUBLE_TEAM,  POISON_JAB,   \
+	     SLUDGE_BOMB,  AERIAL_ACE,   \
+	     ZEN_HEADBUTT, HURRICANE,    REST,         \
+	     DARK_PULSE,   STEEL_WING,   \
+	     FLY
+	; end
+
+	db BANK(CrobatPicFront)
+	assert BANK(CrobatPicFront) == BANK(CrobatPicBack)

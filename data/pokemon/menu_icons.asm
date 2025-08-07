@@ -24,8 +24,10 @@ MonPartyData:
 	db ICON_BIRD        ; Fearow
 	db ICON_SERPENT     ; Ekans
 	db ICON_SERPENT     ; Arbok
+	db ICON_PIKACHU     ; Pichu
 	db ICON_PIKACHU     ; Pikachu
 	db ICON_PIKACHU     ; Raichu
+	db ICON_MONSTER     ; Gorochu
 	db ICON_MONSTER     ; Sandshrew
 	db ICON_MONSTER     ; Sandslash
 	db ICON_FOX         ; NidoranF
@@ -34,34 +36,54 @@ MonPartyData:
 	db ICON_FOX         ; NidoranM
 	db ICON_FOX         ; Nidorino
 	db ICON_MONSTER     ; Nidoking
+	db ICON_CLEFAIRY    ; Cleffa
 	db ICON_CLEFAIRY    ; Clefairy
 	db ICON_CLEFAIRY    ; Clefable
 	db ICON_FOX         ; Vulpix
 	db ICON_FOX         ; Ninetales
+	db ICON_JIGGLYPUFF  ; Igglybuff
 	db ICON_JIGGLYPUFF  ; Jigglypuff
 	db ICON_JIGGLYPUFF  ; Wigglytuff
+	db ICON_CLEFAIRY    ; Togepi
+	db ICON_BIRD        ; Togetic
+	db ICON_BIRD        ; Togekiss
 	db ICON_BAT         ; Zubat
 	db ICON_BAT         ; Golbat
+	db ICON_BAT         ; Crobat
 	db ICON_ODDISH      ; Oddish
 	db ICON_ODDISH      ; Gloom
 	db ICON_ODDISH      ; Vileplume
+	db ICON_ODDISH      ; Bellossom
+	db ICON_ODDISH      ; Hoppip
+	db ICON_ODDISH      ; Skiploom
+	db ICON_ODDISH      ; Jumpluff
 	db ICON_BUG         ; Paras
 	db ICON_BUG         ; Parasect
 	db ICON_BUGOLD      ; Venonat
 	db ICON_MOTH        ; Venomoth
+	db ICON_BUGOLD      ; Joltik
+	db ICON_BUGOLD      ; Galvantula
 	db ICON_DIGLETT     ; Diglett
 	db ICON_DIGLETT     ; Dugtrio
 	db ICON_CAT         ; Meowth
 	db ICON_CAT         ; Persian
+	db ICON_CAT         ; Chimeow
+	db ICON_CAT         ; Belluna
+	db ICON_EQUINE      ; Mareep
+	db ICON_EQUINE      ; Flaaffy
+	db ICON_MONSTER     ; Ampharos
 	db ICON_SEEL        ; Psyduck
 	db ICON_MONSTER     ; Golduck
 	db ICON_FIGHTER     ; Mankey
 	db ICON_FIGHTER     ; Primeape
 	db ICON_FOX         ; Growlithe
 	db ICON_FOX         ; Arcanine
+	db ICON_FOX         ; Houndour
+	db ICON_FOX         ; Houndoom
 	db ICON_POLIWAG     ; Poliwag
 	db ICON_POLIWAG     ; Poliwhirl
 	db ICON_POLIWAG     ; Poliwrath
+	db ICON_POLIWAG     ; Politoed
 	db ICON_MONSTER     ; Abra
 	db ICON_MONSTER     ; Kadabra
 	db ICON_MONSTER     ; Alakazam
@@ -76,25 +98,52 @@ MonPartyData:
 	db ICON_GEODUDE     ; Geodude
 	db ICON_GEODUDE     ; Graveler
 	db ICON_GEODUDE     ; Golem
+	db ICON_MONSTER     ; Whismur
+	db ICON_MONSTER     ; Loudred
+	db ICON_MONSTER     ; Exploud
+	db ICON_FIGHTER     ; Croagunk
+	db ICON_FIGHTER     ; Toxicroak
 	db ICON_EQUINE      ; Ponyta
 	db ICON_EQUINE      ; Rapidash
+	db ICON_SERPENT     ; Salandit
+	db ICON_SERPENT     ; Salazzle
 	db ICON_SLOWPOKE    ; Slowpoke
 	db ICON_SLOWPOKE    ; Slowbro
+	db ICON_SLOWPOKE    ; Slowking
 	db ICON_VOLTORB     ; Magnemite
 	db ICON_VOLTORB     ; Magneton
+	db ICON_VOLTORB     ; Magnezone
 	db ICON_BIRD        ; Farfetch'd
 	db ICON_BIRD        ; Doduo
 	db ICON_BIRD        ; Dodrio
+	db ICON_BIRD        ; Murkrow
+	db ICON_BIRD        ; Honchkrow
+	db ICON_BIRD        ; Skarmory
 	db ICON_SEEL        ; Seel
 	db ICON_SEEL        ; Dewgong
+	db ICON_FOX         ; Sneasel
+	db ICON_FOX         ; Weavile
+	db ICON_EQUINE      ; Swinub
+	db ICON_EQUINE      ; Piloswine
+	db ICON_EQUINE      ; Mamoswine
 	db ICON_BLOB        ; Grimer
 	db ICON_BLOB        ; Muk
 	db ICON_SHELL       ; Shellder
 	db ICON_SHELL       ; Cloyster
+	db ICON_SHELL       ; Turban
 	db ICON_GHOST       ; Gastly
 	db ICON_GHOST       ; Haunter
 	db ICON_GHOST       ; Gengar
+	db ICON_GHOST       ; Duskull
+	db ICON_GHOST       ; Dusclops
+	db ICON_GHOST       ; Dusknoir
+	db ICON_VOLTORB     ; Litwick
+	db ICON_VOLTORB     ; Lampent
+	db ICON_VOLTORB     ; Chandelure
 	db ICON_SERPENT     ; Onix
+	db ICON_SERPENT     ; Steelix
+	db ICON_BUG         ; Gligar
+	db ICON_BUG         ; Gliscor
 	db ICON_HUMANSHAPE  ; Drowzee
 	db ICON_HUMANSHAPE  ; Hypno
 	db ICON_SHELL       ; Krabby
@@ -105,29 +154,52 @@ MonPartyData:
 	db ICON_FLOWER      ; Exeggutor
 	db ICON_MONSTER     ; Cubone
 	db ICON_MONSTER     ; Marowak
+	db ICON_GHOST       ; Mawile
+	db ICON_BUGOLD      ; Trapinch
+	db ICON_MOTH        ; Vibrava
+	db ICON_BIGMON      ; Flygon
+	db ICON_BAT         ; Noibat
+	db ICON_BAT         ; Noivern
+	db ICON_FIGHTER     ; Tyrogue
 	db ICON_FIGHTER     ; Hitmonlee
 	db ICON_FIGHTER     ; Hitmonchan
+	db ICON_FIGHTER     ; Hitmontop
 	db ICON_MONSTER     ; Lickitung
+	db ICON_MONSTER     ; Lickilicky
 	db ICON_BLOB        ; Koffing
 	db ICON_BLOB        ; Weezing
 	db ICON_EQUINE      ; Rhyhorn
 	db ICON_MONSTER     ; Rhydon
+	db ICON_MONSTER     ; Rhyperior
+	db ICON_CLEFAIRY    ; Happiny
 	db ICON_CLEFAIRY    ; Chansey
+	db ICON_CLEFAIRY    ; Blissey
 	db ICON_FLOWER      ; Tangela
+	db ICON_FLOWER      ; Tangrowth
 	db ICON_MONSTER     ; Kangaskhan
 	db ICON_SEEL        ; Horsea
 	db ICON_SEEL        ; Seadra
+	db ICON_BIGMON      ; Kingdra
 	db ICON_FISH        ; Goldeen
 	db ICON_FISH        ; Seaking
 	db ICON_STARYU      ; Staryu
 	db ICON_STARYU      ; Starmie
-	db ICON_HUMANSHAPE  ; Mr.Mime
+	db ICON_HUMANSHAPE  ; Mime Jr.
+	db ICON_HUMANSHAPE  ; Mr. Mime
 	db ICON_BUG         ; Scyther
+	db ICON_BUG         ; Scizor
+	db ICON_HUMANSHAPE  ; Smoochum
 	db ICON_HUMANSHAPE  ; Jynx
+	db ICON_MONSTER     ; Elekid
 	db ICON_MONSTER     ; Electabuzz
+	db ICON_MONSTER     ; Electivire
+	db ICON_MONSTER     ; Magby
 	db ICON_MONSTER     ; Magmar
+	db ICON_MONSTER     ; Magmortar
 	db ICON_BUGOLD      ; Pinsir
+	db ICON_BUGOLD      ; Heracross
 	db ICON_EQUINE      ; Tauros
+	db ICON_EQUINE      ; Miltank
 	db ICON_FISH        ; Magikarp
 	db ICON_GYARADOS    ; Gyarados
 	db ICON_LAPRAS      ; Lapras
@@ -136,18 +208,47 @@ MonPartyData:
 	db ICON_FOX         ; Vaporeon
 	db ICON_FOX         ; Jolteon
 	db ICON_FOX         ; Flareon
+	db ICON_FOX         ; Espeon
+	db ICON_FOX         ; Umbreon
+	db ICON_FOX         ; Leafeon
+	db ICON_FOX         ; Glaceon
+	db ICON_FOX         ; Sylveon
 	db ICON_VOLTORB     ; Porygon
+	db ICON_VOLTORB     ; Porygon2
+	db ICON_VOLTORB     ; PorygonZ
 	db ICON_HELIX       ; Omanyte
 	db ICON_HELIX       ; Omastar
 	db ICON_HELIX       ; Kabuto
 	db ICON_BUG         ; Kabutops
 	db ICON_BIGMON      ; Aerodactyl
+	db ICON_SNORLAX     ; Munchlax
 	db ICON_SNORLAX     ; Snorlax
+	db ICON_SUDOWOODO   ; Bonsly
+	db ICON_SUDOWOODO   ; Sudowoodo
+	db ICON_GHOST       ; Spiritomb
 	db ICON_BIRD        ; Articuno
 	db ICON_BIRD        ; Zapdos
 	db ICON_BIRD        ; Moltres
+	db ICON_BIRD        ; Thu-Fi-Zer
+	db ICON_REGI        ; Regirock
+	db ICON_REGI        ; Regice
+	db ICON_REGI        ; Registeel
+	db ICON_GHOST       ; Skeletops
+	db ICON_GHOST       ; Ossidactyl
 	db ICON_SERPENT     ; Dratini
 	db ICON_SERPENT     ; Dragonair
 	db ICON_BIGMON      ; Dragonite
+	db ICON_MONSTER     ; Larvitar
+	db ICON_HELIX       ; Pupitar
+	db ICON_BIGMON      ; Tyranitar
+	db ICON_MONSTER     ; Bagon
+	db ICON_HELIX       ; Shelgon
+	db ICON_BIGMON      ; Salamence
+	db ICON_VOLTORB     ; Beldum
+	db ICON_VOLTORB     ; Metang
+	db ICON_VOLTORB     ; Metagross
+	db ICON_REGI        ; Regigigas
 	db ICON_MONSTER     ; Mewtwo
 	db ICON_CAT         ; Mew
+	db ICON_LAPRAS      ; Yoshi
+	db ICON_MISSINGNO   ; Missingno.

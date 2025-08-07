@@ -215,16 +215,16 @@ GameFreakLogoOAMData:
 	dbsprite 11, 10,  0,  0, $90, 0
 	dbsprite 10, 11,  0,  0, $91, 0
 	dbsprite 11, 11,  0,  0, $92, 0
-	dbsprite  6, 12,  0,  0, $80, 0
-	dbsprite  7, 12,  0,  0, $81, 0
-	dbsprite  8, 12,  0,  0, $82, 0
-	dbsprite  9, 12,  0,  0, $83, 0
-	dbsprite 10, 12,  0,  0, $93, 0
-	dbsprite 11, 12,  0,  0, $84, 0
-	dbsprite 12, 12,  0,  0, $85, 0
-	dbsprite 13, 12,  0,  0, $83, 0
-	dbsprite 14, 12,  0,  0, $81, 0
-	dbsprite 15, 12,  0,  0, $86, 0
+	dbsprite  8, 12,  0,  0, $80, 0
+	dbsprite  9, 12,  0,  0, $81, 0
+	dbsprite 10, 12,  0,  0, $82, 0
+	dbsprite 11, 12,  0,  0, $83, 0
+;	dbsprite 10, 12,  0,  0, $93, 0
+	dbsprite 12, 12,  0,  0, $84, 0
+	dbsprite 13, 12,  0,  0, $85, 0
+	dbsprite 14, 12,  0,  0, $86, 0
+;	dbsprite 14, 12,  0,  0, $81, 0
+;	dbsprite 15, 12,  0,  0, $86, 0
 GameFreakLogoOAMDataEnd:
 
 GameFreakShootingStarOAMData:

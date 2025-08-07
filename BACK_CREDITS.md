@@ -24,8 +24,10 @@
 - Fearow: Game Freak
 - Ekans: E▲SY
 - Arbok: Game Freak
+- Pichu: Game Freak
 - Pikachu: Game Freak
 - Raichu: Game Freak
+- Gorochu: Sharpie93 (Based on beta RGB sprite)
 - Sandshrew: E▲SY
 - Sandslash: Game Freak
 - Nidoran♀: Game Freak
@@ -34,34 +36,54 @@
 - Nidoran♂: Game Freak
 - Nidorino: Game Freak
 - Nidoking: Game Freak
+- Cleffa: Game Freak
 - Clefairy: Game Freak
 - Clefable: Game Freak
 - Vulpix: Game Freak
 - Ninetales: E▲SY
+- Igglybuff: Game Freak
 - Jigglypuff: E▲SY
 - Wigglytuff: E▲SY
+- Togepi: Game Freak
+- Togetic: Game Freak
+- Togekiss: Gold Z
 - Zubat: Game Freak
 - Golbat: Game Freak
+- Crobat: Game Freak
 - Oddish: Game Freak
 - Gloom: Game Freak
 - Vileplume: Game Freak
+- Bellossom: Game Freak
+- Hoppip: Game Freak
+- Skiploom: Game Freak
+- Jumpluff: Game Freak
 - Paras: E▲SY
 - Parasect: Game Freak
 - Venonat: Game Freak
 - Venomoth: Game Freak
+- Joltik: COMBOY
+- Galvantula: COMBOY
 - Diglett: Game Freak
 - Dugtrio: Game Freak
 - Meowth: Game Freak
 - Persian: Game Freak
+- Chimeow: Game Freak (some edits by Sharpie93)
+- Belluna: Game Freak (some edits by Sharpie93)
+- Mareep: Game Freak
+- Flaaffy: Game Freak
+- Ampharos: Game Freak
 - Psyduck: Game Freak
 - Golduck: E▲SY
 - Mankey: Game Freak
 - Primeape: Game Freak
 - Growlithe: Game Freak
 - Arcanine: Game Freak
+- Houndour: Game Freak
+- Houndoom: Game Freak
 - Poliwag: Sharpie93 (Reshaded Crystal sprite)
 - Poliwhirl: Game Freak
 - Poliwrath: Game Freak
+- Politoed: Game Freak
 - Abra: Game Freak
 - Kadabra: E▲SY
 - Alakazam: E▲SY
@@ -76,25 +98,52 @@
 - Geodude: Game Freak
 - Graveler: Game Freak
 - Golem: Game Freak
+- Whismur: bloodless
+- Loudred: bloodless
+- Exploud: bloodless
+- Croagunk: Nuukiie
+- Toxicroak: Nuukiie
 - Ponyta: Game Freak
 - Rapidash: Game Freak
+- Salandit: Sharpie93 (Edited Charmander Spaceworld sprite)
+- Salazzle: Sharpie93 (Edited Dragonair Spaceworld sprite)
 - Slowpoke: E▲SY (Slight edit by Sharpie93 to fit in 48x48)
 - Slowbro: Game Freak
+- Slowking: Game Freak
 - Magnemite: Game Freak
 - Magneton: Game Freak
+- Magnezone: Koolboyman
 - Farfetch'd: Game Freak
 - Doduo: Game Freak
 - Dodrio: Game Freak
+- Murkrow: Game Freak
+- Honchkrow: ChaosRush
+- Skarmory: Game Freak
 - Seel: Game Freak
 - Dewgong: Game Freak
+- Sneasel: Game Freak
+- Weavile: ???
+- Swinub: Game Freak
+- Piloswine: Game Freak
+- Mamoswine: COMBOY
 - Grimer: Game Freak
 - Muk: Game Freak
 - Shellder: Sharpie93 (Reshaded Crystal sprite)
 - Cloyster: Game Freak
+- Turban: Game Freak
 - Gastly: Game Freak
 - Haunter: E▲SY
 - Gengar: Game Freak
+- Duskull: bloodless
+- Dusclops: bloodless
+- Dusknoir: ???
+- Litwick: COMBOY
+- Lampent: COMBOY
+- Chandelure: COMBOY
 - Onix: Game Freak
+- Steelix: Game Freak
+- Gligar: Game Freak
+- Gliscor: ???
 - Drowzee: E▲SY
 - Hypno: Game Freak
 - Krabby: Game Freak
@@ -105,29 +154,52 @@
 - Exeggutor: E▲SY
 - Cubone: Game Freak
 - Marowak: Game Freak
+- Mawile: bloodless
+- Trapinch: bloodless
+- Vibrava: ???
+- Flygon: bloodless
+- Noibat: Solo993
+- Noivern: Solo993
+- Tyrogue: Game Freak
 - Hitmonlee: E▲SY
 - Hitmonchan: E▲SY
+- Hitmontop: Game Freak
 - Lickitung: Game Freak
+- Lickilicky: ChaosRush
 - Koffing: Game Freak
 - Weezing: Game Freak
 - Rhyhorn: Game Freak
 - Rhydon: Game Freak
+- Rhyperior: ChaosRush
+- Happiny: ChaosRush
 - Chansey: Game Freak
+- Blissey: Game Freak
 - Tangela: Game Freak
+- Tangrowth: ChaosRush
 - Kangaskhan: Game Freak
 - Horsea: Game Freak
 - Seadra: Game Freak
+- Kingdra: Game Freak
 - Goldeen: Game Freak
 - Seaking: Game Freak
 - Staryu: Game Freak
 - Starmie: Sharpie93 (Reshaded Crystal sprite)
-- Mr.Mime: Game Freak
+- Mime Jr.: ChaosRush
+- Mr. Mime: Game Freak
 - Scyther: E▲SY
-- Jynx: Sharpie93 (Edited Spaceworld sprite)
+- Scizor: E▲SY
+- Smoochum: Game Freak
+- Jynx: Sharpie93 (Edited GSC sprite)
+- Elekid: Game Freak
 - Electabuzz: E▲SY
+- Electivire: ChaosRush
+- Magby: Game Freak
 - Magmar: Game Freak
+- Magmortar: ChaosRush
 - Pinsir: Game Freak
+- Heracross: Game Freak
 - Tauros: Game Freak
+- Miltank: Game Freak
 - Magikarp: Game Freak
 - Gyarados: Game Freak
 - Lapras: Game Freak
@@ -136,20 +208,49 @@
 - Vaporeon: Game Freak
 - Jolteon: Game Freak
 - Flareon: Game Freak
+- Espeon: Game Freak
+- Umbreon: Game Freak
+- Leafeon: ChaosRush
+- Glaceon: ???
+- Sylveon: Koolboyman
 - Porygon: Game Freak
+- Porygon2: Game Freak
+- PorygonZ: ChaosRush
 - Omanyte: Game Freak
 - Omastar: Game Freak
 - Kabuto: Game Freak
 - Kabutops: Game Freak
 - Aerodactyl: Game Freak
+- Munchlax: ChaosRush
 - Snorlax: Game Freak
+- Bonsly: COMBOY
+- Sudowoodo: Game Freak
+- Spiritomb: COMBOY
 - Articuno: Game Freak
 - Zapdos: Game Freak
 - Moltres: Game Freak
+- Thu-Fi-Zer: ???
+- Regirock: bloodless
+- Regice: bloodless
+- Registeel: bloodless
+- Skeletops: Sharpie93 (Edited Spaceworld sprite)
+- Ossidactyl: Sharpie93 (Edited Spaceworld sprite)
 - Dratini: Game Freak
 - Dragonair: Game Freak
 - Dragonite: Game Freak
+- Larvitar: E▲SY
+- Pupitar: E▲SY
+- Tyranitar: Sharpie93 (Edited Crystal sprite)
+- Bagon: COMBOY
+- Shelgon: bloodless
+- Salamence: bloodless
+- Beldum: ???
+- Metang: bloodless
+- Metagross: bloodless
+- Regigigas: utytft
 - Mewtwo: Game Freak
 - Mew: Sharpie93 (Reshaded Crystal sprite)
+- Yoshi: Freakyplanet
+- Missingno.: Game Freak?
 
 Reshading of Game Freak sprites currently unknown.

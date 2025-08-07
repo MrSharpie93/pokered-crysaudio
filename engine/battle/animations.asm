@@ -369,43 +369,8 @@ GetSubanimationTransform2:
 
 ; loads tile patterns for battle animations
 LoadMoveAnimationTiles:
-	ld a, [wWhichBattleAnimTileset]
-	add a
-	add a
-	ld hl, MoveAnimationTilesPointers
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hli]
-	ld [wTempTilesetNumTiles], a ; number of tiles
-	ld a, [hli]
-	ld e, a
-	ld a, [hl]
-	ld d, a ; de = address of tileset
-	ld hl, vSprites tile $31
-	ld b, BANK(MoveAnimationTiles0) ; ROM bank
-	ld a, [wTempTilesetNumTiles]
-	ld c, a ; number of tiles
-	jp CopyVideoData ; load tileset
-
-MACRO anim_tileset
-	db \1
-	dw \2
-	db -1 ; padding
-ENDM
-
-MoveAnimationTilesPointers:
-	; number of tiles, gfx pointer
-	anim_tileset 79, MoveAnimationTiles0
-	anim_tileset 79, MoveAnimationTiles1
-	anim_tileset 64, MoveAnimationTiles2
-
-MoveAnimationTiles0:
-MoveAnimationTiles2:
-	INCBIN "gfx/battle/move_anim_0.2bpp"
-
-MoveAnimationTiles1:
-	INCBIN "gfx/battle/move_anim_1.2bpp"
+	callfar _LoadMoveAnimationTiles ; ~$~CHANGED: Now in its own file.~$~
+	ret
 
 ;SlotMachineTiles2: ; ~$~MOVED: Put these GFX in "Text 11" to free bank space in 1E.~$~
 ;IF DEF(_RED)

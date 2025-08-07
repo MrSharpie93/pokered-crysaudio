@@ -182,7 +182,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; SPARK
 	db SFX_BATTLE_0B,          $00, $80 ; STEEL WING
 	db SFX_HEAL_BELL,          $00, $80 ; HEAL BELL
-	db SFX_BATTLE_0B,          $00, $80 ; SAFEGUARD
+	db SFX_SHOOTING_STAR,      $00, $80 ; SAFEGUARD
 	db SFX_BATTLE_0B,          $00, $80 ; DYNAMICPUNCH
 	db SFX_BATTLE_0B,          $00, $80 ; MEGAHORN
 	db SFX_BATTLE_0B,          $00, $80 ; RAPID SPIN

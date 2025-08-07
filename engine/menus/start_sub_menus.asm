@@ -175,6 +175,17 @@ StartMenu_Pokemon::
 	bit BIT_SURF_ALLOWED, [hl]
 	res BIT_SURF_ALLOWED, [hl]
 	jp z, .loop
+; ~$~CHANGED: Surf sprite determined by Pokemon used.~$~
+	ld a, [wCurPartySpecies]
+	cp LAPRAS
+	jr z, .lapras
+;	ld a, $1 ; bit for pikachu
+	jr .continue
+.lapras
+	ld a, $2
+.continue
+	ld [wUnusedMapVariable], a
+;;;
 	ld a, SURFBOARD
 	ld [wCurItem], a
 	ld [wPseudoItemID], a

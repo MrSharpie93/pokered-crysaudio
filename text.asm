@@ -273,6 +273,10 @@ SECTION "Pokédex Text", ROMX
 
 INCLUDE "data/pokemon/dex_text.asm"
 
+SECTION "New Pokédex Text", ROMX ; ~$~ADDED~$~
+
+INCLUDE "data/pokemon/dex_text_two.asm"
+
 
 SECTION "Move Names", ROMX
 

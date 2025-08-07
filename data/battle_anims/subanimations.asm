@@ -50,14 +50,14 @@ SubanimationPointers:
 	dw Subanim_0IceRise
 	dw Subanim_0RocksFallEnemy
 	dw Subanim_0SoundWave
-	dw Subanim_0Circle_1Square_HalfToss ; unused
+	dw Subanim_3Fist ; was Subanim_0Circle_1Square_HalfToss
 	dw Subanim_1Barrier
 	dw Subanim_1Selfdestruct
 	dw Subanim_0WaterBubbles
 	dw Subanim_0CirclesFalling
 	dw Subanim_0StringShot
 	dw Subanim_0IceFall
-	dw Subanim_0Circle_1Square_Appears ; unused
+	dw Subanim_3Bell ; was Subanim_0Circle_1Square_Appears
 	dw Subanim_0StatusSleep
 	dw Subanim_0StatusSleepEnemy
 	dw Subanim_0Water_1Fire_Barrier ; unused
@@ -555,9 +555,12 @@ Subanim_0CirclesCentering:
 	db FRAMEBLOCK_47, BASECOORD_66, FRAMEBLOCKMODE_00
 	db FRAMEBLOCK_47, BASECOORD_66, FRAMEBLOCKMODE_00
 
-Subanim_0Circle_1Square_Appears:
-	subanim SUBANIMTYPE_COORDFLIP, 1
-	db FRAMEBLOCK_47, BASECOORD_67, FRAMEBLOCKMODE_00
+Subanim_3Bell: ; was Subanim_0Circle_1Square_Appears:
+	subanim SUBANIMTYPE_HFLIP, 4
+	db FRAMEBLOCK_04, BASECOORD_72, FRAMEBLOCKMODE_00
+	db FRAMEBLOCK_05, BASECOORD_72, FRAMEBLOCKMODE_00
+	db FRAMEBLOCK_04, BASECOORD_72, FRAMEBLOCKMODE_00
+	db FRAMEBLOCK_05, BASECOORD_72, FRAMEBLOCKMODE_00
 
 Subanim_1SphereBig:
 	subanim SUBANIMTYPE_HFLIP, 1
@@ -666,11 +669,9 @@ Subanim_1Sand:
 	db FRAMEBLOCK_56, BASECOORD_73, FRAMEBLOCKMODE_03
 	db FRAMEBLOCK_57, BASECOORD_73, FRAMEBLOCKMODE_00
 
-Subanim_0Circle_1Square_HalfToss:
-	subanim SUBANIMTYPE_COORDFLIP, 3
-	db FRAMEBLOCK_47, BASECOORD_74, FRAMEBLOCKMODE_00
-	db FRAMEBLOCK_47, BASECOORD_43, FRAMEBLOCKMODE_00
-	db FRAMEBLOCK_47, BASECOORD_75, FRAMEBLOCKMODE_00
+Subanim_3Fist: ; was Subanim_0Circle_1Square_HalfToss:
+	subanim SUBANIMTYPE_HFLIP, 1
+	db FRAMEBLOCK_36, BASECOORD_10, FRAMEBLOCKMODE_00
 
 Subanim_1Barrier:
 	subanim SUBANIMTYPE_HVFLIP, 6

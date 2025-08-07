@@ -890,7 +890,7 @@ LoadPlayerSpriteGraphics::
 	dec a
 	jp z, LoadBikePlayerSpriteGraphics
 	dec a
-	jp z, LoadSurfingPlayerSpriteGraphics
+	jp z, LoadSurfingPlayerSpriteGraphics2 ; ~$~CHANGED: Surf sprite determined by Pokemon used.~$~
 	jp LoadWalkingPlayerSpriteGraphics
 
 IsBikeRidingAllowed::
@@ -2046,34 +2046,58 @@ RunMapScript::
 	ret
 
 LoadWalkingPlayerSpriteGraphics::  ; ~$~ADDED: Masculine and feminine protagonists.~$~
+	xor a
+	ld [wUnusedMapVariable], a
+	ld b, BANK(PlayerSprite)
 	ld de, PlayerSprite
 	ld a, [wPlayerStyle]
 	and a
-	jr z, .Masculine1
+	jr z, LoadPlayerSpriteGraphicsCommon
 	ld de, PlayerFSprite
-.Masculine1
-	ld hl, vNPCSprites
+;.Masculine1
+;	ld hl, vNPCSprites
+	jr LoadPlayerSpriteGraphicsCommon
+	
+; ~$~CHANGED: Surf sprite determined by Pokemon used.~$~
+LoadSurfingPlayerSpriteGraphics2::
+	ld a, [wUnusedMapVariable]
+	cp $2
+	jr z, .riding_lapras
+	jr LoadSurfingPlayerSpriteGraphics
+.riding_lapras
+	ld b, BANK(LaprasSprite)
+	ld de, LaprasSprite
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
+	ld b, BANK(SeelSprite)
 	ld de, SeelSprite
-	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
+;;;
+
+;LoadSurfingPlayerSpriteGraphics::
+;	ld de, SeelSprite
+;	ld hl, vNPCSprites
+;	jr LoadPlayerSpriteGraphicsCommon
 
 LoadBikePlayerSpriteGraphics::
+	ld b, BANK(PlayerBikeSprite)
 	ld de, PlayerBikeSprite
 	ld a, [wPlayerStyle]
 	and a
-	jr z, .Masculine2
+	jr z, LoadPlayerSpriteGraphicsCommon
 	ld de, PlayerFBikeSprite
-.Masculine2
-	ld hl, vNPCSprites
+;.Masculine2
+;	ld hl, vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::
+	ld hl, vNPCSprites
 	push de
 	push hl
-	lb bc, BANK(PlayerSprite), $0c
+	push bc
+	ld c, $c
 	call CopyVideoData
+	pop bc
 	pop hl
 	pop de
 	ld a, $c0
@@ -2083,7 +2107,7 @@ LoadPlayerSpriteGraphicsCommon::
 	inc d
 .noCarry
 	set 3, h ; add $800 ($80 tiles) to hl (1 << 3 == $8)
-	lb bc, BANK(PlayerSprite), $0c
+	ld c, $c
 	jp CopyVideoData
 
 ; function to load data from the map header

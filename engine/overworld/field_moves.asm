@@ -5,7 +5,7 @@ TryFieldMove:: ; predef
 	call TryCut
 	ret
 
-TrySurf:
+TrySurf: ; ~$~TODO: Make this also use variable sprites.~$~
 	ld a, [wWalkBikeSurfState]
 	cp 2 ; is the player already surfing?
 	jr z, .no
@@ -20,7 +20,7 @@ TrySurf:
 	ld a, [wObtainedBadges]
 	bit 4, a ; SOUL BADGE
 	jr z, .no
-	callfar IsSurfingAllowed
+	farcall IsSurfingAllowed
 	ld hl, wStatusFlags1
 	bit 1, [hl]
 	res 1, [hl]

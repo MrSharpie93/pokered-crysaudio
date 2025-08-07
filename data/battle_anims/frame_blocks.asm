@@ -124,7 +124,7 @@ FrameBlockPointers:
 	dw FrameBlock79
 	assert_table_length NUM_FRAMEBLOCKS
 
-FrameBlock01:
+FrameBlock01: ; small star?
 	db 9 ; #
 	dbsprite  0,  0,  0,  0, $2c, 0
 	dbsprite  1,  0,  0,  0, $2d, 0
@@ -136,7 +136,7 @@ FrameBlock01:
 	dbsprite  1,  2,  0,  0, $2d, OAM_VFLIP
 	dbsprite  2,  2,  0,  0, $2c, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock02:
+FrameBlock02: ; big star
 	db 16 ; #
 	dbsprite  0,  0,  0,  0, $20, 0
 	dbsprite  1,  0,  0,  0, $21, 0
@@ -155,28 +155,28 @@ FrameBlock02:
 	dbsprite  2,  3,  0,  0, $21, OAM_HFLIP | OAM_VFLIP
 	dbsprite  3,  3,  0,  0, $20, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock03:
+FrameBlock03: ; poke ball
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $02, 0
 	dbsprite  1,  0,  0,  0, $02, OAM_HFLIP
 	dbsprite  0,  1,  0,  0, $12, 0
 	dbsprite  1,  1,  0,  0, $12, OAM_HFLIP
 
-FrameBlock04:
+FrameBlock04: ; poke ball wiggle 1
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $06, 0
 	dbsprite  1,  0,  0,  0, $07, 0
 	dbsprite  0,  1,  0,  0, $16, 0
 	dbsprite  1,  1,  0,  0, $17, 0
 
-FrameBlock05:
+FrameBlock05: ; poke ball wiggle 2
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $07, OAM_HFLIP
 	dbsprite  1,  0,  0,  0, $06, OAM_HFLIP
 	dbsprite  0,  1,  0,  0, $17, OAM_HFLIP
 	dbsprite  1,  1,  0,  0, $16, OAM_HFLIP
 
-FrameBlock06:
+FrameBlock06: ; poof?
 	db 12 ; #
 	dbsprite  1,  0,  0,  0, $23, 0
 	dbsprite  0,  1,  0,  0, $32, 0
@@ -191,7 +191,7 @@ FrameBlock06:
 	dbsprite  3,  2,  0,  0, $32, OAM_HFLIP | OAM_VFLIP
 	dbsprite  2,  3,  0,  0, $23, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock07:
+FrameBlock07: ; big poof?
 	db 16 ; #
 	dbsprite  0,  0,  0,  0, $20, 0
 	dbsprite  1,  0,  0,  0, $21, 0
@@ -259,21 +259,21 @@ FrameBlock0a:
 	dbsprite  4,  5,  0,  0, $25, OAM_HFLIP | OAM_VFLIP
 	dbsprite  5,  5,  0,  0, $24, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock0b:
+FrameBlock0b: ; geyser 1/eye closed
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $05, 0
 	dbsprite  1,  0,  0,  0, $05, OAM_HFLIP
 	dbsprite  0,  1,  0,  0, $15, 0
 	dbsprite  1,  1,  0,  0, $15, OAM_HFLIP
 
-FrameBlock0c:
+FrameBlock0c: ; geyser 2/eye open
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $04, 0
 	dbsprite  1,  0,  0,  0, $04, OAM_HFLIP
 	dbsprite  0,  1,  0,  0, $14, 0
 	dbsprite  1,  1,  0,  0, $14, OAM_HFLIP
 
-FrameBlock0d:
+FrameBlock0d: ; lightning bolt 1
 	db 8 ; #
 	dbsprite  0,  0,  0,  0, $0c, 0
 	dbsprite  1,  0,  0,  0, $0d, 0
@@ -284,7 +284,7 @@ FrameBlock0d:
 	dbsprite  0,  3,  0,  0, $0d, OAM_HFLIP | OAM_VFLIP
 	dbsprite  1,  3,  0,  0, $0c, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock0e:
+FrameBlock0e: ; lightning bolt 2
 	db 4 ; #
 	dbsprite  0,  4,  0,  0, $0c, 0
 	dbsprite  1,  4,  0,  0, $0d, 0
@@ -298,7 +298,7 @@ FrameBlock0f:
 	dbsprite  0,  7,  0,  0, $0d, OAM_HFLIP | OAM_VFLIP
 	dbsprite  1,  7,  0,  0, $0c, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock10:
+FrameBlock10: ; diagonal lightning/spider web
 	db 8 ; #
 	dbsprite  0,  0,  0,  0, $0e, 0
 	dbsprite  1,  0,  0,  0, $0f, 0
@@ -320,13 +320,13 @@ FrameBlock11:
 	dbsprite  4,  1,  0,  0, $1f, OAM_HFLIP
 	dbsprite  5,  1,  0,  0, $1e, OAM_HFLIP
 
-FrameBlock12:
+FrameBlock12: ; water drop
 	db 3 ; #
 	dbsprite  0,  0,  0,  0, $37, 0
 	dbsprite  2,  1,  0,  0, $37, 0
 	dbsprite  4,  0,  0,  0, $37, 0
 
-FrameBlock13:
+FrameBlock13: ; water ball?
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $36, 0
 	dbsprite  1,  0,  0,  0, $36, OAM_HFLIP
@@ -370,7 +370,7 @@ FrameBlock16:
 	dbsprite  4,  1,  0,  0, $39, 0
 	dbsprite  5,  1,  0,  0, $39, OAM_HFLIP
 
-FrameBlock17:
+FrameBlock17: ; heart/music note/bell
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $08, 0
 	dbsprite  1,  0,  0,  0, $09, 0
@@ -423,7 +423,7 @@ FrameBlock1f:
 	dbsprite  0,  0,  0,  0, $03, 0
 	dbsprite  6,  0,  0,  0, $03, OAM_HFLIP
 
-FrameBlock20:
+FrameBlock20: ; star/super fang?
 	db 6 ; #
 	dbsprite  0,  0,  0,  0, $03, 0
 	dbsprite  6,  0,  0,  0, $03, OAM_HFLIP
@@ -469,7 +469,7 @@ FrameBlock22:
 	dbsprite  6,  2,  0,  0, $03, OAM_HFLIP
 	dbsprite  6,  3,  0,  0, $13, OAM_HFLIP
 
-FrameBlock23:
+FrameBlock23: ; rock/cloud/bubble
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $0a, 0
 	dbsprite  1,  0,  0,  0, $0b, 0
@@ -496,7 +496,7 @@ FrameBlock25:
 	dbsprite  4,  2,  0,  0, $1a, 0
 	dbsprite  5,  2,  0,  0, $1b, 0
 
-FrameBlock26:
+FrameBlock26: ; star/sludge blob
 	db 4 ; #
 	dbsprite  2,  0,  0,  0, $44, 0
 	dbsprite  3,  0,  0,  0, $44, OAM_HFLIP
@@ -539,11 +539,11 @@ FrameBlock2b:
 	dbsprite  0,  0,  2,  6, $47, 0
 	dbsprite  1,  0,  0,  0, $47, 0
 
-FrameBlock2c:
+FrameBlock2c: ; safari rock
 	db 1 ; #
 	dbsprite  0, 20,  0,  0, $4d, 0
 
-FrameBlock2d:
+FrameBlock2d: ; tornado
 	db 8 ; #
 	dbsprite  0,  0,  0,  0, $26, 0
 	dbsprite  1,  0,  0,  0, $27, 0
@@ -579,11 +579,11 @@ FrameBlock30:
 	dbsprite  0,  1,  0,  0, $44, OAM_VFLIP
 	dbsprite  1,  1,  0,  0, $44, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock31:
+FrameBlock31: ; poison drip
 	db 1 ; #
 	dbsprite  0,  0,  0,  0, $45, 0
 
-FrameBlock32:
+FrameBlock32: ; triangle
 	db 7 ; #
 	dbsprite  0,  0,  0,  0, $4d, 0
 	dbsprite  1,  0,  0,  0, $2f, 0
@@ -616,14 +616,14 @@ FrameBlock35:
 	dbsprite  0,  3,  0,  0, $2a, OAM_VFLIP
 	dbsprite  1,  3,  0,  0, $2b, OAM_VFLIP
 
-FrameBlock36:
+FrameBlock36: ; bird/sword/fist
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $00, 0
 	dbsprite  1,  0,  0,  0, $01, 0
 	dbsprite  0,  1,  0,  0, $10, 0
 	dbsprite  1,  1,  0,  0, $11, 0
 
-FrameBlock37:
+FrameBlock37: ; sword behind
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $01, OAM_BEHIND_BG | OAM_HFLIP
 	dbsprite  1,  0,  0,  0, $00, OAM_BEHIND_BG | OAM_HFLIP
@@ -659,7 +659,7 @@ FrameBlock3b:
 	dbsprite  1,  4,  0,  0, $14, OAM_HFLIP
 	dbsprite  0,  5,  4,  0, $41, 0
 
-FrameBlock3c:
+FrameBlock3c: ; water/fire spout 1
 	db 6 ; #
 	dbsprite  0,  2,  0,  0, $05, 0
 	dbsprite  1,  2,  0,  0, $05, OAM_HFLIP
@@ -668,7 +668,7 @@ FrameBlock3c:
 	dbsprite  0,  4,  4,  0, $42, 0
 	dbsprite  0,  5,  4,  0, $42, 0
 
-FrameBlock3d:
+FrameBlock3d: ; water/fire spout 2
 	db 7 ; #
 	dbsprite  0,  1,  0,  0, $04, 0
 	dbsprite  1,  1,  0,  0, $04, OAM_HFLIP
@@ -700,13 +700,13 @@ FrameBlock3f:
 	dbsprite  0,  4,  4,  0, $41, 0
 	dbsprite  0,  5,  4,  0, $41, 0
 
-FrameBlock40:
+FrameBlock40: ; seeds
 	db 3 ; #
 	dbsprite  0,  0,  0,  0, $3d, 0
 	dbsprite  1,  0,  0,  0, $3d, 0
 	dbsprite  1,  1,  0,  0, $3d, 0
 
-FrameBlock41:
+FrameBlock41: ; sprout
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $06, 0
 	dbsprite  1,  0,  0,  0, $06, OAM_HFLIP
@@ -741,21 +741,21 @@ FrameBlock43:
 	dbsprite  0,  4,  0,  0, $41, 0
 	dbsprite  4,  4,  0,  0, $41, 0
 
-FrameBlock44:
+FrameBlock44: ; spores/ice crystals 1
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $49, 0
 	dbsprite  5,  0,  0,  0, $49, 0
 	dbsprite  0,  5,  0,  0, $49, 0
 	dbsprite  5,  5,  0,  0, $49, 0
 
-FrameBlock45:
+FrameBlock45: ; spores/ice crystals 2
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $49, 0
 	dbsprite  3,  0,  0,  0, $49, 0
 	dbsprite  0,  3,  0,  0, $49, 0
 	dbsprite  3,  3,  0,  0, $49, 0
 
-FrameBlock46:
+FrameBlock46: ; spores/ice crystals 3
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $49, 0
 	dbsprite  1,  0,  0,  0, $49, 0

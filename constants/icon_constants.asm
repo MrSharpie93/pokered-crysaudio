@@ -43,6 +43,7 @@
 	const ICON_SEEL        ; $26
 	const ICON_SUDOWOODO   ; $27
 	const ICON_CAT         ; $28
-	const ICON_TRADEBUBBLE ; $29
+	const ICON_REGI        ; $29
+	const ICON_TRADEBUBBLE ; $2a
 
 DEF ICONOFFSET EQU $40 ; difference between alternating icon frames' tile IDs

@@ -12,7 +12,7 @@ ShowPokedexMenu:
 	ld [wPokedexNum], a
 	ldh [hJoy7], a
 .setUpGraphics
-	ld b, SET_PAL_GENERIC
+	ld b, SET_PAL_DEXBALLS
 	call RunPaletteCommand
 	callfar LoadPokedexTilePatterns
 .doPokemonListMenu
@@ -202,8 +202,9 @@ HandlePokedexListMenu:
 	ld de, PokedexMenuItemsText
 	call PlaceString
 ; find the highest pokedex number among the pokemon the player has seen
-	ld hl, wPokedexSeenEnd - 1
-	ld b, (wPokedexSeenEnd - wPokedexSeen) * 8 + 1
+;	ld hl, wPokedexSeenEnd - 1
+;	ld b, (wPokedexSeenEnd - wPokedexSeen) * 8 + 1
+	ld b, 253
 .maxSeenPokemonLoop
 	ld a, [hld]
 	ld c, 8
@@ -521,7 +522,7 @@ ShowPokedexDataInternal:
 
 	ld a, c
 	and a
-	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
+	jp z, .displaySeenBottomInfo ; if the pokemon has not been owned, don't print the height or weight, but show their type
 	inc de ; de = address of feet (height)
 	ld a, [de] ; reads feet, but a is overwritten without being used
 	hlcoord 12, 6

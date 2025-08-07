@@ -61,16 +61,16 @@ OakSpeech:
 	call PrepareForSpecialWarp
 	xor a
 	ldh [hTileAnimations], a
-	ld a, [wStatusFlags6]
-	bit BIT_DEBUG_MODE, a
-	jp nz, .skipSpeech
 ; ~$~ADDED: Masculine and feminine protagonists.~$~
 	ld hl, PlayerStyleText  ; added to the same file as the other oak text
   	call PrintText     ; show this text
   	call PlayerStyleChoice ; added routine at the end of this file
    	ld a, [wCurrentMenuItem]
    	ld [wPlayerStyle], a ; store player's appearance. 00 for masculine, 01 for feminine
-   	call ClearScreen ; clear the screen before resuming normal intro
+   	ld a, [wStatusFlags6]
+	bit BIT_DEBUG_MODE, a
+	jp nz, .skipSpeech
+	call ClearScreen ; clear the screen before resuming normal intro
 ;;;	
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00

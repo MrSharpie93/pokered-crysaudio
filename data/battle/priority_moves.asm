@@ -7,6 +7,7 @@ PriorityMovesList: ; ~$~ADDED: Better move priority system.~$~
 		db MIRROR_COAT,    2
 		db BULLET_PUNCH,   8
 		db QUICK_ATTACK,   8
+		db TRANSFORM,      8 ; Emulates Impostor, and makes Ditto less shitty.~$~
 		db MACH_PUNCH,     8
 		db SUCKER_PUNCH,   8
 		db ICE_SHARD,      8

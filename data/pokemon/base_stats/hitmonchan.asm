@@ -1,6 +1,6 @@
 	db DEX_HITMONCHAN ; pokedex id
 
-	db  50, 105,  79,  76,  35
+	db  60, 105,  99,  76,  45
 	;   hp  atk  def  spd  spc
 
 	db FIGHTING, FIGHTING ; type
@@ -11,7 +11,7 @@
 	dw HitmonchanPicFront, HitmonchanPicBack
 
 	; move tutor compatibility flags
-	m_tutor 1,2,3,4,8
+	m_tutor 1,2,3,4,5,6,8
 	m_tutor 9,10,13
 	m_tutor 18,20,22
 	m_tutor 26,28,31

@@ -1,6 +1,6 @@
 	db DEX_JYNX ; pokedex id
 
-	db  65,  50,  35,  95,  95
+	db  65,  50,  35,  95, 115
 	;   hp  atk  def  spd  spc
 
 	db ICE, PSYCHIC_TYPE ; type
@@ -11,7 +11,7 @@
 	dw JynxPicFront, JynxPicBack
 
 	; move tutor compatibility flags
-	m_tutor 2,3,4,5,6,7,8
+	m_tutor 2,4,5,6,7,8
 	m_tutor 9,10,11,13,15
 	m_tutor 0
 	m_tutor 25,27,28

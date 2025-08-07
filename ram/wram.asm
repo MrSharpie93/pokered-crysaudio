@@ -11,7 +11,8 @@ wChannel2:: channel_struct wChannel2
 wChannel3:: channel_struct wChannel3
 wChannel4:: channel_struct wChannel4
 
-	ds 1
+; for pureRGB AI jank
+wUnusedC000:: db
 
 wCurTrackDuty:: db
 wCurTrackVolumeEnvelope:: db
@@ -1245,14 +1246,18 @@ NEXTU
 wLearnMoveMonName:: ds NAME_LENGTH
 ENDU
 
-	ds 2
+; For the pureRGB AI enhancements
+wAIMoveSpamAvoider:: db
+wAITargetMonStatus:: db
+wAITargetMonType1:: db
+wAITargetMonType2:: db
 
 ; money received after battle = base money × level of last enemy mon
 wTrainerBaseMoney:: dw ; BCD
 
 wMissableObjectCounter:: db
 
-	ds 1
+;	ds 1
 
 ; 13 bytes for the letters of the opposing trainer
 ; the name is terminated with $50 with possible
@@ -1299,18 +1304,18 @@ wCriticalHitOrOHKO:: db
 
 wMoveMissed:: db
 
-wPlayerProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
+
 wPlayerStatsToDouble:: db
-; always 0
+wPlayerProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
 wPlayerStatsToHalve:: db
 
 wPlayerBattleStatus1:: db
 wPlayerBattleStatus2:: db
 wPlayerBattleStatus3:: db
 
-wEnemyProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
+
 wEnemyStatsToDouble:: db
-; always 0
+wEnemyProtectCount:: ; ~$~ADDED: Counter for Protect uses.~$~
 wEnemyStatsToHalve:: db
 
 wEnemyBattleStatus1:: db
@@ -1341,7 +1346,7 @@ wEnemyToxicCounter:: db
 ; low nibble: disable turns left
 wEnemyDisabledMove:: db
 
-	ds 1
+;	ds 1
 
 UNION
 ; the amount of damage accumulated by the player while biding
