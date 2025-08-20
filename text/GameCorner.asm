@@ -74,8 +74,8 @@ _GameCornerFishingGuruDontNeedMyCoinsText::
 	done
 
 _GameCornerFishingGuruWinsComeAndGoText::
-	text "Wins seem to come"
-	line "and go."
+	text "Nothing is certain"
+	line "in this area."
 	done
 
 _GameCornerMiddleAgedWomanText::
@@ -92,7 +92,7 @@ _GameCornerGymGuideChampInMakingText::
 
 	para "CELADON GYM's"
 	line "LEADER is ERIKA!"
-	cont "She uses grass-"
+	cont "She uses GRASS-"
 	cont "type #MON!"
 
 	para "She might appear"

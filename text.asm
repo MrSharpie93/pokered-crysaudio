@@ -285,3 +285,17 @@ INCLUDE "data/moves/names.asm"
 SECTION "Item Descriptions", ROMX ; ~$~ADDED~$~
 
 INCLUDE "data/text/item_descriptions.asm"
+
+SECTION "New Maps", ROMX ; ~$~ADDED~$~
+
+INCLUDE "text/NewBarkTown.asm"
+INCLUDE "text/Route26.asm"
+INCLUDE "text/Route27.asm"
+INCLUDE "text/Route28.asm"
+INCLUDE "text/SilverCaveOutside.asm"
+INCLUDE "text/Route26HealHouse.asm"
+INCLUDE "text/Route27House.asm"
+INCLUDE "text/SilverCavePokecenter.asm"
+INCLUDE "text/MtMoonSquare.asm"
+INCLUDE "text/MtMoonSquareShop.asm"
+

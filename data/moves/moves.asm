@@ -219,7 +219,7 @@ Moves:
 	move MAGICAL_LEAF, SWIFT_EFFECT,                60, GRASS,        100, 20
 	move DRAGON_DANCE, DRAGON_DANCE_EFFECT,          0, DRAGON,       100, 20
 	move SHOCK_WAVE,   SWIFT_EFFECT,                60, ELECTRIC,     100, 20
-	move SUCKER_PUNCH, NO_ADDITIONAL_EFFECT,        70, DARK,         100,  5
+	move SUCKER_PUNCH, SUCKER_PUNCH_EFFECT,         70, DARK,         100,  5
 	move FLARE_BLITZ,  RECOIL_STATUS_EFFECT,       120, FIRE,         100, 15
 	move POISON_JAB,   POISON_SIDE_EFFECT1,         80, POISON,       100, 20
 	move DARK_PULSE,   FLINCH_SIDE_EFFECT2,         80, DARK,         100, 15

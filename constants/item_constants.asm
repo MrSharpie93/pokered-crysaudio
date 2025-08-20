@@ -27,19 +27,17 @@
 	const HYPER_POTION  ; $12
 	const SUPER_POTION  ; $13
 	const POTION        ; $14
-	const BOULDERBADGE  ; $15
-DEF SAFARI_BAIT EQU BOULDERBADGE ; overload
-	const CASCADEBADGE  ; $16
-DEF SAFARI_ROCK EQU CASCADEBADGE ; overload
-	const THUNDERBADGE  ; $17
-	const RAINBOWBADGE  ; $18
-	const SOULBADGE     ; $19
-	const MARSHBADGE    ; $1A
-	const VOLCANOBADGE  ; $1B
-	const EARTHBADGE    ; $1C
-	const ESCAPE_ROPE   ; $1D
+	const SAFARI_BAIT   ; $15 ; was BOULDERBADGE
+	const SAFARI_ROCK   ; $16 ; was CASCADEBADGE
+	const SUN_STONE     ; $17 ; was THUNDERBADGE
+	const SHINY_STONE   ; $18 ; was RAINBOWBADGE
+	const DUSK_STONE    ; $19 ; was SOULBADGE
+	const KINGS_ROCK    ; $1A ; was MARSHBADGE
+	const METAL_COAT    ; $1B ; was VOLCANOBADGE
+	const LINK_CORD     ; $1C ; was EARTHBADGE
+	const ESCAPE_ROPE   ; $1D ; now a key item
 	const REPEL         ; $1E
-	const OLD_AMBER     ; $1F
+	const OLD_AMBER     ; $1F ; now not a key item
 	const FIRE_STONE    ; $20
 	const THUNDER_STONE ; $21
 	const WATER_STONE   ; $22
@@ -49,16 +47,16 @@ DEF SAFARI_ROCK EQU CASCADEBADGE ; overload
 	const CARBOS        ; $26
 	const CALCIUM       ; $27
 	const RARE_CANDY    ; $28
-	const DOME_FOSSIL   ; $29
-	const HELIX_FOSSIL  ; $2A
+	const DOME_FOSSIL   ; $29 ; now not a key item
+	const HELIX_FOSSIL  ; $2A ; now not a key item
 	const SECRET_KEY    ; $2B
-	const ITEM_2C       ; $2C ; unused
+	const AXE           ; $2C ; ~$~ADDED~$~
 	const BIKE_VOUCHER  ; $2D
 	const X_ACCURACY    ; $2E
 	const LEAF_STONE    ; $2F
 	const CARD_KEY      ; $30
 	const NUGGET        ; $31
-	const ITEM_32       ; $32 ; unused
+	const POKE_PEP      ; $32 ; ~$~ADDED~$~
 	const POKE_DOLL     ; $33
 	const FULL_HEAL     ; $34
 	const REVIVE        ; $35
@@ -77,13 +75,13 @@ DEF SAFARI_ROCK EQU CASCADEBADGE ; overload
 	const X_DEFEND      ; $42
 	const X_SPEED       ; $43
 	const X_SPECIAL     ; $44
-	const COIN_CASE     ; $45
+	const COIN_CASE     ; $45 ; ~$~TODO: Having this in your bag doubles trainer payouts.~$~
 	const OAKS_PARCEL   ; $46
 	const ITEMFINDER    ; $47
 	const SILPH_SCOPE   ; $48
 	const POKE_FLUTE    ; $49
 	const LIFT_KEY      ; $4A
-	const EXP_ALL       ; $4B
+	const EXP_ALL       ; $4B ; now a key item
 	const OLD_ROD       ; $4C
 	const GOOD_ROD      ; $4D
 	const SUPER_ROD     ; $4E
@@ -92,23 +90,29 @@ DEF SAFARI_ROCK EQU CASCADEBADGE ; overload
 	const MAX_ETHER     ; $51
 	const ELIXER        ; $52
 	const MAX_ELIXER    ; $53
+; ~$~ADDED: New items.~$~
+	const MOOMOO_MILK   ; $54
+	const SLOWPOKETAIL  ; $55
+	const RARE_CARD     ; $56
+	const ODD_KEYSTONE  ; $57
+	const BIRDWHISTLE   ; $58
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs
-	const FLOOR_B2F     ; $54
-	const FLOOR_B1F     ; $55
-	const FLOOR_1F      ; $56
-	const FLOOR_2F      ; $57
-	const FLOOR_3F      ; $58
-	const FLOOR_4F      ; $59
-	const FLOOR_5F      ; $5A
-	const FLOOR_6F      ; $5B
-	const FLOOR_7F      ; $5C
-	const FLOOR_8F      ; $5D
-	const FLOOR_9F      ; $5E
-	const FLOOR_10F     ; $5F
-	const FLOOR_11F     ; $60
-	const FLOOR_B4F     ; $61
+	const FLOOR_B2F     ; $59
+	const FLOOR_B1F     ; $5A
+	const FLOOR_1F      ; $5B
+	const FLOOR_2F      ; $5C
+	const FLOOR_3F      ; $5D
+	const FLOOR_4F      ; $5E
+	const FLOOR_5F      ; $5F
+	const FLOOR_6F      ; $60
+	const FLOOR_7F      ; $61
+	const FLOOR_8F      ; $62
+	const FLOOR_9F      ; $63
+	const FLOOR_10F     ; $64
+	const FLOOR_11F     ; $65
+	const FLOOR_B4F     ; $66
 DEF NUM_FLOORS EQU const_value - 1 - NUM_ITEMS
 
 	const_next $C4

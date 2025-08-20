@@ -2059,14 +2059,15 @@ wVictoryRoad2FCurScript:: db
 wVictoryRoad3FCurScript:: db
 	ds 1
 wFightingDojoCurScript:: db
-wSilphCo2FCurScript:: db
+wNewBarkTownCurScript:: db ; NEW
 wSilphCo3FCurScript:: db
 wSilphCo4FCurScript:: db
 wSilphCo5FCurScript:: db
 wSilphCo6FCurScript:: db
 wSilphCo7FCurScript:: db
+wSilphCo1FCurScript:: ; replace these later
 wSilphCo8FCurScript:: db
-wSilphCo9FCurScript:: db
+wSilphCo9FCurScript:: db ;;;
 wHallOfFameCurScript:: db
 wChampionsRoomCurScript:: db
 wLoreleisRoomCurScript:: db

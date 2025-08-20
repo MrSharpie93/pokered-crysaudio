@@ -7,7 +7,7 @@ KeyItemFlags:
 	dbit TRUE  ; TOWN_MAP
 	dbit TRUE  ; BICYCLE
 	dbit TRUE  ; SURFBOARD
-	dbit TRUE  ; SAFARI_BALL
+	dbit FALSE ; SAFARI_BALL
 	dbit TRUE  ; POKEDEX
 	dbit FALSE ; MOON_STONE
 	dbit FALSE ; ANTIDOTE
@@ -20,17 +20,17 @@ KeyItemFlags:
 	dbit FALSE ; HYPER_POTION
 	dbit FALSE ; SUPER_POTION
 	dbit FALSE ; POTION
-	dbit TRUE  ; BOULDERBADGE
-	dbit TRUE  ; CASCADEBADGE
-	dbit TRUE  ; THUNDERBADGE
-	dbit TRUE  ; RAINBOWBADGE
-	dbit TRUE  ; SOULBADGE
-	dbit TRUE  ; MARSHBADGE
-	dbit TRUE  ; VOLCANOBADGE
-	dbit TRUE  ; EARTHBADGE
-	dbit FALSE ; ESCAPE_ROPE
+	dbit FALSE ; SAFARI_BAIT
+	dbit FALSE ; SAFARI_ROCK
+	dbit FALSE ; SUN_STONE
+	dbit FALSE ; SHINY_STONE
+	dbit FALSE ; DUSK_STONE
+	dbit FALSE ; KINGS_ROCK
+	dbit FALSE ; METAL_COAT
+	dbit FALSE ; LINK_CORD
+	dbit TRUE  ; ESCAPE_ROPE
 	dbit FALSE ; REPEL
-	dbit TRUE  ; OLD_AMBER
+	dbit FALSE ; OLD_AMBER
 	dbit FALSE ; FIRE_STONE
 	dbit FALSE ; THUNDER_STONE
 	dbit FALSE ; WATER_STONE
@@ -40,16 +40,16 @@ KeyItemFlags:
 	dbit FALSE ; CARBOS
 	dbit FALSE ; CALCIUM
 	dbit FALSE ; RARE_CANDY
-	dbit TRUE  ; DOME_FOSSIL
-	dbit TRUE  ; HELIX_FOSSIL
+	dbit FALSE ; DOME_FOSSIL
+	dbit FALSE ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; ITEM_2C
+	dbit TRUE  ; AXE
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
 	dbit TRUE  ; CARD_KEY
 	dbit FALSE ; NUGGET
-	dbit FALSE ; ITEM_32
+	dbit FALSE ; POKE_PEP
 	dbit FALSE ; POKE_DOLL
 	dbit FALSE ; FULL_HEAL
 	dbit FALSE ; REVIVE
@@ -74,7 +74,7 @@ KeyItemFlags:
 	dbit TRUE  ; SILPH_SCOPE
 	dbit TRUE  ; POKE_FLUTE
 	dbit TRUE  ; LIFT_KEY
-	dbit FALSE ; EXP_ALL
+	dbit TRUE  ; EXP_ALL
 	dbit TRUE  ; OLD_ROD
 	dbit TRUE  ; GOOD_ROD
 	dbit TRUE  ; SUPER_ROD
@@ -83,4 +83,10 @@ KeyItemFlags:
 	dbit FALSE ; MAX_ETHER
 	dbit FALSE ; ELIXER
 	dbit FALSE ; MAX_ELIXER
+; ~$~ADDED: New items.~$~
+	dbit FALSE ; MOOMOO_MILK
+	dbit FALSE ; SLOWPOKETAIL
+	dbit TRUE  ; RARE_CARD
+	dbit TRUE  ; ODD_KEYSTONE
+	dbit TRUE  ; BIRDWHISTLE
 	end_bit_array NUM_ITEMS

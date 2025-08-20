@@ -1,43 +1,47 @@
 ; see also MapHeaderBanks
 MapHeaderPointers::
 	table_width 2, MapHeaderPointers
-	dw PalletTown_h
-	dw ViridianCity_h
-	dw PewterCity_h
-	dw CeruleanCity_h
-	dw LavenderTown_h
-	dw VermilionCity_h
-	dw CeladonCity_h
-	dw FuchsiaCity_h
-	dw CinnabarIsland_h
-	dw IndigoPlateau_h
-	dw SaffronCity_h
-	dw SaffronCity_h ; UNUSED_MAP_0B
-	dw Route1_h
-	dw Route2_h
-	dw Route3_h
-	dw Route4_h
-	dw Route5_h
-	dw Route6_h
-	dw Route7_h
-	dw Route8_h
-	dw Route9_h
-	dw Route10_h
-	dw Route11_h
-	dw Route12_h
-	dw Route13_h
-	dw Route14_h
-	dw Route15_h
-	dw Route16_h
-	dw Route17_h
-	dw Route18_h
-	dw Route19_h
-	dw Route20_h
-	dw Route21_h
-	dw Route22_h
-	dw Route23_h
-	dw Route24_h
-	dw Route25_h
+	dw PalletTown_h      ; $00
+	dw ViridianCity_h    ; $01
+	dw PewterCity_h      ; $02
+	dw CeruleanCity_h    ; $03
+	dw LavenderTown_h    ; $04
+	dw VermilionCity_h   ; $05
+	dw CeladonCity_h     ; $06
+	dw FuchsiaCity_h     ; $07
+	dw CinnabarIsland_h  ; $08
+	dw IndigoPlateau_h   ; $09
+	dw SaffronCity_h     ; $0A
+	dw NewBarkTown_h     ; $0B
+	dw Route1_h             ; $0C
+	dw Route2_h             ; $0D
+	dw Route3_h             ; $0E
+	dw Route4_h             ; $0F
+	dw Route5_h             ; $10
+	dw Route6_h             ; $11
+	dw Route7_h             ; $12
+	dw Route8_h             ; $13
+	dw Route9_h             ; $14
+	dw Route10_h            ; $15
+	dw Route11_h            ; $16
+	dw Route12_h            ; $17
+	dw Route13_h            ; $18
+	dw Route14_h            ; $19
+	dw Route15_h            ; $1A
+	dw Route16_h            ; $1B
+	dw Route17_h            ; $1C
+	dw Route18_h            ; $1D
+	dw Route19_h            ; $1E
+	dw Route20_h            ; $1F
+	dw Route21_h            ; $20
+	dw Route22_h            ; $21
+	dw Route23_h            ; $22
+	dw Route24_h            ; $23
+	dw Route25_h            ; $24
+	dw Route26_h            ; $25
+	dw Route27_h            ; $26
+	dw Route28_h            ; $27
+	dw SilverCaveOutside_h  ; $28
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
 	dw BluesHouse_h
@@ -70,7 +74,7 @@ MapHeaderPointers::
 	dw BikeShop_h
 	dw CeruleanMart_h
 	dw MtMoonPokecenter_h
-	dw CeruleanTrashedHouse_h ; CERULEAN_TRASHED_HOUSE_COPY
+	dw Route26HealHouse_h ; CERULEAN_TRASHED_HOUSE_COPY
 	dw Route5Gate_h
 	dw UndergroundPathRoute5_h
 	dw Daycare_h
@@ -106,9 +110,9 @@ MapHeaderPointers::
 	dw SSAnne1FRooms_h
 	dw SSAnne2FRooms_h
 	dw SSAnneB1FRooms_h
-	dw LancesRoom_h ; UNUSED_MAP_69
-	dw LancesRoom_h ; UNUSED_MAP_6A
-	dw LancesRoom_h ; UNUSED_MAP_6B
+	dw MtMoonSquare_h ; UNUSED_MAP_69
+	dw MtMoonSquareShop_h ; UNUSED_MAP_6A
+	dw Route27House_h ; UNUSED_MAP_6B
 	dw VictoryRoad1F_h
 	dw LancesRoom_h ; UNUSED_MAP_6D
 	dw LancesRoom_h ; UNUSED_MAP_6E
@@ -205,15 +209,15 @@ MapHeaderPointers::
 	dw RocketHideoutB3F_h
 	dw RocketHideoutB4F_h
 	dw RocketHideoutElevator_h
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CC
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CD
-	dw RocketHideoutElevator_h ; UNUSED_MAP_CE
-	dw SilphCo2F_h
-	dw SilphCo3F_h
-	dw SilphCo4F_h
-	dw SilphCo5F_h
-	dw SilphCo6F_h
-	dw SilphCo7F_h
+	dw SilverCave1F_h
+	dw SilverCave2F_h
+	dw SilverCave3F_h
+;	dw SilphCo2F_h
+;	dw SilphCo3F_h
+;	dw SilphCo4F_h
+;	dw SilphCo5F_h
+	dw SilverCaveItemRooms_h
+	dw TohjoFalls_h
 	dw SilphCo8F_h
 	dw PokemonMansion2F_h
 	dw PokemonMansion3F_h
@@ -232,20 +236,20 @@ MapHeaderPointers::
 	dw CeruleanCave1F_h
 	dw NameRatersHouse_h
 	dw CeruleanBadgeHouse_h
-	dw Route16Gate1F_h ; UNUSED_MAP_E7
+	dw SilverCavePokecenter_h ; UNUSED_MAP_E7
 	dw RockTunnelB1F_h
 	dw SilphCo9F_h
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
-	dw SilphCo2F_h ; UNUSED_MAP_ED
-	dw SilphCo2F_h ; UNUSED_MAP_EE
+	dw SilphCo9F_h ; UNUSED_MAP_ED
+	dw SilphCo9F_h ; UNUSED_MAP_EE
 	dw TradeCenter_h
 	dw Colosseum_h
-	dw SilphCo2F_h ; UNUSED_MAP_F1
-	dw SilphCo2F_h ; UNUSED_MAP_F2
-	dw SilphCo2F_h ; UNUSED_MAP_F3
-	dw SilphCo2F_h ; UNUSED_MAP_F4
+	dw SilphCo9F_h ; UNUSED_MAP_F1
+	dw SilphCo9F_h ; UNUSED_MAP_F2
+	dw SilphCo9F_h ; UNUSED_MAP_F3
+	dw SilphCo9F_h ; UNUSED_MAP_F4
 	dw LoreleisRoom_h
 	dw BrunosRoom_h
 	dw AgathasRoom_h

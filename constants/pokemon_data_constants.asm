@@ -79,12 +79,19 @@ DEF HOF_TEAM_CAPACITY EQU 50
 
 ; Evolution types
 	const_def 1
-	const EVOLVE_LEVEL ; 1
-	const EVOLVE_ITEM  ; 2
-	const EVOLVE_TRADE ; 3
+	const EVOLVE_LEVEL   ; 1
+	const EVOLVE_ITEM    ; 2
+	const EVOLVE_TRADE   ; 3
 ; ~$~ADDED: Red++ evolution methods.~$~
-	const EVOLVE_MAP   ; 4
-	const EVOLVE_MOVE  ; 5
+	const EVOLVE_MAP     ; 4
+	const EVOLVE_MOVE    ; 5
+	const EVOLVE_TYROGUE ; 6
+	
+; Tyrogue stat pointers
+	const_def 1
+	const ATK_HIGHER
+	const BOTH_EQUAL
+	const DEF_HIGHER
 
 
 ; wMonHGrowthRate values

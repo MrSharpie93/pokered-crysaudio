@@ -12,7 +12,7 @@ MapHeaderBanks::
 	db BANK(CinnabarIsland_h)
 	db BANK(IndigoPlateau_h)
 	db BANK(SaffronCity_h)
-	db $01 ; UNUSED_MAP_0B
+	db BANK(NewBarkTown_h)
 	db BANK(Route1_h)
 	db BANK(Route2_h)
 	db BANK(Route3_h)
@@ -38,6 +38,10 @@ MapHeaderBanks::
 	db BANK(Route23_h)
 	db BANK(Route24_h)
 	db BANK(Route25_h)
+	db BANK(Route26_h)
+	db BANK(Route27_h)
+	db BANK(Route28_h)
+	db BANK(SilverCaveOutside_h)
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
 	db BANK(BluesHouse_h)
@@ -70,7 +74,7 @@ MapHeaderBanks::
 	db BANK(BikeShop_h)
 	db BANK(CeruleanMart_h)
 	db BANK(MtMoonPokecenter_h)
-	db BANK(CeruleanTrashedHouse_h)
+	db BANK(Route26HealHouse_h)
 	db BANK(Route5Gate_h)
 	db BANK(UndergroundPathRoute5_h)
 	db BANK(Daycare_h)
@@ -106,9 +110,9 @@ MapHeaderBanks::
 	db BANK(SSAnne1FRooms_h)
 	db BANK(SSAnne2FRooms_h)
 	db BANK(SSAnneB1FRooms_h)
-	db $1D ; UNUSED_MAP_69
-	db $1D ; UNUSED_MAP_6A
-	db $1D ; UNUSED_MAP_6B
+	db BANK(MtMoonSquare_h)
+	db BANK(MtMoonSquareShop_h)
+	db BANK(Route27House_h)
 	db BANK(VictoryRoad1F_h)
 	db $1D ; UNUSED_MAP_6D
 	db $1D ; UNUSED_MAP_6E
@@ -205,15 +209,15 @@ MapHeaderBanks::
 	db BANK(RocketHideoutB3F_h)
 	db BANK(RocketHideoutB4F_h)
 	db BANK(RocketHideoutElevator_h)
-	db $01 ; UNUSED_MAP_CC
-	db $01 ; UNUSED_MAP_CD
-	db $01 ; UNUSED_MAP_CE
-	db BANK(SilphCo2F_h)
-	db BANK(SilphCo3F_h)
-	db BANK(SilphCo4F_h)
-	db BANK(SilphCo5F_h)
-	db BANK(SilphCo6F_h)
-	db BANK(SilphCo7F_h)
+	db BANK(SilverCave1F_h)
+	db BANK(SilverCave2F_h)
+	db BANK(SilverCave3F_h)
+;	db BANK(SilphCo2F_h)
+;	db BANK(SilphCo3F_h)
+;	db BANK(SilphCo4F_h)
+;	db BANK(SilphCo5F_h)
+	db BANK(SilverCaveItemRooms_h)
+	db BANK(TohjoFalls_h)
 	db BANK(SilphCo8F_h)
 	db BANK(PokemonMansion2F_h)
 	db BANK(PokemonMansion3F_h)
@@ -232,7 +236,7 @@ MapHeaderBanks::
 	db BANK(CeruleanCave1F_h)
 	db BANK(NameRatersHouse_h)
 	db BANK(CeruleanBadgeHouse_h)
-	db $01 ; UNUSED_MAP_E7
+	db BANK(SilverCavePokecenter_h)
 	db BANK(RockTunnelB1F_h)
 	db BANK(SilphCo9F_h)
 	db BANK(SilphCo10F_h)

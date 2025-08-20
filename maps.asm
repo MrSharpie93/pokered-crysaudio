@@ -55,20 +55,20 @@ INCLUDE "scripts/IndigoPlateauLobby.asm"
 INCLUDE "data/maps/objects/IndigoPlateauLobby.asm"
 IndigoPlateauLobby_Blocks: INCBIN "maps/IndigoPlateauLobby.blk"
 
-INCLUDE "data/maps/headers/SilphCo4F.asm"
-INCLUDE "scripts/SilphCo4F.asm"
-INCLUDE "data/maps/objects/SilphCo4F.asm"
-SilphCo4F_Blocks: INCBIN "maps/SilphCo4F.blk"
+INCLUDE "data/maps/headers/SilverCave1F.asm"
+INCLUDE "scripts/SilverCave1F.asm"
+INCLUDE "data/maps/objects/SilverCave1F.asm"
+SilverCave1F_Blocks: INCBIN "maps/SilverCave1F.blk"
 
-INCLUDE "data/maps/headers/SilphCo5F.asm"
-INCLUDE "scripts/SilphCo5F.asm"
-INCLUDE "data/maps/objects/SilphCo5F.asm"
-SilphCo5F_Blocks: INCBIN "maps/SilphCo5F.blk"
+INCLUDE "data/maps/headers/SilverCave2F.asm"
+INCLUDE "scripts/SilverCave2F.asm"
+INCLUDE "data/maps/objects/SilverCave2F.asm"
+SilverCave2F_Blocks: INCBIN "maps/SilverCave2F.blk"
 
-INCLUDE "data/maps/headers/SilphCo6F.asm"
-INCLUDE "scripts/SilphCo6F.asm"
-INCLUDE "data/maps/objects/SilphCo6F.asm"
-SilphCo6F_Blocks: INCBIN "maps/SilphCo6F.blk"
+INCLUDE "data/maps/headers/SilverCave3F.asm"
+INCLUDE "scripts/SilverCave3F.asm"
+INCLUDE "data/maps/objects/SilverCave3F.asm"
+SilverCave3F_Blocks: INCBIN "maps/SilverCave3F.blk"
 
 
 SECTION "Maps 3", ROMX
@@ -634,10 +634,10 @@ INCLUDE "scripts/MtMoonB1F.asm"
 INCLUDE "data/maps/objects/MtMoonB1F.asm"
 MtMoonB1F_Blocks: INCBIN "maps/MtMoonB1F.blk"
 
-INCLUDE "data/maps/headers/SilphCo7F.asm"
-INCLUDE "scripts/SilphCo7F.asm"
-INCLUDE "data/maps/objects/SilphCo7F.asm"
-SilphCo7F_Blocks: INCBIN "maps/SilphCo7F.blk"
+INCLUDE "data/maps/headers/TohjoFalls.asm"
+INCLUDE "scripts/TohjoFalls.asm"
+INCLUDE "data/maps/objects/TohjoFalls.asm"
+TohjoFalls_Blocks: INCBIN "maps/TohjoFalls.blk"
 
 INCLUDE "data/maps/headers/PokemonMansion2F.asm"
 INCLUDE "scripts/PokemonMansion2F.asm"
@@ -797,15 +797,15 @@ INCLUDE "scripts/PokemonFanClub.asm"
 INCLUDE "data/maps/objects/PokemonFanClub.asm"
 PokemonFanClub_Blocks: INCBIN "maps/PokemonFanClub.blk"
 
-INCLUDE "data/maps/headers/SilphCo2F.asm"
-INCLUDE "scripts/SilphCo2F.asm"
-INCLUDE "data/maps/objects/SilphCo2F.asm"
-SilphCo2F_Blocks: INCBIN "maps/SilphCo2F.blk"
+INCLUDE "data/maps/headers/SilverCaveOutside.asm"
+INCLUDE "scripts/SilverCaveOutside.asm"
+INCLUDE "data/maps/objects/SilverCaveOutside.asm"
+SilverCaveOutside_Blocks: INCBIN "maps/SilverCaveOutside.blk"
 
-INCLUDE "data/maps/headers/SilphCo3F.asm"
-INCLUDE "scripts/SilphCo3F.asm"
-INCLUDE "data/maps/objects/SilphCo3F.asm"
-SilphCo3F_Blocks: INCBIN "maps/SilphCo3F.blk"
+INCLUDE "data/maps/headers/SilverCaveItemRooms.asm"
+INCLUDE "scripts/SilverCaveItemRooms.asm"
+INCLUDE "data/maps/objects/SilverCaveItemRooms.asm"
+SilverCaveItemRooms_Blocks: INCBIN "maps/SilverCaveItemRooms.blk"
 
 INCLUDE "data/maps/headers/SilphCo10F.asm"
 INCLUDE "scripts/SilphCo10F.asm"
@@ -1107,6 +1107,10 @@ PewterMart_Blocks: INCBIN "maps/PewterMart.blk"
 
 FuchsiaBillsGrandpasHouse_Blocks: INCBIN "maps/FuchsiaBillsGrandpasHouse.blk"
 
+INCLUDE "data/maps/headers/SilverCavePokecenter.asm"
+INCLUDE "scripts/SilverCavePokecenter.asm"
+INCLUDE "data/maps/objects/SilverCavePokecenter.asm"
+SilverCavePokecenter_Blocks:
 CinnabarPokecenter_Blocks:
 FuchsiaPokecenter_Blocks: INCBIN "maps/FuchsiaPokecenter.blk"
 
@@ -1222,3 +1226,46 @@ INCLUDE "data/maps/headers/AgathasRoom.asm"
 INCLUDE "scripts/AgathasRoom.asm"
 INCLUDE "data/maps/objects/AgathasRoom.asm"
 AgathasRoom_Blocks: INCBIN "maps/AgathasRoom.blk"
+
+SECTION "Maps 22", ROMX ; NEW
+
+INCLUDE "data/maps/headers/NewBarkTown.asm"
+INCLUDE "scripts/NewBarkTown.asm"
+INCLUDE "data/maps/objects/NewBarkTown.asm"
+NewBarkTown_Blocks: INCBIN "maps/NewBarkTown.blk"
+
+INCLUDE "data/maps/headers/Route26.asm"
+INCLUDE "scripts/Route26.asm"
+INCLUDE "data/maps/objects/Route26.asm"
+Route26_Blocks: INCBIN "maps/Route26.blk"
+
+INCLUDE "data/maps/headers/Route27.asm"
+INCLUDE "scripts/Route27.asm"
+INCLUDE "data/maps/objects/Route27.asm"
+Route27_Blocks: INCBIN "maps/Route27.blk"
+
+INCLUDE "data/maps/headers/Route28.asm"
+INCLUDE "scripts/Route28.asm"
+INCLUDE "data/maps/objects/Route28.asm"
+Route28_Blocks: INCBIN "maps/Route28.blk"
+
+INCLUDE "data/maps/headers/Route26HealHouse.asm"
+INCLUDE "scripts/Route26HealHouse.asm"
+INCLUDE "data/maps/objects/Route26HealHouse.asm"
+
+Route27House_Blocks:
+Route26HealHouse_Blocks: INCBIN "maps/Route26HealHouse.blk"
+
+INCLUDE "data/maps/headers/Route27House.asm"
+INCLUDE "scripts/Route27House.asm"
+INCLUDE "data/maps/objects/Route27House.asm"
+
+INCLUDE "data/maps/headers/MtMoonSquare.asm"
+INCLUDE "scripts/MtMoonSquare.asm"
+INCLUDE "data/maps/objects/MtMoonSquare.asm"
+MtMoonSquare_Blocks: INCBIN "maps/MtMoonSquare.blk"
+
+INCLUDE "data/maps/headers/MtMoonSquareShop.asm"
+INCLUDE "scripts/MtMoonSquareShop.asm"
+INCLUDE "data/maps/objects/MtMoonSquareShop.asm"
+MtMoonSquareShop_Blocks: INCBIN "maps/MtMoonSquareShop.blk"

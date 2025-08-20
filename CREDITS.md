@@ -9,13 +9,13 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - [dannye](https://github.com/dannye): Crystal audio engine, menu icons use 4 colors, Crystal Tracker.
 - [Sanqui](https://github.com/Sanqui): Crystal audio engine.
 - [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners, restoring Gym Leader names on trainer card, Move Reminder and Move Deleter, shut up low health alarm, crash damage not 1 HP, level variance for wild encounters and fishing, DVs and stat EXP on status screen, X-Accuracy doesn't work on OHKO moves, better trainer AI, Rest and status healing items restore stats afflicted by BRN/PRZ.
-- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, various optimizations, shut up low health alarm, crash damage not 1 HP, Mist rework, fix for textbox when using Mimic, Teleport effect, Pokemon can't be trapped by moves they're immune to, Good/Super Rod only fails 25% of the time, Pokedex base stats page, better trainer AI.
+- [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, various optimizations, shut up low health alarm, crash damage not 1 HP, Mist rework, fix for textbox when using Mimic, Teleport effect, Pokemon can't be trapped by moves they're immune to, Good/Super Rod only fails 25% of the time, Pokedex base stats page, better trainer AI, waterfall tile animation, spinner tile optimizations, basis for Poke Pep function.
 - [Kanto Expansion Pak Team](https://github.com/ShiraTheMogul/kep-hack): Slots rework, better move learn on level-up, photosensitivity-friendly move animations, test battle overhaul, Pokedex base stats page, DVs and stat EXP on status screen, better trainer AI.
 - [Rangi42](https://github.com/Rangi42): Debug mode improvements, Levels/Moves trainers, trainer DVs, trainer pics in multiple banks, expanded menu icons, defense division by 0 bug fix, overworld HM shortcuts, Tilemap Studio and Polished Map, textbox arrow has GSC placement.
-- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel, sleep turn counter improvement, new evo methods, several move effects, better text for reaching stat caps, screens stat overflow fix, Rest clears Toxic, fix for bad move effect interactions on breaking a substitute, set damage moves don't ignore type immunity, expanded Good Rod encounter table.
+- [JustRegularLuna](https://github.com/JustRegularLuna): Move Tutors, Move Reminder and Move Deleter, Physical/Special Split, better move learn on level-up, crits don't use worse stats, auto repel, sleep turn counter improvement, new evo methods, several move effects, better text for reaching stat caps, screens stat overflow fix, Rest clears Toxic, fix for bad move effect interactions on breaking a substitute, set damage moves don't ignore type immunity, expanded Good Rod encounter table, Sucker Punch effect.
 - [ShiraTheMogul](https://github.com/ShiraTheMogul): Move Reminder and Move Deleter.
 - Xillicis: Most of the battle engine tutorials.
-- [ShantyTown](https://github.com/huderlem): Expanded menu icons, auto repel.
+- [ShantyTown](https://github.com/huderlem): Expanded menu icons, auto repel, Sucker Punch hit test.
 - [Chatot4444](https://github.com/Chatot4444): Haze rework, Grass-type Poisonpowder immunity.
 - [longlostsoul](https://github.com/longlostsoul): Mirror Coat effect.
 - [ShinyDragonHunter](https://github.com/ShinyDragonHunter): Fixes for GSC textbox arrow placement.
@@ -31,7 +31,7 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - COMBOY: Pokemon front/back sprites.
 - [E▲SY](https://www.deviantart.com/e-sy): Pokemon front/back sprites.
 - [Freakyplanet](https://www.spriters-resource.com/submitter/Freakyplanet/): Pokemon front/back sprites.
-- [FrenchOrange](https://www.deviantart.com/frenchorange): Development sprite reconstruction, cat menu icon.
+- [FrenchOrange](https://www.deviantart.com/frenchorange): Development sprite reconstruction, cat menu icon, intro movie Gengar, used their Tile Atlas to help with editing tilesets.
 - Gold Z: Pokemon back sprites.
 - [HighDefCreatives](https://bsky.app/profile/hd-arts-creatives.bsky.social): Overworld tiles.
 - Koolboyman: Pokemon back sprites.

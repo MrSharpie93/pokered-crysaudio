@@ -14,7 +14,7 @@ Tilesets:
 	tileset Mart,        $18,$19,$1E,  -1, TILEANIM_NONE
 	tileset Forest,       -1, -1, -1, $20, TILEANIM_WATER
 	tileset RedsHouse2,   -1, -1, -1,  -1, TILEANIM_NONE
-	tileset Dojo,        $3A, -1, -1,  -1, TILEANIM_WATER_FLOWER
+	tileset Dojo,        $3A, -1, -1,  -1, TILEANIM_NONE
 	tileset Pokecenter,  $18,$19,$1E,  -1, TILEANIM_NONE
 	tileset Gym,         $3A, -1, -1,  -1, TILEANIM_WATER_FLOWER
 	tileset House,        -1, -1, -1,  -1, TILEANIM_NONE
@@ -33,4 +33,7 @@ Tilesets:
 	tileset Club,        $07,$17, -1,  -1, TILEANIM_NONE
 	tileset Facility,    $12, -1, -1,  -1, TILEANIM_WATER
 	tileset Plateau,      -1, -1, -1, $45, TILEANIM_WATER
+; ~$~ADDED: New tilesets.~$~
+	tileset Johto,        -1, -1, -1, $04, TILEANIM_WATER_FLOWER
+	tileset Basement,     -1, -1, -1,  -1, TILEANIM_NONE
 	assert_table_length NUM_TILESETS

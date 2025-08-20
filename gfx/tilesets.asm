@@ -22,14 +22,10 @@ Plateau_Block::     INCBIN "gfx/blocksets/plateau.bst"
 
 SECTION "Tilesets 2", ROMX
 
-Dojo_GFX::
 Gym_GFX::           INCBIN "gfx/tilesets/gym.2bpp"
-Dojo_Block::
 Gym_Block::         INCBIN "gfx/blocksets/gym.bst"
 
-Mart_GFX::
 Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp"
-Mart_Block::
 Pokecenter_Block::  INCBIN "gfx/blocksets/pokecenter.bst"
 
 ForestGate_GFX::
@@ -61,3 +57,14 @@ Club_GFX::          INCBIN "gfx/tilesets/club.2bpp"
 Club_Block::        INCBIN "gfx/blocksets/club.bst"
 Underground_GFX::   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block:: INCBIN "gfx/blocksets/underground.bst"
+
+SECTION "Tilesets 4", ROMX ; ~$~New tilesets.~$~
+
+Johto_GFX::         INCBIN "gfx/tilesets/johto.2bpp"
+Johto_Block::       INCBIN "gfx/blocksets/johto.bst"
+Basement_GFX::      INCBIN "gfx/tilesets/basement.2bpp"
+Basement_Block::    INCBIN "gfx/blocksets/basement.bst"
+Dojo_GFX::          INCBIN "gfx/tilesets/dojo.2bpp"
+Dojo_Block::        INCBIN "gfx/blocksets/dojo.bst"
+Mart_GFX::          INCBIN "gfx/tilesets/mart.2bpp"
+Mart_Block::        INCBIN "gfx/blocksets/mart.bst"

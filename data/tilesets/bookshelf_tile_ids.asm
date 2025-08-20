@@ -17,6 +17,8 @@ BookshelfTileIDs:
 	bookshelf_tile GATE,         $22, BookOrSculptureText
 	bookshelf_tile MART,         $54, PokemonStuffText
 	bookshelf_tile MART,         $55, PokemonStuffText
+	bookshelf_tile MART,         $46, BookOrSculptureText
+	bookshelf_tile MART,         $09, BookOrSculptureText
 	bookshelf_tile POKECENTER,   $54, PokemonStuffText
 	bookshelf_tile POKECENTER,   $55, PokemonStuffText
 	bookshelf_tile LOBBY,        $50, PokemonStuffText

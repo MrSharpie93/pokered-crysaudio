@@ -41,34 +41,34 @@ SilphCoElevatorCopyWarpMapsScript:
 	ret
 
 SilphCoElevatorFloors:
-	db 11 ; #
+	db 1 ; #
 	db FLOOR_1F
-	db FLOOR_2F
-	db FLOOR_3F
-	db FLOOR_4F
-	db FLOOR_5F
-	db FLOOR_6F
-	db FLOOR_7F
-	db FLOOR_8F
-	db FLOOR_9F
-	db FLOOR_10F
-	db FLOOR_11F
+;	db FLOOR_2F
+;	db FLOOR_3F
+;	db FLOOR_4F
+;	db FLOOR_5F
+;	db FLOOR_6F
+;	db FLOOR_7F
+;	db FLOOR_8F
+;	db FLOOR_9F
+;	db FLOOR_10F
+;	db FLOOR_11F
 	db -1 ; end
 
 ; These specify where the player goes after getting out of the elevator.
 SilphCoElevatorWarpMaps:
 	; warp number, map id
 	db 3, SILPH_CO_1F
-	db 2, SILPH_CO_2F
-	db 2, SILPH_CO_3F
-	db 2, SILPH_CO_4F
-	db 2, SILPH_CO_5F
-	db 2, SILPH_CO_6F
-	db 2, SILPH_CO_7F
-	db 2, SILPH_CO_8F
-	db 2, SILPH_CO_9F
-	db 2, SILPH_CO_10F
-	db 1, SILPH_CO_11F
+;	db 2, SILPH_CO_2F
+;	db 2, SILPH_CO_3F
+;	db 2, SILPH_CO_4F
+;	db 2, SILPH_CO_5F
+;	db 2, SILPH_CO_6F
+;	db 2, SILPH_CO_7F
+;	db 2, SILPH_CO_8F
+;	db 2, SILPH_CO_9F
+;	db 2, SILPH_CO_10F
+;	db 1, SILPH_CO_11F
 .End:
 
 SilphCoElevatorShakeScript:

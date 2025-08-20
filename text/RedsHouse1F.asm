@@ -33,5 +33,6 @@ _RedsHouse1FTVStandByMeMovieText::
 	done
 
 _RedsHouse1FTVWrongSideText::
-	text "Oops, wrong side."
+	text "You're a smart one,"
+	line "aren't you?"
 	done

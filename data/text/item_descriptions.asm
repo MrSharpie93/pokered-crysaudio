@@ -27,8 +27,24 @@ _BicycleDescription::
 	text "A collapsible bike"
 	next "for fast movement."
 	prompt
+	
+_SurfboardDescription::
+	text "Used to travel"
+	next "across water."
+	prompt
+	
+_SafariBallDescription::
+	text "A BALL used in"
+	next "the SAFARI ZONE."
+	prompt
 
 _MoonStoneDescription::
+_SunStoneDescription::
+_ShinyStoneDescription::
+_DuskStoneDescription::
+_KingsRockDescription::
+_MetalCoatDescription::
+_LinkCordDescription::
 _FireStoneDescription::
 _ThunderStoneDescription::
 _WaterStoneDescription::
@@ -141,6 +157,11 @@ _HelixFossilDescription::
 _SecretKeyDescription::
 	text "Opens doors."
 	prompt
+	
+_AxeDescription::
+	text "Great for cutting"
+	next "stubborn trees."
+	prompt
 
 _BikeVoucherDescription::
 	text "Exchange for a new"
@@ -160,6 +181,11 @@ _CardKeyDescription::
 _NuggetDescription::
 	text "Made of pure gold."
 	next "Sell high."
+	prompt
+	
+_PokePepDescription::
+	text "Maximizes #MON"
+	next "potential."
 	prompt
 
 _PokeDollDescription::
@@ -284,7 +310,7 @@ _ExpAllDescription::
 
 _OldRodDescription::
 	text "Use by water to"
-	next "fish for #MON."
+	next "fish for MAGIKARP."
 	prompt
 
 _GoodRodDescription::
@@ -320,6 +346,31 @@ _ElixerDescription::
 _MaxElixerDescription::
 	text "Fully restores the"
 	next "PP of one #MON."
+	prompt
+	
+_MooMooMilkDescription::
+	text "Restores #MON"
+	next "HP by 100."
+	prompt
+	
+_SlowpokeTailDescription::
+	text "Very tasty."
+	next "Sell high."
+	prompt
+	
+_RareCardDescription::
+	text "Sought after by"
+	next "#MON fanatics."
+	prompt
+	
+_OddKeystoneDescription::
+	text "Radiates an eerie"
+	next "energy."
+	prompt
+	
+_BirdwhistleDescription::
+	text "Summons a flying"
+	next "#MON."
 	prompt
 
 _HM01Description::

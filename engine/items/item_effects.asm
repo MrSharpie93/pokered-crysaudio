@@ -37,14 +37,14 @@ ItemUsePtrTable:
 	dw ItemUseMedicine   ; HYPER_POTION
 	dw ItemUseMedicine   ; SUPER_POTION
 	dw ItemUseMedicine   ; POTION
-	dw ItemUseBait       ; BOULDERBADGE
-	dw ItemUseRock       ; CASCADEBADGE
-	dw UnusableItem      ; THUNDERBADGE
-	dw UnusableItem      ; RAINBOWBADGE
-	dw UnusableItem      ; SOULBADGE
-	dw UnusableItem      ; MARSHBADGE
-	dw UnusableItem      ; VOLCANOBADGE
-	dw UnusableItem      ; EARTHBADGE
+	dw ItemUseBait       ; SAFARI_BAIT
+	dw ItemUseRock       ; SAFARI_ROCK
+	dw ItemUseEvoStone   ; SUN_STONE
+	dw ItemUseEvoStone   ; SHINY_STONE
+	dw ItemUseEvoStone   ; DUSK_STONE
+	dw ItemUseEvoStone   ; KINGS_ROCK
+	dw ItemUseEvoStone   ; METAL_COAT
+	dw ItemUseEvoStone   ; LINK_CORD
 	dw ItemUseEscapeRope ; ESCAPE_ROPE
 	dw ItemUseRepel      ; REPEL
 	dw UnusableItem      ; OLD_AMBER
@@ -60,13 +60,13 @@ ItemUsePtrTable:
 	dw UnusableItem      ; DOME_FOSSIL
 	dw UnusableItem      ; HELIX_FOSSIL
 	dw UnusableItem      ; SECRET_KEY
-	dw UnusableItem      ; ITEM_2C
+	dw UnusableItem;ItemUseAxe      ; AXE
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw UnusableItem      ; CARD_KEY ; ~$~REMOVED: Useless function.~$~
 	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ITEM_32
+	dw ItemUseVitamin    ; POKE_PEP
 	dw ItemUsePokeDoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE
@@ -100,6 +100,12 @@ ItemUsePtrTable:
 	dw ItemUsePPRestore  ; MAX_ETHER
 	dw ItemUsePPRestore  ; ELIXER
 	dw ItemUsePPRestore  ; MAX_ELIXER
+; ~$~ADDED: New items.~$~
+	dw ItemUseMedicine   ; MOOMOO_MILK
+	dw UnusableItem      ; SLOWPOKETAIL
+	dw UnusableItem      ; RARE_CARD
+	dw UnusableItem      ; ODD_KEYSTONE
+	dw UnusableItem;ItemUseBirdwhistle      ; BIRDWHISTLE
 
 ItemUseBall:
 
@@ -1083,6 +1089,9 @@ ItemUseMedicine:
 	jr .addHealAmount
 .notUsingSoftboiled2
 	ld a, [wCurItem]
+	cp MOOMOO_MILK
+	ld b, 100 ; MooMoo Milk heal amount
+	jr z, .addHealAmount
 	cp SODA_POP
 	ld b, 50 ; Soda Pop heal amount
 	jr z, .addHealAmount
@@ -1300,6 +1309,8 @@ ItemUseMedicine:
 	ld a, [wCurItem]
 	cp RARE_CANDY
 	jp z, .useRareCandy
+	cp POKE_PEP
+	jp z, .usePokePep ; ~$~ADDED: Jump to new function for maxing DVs.~$~
 	push hl
 	sub HP_UP
 	add a
@@ -1313,7 +1324,7 @@ ItemUseMedicine:
 	ld a, 10
 	ld b, a
 	ld a, [hl] ; a = MSB of stat experience of the appropriate stat
-	cp 100 ; is there already at least 25600 (256 * 100) stat experience?
+	cp 200 ; is there already at least 51200 (256 * 200) stat experience? ~$~Doubled this, so vitamins are more useful for longer.~$~
 	jr nc, .vitaminNoEffect ; if so, vitamins can't add any more
 	add b ; add 2560 (256 * 10) stat experience
 	jr nc, .noCarry3 ; a carry should be impossible here, so this will always jump
@@ -1446,6 +1457,37 @@ ItemUseMedicine:
 	pop af
 	ld [wWhichPokemon], a
 	jp RemoveUsedItem
+; ~$~ADDED: Poke Pep function. It is based heavily on the Apex Chip from PureRGB.~$~
+	.usePokePep ; Poke Pep function begins here. It's basically a modified version of PureRGB's Apex Chip. ~Sharpie
+	push hl
+	ld bc, wPartyMon1DVs - wPartyMon1
+	add hl, bc ; hl now points to DVs
+	ld a, $FF
+	cp [hl] ; is the first byte of their DVs maxed
+	jr nz, .setDVs
+	inc hl
+	cp [hl] ; is the second byte of their DVs maxed
+	jr z, .DVsMaxed ; if so, print "no effect" text
+	dec hl
+.setDVs
+	ld [hli], a ; set first byte of DVs to max
+	ld [hl], a  ; set second byte of DVs to max
+	pop hl
+	push hl
+	call .recalculateStats
+	pop hl
+	ld bc, (wPartyMon1MaxHP) - wPartyMon1
+	add hl, bc ; hl now points to MSB of recalculated max HP
+	ld a, [hli]
+	ld b, a
+	ld a, [hld]
+	ld c, a
+
+	ld hl, UsedPokePepText
+	call PrintText
+	jp RemoveUsedItem
+.DVsMaxed
+	jp .vitaminNoEffect
 
 VitaminStatRoseText:
 	text_far _VitaminStatRoseText
@@ -1453,6 +1495,12 @@ VitaminStatRoseText:
 
 VitaminNoEffectText:
 	text_far _VitaminNoEffectText
+	text_end
+	
+UsedPokePepText:
+	text_far _PokePepText
+	sound_level_up
+	text_promptbutton
 	text_end
 
 INCLUDE "data/battle/stat_names.asm"
@@ -1553,7 +1601,7 @@ ItemUseEscapeRope:
 	call ItemUseReloadOverworldData
 	ld c, 30
 	call DelayFrames
-	jp RemoveUsedItem
+	ret ; Now a key item, don't remove.~$~
 .notUsable
 	jp ItemUseNotTime
 
@@ -2805,6 +2853,8 @@ IsNextTileShoreOrWater:
 	cp $48 ; eastern shore tile in Safari Zone
 	jr z, .shoreOrWater
 	cp $32 ; usual eastern shore tile
+	jr z, .shoreOrWater
+	cp $3D ; Johto eastern shore tile
 	jr z, .shoreOrWater
 .skipShoreTiles
 	cp $14 ; water tile

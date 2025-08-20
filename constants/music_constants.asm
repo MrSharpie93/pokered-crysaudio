@@ -240,6 +240,10 @@ DEF NUM_MUSIC_SONGS EQU const_value
 ; ~$~ADDED: New SFX.~$~
 	const SFX_ZAP_CANNON
 	const SFX_HEAL_BELL
+	const SFX_LEER
+	const SFX_RAGE
+	const SFX_SUPERSONIC
+	const SFX_FLASH
 DEF NUM_SFX EQU const_value
 
 DEF SFX_STOP_ALL_MUSIC EQU $ff

@@ -1,30 +1,4 @@
-; checks if the player's coordinates match an arrow movement tile's coordinates
-; and if so, decodes the RLE movement data
-; b = player Y
-; c = player X
-DecodeArrowMovementRLE::
-	ld a, [hli]
-	cp $ff
-	ret z ; no match in the list
-	cp b
-	jr nz, .nextArrowMovementTileEntry1
-	ld a, [hli]
-	cp c
-	jr nz, .nextArrowMovementTileEntry2
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ld hl, wSimulatedJoypadStatesEnd
-	call DecodeRLEList
-	dec a
-	ld [wSimulatedJoypadStatesIndex], a
-	ret
-.nextArrowMovementTileEntry1
-	inc hl
-.nextArrowMovementTileEntry2
-	inc hl
-	inc hl
-	jr DecodeArrowMovementRLE
+; ~$~REMOVED: Implemented PureRGB's optimization of the spinner tile function. No longer need DecodeArrowMovementRLE.~$~
 
 TextScript_ItemStoragePC::
 	call SaveScreenTilesToBuffer2

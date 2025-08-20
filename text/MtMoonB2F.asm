@@ -123,3 +123,10 @@ _MtMoonB2FRocket4AfterBattleText::
 	line "here long before"
 	cont "people came."
 	done
+	
+_MtMoonB2FEasterEggSignText::
+	text "Don't you have"
+	line "anything better"
+	cont "to do than read"
+	cont "this sign?"
+	done

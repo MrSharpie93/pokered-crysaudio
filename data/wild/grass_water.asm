@@ -11,7 +11,7 @@ WildDataPointers:
 	dw NothingWildMons         ; CINNABAR_ISLAND
 	dw NothingWildMons         ; INDIGO_PLATEAU
 	dw NothingWildMons         ; SAFFRON_CITY
-	dw NothingWildMons         ; unused
+	dw NothingWildMons         ; NEW_BARK_TOWN
 	dw Route1WildMons          ; ROUTE_1
 	dw Route2WildMons          ; ROUTE_2
 	dw Route3WildMons          ; ROUTE_3
@@ -37,6 +37,10 @@ WildDataPointers:
 	dw Route23WildMons         ; ROUTE_23
 	dw Route24WildMons         ; ROUTE_24
 	dw Route25WildMons         ; ROUTE_25
+	dw Route26WildMons         ; ROUTE_26
+	dw Route27WildMons         ; ROUTE_27
+	dw Route28WildMons         ; ROUTE_28
+	dw Route28WildMons         ; SILVER_CAVE_OUTSIDE
 	dw NothingWildMons         ; REDS_HOUSE_1F
 	dw NothingWildMons
 	dw NothingWildMons
@@ -142,8 +146,8 @@ WildDataPointers:
 	dw NothingWildMons
 	dw NothingWildMons
 	dw NothingWildMons
-	dw PokemonTower1FWildMons
-	dw PokemonTower2FWildMons
+	dw NothingWildMons;PokemonTower1FWildMons
+	dw NothingWildMons;PokemonTower2FWildMons
 	dw PokemonTower3FWildMons
 	dw PokemonTower4FWildMons
 	dw PokemonTower5FWildMons
@@ -199,21 +203,21 @@ WildDataPointers:
 	dw NothingWildMons
 	dw DiglettsCaveWildMons
 	dw VictoryRoad3FWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
-	dw NothingWildMons
+	dw NothingWildMons;ROCKET_HIDEOUT_B1F
+	dw NothingWildMons;ROCKET_HIDEOUT_B2F
+	dw NothingWildMons;ROCKET_HIDEOUT_B3F
+	dw NothingWildMons;ROCKET_HIDEOUT_B4F
+	dw NothingWildMons;ROCKET_HIDEOUT_ELEVATOR
+	dw SilverCave1FWildMons;SILVER_CAVE_1F
+	dw SilverCave2FWildMons;SILVER_CAVE_2F
+	dw NothingWildMons;SILVER_CAVE_3F
+;	dw NothingWildMons;SILPH_CO_2F
+;	dw NothingWildMons
+;	dw NothingWildMons
+;	dw NothingWildMons
+	dw NothingWildMons;SilverCaveItemRooms
+	dw TohjoFallsWildMons
+	dw NothingWildMons;SilphCo8F
 	dw PokemonMansion2FWildMons
 	dw PokemonMansion3FWildMons
 	dw PokemonMansionB1FWildMons
@@ -274,6 +278,9 @@ INCLUDE "data/wild/maps/MtMoonB2F.asm"
 INCLUDE "data/wild/maps/Route4.asm"
 INCLUDE "data/wild/maps/Route24.asm"
 INCLUDE "data/wild/maps/Route25.asm"
+INCLUDE "data/wild/maps/Route26.asm"
+INCLUDE "data/wild/maps/Route27.asm"
+INCLUDE "data/wild/maps/Route28.asm"
 INCLUDE "data/wild/maps/Route9.asm"
 INCLUDE "data/wild/maps/Route5.asm"
 INCLUDE "data/wild/maps/Route6.asm"
@@ -321,3 +328,7 @@ INCLUDE "data/wild/maps/VictoryRoad2F.asm"
 INCLUDE "data/wild/maps/VictoryRoad3F.asm"
 INCLUDE "data/wild/maps/VictoryRoad1F.asm"
 INCLUDE "data/wild/maps/DiglettsCave.asm"
+INCLUDE "data/wild/maps/SilverCave1F.asm"
+INCLUDE "data/wild/maps/SilverCave2F.asm"
+INCLUDE "data/wild/maps/TohjoFalls.asm"
+

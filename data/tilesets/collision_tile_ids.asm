@@ -16,6 +16,8 @@ RedsHouse2_Coll::
 	coll_tiles $01, $02, $03, $11, $12, $13, $14, $1c, $1a
 
 Mart_Coll::
+	coll_tiles $01, $07, $1b, $1c, $36, $3c, $5e
+
 Pokecenter_Coll::
 	coll_tiles $11, $1a, $1c, $3c, $5e
 
@@ -68,3 +70,9 @@ Facility_Coll::
 
 Plateau_Coll::
 	coll_tiles $1b, $23, $2c, $2d, $3b, $45
+	
+Johto_Coll::
+	coll_tiles $00, $03, $04, $05, $06, $07, $29, $39, $40, $56
+	
+Basement_Coll::
+	coll_tiles $02, $12, $13, $16, $1A, $33, $36

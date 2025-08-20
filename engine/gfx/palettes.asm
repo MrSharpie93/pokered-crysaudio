@@ -134,7 +134,7 @@ SetPal_GameFreakIntro:
 	ret
 
 ; uses PalPacket_Empty to build a packet based on the current map
-SetPal_Overworld:
+SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
 	ld bc, $10
@@ -151,10 +151,10 @@ SetPal_Overworld:
 	jr z, .powerPlant
 	cp CERULEAN_CAVE_2F
 	jr c, .normalDungeonOrBuilding
-	cp CERULEAN_CAVE_1F + 1
-	jr c, .caveOrBruno
+;	cp CERULEAN_CAVE_1F + 1
+;	jr c, .caveOrBruno
 	cp LORELEIS_ROOM
-	jr z, .Lorelei
+	jr z, .seafoamOrLorelei
 	cp BRUNOS_ROOM
 	jr z, .caveOrBruno
 .normalDungeonOrBuilding
@@ -175,13 +175,30 @@ SetPal_Overworld:
 	ld a, PAL_GREYMON - 1
 	jr .town
 .caveOrBruno
+	ld a, [wCurMap]
+	cp SEAFOAM_ISLANDS_B1F
+	jr c, .regularCave
+	cp SEAFOAM_ISLANDS_B4F + 1
+	jr c, .seafoamOrLorelei
+	cp SEAFOAM_ISLANDS_1F
+	jr z, .seafoamOrLorelei
+	cp CERULEAN_CAVE_1F
+	jr z, .ceruleanCave
+	cp CERULEAN_CAVE_B1F
+	jr z, .ceruleanCave
+	cp CERULEAN_CAVE_2F
+	jr z, .ceruleanCave
+.regularCave
 	ld a, PAL_CAVE - 1
-	jr .town
-.Lorelei
-	xor a
 	jr .town
 .powerPlant
 	ld a, PAL_GREYMON_Y - 1
+	jr .town
+.seafoamOrLorelei
+	ld a, PAL_CYANMON_Y - 1
+	jr .town
+.ceruleanCave
+	ld a, PAL_GREYSCALE - 1
 	jr .town
 
 ; used when a Pokemon is the only thing on the screen

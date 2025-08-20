@@ -117,4 +117,8 @@ SFX:
 ; ~$~ADDED: New SFX.~$~
 	dba Sfx_ZapCannon
 	dba Sfx_HealBell
+	dba Sfx_Leer
+	dba Sfx_Rage
+	dba Sfx_Supersonic
+	dba Sfx_Flash
 	assert_table_length NUM_SFX

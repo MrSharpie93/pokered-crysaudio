@@ -17,8 +17,10 @@ MtMoonB2F_Object:
 	warp_event 21, 17, MT_MOON_B1F, 5
 	warp_event 15, 27, MT_MOON_B1F, 6
 	warp_event  5,  7, MT_MOON_B1F, 7
+	warp_event 39, 29, MT_MOON_B1F, 9
 
 	def_bg_events
+	bg_event  1, 13, TEXT_MTMOONB2F_EASTER_EGG
 
 	def_object_events
 	object_event 12,  8, SPRITE_SUPER_NERD, STAY, RIGHT, TEXT_MTMOONB2F_SUPER_NERD, OPP_SUPER_NERD, 2

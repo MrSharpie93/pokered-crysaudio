@@ -84,26 +84,26 @@ GetPrizeMenuId:
 	ld de, wPrize1Price
 	ld bc, 6
 	call CopyData
-	ld a, [wWhichPrizeWindow]
-	cp 2 ; is TM_menu?
-	jr nz, .putMonName
-	ld a, [wPrize1]
-	ld [wNamedObjectIndex], a
-	call GetItemName
-	hlcoord 2, 4
-	call PlaceString
-	ld a, [wPrize2]
-	ld [wNamedObjectIndex], a
-	call GetItemName
-	hlcoord 2, 6
-	call PlaceString
-	ld a, [wPrize3]
-	ld [wNamedObjectIndex], a
-	call GetItemName
-	hlcoord 2, 8
-	call PlaceString
-	jr .putNoThanksText
-.putMonName
+;	ld a, [wWhichPrizeWindow]
+;	cp 2 ; is TM_menu?
+;	jr nz, .putMonName
+;	ld a, [wPrize1]
+;	ld [wNamedObjectIndex], a
+;	call GetItemName
+;	hlcoord 2, 4
+;	call PlaceString
+;	ld a, [wPrize2]
+;	ld [wNamedObjectIndex], a
+;	call GetItemName
+;	hlcoord 2, 6
+;	call PlaceString
+;	ld a, [wPrize3]
+;	ld [wNamedObjectIndex], a
+;	call GetItemName
+;	hlcoord 2, 8
+;	call PlaceString
+;	jr .putNoThanksText
+;.putMonName
 	ld a, [wPrize1]
 	ld [wNamedObjectIndex], a
 	call GetMonName
@@ -190,11 +190,11 @@ HandlePrizeChoice:
 	add hl, de
 	ld a, [hl]
 	ld [wNamedObjectIndex], a
-	ld a, [wWhichPrizeWindow]
-	cp 2 ; is prize a TM?
-	jr nz, .getMonName
-	call GetItemName
-	jr .givePrize
+;	ld a, [wWhichPrizeWindow]
+;	cp 2 ; is prize a TM?
+;	jr nz, .getMonName
+;	call GetItemName
+;	jr .givePrize
 .getMonName
 	call GetMonName
 .givePrize
@@ -208,16 +208,16 @@ HandlePrizeChoice:
 	call HasEnoughCoins
 	jr c, .notEnoughCoins
 	ld a, [wWhichPrizeWindow]
-	cp 2 ; is prize a TM?
-	jr nz, .giveMon
-	ld a, [wNamedObjectIndex]
-	ld b, a
-	ld a, 1
-	ld c, a
-	call GiveItem
-	jr nc, .bagFull
-	jr .subtractCoins
-.giveMon
+;	cp 2 ; is prize a TM?
+;	jr nz, .giveMon
+;	ld a, [wNamedObjectIndex]
+;	ld b, a
+;	ld a, 1
+;	ld c, a
+;	call GiveItem
+;	jr nc, .bagFull
+;	jr .subtractCoins
+;.giveMon
 	ld a, [wNamedObjectIndex]
 	ld [wCurPartySpecies], a
 	push af

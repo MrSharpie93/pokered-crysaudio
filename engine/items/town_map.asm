@@ -268,11 +268,11 @@ BuildFlyLocationsList:
 	jr nc, .notVisited
 	ld a, b ; store the map number of the town if it has been visited
 ; new for Route 4 and Route 10
-	cp 11
+	cp 12
 	jr nz, .notRoute4
 	ld a, ROUTE_4
 .notRoute4
-	cp 12
+	cp 13
 	jr nz, .notRoute10
 	ld a, ROUTE_10
 ; back to vanilla
@@ -341,7 +341,7 @@ LoadTownMap:
 	ret
 
 CompressedMap:
-	INCBIN "gfx/town_map/town_map.rle"
+	INCBIN "gfx/town_map/gsc_town_map.rle"
 
 ExitTownMap:
 ; clear town map graphics data and load usual graphics data

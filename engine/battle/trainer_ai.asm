@@ -31,6 +31,24 @@ AIEnemyTrainerChooseMoves:
 	add hl, bc    ; advance pointer to forbidden move
 	ld [hl], $50  ; forbid (highly discourage) disabled move
 .noMoveDisabled
+; ~$~CHANGED: Enemies use PP.~$~
+	ld hl, wBuffer - 1
+	ld de, wEnemyMonPP
+	ld b, 0
+.checkMovePP
+	inc b
+	ld a, b
+	cp NUM_MOVES + 1
+	jr z, .endPPCheck
+	inc hl
+	ld a, [de]
+	inc de
+	and $3f
+	jr nz, .checkMovePP
+	ld [hl], $50
+	jr .checkMovePP
+.endPPCheck
+;;;
 	ld hl, TrainerClassMoveChoiceModifications
 	ld a, [wTrainerClass]
 	ld b, a

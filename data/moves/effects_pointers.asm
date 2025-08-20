@@ -96,11 +96,12 @@ MoveEffectPointerTable:
 	dw GrowthEffect              ; GROWTH_EFFECT
 	dw CosmicPowerEffect         ; COSMIC_POWER_EFFECT
 	dw RecoilStatusEffect        ; RECOIL_STATUS_EFFECT
-	dw ConfusionEffect           ; DYNAMICPUNCH_EFFECT
+	dw DynamicPunchEffect        ; DYNAMICPUNCH_EFFECT
 	dw ParalyzeEffect            ; ZAP_CANNON_EFFECT
 	dw BurnEffect                ; INFERNO_EFFECT
 	dw FangEffect                ; FIRE_FANG_EFFECT
 	dw FangEffect                ; ICE_FANG_EFFECT
 	dw FangEffect                ; THUNDER_FANG_EFFECT
 	dw HealBellEffect            ; HEAL_BELL_EFFECT
+	dw NULL                      ; SUCKER_PUNCH_EFFECT
 	assert_table_length NUM_MOVE_EFFECTS

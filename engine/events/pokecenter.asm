@@ -3,7 +3,7 @@ DisplayPokemonCenterDialogue_::
 	ld a, [wCurMap]
 	cp MT_MOON_POKECENTER
 	jr nz, .checkRockTunnelPokecenter
-	ld c, 13
+	ld c, 12
 	ld b, FLAG_SET
 	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
 	predef FlagActionPredef
@@ -11,7 +11,7 @@ DisplayPokemonCenterDialogue_::
 .checkRockTunnelPokecenter
 	cp ROCK_TUNNEL_POKECENTER
 	jr nz, .regularCenter
-	ld c, 14
+	ld c, 13
 	ld b, FLAG_SET
 	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
 	predef FlagActionPredef

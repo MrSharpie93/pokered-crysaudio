@@ -169,6 +169,7 @@ MtMoonB2F_TextPointers:
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_HP_UP
 	dw_const PickUpItemText,                       TEXT_MTMOONB2F_TM_MEGA_PUNCH
 	dw_const MtMoonB2FSuperNerdThenThisIsMineText, TEXT_MTMOONB2F_SUPER_NERD_THEN_THIS_IS_MINE
+	dw_const MtMoonB2FEasterEggSignText,           TEXT_MTMOONB2F_EASTER_EGG
 
 MtMoon3TrainerHeaders:
 	def_trainers 2
@@ -382,4 +383,8 @@ MtMoonB2FRocket4EndBattleText:
 
 MtMoonB2FRocket4AfterBattleText:
 	text_far _MtMoonB2FRocket4AfterBattleText
+	text_end
+	
+MtMoonB2FEasterEggSignText:
+	text_far _MtMoonB2FEasterEggSignText
 	text_end

@@ -11,6 +11,12 @@ UsableItems_PartyMenu:
 	db HYPER_POTION
 	db SUPER_POTION
 	db POTION
+	db SUN_STONE
+	db SHINY_STONE
+	db DUSK_STONE
+	db KINGS_ROCK
+	db METAL_COAT
+	db LINK_CORD
 	db FIRE_STONE
 	db THUNDER_STONE
 	db WATER_STONE
@@ -22,6 +28,7 @@ UsableItems_PartyMenu:
 	db RARE_CANDY
 	db LEAF_STONE
 	db FULL_HEAL
+	db POKE_PEP
 	db REVIVE
 	db MAX_REVIVE
 	db FRESH_WATER

@@ -763,6 +763,8 @@ CheckIfInOutsideMap::
 	and a ; most towns/routes have tileset 0 (OVERWORLD)
 	ret z
 	cp PLATEAU ; Route 23 / Indigo Plateau
+	ret z
+	cp JOHTO ; New Bark Town/Routes 26 and 27
 	ret
 
 ; this function is an extra check that sometimes has to pass in order to warp, beyond just standing on a warp
@@ -782,6 +784,18 @@ ExtraWarpCheck::
 	cp ROCKET_HIDEOUT_B4F
 	jr z, .useFunction2
 	cp ROCK_TUNNEL_1F
+	jr z, .useFunction2
+	cp ROUTE_22_GATE ; NEW, needed for backporting GSC layout
+	jr z, .useFunction2
+	cp SILVER_CAVE_1F ; NEW, needed for Johto cave maps
+	jr z, .useFunction2
+	cp SILVER_CAVE_2F ; NEW, needed for Johto cave maps
+	jr z, .useFunction2
+	cp SILVER_CAVE_3F ; NEW, needed for Johto cave maps
+	jr z, .useFunction2
+	cp SILVER_CAVE_ITEM_ROOMS ; NEW, needed for Johto cave maps
+	jr z, .useFunction2
+	cp TOHJO_FALLS ; NEW, needed for Johto cave maps
 	jr z, .useFunction2
 	ld a, [wCurMapTileset]
 	and a ; outside tileset (OVERWORLD)
@@ -1910,7 +1924,16 @@ JoypadOverworld::
 	and b
 	ret nz ; return if the simulated button presses are overridden
 	ld hl, wSimulatedJoypadStatesIndex
-	dec [hl]
+;;;;; PureRGBnote: ADDED: spinner auto movement was greatly simplified. We just keep doing the same thing in the auto movement script
+;;;;; until the spinner flag is unset.
+	ld a, [wMovementFlags]
+	bit BIT_SPINNING, a ; is player spinning?
+	jr nz, .noDec
+	; we will keep the same joypad state index while spinning so we don't have to program the entire movement direction list
+	; for every single spinner in the game-instead just simulate the same direction indefinitely until hitting end or another spinner
+	dec [hl] 
+.noDec
+;;;;;
 	ld a, [hl]
 	cp $ff
 	jr z, .doneSimulating ; if the end of the simulated button presses has been reached
@@ -1972,6 +1995,8 @@ CollisionCheckOnWater::
 	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
 	jr z, .checkIfVermilionDockTileset
 	cp $48 ; tile on right on coast lines in Safari Zone
+	jr z, .noCollision ; keep surfing
+	cp $3D ; tile on right on coast lines in Johto
 	jr z, .noCollision ; keep surfing
 ; check if the [land] tile in front of the player is passable
 .checkIfNextTileIsPassable

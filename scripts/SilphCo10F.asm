@@ -14,7 +14,7 @@ SilphCo10FGateCallbackScript:
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, .GateCoordinates
-	call SilphCo2F_SetCardKeyDoorYScript
+;	call SilphCo2F_SetCardKeyDoorYScript
 	call SilphCo10F_SetUnlockedSilphCoDoorsScript
 	CheckEvent EVENT_SILPH_CO_10_UNLOCKED_DOOR
 	ret nz

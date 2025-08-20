@@ -225,7 +225,7 @@ IntroClearCommon:
 	ret
 
 IntroPlaceBlackTiles:
-	ld a, 1 ; make this $16 when new Gengar tiles added
+	ld a, $16 ; ~$~CHANGED: New intro Gengar. This points to where the black tile is now.~$~
 .loop
 	ld [hli], a
 	dec c
@@ -317,6 +317,7 @@ PlayShootingStar:
 	ld [wCurOpponent], a
 	call IntroDrawBlackBars
 	call LoadIntroGraphics
+	call IntroClearMiddleOfScreen ; ~$~CHANGED: Need to clear screen here or garbage appears on splash.~$~
 	call EnableLCD
 	ld hl, rLCDC
 	res rLCDC_WINDOW_ENABLE, [hl]
@@ -329,7 +330,7 @@ PlayShootingStar:
 	jr c, .next ; skip the delay if the user interrupted the animation
 ; ~$~CHANGED: Restored "PRESENTS" under Game Freak logo.~$~
 	hlcoord 7, 11   ; starting coordinate
-	ld a, $67       ; starting tile ID ; $75 when new Gengar tiles
+	ld a, $75       ; starting tile ID
 	ld c, $06       ; number of tiles
 .loop
 	ld [hli], a
@@ -449,8 +450,8 @@ GameFreakIntro:
 GameFreakIntroEnd:
 
 FightIntroBackMon:
-	INCBIN "gfx/intro/gengar.2bpp"
-	ds 16, $00 ; blank tile
+	INCBIN "gfx/intro/gengar_frenchorange.2bpp"
+;	ds 16, $00 ; blank tile
 FightIntroBackMonEnd:
 
 IF DEF(_RED)

@@ -23,11 +23,11 @@ ItemDescriptionPointers:
 	text_end
 	text_far _BicycleDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _SurfboardDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _SafariBallDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _UnusedItemDescription;Pokedex
 	text_end
 	text_far _MoonStoneDescription
 	text_end
@@ -51,21 +51,21 @@ ItemDescriptionPointers:
 	text_end
 	text_far _PotionDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _UnusedItemDescription;Bait
 	text_end
-	text_far _UnusedItemDescription
+	text_far _UnusedItemDescription;Rock
 	text_end
-	text_far _UnusedItemDescription
+	text_far _SunStoneDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _ShinyStoneDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _DuskStoneDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _KingsRockDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _MetalCoatDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _LinkCordDescription
 	text_end
 	text_far _EscapeRopeDescription
 	text_end
@@ -97,7 +97,7 @@ ItemDescriptionPointers:
 	text_end
 	text_far _SecretKeyDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _AxeDescription
 	text_end
 	text_far _BikeVoucherDescription
 	text_end
@@ -109,7 +109,7 @@ ItemDescriptionPointers:
 	text_end
 	text_far _NuggetDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _PokePepDescription
 	text_end
 	text_far _PokeDollDescription
 	text_end
@@ -127,7 +127,7 @@ ItemDescriptionPointers:
 	text_end
 	text_far _DireHitDescription
 	text_end
-	text_far _UnusedItemDescription
+	text_far _UnusedItemDescription;Coin
 	text_end
 	text_far _FreshWaterDescription
 	text_end
@@ -176,6 +176,16 @@ ItemDescriptionPointers:
 	text_far _ElixerDescription
 	text_end
 	text_far _MaxElixerDescription
+	text_end
+	text_far _MooMooMilkDescription
+	text_end
+	text_far _SlowpokeTailDescription
+	text_end
+	text_far _RareCardDescription
+	text_end
+	text_far _OddKeystoneDescription
+	text_end
+	text_far _BirdwhistleDescription
 	text_end
 	text_far _HM01Description
 	text_end

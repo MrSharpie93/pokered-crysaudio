@@ -3,8 +3,11 @@ HandleLedges::
 	bit BIT_LEDGE_OR_FISHING, a
 	ret nz
 	ld a, [wCurMapTileset]
+	cp JOHTO
+	jr z, .johto
 	and a ; OVERWORLD
 	ret nz
+.johto
 	predef GetTileAndCoordsInFrontOfPlayer
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld b, a

@@ -388,7 +388,37 @@ UpdateMovingBgTiles::
 	jr z, .flower
 
 ; water
-
+; ~$~ADDED: Waterfall tiles in caves animated. Modified pokecrystal code, backported by Vortyne.~$~
+	ld a, [wCurMapTileset]
+	cp CAVERN
+	jr nz, .notCavern
+	
+	ld hl, vTileset tile $23
+	ld de, 16 - 2 ; 16 bytes per tile, first two bytes are read right away
+	push hl
+	add hl, de
+	ld d, [hl]
+	inc hl
+	ld e, [hl]
+	pop hl
+	ld a, 16 / 4 ; 16 bytes per tile, loop does 4 bytes per go
+.waterfallLoop
+	ld b, [hl]
+	ld [hl], d
+	inc hl
+	ld c, [hl]
+	ld [hl], e
+	inc hl
+	ld d, [hl]
+	ld [hl], b
+	inc hl
+	ld e, [hl]
+	ld [hl], c
+	inc hl
+	dec a
+	jr nz, .waterfallLoop
+;;;
+.notCavern
 	ld hl, vTileset tile $14
 	ld c, $10
 

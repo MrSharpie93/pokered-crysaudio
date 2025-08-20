@@ -315,7 +315,7 @@ INCLUDE "engine/events/hidden_objects/pokecenter_pc.asm"
 
 SECTION "Battle Engine 11", ROMX
 
-INCLUDE "engine/battle/decrement_pp.asm"
+;INCLUDE "engine/battle/decrement_pp.asm"  ; ~$~MOVED to "Vending Machine".~$~
 INCLUDE "gfx/version.asm"
 
 
@@ -344,6 +344,7 @@ INCLUDE "engine/items/itemfinder.asm"
 SECTION "Vending Machine", ROMX
 
 INCLUDE "engine/events/vending_machine.asm"
+INCLUDE "engine/battle/decrement_pp.asm" ; ~$~MOVED from "Battle Engine 11".~$~
 
 
 SECTION "Itemfinder 2", ROMX

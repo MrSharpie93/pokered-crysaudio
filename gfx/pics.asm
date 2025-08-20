@@ -244,7 +244,6 @@ KangaskhanPicFront::   INCBIN "gfx/pokemon/front/kangaskhan.pic"
 KangaskhanPicBack::    INCBIN "gfx/pokemon/back/kangaskhanb.pic"
 HorseaPicFront::       INCBIN "gfx/pokemon/front/horsea.pic"
 HorseaPicBack::        INCBIN "gfx/pokemon/back/horseab.pic"
-GhostPic::             INCBIN "gfx/battle/ghost.pic"
 
 
 SECTION "Trainer Pics 1", ROMX
@@ -552,6 +551,7 @@ SkeletopsPicBack::     INCBIN "gfx/pokemon/back/skeletopsb.pic"
 FossilAerodactylPic::
 OssidactylPicFront::   INCBIN "gfx/pokemon/front/fossilaerodactyl.pic"
 OssidactylPicBack::    INCBIN "gfx/pokemon/back/ossidactylb.pic"
+GhostPic::             INCBIN "gfx/battle/ghost.pic"
 
 PolitoedPicFront::     INCBIN "gfx/pokemon/front/politoed.pic"
 PolitoedPicBack::      INCBIN "gfx/pokemon/back/politoedb.pic"

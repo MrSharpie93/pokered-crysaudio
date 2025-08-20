@@ -1,6 +1,8 @@
 ; items which close the item menu when used
 UsableItems_CloseMenu:
+	db SURFBOARD
 	db ESCAPE_ROPE
+	db AXE
 	db ITEMFINDER
 	db POKE_FLUTE
 	db OLD_ROD

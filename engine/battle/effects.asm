@@ -1293,17 +1293,20 @@ ConfusionSideEffect:
 	call BattleRandom
 	cp 10 percent ; chance of confusion
 	ret nc
-;	jr ConfusionSideEffectSuccess ; fallthrough to correctly fail against substitutes?~$~
+	jr ConfusionSideEffectSuccess
 
 ConfusionEffect:
-	call CheckTargetSubstitute
-	jr nz, ConfusionEffectFailed
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
 	jr nz, ConfusionEffectFailed
 
+DynamicPunchEffect:
 ConfusionSideEffectSuccess:
+	call CheckTargetSubstitute
+	jr nz, ConfusionEffectFailed
+	call CheckTargetSafeguard
+	jr nz, ConfusionEffectFailed
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wEnemyBattleStatus1
@@ -1324,8 +1327,11 @@ ConfusionSideEffectSuccess:
 	inc a
 	ld [bc], a ; confusion status will last 2-5 turns
 	pop af
+	cp DYNAMICPUNCH_EFFECT
+	jr z, .dynamicPunchSkipAnim
 	cp CONFUSION_SIDE_EFFECT
 	call nz, PlayCurrentMoveAnimation2
+.dynamicPunchSkipAnim
 	ld hl, BecameConfusedText
 	jp PrintText
 
@@ -1503,7 +1509,7 @@ DisableEffect:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	pop hl ; wEnemyMonMoves
-	jr nz, .playerTurnNotLinkBattle
+;	jr nz, .playerTurnNotLinkBattle
 ; .playerTurnLinkBattle
 	push hl
 	ld hl, wEnemyMonPP

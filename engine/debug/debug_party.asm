@@ -16,10 +16,10 @@ SetDebugNewGameParty: ; unreferenced except in _DEBUG
 DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
-	db CHANSEY, 15
+	db MISSINGNO, 45
 	db BLASTOISE, 60
-	db GENGAR, 57
-	db ABRA, 5
+	db LAPRAS, 57
+	db TYROGUE, 5
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -40,6 +40,11 @@ IF DEF(_DEBUG)
 	ld a, $99
 	ld hl, wPlayerMoney
 	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	
+	; Get 9999 coins?
+	ld hl, wPlayerCoins
 	ld [hli], a
 	ld [hl], a
 
@@ -155,9 +160,14 @@ DebugSetPokedexEntries:
 
 DebugItemsList:
 	db BICYCLE, 1
+	db HM_SURF, 1
+	db SURFBOARD, 1
+	db PROTEIN, 99
+	db IRON, 99
+	db POKE_PEP, 99
 	db FULL_RESTORE, 99
 	db FULL_HEAL, 99
-	db ESCAPE_ROPE, 99
+	db ESCAPE_ROPE, 1
 	db RARE_CANDY, 99
 	db MASTER_BALL, 99
 	db NUGGET, 99
@@ -173,10 +183,10 @@ DebugItemsList:
 	db GOOD_ROD, 1
 	db SUPER_ROD, 1
 	db COIN_CASE, 1
-	db REPEL, 2
-	db SUPER_REPEL, 1
-	db MAX_REPEL, 3
+	db MAX_REPEL, 99
 	db HM_WATERFALL, 1
+	db MOON_STONE, 99
+	db SLOWPOKETAIL, 99
 	db -1 ; end
 
 DebugUnusedList:

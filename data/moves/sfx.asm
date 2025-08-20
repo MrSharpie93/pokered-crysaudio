@@ -43,12 +43,12 @@ MoveSoundTable:
 	db SFX_BATTLE_1B,          $00, $80 ; POISON_STING
 	db SFX_BATTLE_1B,          $20, $c0 ; TWINEEDLE
 	db SFX_BATTLE_19,          $00, $80 ; PIN_MISSILE
-	db SFX_BATTLE_31,          $ff, $40 ; LEER
+	db SFX_LEER,               $00, $80 ; LEER
 	db SFX_BATTLE_1E,          $00, $80 ; BITE
 	db SFX_BATTLE_0B,          $00, $c0 ; GROWL
 	db SFX_BATTLE_0B,          $00, $40 ; HOWL
 	db SFX_BATTLE_35,          $00, $80 ; SING
-	db SFX_BATTLE_27,          $40, $60 ; SUPERSONIC
+	db SFX_SUPERSONIC,         $00, $80 ; SUPERSONIC
 	db SFX_BATTLE_27,          $00, $80 ; SONICBOOM
 	db SFX_BATTLE_27,          $ff, $40 ; DISABLE
 	db SFX_BATTLE_2A,          $80, $c0 ; ACID
@@ -99,7 +99,7 @@ MoveSoundTable:
 	db SFX_BATTLE_09,          $20, $c0 ; MEDITATE
 	db SFX_FAINT_FALL,         $20, $c0 ; AGILITY
 	db SFX_BATTLE_25,          $00, $10 ; QUICK_ATTACK
-	db SFX_BATTLE_26,          $f0, $20 ; OUTRAGE
+	db SFX_RAGE,               $00, $80 ; OUTRAGE
 	db SFX_BATTLE_33,          $f0, $c0 ; TELEPORT
 	db SFX_NOT_VERY_EFFECTIVE, $f0, $e0 ; NIGHT_SHADE
 	db SFX_BATTLE_09,          $f0, $40 ; MIMIC
@@ -148,7 +148,7 @@ MoveSoundTable:
 	db SFX_BATTLE_24,          $ff, $10 ; WATER_PULSE
 	db SFX_FAINT_FALL,         $ff, $04 ; DIZZY_PUNCH
 	db SFX_BATTLE_1C,          $01, $ff ; SPORE
-	db SFX_BATTLE_13,          $f8, $ff ; FLASH
+	db SFX_FLASH,              $00, $80 ; FLASH
 	db SFX_BATTLE_0C,          $f0, $f0 ; ZEN_HEADBUTT
 	db SFX_BATTLE_0F,          $08, $10 ; SPLASH
 	db SFX_BATTLE_0D,          $f0, $ff ; ACID_ARMOR
@@ -170,7 +170,7 @@ MoveSoundTable:
 	db SFX_POISONED,           $00, $80 ; CURSE (used for poison anim)
 	db SFX_BATTLE_0B,          $00, $80 ; COTTON SPORE
 	db SFX_BATTLE_0B,          $00, $80 ; POWDER SNOW
-	db SFX_BATTLE_0B,          $00, $80 ; MACH PUNCH
+	db SFX_BATTLE_0D,          $20, $40 ; MACH PUNCH
 	db SFX_BATTLE_0B,          $00, $80 ; SCARY FACE
 	db SFX_BATTLE_0B,          $00, $80 ; FEINT ATTACK
 	db SFX_BATTLE_0B,          $00, $80 ; SWEET KISS
@@ -180,7 +180,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; ICY WIND
 	db SFX_BATTLE_0B,          $00, $80 ; CHARM
 	db SFX_BATTLE_0B,          $00, $80 ; SPARK
-	db SFX_BATTLE_0B,          $00, $80 ; STEEL WING
+	db SFX_RAGE,               $20, $40 ; STEEL WING
 	db SFX_HEAL_BELL,          $00, $80 ; HEAL BELL
 	db SFX_SHOOTING_STAR,      $00, $80 ; SAFEGUARD
 	db SFX_BATTLE_0B,          $00, $80 ; DYNAMICPUNCH

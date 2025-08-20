@@ -24,7 +24,7 @@ MoveTutorMoves: ; A list of all moves taught by move tutors, their location as a
 	db SKY_ATTACK   ; placeholder
 	db IRON_HEAD    ; placeholder
 	db GUNK_SHOT    ; placeholder
-	db EARTH_POWER  ; placeholder
+	db EARTH_POWER  ; Route 27 Sandstorm House
 ; bit 4
 	db WATER_PULSE  ; placeholder
 	db SWIFT        ; Route 12 Gate 2F

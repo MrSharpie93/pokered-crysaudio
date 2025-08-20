@@ -89,10 +89,14 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, b
 	cp EVOLVE_LEVEL
 	jp z, .checkLevel
-	cp EVOLVE_MAP ; ~$~ADDED: Red++ evolution methods.~$~
+ ; ~$~ADDED: Red++ evolution methods.~$~
+	cp EVOLVE_MAP
 	jp z, .checkMapEvo
 	cp EVOLVE_MOVE
 	jp z, .checkMoveEvo
+	cp EVOLVE_TYROGUE
+	jp z, .checkTyrogueEvo
+;;;
 	
 .checkTradeEvo
 	ld a, [wLinkState]
@@ -103,8 +107,8 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, [wLoadedMonLevel]
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, Evolution_PartyMonLoop ; if so, go the next mon
-	jr .doEvolution
- ; ~$~ADDED: Red++ evolution methods.~$~
+	jp .doEvolution
+; ~$~ADDED: Red++ evolution methods.~$~
 .checkMapEvo
 	ld a, [hli]
 	ld b, a ; Map to evolve on
@@ -112,7 +116,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; Are we on the right map?
 	jp nz, .nextEvoEntry2
 	ld a, [wLoadedMonLevel] ; This has to be in "a" for the evolution to work properly
-	jp .doEvolution; Do evolution
+	jp .doEvolution ; Do evolution
 	
 .checkMoveEvo
 	ld a, [hli] ; get the move number
@@ -122,7 +126,43 @@ Evolution_PartyMonLoop: ; loop over party mons
 	pop hl ; Get our place back
 	jp nc, .nextEvoEntry2 ; If they didn't know the move, go to next evolution
 	ld a, [wLoadedMonLevel] ; This has to be in "a" for the evolution to work properly
-	jp .doEvolution; If they did know it, do the evolution
+	jp .doEvolution ; If they did know it, do the evolution
+	
+.checkTyrogueEvo
+    ld a, [hli] ; level to evolve
+    ld b, a
+    ld a, [wLoadedMonLevel] ; current level
+    cp b
+    jp c, .nextEvoEntry1 ; if too low, go to next evo
+    ld a, [hli] ; which method is this?
+    cp ATK_HIGHER
+    jr z, .AtkHigher
+    cp BOTH_EQUAL
+    jr z, .AtkDefEqual
+    cp DEF_HIGHER
+    jr z, .DefHigher
+.AtkHigher
+    push hl ; Don't lose your place in the evolution data
+    call GetTyrogueAtkDef
+    pop hl ; Get our place back
+    jp c, .nextEvoEntry2
+    jp z, .nextEvoEntry2
+    jr .TyrogueDone
+.AtkDefEqual
+    push hl ; Don't lose your place in the evolution data
+    call GetTyrogueAtkDef
+    pop hl ; Get our place back
+    jp nz, .nextEvoEntry2
+    jr .TyrogueDone
+.DefHigher
+    push hl ; Don't lose your place in the evolution data
+    call GetTyrogueAtkDef
+    pop hl ; Get our place back
+    jp z, .nextEvoEntry2
+    jp nc, .nextEvoEntry2
+.TyrogueDone
+    ld a, [wLoadedMonLevel]
+    jr .doEvolution ; Do first Pokemon if Def is higher
 ;;;	
 .checkItemEvo ; ~$~FIXED: No weird stone-related evolutions.~$~
 	ld a, [wIsInBattle] ; are we in battle?
@@ -682,5 +722,24 @@ CheckForMove: ; New routine used by EV_MOVE
 .known
 	scf
 	ret
+	
+; ~$~ADDED: Red++ function for evolving Tyrogue.~$~
+GetTyrogueAtkDef:
+; new routine for Tyrogue evolution
+; stores his Atk location in de
+; stores his Def location in hl
+    ld a, [wWhichPokemon]
+    ld hl, wPartyMon1Attack
+    ld bc, wPartyMon2 - wPartyMon1
+    call AddNTimes
+    ld d,h
+    ld e,l
+; de now points to his Atk
+    inc hl
+    inc hl
+; hl now points to his Def
+    ld c, $2 ; data length
+    call StringCmp ; compare his attack and defense
+    ret
 	
 INCLUDE "data/pokemon/evos_moves.asm"

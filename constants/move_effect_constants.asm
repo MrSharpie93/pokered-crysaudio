@@ -107,4 +107,5 @@
 	const ICE_FANG_EFFECT            ; $64
 	const THUNDER_FANG_EFFECT        ; $65
 	const HEAL_BELL_EFFECT           ; $66
+	const SUCKER_PUNCH_EFFECT        ; $67
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

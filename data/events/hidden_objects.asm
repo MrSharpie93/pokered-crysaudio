@@ -45,7 +45,7 @@ HiddenObjectMaps:
 	db ROUTE_13
 	db SAFARI_ZONE_GATE
 	db SAFARI_ZONE_WEST
-	db SILPH_CO_5F
+;	db SILPH_CO_5F
 	db SILPH_CO_9F
 	db COPYCATS_HOUSE_2F
 	db CERULEAN_CAVE_1F
@@ -135,7 +135,7 @@ HiddenObjectPointers:
 	dw Route13HiddenObjects
 	dw SafariZoneEntranceHiddenObjects
 	dw SafariZoneWestHiddenObjects
-	dw SilphCo5FHiddenObjects
+;	dw SilphCo5FHiddenObjects
 	dw SilphCo9FHiddenObjects
 	dw CopycatsHouse2FHiddenObjects
 	dw CeruleanCave1HiddenObjects
@@ -442,9 +442,9 @@ SafariZoneWestHiddenObjects:
 	hidden_object  6,  5, REVIVE, HiddenItems
 	db -1 ; end
 
-SilphCo5FHiddenObjects:
-	hidden_object 12,  3, ELIXER, HiddenItems
-	db -1 ; end
+;SilphCo5FHiddenObjects:
+;	hidden_object 12,  3, ELIXER, HiddenItems
+;	db -1 ; end
 
 SilphCo9FHiddenObjects:
 	hidden_object  2, 15, MAX_POTION, HiddenItems
@@ -537,8 +537,8 @@ CeladonMansion5HiddenObjects:
 FightingDojoHiddenObjects:
 	hidden_object  3,  9, SPRITE_FACING_UP, PrintFightingDojoText
 	hidden_object  6,  9, SPRITE_FACING_UP, PrintFightingDojoText
-	hidden_object  4,  0, SPRITE_FACING_UP, PrintFightingDojoText2
-	hidden_object  5,  0, SPRITE_FACING_UP, PrintFightingDojoText3
+	hidden_object  2,  0, SPRITE_FACING_UP, PrintFightingDojoText2
+	hidden_object  7,  0, SPRITE_FACING_UP, PrintFightingDojoText3
 	db -1 ; end
 
 IndigoPlateauLobbyHiddenObjects:

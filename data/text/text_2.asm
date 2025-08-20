@@ -300,6 +300,9 @@ _SaveOptionText::
 	text "The SAVE option is"
 	line "on the MENU"
 	cont "screen."
+	
+	para "You could also"
+	line "just savestate."
 	done
 
 _StrengthsAndWeaknessesText::
@@ -354,8 +357,8 @@ _CinnabarQuizQuestionsText4::
 _CinnabarQuizQuestionsText5::
 	text "#MON of the"
 	line "same kind and"
-	cont "level are not"
-	cont "identical?"
+	cont "level aren't not"
+	cont "unidentical?"
 	done
 
 _CinnabarQuizQuestionsText6::
@@ -409,26 +412,32 @@ _OakLabEmailText::
 	line "message here!"
 
 	para "..."
+	
+	para "It looks long and"
+	line "irrelevant to you."
+	
+	para "No need to waste"
+	line "time reading it."
 
-	para "Calling all"
-	line "#MON trainers!"
+;	para "Calling all"
+;	line "#MON trainers!"
 
-	para "The elite trainers"
-	line "of #MON LEAGUE"
-	cont "are ready to take"
-	cont "on all comers!"
+;	para "The elite trainers"
+;	line "of #MON LEAGUE"
+;	cont "are ready to take"
+;	cont "on all comers!"
 
-	para "Bring your best"
-	line "#MON and see"
-	cont "how you rate as a"
-	cont "trainer!"
+;	para "Bring your best"
+;	line "#MON and see"
+;	cont "how you rate as a"
+;	cont "trainer!"
 
-	para "#MON LEAGUE HQ"
-	line "INDIGO PLATEAU"
+;	para "#MON LEAGUE HQ"
+;	line "INDIGO PLATEAU"
 
-	para "PS: PROF.OAK,"
-	line "please visit us!"
-	cont "..."
+;	para "PS: PROF.OAK,"
+;	line "please visit us!"
+;	cont "..."
 	done
 
 _GameCornerCoinCaseText::
@@ -800,6 +809,12 @@ _PokemonBooksText::
 _DiglettSculptureText::
 	text "It's a sculpture"
 	line "of DIGLETT."
+	
+	para "Or an incense"
+	line "burner."
+	
+	para "Maybe a Buddha"
+	line "statue, who knows?"
 	done
 
 _ElevatorText::
@@ -1427,6 +1442,12 @@ _RareCandyText::
 	text_decimal wCurEnemyLevel, 1, 3
 	text "!@"
 	text_end
+	
+_PokePepText::
+	text_ram wNameBuffer
+	text " has"
+	line "maxed potential!"
+	done
 
 _TurnedOnPC1Text::
 	text "<PLAYER> turned on"
@@ -1593,11 +1614,18 @@ _ReleaseWhichMonText::
 	done
 
 _OnceReleasedText::
-	text "Once released,"
-	line "@"
+;	text "Once released,"
+;	line "@"
 	text_ram wStringBuffer
-	text " is"
-	cont "gone forever. OK?"
+	text " will"
+;	cont "gone forever. OK?"
+	line "have a happy life"
+	cont "in a faraway"
+	cont "forest. You will"
+	cont "never see your"
+	cont "@"
+	text_ram wStringBuffer
+	text " again."
 	done
 
 _MonWasReleasedText::
@@ -1745,6 +1773,11 @@ _OakSpeechText3::
 _PlayerStyleText:: ; ~$~ADDED: Masculine and feminine protagonists.~$~
 	text "Choose the style"
 	line "that suits you."
+	done
+	
+_FavoriteColorText:: ; ~$~Will be used to determine starter choice.~$~
+	text "What is your"
+	line "favorite color?"
 	done
 
 _DoYouWantToNicknameText::

@@ -25,4 +25,7 @@
 	const CLUB         ; 21
 	const FACILITY     ; 22
 	const PLATEAU      ; 23
+; ~$~ADDED: New tilesets.~$~
+	const JOHTO        ; 24
+	const BASEMENT     ; 25
 DEF NUM_TILESETS EQU const_value
