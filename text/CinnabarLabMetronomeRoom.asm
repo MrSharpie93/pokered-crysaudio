@@ -39,7 +39,7 @@ _CinnabarLabMetronomeRoomPCText::
 	text "There's an e-mail"
 	line "message!"
 
-	para "..."
+	para "…"
 
 	para "The 3 legendary"
 	line "bird #MON are"
@@ -56,7 +56,7 @@ _CinnabarLabMetronomeRoomPCText::
 	para "From: #MON"
 	line "RESEARCH TEAM"
 
-	para "..."
+	para "…"
 	done
 
 _CinnabarLabMetronomeRoomAmberPipeText::

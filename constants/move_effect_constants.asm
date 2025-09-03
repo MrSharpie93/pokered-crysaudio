@@ -108,4 +108,6 @@
 	const THUNDER_FANG_EFFECT        ; $65
 	const HEAL_BELL_EFFECT           ; $66
 	const SUCKER_PUNCH_EFFECT        ; $67
+	const TOXIC_EFFECT               ; $68
+	const CONFUSION_SIDE_EFFECT2     ; $69
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

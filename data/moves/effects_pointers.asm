@@ -104,4 +104,6 @@ MoveEffectPointerTable:
 	dw FangEffect                ; THUNDER_FANG_EFFECT
 	dw HealBellEffect            ; HEAL_BELL_EFFECT
 	dw NULL                      ; SUCKER_PUNCH_EFFECT
+	dw ToxicEffect               ; TOXIC_EFFECT
+	dw ConfusionSideEffect2      ; CONFUSION_SIDE_EFFECT2
 	assert_table_length NUM_MOVE_EFFECTS

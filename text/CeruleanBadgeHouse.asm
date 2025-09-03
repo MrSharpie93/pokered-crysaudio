@@ -13,6 +13,6 @@ _IcyWindTutorText::
 	para "Why it makes my"
 	line "blood run cold!"
 	
-	para "...Which reminds"
-	line "me..."
+	para "…Which reminds"
+	line "me…"
 	prompt

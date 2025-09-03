@@ -54,7 +54,7 @@ MoveSoundTable:
 	db SFX_BATTLE_2A,          $80, $c0 ; ACID
 	db SFX_BATTLE_19,          $10, $a0 ; EMBER
 	db SFX_BATTLE_19,          $21, $e0 ; FLAMETHROWER
-	db SFX_BATTLE_29,          $00, $80 ; MIST
+	db SFX_BATTLE_2C,          $ff, $00 ; MIST ; PureRGB SFX. ~$~
 	db SFX_BATTLE_24,          $20, $60 ; WATER_GUN
 	db SFX_BATTLE_2A,          $00, $80 ; HYDRO_PUMP
 	db SFX_BATTLE_2C,          $00, $80 ; SURF
@@ -114,7 +114,7 @@ MoveSoundTable:
 	db SFX_BATTLE_32,          $40, $c0 ; PROTECT
 	db SFX_BATTLE_0E,          $20, $20 ; BARRIER
 	db SFX_BATTLE_0E,          $f0, $10 ; LIGHT_SCREEN
-	db SFX_BATTLE_0F,          $f8, $10 ; HAZE
+	db SFX_BATTLE_2C,          $20, $00 ; HAZE ; PureRGB SFX. ~$~
 	db SFX_NOT_VERY_EFFECTIVE, $f0, $10 ; REFLECT
 	db SFX_BATTLE_25,          $00, $80 ; FOCUS_ENERGY
 	db SFX_BATTLE_18,          $00, $c0 ; METEOR_MASH
@@ -151,7 +151,7 @@ MoveSoundTable:
 	db SFX_FLASH,              $00, $80 ; FLASH
 	db SFX_BATTLE_0C,          $f0, $f0 ; ZEN_HEADBUTT
 	db SFX_BATTLE_0F,          $08, $10 ; SPLASH
-	db SFX_BATTLE_0D,          $f0, $ff ; ACID_ARMOR
+	db SFX_ACID_ARMOR,         $00, $00 ; ACID_ARMOR ; PureRGB SFX. ~$~
 	db SFX_SUPER_EFFECTIVE,    $f0, $ff ; CRABHAMMER
 	db SFX_BATTLE_34,          $10, $ff ; EXPLOSION
 	db SFX_BATTLE_0E,          $f0, $20 ; DRAGON_CLAW
@@ -169,7 +169,7 @@ MoveSoundTable:
 ; ~$~ADDED: New moves.~$~
 	db SFX_POISONED,           $00, $80 ; CURSE (used for poison anim)
 	db SFX_BATTLE_0B,          $00, $80 ; COTTON SPORE
-	db SFX_BATTLE_0B,          $00, $80 ; POWDER SNOW
+	db SFX_ICE,                $00, $40 ; POWDER SNOW ; PureRGB SFX. ~$~
 	db SFX_BATTLE_0D,          $20, $40 ; MACH PUNCH
 	db SFX_BATTLE_0B,          $00, $80 ; SCARY FACE
 	db SFX_BATTLE_0B,          $00, $80 ; FEINT ATTACK

@@ -17,7 +17,7 @@ _BikeShopCantAffordText::
 	prompt
 
 _BikeShopClerkOhThatsAVoucherText::
-	text "Oh, that's..."
+	text "Oh, that's…"
 
 	para "A BIKE VOUCHER!"
 

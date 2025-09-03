@@ -2060,8 +2060,8 @@ wVictoryRoad3FCurScript:: db
 	ds 1
 wFightingDojoCurScript:: db
 wNewBarkTownCurScript:: db ; NEW
-wSilphCo3FCurScript:: db
-wSilphCo4FCurScript:: db
+wRoute26CurScript:: db ; NEW
+wRoute27CurScript:: db ; NEW
 wSilphCo5FCurScript:: db
 wSilphCo6FCurScript:: db
 wSilphCo7FCurScript:: db

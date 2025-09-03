@@ -19,7 +19,7 @@ _CeladonDinerMiddleAgedManText::
 	done
 
 _CeladonDinerFisherText::
-	text "Munch..."
+	text "Munch…"
 
 	para "The man at that"
 	line "table lost it all"
@@ -56,5 +56,5 @@ _CeladonDinerGymGuideCoinCaseNoRoomText::
 _CeladonDinerGymGuideWinItBackText::
 	text "I always thought"
 	line "I was going to"
-	cont "win it back..."
+	cont "win it back…"
 	done

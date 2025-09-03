@@ -7,7 +7,7 @@ _LavenderCuboneHouseBrunetteGirlPoorCubonesMotherText::
 	line "horrible ROCKETs!"
 
 	para "That poor CUBONE's"
-	line "mother..."
+	line "mother…"
 
 	para "It was killed"
 	line "trying to escape"

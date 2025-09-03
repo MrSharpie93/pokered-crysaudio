@@ -28,7 +28,7 @@ Moves:
 	move CUT,          NO_ADDITIONAL_EFFECT,        40, STEEL,        100, 25
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,       100, 35
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,       100, 35
-	move HURRICANE,    CONFUSION_SIDE_EFFECT,      120, NORMAL,        70, 10
+	move HURRICANE,    CONFUSION_SIDE_EFFECT2,     120, NORMAL,        70, 10
 	move FLY,          FLY_EFFECT,                  90, FLYING,       100, 15
 	move BIND,         TRAPPING_EFFECT,             20, NORMAL,        85, 15
 	move BREAK_SWIPE,  ATTACK_DOWN1_EFFECT,         60, DRAGON,       100, 15
@@ -102,7 +102,7 @@ Moves:
 	move EARTHQUAKE,   NO_ADDITIONAL_EFFECT,       100, GROUND,       100, 10
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,        30,  5
 	move DIG,          CHARGE_EFFECT,               90, GROUND,       100, 10
-	move TOXIC,        POISON_EFFECT,                0, POISON,        90, 10 ; TOXIC_EFFECT?
+	move TOXIC,        TOXIC_EFFECT,                 0, POISON,        90, 10 ; TOXIC_EFFECT?
 	move CONFUSION,    CONFUSION_SIDE_EFFECT,       50, PSYCHIC_TYPE, 100, 25
 	move PSYCHIC_M,    SPECIAL_DOWN_SIDE_EFFECT,    90, PSYCHIC_TYPE, 100, 10
 	move HYPNOSIS,     SLEEP_EFFECT,                 0, PSYCHIC_TYPE,  65, 15
@@ -155,8 +155,8 @@ Moves:
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,        75, 10
 	move SKY_ATTACK,   RECOIL_EFFECT,              120, FLYING,       100, 15
 	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,       100, 10
-	move WATER_PULSE,  CONFUSION_SIDE_EFFECT,       60, WATER,        100, 20
-	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       70, NORMAL,       100, 10
+	move WATER_PULSE,  CONFUSION_SIDE_EFFECT2,      60, WATER,        100, 20
+	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT2,      70, NORMAL,       100, 10
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,        100, 15
 	move FLASH,        ACCURACY_DOWN2_EFFECT,        0, NORMAL,        70, 20
 	move ZEN_HEADBUTT, FLINCH_SIDE_EFFECT3,         80, PSYCHIC_TYPE, 100, 15

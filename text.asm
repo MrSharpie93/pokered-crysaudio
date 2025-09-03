@@ -298,4 +298,6 @@ INCLUDE "text/Route27House.asm"
 INCLUDE "text/SilverCavePokecenter.asm"
 INCLUDE "text/MtMoonSquare.asm"
 INCLUDE "text/MtMoonSquareShop.asm"
+INCLUDE "text/TohjoFalls.asm"
+INCLUDE "text/SilverCave3F.asm"
 

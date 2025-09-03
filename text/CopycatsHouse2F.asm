@@ -43,7 +43,7 @@ _CopycatsHouse2FCopycatTM31Explanation2Text::
 	para "COPYCAT: You bet!"
 	line "It's a scream!"
 	
-	para "...But sure, no"
+	para "…But sure, no"
 	line "problem."
 	prompt
 
@@ -69,7 +69,7 @@ _CopycatsHouse2FSNESText::
 	done
 
 _CopycatsHouse2FPCMySecretsText::
-	text "..."
+	text "…"
 
 	para "My Secrets!"
 

@@ -122,6 +122,7 @@ FrameBlockPointers:
 	dw FrameBlock77
 	dw FrameBlock78
 	dw FrameBlock79
+	dw FrameBlock7a; ~$~ ADDED: Improved animations from PureRGB.~$~
 	assert_table_length NUM_FRAMEBLOCKS
 
 FrameBlock01: ; small star?
@@ -155,7 +156,7 @@ FrameBlock02: ; big star
 	dbsprite  2,  3,  0,  0, $21, OAM_HFLIP | OAM_VFLIP
 	dbsprite  3,  3,  0,  0, $20, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock03: ; poke ball
+FrameBlock03: ; poke ball/black orb/foot
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $02, 0
 	dbsprite  1,  0,  0,  0, $02, OAM_HFLIP
@@ -259,14 +260,14 @@ FrameBlock0a:
 	dbsprite  4,  5,  0,  0, $25, OAM_HFLIP | OAM_VFLIP
 	dbsprite  5,  5,  0,  0, $24, OAM_HFLIP | OAM_VFLIP
 
-FrameBlock0b: ; geyser 1/eye closed
+FrameBlock0b: ; geyser 1/small flame/eye closed
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $05, 0
 	dbsprite  1,  0,  0,  0, $05, OAM_HFLIP
 	dbsprite  0,  1,  0,  0, $15, 0
 	dbsprite  1,  1,  0,  0, $15, OAM_HFLIP
 
-FrameBlock0c: ; geyser 2/eye open
+FrameBlock0c: ; geyser 2/big flame/eye open
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $04, 0
 	dbsprite  1,  0,  0,  0, $04, OAM_HFLIP
@@ -630,7 +631,7 @@ FrameBlock37: ; sword behind
 	dbsprite  0,  1,  0,  0, $11, OAM_BEHIND_BG | OAM_HFLIP
 	dbsprite  1,  1,  0,  0, $10, OAM_BEHIND_BG | OAM_HFLIP
 
-FrameBlock38:
+FrameBlock38: ; rock/cloud/bubble
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $0a, 0
 	dbsprite  1,  0,  0,  0, $0b, 0
@@ -1231,6 +1232,12 @@ FrameBlock78:
 FrameBlock79:
 	db 1 ; #
 	dbsprite  0,  0,  0,  0, $4e, 0
+	
+; ~$~ ADDED: Improved animations from PureRGB.~$~
+FrameBlock7a: ; pin/stinger
+	db 1 ; #
+	dbsprite  0,  0,  0,  0, $1f, 0
+;;;
 
 INCLUDE "data/battle_anims/base_coords.asm"
 

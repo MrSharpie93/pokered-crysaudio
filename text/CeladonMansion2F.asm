@@ -66,7 +66,7 @@ _MoveRelearnerSaidYesText::
 	prompt
 
 _MoveRelearnerNotEnoughMoneyText::
-	text "Hmmm..."
+	text "Hmmm…"
 
 	para "You don't have"
 	line "enough money!"

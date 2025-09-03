@@ -1,31 +1,41 @@
-;_NewBarkTownGirlText::
-;	text "I'm raising"
-;	line "#MON too!"
+_NewBarkTownCoolTrainerFText::
+	text "Hi, <PLAYER>!"
+	line "Leaving again?"
 
-;	para "When they get"
-;	line "strong, they can"
-;	cont "protect me!"
-;	done
+	para "You should tell"
+	line "your mom if you"
+	cont "are leaving."
+	
+	para "She's not around?"
+	
+	para "Well, at least"
+	line "call her once in"
+	cont "a while…"
+	done
 
-;_NewBarkTownFisherText::
-;	text "Technology is"
-;	line "incredible!"
+_NewBarkTownFisherText::
+	text "Technology is"
+	line "incredible!"
 
-;	para "You can now store"
-;	line "and recall items"
-;	cont "and #MON as"
-;	cont "data via PC!"
-;	done
+	para "Apparently they're"
+	line "developing a wrist"
+	cont "device you can use"
+	cont "as a map, a phone,"
+	cont "even a radio!"
+	
+	para "I wonder when it"
+	line "will release?"
+	done
 
 _NewBarkTownElmsLabSignText::
 	text "ELM #MON LAB"
 	
 	para "There's a note:"
 	
-	para "‘I'm currently out"
+	para "“I'm currently out"
 	line "of town doing re-"
 	cont "search, please"
-	cont "come back later.’"
+	cont "come back later.”"
 	done
 
 _NewBarkTownSignText::
@@ -48,6 +58,14 @@ _NewBarkTownElmsHouseSignText::
 	text "ELM's HOUSE"
 	done
 	
+_NewBarkTownRoadworkText::
+	text "UNDER CONSTRUCTION"
+	
+	para "The road is closed"
+	line "until further"
+	cont "notice."
+	done
+	
 _NewBarkTownItsLockedText::
-	text "It's locked..."
+	text "It's locked…"
 	done

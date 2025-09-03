@@ -447,7 +447,11 @@ ShareMoveAnimations:
 	ld a, [wAnimationID]
 
 	cp AMNESIA
-	ld b, CONF_ANIM
+	ld b, AMNESIA_ENEMY_ANIM
+	jr z, .replaceAnim
+	
+	cp NASTY_PLOT
+	ld b, NASTY_PLOT_ENEMY_ANIM
 	jr z, .replaceAnim
 
 	cp REST
@@ -456,7 +460,7 @@ ShareMoveAnimations:
 
 .replaceAnim
 	ld a, b
-	ld [wAnimationID], a
+	ld [wAltAnimationID], a
 	ret
 
 PlayApplyingAttackAnimation:
@@ -1745,7 +1749,7 @@ opt b.X ; . = 0, X = 1
 popo
 MinimizedMonSpriteEnd:
 
-AnimationSlideMonDownAndHide:
+AnimationSlideMonDownAndHide: ; PureRGB edit.~$~
 ; Slides the mon's sprite down and disappears. Used in Acid Armor.
 	ld a, TILEMAP_SLIDE_DOWN_MON_PIC_7X5
 	ld c, 2
@@ -1758,7 +1762,7 @@ AnimationSlideMonDownAndHide:
 	call GetTileIDList
 	call GetMonSpriteTileMapPointerFromRowCount
 	call CopyPicTiles
-	ld c, 8
+	ld c, 15
 	call DelayFrames
 	pop af
 	inc a
@@ -1766,11 +1770,9 @@ AnimationSlideMonDownAndHide:
 	dec c
 	jr nz, .loop
 	call AnimationHideMonPic
-	ld hl, wTempPic
-	ld bc, 7 * 7 tiles
-	xor a
-	call FillMemory
-	jp CopyTempPicToMonPic
+	ld c, 30
+	call DelayFrames
+	jp AnimationShowMonPic
 
 _AnimationSlideMonOff:
 ; Slides the mon's sprite off the screen horizontally by e tiles and waits

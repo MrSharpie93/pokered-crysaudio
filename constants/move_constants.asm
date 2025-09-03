@@ -284,16 +284,16 @@ DEF CANNOT_MOVE EQU $ff
 	const ANIM_B3
 	const ANIM_B4
 	const ANIM_B5
-	const ANIM_B6
-	const ANIM_B7
+	const AMNESIA_ENEMY_ANIM ; ~$~ADDED: PureRGB improved Amnesia animation.~$~
+	const BURN_ANIM ; ~$~ADDED: PureRGB burn animation.~$~
 	const PARALYSIS_ANIM ; ~$~Renamed this to clarify what it points to.~$~
 	const ANIM_B9
-	const BURN_PSN_ANIM ; Plays when a monster is burned or poisoned
-	const ANIM_BB
+	const PSN_ANIM ; Plays when a monster is burned or poisoned
+	const NASTY_PLOT_ENEMY_ANIM
 	const SLP_PLAYER_ANIM
 	const SLP_ANIM ; sleeping monster
-	const CONF_PLAYER_ANIM
-	const CONF_ANIM ; confused monster
+	const CONF_PLAYER_ANIM ; ~$~CHANGED: This is used for both sides when it's their turn.~$~
+	const CONF_ANIM ; ~$~CHANGED: This is used for when a move inflicts confusion.~$~
 	const SLIDE_DOWN_ANIM
 	const TOSS_ANIM ; toss Poké Ball
 	const SHAKE_ANIM ; shaking Poké Ball when catching monster

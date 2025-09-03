@@ -7,13 +7,14 @@ _MtMoonPokecenterYoungsterText::
 	done
 
 _MtMoonPokecenterGentlemanText::
-	text "TEAM ROCKET"
-	line "attacks CERULEAN"
-	cont "citizens..."
+	text "Local youth busts"
+	line "up TEAM ROCKET"
+	cont "operation…"
 
 	para "TEAM ROCKET is"
 	line "always in the"
-	cont "news!"
+	cont "news, but not"
+	cont "often like this!"
 	done
 
 _MtMoonPokecenterMagikarpSalesmanIGotADealText::
@@ -34,13 +35,13 @@ _MtMoonPokecenterMagikarpSalesmanNoText::
 	done
 
 _MtMoonPokecenterMagikarpSalesmanNoMoneyText::
-	text "You'll need more"
-	line "money than that!"
+	text "Get lost then, you"
+	line "broke little punk!"
 	done
 
 _MtMoonPokecenterMagikarpSalesmanNoRefundsText::
-	text "MAN: Well, I don't"
-	line "give refunds!"
+	text "MAN: All sales"
+	line "final!"
 	done
 
 _MtMoonPokecenterClipboardText::

@@ -3,7 +3,7 @@ _FuchsiaGoodRodHouseFishingGuruText::
 	line "GURU's older"
 	cont "brother!"
 
-	para "I simply Looove"
+	para "I simply loooove"
 	line "fishing!"
 
 	para "Do you like to"
@@ -24,8 +24,8 @@ _FuchsiaGoodRodHouseFishingGuruReceivedGoodRodText::
 	text_end
 
 _FuchsiaGoodRodHouseFishingGuruThatsSoDisappointingText::
-	text "Oh... That's so"
-	line "disappointing..."
+	text "Then leave, you"
+	line "are not welcome."
 	done
 
 _FuchsiaGoodRodHouseFishingGuruHowAreTheFishText::

@@ -56,6 +56,10 @@ SFX:
 	dba SFX_Faint_Fall
 	dba SFX_Battle_09
 	dba SFX_Pound
+; ~$~ADDED: PureRGB SFX.~$~
+	dba SFX_Acid_Armor
+	dba SFX_Ice
+;;;
 	dba SFX_Battle_0B
 	dba SFX_Battle_0C
 	dba SFX_Battle_0D
@@ -121,4 +125,10 @@ SFX:
 	dba Sfx_Rage
 	dba Sfx_Supersonic
 	dba Sfx_Flash
+	dba Sfx_QuitSlots
+	dba Sfx_DexFanfare80109
+	dba Sfx_DexFanfare140169
+	dba Sfx_DexFanfare170199
+	dba Sfx_DexFanfare200229
+	dba Sfx_DexFanfare230Plus
 	assert_table_length NUM_SFX

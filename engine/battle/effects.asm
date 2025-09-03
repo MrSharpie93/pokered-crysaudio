@@ -103,6 +103,26 @@ FellAsleepText:
 AlreadyAsleepText:
 	text_far _AlreadyAsleepText
 	text_end
+	
+ToxicEffect: ; ~$~ADDED: Allows Poison-types to skip accuracy checks on Toxic.~$~
+	ld hl, wBattleMonType1
+	ld de, wPlayerMoveEffect
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .toxicEffect
+	ld hl, wEnemyMonType1
+	ld de, wEnemyMoveEffect
+.toxicEffect
+	ld a, [hl]
+	cp POISON
+	jr nz, PoisonEffect
+	inc bc
+	ld a, [hl]
+	cp POISON
+	jr nz, PoisonEffect
+	ld a, SWIFT_EFFECT
+	ld [de], a
+; Fallthrough to PoisonEffect.~$~
 
 PoisonEffect:
 	ld hl, wEnemyMonStatus
@@ -125,12 +145,12 @@ PoisonEffect:
 	cp POISON ; can't poison a poison-type target
 	jp z, .noEffect
 	cp STEEL ; can't poison a steel-type target
-	jr z, .noEffect
+	jp z, .noEffect
 	ld a, [hld]
 	cp POISON ; can't poison a poison-type target
-	jr z, .noEffect
+	jp z, .noEffect
 	cp STEEL ; can't poison a steel-type target
-	jr z, .noEffect
+	jp z, .noEffect
 ; ~$~CHANGED: Code snippet from pokered-restored to grant Grass-types immunity to Poisonpowder.~$~
 	ld a, [de]
 	inc de
@@ -195,18 +215,22 @@ PoisonEffect:
 .continue
 	pop de
 	ld a, [de]
-	cp POISON_EFFECT
-	jr z, .regularPoisonEffect
+	cp POISON_SIDE_EFFECT1 ; Animation jank.~$~
+	jr z, .poisonSideEffect
+	cp POISON_SIDE_EFFECT2 ; MORE animation jank.~$~
+	jr z, .poisonSideEffect
 	ld a, b
-	call PlayAlternativeAnimation2
-	jp PrintText
-.regularPoisonEffect
 	call PlayCurrentMoveAnimation2
+	jp PrintText
+.poisonSideEffect
+	call PlayAlternativeAnimation2
 	jp PrintText
 .noEffect
 	ld a, [de]
-	cp POISON_EFFECT
-	ret nz
+	cp POISON_SIDE_EFFECT1 ; Text jank.~$~
+	ret z
+	cp POISON_SIDE_EFFECT2 ; MORE text jank.~$~
+	ret z
 .didntAffect
 	ld c, 50
 	call DelayFrames
@@ -1289,6 +1313,12 @@ FocusEnergyEffect:
 RecoilEffect:
 	jpfar RecoilEffect_
 
+ConfusionSideEffect2:
+	call BattleRandom
+	cp 30 percent ; chance of confusion
+	ret nc
+	jr ConfusionSideEffectSuccess
+
 ConfusionSideEffect:
 	call BattleRandom
 	cp 10 percent ; chance of confusion
@@ -1327,11 +1357,12 @@ ConfusionSideEffectSuccess:
 	inc a
 	ld [bc], a ; confusion status will last 2-5 turns
 	pop af
-	cp DYNAMICPUNCH_EFFECT
-	jr z, .dynamicPunchSkipAnim
-	cp CONFUSION_SIDE_EFFECT
-	call nz, PlayCurrentMoveAnimation2
-.dynamicPunchSkipAnim
+	cp CONFUSION_EFFECT
+	jr nz, .noMoveAnimation
+	call PlayCurrentMoveAnimation2
+.noMoveAnimation
+	ld a, CONF_ANIM
+	call PlayAlternativeAnimation2
 	ld hl, BecameConfusedText
 	jp PrintText
 
@@ -1343,6 +1374,8 @@ ConfusionEffectFailed:
 	cp CONFUSION_SIDE_EFFECT
 	ret z
 	cp DYNAMICPUNCH_EFFECT
+	ret z
+	cp CONFUSION_SIDE_EFFECT2
 	ret z
 	ld c, 50
 	call DelayFrames

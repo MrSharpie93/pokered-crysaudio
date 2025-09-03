@@ -40,56 +40,56 @@ MapHSPointers:
 	dw NoHS;Route23
 	dw Route24HS
 	dw Route25HS
-	dw NoHS;Route26
-	dw NoHS;Route27
+	dw Route26HS
+	dw Route27HS
 	dw NoHS;Route28
 	dw NoHS;SilverCaveOutside
 	dw NoHS;RedsHouse1F
 	dw NoHS;RedsHouse2F
 	dw BluesHouseHS
 	dw OaksLabHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;ViridianPokecenter
+	dw NoHS;ViridianMart
+	dw NoHS;ViridianSchoolhouse
+	dw NoHS;ViridianNicknameHouse
 	dw ViridianGymHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;DiglettsCaveRoute2
+	dw NoHS;ViridianForestNorthGate
+	dw NoHS;Route2TradeHouse
+	dw NoHS;Route2Gate
+	dw NoHS;ViridianForestSouthGate
 	dw ViridianForestHS
 	dw Museum1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;Museum2F
+	dw NoHS;PewterGym
+	dw NoHS;PewterNidoranHouse
+	dw NoHS;PewterMart
+	dw NoHS;PewterSpeechHouse
+	dw NoHS;PewterPokecenter
 	dw MtMoon1FHS
-	dw NoHS
+	dw NoHS;MtMoonB1F
 	dw MtMoonB2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;CeruleanTrashedHouse
+	dw NoHS;CeruleanTradeHouse
+	dw NoHS;CeruleanPokecenter
+	dw NoHS;CeruleanGym
+	dw NoHS;BikeShop
+	dw NoHS;CeruleanMart
+	dw NoHS;MtMoonPokecenter
+	dw NoHS;Route26HealHouse
+	dw NoHS;Route5Gate
+	dw NoHS;UndergroundPathRoute5
+	dw NoHS;Daycare
+	dw NoHS;Route6Gate
+	dw NoHS;UndergroundPathRoute6
+	dw NoHS;UndergroundPathRoute6Copy
+	dw NoHS;Route7Gate
+	dw NoHS;UndergroundPathRoute7
+	dw NoHS;UndergroundPathRoute7Copy
+	dw NoHS;Route8Gate
+	dw NoHS;UndergroundPathRoute8
+	dw NoHS;RockTunnelPokecenter
+	dw NoHS;RockTunnel1F
 	dw PowerPlantHS
 	dw NoHS
 	dw NoHS
@@ -211,15 +211,15 @@ MapHSPointers:
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
 	dw NoHS;RocketHideoutElevator
-	dw NoHS;SilverCave1F
-	dw NoHS;SilverCave2F
+	dw SilverCave1FHS
+	dw SilverCave2FHS
 	dw NoHS;SilverCave3F
 ;	dw SilphCo2FHS
 ;	dw SilphCo3FHS
 ;	dw SilphCo4FHS
 ;	dw SilphCo5FHS
-	dw NoHS;SilverCaveItemRoomsHS
-	dw NoHS;TohjoFallsHS
+	dw SilverCaveItemRoomsHS
+	dw TohjoFallsHS
 	dw SilphCo8FHS
 	dw PokemonMansion2FHS
 	dw PokemonMansion3FHS
@@ -450,23 +450,27 @@ RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F, ROCKETHIDEOUTB4F_IRON,          SHOW
 	db ROCKET_HIDEOUT_B4F, ROCKETHIDEOUTB4F_SILPH_SCOPE,   HIDE
 	db ROCKET_HIDEOUT_B4F, ROCKETHIDEOUTB4F_LIFT_KEY,      HIDE
-;SilphCo2FHS:
-;	db SILPH_CO_2F, SILPHCO2F_SILPH_WORKER_F, SHOW
-;	db SILPH_CO_2F, SILPHCO2F_SCIENTIST1,     SHOW
-;	db SILPH_CO_2F, SILPHCO2F_SCIENTIST2,     SHOW
-;	db SILPH_CO_2F, SILPHCO2F_ROCKET1,        SHOW
-;	db SILPH_CO_2F, SILPHCO2F_ROCKET2,        SHOW
-;SilphCo3FHS:
-;	db SILPH_CO_3F, SILPHCO3F_ROCKET,       SHOW
-;	db SILPH_CO_3F, SILPHCO3F_SCIENTIST,    SHOW
-;	db SILPH_CO_3F, SILPHCO3F_HYPER_POTION, SHOW
-;SilphCo4FHS:
-;	db SILPH_CO_4F, SILPHCO4F_ROCKET1,     SHOW
-;	db SILPH_CO_4F, SILPHCO4F_SCIENTIST,   SHOW
-;	db SILPH_CO_4F, SILPHCO4F_ROCKET2,     SHOW
-;	db SILPH_CO_4F, SILPHCO4F_FULL_HEAL,   SHOW
-;	db SILPH_CO_4F, SILPHCO4F_MAX_REVIVE,  SHOW
-;	db SILPH_CO_4F, SILPHCO4F_ESCAPE_ROPE, SHOW
+TohjoFallsHS:
+	db TOHJO_FALLS, TOHJOFALLS_GIOVANNI,           HIDE
+	db TOHJO_FALLS, TOHJOFALLS_DUSK_STONE,         SHOW
+SilverCave1FHS:
+	db SILVER_CAVE_1F, SILVERCAVE1F_MAX_ELIXER,    SHOW
+	db SILVER_CAVE_1F, SILVERCAVE1F_PROTEIN,       SHOW
+	db SILVER_CAVE_1F, SILVERCAVE1F_X_DEFEND,      SHOW
+	db SILVER_CAVE_1F, SILVERCAVE1F_ULTRA_BALL,    SHOW
+SilverCave2FHS:
+	db SILVER_CAVE_2F, SILVERCAVE2F_CALCIUM,       SHOW
+	db SILVER_CAVE_2F, SILVERCAVE2F_ULTRA_BALL,    SHOW
+	db SILVER_CAVE_2F, SILVERCAVE2F_PP_UP,         SHOW
+SilverCaveItemRoomsHS:
+	db SILVER_CAVE_ITEM_ROOMS, SILVERCAVEITEMROOMS_MAX_REVIVE,     SHOW
+	db SILVER_CAVE_ITEM_ROOMS, SILVERCAVEITEMROOMS_FULL_RESTORE,   SHOW
+Route27HS:
+	db ROUTE_27, ROUTE27_TM_SOLARBEAM,    SHOW
+	db ROUTE_27, ROUTE27_RARE_CANDY,      SHOW
+Route26HS:
+	db ROUTE_26, ROUTE26_METAL_COAT,      SHOW
+	db ROUTE_26, ROUTE26_MAX_ELIXER,      SHOW
 ;SilphCo5FHS:
 ;	db SILPH_CO_5F, SILPHCO5F_ROCKET1,      SHOW
 ;	db SILPH_CO_5F, SILPHCO5F_SCIENTIST,    SHOW

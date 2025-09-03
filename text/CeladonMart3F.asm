@@ -82,9 +82,9 @@ _CeladonMart3FSportsGameText::
 	text "WAYNE GRETZKY's"
 	line "3D HOCKEY!"
 	
-	para "..."
+	para "…"
 	
-	para "...I guess Dad"
+	para "…I guess Dad"
 	line "would like that."
 	done
 

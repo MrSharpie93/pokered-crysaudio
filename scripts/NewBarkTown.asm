@@ -61,22 +61,24 @@ NewBarkTownPlayerMovingScript:
 
 NewBarkTown_TextPointers:
 	def_text_pointers
-;	dw_const NewBarkTownGirlText,             TEXT_NEWBARKTOWN_GIRL
-;	dw_const NewBarkTownFisherText,           TEXT_NEWBARKTOWN_FISHER
+	dw_const NewBarkTownCoolTrainerFText,     TEXT_NEWBARKTOWN_COOLTRAINER_F
+	dw_const NewBarkTownFisherText,           TEXT_NEWBARKTOWN_FISHER
 	dw_const NewBarkTownElmsLabSignText,      TEXT_NEWBARKTOWN_ELMSLAB_SIGN
 	dw_const NewBarkTownSignText,             TEXT_NEWBARKTOWN_SIGN
 	dw_const NewBarkTownPlayersHouseSignText, TEXT_NEWBARKTOWN_PLAYERSHOUSE_SIGN
 	dw_const NewBarkTownGoldsHouseSignText,   TEXT_NEWBARKTOWN_GOLDSHOUSE_SIGN
 	dw_const NewBarkTownElmsHouseSignText,    TEXT_NEWBARKTOWN_ELMSHOUSE_SIGN
+	dw_const NewBarkTownRoadworkText,         TEXT_NEWBARKTOWN_ROADWORK1
+	dw_const NewBarkTownRoadworkText,         TEXT_NEWBARKTOWN_ROADWORK2
 	dw_const NewBarkTownItsLockedText,        TEXT_NEWBARKTOWN_ITS_LOCKED
 
-;NewBarkTownGirlText:
-;	text_far _NewBarkTownGirlText
-;	text_end
+NewBarkTownCoolTrainerFText:
+	text_far _NewBarkTownCoolTrainerFText
+	text_end
 
-;NewBarkTownFisherText:
-;	text_far _NewBarkTownFisherText
-;	text_end
+NewBarkTownFisherText:
+	text_far _NewBarkTownFisherText
+	text_end
 
 NewBarkTownElmsLabSignText:
 	text_far _NewBarkTownElmsLabSignText
@@ -96,6 +98,10 @@ NewBarkTownGoldsHouseSignText:
 
 NewBarkTownElmsHouseSignText:
 	text_far _NewBarkTownElmsHouseSignText
+	text_end
+	
+NewBarkTownRoadworkText:
+	text_far _NewBarkTownRoadworkText
 	text_end
 	
 NewBarkTownItsLockedText:

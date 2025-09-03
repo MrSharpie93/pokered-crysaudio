@@ -97,10 +97,10 @@ _Museum1FScientist2YouDontHaveSpaceText::
 
 _Museum1FScientist3Text::
 	text "The secrets of"
-	line "space..."
+	line "space…"
 	
 	para "The mysteries of"
-	line "Earth..."
+	line "Earth…"
 	
 	para "We know so little"
 	line "about so much."
@@ -110,7 +110,7 @@ _Museum1FScientist3Text::
 	cont "more, not toss"
 	cont "in the towel."
 	
-	para "Earth, toss..."
+	para "Earth, toss…"
 	line "I have an idea!"
 	prompt
 

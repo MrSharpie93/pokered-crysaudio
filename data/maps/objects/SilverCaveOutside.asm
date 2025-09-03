@@ -6,6 +6,7 @@ SilverCaveOutside_Object:
 	warp_event  23, 19, SILVER_CAVE_POKECENTER, 1
 
 	def_bg_events
+	bg_event 24, 19, TEXT_SILVERCAVEOUTSIDE_POKECENTER_SIGN
 	bg_event 17, 13, TEXT_SILVERCAVEOUTSIDE_SIGN
 
 	def_object_events

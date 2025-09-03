@@ -82,7 +82,7 @@ _MrFujisHouseMrFujiPokedexText::
 	cont "Drawing!"
 
 	para "The application"
-	line "form is..."
+	line "form is…"
 
 	para "Gone! It's been"
 	line "clipped out!"

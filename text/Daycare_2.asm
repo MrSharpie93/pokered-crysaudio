@@ -63,8 +63,8 @@ MelanieText4::
 	text_end
 
 MelanieText5::
-	text "Oh..."
-	line "That's too bad...@"
+	text "Oh…"
+	line "That's too bad…@"
 	text_end
 	
 _MelanieText6::

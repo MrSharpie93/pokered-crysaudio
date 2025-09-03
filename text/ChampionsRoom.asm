@@ -1,11 +1,11 @@
 _ChampionsRoomRivalIntroText::
-	text "RED: ..."
+	text "RED: …"
 
-	para "...?"
+	para "…?"
 
-	para "..."
+	para "……"
 
-	para "...!"
+	para "…!"
 
 	para "!!"
 	done
@@ -13,17 +13,17 @@ _ChampionsRoomRivalIntroText::
 _RivalDefeatedText::
 	text "!!!"
 
-	para "..."
+	para "…"
 
-	para "......"
+	para "………"
 	prompt
 
 _RivalVictoryText::
-	text "..."
+	text "…"
 	prompt
 
 _ChampionsRoomRivalAfterBattleText::
-	text "......"
+	text "……………"
 	done
 
 _ChampionsRoomOakText::

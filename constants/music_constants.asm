@@ -74,6 +74,7 @@
 	const MUSIC_POSTGAME_ISLAND
 	const MUSIC_IMAKUNI
 	const MUSIC_BUG_CATCHING
+	const MUSIC_EMPTY_ROCKET_HQ
 DEF NUM_MUSIC_SONGS EQU const_value
 
 	const_def
@@ -178,6 +179,10 @@ DEF NUM_MUSIC_SONGS EQU const_value
 	const SFX_FAINT_FALL
 	const SFX_BATTLE_09
 	const SFX_POUND
+; ~$~ADDED: PureRGB SFX.~$~
+	const SFX_ACID_ARMOR
+	const SFX_ICE
+;;;
 	const SFX_BATTLE_0B
 	const SFX_BATTLE_0C
 	const SFX_BATTLE_0D
@@ -244,6 +249,12 @@ DEF NUM_MUSIC_SONGS EQU const_value
 	const SFX_RAGE
 	const SFX_SUPERSONIC
 	const SFX_FLASH
+	const SFX_YOU_SUCK
+	const SFX_GSC_DEX_80_109
+	const SFX_GSC_DEX_140_169
+	const SFX_GSC_DEX_170_199
+	const SFX_GSC_DEX_200_229
+	const SFX_GSC_DEX_230PLUS
 DEF NUM_SFX EQU const_value
 
 DEF SFX_STOP_ALL_MUSIC EQU $ff

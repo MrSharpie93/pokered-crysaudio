@@ -125,6 +125,9 @@ _FightingDojoHitmonchanPokeBallText::
 	done
 
 _FightingDojoBetterNotGetGreedyText::
-	text "Better not get"
-	line "greedy..."
+	text "Bad idea, unless"
+	line "your plan is to"
+	cont "get jumped by"
+	cont "several martial"
+	cont "artists…"
 	done

@@ -1,3 +1,7 @@
+	object_const_def
+	const_export SILVERCAVEITEMROOMS_MAX_REVIVE
+	const_export SILVERCAVEITEMROOMS_FULL_RESTORE
+
 SilverCaveItemRooms_Object:
 	db $19 ; border block
 
@@ -10,5 +14,7 @@ SilverCaveItemRooms_Object:
 	def_bg_events
 
 	def_object_events
+	object_event  6,  3, SPRITE_POKE_BALL, STAY, NONE, TEXT_SILVERCAVEITEMROOMS_MAX_REVIVE, MAX_REVIVE
+    object_event 15, 11, SPRITE_POKE_BALL, STAY, NONE, TEXT_SILVERCAVEITEMROOMS_FULL_RESTORE, FULL_RESTORE
 
 	def_warps_to SILVER_CAVE_ITEM_ROOMS

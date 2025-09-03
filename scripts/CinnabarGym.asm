@@ -217,20 +217,44 @@ CinnabarGymBlaineText:
 	jr nz, .afterBeat
 	call z, CinnabarGymReceiveTM38
 	call DisableWaitingAfterTextDisplay
-	jp TextScriptEnd
+	jr .done
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jp TextScriptEnd
+	jr .done
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
 	ld hl, .ReceivedVolcanoBadgeText
 	ld de, .BlaineVictoryText
 	call SaveEndBattleTextPointers
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	; call InitBattleEnemyParameters ; put this back if you mess up
+	; gym scaling spaghetti code begins here - remove initial parameters as we're making our own
+	ld a, OPP_BLAINE
+	ld [wCurOpponent], a
+	ld hl, wObtainedBadges ; Picking the team based on badge count. Need +1 so it loads the right team: remember, you're fighting for the badge! Thanks to Chatot4444 for the help.
+	ld b, 1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	inc a
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	;ends here
 	ld a, $7
 	ld [wGymLeaderNo], a
-	jp CinnabarGymStartBattleScript
+	xor a
+	ldh [hJoyHeld], a
+	ld a, SCRIPT_CINNABARGYM_BLAINE_POST_BATTLE
+	ld [wCinnabarGymCurScript], a
+.done
+	jp TextScriptEnd
 
 .PreBattleText:
 	text_far _CinnabarGymBlainePreBattleText

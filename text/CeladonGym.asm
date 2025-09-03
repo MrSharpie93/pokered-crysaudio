@@ -3,7 +3,7 @@ _CeladonGymErikaPreBattleText::
 	line "weather isn't it?"
 	cont "It's so pleasant."
 
-	para "...Oh dear..."
+	para "…Oh dear…"
 	line "I must have dozed"
 	cont "off. Welcome."
 
@@ -37,11 +37,11 @@ _CeladonGymErikaReceivedRainbowBadgeText::
 	prompt
 	
 _CeladonGymErikaVictoryText::
-	text "Oh..."
+	text "Oh…"
 	line "Is that all?"
 	
 	para "I fear I may doze"
-	line "off..."
+	line "off…"
 	prompt
 
 _CeladonGymErikaPostBattleAdviceText::
@@ -93,7 +93,7 @@ _TM21ExplanationText:: ;~$~CHANGED: Added extra line about TM from FRLG.~$~
 	done
 
 _CeladonGymTM21NoRoomText::
-	text "You should arrange" ; pun
+	text "Consider arranging" ; pun
 	line "space for this."
 	done
 
@@ -157,7 +157,7 @@ _CeladonGymAfterBattleText4:: ; ~$~CHANGED: Modified text to hint at fighting pe
 	
 	para "I wish someone"
 	line "would deal with"
-	cont "him..."
+	cont "him…"
 	done
 
 _CeladonGymBattleText5::
@@ -183,21 +183,20 @@ _CeladonGymAfterBattleText5::
 	done
 
 _CeladonGymBattleText6::
-	text "Don't bring any"
-	line "BUG or FIRE-type"
-	cont "#MON in here!"
+	text "Do you have a"
+	line "moment to discuss"
+	cont "our Lord and"
+	cont "Savior, BAABU?"
 	done
 
 _CeladonGymEndBattleText6::
-	text "Oh!"
-	line "You!"
+	text "How"
+	line "could you?"
 	prompt
 
 _CeladonGymAfterBattleText6::
-	text "Our LEADER, ERIKA,"
-	line "might be quiet,"
-	cont "but she's also"
-	cont "very skilled!"
+	text "Begone! I shun"
+	line "you, nonbeliever!"
 	done
 
 _CeladonGymBattleText7::

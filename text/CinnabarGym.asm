@@ -88,10 +88,10 @@ _CinnabarGymSuperNerd1EndBattleText::
 _CinnabarGymSuperNerd1AfterBattleText::
 	text "Fire, or to be"
 	line "more precise,"
-	cont "combustion..."
+	cont "combustion…"
 
 	para "Blah, blah, blah,"
-	line "blah..."
+	line "blah…"
 	done
 
 _CinnabarGymSuperNerd2BattleText::

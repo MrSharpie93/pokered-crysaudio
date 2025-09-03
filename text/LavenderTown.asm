@@ -5,7 +5,7 @@ _LavenderTownLittleGirlDoYouBelieveInGhostsText::
 
 _LavenderTownLittleGirlSoThereAreBelieversText::
 	text "Really? So there"
-	line "are believers..."
+	line "are believers…"
 	done
 
 _LavenderTownLittleGirlHaHaGuessNotText::
@@ -15,6 +15,8 @@ _LavenderTownLittleGirlHaHaGuessNotText::
 	para "That white hand"
 	line "on your shoulder,"
 	cont "it's not real."
+	
+	para "Or is it?"
 	done
 
 _LavenderTownCooltrainerMText::

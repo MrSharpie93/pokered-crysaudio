@@ -24,13 +24,15 @@ PlayPokedexRatingSfx::
 	jp PlayDefaultMusic
 
 PokedexRatingSfxPointers:
-	db SFX_DENIED,         0 ; BANK(SFX_Denied_1)
-	db SFX_POKEDEX_RATING, 0 ; BANK(SFX_Pokedex_Rating_1)
-	db SFX_GET_ITEM_1,     0 ; BANK(SFX_Get_Item1_1)
-	db SFX_CAUGHT_MON,     0 ; BANK(SFX_Caught_Mon)
-	db SFX_LEVEL_UP,       0 ; BANK(SFX_Level_Up)
-	db SFX_GET_KEY_ITEM,   0 ; BANK(SFX_Get_Key_Item_1)
-	db SFX_GET_ITEM_2,     0 ; BANK(SFX_Get_Item2_1)
+	db SFX_YOU_SUCK,           0 ; BANK(SFX_Denied_1)
+	db SFX_POKEDEX_RATING,     0 ; BANK(SFX_Pokedex_Rating_1)
+	db SFX_GET_ITEM_1,         0 ; BANK(SFX_Get_Item1_1)
+	db SFX_GSC_DEX_80_109,     0 ; BANK(SFX_Caught_Mon)
+	db SFX_GSC_DEX_140_169,    0 ; BANK(SFX_Level_Up)
+	db SFX_GSC_DEX_170_199,    0 ; BANK(SFX_Get_Key_Item_1)
+	db SFX_GSC_DEX_200_229,    0 ; BANK(SFX_Get_Item2_1)
+	db SFX_GSC_DEX_230PLUS,    0
+	db SFX_GSC_DEX_230PLUS,    0
 
 OwnedMonValues:
-	db 10, 40, 60, 90, 120, 150, $ff
+	db 20, 50, 80, 110, 140, 170, 200, 230, $ff

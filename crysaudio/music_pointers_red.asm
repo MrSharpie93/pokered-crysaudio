@@ -71,4 +71,5 @@ Music:
 	dba Music_GRDuelTheme1
 	dba Music_Imakuni
 	dba Music_BugCatchingContest
+	dba Music_EmptyRocketHideout
 	assert_table_length NUM_MUSIC_SONGS

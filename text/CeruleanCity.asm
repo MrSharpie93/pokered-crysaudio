@@ -164,22 +164,22 @@ _CeruleanCityCooltrainerF1SlowbroWithdrawText::
 
 _CeruleanCitySlowbroTookASnoozeText::
 	text "SLOWBRO took a"
-	line "snooze..."
+	line "snooze…"
 	done
 
 _CeruleanCitySlowbroIsLoafingAroundText::
 	text "SLOWBRO is"
-	line "loafing around..."
+	line "loafing around…"
 	done
 
 _CeruleanCitySlowbroTurnedAwayText::
 	text "SLOWBRO turned"
-	line "away..."
+	line "away…"
 	done
 
 _CeruleanCitySlowbroIgnoredOrdersText::
 	text "SLOWBRO"
-	line "ignored orders..."
+	line "ignored orders…"
 	done
 
 _CeruleanCityCooltrainerF2Text::

@@ -1,7 +1,7 @@
 _BillsHouseBillImNotAPokemonText::
 	text "Hiya! I'm a"
-	line "#MON..."
-	cont "...No I'm not!"
+	line "#MON…"
+	cont "…No I'm not!"
 
 	para "Call me BILL!"
 	line "I'm a true blue"
@@ -49,7 +49,7 @@ _BillsHouseBillThankYouText::
 	cont "That's a bummer."
 
 	para "I've got to thank"
-	line "you... Oh here,"
+	line "you… Oh here,"
 	cont "maybe this'll do."
 	prompt
 

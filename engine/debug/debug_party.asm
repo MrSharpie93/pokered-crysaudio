@@ -19,7 +19,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MISSINGNO, 45
 	db BLASTOISE, 60
 	db LAPRAS, 57
-	db TYROGUE, 5
+	db TYROGUE, 25
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -155,7 +155,7 @@ DebugSetPokedexEntries:
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	ld [hl], %01111111
+	ld [hl], %00001111
 	ret
 
 DebugItemsList:

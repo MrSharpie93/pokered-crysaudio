@@ -1,5 +1,5 @@
 _MrPsychicsHouseMrPsychicYouWantedThisText::
-	text "...Wait! Don't"
+	text "…Wait! Don't"
 	line "say a word!"
 
 	para "You wanted this!"
@@ -21,6 +21,6 @@ _MrPsychicsHouseMrPsychicTM29ExplanationText::
 	done
 
 _MrPsychicsHouseMrPsychicTM29NoRoomText::
-	text "Where do you plan"
-	line "to put this?"
+	text "I sense your"
+	line "bag is full."
 	done

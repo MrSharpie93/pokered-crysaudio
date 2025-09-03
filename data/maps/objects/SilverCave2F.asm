@@ -1,3 +1,8 @@
+	object_const_def
+	const_export SILVERCAVE2F_CALCIUM
+	const_export SILVERCAVE2F_ULTRA_BALL
+	const_export SILVERCAVE2F_PP_UP
+
 SilverCave2F_Object:
 	db $19 ; border block
 
@@ -11,5 +16,8 @@ SilverCave2F_Object:
 	def_bg_events
 
 	def_object_events
+	object_event 24, 10, SPRITE_POKE_BALL, STAY, NONE, TEXT_SILVERCAVE2F_CALCIUM, CALCIUM
+	object_event 22, 24, SPRITE_POKE_BALL, STAY, NONE, TEXT_SILVERCAVE2F_ULTRA_BALL, ULTRA_BALL
+	object_event  4, 20, SPRITE_POKE_BALL, STAY, NONE, TEXT_SILVERCAVE2F_PP_UP, PP_UP
 
 	def_warps_to SILVER_CAVE_2F

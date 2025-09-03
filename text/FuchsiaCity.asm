@@ -126,11 +126,11 @@ _SubstituteMoveTutorText::
 	line "substitute for"
 	cont "the baby, and"
 	cont "snuggle in the"
-	cont "mother's pouch..."
+	cont "mother's pouch…"
 	
 	para "But only #MON"
 	line "can use the move"
-	cont "SUBSTITUTE..."
+	cont "SUBSTITUTE…"
 	
 	para "Like yours!"
 	prompt

@@ -516,11 +516,18 @@ HandlePoisonBurnLeechSeed:
 	and 1 << BRN
 	jr z, .poisoned
 	ld hl, HurtByBurnText
-.poisoned
+.poisoned ; ~$~ADDED: PureRGB burn animation.~$~
+	push de
 	call PrintText
+	pop de
 	xor a
 	ld [wAnimationType], a
-	ld a, BURN_PSN_ANIM
+	ld a, [de]
+	and 1 << BRN
+	ld a, PSN_ANIM
+	jr z, .doAnim
+	ld a, BURN_ANIM
+.doAnim ;;;
 	call PlayAltAnimation   ; play burn/poison animation
 	pop hl
 	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
@@ -569,7 +576,7 @@ HandlePoisonBurnLeechSeed:
 	call PrintText
 	xor a
 	ld [wAnimationType], a
-	ld a, BURN_PSN_ANIM
+	ld a, PSN_ANIM
 	call PlayAltAnimation   ; play burn/poison animation
 	pop hl
 	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
@@ -6335,7 +6342,7 @@ CheckEnemyStatusConditions:
 	call PrintText
 	xor a
 	ld [wAnimationType], a
-	ld a, CONF_ANIM
+	ld a, CONF_PLAYER_ANIM ; This anim used for both sides now.~$~
 	call PlayAltAnimation
 	call BattleRandom
 	cp $80

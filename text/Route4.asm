@@ -33,15 +33,15 @@ _Route4SignText::
 	line "MT.MOON -"
 	cont "CERULEAN CITY"
 	
-	para "..."
+	para "…"
 	
 	para "There's something"
 	line "scribbled on the"
 	cont "sign:"
 	
-	para "‘BLUE was"
+	para "“BLUE was"
 	line "here! RED"
-	cont "is a loser!’"
+	cont "is a loser!”"
 	done
 	
 _MegaPunchGuyText::
