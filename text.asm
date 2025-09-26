@@ -300,4 +300,7 @@ INCLUDE "text/MtMoonSquare.asm"
 INCLUDE "text/MtMoonSquareShop.asm"
 INCLUDE "text/TohjoFalls.asm"
 INCLUDE "text/SilverCave3F.asm"
+INCLUDE "text/SummerBeachHouse.asm"
+INCLUDE "text/Route28SteelWingHouse.asm"
+INCLUDE "text/PlayersHouse.asm"
 

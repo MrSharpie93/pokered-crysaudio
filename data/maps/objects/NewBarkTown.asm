@@ -1,12 +1,14 @@
 	object_const_def
 	const_export NEWBARKTOWN_COOLTRAINER_F
 	const_export NEWBARKTOWN_FISHER
+	const_export NEWBARKTOWN_FERRYMAN
+	const_export NEWBARKTOWN_LAPRAS
 
 NewBarkTown_Object:
 	db $05 ; border block
 
 	def_warp_events
-	warp_event  3, 11, REDS_HOUSE_1F, 1 ; player house
+	warp_event  3, 11, PLAYERS_HOUSE, 1 ; player house
 
 	def_bg_events
 	bg_event  3,  3, TEXT_NEWBARKTOWN_ELMSLAB_SIGN
@@ -20,5 +22,7 @@ NewBarkTown_Object:
 	def_object_events
 	object_event  6,  8, SPRITE_COOLTRAINER_F, WALK, ANY_DIR, TEXT_NEWBARKTOWN_COOLTRAINER_F
 	object_event 12,  9, SPRITE_FISHER, WALK, UP_DOWN, TEXT_NEWBARKTOWN_FISHER
+	object_event 17,  7, SPRITE_FISHER, STAY, LEFT, TEXT_NEWBARKTOWN_FERRYMAN
+	object_event 18,  7, SPRITE_LAPRAS, STAY, LEFT, TEXT_NEWBARKTOWN_LAPRAS
 
 	def_warps_to NEW_BARK_TOWN

@@ -97,8 +97,8 @@ MoveEffectPointerTable:
 	dw CosmicPowerEffect         ; COSMIC_POWER_EFFECT
 	dw RecoilStatusEffect        ; RECOIL_STATUS_EFFECT
 	dw DynamicPunchEffect        ; DYNAMICPUNCH_EFFECT
-	dw ParalyzeEffect            ; ZAP_CANNON_EFFECT
-	dw BurnEffect                ; INFERNO_EFFECT
+	dw FreezeBurnParalyzeEffect  ; ZAP_CANNON_EFFECT
+	dw FreezeBurnParalyzeEffect  ; INFERNO_EFFECT
 	dw FangEffect                ; FIRE_FANG_EFFECT
 	dw FangEffect                ; ICE_FANG_EFFECT
 	dw FangEffect                ; THUNDER_FANG_EFFECT

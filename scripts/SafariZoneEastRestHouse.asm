@@ -7,6 +7,7 @@ SafariZoneEastRestHouse_TextPointers:
 	dw_const SafariZoneEastRestHouseScientistText,    TEXT_SAFARIZONEEASTRESTHOUSE_SCIENTIST
 	dw_const SafariZoneEastRestHouseRockerText,       TEXT_SAFARIZONEEASTRESTHOUSE_ROCKER
 	dw_const SafariZoneEastRestHouseSilphWorkerMText, TEXT_SAFARIZONEEASTRESTHOUSE_SILPH_WORKER_M
+	dw_const SafariZoneEastRestHouseDetailsText,      TEXT_SAFARIZONEEASTRESTHOUSE_DETAILS
 
 SafariZoneEastRestHouseScientistText:
 	text_far _SafariZoneEastRestHouseScientistText
@@ -18,4 +19,10 @@ SafariZoneEastRestHouseRockerText:
 
 SafariZoneEastRestHouseSilphWorkerMText:
 	text_far _SafariZoneEastRestHouseSilphWorkerMText
+	text_end
+	
+SafariZoneEastRestHouseDetailsText:
+	text_far _SafariZoneRestHousePosterText
+	text_end
+	text_far _SafariZoneEastRestHouseDetailsText
 	text_end

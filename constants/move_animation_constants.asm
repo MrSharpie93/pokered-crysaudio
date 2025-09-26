@@ -109,8 +109,8 @@ DEF FIRST_SE_ID EQU const_value
 	const SUBANIM_3_BELL ; was SUBANIM_0_CIRCLE_1_SQUARE_APPEARS
 	const SUBANIM_0_STATUS_SLEEP
 	const SUBANIM_0_STATUS_SLEEP_ENEMY
-	const SUBANIM_0_WATER_1_FIRE_BARRIER ; unused
-	const SUBANIM_0_WATER_1_FIRE_GEYSER ; unused
+	const SUBANIM_0_WATER_1_FIRE_BARRIER ; now used
+	const SUBANIM_3_MEGAHORN ; was SUBANIM_0_WATER_1_FIRE_GEYSER
 	const SUBANIM_1_STAR_BIG_TOSS
 	const SUBANIM_1_STARS_SMALL_TOSS
 	const SUBANIM_1_MUSIC_CIRCLING_ENEMY
@@ -144,9 +144,15 @@ DEF FIRST_SE_ID EQU const_value
 	const SUBANIM_0_PIN_JAB
 	const SUBANIM_0_PIN_MISSILE
 	const SUBANIM_0_BARB_JAB
+	const SUBANIM_3_BONE_TOSS
+	const SUBANIM_3_BONE_RECOVER
 ;;;
 ; ~$~ ADDED: Animations I made.~$~
 	const SUBANIM_3_FOOT
+	const SUBANIM_3_FANGS
+	const SUBANIM_3_GEM_RISES
+	const SUBANIM_3_EVIL_EYE
+	const SUBANIM_0_STRING_SHOT2
 ;;;
 DEF NUM_SUBANIMS EQU const_value
 
@@ -284,7 +290,15 @@ DEF NUM_SUBANIMS EQU const_value
 	const FRAMEBLOCK_77
 	const FRAMEBLOCK_78
 	const FRAMEBLOCK_79
-	const FRAMEBLOCK_7A ; ~$~ ADDED: Improved animations from PureRGB.~$~
+ ; ~$~ ADDED: Improved animations from PureRGB.~$~
+	const FRAMEBLOCK_7A
+	const FRAMEBLOCK_7B
+	const FRAMEBLOCK_7C
+;;;
+	const FRAMEBLOCK_7D
+	const FRAMEBLOCK_7E
+	const FRAMEBLOCK_7F
+	const FRAMEBLOCK_80
 DEF NUM_FRAMEBLOCKS EQU const_value
 
 ; base coordinates that are part of subanimations

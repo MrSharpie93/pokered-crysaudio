@@ -303,9 +303,9 @@ _LiftKeyDescription::
 	next "the ROCKET base."
 	prompt
 
-_ExpAllDescription::
-	text "Shares battle EXP."
-	next "points."
+_SuperHotTeaDescription::
+	text "Scorchingly hot,"
+	next "but smells great."
 	prompt
 
 _OldRodDescription::

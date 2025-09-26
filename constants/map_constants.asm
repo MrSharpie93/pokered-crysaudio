@@ -98,10 +98,10 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const DAYCARE,                        4,  4 ; $4C
 	map_const ROUTE_6_GATE,                   4,  3 ; $4D
 	map_const UNDERGROUND_PATH_ROUTE_6,       4,  4 ; $4E
-	map_const UNDERGROUND_PATH_ROUTE_6_COPY,  4,  4 ; $4F
+	map_const PLAYERS_HOUSE,                  5,  4 ; $4F ; was UNDERGROUND_PATH_ROUTE_6_COPY
 	map_const ROUTE_7_GATE,                   3,  4 ; $50
 	map_const UNDERGROUND_PATH_ROUTE_7,       4,  4 ; $51
-	map_const UNDERGROUND_PATH_ROUTE_7_COPY,  4,  4 ; $52
+	map_const BILLS_GARDEN,                  14, 12 ; $52 ; was UNDERGROUND_PATH_ROUTE_7_COPY
 	map_const ROUTE_8_GATE,                   3,  4 ; $53
 	map_const UNDERGROUND_PATH_ROUTE_8,       4,  4 ; $54
 	map_const ROCK_TUNNEL_POKECENTER,         7,  4 ; $55
@@ -111,7 +111,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const DIGLETTS_CAVE_ROUTE_11,         4,  4 ; $59
 	map_const ROUTE_11_GATE_2F,               4,  4 ; $5A
 	map_const ROUTE_12_GATE_1F,               5,  4 ; $5B
-	map_const BILLS_HOUSE,                    4,  4 ; $5C
+	map_const BILLS_HOUSE,                    7,  4 ; $5C MODIFIED
 	map_const VERMILION_POKECENTER,           7,  4 ; $5D
 	map_const POKEMON_FAN_CLUB,               4,  4 ; $5E
 	map_const VERMILION_MART,                 4,  4 ; $5F
@@ -196,7 +196,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CINNABAR_LAB_FOSSIL_ROOM,       4,  4 ; $AE
 	map_const CINNABAR_POKECENTER,            7,  4 ; $AF
 	map_const CINNABAR_MART,                  4,  4 ; $B0
-	map_const CINNABAR_MART_COPY,             4,  4 ; $B1
+	map_const ROUTE_28_STEEL_WING_HOUSE,      4,  4 ; $B1 ; was CINNABAR_MART_COPY
 	map_const INDIGO_PLATEAU_LOBBY,           8,  6 ; $B2
 	map_const COPYCATS_HOUSE_1F,              4,  4 ; $B3
 	map_const COPYCATS_HOUSE_2F,              4,  4 ; $B4
@@ -244,11 +244,11 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const SAFARI_ZONE_NORTH,             20, 18 ; $DA
 	map_const SAFARI_ZONE_WEST,              15, 13 ; $DB
 	map_const SAFARI_ZONE_CENTER,            15, 13 ; $DC
-	map_const SAFARI_ZONE_CENTER_REST_HOUSE,  4,  4 ; $DD
+	map_const SAFARI_ZONE_CENTER_REST_HOUSE,  5,  4 ; $DD
 	map_const SAFARI_ZONE_SECRET_HOUSE,       4,  4 ; $DE
-	map_const SAFARI_ZONE_WEST_REST_HOUSE,    4,  4 ; $DF
-	map_const SAFARI_ZONE_EAST_REST_HOUSE,    4,  4 ; $E0
-	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   4,  4 ; $E1
+	map_const SAFARI_ZONE_WEST_REST_HOUSE,    5,  4 ; $DF
+	map_const SAFARI_ZONE_EAST_REST_HOUSE,    5,  4 ; $E0
+	map_const SAFARI_ZONE_NORTH_REST_HOUSE,   5,  4 ; $E1
 	map_const CERULEAN_CAVE_2F,              15,  9 ; $E2
 	map_const CERULEAN_CAVE_B1F,             15,  9 ; $E3
 	map_const CERULEAN_CAVE_1F,              15,  9 ; $E4
@@ -256,7 +256,7 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const CERULEAN_BADGE_HOUSE,           4,  4 ; $E6
 	map_const SILVER_CAVE_POKECENTER,         7,  4 ; $E7
 	map_const ROCK_TUNNEL_B1F,               20, 18 ; $E8
-	map_const SILPH_CO_9F,                   13,  9 ; $E9 ; REPLACE
+	map_const HIDDEN_FOREST,                 12,  8 ; $E9 ; was SILPH_CO_9F
 	map_const SILPH_CO_10F,                   8,  9 ; $EA ; REPLACE
 	map_const SILPH_CO_11F,                   9,  9 ; $EB ; REPLACE
 	map_const SILPH_CO_ELEVATOR,              2,  2 ; $EC ; REPLACE
@@ -271,8 +271,16 @@ DEF FIRST_INDOOR_MAP EQU const_value
 	map_const LORELEIS_ROOM,                  5,  6 ; $F5
 	map_const BRUNOS_ROOM,                    5,  6 ; $F6
 	map_const AGATHAS_ROOM,                   5,  6 ; $F7
+	map_const SUMMER_BEACH_HOUSE,             7,  4 ; $F8
 DEF NUM_MAPS EQU const_value
 
 ; Indoor maps, such as houses, use this as the Map ID in their exit warps
 ; This map ID takes the player back to the last outdoor map they were on, stored in wLastMap
 DEF LAST_MAP EQU -1
+
+DEF NUM_FLY_LOCATIONS EQU NUM_CITY_MAPS + 3
+
+	const_def NUM_CITY_MAPS
+	const FLYLOC_ROUTE_4_CENTER
+	const FLYLOC_ROUTE_10_CENTER
+	const FLYLOC_SILVER_CAVE_CENTER

@@ -1,28 +1,15 @@
 Route8WildMons:
 	def_grass_wildmons 15 ; encounter rate
-	db 18, PIDGEY
-IF DEF(_RED)
-	db 18, MANKEY
-	db 17, EKANS
-	db 16, GROWLITHE
-	db 20, PIDGEY
-	db 20, MANKEY
-	db 19, EKANS
-	db 17, GROWLITHE
-	db 15, GROWLITHE
-	db 18, GROWLITHE
-ENDC
-IF DEF(_BLUE)
-	db 18, MEOWTH
-	db 17, SANDSHREW
-	db 16, VULPIX
-	db 20, PIDGEY
-	db 20, MEOWTH
-	db 19, SANDSHREW
-	db 17, VULPIX
-	db 15, VULPIX
-	db 18, VULPIX
-ENDC
+	db  5, PIDGEOTTO  ; 19.9%
+	db  5, SKIPLOOM   ; 19.9%
+	db  4, JIGGLYPUFF ; 15.2%
+	db  3, GROWLITHE  ;  9.8%
+	db  3, MIME_JR    ;  9.8%
+	db  2, GROWLITHE  ;  9.8%
+	db  2, MIME_JR    ;  5.1%
+	db  5, ABRA       ;  5.1%
+	db  4, ABRA       ;  4.3%
+	db  3, ABRA       ;  1.2%
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

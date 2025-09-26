@@ -2261,7 +2261,7 @@ IsCryMove: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	jr z, .CryMove
 	cp HOWL
 	jr z, .CryMove
-	cp DISARM_VOICE ; ~$~ADDED~$~
+	cp HYPER_VOICE ; ~$~ADDED~$~
 	jr z, .CryMove
 	and a ; clear carry
 	ret

@@ -1996,7 +1996,7 @@ CollisionCheckOnWater::
 	jr z, .checkIfVermilionDockTileset
 	cp $48 ; tile on right on coast lines in Safari Zone
 	jr z, .noCollision ; keep surfing
-	cp $3D ; tile on right on coast lines in Johto
+	cp $43 ; tile on right on coast lines in Johto
 	jr z, .noCollision ; keep surfing
 ; check if the [land] tile in front of the player is passable
 .checkIfNextTileIsPassable

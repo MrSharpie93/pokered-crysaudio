@@ -1,15 +1,15 @@
 Route16WildMons:
 	def_grass_wildmons 25 ; encounter rate
-	db 20, SPEAROW
-	db 22, SPEAROW
-	db 18, RATTATA
-	db 20, DODUO
-	db 20, RATTATA
-	db 18, DODUO
-	db 22, DODUO
-	db 22, RATTATA
-	db 23, RATICATE
-	db 25, RATICATE
+	db  5, FEAROW    ; 19.9%
+	db  3, DODUO     ; 19.9%
+	db  5, RATICATE  ; 15.2%
+	db  3, MURKROW   ;  9.8%
+	db  3, GRIMER    ;  9.8%
+	db  3, PONYTA    ;  9.8%
+	db  2, MURKROW   ;  5.1%
+	db  2, GRIMER    ;  5.1%
+	db  4, DODUO     ;  4.3%
+	db  2, DODUO     ;  1.2%
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

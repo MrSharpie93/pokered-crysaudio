@@ -7,51 +7,51 @@ RedsHouse1F_TextPointers:
 	dw_const RedsHouse1FTVText,  TEXT_REDSHOUSE1F_TV
 
 RedsHouse1FMomText:
-	text_asm
-	ld a, [wStatusFlags4]
-	bit BIT_GOT_STARTER, a
-	jr nz, .heal
-	ld hl, .WakeUpText
-	call PrintText
-	jr .done
-.heal
-	call RedsHouse1FMomHealScript
-.done
-	jp TextScriptEnd
-
-.WakeUpText:
+;	text_asm
+;	ld a, [wStatusFlags4]
+;	bit BIT_GOT_STARTER, a
+;	jr nz, .heal
+;	ld hl, .WakeUpText
+;	call PrintText
+;	jr .done
+;.heal
+;	call RedsHouse1FMomHealScript
+;.done
+;	jp TextScriptEnd
+;
+;.WakeUpText:
 	text_far _RedsHouse1FMomWakeUpText
 	text_end
 
-RedsHouse1FMomHealScript:
-	ld hl, RedsHouse1FMomYouShouldRestText
-	call PrintText
-	call GBFadeOutToWhite
-	call ReloadMapData
-	predef HealParty
-	ld a, MUSIC_PKMN_HEALED
-;	ld [wNewSoundID], a
-	call PlayMusic
+; RedsHouse1FMomHealScript:
+	; ld hl, RedsHouse1FMomYouShouldRestText
+	; call PrintText
+	; call GBFadeOutToWhite
+	; call ReloadMapData
+	; predef HealParty
+	; ld a, MUSIC_PKMN_HEALED
+; ;	ld [wNewSoundID], a
+	; call PlayMusic
 
-	call WaitForSongToFinish
-;.next
-;	ld a, [wChannelSoundIDs]
-;	cp MUSIC_PKMN_HEALED
-;	jr z, .next
+	; call WaitForSongToFinish
+; ;.next
+; ;	ld a, [wChannelSoundIDs]
+; ;	cp MUSIC_PKMN_HEALED
+; ;	jr z, .next
 
-	ld a, [wMapMusicSoundID]
-;	ld [wNewSoundID], a
-	call PlayMusic
-	call GBFadeInFromWhite
-	ld hl, RedsHouse1FMomLookingGreatText
-	jp PrintText
+	; ld a, [wMapMusicSoundID]
+; ;	ld [wNewSoundID], a
+	; call PlayMusic
+	; call GBFadeInFromWhite
+	; ld hl, RedsHouse1FMomLookingGreatText
+	; jp PrintText
 
-RedsHouse1FMomYouShouldRestText:
-	text_far _RedsHouse1FMomYouShouldRestText
-	text_end
-RedsHouse1FMomLookingGreatText:
-	text_far _RedsHouse1FMomLookingGreatText
-	text_end
+; RedsHouse1FMomYouShouldRestText:
+	; text_far _RedsHouse1FMomYouShouldRestText
+	; text_end
+; RedsHouse1FMomLookingGreatText:
+	; text_far _RedsHouse1FMomLookingGreatText
+	; text_end
 
 RedsHouse1FTVText:
 	text_asm

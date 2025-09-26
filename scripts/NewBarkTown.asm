@@ -8,6 +8,7 @@ NewBarkTown_ScriptPointers:
 	def_script_pointers
 	dw_const NewBarkTownDefaultScript,                SCRIPT_NEWBARKTOWN_DEFAULT
 	dw_const NewBarkTownPlayerMovingScript,           SCRIPT_NEWBARKTOWN_PLAYER_MOVING
+	dw_const NewBarkTownWarpToPalletTownScript,       SCRIPT_NEWBARKTOWN_WARP_TO_PALLET_TOWN
 
 NewBarkTownDefaultScript:
 	ld a, [wYCoord]
@@ -58,11 +59,31 @@ NewBarkTownPlayerMovingScript:
 	ld a, SCRIPT_NEWBARKTOWN_DEFAULT
 	ld [wNewBarkTownCurScript], a
 	ret
+	
+NewBarkTownWarpToPalletTownScript:
+	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
+	ld a, SPRITE_FACING_UP
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld a, PALLET_TOWN
+	ldh [hWarpDestinationMap], a
+	ld a, $3
+	ld [wDestinationWarpID], a
+	xor a
+	ld [wLastMap], a
+	ld hl, wStatusFlags3
+	set BIT_WARP_FROM_CUR_SCRIPT, [hl]
+	ld [wJoyIgnore], a;ld a, SCRIPT_NEWBARKTOWN_DEFAULT
+	ld [wNewBarkTownCurScript], a
+	ld [wCurMapScript], a
+	ret
 
 NewBarkTown_TextPointers:
 	def_text_pointers
 	dw_const NewBarkTownCoolTrainerFText,     TEXT_NEWBARKTOWN_COOLTRAINER_F
 	dw_const NewBarkTownFisherText,           TEXT_NEWBARKTOWN_FISHER
+	dw_const NewBarkTownFerrymanText,         TEXT_NEWBARKTOWN_FERRYMAN
+	dw_const NewBarkTownLaprasText,           TEXT_NEWBARKTOWN_LAPRAS
 	dw_const NewBarkTownElmsLabSignText,      TEXT_NEWBARKTOWN_ELMSLAB_SIGN
 	dw_const NewBarkTownSignText,             TEXT_NEWBARKTOWN_SIGN
 	dw_const NewBarkTownPlayersHouseSignText, TEXT_NEWBARKTOWN_PLAYERSHOUSE_SIGN
@@ -78,6 +99,24 @@ NewBarkTownCoolTrainerFText:
 
 NewBarkTownFisherText:
 	text_far _NewBarkTownFisherText
+	text_end
+	
+NewBarkTownFerrymanText:
+	text_asm
+	ld hl, .FerryToPalletTownText
+	call PrintText
+	ld a, SCRIPT_NEWBARKTOWN_WARP_TO_PALLET_TOWN
+	ld [wNewBarkTownCurScript], a
+	ld [wCurMapScript], a
+	jp TextScriptEnd
+
+.FerryToPalletTownText
+	text_far _NewBarkTownFerrymanText
+	text_end
+
+NewBarkTownLaprasText:
+	text_far _NewBarkTownLaprasText
+	sound_cry_lapras
 	text_end
 
 NewBarkTownElmsLabSignText:

@@ -11,7 +11,7 @@ FuchsiaCity_TextPointers:
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_VOLTORB
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_KANGASKHAN
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_SLOWPOKE
-	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_LAPRAS
+	dw_const FuchsiaCityLaprasText,          TEXT_FUCHSIACITY_LAPRAS
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_FOSSIL
 	dw_const SubstituteMoveTutorText,        TEXT_FUCHSIACITY_MOVE_TUTOR
 	dw_const FuchsiaCitySignText,            TEXT_FUCHSIACITY_SIGN1
@@ -169,4 +169,9 @@ FuchsiaCityFossilSignText:
 
 .UndeterminedText:
 	text_far _FuchsiaCityFossilSignUndeterminedText
+	text_end
+	
+FuchsiaCityLaprasText:
+	text_far _NewBarkTownLaprasText
+	sound_cry_lapras
 	text_end

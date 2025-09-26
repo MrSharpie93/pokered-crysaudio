@@ -167,7 +167,7 @@ PewterGymTM34NoRoomText:
 
 PewterGymBrockReceivedBoulderBadgeText:
 	text_far _PewterGymBrockReceivedBoulderBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
 	text_far _PewterGymBrockBoulderBadgeInfoText ; Text to tell that the flash technique can be used
 	text_end
 	

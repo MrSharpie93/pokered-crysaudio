@@ -187,7 +187,7 @@ AIMoveChoiceModification1:
 	jp z, .checkLightScreenUp
 	cp REFLECT_EFFECT
 	jp z, .checkReflectUp
-	cp SAFEGUARD_EFFECT
+	cp SAFEGUARD_EFFECT ; ~$~ADDED~$~
 	jp z, .checkSafeguardUp
 	cp MIST_EFFECT
 	jp z, .checkMistUp
@@ -197,6 +197,8 @@ AIMoveChoiceModification1:
 	jp z, .checkFullHealth
 	cp MIRROR_MOVE_EFFECT
 	jp z, .checkNoMirrorMoveOnFirstTurn
+	cp TRAPPING_EFFECT ; ~$~ADDED~$~
+	jp z, .checkTrappingOnGhosts
 	ld a, [wEnemyMoveEffect]
 	push hl
 	push de
@@ -209,6 +211,11 @@ AIMoveChoiceModification1:
 	pop hl
 	jr nc, .nextMove
 .checkStatusImmunity
+ ; ~$~ADDED~$~
+	ld a, [wPlayerBattleStatus3]
+	bit HAS_SAFEGUARD_UP, a
+	jr nz, .discourage ; if the player has a safeguard up dont try to inflict status
+;;;
 	call CheckStatusImmunity
 	jr c, .discourage
 .notImmune
@@ -218,10 +225,10 @@ AIMoveChoiceModification1:
 					   ; even if the player heals the status or switches out that turn
 	ld a, [wAIMoveSpamAvoider] ; set if we switched or healed this turn
 	cp 2 ; set to 2 if we switched
-	jr z, .nextMove ; if the AI thinks the player DOESNT have a status before they switch, we should avoid discouraging status moves
+	jp z, .nextMove ; if the AI thinks the player DOESNT have a status before they switch, we should avoid discouraging status moves
 	ld a, [wBattleMonStatus]
 	and a
-	jr z, .nextMove ; no need to discourage status moves if the player doesn't have a status
+	jp z, .nextMove ; no need to discourage status moves if the player doesn't have a status
 .discourage
 	ld a, [hl]
 	add $5 ; heavily discourage move
@@ -260,11 +267,13 @@ AIMoveChoiceModification1:
 	bit HAS_REFLECT_UP, a
 	jr nz, .discourage ; if the enemy has a reflect up dont use the move again
 	jp .nextMove
+; ~$~ADDED~$~
 .checkSafeguardUp
 	ld a, [wEnemyBattleStatus3]
 	bit HAS_SAFEGUARD_UP, a
 	jr nz, .discourage ; if the enemy has a safeguard up dont use the move again
 	jp .nextMove
+;;;
 .checkMistUp
 	ld a, [wEnemyBattleStatus2]
 	bit PROTECTED_BY_MIST, a
@@ -304,6 +313,11 @@ AIMoveChoiceModification1:
 	and a
 	jp z, .discourage ; don't use mirror move if the player has never selected a move yet
 	jp .nextMove
+ ; ~$~ADDED~$~
+ .checkTrappingOnGhosts
+	call CheckGhost
+	jp nc, .nextMove
+	jp .discourage
 
 StatusAilmentMoveEffects:
 	db BURN_EFFECT
@@ -399,6 +413,31 @@ WillOHKOMoveAlwaysFail: ; ~$~TODO: This should be changed to reflect OHKO moves 
 	scf
 	ret
 ;;;;;;;;;;
+
+; ~$~ ADDED: Function based on CheckSeeded for checking if the player is a Ghost-type, and thus cannot be trapped.~$~
+CheckGhost:
+	push hl
+	ld a, [wAIMoveSpamAvoider]
+	cp 2 ; set to 2 if we switched out this turn
+	ld hl, wBattleMonType1
+	jr nz, .noSwitchOut
+	ld hl, wAITargetMonType1 ; stores what the AI thinks the player's type is when a switchout happens
+.noSwitchOut	
+	ld a, [hl]
+	cp GHOST
+	jr z, .discourage ; Ghost-types cannot be inflicted with the trap condition
+	inc hl
+	ld a, [hl]
+	cp GHOST
+	jr z, .discourage ; Ghost-types cannot be inflicted with the trap condition
+	pop hl
+	and a
+	ret
+.discourage
+	pop hl
+	scf
+	ret	
+;;;
 
 ; PureRGBnote: CHANGED: AKA the "Boost stats on the first turn" subroutine
 ; slightly encourage moves with specific effects on the first turn. (PureRGBnote: FIXED: used to be the second turn, made it first turn)

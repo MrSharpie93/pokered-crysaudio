@@ -131,4 +131,5 @@ SFX:
 	dba Sfx_DexFanfare170199
 	dba Sfx_DexFanfare200229
 	dba Sfx_DexFanfare230Plus
+	dba Sfx_Attract
 	assert_table_length NUM_SFX

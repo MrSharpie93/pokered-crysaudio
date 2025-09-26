@@ -1,45 +1,45 @@
-_OaksLabRivalGrampsIsntAroundText::
-	text "<RIVAL>: Yo"
-	line "<PLAYER>! Gramps"
-	cont "isn't around!"
-	done
+;_OaksLabRivalGrampsIsntAroundText::
+;	text "<RIVAL>: Yo"
+;	line "<PLAYER>! Gramps"
+;	cont "isn't around!"
+;	done
 
-_OaksLabRivalGoAheadAndChooseText::
-	text "<RIVAL>: Heh, I"
-	line "don't need to be"
-	cont "greedy like you!"
+;_OaksLabRivalGoAheadAndChooseText::
+;	text "<RIVAL>: Heh, I"
+;	line "don't need to be"
+;	cont "greedy like you!"
+;
+;	para "Go ahead and"
+;	line "choose, <PLAYER>!"
+;	done
 
-	para "Go ahead and"
-	line "choose, <PLAYER>!"
-	done
+;_OaksLabRivalMyPokemonLooksStrongerText::
+;	text "<RIVAL>: My"
+;	line "#MON looks a"
+;	cont "lot stronger."
+;	done
 
-_OaksLabRivalMyPokemonLooksStrongerText::
-	text "<RIVAL>: My"
-	line "#MON looks a"
-	cont "lot stronger."
-	done
-
-_OaksLabThoseArePokeBallsText::
-	text "Those are #"
-	line "BALLs. They"
-	cont "contain #MON!"
-	done
+;_OaksLabThoseArePokeBallsText::
+;	text "Those are #"
+;	line "BALLs. They"
+;	cont "contain #MON!"
+;	done
 
 _OaksLabYouWantCharmanderText::
-	text "So! You want the"
-	line "fire #MON,"
+	text "You'll take the"
+	line "FIRE #MON,"
 	cont "CHARMANDER?"
 	done
 
 _OaksLabYouWantSquirtleText::
-	text "So! You want the"
-	line "water #MON,"
+	text "You'll take the"
+	line "WATER #MON,"
 	cont "SQUIRTLE?"
 	done
 
 _OaksLabYouWantBulbasaurText::
-	text "So! You want the"
-	line "plant #MON,"
+	text "You'll take the"
+	line "GRASS #MON,"
 	cont "BULBASAUR?"
 	done
 
@@ -54,16 +54,22 @@ _OaksLabReceivedMonText::
 	text_ram wNameBuffer
 	text "!@"
 	text_end
+	
+_OaksLabNoOtherChoiceText::
+	text "Erm… There aren't"
+	line "any other options…"
+	prompt
 
+_OaksLabThoseArePokeBallsText::
 _OaksLabLastMonText::
-	text "That's PROF.OAK's"
-	line "last #MON!"
+	text "Oh no, what'd I"
+	line "screw up now?"
 	done
 
 _OaksLabOak1WhichPokemonDoYouWantText::
-	text "OAK: Now, <PLAYER>,"
-	line "which #MON do"
-	cont "you want?"
+	text "OAK: Sorry again,"
+	line "<PLAYER>, but this"
+	cont "is all that's left."
 	done
 
 _OaksLabOak1YourPokemonCanFightText::
@@ -82,8 +88,9 @@ _OaksLabOak1RaiseYourYoungPokemonText::
 
 _OaksLabOak1DeliverParcelText::
 	text "OAK: Oh, <PLAYER>!"
+	line "Back so soon?"
 
-	para "How is my old"
+	para "How is your"
 	line "#MON?"
 
 	para "Well, it seems to"
@@ -102,11 +109,11 @@ _OaksLabOak1DeliverParcelText::
 
 _OaksLabOak1ParcelThanksText::
 	text_start
-	para "Ah! This is the"
-	line "custom # BALL"
-	cont "I ordered!"
+	para "Ah! It's my order"
+	line "from the #MON"
+	cont "RESEARCHER CLUB!"
 	cont "Thank you!"
-	done
+	prompt
 
 _OaksLabOak1PokemonAroundTheWorldText::
 	text "#MON around the"
@@ -115,17 +122,20 @@ _OaksLabOak1PokemonAroundTheWorldText::
 	done
 
 _OaksLabOak1ReceivedPokeballsText::
-	text "OAK: You can't get"
-	line "detailed data on"
-	cont "#MON by just"
-	cont "seeing them."
+	text "OAK: Wait, didn't"
+	line "they already send"
+	cont "this month's"
+	cont "supply?"
 
-	para "You must catch"
-	line "them! Use these"
-	cont "to capture wild"
-	cont "#MON."
+	para "There must have"
+	line "been a mistake…"
+	
+	para "Here <PLAYER>!"
+	line "Take some of these"
+	cont "extra # BALLs"
+	cont "off my hands!"
 
-	para "<PLAYER> got 5"
+	para "<PLAYER> got 10"
 	line "# BALLs!@"
 	text_end
 
@@ -170,9 +180,9 @@ _OaksLabPokedexText::
 	cont "pages are blank!"
 	done
 
-_OaksLabOak2Text::
-	text "?"
-	done
+;_OaksLabOak2Text::
+;	text "?"
+;	done
 
 _OaksLabGirlText::
 	text "PROF.OAK is the"
@@ -184,120 +194,145 @@ _OaksLabGirlText::
 	cont "in high regard!"
 	done
 
-_OaksLabRivalFedUpWithWaitingText::
-	text "<RIVAL>: Gramps!"
-	line "I'm fed up with"
-	cont "waiting!"
-	done
+;_OaksLabRivalFedUpWithWaitingText::
+;	text "<RIVAL>: Gramps!"
+;	line "I'm fed up with"
+;	cont "waiting!"
+;	done
 
 _OaksLabOakChooseMonText::
-	text "OAK: <RIVAL>?"
-	line "Let me think..."
+	text "OAK: Oh?"
+	line "Who are you?"
+IF !DEF(_DEBUG)
+	para "<PLAYER>, eh?"
+	line "And you say you're"
+	cont "from JOHTO?"
+	
+	para "Well, I wasn't"
+	line "expecting any more"
+	cont "visitors today."
+	cont "What brings you"
+	cont "all the way here?"
 
-	para "Oh, that's right,"
-	line "I told you to"
-	cont "come! Just wait!"
+	para "Ah, you're here"
+	line "for a #MON?"
 
-	para "Here, <PLAYER>!"
+	para "I do admire your"
+	line "drive to learn"
+	cont "more about the"
+	cont "world of #MON…"
 
-	para "There are 3"
-	line "#MON here!"
+	para "There is one"
+	line "problem, though…"
 
-	para "Haha!"
+	para "My grandson and"
+	line "his friend have"
+	cont "already been here"
+	cont "and claimed two,"
+	cont "which leaves just"
+	cont "the one."
 
-	para "They are inside"
-	line "the # BALLs."
-
-	para "When I was young,"
-	line "I was a serious"
-	cont "#MON trainer!"
-
-	para "In my old age, I"
-	line "have only 3 left,"
-	cont "but you can have"
-	cont "one! Choose!"
+	para "I do apologize,"
+	line "had I known others"
+	cont "might come, I'd"
+	cont "have prepared a"
+	cont "few more."
+ENDC
 	done
 
-_OaksLabRivalWhatAboutMeText::
-	text "<RIVAL>: Hey!"
-	line "Gramps! What"
-	cont "about me?"
-	done
-
-_OaksLabOakBePatientText::
-	text "OAK: Be patient!"
-	line "<RIVAL>, you can"
-	cont "have one too!"
-	done
+;_OaksLabRivalWhatAboutMeText::
+;	text "<RIVAL>: Hey!"
+;	line "Gramps! What"
+;	cont "about me?"
+;	done
+;
+;_OaksLabOakBePatientText::
+;	text "OAK: Be patient!"
+;	line "<RIVAL>, you can"
+;	cont "have one too!"
+;	done
 
 _OaksLabOakDontGoAwayYetText::
-	text "OAK: Hey! Don't go"
-	line "away yet!"
+	text "OAK: Hmm? Did you"
+	line "change your mind?"
 	done
 
-_OaksLabRivalIllTakeThisOneText::
-	text "<RIVAL>: I'll take"
-	line "this one, then!"
-	done
-
-_OaksLabRivalReceivedMonText::
-	text "<RIVAL> received"
-	line "a @"
-	text_ram wNameBuffer
-	text "!@"
-	text_end
+;_OaksLabRivalIllTakeThisOneText::
+;	text "<RIVAL>: I'll take"
+;	line "this one, then!"
+;	done
+;
+;_OaksLabRivalReceivedMonText::
+;	text "<RIVAL> received"
+;	line "a @"
+;	text_ram wNameBuffer
+;	text "!@"
+;	text_end
 
 _OaksLabRivalIllTakeYouOnText::
-	text "<RIVAL>: Wait"
+	text "OAK: Wait,"
 	line "<PLAYER>!"
-	cont "Let's check out"
-	cont "our #MON!"
+IF !DEF(_DEBUG)
+	para "You have a #MON"
+	line "now, but are you"
+	cont "familiar with"
+	cont "battling?"
 
-	para "Come on, I'll take"
-	line "you on!"
+	para "I wish my grandson"
+	line "hadn't left yet,"
+	cont "he's much more"
+	cont "enthusiastic about"
+	cont "#MON battles."
+	
+	para "I suppose I can"
+	line "teach you myself,"
+	cont "then."
+ENDC
 	done
 
 _OaksLabRivalIPickedTheWrongPokemonText::
-	text "WHAT?"
-	line "Unbelievable!"
-	cont "I picked the"
-	cont "wrong #MON!"
+	text "I see,"
+	line "you have natural"
+	cont "talent for this!"
 	prompt
 
 _OaksLabRivalAmIGreatOrWhatText::
-	text "<RIVAL>: Yeah! Am"
-	line "I great or what?"
+	text "Oh"
+	line "dear, I guess I've"
+	cont "still got it…"
 	prompt
 
 _OaksLabRivalSmellYouLaterText::
-	text "<RIVAL>: Okay!"
-	line "I'll make my"
-	cont "#MON fight to"
-	cont "toughen it up!"
-
-	para "<PLAYER>! Gramps!"
-	line "Smell you later!"
+	text "OAK: Good effort,"
+	line "<PLAYER>! Battling"
+	cont "other #MON will"
+	cont "help raise yours!"
 	done
 
-_OaksLabRivalGrampsText::
-	text "<RIVAL>: Gramps!"
-	done
-
-_OaksLabRivalWhatDidYouCallMeForText::
-	text "<RIVAL>: What did"
-	line "you call me for?"
-	done
+;_OaksLabRivalGrampsText::
+;	text "<RIVAL>: Gramps!"
+;	done
+;
+;_OaksLabRivalWhatDidYouCallMeForText::
+;	text "<RIVAL>: What did"
+;	line "you call me for?"
+;	done
 
 _OaksLabOakIHaveARequestText::
 	text "OAK: Oh right! I"
-	line "have a request"
-	cont "of you two."
+	line "have a request,"
+	cont "if you would."
 	done
 
 _OaksLabOakMyInventionPokedexText::
-	text "On the desk there"
-	line "is my invention,"
-	cont "#DEX!"
+	text "I'm working on a"
+	line "complete guide to"
+	cont "all the #MON in"
+	cont "the world."
+	
+	para "I've invented a"
+	line "device called the"
+	cont "#DEX to help."
 
 	para "It automatically"
 	line "records data on"
@@ -309,56 +344,81 @@ _OaksLabOakMyInventionPokedexText::
 	done
 
 _OaksLabOakGotPokedexText::
-	text "OAK: <PLAYER> and"
-	line "<RIVAL>! Take"
-	cont "these with you!"
+	text "OAK: <PLAYER>,"
+	line "please take"
+	cont "this with you!"
 
 	para "<PLAYER> got"
 	line "#DEX from OAK!@"
 	text_end
 
 _OaksLabOakThatWasMyDreamText::
-	text "To make a complete"
-	line "guide on all the"
-	cont "#MON in the"
-	cont "world..."
+	text "This will be an"
+	line "arduous task, so"
+	cont "I'll need all the"
+	cont "help I can get."
 
-	para "That was my dream!"
+	para "But don't worry,"
+	line "I will reward you"
+	cont "for your help!"
+	
+	para "Keep an eye out"
+	line "for my AIDES,"
+	cont "they will track"
+	cont "your progress and"
+	cont "assist you along"
+	cont "the way."
 
-	para "But, I'm too old!"
-	line "I can't do it!"
-
-	para "So, I want you two"
-	line "to fulfill my"
-	cont "dream for me!"
-
-	para "Get moving, you"
-	line "two!"
+	para "Now get moving!"
 
 	para "This is a great"
 	line "undertaking in"
 	cont "#MON history!"
 	done
 
-_OaksLabRivalLeaveItAllToMeText::
-	text "<RIVAL>: Alright"
-	line "Gramps! Leave it"
-	cont "all to me!"
-
-	para "<PLAYER>, I hate to"
-	line "say it, but I"
-	cont "don't need you!"
-
-	para "I know! I'll"
-	line "borrow a TOWN MAP"
-	cont "from my sis!"
-
-	para "I'll tell her not"
-	line "to lend you one,"
-	cont "<PLAYER>! Hahaha!"
-	done
+;_OaksLabRivalLeaveItAllToMeText::
+;	text "<RIVAL>: Alright"
+;	line "Gramps! Leave it"
+;	cont "all to me!"
+;
+;	para "<PLAYER>, I hate to"
+;	line "say it, but I"
+;	cont "don't need you!"
+;
+;	para "I know! I'll"
+;	line "borrow a TOWN MAP"
+;	cont "from my sis!"
+;
+;	para "I'll tell her not"
+;	line "to lend you one,"
+;	cont "<PLAYER>! Hahaha!"
+;	done
 
 _OaksLabScientistText::
 	text "I study #MON as"
 	line "PROF.OAK's AIDE."
+	done
+	
+_ActivateEXPShareText::
+	text "Hi, would you like"
+	line "to enable sharing"
+	cont "battle EXP among"
+	cont "your party?"
+	done
+	
+_ItIsDoneText::
+	text "Done! Let me know"
+	line "if you want to"
+	cont "change it back."
+	done
+	
+_NevermindThenText::
+	text "Nevermind, then."
+	done
+	
+_DeactivateEXPShareText::
+	text "Hi, would you like"
+	line "to disable sharing"
+	cont "battle EXP among"
+	cont "your party?"
 	done

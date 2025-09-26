@@ -1,6 +1,15 @@
 MtMoonPokecenter_Script:
+	call .markAsVisited
 	call Serial_TryEstablishingExternallyClockedConnection
 	jp EnableAutoTextBoxDrawing
+.markAsVisited
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	lb bc, FLAG_SET, FLYLOC_ROUTE_4_CENTER
+	ld hl, wTownVisitedFlag
+	predef_jump FlagActionPredef
 
 MtMoonPokecenter_TextPointers:
 	def_text_pointers

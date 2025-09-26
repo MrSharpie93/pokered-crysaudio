@@ -5,6 +5,7 @@ SafariZoneCenterRestHouse_TextPointers:
 	def_text_pointers
 	dw_const SafariZoneCenterRestHouseGirlText,      TEXT_SAFARIZONECENTERRESTHOUSE_GIRL
 	dw_const SafariZoneCenterRestHouseScientistText, TEXT_SAFARIZONECENTERRESTHOUSE_SCIENTIST
+	dw_const SafariZoneCenterRestHouseDetailsText,   TEXT_SAFARIZONECENTERRESTHOUSE_DETAILS
 
 SafariZoneCenterRestHouseGirlText:
 	text_far _SafariZoneCenterRestHouseGirlText
@@ -12,4 +13,10 @@ SafariZoneCenterRestHouseGirlText:
 
 SafariZoneCenterRestHouseScientistText:
 	text_far _SafariZoneCenterRestHouseScientistText
+	text_end
+	
+SafariZoneCenterRestHouseDetailsText:
+	text_far _SafariZoneRestHousePosterText
+	text_end
+	text_far _SafariZoneCenterRestHouseDetailsText
 	text_end

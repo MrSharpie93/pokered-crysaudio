@@ -122,7 +122,15 @@ FrameBlockPointers:
 	dw FrameBlock77
 	dw FrameBlock78
 	dw FrameBlock79
-	dw FrameBlock7a; ~$~ ADDED: Improved animations from PureRGB.~$~
+; ~$~ADDED: Improved animations from PureRGB.~$~
+	dw FrameBlock7a
+	dw FrameBlock7b
+	dw FrameBlock7c
+;;;
+	dw FrameBlock7d
+	dw FrameBlock7e
+	dw FrameBlock7f
+	dw FrameBlock80
 	assert_table_length NUM_FRAMEBLOCKS
 
 FrameBlock01: ; small star?
@@ -1237,7 +1245,55 @@ FrameBlock79:
 FrameBlock7a: ; pin/stinger
 	db 1 ; #
 	dbsprite  0,  0,  0,  0, $1f, 0
+	
+FrameBlock7b: ; bone 1
+	db 4 ; #
+	dbsprite  0,  0,  0,  0, $0c, 0
+	dbsprite  1,  0,  0,  0, $0d, 0
+	dbsprite  0,  1,  0,  0, $0d, OAM_HFLIP | OAM_VFLIP
+	dbsprite  1,  1,  0,  0, $0c, OAM_HFLIP | OAM_VFLIP
+
+FrameBlock7c: ; bone 2
+	db 4 ; #
+	dbsprite  0,  0,  0,  0, $0d, OAM_HFLIP
+	dbsprite  1,  0,  0,  0, $0c, OAM_HFLIP
+	dbsprite  0,  1,  0,  0, $0c, OAM_VFLIP
+	dbsprite  1,  1,  0,  0, $0d, OAM_VFLIP
 ;;;
+
+FrameBlock7d: ; fangs open
+	db 6 ; #
+	dbsprite  0,  0,  0,  0, $1f, OAM_HFLIP
+	dbsprite  1,  0,  0,  0, $1f, OAM_HFLIP
+	dbsprite  2,  0,  0,  0, $1f, 0
+	dbsprite  3,  0,  0,  0, $1f, 0
+	dbsprite  1,  3,  0,  0, $1f, OAM_HFLIP | OAM_VFLIP
+	dbsprite  2,  3,  0,  0, $1f, OAM_VFLIP
+	
+FrameBlock7e: ; fangs closed
+	db 6 ; #
+	dbsprite  0,  0,  0,  0, $1f, OAM_HFLIP
+	dbsprite  1,  0,  0,  0, $1f, OAM_HFLIP
+	dbsprite  2,  0,  0,  0, $1f, 0
+	dbsprite  3,  0,  0,  0, $1f, 0
+	dbsprite  1,  1,  0,  0, $1f, OAM_HFLIP | OAM_VFLIP
+	dbsprite  2,  1,  0,  0, $1f, OAM_VFLIP
+	
+FrameBlock7f: ; Megahorn
+	db 6 ; #
+	dbsprite  0,  0,  0,  0, $22, 0
+	dbsprite  1,  0,  0,  0, $23, 0
+	dbsprite  2,  0,  0,  0, $24, 0
+	dbsprite  0,  1,  0,  0, $32, 0
+	dbsprite  1,  1,  0,  0, $33, 0
+	dbsprite  2,  1,  0,  0, $34, 0
+	
+FrameBlock80: ; Power Gem
+	db 4 ; #
+	dbsprite  0,  0,  0,  0, $0e, 0
+	dbsprite  1,  0,  0,  0, $0e, OAM_HFLIP
+	dbsprite  0,  1,  0,  0, $1e, 0
+	dbsprite  1,  1,  0,  0, $1e, OAM_HFLIP
 
 INCLUDE "data/battle_anims/base_coords.asm"
 

@@ -91,7 +91,7 @@ ItemUsePtrTable:
 	dw UnusableItem      ; SILPH_SCOPE
 	dw ItemUsePokeFlute  ; POKE_FLUTE
 	dw UnusableItem      ; LIFT_KEY
-	dw UnusableItem      ; EXP_ALL
+	dw ItemUseTea        ; SUPERHOT_TEA
 	dw ItemUseOldRod     ; OLD_ROD
 	dw ItemUseGoodRod    ; GOOD_ROD
 	dw ItemUseSuperRod   ; SUPER_ROD
@@ -1954,6 +1954,9 @@ FishingInit:
 
 ItemUseOaksParcel:
 	jp ItemUseNotYoursToUse
+	
+ItemUseTea:
+	jp ItemUseTooHotToDrink
 
 ItemUseItemfinder:
 	ld a, [wIsInBattle]
@@ -1989,6 +1992,9 @@ ItemUsePPUp:
 	jp nz, ItemUseNotTime
 
 ItemUsePPRestore:
+	ld a, [wPartyCount]
+	and a
+	jp z, ItemUseMedicine.emptyParty
 	ld a, [wWhichPokemon]
 	push af
 	ld a, [wCurItem]
@@ -2317,6 +2323,10 @@ ItemUseNotTime:
 ItemUseNotYoursToUse:
 	ld hl, ItemUseNotYoursToUseText
 	jr ItemUseFailed
+	
+ItemUseTooHotToDrink:
+	ld hl, ItemUseTooHotToDrinkText
+	jr ItemUseFailed
 
 ThrowBallAtTrainerMon:
 	call RunDefaultPaletteCommand
@@ -2353,6 +2363,10 @@ ItemUseNotTimeText:
 
 ItemUseNotYoursToUseText:
 	text_far _ItemUseNotYoursToUseText
+	text_end
+	
+ItemUseTooHotToDrinkText:
+	text_far _ItemUseTooHotToDrinkText
 	text_end
 
 ItemUseNoEffectText:
@@ -2854,7 +2868,7 @@ IsNextTileShoreOrWater:
 	jr z, .shoreOrWater
 	cp $32 ; usual eastern shore tile
 	jr z, .shoreOrWater
-	cp $3D ; Johto eastern shore tile
+	cp $43 ; Johto eastern shore tile
 	jr z, .shoreOrWater
 .skipShoreTiles
 	cp $14 ; water tile

@@ -17,7 +17,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
 	db MISSINGNO, 45
-	db BLASTOISE, 60
+	db GENGAR, 60
 	db LAPRAS, 57
 	db TYROGUE, 25
 	db -1 ; end
@@ -139,12 +139,12 @@ IF DEF(_DEBUG)
 
 	; Rival chose Squirtle,
 	; Player chose Charmander.
-	ld hl, wRivalStarter
-	ld a, STARTER2
-	ld [hli], a
-	inc hl ; hl = wPlayerStarter
-	ld a, STARTER1
-	ld [hl], a
+;	ld hl, wRivalStarter
+;	ld a, STARTER2
+;	ld [hli], a
+;	inc hl ; hl = wPlayerStarter
+;	ld a, STARTER1
+;	ld [hl], a
 
 	ret
 
@@ -178,7 +178,7 @@ DebugItemsList:
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1
 	db POKE_FLUTE, 1
-	db EXP_ALL, 1
+;	db EXP_ALL, 1
 	db OLD_ROD, 1
 	db GOOD_ROD, 1
 	db SUPER_ROD, 1

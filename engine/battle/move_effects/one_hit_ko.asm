@@ -9,14 +9,16 @@ OneHitKOEffect_: ; ~$~CHANGED: Used some code from Crystal's version of this eff
 ;	ld de, wEnemyMonSpeed + 1
 	ld hl, wEnemyMonLevel
 	ld de, wBattleMonLevel
-	ldh a, [hWhoseTurn]
-	and a
-	jr z, .compareSpeed
+;	ldh a, [hWhoseTurn] ; Apparently, the values for these levels get flipped already depending on whose turn it is, so none of this is needed??? ~$~
+;	and a
+;	jr z, .compareSpeed
 ;	ld hl, wEnemyMonSpeed + 1
 ;	ld de, wBattleMonSpeed + 1
-	ld hl, wBattleMonLevel
-	ld de, wEnemyMonLevel
-.compareSpeed
+;	push hl
+;	ld h, d
+;	ld l, e
+;	pop de
+;.compareSpeed
 ; set damage to 65535 and OHKO flag is the user's current speed is higher than the target's
 	ld a, [de]
 ;	dec de

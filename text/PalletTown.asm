@@ -1,21 +1,21 @@
-_PalletTownOakHeyWaitDontGoOutText::
-	text "OAK: Hey! Wait!"
-	line "Don't go out!@"
-	text_end
+;_PalletTownOakHeyWaitDontGoOutText::
+;	text "OAK: Hey! Wait!"
+;	line "Don't go out!@"
+;	text_end
 
-_PalletTownOakItsUnsafeText::
-	text "OAK: It's unsafe!"
-	line "Wild #MON live"
-	cont "in tall grass!"
+;_PalletTownOakItsUnsafeText::
+;	text "OAK: It's unsafe!"
+;	line "Wild #MON live"
+;	cont "in tall grass!"
 
-	para "You need your own"
-	line "#MON for your"
-	cont "protection."
-	cont "I know!"
+;	para "You need your own"
+;	line "#MON for your"
+;	cont "protection."
+;	cont "I know!"
 
-	para "Here, come with"
-	line "me!"
-	done
+;	para "Here, come with"
+;	line "me!"
+;	done
 
 _PalletTownGirlText::
 	text "I'm raising"
@@ -29,11 +29,13 @@ _PalletTownGirlText::
 _PalletTownFisherText::
 	text "Technology is"
 	line "incredible!"
+	
+	para "…"
 
-	para "You can now store"
-	line "and recall items"
-	cont "and #MON as"
-	cont "data via PC!"
+	para "Though you don't"
+	line "strike me as some-"
+	cont "one who can really"
+	cont "appreciate that."
 	done
 
 _PalletTownOaksLabSignText::
@@ -48,9 +50,17 @@ _PalletTownSignText::
 	done
 
 _PalletTownPlayersHouseSignText::
-	text "<PLAYER>'s house "
+	text "RED's HOUSE"
 	done
 
 _PalletTownRivalsHouseSignText::
-	text "<RIVAL>'s house "
+	text "BLUE's HOUSE"
+	done
+	
+_ThereAreBadThingsOutThereText::
+	text "I wouldn't go in"
+	line "there if I were"
+	cont "you! There are"
+	cont "bad things in"
+	cont "there…"
 	done

@@ -81,7 +81,7 @@
 	const SILPH_SCOPE   ; $48
 	const POKE_FLUTE    ; $49
 	const LIFT_KEY      ; $4A
-	const EXP_ALL       ; $4B ; now a key item
+	const SUPERHOT_TEA  ; $4B ; was EXP_ALL
 	const OLD_ROD       ; $4C
 	const GOOD_ROD      ; $4D
 	const SUPER_ROD     ; $4E

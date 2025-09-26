@@ -14,21 +14,21 @@ ViridianSchoolNotebook::
 	text_asm
 	ld hl, ViridianSchoolNotebookText1
 	call PrintText
-	call TurnPageSchoolNotebook
-	jr nz, .doneReading
-	ld hl, ViridianSchoolNotebookText2
-	call PrintText
-	call TurnPageSchoolNotebook
-	jr nz, .doneReading
-	ld hl, ViridianSchoolNotebookText3
-	call PrintText
-	call TurnPageSchoolNotebook
-	jr nz, .doneReading
-	ld hl, ViridianSchoolNotebookText4
-	call PrintText
-	ld hl, ViridianSchoolNotebookText5
-	call PrintText
-.doneReading
+;	call TurnPageSchoolNotebook
+;	jr nz, .doneReading
+;	ld hl, ViridianSchoolNotebookText2
+;	call PrintText
+;	call TurnPageSchoolNotebook
+;	jr nz, .doneReading
+;	ld hl, ViridianSchoolNotebookText3
+;	call PrintText
+;	call TurnPageSchoolNotebook
+;	jr nz, .doneReading
+;	ld hl, ViridianSchoolNotebookText4
+;	call PrintText
+;	ld hl, ViridianSchoolNotebookText5
+;	call PrintText
+;.doneReading
 	jp TextScriptEnd
 
 TurnPageSchoolNotebook:
@@ -62,4 +62,13 @@ ViridianSchoolNotebookText3:
 
 ViridianSchoolNotebookText4:
 	text_far _ViridianSchoolNotebookText4
+	text_end
+	
+PrintDDLCBookcaseText:
+	call EnableAutoTextBoxDrawing
+	tx_pre DDLCBookcaseText
+	ret
+
+DDLCBookcaseText::
+	text_far _DDLCBookcaseText
 	text_end

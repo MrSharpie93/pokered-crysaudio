@@ -20,6 +20,17 @@ _ViridianCityGambler1GymAlwaysClosedText::
 _ViridianCityGambler1GymLeaderReturnedText::
 	text "VIRIDIAN GYM's"
 	line "LEADER returned!"
+	
+	para "You just missed"
+	line "him, actually."
+	
+	para "He stormed off"
+	line "after these two"
+	cont "kids went inside"
+	cont "pretty recently."
+	
+	para "Wonder who's"
+	line "leading it now?"
 	done
 
 _ViridianCityYoungster2YouWantToKnowAboutText::
@@ -27,26 +38,32 @@ _ViridianCityYoungster2YouWantToKnowAboutText::
 	line "about the 2 kinds"
 	cont "of caterpillar"
 	cont "#MON?"
+	
+	para "…You don't?"
+	
+	para "…"
+	
+	para "Fine, then…"
 	done
 
-ViridianCityYoungster2OkThenText::
-	text "Oh, OK then!"
-	done
+;ViridianCityYoungster2OkThenText::
+;	text "Oh, OK then!"
+;	done
 
-ViridianCityYoungster2CaterpieAndWeedleDescriptionText::
-	text "CATERPIE has no"
-	line "poison, but"
-	cont "WEEDLE does."
-
-	para "Watch out for its"
-	line "POISON STING!"
-	done
+;ViridianCityYoungster2CaterpieAndWeedleDescriptionText::
+;	text "CATERPIE has no"
+;	line "poison, but"
+;	cont "WEEDLE does."
+;
+;	para "Watch out for its"
+;	line "POISON STING!"
+;	done
 
 _ViridianCityGirlHasntHadHisCoffeeYetText::
 	text "Oh Grandpa! Don't"
-	line "be so mean!"
-	cont "He hasn't had his"
-	cont "coffee yet."
+	line "be so mean! He's"
+	cont "been obsessed with"
+	cont "sunbathing lately."
 	done
 
 _ViridianCityGirlWhenIGoShopText::
@@ -61,8 +78,8 @@ _ViridianCityOldManSleepyPrivatePropertyText::
 	text "You can't go"
 	line "through here!"
 
-	para "This is private"
-	line "property!"
+	para "You'll mess up"
+	line "my tan!"
 	done
 
 ViridianCityFisherYouCanHaveThisText::
@@ -74,7 +91,7 @@ ViridianCityFisherYouCanHaveThisText::
 	line "about a DROWZEE"
 	cont "eating my dream."
 	
-	para "And..."
+	para "And…"
 
 	para "I learned how to"
 	line "eat dreams."
@@ -97,37 +114,35 @@ ViridianCityFisherYouCanHaveThisText::
 ;	done
 
 _ViridianCityOldManHadMyCoffeeNowText::
-	text "Ahh, I've had my"
-	line "coffee now and I"
-	cont "feel great!"
+	text "Sorry about all"
+	line "that before, kid."
+	
+	para "I just take my"
+	line "tanning very"
+	cont "seriously."
 
 	para "Sure you can go"
-	line "through!"
+	line "through now!"
 
-	para "Are you in a"
-	line "hurry?"
+	para "Say, are you in a"
+	line "hurry? Want to"
+	cont "learn how to catch"
+	cont "#MON?"
 	done
 
 _ViridianCityOldManKnowHowToCatchPokemonText::
-	text "I see you're using"
-	line "a #DEX."
-
-	para "When you catch a"
-	line "#MON, #DEX"
-	cont "is automatically"
-	cont "updated."
-
-	para "What? Don't you"
-	line "know how to catch"
-	cont "#MON?"
-
-	para "I'll show you"
+	text "I'll show you"
 	line "how to then."
+	
+	para "Bring forth the"
+	line "WEEDLE."
 	done
 
 _ViridianCityOldManTimeIsMoneyText::
-	text "Time is money..."
-	line "Go along then."
+	text "Shame, I could've"
+	line "shown you my right"
+	cont "surefire catching"
+	cont "technique…"
 	done
 
 _ViridianCityOldManYouNeedToWeakenTheTargetText::
@@ -150,8 +165,8 @@ _ViridianCityTrainerTips1Text::
 	cont "collection!"
 
 	para "The more you have,"
-	line "the easier it is"
-	cont "to fight!"
+	line "the more you can"
+	cont "brag about it!"
 	done
 
 _ViridianCityTrainerTips2Text::
@@ -161,6 +176,10 @@ _ViridianCityTrainerTips2Text::
 	line "of #MON are"
 	cont "limited by their"
 	cont "POWER POINTs, PP."
+	
+	para "This also goes for" ; ~$~ADDED: Inform players about enemy PP usage.~$~
+	line "wild or trainer-"
+	cont "owned #MON."
 
 	para "To replenish PP,"
 	line "rest your tired"
@@ -175,5 +194,9 @@ _ViridianCityGymSignText::
 
 _ViridianCityGymLockedText::
 	text "The GYM's doors"
-	line "are locked..."
+	line "are locked…"
+	
+	para "Kind of makes you"
+	line "want to jump down"
+	cont "a ledge."
 	done

@@ -12,7 +12,7 @@ ShowPokedexMenu:
 	ld [wPokedexNum], a
 	ldh [hJoy7], a
 .setUpGraphics
-	ld b, SET_PAL_DEXBALLS
+	ld b, SET_PAL_DEXBALLS ; ~$~ADDED: Pokeballs in dex are red/white.~$~
 	call RunPaletteCommand
 	callfar LoadPokedexTilePatterns
 .doPokemonListMenu

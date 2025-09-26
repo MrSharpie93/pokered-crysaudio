@@ -168,6 +168,7 @@ FuchsiaGymKogaText:
 
 FuchsiaGymKogaSoulBadgeInfoText:
 	text_far _FuchsiaGymKogaSoulBadgeInfoText
+	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
 	text_end
 
 FuchsiaGymKogaReceivedTM06Text:

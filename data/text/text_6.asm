@@ -197,6 +197,11 @@ _ItemUseNotYoursToUseText::
 	text "This isn't yours"
 	line "to use!"
 	prompt
+	
+_ItemUseTooHotToDrinkText::
+	text "This is way too"
+	line "hot for you!"
+	prompt
 
 _ItemUseNoEffectText::
 	text "It won't have any"

@@ -67,7 +67,14 @@ OakSpeech:
   	call PlayerStyleChoice ; added routine at the end of this file
    	ld a, [wCurrentMenuItem]
    	ld [wPlayerStyle], a ; store player's appearance. 00 for masculine, 01 for feminine
-   	ld a, [wStatusFlags6]
+; ~$~ADDED: Starter choice happens at game start.~$~
+	ld hl, FavoriteColorText
+	call PrintText
+	call StarterChoice
+	ld a, [wCurrentMenuItem]
+   	ld [wFavoriteColor], a
+;;;
+	ld a, [wStatusFlags6]
 	bit BIT_DEBUG_MODE, a
 	jp nz, .skipSpeech
 	call ClearScreen ; clear the screen before resuming normal intro
@@ -218,6 +225,9 @@ OakSpeechText3:
 PlayerStyleText: ; ~$~ADDED: Masculine and feminine protagonists.~$~
 	text_far _PlayerStyleText
 	text_end
+FavoriteColorText: ; ~$~ADDED: Starter choice happens at game start.~$~
+	text_far _FavoriteColorText
+	text_end
 
 FadeInIntroPic:
 	ld hl, IntroFadePalettes
@@ -294,8 +304,43 @@ InitPlayerStyleTextBoxParameters::
 	ld bc, $80e
 	ret
 
-	DisplayPlayerStyleChoice::
-   	   ld a, $14
-   	   ld [wTextBoxID], a
-   	   call DisplayTextBoxID
-   	   jp LoadScreenTilesFromBuffer1
+DisplayPlayerStyleChoice::
+	ld a, $14
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	jp LoadScreenTilesFromBuffer1
+
+; ~$~ADDED: Masculine and feminine protagonists.~$~
+StarterChoice::
+	call SaveScreenTilesToBuffer1
+	jr DisplayStarterChoice
+
+DisplayStarterChoice::
+	ld a, STARTER_CHOICE
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld hl, wTopMenuItemY
+	ld a, 7
+	ld [hli], a ; top menu item Y
+	ld a, 13
+	ld [hli], a ; top menu item X
+	xor a
+	ld [hli], a ; current menu item ID
+	inc hl
+	ld a, $2
+	ld [hli], a ; wMaxMenuItem
+	ld a, B_BUTTON | A_BUTTON
+	ld [hli], a ; wMenuWatchedKeys
+	xor a
+	ld [hl], a ; wLastMenuItem
+	call HandleMenuInput
+	bit BIT_B_BUTTON, a
+	jr nz, .defaultOption ; if B was pressed, choose Bulbasaur
+; A was pressed
+	call PlaceUnfilledArrowMenuCursor
+	ld a, [wCurrentMenuItem]
+	jp LoadScreenTilesFromBuffer1
+.defaultOption
+	xor a
+	ld [wCurrentMenuItem], a
+	jp LoadScreenTilesFromBuffer1

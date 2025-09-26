@@ -4,13 +4,14 @@
 	const_export SAFARIZONEEASTRESTHOUSE_SILPH_WORKER_M
 
 SafariZoneEastRestHouse_Object:
-	db $a ; border block
+	db $17 ; border block
 
 	def_warp_events
-	warp_event  2,  7, SAFARI_ZONE_EAST, 5
-	warp_event  3,  7, SAFARI_ZONE_EAST, 5
+	warp_event  4,  7, SAFARI_ZONE_EAST, 5
+	warp_event  5,  7, SAFARI_ZONE_EAST, 5
 
 	def_bg_events
+	bg_event  3,  0, TEXT_SAFARIZONEEASTRESTHOUSE_DETAILS
 
 	def_object_events
 	object_event  1,  3, SPRITE_SCIENTIST, WALK, UP_DOWN, TEXT_SAFARIZONEEASTRESTHOUSE_SCIENTIST

@@ -46,7 +46,7 @@ HiddenObjectMaps:
 	db SAFARI_ZONE_GATE
 	db SAFARI_ZONE_WEST
 ;	db SILPH_CO_5F
-	db SILPH_CO_9F
+;	db SILPH_CO_9F
 	db COPYCATS_HOUSE_2F
 	db CERULEAN_CAVE_1F
 	db CERULEAN_CAVE_B1F
@@ -60,6 +60,7 @@ HiddenObjectMaps:
 	db UNUSED_MAP_6F
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
+	db SAFARI_ZONE_CENTER_REST_HOUSE
 	db SAFARI_ZONE_WEST_REST_HOUSE
 	db SAFARI_ZONE_EAST_REST_HOUSE
 	db SAFARI_ZONE_NORTH_REST_HOUSE
@@ -136,7 +137,7 @@ HiddenObjectPointers:
 	dw SafariZoneEntranceHiddenObjects
 	dw SafariZoneWestHiddenObjects
 ;	dw SilphCo5FHiddenObjects
-	dw SilphCo9FHiddenObjects
+;	dw SilphCo9FHiddenObjects
 	dw CopycatsHouse2FHiddenObjects
 	dw CeruleanCave1HiddenObjects
 	dw CeruleanCave3HiddenObjects
@@ -150,9 +151,10 @@ HiddenObjectPointers:
 	dw Unused6FHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
-	dw SafariZoneRestHouse2HiddenObjects
-	dw SafariZoneRestHouse3HiddenObjects
-	dw SafariZoneRestHouse4HiddenObjects
+	dw SafariZoneRestHouseCenterHiddenObjects
+	dw SafariZoneRestHouseWestHiddenObjects
+	dw SafariZoneRestHouseEastHiddenObjects
+	dw SafariZoneRestHouseNorthHiddenObjects
 	dw Route15GateUpstairsHiddenObjects
 	dw LavenderHouse1HiddenObjects
 	dw CeladonMansion5HiddenObjects
@@ -242,14 +244,19 @@ CeladonHotelHiddenObjects:
 ViridianMartHiddenObjects:
 PewterMartHiddenObjects:
 CeruleanMartHiddenObjects:
-SafariZoneRestHouse2HiddenObjects:
-SafariZoneRestHouse3HiddenObjects:
-SafariZoneRestHouse4HiddenObjects:
+	db -1 ; end
+
+SafariZoneRestHouseCenterHiddenObjects:
+SafariZoneRestHouseWestHiddenObjects:
+SafariZoneRestHouseEastHiddenObjects:
+SafariZoneRestHouseNorthHiddenObjects:
+	hidden_object  0,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
 ViridianSchoolHiddenObjects:
 	hidden_text_predef  3,  4, ViridianSchoolNotebook, PrintNotebookText
 	hidden_text_predef  3,  0, ViridianSchoolBlackboard, PrintBlackboardLinkCableText
+	hidden_object       7,  1, SPRITE_FACING_UP, PrintDDLCBookcaseText
 	db -1 ; end
 
 ViridianGymHiddenObjects:
@@ -446,9 +453,9 @@ SafariZoneWestHiddenObjects:
 ;	hidden_object 12,  3, ELIXER, HiddenItems
 ;	db -1 ; end
 
-SilphCo9FHiddenObjects:
-	hidden_object  2, 15, MAX_POTION, HiddenItems
-	db -1 ; end
+;SilphCo9FHiddenObjects:
+;	hidden_object  2, 15, MAX_POTION, HiddenItems
+;	db -1 ; end
 
 CopycatsHouse2FHiddenObjects:
 	hidden_object  1,  1, NUGGET, HiddenItems

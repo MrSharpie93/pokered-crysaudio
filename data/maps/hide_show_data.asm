@@ -82,74 +82,74 @@ MapHSPointers:
 	dw NoHS;Daycare
 	dw NoHS;Route6Gate
 	dw NoHS;UndergroundPathRoute6
-	dw NoHS;UndergroundPathRoute6Copy
+	dw NoHS;PlayersHouse
 	dw NoHS;Route7Gate
 	dw NoHS;UndergroundPathRoute7
-	dw NoHS;UndergroundPathRoute7Copy
+	dw NoHS;BillsGarden
 	dw NoHS;Route8Gate
 	dw NoHS;UndergroundPathRoute8
 	dw NoHS;RockTunnelPokecenter
 	dw NoHS;RockTunnel1F
 	dw PowerPlantHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;Route11Gate1F
+	dw NoHS;DiglettsCaveRoute11
+	dw NoHS;Route11Gate2F
+	dw NoHS;Route12Gate1F
 	dw BillsHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;VermilionPokecenter
+	dw NoHS;PokemonFanClub
+	dw NoHS;VermilionMart
+	dw NoHS;VermilionGym
+	dw NoHS;VermilionPidgeyHouse
+	dw NoHS;VermilionDock
+	dw NoHS;SSAnne1F
 	dw SSAnne2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;SSAnne3F
+	dw NoHS;SSAnneB1F
+	dw NoHS;SSAnneBow
+	dw NoHS;SSAnneKitchen
+	dw NoHS;SSAnneCaptainsRoom
 	dw SSAnne1FRoomsHS
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;MtMoonSquare
+	dw NoHS;MtMoonSquareShop
+	dw NoHS;Route27House
 	dw VictoryRoad1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;UnusedMap6D
+	dw NoHS;UnusedMap6E
+	dw NoHS;UnusedMap6F
+	dw NoHS;UnusedMap70
+	dw NoHS;LancesRoom
+	dw NoHS;UnusedMap72
+	dw NoHS;UnusedMap73
+	dw NoHS;UnusedMap74
+	dw NoHS;UnusedMap75
+	dw NoHS;HallOfFame
+	dw NoHS;UndergroundPathNorthSouth
 	dw ChampionsRoomHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;UndergroundPathWestEast
+	dw NoHS;CeladonMart1F
+	dw NoHS;CeladonMart2F
+	dw NoHS;CeladonMart3F
+	dw NoHS;CeladonMart4F
+	dw NoHS;CeladonMartRoof
+	dw NoHS;CeladonMartElevator
+	dw NoHS;CeladonMansion1F
+	dw NoHS;CeladonMansion2F
+	dw NoHS;CeladonMansion3F
+	dw NoHS;CeladonMansionRoof
 	dw CeladonMansionRoofHouseHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;CeladonPokecenter
+	dw NoHS;CeladonGym
 	dw GameCornerHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;CeladonMart5F
+	dw NoHS;GameCornerPrizeRoom
+	dw NoHS;CeladonDiner
+	dw NoHS;CeladonChiefHouse
+	dw NoHS;CeladonHotel
+	dw NoHS;LavenderPokecenter
+	dw NoHS;PokemonTower1F
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
 	dw PokemonTower4FHS
@@ -157,54 +157,54 @@ MapHSPointers:
 	dw PokemonTower6FHS
 	dw PokemonTower7FHS
 	dw MrFujisHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;LavenderMart
+	dw NoHS;LavenderCuboneHouse
+	dw NoHS;FuchsiaMart
+	dw NoHS;FuchsiaBillsGrandpasHouse
+	dw NoHS;FuchsiaPokecenter
 	dw WardensHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;SafariZoneGate
+	dw NoHS;FuchsiaGym
+	dw NoHS;FuchsiaMeetingRoom
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;VermilionOldRodHouse
+	dw NoHS;FuchsiaGoodRodHouse
 	dw PokemonMansion1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;CinnabarGym
+	dw NoHS;CinnabarLab
+	dw NoHS;CinnabarLabTradeRoom
+	dw NoHS;CinnabarLabMetronomeRoom
+	dw NoHS;CinnabarLabFossilRoom
+	dw NoHS;CinnabarPokecenter
+	dw NoHS;CinnabarMart
+	dw NoHS;Route28SteelWingHouse
+	dw NoHS;IndigoPlateauLobby
+	dw NoHS;CopycatsHouse1F
+	dw NoHS;CopycatsHouse2F
 	dw FightingDojoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;SaffronGym
+	dw NoHS;SaffronPidgeyHouse
+	dw NoHS;SaffronMart
 	dw SilphCo1FHS
 	dw NoHS;SaffronPokecenter
-	dw NoHS;MrPsychic
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;MrPsychicsHouse
+	dw NoHS;Route15Gate1F
+	dw NoHS;Route15Gate2F
+	dw NoHS;Route16Gate1F
+	dw NoHS;Route16Gate2F
+	dw NoHS;Route16FlyHouse
+	dw NoHS;Route12SuperRodHouse
+	dw NoHS;Route18Gate1F
+	dw NoHS;Route18Gate2F
 	dw SeafoamIslands1FHS
-	dw NoHS
+	dw NoHS;Route22Gate
 	dw VictoryRoad2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;Route12Gate2F
+	dw NoHS;VermilionTradeHouse
+	dw NoHS;DiglettsCave
 	dw VictoryRoad3FHS
 	dw RocketHideoutB1FHS
 	dw RocketHideoutB2FHS
@@ -228,33 +228,34 @@ MapHSPointers:
 	dw SafariZoneNorthHS
 	dw SafariZoneWestHS
 	dw SafariZoneCenterHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;SafariZoneCenterRestHouse
+	dw NoHS;SafariZoneSecretHouse
+	dw NoHS;SafariZoneWestRestHouse
+	dw NoHS;SafariZoneEastRestHouse
+	dw NoHS;SafariZoneNorthRestHouse
 	dw CeruleanCave2FHS
 	dw CeruleanCaveB1FHS
 	dw CeruleanCaveHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw SilphCo9FHS
+	dw NoHS;NameRatersHouse
+	dw NoHS;CeruleanBadgeHouse
+	dw NoHS;SilverCavePokecenter
+	dw NoHS;RockTunnelB1F
+	dw NoHS;HiddenForest
 	dw SilphCo10FHS
 	dw SilphCo11FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;SilphCoElevator
+	dw NoHS;UnusedMapED
+	dw NoHS;UnusedMapEE
+	dw NoHS;TradeCenter
+	dw NoHS;Colosseum
+	dw NoHS;UnusedMapF1
+	dw NoHS;UnusedMapF2
+	dw NoHS;UnusedMapF3
 	dw UnusedMapF4HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS;LoreleisRoom
+	dw NoHS;BrunosRoom
+	dw NoHS;AgathasRoom
+	dw NoHS;SummerBeachHouse
 	assert_table_length NUM_MAPS
 	dw -1 ; end
 
@@ -324,14 +325,14 @@ BluesHouseHS:
 	db BLUES_HOUSE, BLUESHOUSE_DAISY2,   HIDE
 	db BLUES_HOUSE, BLUESHOUSE_TOWN_MAP, SHOW
 OaksLabHS:
-	db OAKS_LAB, OAKSLAB_RIVAL,                SHOW
-	db OAKS_LAB, OAKSLAB_CHARMANDER_POKE_BALL, SHOW
-	db OAKS_LAB, OAKSLAB_SQUIRTLE_POKE_BALL,   SHOW
-	db OAKS_LAB, OAKSLAB_BULBASAUR_POKE_BALL,  SHOW
-	db OAKS_LAB, OAKSLAB_OAK1,                 HIDE
+;	db OAKS_LAB, OAKSLAB_RIVAL,                SHOW
+	db OAKS_LAB, OAKSLAB_CHARMANDER_POKE_BALL, HIDE ; HS_STARTER_BALL_1
+	db OAKS_LAB, OAKSLAB_SQUIRTLE_POKE_BALL,   HIDE ; HS_STARTER_BALL_2
+	db OAKS_LAB, OAKSLAB_BULBASAUR_POKE_BALL,  HIDE ; HS_STARTER_BALL_3
+	db OAKS_LAB, OAKSLAB_OAK1,                 SHOW
 	db OAKS_LAB, OAKSLAB_POKEDEX1,             SHOW
 	db OAKS_LAB, OAKSLAB_POKEDEX2,             SHOW
-	db OAKS_LAB, OAKSLAB_OAK2,                 HIDE
+;	db OAKS_LAB, OAKSLAB_OAK2,                 HIDE
 ViridianGymHS:
 	db VIRIDIAN_GYM, VIRIDIANGYM_GIOVANNI, SHOW
 	db VIRIDIAN_GYM, VIRIDIANGYM_REVIVE,   SHOW
@@ -498,10 +499,10 @@ SilphCo8FHS:
 	db SILPH_CO_8F, SILPHCO8F_ROCKET1,   SHOW
 	db SILPH_CO_8F, SILPHCO8F_SCIENTIST, SHOW
 	db SILPH_CO_8F, SILPHCO8F_ROCKET2,   SHOW
-SilphCo9FHS:
-	db SILPH_CO_9F, SILPHCO9F_ROCKET1,   SHOW
-	db SILPH_CO_9F, SILPHCO9F_SCIENTIST, SHOW
-	db SILPH_CO_9F, SILPHCO9F_ROCKET2,   SHOW
+;SilphCo9FHS:
+;	db SILPH_CO_9F, SILPHCO9F_ROCKET1,   SHOW
+;	db SILPH_CO_9F, SILPHCO9F_SCIENTIST, SHOW
+;	db SILPH_CO_9F, SILPHCO9F_ROCKET2,   SHOW
 SilphCo10FHS:
 	db SILPH_CO_10F, SILPHCO10F_ROCKET,         SHOW
 	db SILPH_CO_10F, SILPHCO10F_SCIENTIST,      SHOW

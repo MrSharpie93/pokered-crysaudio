@@ -961,14 +961,15 @@ INCLUDE "data/maps/headers/UndergroundPathRoute7.asm"
 INCLUDE "scripts/UndergroundPathRoute7.asm"
 INCLUDE "data/maps/objects/UndergroundPathRoute7.asm"
 
-INCLUDE "data/maps/headers/UndergroundPathRoute7Copy.asm"
-INCLUDE "scripts/UndergroundPathRoute7Copy.asm"
-INCLUDE "data/maps/objects/UndergroundPathRoute7Copy.asm"
+INCLUDE "data/maps/headers/BillsGarden.asm"
+INCLUDE "scripts/BillsGarden.asm"
+INCLUDE "data/maps/objects/BillsGarden.asm"
+BillsGarden_Blocks: INCBIN "maps/BillsGarden.blk"
 
-INCLUDE "data/maps/headers/SilphCo9F.asm"
-INCLUDE "scripts/SilphCo9F.asm"
-INCLUDE "data/maps/objects/SilphCo9F.asm"
-SilphCo9F_Blocks: INCBIN "maps/SilphCo9F.blk"
+INCLUDE "data/maps/headers/HiddenForest.asm"
+INCLUDE "scripts/HiddenForest.asm"
+INCLUDE "data/maps/objects/HiddenForest.asm"
+HiddenForest_Blocks: INCBIN "maps/HiddenForest.blk"
 
 INCLUDE "data/maps/headers/VictoryRoad1F.asm"
 INCLUDE "scripts/VictoryRoad1F.asm"
@@ -1253,12 +1254,17 @@ INCLUDE "data/maps/headers/Route26HealHouse.asm"
 INCLUDE "scripts/Route26HealHouse.asm"
 INCLUDE "data/maps/objects/Route26HealHouse.asm"
 
+Route28SteelWingHouse_Blocks:
 Route27House_Blocks:
 Route26HealHouse_Blocks: INCBIN "maps/Route26HealHouse.blk"
 
 INCLUDE "data/maps/headers/Route27House.asm"
 INCLUDE "scripts/Route27House.asm"
 INCLUDE "data/maps/objects/Route27House.asm"
+
+INCLUDE "data/maps/headers/Route28SteelWingHouse.asm"
+INCLUDE "scripts/Route28SteelWingHouse.asm"
+INCLUDE "data/maps/objects/Route28SteelWingHouse.asm"
 
 INCLUDE "data/maps/headers/MtMoonSquare.asm"
 INCLUDE "scripts/MtMoonSquare.asm"
@@ -1269,3 +1275,15 @@ INCLUDE "data/maps/headers/MtMoonSquareShop.asm"
 INCLUDE "scripts/MtMoonSquareShop.asm"
 INCLUDE "data/maps/objects/MtMoonSquareShop.asm"
 MtMoonSquareShop_Blocks: INCBIN "maps/MtMoonSquareShop.blk"
+
+INCLUDE "data/maps/headers/SummerBeachHouse.asm"
+INCLUDE "scripts/SummerBeachHouse.asm"
+INCLUDE "data/maps/objects/SummerBeachHouse.asm"
+SummerBeachHouse_Blocks: INCBIN "maps/SummerBeachHouse.blk"
+
+SECTION "Maps 23", ROMX ; NEW
+
+INCLUDE "data/maps/headers/PlayersHouse.asm"
+INCLUDE "scripts/PlayersHouse.asm"
+INCLUDE "data/maps/objects/PlayersHouse.asm"
+PlayersHouse_Blocks: INCBIN "maps/PlayersHouse.blk"

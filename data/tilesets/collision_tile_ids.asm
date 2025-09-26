@@ -22,8 +22,10 @@ Pokecenter_Coll::
 	coll_tiles $11, $1a, $1c, $3c, $5e
 
 Dojo_Coll::
+	coll_tiles $11, $1e, $4d, $4f, $52
+
 Gym_Coll::
-	coll_tiles $11, $16, $19, $1e, $2b, $3c, $3d, $3f, $4a, $4c, $4d, $03
+	coll_tiles $11, $16, $19, $2b, $3c, $3d, $3f, $4a, $4c, $4d, $03
 
 Forest_Coll::
 	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f

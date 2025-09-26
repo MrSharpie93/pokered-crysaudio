@@ -134,23 +134,23 @@ PoisonEffect:
 	ld de, wEnemyMoveNum
 .poisonEffect
 	call CheckTargetSubstitute
-	jp nz, .noEffect ; can't poison a substitute target
+	jp nz, .noEffectIncDE ; can't poison a substitute target
 	call CheckTargetSafeguard
-	jp nz, .noEffect ; can't poison a safeguarded target
+	jp nz, .noEffectIncDE ; can't poison a safeguarded target
 	ld a, [hli]
 	ld b, a
 	and a
-	jp nz, .noEffect ; miss if target is already statused
+	jp nz, .noEffectIncDE ; miss if target is already statused
 	ld a, [hli]
 	cp POISON ; can't poison a poison-type target
-	jp z, .noEffect
+	jp z, .noEffectIncDE
 	cp STEEL ; can't poison a steel-type target
-	jp z, .noEffect
+	jp z, .noEffectIncDE
 	ld a, [hld]
 	cp POISON ; can't poison a poison-type target
-	jp z, .noEffect
+	jp z, .noEffectIncDE
 	cp STEEL ; can't poison a steel-type target
-	jp z, .noEffect
+	jp z, .noEffectIncDE
 ; ~$~CHANGED: Code snippet from pokered-restored to grant Grass-types immunity to Poisonpowder.~$~
 	ld a, [de]
 	inc de
@@ -223,8 +223,11 @@ PoisonEffect:
 	call PlayCurrentMoveAnimation2
 	jp PrintText
 .poisonSideEffect
+	ld a, b
 	call PlayAlternativeAnimation2
 	jp PrintText
+.noEffectIncDE
+	inc de
 .noEffect
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1 ; Text jank.~$~
@@ -303,6 +306,10 @@ FreezeBurnParalyzeEffect:
 	jp nz, CheckDefrost ; can't inflict status if opponent is already statused
 ; ~$~CHANGED: No paralyzing Electric-types, burning Fire-types or freezing Ice-types.~$~
 	ld a, [wPlayerMoveEffect]
+	cp ZAP_CANNON_EFFECT ; ~$~ADDED: Zap Cannon and Inferno always inflict their respective status if they hit.~$~
+	jr z, .paralyze1
+	cp INFERNO_EFFECT
+	jr z, .burn1
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
 	jr c, .regular_effectiveness
@@ -384,6 +391,10 @@ FreezeBurnParalyzeEffect:
 	jp nz, CheckDefrost
 ; ~$~CHANGED: No paralyzing Electric-types, burning Fire-types or freezing Ice-types.~$~
 	ld a, [wEnemyMoveEffect]
+	cp ZAP_CANNON_EFFECT ; ~$~ADDED: Zap Cannon and Inferno always inflict their respective status if they hit.~$~
+	jr z, .paralyze2
+	cp INFERNO_EFFECT
+	jr z, .burn2
 	cp PARALYZE_SIDE_EFFECT1 + 1
 	ld b, 10 percent + 1
 	jr c, .regular_effectiveness2
@@ -742,6 +753,15 @@ StatModifierDownEffect:
 	sub ATTACK_DOWN_SIDE_EFFECT ; map each stat to 0-3
 	jr .decrementStatMod
 .nonSideEffect ; non-side effects only
+; ~$~CHANGED: This snippet is required to make Curse (and by association, any move that would cause self-inflicted debuffs) work.~$~
+	dec de ; First, set de to wPlayerMoveNum/wEnemyMoveNum.
+	ld a, [de] ; Now, load it into a.
+	and a ; Check to see if wPlayerMoveNum/wEnemyMoveNum is 0 for any reason.
+	inc de ; Set de back to wPlayerMoveEffect/wEnemyMoveEffect like it was.
+	jr nz, .noCurse ; In theory, the only scenario this happens is through using Curse, so anything else should jump ahead.~$~
+	jr .yesCurse
+.noCurse
+;;;
 	push hl
 	push de
 	push bc
@@ -759,6 +779,7 @@ StatModifierDownEffect:
 	ld a, [bc]
 	bit INVULNERABLE, a ; fly/dig
 	jp nz, MoveMissed
+.yesCurse ;;;
 	ld a, [de]
 	sub ATTACK_DOWN1_EFFECT
 	cp EVASION_DOWN1_EFFECT + $3 - ATTACK_DOWN1_EFFECT ; covers all -1 effects

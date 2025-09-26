@@ -20,7 +20,7 @@ TryDoWildEncounter:
 	and a
 	jr z, .next
 	dec a
-	jr z, .lastRepelStep
+	jp z, .lastRepelStep
 	ld [wRepelRemainingSteps], a
 .next
 ; determine if wild pokemon can appear in the half-block we're standing in
@@ -37,12 +37,14 @@ TryDoWildEncounter:
 	jr z, .CanEncounter
 ; even if not in grass/water, standing anywhere we can encounter pokemon
 ; so long as the map is "indoor" and has wild pokemon defined.
-; ...as long as it's not Viridian Forest or Safari Zone.
+; ...as long as it's not using the FOREST or OVERWORLD tileset.
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP ; is this an indoor map?
 	jr c, .CantEncounter2
 	ld a, [wCurMapTileset]
-	cp FOREST ; Viridian Forest/Safari Zone
+	cp FOREST ; Viridian Forest/Safari Zone/Hidden Forest
+	jr z, .CantEncounter2
+	cp OVERWORLD ; ~$~ADDED: No "indoor" maps with this tileset should produce encounters unless in grass.~$~
 	jr z, .CantEncounter2
 	ld a, [wGrassRate]
 .CanEncounter
@@ -74,6 +76,26 @@ TryDoWildEncounter:
 	ld b, 0
 	add hl, bc
 	ld a, [hli]
+; ~$~ADDED: Level scaling by badge for wild encounters.~$~
+	push hl
+	push af
+	ld hl, wObtainedBadges
+	ld b, 1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ld b, a
+	xor a
+.scalingLoop
+	add 4
+	dec b
+	jr z, .doneScaling
+	jr .scalingLoop
+.doneScaling
+	ld b, a
+	pop af
+	pop hl
+	add b
+;;;
 ; ~$~ADDED: Level variance for wild encounters.~$~
 	ld b, a
 	call Random

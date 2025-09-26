@@ -18,6 +18,7 @@ ViridianForest_Object:
 	warp_event 16, 47, VIRIDIAN_FOREST_SOUTH_GATE, 2
 	warp_event 17, 47, VIRIDIAN_FOREST_SOUTH_GATE, 2
 	warp_event 18, 47, VIRIDIAN_FOREST_SOUTH_GATE, 2
+	warp_event 33, 42, HIDDEN_FOREST, 1
 
 	def_bg_events
 	bg_event 24, 40, TEXT_VIRIDIANFOREST_TRAINER_TIPS1

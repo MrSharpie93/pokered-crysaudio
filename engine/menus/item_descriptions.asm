@@ -159,7 +159,7 @@ ItemDescriptionPointers:
 	text_end
 	text_far _LiftKeyDescription
 	text_end
-	text_far _ExpAllDescription
+	text_far _SuperHotTeaDescription
 	text_end
 	text_far _OldRodDescription
 	text_end

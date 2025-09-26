@@ -41,7 +41,7 @@ ViridianCityCheckGymOpenScript:
 	ret
 
 ViridianCityCheckGotPokedexScript:
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	ret nz
 	ld a, [wYCoord]
 	cp 9
@@ -169,37 +169,37 @@ ViridianCityGambler1Text:
 	text_end
 
 ViridianCityYoungster2Text:
-	text_asm
-	ld hl, .YouWantToKnowAboutText
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .no
-	ld hl, .CaterpieAndWeedleDescriptionText
-	call PrintText
-	jr .text_script_end
-.no
-	ld hl, .OkThenText
-	call PrintText
-.text_script_end
-	jp TextScriptEnd
-
-.YouWantToKnowAboutText:
+;	text_asm
+;	ld hl, .YouWantToKnowAboutText
+;	call PrintText
+;	call YesNoChoice
+;	ld a, [wCurrentMenuItem]
+;	and a
+;	jr nz, .no
+;	ld hl, .CaterpieAndWeedleDescriptionText
+;	call PrintText
+;	jr .text_script_end
+;.no
+;	ld hl, .OkThenText
+;	call PrintText
+;.text_script_end
+;	jp TextScriptEnd
+;
+;.YouWantToKnowAboutText:
 	text_far _ViridianCityYoungster2YouWantToKnowAboutText
 	text_end
 
-.OkThenText:
-	text_far ViridianCityYoungster2OkThenText
-	text_end
+;.OkThenText:
+;	text_far ViridianCityYoungster2OkThenText
+;	text_end
 
-.CaterpieAndWeedleDescriptionText:
-	text_far ViridianCityYoungster2CaterpieAndWeedleDescriptionText
-	text_end
+;.CaterpieAndWeedleDescriptionText:
+;	text_far ViridianCityYoungster2CaterpieAndWeedleDescriptionText
+;	text_end
 
 ViridianCityGirlText:
 	text_asm
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	jr nz, .got_pokedex
 	ld hl, .HasntHadHisCoffeeYetText
 	call PrintText
@@ -248,7 +248,7 @@ ViridianCityOldManText:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .refused
+	jr nz, .refused
 	ld hl, .KnowHowToCatchPokemonText
 	call PrintText
 	ld a, SCRIPT_VIRIDIANCITY_OLD_MAN_START_CATCH_TRAINING

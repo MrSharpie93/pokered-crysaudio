@@ -6,14 +6,23 @@ _SafariZoneWestRestHouseScientistText::
 	cont "easier to catch."
 	done
 
-_SafariZoneWestRestHouseCooltrainerMText::
+_SafariZoneWestRestHouseCooltrainerMText:: ; This guy is a liar in vanilla.~$~
 	text "Using BAIT will"
-	line "make #MON"
-	cont "easier to catch."
+	line "make #MON less"
+	cont "likely to run, but"
+	cont "harder to catch."
 	done
 
 _SafariZoneWestRestHouseSilphWorkerFText::
 	text "I hiked a lot, but"
 	line "I didn't see any"
 	cont "#MON I wanted."
+	done
+	
+_SafariZoneWestRestHouseDetailsText::
+	para "VENONAT, PARAS"
+	line "LICKITUNG, TAUROS"
+	cont "SCYTHER, BONSLY"
+	cont "PINSIR, MILTANK"
+	cont "SHELLDER, DRATINI"
 	done

@@ -169,10 +169,10 @@ _PewterCityPokecenterGuyText::
 
 	para "When JIGGLYPUFF"
 	line "sings, #MON"
-	cont "get drowsy..."
+	cont "get drowsy…"
 
-	para "...Me too..."
-	line "Snore..."
+	para "…Me too…"
+	line "Snore…"
 	done
 
 _CeruleanPokecenterGuyText::
@@ -211,7 +211,7 @@ _UnusedBenchGuyText1::
 
 _UnusedBenchGuyText2::
 	text "I'm tired from"
-	line "all the fun..."
+	line "all the fun…"
 	done
 
 _UnusedBenchGuyText3::
@@ -224,7 +224,7 @@ _VermilionPokecenterGuyText::
 	text "It is true that a"
 	line "higher level"
 	cont "#MON will be"
-	cont "more powerful..."
+	cont "more powerful…"
 
 	para "But, all #MON"
 	line "will have weak"
@@ -284,6 +284,19 @@ _CeladonCityHotelText::
 _BookcaseText::
 	text "Crammed full of"
 	line "#MON books!"
+	done
+	
+_DDLCBookcaseText::
+	text "Tons of literature"
+	line "line the shelves."
+	
+	para "There's also some"
+	line "manga, too."
+	
+	para "…And a weird book"
+	line "with an eye on it"
+	cont "that gives you"
+	cont "the creeps…"
 	done
 
 _NewBicycleText::
@@ -411,7 +424,7 @@ _OakLabEmailText::
 	text "There's an e-mail"
 	line "message here!"
 
-	para "..."
+	para "…"
 	
 	para "It looks long and"
 	line "irrelevant to you."
@@ -476,7 +489,7 @@ TMNotebookText::
 	text "It's a pamphlet"
 	line "on TMs."
 
-	para "..."
+	para "…"
 
 	para "There are 50 TMs"
 	line "in all."
@@ -492,7 +505,7 @@ _TurnPageText::
 	text "Turn the page?"
 	done
 
-_ViridianSchoolNotebookText5::
+_ViridianSchoolNotebookText5:: ; Doki shit is here
 	text "GIRL: Hey! Don't"
 	line "look at my notes!@"
 	text_end
@@ -501,20 +514,24 @@ _ViridianSchoolNotebookText1::
 	text "Looked at the"
 	line "notebook!"
 
-	para "First page..."
+	para "It's a bunch of"
+	line "random words"
+	cont "that don't seem"
+	cont "related…"
+	done
 
-	para "# BALLs are"
-	line "used to catch"
-	cont "#MON."
-
-	para "Up to 6 #MON"
-	line "can be carried."
-
-	para "People who raise"
-	line "and make #MON"
-	cont "fight are called"
-	cont "#MON trainers."
-	prompt
+;	para "# BALLs are"
+;	line "used to catch"
+;	cont "#MON."
+;
+;	para "Up to 6 #MON"
+;	line "can be carried."
+;
+;	para "People who raise"
+;	line "and make #MON"
+;	cont "fight are called"
+;	cont "#MON trainers."
+;	prompt
 
 _ViridianSchoolNotebookText2::
 	text "Second page..."
@@ -578,15 +595,28 @@ _IndigoPlateauHQText::
 	done
 
 _RedBedroomSNESText::
-	text "<PLAYER> is"
-	line "playing the N64!"
-	cont "...Okay!"
-	cont "It's time to go!"
+	text "Barging into"
+	line "another man's home"
+	cont "uninvited and"
+	cont "playing his N64?"
+	cont "Shame on you…"
+	done
+	
+_RedBedroomPCText::
+	text "It's a cutting-"
+	line "edge PC!"
+	
+	para "It seems to be"
+	line "able to store"
+	cont "and recall items."
+	
+	para "If only your PC"
+	line "could do that…"
 	done
 
 _Route15UpstairsBinocularsText::
 	text "Looked into the"
-	line "binoculars..."
+	line "binoculars…"
 
 	para "A large, shining"
 	line "bird is flying"
@@ -639,19 +669,22 @@ _LinkCableInfoText3::
 	cont "#MON."
 	prompt
 
-_ViridianSchoolBlackboardText1::
+_ViridianSchoolBlackboardText1:: ; Doki poems are here
 	text "The blackboard"
 	line "describes #MON"
 	cont "STATUS changes"
 	cont "during battles."
+	
+	para "In poem form, no"
+	line "less."
 	prompt
 
 _ViridianSchoolBlackboardText2::
-	text "Which heading do"
+	text "Which poem do"
 	line "you want to read?"
 	done
 
-_ViridianBlackboardSleepText::
+_ViridianBlackboardSleepText:: ; Sayori
 	text "A #MON can't"
 	line "attack if it's"
 	cont "asleep!"
@@ -664,19 +697,23 @@ _ViridianBlackboardSleepText::
 	line "wake them up!"
 	prompt
 
-_ViridianBlackboardPoisonText::
-	text "When poisoned, a"
-	line "#MON's health"
-	cont "steadily drops."
-
-	para "Poison lingers"
-	line "after battles."
-
-	para "Use an ANTIDOTE"
-	line "to cure poison!"
+_ViridianBlackboardPoisonText:: ; Yuri
+	text "Remnants of a past"
+	line "better forgotten,"
+	cont "yet its call is"
+	cont "intoxicating."
+	
+	para "A sickness with no"
+	line "cure, I indulge it"
+	cont "once more."
+	
+	para "Its sting forever"
+	line "lingering, worsen-"
+	cont "ing with each"
+	cont "passing day."
 	prompt
 
-_ViridianBlackboardPrlzText::
+_ViridianBlackboardPrlzText:: ; Monika
 	text "Paralysis could"
 	line "make #MON"
 	cont "moves misfire!"
@@ -688,20 +725,19 @@ _ViridianBlackboardPrlzText::
 	line "for treatment!"
 	prompt
 
-_ViridianBlackboardBurnText::
-	text "A burn reduces"
-	line "power and speed."
-	cont "It also causes"
-	cont "ongoing damage."
-
-	para "Burns remain"
-	line "after battles."
-
-	para "Use BURN HEAL to"
-	line "cure a burn!"
+_ViridianBlackboardBurnText:: ; MC
+	text "INFERNO, CAUSE,"
+	line "PERSISTENT, PAIN,"
+	cont "PHYSICAL, POWER,"
+	cont "DROP, PURE, KITTY,"
+	cont "SUGAR, BLANKET,"
+	cont "MELODY, TWIRL,"
+	cont "VANILLA, MILK,"
+	cont "JUMP, POUT, CUTE,"
+	cont "KISS, FANTASY."
 	prompt
 
-_ViridianBlackboardFrozenText::
+_ViridianBlackboardFrozenText:: ; Natsuki
 	text "If frozen, a"
 	line "#MON becomes"
 	cont "totally immobile!"
@@ -749,7 +785,7 @@ _VermilionGymTrashFailText::
 	line "only trash here."
 	
 	para "Aw shoot, here we"
-	line "go again...@"
+	line "go again…@"
 	text_end
 
 _FoundHiddenItemText::
@@ -1003,8 +1039,8 @@ _ScaredText::
 	prompt
 
 _GetOutText::
-	text "GHOST: Get out..."
-	line "Get out..."
+	text "GHOST: Get out…"
+	line "Get out…"
 	prompt
 
 _FastAsleepText::
@@ -1261,7 +1297,7 @@ _EnemyAppearedText::
 _TrainerWantsToFightText::
 	text_ram wTrainerName
 	text " wants"
-	line "to fight!"
+	line "to battle!"
 	prompt
 
 _UnveiledGhostText::
@@ -1326,7 +1362,7 @@ _SuperEffectiveText::
 
 _NotVeryEffectiveText::
 	text "It's not very"
-	line "effective..."
+	line "effective…"
 	prompt
 
 _SafariZoneEatingText::
@@ -1735,7 +1771,7 @@ _OakSpeechText2B::
 	cont "pets. Others use"
 	cont "them for fights."
 
-	para "Myself..."
+	para "Myself…"
 
 	para "I study #MON"
 	line "as a profession."
@@ -1775,7 +1811,7 @@ _PlayerStyleText:: ; ~$~ADDED: Masculine and feminine protagonists.~$~
 	line "that suits you."
 	done
 	
-_FavoriteColorText:: ; ~$~Will be used to determine starter choice.~$~
+_FavoriteColorText:: ; ~$~ADDED: Used to determine starter choice.~$~
 	text "What is your"
 	line "favorite color?"
 	done

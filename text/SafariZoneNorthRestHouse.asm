@@ -25,3 +25,11 @@ _SafariZoneNorthRestHouseGentlemanText::
 	cont "a VAPOREON!"
 	cont "I wonder why?"
 	done
+	
+_SafariZoneNorthRestHouseDetailsText::
+	para "PARAS, RHYHORN"
+	line "EXEGGCUTE, TAUROS"
+	cont "KANGASKHAN, HORSEA"
+	cont "SEADRA, MUNCHLAX"
+	cont "HERACROSS, MILTANK"
+	done

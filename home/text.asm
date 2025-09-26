@@ -526,7 +526,7 @@ TextCommand_SOUND::
 	jr z, .pokemonCry
 	cp TX_SOUND_CRY_PIDGEOT
 	jr z, .pokemonCry
-	cp TX_SOUND_CRY_DEWGONG
+	cp TX_SOUND_CRY_LAPRAS ; ~$~CHANGED: Replaced unused Dewgong cry.~$~
 	jr z, .pokemonCry
 	ld a, [hl]
 	call PlaySound
@@ -548,13 +548,13 @@ TextCommandSounds::
 	db TX_SOUND_GET_ITEM_1,           SFX_GET_ITEM_1 ; actually plays SFX_LEVEL_UP when the battle music engine is loaded
 	db TX_SOUND_CAUGHT_MON,           SFX_CAUGHT_MON
 	db TX_SOUND_POKEDEX_RATING,       SFX_POKEDEX_RATING ; unused
-	db TX_SOUND_GET_ITEM_1_DUPLICATE, SFX_GET_ITEM_1 ; unused
+	db TX_SOUND_LEVEL_UP,             SFX_LEVEL_UP
 	db TX_SOUND_GET_ITEM_2,           SFX_GET_ITEM_2
 	db TX_SOUND_GET_KEY_ITEM,         SFX_GET_KEY_ITEM
 	db TX_SOUND_DEX_PAGE_ADDED,       SFX_DEX_PAGE_ADDED
 	db TX_SOUND_CRY_NIDORINA,         NIDORINO ; used in OakSpeech ; ~$~FIXED: Plays Nidorino's cry. Not renaming labels.~$~
 	db TX_SOUND_CRY_PIDGEOT,          PIDGEOT  ; used in SaffronCityPidgeotText
-	db TX_SOUND_CRY_DEWGONG,          DEWGONG  ; unused
+	db TX_SOUND_CRY_LAPRAS,           LAPRAS   ; ~$~CHANGED: Replaced unused Dewgong cry.~$~
 
 TextCommand_DOTS::
 ; wait for button press or 30 frames while printing "…"s

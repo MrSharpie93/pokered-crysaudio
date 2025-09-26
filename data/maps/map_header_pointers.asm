@@ -1,18 +1,18 @@
 ; see also MapHeaderBanks
 MapHeaderPointers::
 	table_width 2, MapHeaderPointers
-	dw PalletTown_h      ; $00
-	dw ViridianCity_h    ; $01
-	dw PewterCity_h      ; $02
-	dw CeruleanCity_h    ; $03
-	dw LavenderTown_h    ; $04
-	dw VermilionCity_h   ; $05
-	dw CeladonCity_h     ; $06
-	dw FuchsiaCity_h     ; $07
-	dw CinnabarIsland_h  ; $08
-	dw IndigoPlateau_h   ; $09
-	dw SaffronCity_h     ; $0A
-	dw NewBarkTown_h     ; $0B
+	dw PalletTown_h         ; $00
+	dw ViridianCity_h       ; $01
+	dw PewterCity_h         ; $02
+	dw CeruleanCity_h       ; $03
+	dw LavenderTown_h       ; $04
+	dw VermilionCity_h      ; $05
+	dw CeladonCity_h        ; $06
+	dw FuchsiaCity_h        ; $07
+	dw CinnabarIsland_h     ; $08
+	dw IndigoPlateau_h      ; $09
+	dw SaffronCity_h        ; $0A
+	dw NewBarkTown_h        ; $0B
 	dw Route1_h             ; $0C
 	dw Route2_h             ; $0D
 	dw Route3_h             ; $0E
@@ -80,10 +80,10 @@ MapHeaderPointers::
 	dw Daycare_h
 	dw Route6Gate_h
 	dw UndergroundPathRoute6_h
-	dw UndergroundPathRoute6_h ; UNDERGROUND_PATH_ROUTE_6_COPY
+	dw PlayersHouse_h ; UNDERGROUND_PATH_ROUTE_6_COPY
 	dw Route7Gate_h
 	dw UndergroundPathRoute7_h
-	dw UndergroundPathRoute7Copy_h
+	dw BillsGarden_h ; ; UNDERGROUND_PATH_ROUTE_7_COPY
 	dw Route8Gate_h
 	dw UndergroundPathRoute8_h
 	dw RockTunnelPokecenter_h
@@ -178,7 +178,7 @@ MapHeaderPointers::
 	dw CinnabarLabFossilRoom_h
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
-	dw CinnabarMart_h ; CINNABAR_MART_COPY
+	dw Route28SteelWingHouse_h ; was CINNABAR_MART_COPY
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
@@ -238,19 +238,20 @@ MapHeaderPointers::
 	dw CeruleanBadgeHouse_h
 	dw SilverCavePokecenter_h ; UNUSED_MAP_E7
 	dw RockTunnelB1F_h
-	dw SilphCo9F_h
+	dw HiddenForest_h
 	dw SilphCo10F_h
 	dw SilphCo11F_h
 	dw SilphCoElevator_h
-	dw SilphCo9F_h ; UNUSED_MAP_ED
-	dw SilphCo9F_h ; UNUSED_MAP_EE
+	dw SilphCo1F_h ; UNUSED_MAP_ED
+	dw SilphCo1F_h ; UNUSED_MAP_EE
 	dw TradeCenter_h
 	dw Colosseum_h
-	dw SilphCo9F_h ; UNUSED_MAP_F1
-	dw SilphCo9F_h ; UNUSED_MAP_F2
-	dw SilphCo9F_h ; UNUSED_MAP_F3
-	dw SilphCo9F_h ; UNUSED_MAP_F4
+	dw SilphCo1F_h ; UNUSED_MAP_F1
+	dw SilphCo1F_h ; UNUSED_MAP_F2
+	dw SilphCo1F_h ; UNUSED_MAP_F3
+	dw SilphCo1F_h ; UNUSED_MAP_F4
 	dw LoreleisRoom_h
 	dw BrunosRoom_h
 	dw AgathasRoom_h
+	dw SummerBeachHouse_h
 	assert_table_length NUM_MAPS

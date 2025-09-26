@@ -1,30 +1,40 @@
 Route25WildMons:
 	def_grass_wildmons 15 ; encounter rate
 IF DEF(_RED)
-	db  8, WEEDLE
-	db  9, KAKUNA
-	db 13, PIDGEY
-	db 12, ODDISH
-	db 13, ODDISH
-	db 12, ABRA
-	db 14, ODDISH
-	db 10, ABRA
-	db  7, METAPOD
-	db  8, CATERPIE
+	db  4, VENONAT    ; 19.9%
+	db  4, PIDGEY     ; 19.9%
+	db  3, ODDISH     ; 15.2%
+	db  2, ODDISH     ;  9.8%
+	db  4, ODDISH     ;  9.8%
+	db  3, ABRA       ;  9.8%
+	db  2, BELLSPROUT ;  5.1%
+	db  5, PIDGEOTTO  ;  5.1%
+	db  3, VENONAT    ;  4.3%
+	db  2, ABRA       ;  1.2%
 ENDC
 IF DEF(_BLUE)
-	db  8, CATERPIE
-	db  9, METAPOD
-	db 13, PIDGEY
-	db 12, BELLSPROUT
-	db 13, BELLSPROUT
-	db 12, ABRA
-	db 14, BELLSPROUT
-	db 10, ABRA
-	db  7, KAKUNA
-	db  8, WEEDLE
+	db  4, VENONAT    ; 19.9%
+	db  4, PIDGEY     ; 19.9%
+	db  3, BELLSPROUT ; 15.2%
+	db  2, BELLSPROUT ;  9.8%
+	db  4, BELLSPROUT ;  9.8%
+	db  3, ABRA       ;  9.8%
+	db  2, ODDISH     ;  5.1%
+	db  5, PIDGEOTTO  ;  5.1%
+	db  3, VENONAT    ;  4.3%
+	db  2, ABRA       ;  1.2%
 ENDC
 	end_grass_wildmons
 
-	def_water_wildmons 0 ; encounter rate
+	def_water_wildmons 3 ; encounter rate
+	db  5, GOLDEEN   ; 19.9%
+	db  5, GOLDEEN   ; 19.9%
+	db  5, GOLDEEN   ; 15.2%
+	db  5, GOLDEEN   ;  9.8%
+	db  5, GOLDEEN   ;  9.8%
+	db  5, GOLDEEN   ;  9.8%
+	db  5, GOLDEEN   ;  5.1%
+	db 10, SEAKING   ;  5.1%
+	db 10, SEAKING   ;  4.3%
+	db 10, SEAKING   ;  1.2%
 	end_water_wildmons

@@ -16,3 +16,12 @@ _SafariZoneEastRestHouseSilphWorkerMText::
 	text "Whew! I'm tired"
 	line "from all the fun!"
 	done
+	
+_SafariZoneEastRestHouseDetailsText::
+	para "EXEGGCUTE, RHYHORN"
+	line "LICKITUNG, VIBRAVA"
+	cont "KANGASKHAN, GLIGAR"
+	cont "HERACROSS, MAROWAK"
+	cont "CHANSEY, SLOWPOKE"
+	cont "TURBAN"
+	done

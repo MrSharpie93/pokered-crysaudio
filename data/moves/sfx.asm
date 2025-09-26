@@ -138,7 +138,7 @@ MoveSoundTable:
 	db SFX_BATTLE_32,          $08, $40 ; SOFTBOILED
 	db SFX_BATTLE_17,          $01, $e0 ; HI_JUMP_KICK
 	db SFX_NOT_VERY_EFFECTIVE, $09, $ff ; GLARE
-	db SFX_BATTLE_35,          $42, $01 ; DREAM_EATER
+	db SFX_BATTLE_35,          $22, $18 ; DREAM_EATER
 	db SFX_BATTLE_1C,          $00, $ff ; POISON_GAS
 	db SFX_BATTLE_32,          $08, $e0 ; BULLET_SEED
 	db SFX_BATTLE_24,          $00, $80 ; LEECH_LIFE
@@ -168,12 +168,12 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 ; ~$~ADDED: New moves.~$~
 	db SFX_POISONED,           $00, $80 ; CURSE (used for poison anim)
-	db SFX_BATTLE_0B,          $00, $80 ; COTTON SPORE
+	db SFX_BATTLE_27,          $40, $60 ; COTTON SPORE (old Supersonic sound)
 	db SFX_ICE,                $00, $40 ; POWDER SNOW ; PureRGB SFX. ~$~
 	db SFX_BATTLE_0D,          $20, $40 ; MACH PUNCH
 	db SFX_BATTLE_0B,          $00, $80 ; SCARY FACE
 	db SFX_BATTLE_0B,          $00, $80 ; FEINT ATTACK
-	db SFX_BATTLE_0B,          $00, $80 ; SWEET KISS
+	db SFX_ATTRACT,            $00, $80 ; SWEET KISS
 	db SFX_BATTLE_0B,          $00, $80 ; SLUDGE BOMB
 	db SFX_BATTLE_0B,          $00, $80 ; MUD-SLAP
 	db SFX_ZAP_CANNON,         $00, $80 ; ZAP CANNON (also used for paralysis anim)

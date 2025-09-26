@@ -1,21 +1,15 @@
 PowerPlantWildMons:
 	def_grass_wildmons 10 ; encounter rate
-	db 21, VOLTORB
-	db 21, MAGNEMITE
-	db 20, PIKACHU
-	db 24, PIKACHU
-	db 23, MAGNEMITE
-	db 23, VOLTORB
-	db 32, MAGNETON
-	db 35, MAGNETON
-IF DEF(_RED)
-	db 33, ELECTABUZZ
-	db 36, ELECTABUZZ
-ENDC
-IF DEF(_BLUE)
-	db 33, RAICHU
-	db 36, RAICHU
-ENDC
+	db  4, VOLTORB    ; 19.9%
+	db  4, MAGNEMITE  ; 19.9%
+	db  5, PIKACHU    ; 15.2%
+	db  2, ELEKID     ;  9.8%
+	db  4, JOLTIK     ;  9.8%
+	db  8, FLAAFFY    ;  9.8%
+	db 12, MAGNETON   ;  5.1%
+	db 12, GALVANTULA ;  5.1%
+	db 12, ELECTABUZZ ;  4.3%
+	db 11, ELECTABUZZ ;  1.2%
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

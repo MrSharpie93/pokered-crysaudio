@@ -7,7 +7,8 @@
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	const_skip 17
+	const EVENT_GOT_SUPPLIES_FROM_MOM
+	const_skip 16
 	const EVENT_GOT_TOWN_MAP
 	const EVENT_ENTERED_BLUES_HOUSE
 	const EVENT_DAISY_WALKING
@@ -705,7 +706,9 @@
 	const_next $800
 	const_skip
 	const EVENT_BEAT_MANSION_2_TRAINER_0
-	const_skip 15
+	const EVENT_GOT_SURFBOARD ; New events for the item giving maps.~$~
+	const EVENT_GOT_TM47
+	const_skip 13
 	const EVENT_BEAT_MANSION_3_TRAINER_0
 	const EVENT_BEAT_MANSION_3_TRAINER_1
 	const_skip 14

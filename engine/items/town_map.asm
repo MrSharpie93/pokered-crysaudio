@@ -245,7 +245,7 @@ LoadTownMap_Fly::
 	jr z, .pressedDown ; skip past unvisited towns
 	jp .townMapFlyLoop
 .wrapToEndOfList
-	ld hl, wFlyLocationsList + NUM_CITY_MAPS + 2
+	ld hl, wFlyLocationsList + NUM_FLY_LOCATIONS
 	jr .pressedDown
 
 ToText:
@@ -259,25 +259,27 @@ BuildFlyLocationsList:
 	ld e, a
 	ld a, [wTownVisitedFlag + 1]
 	ld d, a
-	ld b, 0
-	ld c, NUM_CITY_MAPS + 2
+	lb bc, 0, NUM_FLY_LOCATIONS
 .loop
 	srl d
 	rr e
 	ld a, NOT_VISITED
-	jr nc, .notVisited
+	jr nc, .gotValue
 	ld a, b ; store the map number of the town if it has been visited
-; new for Route 4 and Route 10
-	cp 12
+; ~$~CHANGED: New Fly locations.~$~
+	cp FLYLOC_ROUTE_4_CENTER
 	jr nz, .notRoute4
 	ld a, ROUTE_4
 .notRoute4
-	cp 13
+	cp FLYLOC_ROUTE_10_CENTER
 	jr nz, .notRoute10
 	ld a, ROUTE_10
-; back to vanilla
 .notRoute10
-.notVisited
+	cp FLYLOC_SILVER_CAVE_CENTER
+	jr nz, .gotValue
+	ld a, SILVER_CAVE_OUTSIDE
+;;;
+.gotValue
 	ld [hl], a
 	inc hl
 	inc b
@@ -396,8 +398,12 @@ DisplayWildLocations:
 	call LoadTownMapEntry
 	pop hl
 	ld a, [de]
-	cp $19 ; Cerulean Cave's coordinates
+	cp $49 ; Cerulean Cave coordinates
 	jr z, .nextEntry ; skip Cerulean Cave
+	cp $3C ; Bill's Garden coordinates
+	jr z, .nextEntry ; skip Bill's Garden
+	cp $65 ; Hidden Forest coordinates
+	jr z, .nextEntry ; skip Hidden Forest
 	call TownMapCoordsToOAMCoords
 	ld a, $4 ; nest icon tile no.
 	ld [hli], a

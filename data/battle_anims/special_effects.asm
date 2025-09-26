@@ -24,7 +24,7 @@ AnimationIdSpecialEffects: ; ~$~CHANGED: Removing the bulk of these, as they are
 ;	anim_special_effect HYPER_BEAM,            FlashScreenEveryFourFrameBlocks
 ;	anim_special_effect THUNDERBOLT,           FlashScreenEveryEightFrameBlocks
 ;	anim_special_effect REFLECT,               AnimationFlashScreen
-;	anim_special_effect SELFDESTRUCT,          DoExplodeSpecialEffects
+	anim_special_effect SELFDESTRUCT,          DoExplodeSpecialEffects
 ;	anim_special_effect SPORE,                 FlashScreenEveryFourFrameBlocks
 	anim_special_effect EXPLOSION,             DoExplodeSpecialEffects
 	anim_special_effect ROCK_SLIDE,            DoRockSlideSpecialEffects

@@ -162,7 +162,7 @@ ViridianGymGiovanniText:
 
 .ReceivedEarthBadgeText:
 	text_far _ViridianGymGiovanniReceivedEarthBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
 	text_end
 	
 .GiovanniVictoryText:

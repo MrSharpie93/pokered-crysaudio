@@ -37,12 +37,12 @@ BluesHouseDaisySittingText:
 .give_town_map
 	ld hl, BluesHouseDaisyOfferMapText
 	call PrintText
-	lb bc, TOWN_MAP, 1
+	lb bc, SUPERHOT_TEA, 1
 	call GiveItem
 	jr nc, .bag_full
-	ld a, HS_TOWN_MAP
-	ld [wMissableObjectIndex], a
-	predef HideObject
+;	ld a, HS_TOWN_MAP
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
 	ld hl, GotMapText
 	call PrintText
 	SetEvent EVENT_GOT_TOWN_MAP

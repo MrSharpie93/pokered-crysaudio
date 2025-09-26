@@ -55,14 +55,19 @@ TrainerDataPointers:
 	dw ZinniaData
 	assert_table_length NUM_TRAINERS
 
-; if first byte != LEVELS, then
+; if first byte is a number, then
 	; first byte is level (of all pokemon on this team)
 	; all the next bytes are pokemon species
-	; null-terminated
+	; terminated by -1
 ; if first byte == LEVELS, then
-	; first byte is $FF (obviously)
+	; first byte is LEVELS (obviously)
 	; every next two bytes are a level and species
-	; null-terminated
+	; terminated by -1
+; if first byte == MOVES, then
+	; first byte is MOVES (obviously)
+	; the next byte is a level, then species, then their moveset
+	; this repeats until the last party member is added
+	; terminated by -1
 
 YoungsterData:
 ; Route 3
@@ -647,19 +652,19 @@ CooltrainerMData:
 
 CooltrainerFData:
 ; Celadon Gym
-	db 24, WEEPINBELL, GLOOM, IVYSAUR, -1
+	db 12, WEEPINBELL, GLOOM, IVYSAUR, -1
 ; Victory Road 3F
-	db 40, KANGASKHAN, BELLUNA, VICTREEBEL, -1
-	db 41, CHANSEY, DEWGONG, SYLVEON, -1
+	db 9, KANGASKHAN, BELLUNA, VICTREEBEL, -1
+	db 10, CHANSEY, DEWGONG, SYLVEON, -1
 ; Route 27
-	db 34, NIDOQUEEN, BUTTERFREE, POLITOED, -1
+	db 10, NIDOQUEEN, BUTTERFREE, POLITOED, -1
 ; Victory Road 1F
-	db 44, PERSIAN, NINETALES, -1
+	db 12, PERSIAN, NINETALES, -1
 ; Route 27
-	db 32, BULBASAUR, IVYSAUR, VENUSAUR, -1
+	db LEVELS, 8, BULBASAUR, 12, IVYSAUR, 28, VENUSAUR, -1
 ; Route 26
-	db 39, SALAZZLE, -1
-	db 35, RAICHU, BLASTOISE, -1
+	db 13, SALAZZLE, -1
+	db LEVELS, 8, RAICHU, 28, BLASTOISE, -1
 
 BrunoData:
 	db MOVES

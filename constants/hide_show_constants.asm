@@ -51,14 +51,14 @@ DEF SHOW EQU $15
 	const HS_DAISY_SITTING                 ; 27
 	const HS_DAISY_WALKING                 ; 28
 	const HS_TOWN_MAP                      ; 29
-	const HS_OAKS_LAB_RIVAL                ; 2A
+;	const HS_OAKS_LAB_RIVAL                ; 2A
 	const HS_STARTER_BALL_1                ; 2B
 	const HS_STARTER_BALL_2                ; 2C
 	const HS_STARTER_BALL_3                ; 2D
 	const HS_OAKS_LAB_OAK_1                ; 2E
 	const HS_POKEDEX_1                     ; 2F
 	const HS_POKEDEX_2                     ; 30
-	const HS_OAKS_LAB_OAK_2                ; 31
+;	const HS_OAKS_LAB_OAK_2                ; 31
 	const HS_VIRIDIAN_GYM_GIOVANNI         ; 32
 	const HS_VIRIDIAN_GYM_ITEM             ; 33 X
 	const HS_OLD_AMBER                     ; 34
@@ -185,9 +185,9 @@ DEF SHOW EQU $15
 	const HS_SILPH_CO_8F_1                 ; AB
 	const HS_SILPH_CO_8F_2                 ; AC
 	const HS_SILPH_CO_8F_3                 ; AD
-	const HS_SILPH_CO_9F_1                 ; AE
-	const HS_SILPH_CO_9F_2                 ; AF
-	const HS_SILPH_CO_9F_3                 ; B0
+;	const HS_SILPH_CO_9F_1                 ; AE
+;	const HS_SILPH_CO_9F_2                 ; AF
+;	const HS_SILPH_CO_9F_3                 ; B0
 	const HS_SILPH_CO_10F_1                ; B1
 	const HS_SILPH_CO_10F_2                ; B2
 	const HS_SILPH_CO_10F_3                ; B3 XXX never (de)activated?

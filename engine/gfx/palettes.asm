@@ -26,13 +26,23 @@ SetPal_BattleBlack:
 
 ; uses PalPacket_Empty to build a packet based on mon IDs and health color
 SetPal_Battle:
+	call SetPal_BattleCommon1
+	add PAL_GREENBAR
+	ld [hli], a
+	inc hl
+	ld a, [wEnemyHPBarColor]
+	add PAL_GREENBAR
+	jp SetPal_BattleCommon2
+
+; ~$~CHANGED: Split the majority of this code into two functions that SetPal_Battle and SetPal_BattleBalls can share.~$~
+SetPal_BattleCommon1:
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
 	ld a, [wPlayerBattleStatus3]
 	ld hl, wBattleMonSpecies
-	call DeterminePaletteID
+	call DetermineBackSpritePaletteID
 	ld b, a
 	ld a, [wEnemyBattleStatus3]
 	ld hl, wEnemyMonSpecies2
@@ -40,11 +50,9 @@ SetPal_Battle:
 	ld c, a
 	ld hl, wPalPacket + 1
 	ld a, [wPlayerHPBarColor]
-	add PAL_GREENBAR
-	ld [hli], a
-	inc hl
-	ld a, [wEnemyHPBarColor]
-	add PAL_GREENBAR
+	ret
+
+SetPal_BattleCommon2:
 	ld [hli], a
 	inc hl
 	ld a, b
@@ -57,6 +65,16 @@ SetPal_Battle:
 	ld a, SET_PAL_BATTLE
 	ld [wDefaultPaletteCommand], a
 	ret
+;;;
+	
+SetPal_BattleBalls: ; ~$~ADDED: Pokeballs at start of battle are red/white.~$~
+	call SetPal_BattleCommon1
+	add PAL_0F
+	ld [hli], a
+	inc hl
+	ld a, [wEnemyHPBarColor]
+	add PAL_0F
+	jp SetPal_BattleCommon2
 
 SetPal_TownMap:
 	ld hl, PalPacket_TownMap
@@ -235,7 +253,7 @@ SetPal_TrainerCard:
 	srl a
 	push af
 	jr c, .haveBadge
-; The player doens't have the badge, so zero the badge's blk data.
+; The player doesn't have the badge, so zero the badge's blk data.
 	push bc
 	ld a, [de]
 	ld c, a
@@ -284,6 +302,7 @@ SetPalFunctions:
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
 	dw SetPal_DexBalls
+	dw SetPal_BattleBalls
 
 ; The length of the blk data of each badge on the Trainer Card.
 ; The Rainbow Badge has 3 entries because of its many colors.
@@ -302,21 +321,50 @@ DeterminePaletteID:
 	ld a, PAL_PINKMON  ; if the mon has used Transform, use Ditto's palette
 	ret nz
 	ld a, [hl]
+; ~$~CHANGED: Trainers have their own SGB palettes. Code ported from pokered-gbc.~$~
 DeterminePaletteIDOutOfBattle:
 	ld [wPokedexNum], a
 	and a ; is the mon index 0?
-	jr z, .skipDexNumConversion
+	jr nz, GetMonPalette
+
+	ld a, [wTrainerClass] ; Get trainer ID
+	ld hl, TrainerPalettes
+	jr GetPaletteID
+	
+DetermineBackSpritePaletteID:
+	ld a, [hl]
+	ld [wPokedexNum], a
+	and a
+	jr nz, GetMonPalette
+	ld a, [wFavoriteColor]
+	cp $2
+	jr nz, .notBlue
+	ld a, PAL_BADGE
+	ret
+.notBlue
+	cp $1
+	jr nz, .notRed
+	ld a, PAL_REDTRAINER
+	ret
+.notRed
+	ld a, PAL_GREENTRAINER
+	ret
+
+GetMonPalette:
 	push bc
-	predef IndexToPokedex
+	predef IndexToPokedex ; turn Pokemon ID number into Pokedex number
 	pop bc
+
 	ld a, [wPokedexNum]
-.skipDexNumConversion
+	ld hl, MonsterPalettes
+GetPaletteID:
 	ld e, a
 	ld d, 0
-	ld hl, MonsterPalettes ; not just for Pokemon, Trainers use it too
+;	ld hl, MonsterPalettes ; not just for Pokemon, Trainers use it too
 	add hl, de
 	ld a, [hl]
 	ret
+;;;
 
 InitPartyMenuBlkPacket:
 	ld hl, BlkPacket_PartyMenu

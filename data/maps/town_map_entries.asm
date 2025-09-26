@@ -28,7 +28,7 @@ ExternalMapEntries:
 	external_map  9,  7, Route7Name
 	external_map 12,  7, Route8Name
 	external_map 12,  5, Route9Name
-	external_map 14,  5, Route10Name
+	external_map 13,  5, Route10Name
 	external_map 12,  9, Route11Name
 	external_map 14, 10, Route12Name
 	external_map 13, 11, Route13Name
@@ -70,8 +70,10 @@ InternalMapEntries:
 	internal_map MT_MOON_POKECENTER,             8,  5, Route4Name
 	internal_map ROUTE_26_HEAL_HOUSE,            1, 10, Route26Name
 	internal_map DAYCARE,                       10,  6, Route5Name
-	internal_map UNDERGROUND_PATH_ROUTE_6_COPY, 10,  8, Route6Name
-	internal_map UNDERGROUND_PATH_ROUTE_7_COPY,  9,  7, Route7Name
+	internal_map UNDERGROUND_PATH_ROUTE_6,      10,  8, Route6Name
+	internal_map PLAYERS_HOUSE,                  0, 11, NewBarkTownName
+	internal_map UNDERGROUND_PATH_ROUTE_7,       9,  7, Route7Name
+	internal_map BILLS_GARDEN,                  12,  3, SeaCottageName
 	internal_map UNDERGROUND_PATH_ROUTE_8,      12,  7, Route8Name
 	internal_map ROCK_TUNNEL_1F,                14,  5, RockTunnelName
 	internal_map POWER_PLANT,                   14,  6, PowerPlantName
@@ -96,7 +98,8 @@ InternalMapEntries:
 	internal_map VERMILION_OLD_ROD_HOUSE,       10,  9, VermilionCityName
 	internal_map FUCHSIA_GOOD_ROD_HOUSE,         9, 13, FuchsiaCityName
 	internal_map POKEMON_MANSION_1F,             4, 15, PokemonMansionName
-	internal_map CINNABAR_MART_COPY,             4, 15, CinnabarIslandName
+	internal_map CINNABAR_MART,                  4, 15, CinnabarIslandName
+	internal_map ROUTE_28_STEEL_WING_HOUSE,      0,  7, Route28Name
 	internal_map INDIGO_PLATEAU_LOBBY,           1,  3, IndigoPlateauName
 	internal_map MR_PSYCHICS_HOUSE,             10,  7, SaffronCityName
 	internal_map ROUTE_15_GATE_2F,              10, 13, Route15Name
@@ -111,7 +114,7 @@ InternalMapEntries:
 	internal_map DIGLETTS_CAVE,                  9,  6, DiglettsCaveName
 	internal_map VICTORY_ROAD_3F,                1,  5, VictoryRoadName
 	internal_map ROCKET_HIDEOUT_ELEVATOR,        7,  7, RocketHQName
-	internal_map SILVER_CAVE_ITEM_ROOMS,         7,  5, SilverCaveOutsideName
+	internal_map SILVER_CAVE_ITEM_ROOMS,         0,  7, SilverCaveOutsideName
 	internal_map TOHJO_FALLS,                    0, 11, TohjoFallsName
 	internal_map SILPH_CO_8F,                   10,  7, SilphCoName
 	internal_map POKEMON_MANSION_B1F,            4, 15, PokemonMansionName
@@ -120,6 +123,8 @@ InternalMapEntries:
 	internal_map NAME_RATERS_HOUSE,             14,  7, LavenderTownName
 	internal_map CERULEAN_BADGE_HOUSE,          10,  5, CeruleanCityName
 	internal_map ROCK_TUNNEL_B1F,               14,  5, RockTunnelName
+	internal_map HIDDEN_FOREST,                  5,  6, ViridianForestName
 	internal_map SILPH_CO_ELEVATOR,             10,  7, SilphCoName
 	internal_map AGATHAS_ROOM,                   1,  3, PokemonLeagueName
+	internal_map SUMMER_BEACH_HOUSE,             9, 14, Route19Name
 	db -1 ; end

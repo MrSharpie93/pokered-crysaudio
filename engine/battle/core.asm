@@ -580,6 +580,7 @@ HandlePoisonBurnLeechSeed:
 	call PlayAltAnimation   ; play burn/poison animation
 	pop hl
 	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
+	call HandlePoisonBurnLeechSeed_DecreaseOwnHP ; remove 1/4
 	jr .notLeechSeeded
 
 HurtByPoisonText:
@@ -886,8 +887,10 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-	ld b, EXP_ALL
-	call IsItemInBag
+;	ld b, EXP_ALL
+;	call IsItemInBag
+	ld a, [wStatusFlags1]
+	bit BIT_EXP_SHARE_ACTIVE, a
 	push af
 	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
 
@@ -4382,6 +4385,10 @@ GetDamageVarsForPlayerAttack:
 	rl b
 	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 .physicalAttackCritCheck
+;~$~ADDED: Check for Psystrike.~$~
+	ld a, [wPlayerMoveNum]
+	cp PSYSTRIKE
+	jr z, .specialAttackCritCheck
 	ld hl, wBattleMonAttack
 	ld a, [wCriticalHitOrOHKO]
 	and a ; check for critical hit
@@ -4415,6 +4422,12 @@ GetDamageVarsForPlayerAttack:
 	jr .scaleStats
 ;;;
 .specialAttack
+;~$~ADDED: Check for Psystrike.~$~
+	ld a, [wPlayerMoveNum]
+	cp PSYSTRIKE
+	jr z, .physicalAttack
+; The above should keep the player's SPECIAL as the damage calculator while then
+; jumping to the routine for calculating the enemy's DEFENSE instead of their SPECIAL.~$~
 	ld hl, wEnemyMonSpecial
 	ld a, [hli]
 	ld b, a
@@ -4542,6 +4555,10 @@ GetDamageVarsForEnemyAttack:
 	rl b
 	call CapBCAt1023 ; ~$~ADDED: Red++ fix for Reflect/Light Screen stat overflow.~$~
 .physicalAttackCritCheck
+;~$~ADDED: Check for Psystrike.~$~
+	ld a, [wEnemyMoveNum]
+	cp PSYSTRIKE
+	jr z, .specialAttackCritCheck
 	ld hl, wEnemyMonAttack
 	ld a, [wCriticalHitOrOHKO]
 	and a ; check for critical hit
@@ -4577,6 +4594,12 @@ GetDamageVarsForEnemyAttack:
 	jr .scaleStats
 ;;;
 .specialAttack
+;~$~ADDED: Check for Psystrike.~$~
+	ld a, [wEnemyMoveNum]
+	cp PSYSTRIKE
+	jr z, .physicalAttack
+; The above should keep the enemy's SPECIAL as the damage calculator while then
+; jumping to the routine for calculating the player's DEFENSE instead of their SPECIAL.~$~
 	ld hl, wBattleMonSpecial
 	ld a, [hli]
 	ld b, a
@@ -7393,6 +7416,8 @@ _InitBattleCommon:
 	lb bc, 4, 10
 	call ClearScreenArea
 	call ClearSprites
+	ld b, SET_PAL_BATTLE ; ~$~CHANGED: Set palette back to normal here, so HP bars aren't red at start of battle.~$~
+	call RunPaletteCommand
 	ld a, [wIsInBattle]
 	dec a ; is it a wild battle?
 	call z, DrawEnemyHUDAndHPBar ; draw enemy HUD and HP bar if it's a wild battle

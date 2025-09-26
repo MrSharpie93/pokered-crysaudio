@@ -7,6 +7,7 @@ SafariZoneNorthRestHouse_TextPointers:
 	dw_const SafariZoneNorthRestHouseScientistText,        TEXT_SAFARIZONENORTHRESTHOUSE_SCIENTIST
 	dw_const SafariZoneNorthRestHouseSafariZoneWorkerText, TEXT_SAFARIZONENORTHRESTHOUSE_SAFARI_ZONE_WORKER
 	dw_const SafariZoneNorthRestHouseGentlemanText,        TEXT_SAFARIZONENORTHRESTHOUSE_GENTLEMAN
+	dw_const SafariZoneNorthRestHouseDetailsText,          TEXT_SAFARIZONENORTHRESTHOUSE_DETAILS
 
 SafariZoneNorthRestHouseScientistText:
 	text_far _SafariZoneNorthRestHouseScientistText
@@ -18,4 +19,10 @@ SafariZoneNorthRestHouseSafariZoneWorkerText:
 
 SafariZoneNorthRestHouseGentlemanText:
 	text_far _SafariZoneNorthRestHouseGentlemanText
+	text_end
+	
+SafariZoneNorthRestHouseDetailsText:
+	text_far _SafariZoneRestHousePosterText
+	text_end
+	text_far _SafariZoneNorthRestHouseDetailsText
 	text_end

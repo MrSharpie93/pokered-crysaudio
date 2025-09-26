@@ -11,4 +11,6 @@ OpenRedsPC:
 	tx_pre_jump RedBedroomPCText
 
 RedBedroomPCText::
-	script_players_pc
+	;script_players_pc
+	text_far _RedBedroomPCText
+	text_end

@@ -72,7 +72,7 @@ DEF NUM_BADGES EQU const_value
 	const BIT_GOT_GOOD_ROD              ; 4
 	const BIT_GOT_SUPER_ROD             ; 5
 	const BIT_GAVE_SAFFRON_GUARDS_DRINK ; 6
-	const BIT_UNUSED_CARD_KEY           ; 7
+	const BIT_EXP_SHARE_ACTIVE          ; 7 ; ~$~CHANGED: EXP Share is controlled by a bit, rather than being an item.~$~
 
 ; wStatusFlags2
 	const_def

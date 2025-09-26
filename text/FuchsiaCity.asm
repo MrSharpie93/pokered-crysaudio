@@ -16,9 +16,14 @@ _FuchsiaCityGamblerText::
 	done
 
 _FuchsiaCityErikText::
-	text "ERIK: Where's"
-	line "SARA? I said I'd"
-	cont "meet her here."
+	text "KOJI: Where's"
+	line "ATSUKO? I said I'd"
+	cont "meet her here to"
+	cont "catch #MON…"
+	
+	para "But instead I'm"
+	line "catching weird"
+	cont "looks!"
 	done
 
 _FuchsiaCityYoungster2Text::

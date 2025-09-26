@@ -80,10 +80,10 @@ MapHeaderBanks::
 	db BANK(Daycare_h)
 	db BANK(Route6Gate_h)
 	db BANK(UndergroundPathRoute6_h)
-	db BANK(UndergroundPathRoute6_h) ; UNDERGROUND_PATH_ROUTE_6_COPY
+	db BANK(PlayersHouse_h) ; UNDERGROUND_PATH_ROUTE_6_COPY
 	db BANK(Route7Gate_h)
 	db BANK(UndergroundPathRoute7_h)
-	db BANK(UndergroundPathRoute7Copy_h)
+	db BANK(BillsGarden_h) ; UNDERGROUND_PATH_ROUTE_7_COPY
 	db BANK(Route8Gate_h)
 	db BANK(UndergroundPathRoute8_h)
 	db BANK(RockTunnelPokecenter_h)
@@ -178,7 +178,7 @@ MapHeaderBanks::
 	db BANK(CinnabarLabFossilRoom_h)
 	db BANK(CinnabarPokecenter_h)
 	db BANK(CinnabarMart_h)
-	db BANK(CinnabarMart_h)
+	db BANK(Route28SteelWingHouse_h)
 	db BANK(IndigoPlateauLobby_h)
 	db BANK(CopycatsHouse1F_h)
 	db BANK(CopycatsHouse2F_h)
@@ -238,7 +238,7 @@ MapHeaderBanks::
 	db BANK(CeruleanBadgeHouse_h)
 	db BANK(SilverCavePokecenter_h)
 	db BANK(RockTunnelB1F_h)
-	db BANK(SilphCo9F_h)
+	db BANK(HiddenForest_h)
 	db BANK(SilphCo10F_h)
 	db BANK(SilphCo11F_h)
 	db BANK(SilphCoElevator_h)
@@ -253,4 +253,5 @@ MapHeaderBanks::
 	db BANK(LoreleisRoom_h)
 	db BANK(BrunosRoom_h)
 	db BANK(AgathasRoom_h)
+	db BANK(SummerBeachHouse_h)
 	assert_table_length NUM_MAPS

@@ -4,13 +4,14 @@
 	const_export SAFARIZONENORTHRESTHOUSE_GENTLEMAN
 
 SafariZoneNorthRestHouse_Object:
-	db $a ; border block
+	db $17 ; border block
 
 	def_warp_events
-	warp_event  2,  7, SAFARI_ZONE_NORTH, 9
-	warp_event  3,  7, SAFARI_ZONE_NORTH, 9
+	warp_event  4,  7, SAFARI_ZONE_NORTH, 9
+	warp_event  5,  7, SAFARI_ZONE_NORTH, 9
 
 	def_bg_events
+	bg_event  3,  0, TEXT_SAFARIZONENORTHRESTHOUSE_DETAILS
 
 	def_object_events
 	object_event  6,  3, SPRITE_SCIENTIST, WALK, LEFT_RIGHT, TEXT_SAFARIZONENORTHRESTHOUSE_SCIENTIST

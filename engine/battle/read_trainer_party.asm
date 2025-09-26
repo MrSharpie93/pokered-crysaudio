@@ -52,6 +52,7 @@ ReadTrainer: ; ~$~CHANGED: Levels/Moves trainers from RedStar/BlueStar.~$~
 
 ; ; if this code is being run,
 ; the trainer has a single level for all pokemon
+	call ScaleTrainer  ; ~$~CHANGED: Function to scale trainer levels by badges obtained.~$~
 	ld [wCurEnemyLevel], a
 .LoopTrainerData
 	ld a, [hli]
@@ -71,6 +72,7 @@ ReadTrainer: ; ~$~CHANGED: Levels/Moves trainers from RedStar/BlueStar.~$~
 	ld a, [hli]
 	cp -1 ; have we reached the end of the trainer data?
 	jr z, .FinishUp
+	call ScaleTrainer ; ~$~CHANGED: Function to scale trainer levels by badges obtained.~$~
 	ld [wCurEnemyLevel], a
 	ld a, [hli]
 	ld [wCurPartySpecies], a
@@ -153,5 +155,28 @@ GetTrainerMonDVs:: ; called from engine/battle/core.asm
 	ld a, [hl]
 	ld [de], a
 	ret
+	
+; ~$~ADDED: Level scaling by badge for trainer battles.~$~
+ScaleTrainer:
+	push hl
+	push af
+	ld hl, wObtainedBadges
+	ld b, 1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ld b, a
+	xor a
+.scalingLoop
+	add 4
+	dec b
+	jr z, .doneScaling
+	jr .scalingLoop
+.doneScaling
+	ld b, a
+	pop af
+	pop hl
+	add b
+	ret
+;;;
 
 INCLUDE "data/trainers/trainer_dvs.asm"

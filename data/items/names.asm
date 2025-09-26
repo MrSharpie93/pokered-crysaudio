@@ -74,7 +74,7 @@ ItemNames::
 	li "SILPH SCOPE"
 	li "POKé FLUTE"
 	li "LIFT KEY"
-	li "EXP.ALL"
+	li "SUPERHOT TEA"
 	li "OLD ROD"
 	li "GOOD ROD"
 	li "SUPER ROD"

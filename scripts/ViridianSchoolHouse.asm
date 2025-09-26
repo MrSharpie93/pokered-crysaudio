@@ -3,13 +3,28 @@ ViridianSchoolHouse_Script:
 
 ViridianSchoolHouse_TextPointers:
 	def_text_pointers
-	dw_const ViridianSchoolHouseBrunetteGirlText, TEXT_VIRIDIANSCHOOLHOUSE_BRUNETTE_GIRL
-	dw_const ViridianSchoolHouseCooltrainerFText, TEXT_VIRIDIANSCHOOLHOUSE_COOLTRAINER_F
+	dw_const ViridianSchoolHouseMCText,      TEXT_VIRIDIANSCHOOLHOUSE_MC
+	dw_const ViridianSchoolHouseMonikaText,  TEXT_VIRIDIANSCHOOLHOUSE_MONIKA
+	dw_const ViridianSchoolHouseSayoriText,  TEXT_VIRIDIANSCHOOLHOUSE_SAYORI
+	dw_const ViridianSchoolHouseYuriText,    TEXT_VIRIDIANSCHOOLHOUSE_YURI
+	dw_const ViridianSchoolHouseNatsukiText, TEXT_VIRIDIANSCHOOLHOUSE_NATSUKI
 
-ViridianSchoolHouseBrunetteGirlText:
-	text_far _ViridianSchoolHouseBrunetteGirlText
+ViridianSchoolHouseMCText:
+	text_far _ViridianSchoolHouseMCText
 	text_end
 
-ViridianSchoolHouseCooltrainerFText:
-	text_far _ViridianSchoolHouseCooltrainerFText
+ViridianSchoolHouseMonikaText:
+	text_far _ViridianSchoolHouseMonikaText
+	text_end
+	
+ViridianSchoolHouseSayoriText:
+	text_far _ViridianSchoolHouseSayoriText
+	text_end
+	
+ViridianSchoolHouseYuriText:
+	text_far _ViridianSchoolHouseYuriText
+	text_end
+	
+ViridianSchoolHouseNatsukiText:
+	text_far _ViridianSchoolHouseNatsukiText
 	text_end

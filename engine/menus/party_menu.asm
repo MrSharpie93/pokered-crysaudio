@@ -303,7 +303,7 @@ ReviveText:
 
 RareCandyText:
 	text_far _RareCandyText
-	sound_get_item_1 ; probably supposed to play SFX_LEVEL_UP but the wrong music bank is loaded
+	sound_level_up ; ~$~CHANGED: Plays SFX_LEVEL_UP.~$~
 	text_promptbutton
 	text_end
 

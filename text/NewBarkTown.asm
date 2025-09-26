@@ -1,10 +1,10 @@
 _NewBarkTownCoolTrainerFText::
 	text "Hi, <PLAYER>!"
-	line "Leaving again?"
+	line "Leaving, are you?"
 
-	para "You should tell"
-	line "your mom if you"
-	cont "are leaving."
+	para "Make sure to say"
+	line "good-bye to your"
+	cont "MOM."
 	
 	para "She's not around?"
 	
@@ -68,4 +68,22 @@ _NewBarkTownRoadworkText::
 	
 _NewBarkTownItsLockedText::
 	text "It's locked…"
+	done
+	
+_NewBarkTownFerrymanText::
+	text "Oh, you must be"
+	line "<PLAYER>!"
+	
+	para "Ready to head to"
+	line "PALLET TOWN?"
+	
+	para "It's no trouble,"
+	line "your MOM already"
+	cont "covered the fare."
+	
+	para "Climb aboard!"
+	done
+	
+_NewBarkTownLaprasText::
+	text "LAPRAS: Praaas!"
 	done

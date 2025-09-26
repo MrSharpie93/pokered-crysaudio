@@ -628,7 +628,7 @@ wUnusedOverrideSimulatedJoypadStatesIndex:: db
 ; XXX is it ever not 0?
 wOverrideSimulatedJoypadStatesMask:: db
 
-	ds 1
+wFavoriteColor:: db ; ~$~ADDED: Repurposing this bit to hold starter choice at game start, old purpose no longer needed.~$~
 
 ; This union spans 30 bytes.
 UNION
@@ -708,7 +708,7 @@ wRivalStarterBallSpriteIndex:: db
 NEXTU
 wFlyAnimUsingCoordList:: db
 ; $ff sentinel values at each end
-wFlyLocationsList:: ds NUM_CITY_MAPS + 4 ; edited, to allow fly to Route 4 and Route 10
+wFlyLocationsList:: ds NUM_FLY_LOCATIONS + 2 ; edited, to allow fly to Route 4, Route 10 and Silver Cave
 
 NEXTU
 wWhichTownMapLocation:: db
@@ -2118,7 +2118,7 @@ wWalkBikeSurfState:: db
 
 	ds 10
 
-wTownVisitedFlag:: flag_array NUM_CITY_MAPS + 2
+wTownVisitedFlag:: flag_array NUM_FLY_LOCATIONS
 
 ; starts at 502
 wSafariSteps:: dw

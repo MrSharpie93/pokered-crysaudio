@@ -183,6 +183,7 @@ VermilionGymLTSurgeTM24NoRoomText:
 
 VermilionGymLTSurgeReceivedThunderBadgeText:
 	text_far _VermilionGymLTSurgeReceivedThunderBadgeText
+	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
 	text_end
 	
 VermilionGymLTSurgeVictoryText:
