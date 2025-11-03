@@ -61,6 +61,16 @@ _NewBadgeRequiredText::
 	text "No! A new BADGE"
 	line "is required."
 	prompt
+	
+_UsedBirdwhistleText::
+	text "You played the"
+	line "BIRDWHISTLE!"
+	done
+	
+_BirdwhistleFailText::
+	text "Your call has gone"
+	line "unanswered…"
+	prompt
 
 _CannotUseItemsHereText::
 	text "You can't use items"

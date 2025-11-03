@@ -19,7 +19,7 @@ DEF SHOW EQU $15
 	const HS_CERULEAN_GUARD_1              ; 07
 	const HS_CERULEAN_CAVE_GUY             ; 08
 	const HS_CERULEAN_GUARD_2              ; 09
-	const HS_SAFFRON_CITY_1                ; 0A
+	const HS_SAFFRON_CITY_1                ; 0A ; TODO: Remove these, no longer necessary.~$~
 	const HS_SAFFRON_CITY_2                ; 0B
 	const HS_SAFFRON_CITY_3                ; 0C
 	const HS_SAFFRON_CITY_4                ; 0D
@@ -33,7 +33,7 @@ DEF SHOW EQU $15
 	const HS_SAFFRON_CITY_C                ; 15
 	const HS_SAFFRON_CITY_D                ; 16
 	const HS_SAFFRON_CITY_E                ; 17
-	const HS_SAFFRON_CITY_F                ; 18
+	const HS_SAFFRON_CITY_F                ; 18 ;;;
 	const HS_ROUTE_2_ITEM_1                ; 19 X
 	const HS_ROUTE_2_ITEM_2                ; 1A X
 	const HS_ROUTE_4_ITEM                  ; 1B X
@@ -50,7 +50,7 @@ DEF SHOW EQU $15
 	const HS_ROUTE_25_ITEM                 ; 26 X
 	const HS_DAISY_SITTING                 ; 27
 	const HS_DAISY_WALKING                 ; 28
-	const HS_TOWN_MAP                      ; 29
+	const HS_TOWN_MAP                      ; 29 REMOVE
 ;	const HS_OAKS_LAB_RIVAL                ; 2A
 	const HS_STARTER_BALL_1                ; 2B
 	const HS_STARTER_BALL_2                ; 2C
@@ -59,7 +59,7 @@ DEF SHOW EQU $15
 	const HS_POKEDEX_1                     ; 2F
 	const HS_POKEDEX_2                     ; 30
 ;	const HS_OAKS_LAB_OAK_2                ; 31
-	const HS_VIRIDIAN_GYM_GIOVANNI         ; 32
+	const HS_VIRIDIAN_GYM_GIOVANNI         ; 32 REMOVE
 	const HS_VIRIDIAN_GYM_ITEM             ; 33 X
 	const HS_OLD_AMBER                     ; 34
 	const HS_CERULEAN_CAVE_1F_ITEM_1       ; 35 X
@@ -83,9 +83,9 @@ DEF SHOW EQU $15
 	const HS_WARDENS_HOUSE_ITEM            ; 47 X
 	const HS_POKEMON_MANSION_1F_ITEM_1     ; 48 X
 	const HS_POKEMON_MANSION_1F_ITEM_2     ; 49 X
-	const HS_FIGHTING_DOJO_GIFT_1          ; 4A
-	const HS_FIGHTING_DOJO_GIFT_2          ; 4B
-	const HS_SILPH_CO_1F_RECEPTIONIST      ; 4C
+	const HS_FIGHTING_DOJO_GIFT_1          ; 4A Hitmonlee
+	const HS_FIGHTING_DOJO_GIFT_2          ; 4B Hitmonchan
+	const HS_FIGHTING_DOJO_GIFT_3          ; 4C Hitmontop
 	const HS_VOLTORB_1                     ; 4D X
 	const HS_VOLTORB_2                     ; 4E X
 	const HS_VOLTORB_3                     ; 4F X
@@ -106,9 +106,9 @@ DEF SHOW EQU $15
 	const HS_VICTORY_ROAD_2F_ITEM_3        ; 5E X
 	const HS_VICTORY_ROAD_2F_ITEM_4        ; 5F X
 	const HS_VICTORY_ROAD_2F_BOULDER       ; 60
-	const HS_BILL_POKEMON                  ; 61
+	const HS_BILL_POKEMON                  ; 61 REMOVE
 	const HS_BILL_1                        ; 62
-	const HS_BILL_2                        ; 63
+	const HS_BILL_2                        ; 63 ;;;
 	const HS_VIRIDIAN_FOREST_ITEM_1        ; 64 X
 	const HS_VIRIDIAN_FOREST_ITEM_2        ; 65 X
 	const HS_VIRIDIAN_FOREST_ITEM_3        ; 66 X

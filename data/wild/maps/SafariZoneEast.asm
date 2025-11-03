@@ -12,7 +12,7 @@ SafariZoneEastWildMons:
 	db  3, CHANSEY    ;  1.2%
 	end_grass_wildmons
 
-	def_water_wildmons 3 ; encounter rate
+	def_water_wildmons 10 ; encounter rate
 	db  5, SLOWPOKE  ; 19.9%
 	db  5, SLOWPOKE  ; 19.9%
 	db  5, SLOWPOKE  ; 15.2%

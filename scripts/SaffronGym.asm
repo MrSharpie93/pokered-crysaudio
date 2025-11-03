@@ -3,6 +3,7 @@ SaffronGym_Script:
 	bit BIT_CUR_MAP_LOADED_2, [hl]
 	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .LoadNames
+	call SabrinaBeatenScript
 	call EnableAutoTextBoxDrawing
 	ld hl, SaffronGymTrainerHeaders
 	ld de, SaffronGym_ScriptPointers
@@ -21,6 +22,18 @@ SaffronGym_Script:
 
 .LeaderName:
 	db "SABRINA@"
+	
+SabrinaBeatenScript:
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	CheckEvent EVENT_BEAT_SABRINA
+	ret nz
+	ld a, $63
+	ld [wNewTileBlockID], a
+	lb bc, 6, 4
+	predef_jump ReplaceTileBlock
 
 SaffronGymResetScripts:
 	xor a ; SCRIPT_SAFFRONGYM_DEFAULT
@@ -44,6 +57,11 @@ SaffronGymSabrinaPostBattle:
 	ld [wJoyIgnore], a
 
 SaffronGymSabrinaReceiveTM46Script:
+	ld a, $2A
+	ld [wNewTileBlockID], a
+	lb bc, 6, 4
+	predef ReplaceTileBlock
+	
 	ld a, TEXT_SAFFRONGYM_SABRINA_MARSH_BADGE_INFO
 	ldh [hTextID], a
 	call DisplayTextID
@@ -106,13 +124,41 @@ SaffronGymTrainerHeader6:
 
 SaffronGymSabrinaText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_SABRINA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM46
 	jr nz, .afterBeat
 	call z, SaffronGymSabrinaReceiveTM46Script
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, SabrinaRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, SabrinaRematchDefeatedText
+	ld de, .SabrinaVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_SABRINA
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $6
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
@@ -326,4 +372,12 @@ SaffronGymYoungster4EndBattleText:
 
 SaffronGymYoungster4AfterBattleText:
 	text_far _SaffronGymYoungster4AfterBattleText
+	text_end
+	
+SabrinaRematchPreBattleText:
+	text_far _SabrinaRematchPreBattleText
+	text_end
+	
+SabrinaRematchDefeatedText:
+	text_far _SabrinaRematchDefeatedText
 	text_end

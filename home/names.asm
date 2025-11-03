@@ -28,6 +28,10 @@ GetItemName::
 ; given an item ID at [wNamedObjectIndex], store the name of the item in wNameBuffer
 	push hl
 	push bc
+; ~$~CHANGED: jojobear13 fix for rare TM crash.~$~
+	ld a, ITEM_NAME
+	ld [wNameListType], a
+;;;
 	ld a, [wNamedObjectIndex]
 	cp HM01 ; is this a TM/HM?
 	jr nc, .Machine

@@ -372,6 +372,11 @@ _BirdwhistleDescription::
 	text "Summons a flying"
 	next "#MON."
 	prompt
+	
+_MistStoneDescription::
+	text "A mysterious and"
+	next "powerful STONE."
+	prompt
 
 _HM01Description::
 	text "Cuts using claws,"

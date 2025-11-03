@@ -89,6 +89,7 @@ ItemPrices::
 	bcd3 0     ; RARE_CARD
 	bcd3 0     ; ODD_KEYSTONE
 	bcd3 0     ; BIRDWHISTLE
+	bcd3 0     ; MIST_STONE
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F

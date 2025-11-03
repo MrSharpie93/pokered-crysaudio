@@ -35,6 +35,11 @@ _FuchsiaGymKogaTM06ExplanationText::
 	para "It is a secret"
 	line "technique over"
 	cont "400 years old!"
+	
+	para "POISON #MON"
+	line "have incredible"
+	cont "precision when"
+	cont "using it."
 	done
 
 _FuchsiaGymKogaTM06NoRoomText::
@@ -111,7 +116,7 @@ _FuchsiaGymRocker4BattleText::
 
 _FuchsiaGymRocker4EndBattleText::
 	text "Whoa!"
-	line "He's got it!"
+	line "You've got it!"
 	prompt
 
 _FuchsiaGymRocker4AfterBattleText::
@@ -188,3 +193,22 @@ _FuchsiaGymGymGuideBeatKogaText::
 	line "ninja can terrify"
 	cont "even now!"
 	done
+	
+_KogaRematchPreBattleText::
+	text "Fwahahaha!"
+	
+	para "If it isn't the"
+	line "child. It seems"
+	cont "we are fated to"
+	cont "meet once more…"
+	
+	para "in a battle that"
+	line "will end in your"
+	cont "utter defeat!"
+	done
+	
+_KogaRematchDefeatedText::
+	text "I must"
+	line "pursue further"
+	cont "discipline."
+	prompt

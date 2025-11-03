@@ -4,10 +4,11 @@ SafariZoneEastRestHouse_Script:
 
 SafariZoneEastRestHouse_TextPointers:
 	def_text_pointers
-	dw_const SafariZoneEastRestHouseScientistText,    TEXT_SAFARIZONEEASTRESTHOUSE_SCIENTIST
-	dw_const SafariZoneEastRestHouseRockerText,       TEXT_SAFARIZONEEASTRESTHOUSE_ROCKER
-	dw_const SafariZoneEastRestHouseSilphWorkerMText, TEXT_SAFARIZONEEASTRESTHOUSE_SILPH_WORKER_M
-	dw_const SafariZoneEastRestHouseDetailsText,      TEXT_SAFARIZONEEASTRESTHOUSE_DETAILS
+	dw_const SafariZoneEastRestHouseScientistText,      TEXT_SAFARIZONEEASTRESTHOUSE_SCIENTIST
+	dw_const SafariZoneEastRestHouseRockerText,         TEXT_SAFARIZONEEASTRESTHOUSE_ROCKER
+	dw_const SafariZoneEastRestHouseSilphWorkerMText,   TEXT_SAFARIZONEEASTRESTHOUSE_SILPH_WORKER_M
+	dw_const SafariZoneEastRestHouseStepSellerText,     TEXT_SAFARIZONEEASTRESTHOUSE_STEP_SELLER
+	dw_const SafariZoneEastRestHouseDetailsText,        TEXT_SAFARIZONEEASTRESTHOUSE_DETAILS
 
 SafariZoneEastRestHouseScientistText:
 	text_far _SafariZoneEastRestHouseScientistText
@@ -26,3 +27,8 @@ SafariZoneEastRestHouseDetailsText:
 	text_end
 	text_far _SafariZoneEastRestHouseDetailsText
 	text_end
+	
+SafariZoneEastRestHouseStepSellerText: ; ~$~ADDED: Buy more steps in rest houses.~$~
+	text_asm
+	call StepSellerScript
+	jp TextScriptEnd

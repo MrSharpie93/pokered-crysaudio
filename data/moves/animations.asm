@@ -327,11 +327,9 @@ ZigZagScreenAnim:
 
 PoundAnim:
 StruggleAnim:
-;PlaceholderAnim:
 	battle_anim POUND, SUBANIM_0_STAR_TWICE, 0, 8
 	db -1 ; end
-	
-MirrorMoveAnim:
+
 PlaceholderAnim:
 	battle_anim POUND, SUBANIM_1_STAR_BIG, 3, 8
 	db -1 ; end
@@ -356,6 +354,7 @@ BulletPunchAnim:
 MegaPunchAnim:
 	battle_anim MEGA_PUNCH, SUBANIM_3_FIST, 3, 8
 	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+MirrorMoveAnim: ; Actually used for explosion moves.~$~
 	battle_anim NO_MOVE, SUBANIM_1_STAR_BIG_MOVING, 1, 6
 	db -1 ; end
 
@@ -1178,9 +1177,10 @@ IcicleSpearAnim:
 	battle_anim PAY_DAY, SUBANIM_0_STAR_THRICE, 0, 3
 	db -1 ; end
 
-AstonishAnim: ;TODO?
+AstonishAnim:
 	battle_anim DIG, SE_SLIDE_MON_DOWN_AND_HIDE
-	battle_anim HOWL, SUBANIM_1_SHOUT, 1, 6
+	battle_anim HOWL, SUBANIM_1_SHOUT, 1, 4
+	battle_anim HOWL, SUBANIM_1_SHOUT, 1, 4
 	db -1 ; end
 
 NastyPlotAnim:
@@ -1373,8 +1373,10 @@ TriAttackAnim:
 	db -1 ; end
 
 SuperFangAnim: ;TODO
-	battle_anim LEECH_SEED, SE_DARK_SCREEN_PALETTE
-	battle_anim SUPER_FANG, SUBANIM_1_STAR_BIG_MOVING, 1, 6
+	battle_anim LEECH_SEED, SE_DARKEN_MON_PALETTE
+	battle_anim SUPER_FANG, SUBANIM_3_SUPER_FANG, 3, 6
+;	battle_anim NO_MOVE, SE_DARK_SCREEN_FLASH
+;	battle_anim NO_MOVE, SUBANIM_3_SUPER_FANG, 3, 6
 	battle_anim NO_MOVE, SE_RESET_SCREEN_PALETTE
 	db -1 ; end
 

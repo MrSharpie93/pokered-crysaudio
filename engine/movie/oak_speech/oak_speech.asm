@@ -56,7 +56,7 @@ OakSpeech:
 	ld a, 1
 	ld [wItemQuantity], a
 	call AddItemToInventory
-	ld a, [wDefaultMap]
+	ld a, NEW_BARK_TOWN
 	ld [wDestinationMap], a
 	call PrepareForSpecialWarp
 	xor a

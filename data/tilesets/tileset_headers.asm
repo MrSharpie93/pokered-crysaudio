@@ -29,7 +29,7 @@ Tilesets:
 	tileset Cavern,       -1, -1, -1,  -1, TILEANIM_WATER
 	tileset Lobby,       $15,$36, -1,  -1, TILEANIM_NONE
 	tileset Mansion,      -1, -1, -1,  -1, TILEANIM_NONE
-	tileset Lab,          -1, -1, -1,  -1, TILEANIM_NONE
+	tileset Lab,         $50,$41, -1,  -1, TILEANIM_NONE
 	tileset Club,        $07,$17, -1,  -1, TILEANIM_NONE
 	tileset Facility,    $12, -1, -1,  -1, TILEANIM_WATER
 	tileset Plateau,      -1, -1, -1, $45, TILEANIM_WATER

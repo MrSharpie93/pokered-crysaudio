@@ -598,9 +598,9 @@ TurbanPicBack::        INCBIN "gfx/pokemon/back/turbanb.pic"
 
 SECTION "Pics 13", ROMX
 
-SalazzlePicFront::     ; WIP
 SalanditPicFront::     INCBIN "gfx/pokemon/front/salandit.pic"
 SalanditPicBack::      INCBIN "gfx/pokemon/back/salanditb.pic"
+SalazzlePicFront::     INCBIN "gfx/pokemon/front/salazzle.pic"
 SalazzlePicBack::      INCBIN "gfx/pokemon/back/salazzleb.pic"
 
 GligarPicFront::       INCBIN "gfx/pokemon/front/gligar.pic"

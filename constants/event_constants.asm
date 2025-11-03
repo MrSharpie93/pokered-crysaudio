@@ -8,7 +8,8 @@
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	const EVENT_GOT_SUPPLIES_FROM_MOM
-	const_skip 16
+	const EVENT_BECAME_CHAMPION
+	const_skip 15
 	const EVENT_GOT_TOWN_MAP
 	const EVENT_ENTERED_BLUES_HOUSE
 	const EVENT_DAISY_WALKING
@@ -60,7 +61,8 @@
 	const_skip 17
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_0
 	const EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-	const_skip 2
+	const EVENT_BEAT_CERULEAN_GYM_TRAINER_2
+	const_skip
 	const EVENT_GOT_TM11
 	const EVENT_BEAT_MISTY
 	const EVENT_GOT_BICYCLE
@@ -205,8 +207,8 @@
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
-	const EVENT_GOT_HITMONLEE
-	const EVENT_GOT_HITMONCHAN
+	const EVENT_GOT_HITMON
+	const EVENT_GOT_HITMONCHAN ; now unused
 	const_skip 8
 	const EVENT_GOT_TM46
 	const EVENT_BEAT_SABRINA
@@ -729,19 +731,23 @@
 DEF INDIGO_PLATEAU_EVENTS_START EQU const_value
 	const_skip
 	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_1 ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	const_skip 3
 	const EVENT_AUTOWALKED_INTO_LORELEIS_ROOM
 	const_skip 2
 	const EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_BRUNOS_ROOM_TRAINER_1 ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	const_skip 3
 	const EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
 	const_skip 2
 	const EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_AGATHAS_ROOM_TRAINER_1 ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	const_skip 3
 	const EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	const_skip 2
 	const EVENT_BEAT_LANCES_ROOM_TRAINER_0
-	const_skip 4
+	const EVENT_BEAT_LANCES_ROOM_TRAINER_1 ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	const_skip 3
 	const EVENT_BEAT_LANCE
 	const EVENT_LANCES_ROOM_LOCK_DOOR
 	const_skip

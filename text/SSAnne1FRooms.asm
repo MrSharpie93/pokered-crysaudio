@@ -2,6 +2,18 @@ _SSAnne1FRoomsWigglytuffText::
 	text "WIGGLYTUFF: Puup"
 	line "pupuu!@"
 	text_end
+	
+_SSAnne1FRoomsRestAWhileText::
+	text "You look tired."
+	line "You should take"
+	cont "a short rest."
+	done
+
+_SSAnne1FRoomsKeepAtItText::
+	text "Glad to see every-"
+	line "one is looking"
+	cont "refreshed!"
+	done
 
 _SSAnne1FRoomsGentleman1BattleText::
 	text "I travel alone"

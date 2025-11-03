@@ -89,10 +89,9 @@ _ViridianForestUseAntidoteSignText::
 _ViridianForestTrainerTips2Text::
 	text "TRAINER TIPS"
 
-	para "Contact PROF.OAK"
-	line "via PC to get"
-	cont "your #DEX"
-	cont "evaluated!"
+	para "Some #MON are"
+	line "more active when"
+	cont "night falls."
 	done
 
 _ViridianForestTrainerTips3Text::

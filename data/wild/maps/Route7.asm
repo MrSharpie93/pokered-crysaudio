@@ -1,9 +1,9 @@
 Route7WildMons:
 	def_grass_wildmons 15 ; encounter rate
 IF DEF(_RED)
-	db  5, RATICATE   ; 19.9%
 	db  4, SKIPLOOM   ; 19.9%
-	db  4, MURKROW    ; 15.2%
+	db  5, RATICATE   ; 19.9%
+	db  4, PIDGEOTTO  ; 15.2%
 	db  3, JIGGLYPUFF ;  9.8%
 	db  4, GROWLITHE  ;  9.8%
 	db 10, GLOOM      ;  9.8%
@@ -13,9 +13,9 @@ IF DEF(_RED)
 	db  2, MURKROW    ;  1.2%
 ENDC
 IF DEF(_BLUE)
-	db  5, RATICATE   ; 19.9%
 	db  4, SKIPLOOM   ; 19.9%
-	db  4, MURKROW    ; 15.2%
+	db  5, RATICATE   ; 19.9%
+	db  4, PIDGEOTTO  ; 15.2%
 	db  3, JIGGLYPUFF ;  9.8%
 	db  4, GROWLITHE  ;  9.8%
 	db 10, WEEPINBELL ;  9.8%

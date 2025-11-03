@@ -377,6 +377,7 @@ INCLUDE "engine/battle/physical_special_split.asm"
 INCLUDE "engine/menus/item_descriptions.asm"
 INCLUDE "engine/overworld/auto_repel.asm"
 INCLUDE "engine/overworld/field_moves.asm"
+INCLUDE "data/wild/night_mons.asm"
 
 SECTION "New Move Effects", ROMX
 

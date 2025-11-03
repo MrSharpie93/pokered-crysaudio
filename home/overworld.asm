@@ -545,7 +545,7 @@ WarpFound2::
 	jr nz, .notRockTunnel
 	ld a, $06
 	ld [wMapPalOffset], a
-	call GBFadeOutToBlack
+;	call GBFadeOutToBlack
 .notRockTunnel
 	call PlayMapChangeSound
 	jr .done
@@ -752,9 +752,9 @@ PlayMapChangeSound::
 	ld a, SFX_GO_OUTSIDE
 .playSound
 	call PlaySound
-	ld a, [wMapPalOffset]
-	and a
-	ret nz
+;	ld a, [wMapPalOffset]
+;	and a
+;	ret nz
 	jp GBFadeOutToBlack
 
 CheckIfInOutsideMap::
@@ -2583,4 +2583,13 @@ LoadDestinationWarpPosition::
 	pop af
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
+	ret
+	
+; ~$~ADDED: Day/Night cycle, ported from EvoYellow, with code from Maize and Spark Yellow.~$~
+;This was taken from Maize.
+CheckDayNight::
+; set carry flag if it's day
+; Looks at total play time. Alternates between night and day.
+	ld a, [wPlayTimeMinutes]
+	cp 30
 	ret

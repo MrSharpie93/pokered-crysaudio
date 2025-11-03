@@ -97,13 +97,41 @@ PewterGymTrainerHeader0:
 
 PewterGymBrockText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_BROCK
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM34
 	jr nz, .afterBeat
 	call z, PewterGymScriptReceiveTM34
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, BrockRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, BrockRematchDefeatedText
+	ld de, PewterGymBrockVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_BROCK
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $1
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
@@ -238,4 +266,12 @@ PewterGymGuideFreeServiceText:
 
 PewterGymGuidePostBattleText:
 	text_far _PewterGymGuidePostBattleText
+	text_end
+	
+BrockRematchPreBattleText:
+	text_far _BrockRematchPreBattleText
+	text_end
+	
+BrockRematchDefeatedText:
+	text_far _BrockRematchDefeatedText
 	text_end

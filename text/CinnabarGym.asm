@@ -130,7 +130,7 @@ _CinnabarGymSuperNerd3AfterBattleText::
 
 _CinnabarGymSuperNerd4BattleText::
 	text "I just like using"
-	line "fire #MON!"
+	line "FIRE #MON!"
 	done
 
 _CinnabarGymSuperNerd4EndBattleText::
@@ -192,9 +192,9 @@ _CinnabarGymSuperNerd7EndBattleText::
 	prompt
 
 _CinnabarGymSuperNerd7AfterBattleText::
-	text "Water beats fire!"
-	line "But, fire melts"
-	cont "ice #MON!"
+	text "WATER beats FIRE!"
+	line "But, FIRE melts"
+	cont "ICE #MON!"
 	done
 
 _CinnabarGymGymGuideChampInMakingText::
@@ -202,7 +202,7 @@ _CinnabarGymGymGuideChampInMakingText::
 	line "making!"
 
 	para "The hot-headed"
-	line "BLAINE is a fire"
+	line "BLAINE is a FIRE"
 	cont "#MON pro!"
 
 	para "Douse his spirits"
@@ -216,3 +216,22 @@ _CinnabarGymGymGuideBeatBlaineText::
 	text "<PLAYER>! You beat"
 	line "that fire brand!"
 	done
+	
+_BlaineRematchPreBattleText::
+	text "Hah! Well done,"
+	line "returning here to"
+	cont "my GYM!"
+	
+	para "Came back for a"
+	line "rematch, did you?"
+	cont "I'll warn you now,"
+	cont "when you play me,"
+	cont "you may get hot"
+	cont "under the collar."
+	cont "Let's go! Hah!"
+	done
+	
+_BlaineRematchDefeatedText::
+	text "Hah!"
+	line "I'm all fired up!"
+	prompt

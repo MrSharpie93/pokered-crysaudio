@@ -7,6 +7,7 @@ SafariZoneWestRestHouse_TextPointers:
 	dw_const SafariZoneWestRestHouseScientistText,    TEXT_SAFARIZONEWESTRESTHOUSE_SCIENTIST
 	dw_const SafariZoneWestRestHouseCooltrainerMText, TEXT_SAFARIZONEWESTRESTHOUSE_COOLTRAINER_M
 	dw_const SafariZoneWestRestHouseSilphWorkerFText, TEXT_SAFARIZONEWESTRESTHOUSE_SILPH_WORKER_F
+	dw_const SafariZoneWestRestHouseStepSellerText,   TEXT_SAFARIZONEWESTRESTHOUSE_STEP_SELLER
 	dw_const SafariZoneWestRestHouseDetailsText,      TEXT_SAFARIZONEWESTRESTHOUSE_DETAILS
 
 SafariZoneWestRestHouseScientistText:
@@ -26,3 +27,8 @@ SafariZoneWestRestHouseDetailsText:
 	text_end
 	text_far _SafariZoneWestRestHouseDetailsText
 	text_end
+	
+SafariZoneWestRestHouseStepSellerText: ; ~$~ADDED: Buy more steps in rest houses.~$~
+	text_asm
+	call StepSellerScript
+	jp TextScriptEnd

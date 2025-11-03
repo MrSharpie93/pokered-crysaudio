@@ -152,6 +152,8 @@ RedrawPartyMenu_::
 	jr z, .placeEvolutionStoneString ; if so, place the "NOT ABLE" string
 	inc hl
 	inc hl
+	cp EVOLVE_LEVEL
+	jr z, .checkMistStone
 	cp EVOLVE_ITEM
 	jr nz, .checkEvolutionsLoop
 ; if it's a stone evolution entry
@@ -164,8 +166,17 @@ RedrawPartyMenu_::
 	inc hl
 	cp b ; does the player's stone match this evolution entry's stone?
 	jr nz, .checkEvolutionsLoop
-; if it does match
+	; if it does match
 	ld de, .ableToEvolveText
+	jr .placeEvolutionStoneString
+; ~$~CHANGED: Modified presentation of evo stone menu in case of Mist Stone.~$~
+.checkMistStone
+	ld a, [wEvoStoneItemID]
+	cp MIST_STONE
+	jr nz, .checkEvolutionsLoop
+	ld de, .mistStoneUnknownText
+	jr .placeEvolutionStoneString
+;;;
 .placeEvolutionStoneString
 	ld bc, 20 + 9 ; down 1 row and right 9 columns
 	pop hl
@@ -173,11 +184,13 @@ RedrawPartyMenu_::
 	add hl, bc
 	call PlaceString
 	pop hl
-	jr .printLevel
+	jp .printLevel
 .ableToEvolveText
 	db "ABLE@"
 .notAbleToEvolveText
 	db "NOT ABLE@"
+.mistStoneUnknownText
+	db "???@"
 .afterDrawingMonEntries
 	ld b, SET_PAL_PARTY_MENU
 	call RunPaletteCommand

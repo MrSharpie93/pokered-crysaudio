@@ -23,3 +23,29 @@ _SafariZoneCenterRestHouseDetailsText::
 	cont "CHANSEY, SHELLDER"
 	cont "DRATINI"
 	done
+	
+_StepSellerWantMoreStepsText::
+	text "Would you like to"
+	line "replenish your"
+	cont "SAFARI ZONE steps"
+	cont "for only ¥500?"
+	done
+
+_StepSellerBoughtMoreStepsText::
+	text "Thanks! Your steps"
+	line "are replenished."
+	
+	para "That should keep"
+	line "you going for a"
+	cont "little longer."
+	done
+
+_StepSellerDontWantMoreStepsText::
+	text "Alright, then."
+	done
+
+_StepSellerCantAffordMoreStepsText::
+	text "Not enough money?"
+	line "Get to stepping,"
+	cont "then."
+	done

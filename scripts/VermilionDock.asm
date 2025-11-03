@@ -1,40 +1,40 @@
 VermilionDock_Script:
-	call EnableAutoTextBoxDrawing
-	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
-	jr nz, .walking_out_of_dock
-	CheckEventReuseHL EVENT_GOT_HM01
-	ret z
-	ld a, [wDestinationWarpID]
-	cp $1
-	ret nz
-	CheckEventReuseHL EVENT_SS_ANNE_LEFT
-	jp z, VermilionDockSSAnneLeavesScript
-	SetEventReuseHL EVENT_STARTED_WALKING_OUT_OF_DOCK
-	call Delay3
-	ld hl, wStatusFlags5
-	set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
-	ld hl, wSimulatedJoypadStatesEnd
-	ld a, D_UP
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	ld a, $3
-	ld [wSimulatedJoypadStatesIndex], a
-	xor a
-	ld [wSpritePlayerStateData2MovementByte1], a
-	ld [wOverrideSimulatedJoypadStatesMask], a
-	dec a
-	ld [wJoyIgnore], a
-	ret
-.walking_out_of_dock
-	CheckEventAfterBranchReuseHL EVENT_WALKED_OUT_OF_DOCK, EVENT_STARTED_WALKING_OUT_OF_DOCK
-	ret nz
-	ld a, [wSimulatedJoypadStatesIndex]
-	and a
-	ret nz
-	ld [wJoyIgnore], a
-	SetEventReuseHL EVENT_WALKED_OUT_OF_DOCK
-	ret
+	jp EnableAutoTextBoxDrawing
+	; CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
+	; jr nz, .walking_out_of_dock
+	; CheckEventReuseHL EVENT_GOT_HM01
+	; ret z
+	; ld a, [wDestinationWarpID]
+	; cp $1
+	; ret nz
+	; CheckEventReuseHL EVENT_SS_ANNE_LEFT
+	; jp z, VermilionDockSSAnneLeavesScript
+	; SetEventReuseHL EVENT_STARTED_WALKING_OUT_OF_DOCK
+	; call Delay3
+	; ld hl, wStatusFlags5
+	; set BIT_SCRIPTED_MOVEMENT_STATE, [hl]
+	; ld hl, wSimulatedJoypadStatesEnd
+	; ld a, D_UP
+	; ld [hli], a
+	; ld [hli], a
+	; ld [hl], a
+	; ld a, $3
+	; ld [wSimulatedJoypadStatesIndex], a
+	; xor a
+	; ld [wSpritePlayerStateData2MovementByte1], a
+	; ld [wOverrideSimulatedJoypadStatesMask], a
+	; dec a
+	; ld [wJoyIgnore], a
+	; ret
+; .walking_out_of_dock
+	; CheckEventAfterBranchReuseHL EVENT_WALKED_OUT_OF_DOCK, EVENT_STARTED_WALKING_OUT_OF_DOCK
+	; ret nz
+	; ld a, [wSimulatedJoypadStatesIndex]
+	; and a
+	; ret nz
+	; ld [wJoyIgnore], a
+	; SetEventReuseHL EVENT_WALKED_OUT_OF_DOCK
+	; ret
 
 VermilionDockSSAnneLeavesScript:
 	SetEventForceReuseHL EVENT_SS_ANNE_LEFT

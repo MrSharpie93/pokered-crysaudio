@@ -45,7 +45,7 @@ HallOfFameResetEventsAndSaveScript:
 	ResetEventRange INDIGO_PLATEAU_EVENTS_START, INDIGO_PLATEAU_EVENTS_END, 1
 	xor a
 	ld [wHallOfFameCurScript], a
-	ld a, PALLET_TOWN
+	ld a, NEW_BARK_TOWN
 	ld [wLastBlackoutMap], a
 	farcall SaveSAVtoSRAM
 	ld b, 5
@@ -96,9 +96,10 @@ HallOfFameOakCongratulationsScript:
 	call DisplayTextID
 	ld a, A_BUTTON | B_BUTTON | SELECT | START | D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
-	ld a, HS_CERULEAN_CAVE_GUY
-	ld [wMissableObjectIndex], a
-	predef HideObject
+;	ld a, HS_CERULEAN_CAVE_GUY
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+	SetEvent EVENT_BECAME_CHAMPION
 	ld a, SCRIPT_HALLOFFAME_RESET_EVENTS_AND_SAVE
 	ld [wHallOfFameCurScript], a
 	ret

@@ -14,7 +14,7 @@ AgathaShowOrHideExitBlock:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	CheckEitherEventSet EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, EVENT_BEAT_AGATHAS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $e
 	jp .setExitBlock
@@ -126,12 +126,26 @@ AgathasRoomTrainerHeaders:
 	def_trainers
 AgathasRoomTrainerHeader0:
 	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_0, 0, AgathaBeforeBattleText, AgathaEndBattleText, AgathaAfterBattleText
+AgathasRoomTrainerHeader1: ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	trainer EVENT_BEAT_AGATHAS_ROOM_TRAINER_1, 0, AgathaRematchText, AgathaRematchEndBattleText, AgathaRematchAfterBattleText
 	db -1 ; end
 
 AgathasRoomAgathaText:
 	text_asm
 	ld hl, AgathasRoomTrainerHeader0
+; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip
+	ld hl, AgathasRoomTrainerHeader1
+.skip
 	call TalkToTrainer
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip2
+	ld a, [wTrainerNo]
+	inc a
+	ld [wTrainerNo], a
+.skip2
+;;;
 	ld a, $b ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
 	ld [wGymLeaderNo], a
 	jp TextScriptEnd
@@ -149,5 +163,17 @@ AgathaAfterBattleText:
 	text_end
 
 AgathasRoomAgathaDontRunAwayText:
-	text_far _AgathasRoomAgathaDontRunAwayText
+	text_far _EliteFourDontRunAwayText
+	text_end
+	
+AgathaRematchText:
+	text_far _AgathaRematchText
+	text_end
+
+AgathaRematchEndBattleText:
+	text_far _AgathaRematchEndBattleText
+	text_end
+
+AgathaRematchAfterBattleText:
+	text_far _AgathaRematchAfterBattleText
 	text_end

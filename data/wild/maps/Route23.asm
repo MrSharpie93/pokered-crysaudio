@@ -7,7 +7,7 @@ IF DEF(_RED)
 	db 11, ARBOK      ;  9.8%
 	db 10, ARBOK      ;  9.8%
 	db 10, PRIMEAPE   ;  9.8%
-	db 11, BELLUNA    ;  5.1%
+	db 11, PRIMEAPE   ;  5.1%
 	db 10, BELLUNA    ;  5.1%
 	db 11, SANDSLASH  ;  4.3%
 	db 10, SANDSLASH  ;  1.2%
@@ -19,7 +19,7 @@ IF DEF(_BLUE)
 	db 11, SANDSLASH  ;  9.8%
 	db 10, SANDSLASH  ;  9.8%
 	db 10, PRIMEAPE   ;  9.8%
-	db 11, PERSIAN    ;  5.1%
+	db 11, PRIMEAPE   ;  5.1%
 	db 10, PERSIAN    ;  5.1%
 	db 11, ARBOK      ;  4.3%
 	db 10, ARBOK      ;  1.2%

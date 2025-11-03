@@ -4723,6 +4723,7 @@ YoshiEvosMoves:
 	
 MissingNoEvosMoves:
 ; Evolutions
+	db EVOLVE_LEVEL, 255, KANGASKHAN ; This should only be doable with the Mist Stone.~$~
 	db 0
 ; Learnset
 	db 1, PAY_DAY

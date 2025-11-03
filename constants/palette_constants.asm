@@ -27,7 +27,6 @@ DEF PALETTE_SIZE EQU NUM_PAL_COLORS * PAL_COLOR_SIZE
 	const SET_PAL_GAME_FREAK_INTRO     ; $0C
 	const SET_PAL_TRAINER_CARD         ; $0D
 	const SET_PAL_DEXBALLS             ; $0E ; ~$~ADDED: Pokeballs in dex are red/white.~$~
-	const SET_PAL_BATTLEBALLS          ; $0F ; ~$~ADDED: Pokeballs at start of battle are red/white.~$~
 
 DEF SET_PAL_PARTY_MENU_HP_BARS EQU $fc
 DEF SET_PAL_DEFAULT EQU $ff

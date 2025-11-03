@@ -113,17 +113,45 @@ VermilionGymTrainerHeader2:
 
 VermilionGymLTSurgeText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_LT_SURGE
 	jr z, .before_beat
 	CheckEventReuseA EVENT_GOT_TM24
 	jr nz, .got_tm24_already
 	call z, VermilionGymLTSurgeReceiveTM24Script
 	call DisableWaitingAfterTextDisplay
-	jr .text_script_end
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, SurgeRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, SurgeRematchDefeatedText
+	ld de, VermilionGymLTSurgeVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_LT_SURGE
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $3
+	ld [wGymLeaderNo], a
+	jr .done
+;;;
 .got_tm24_already
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	jr .text_script_end
+	jr .done
 .before_beat
 	ld hl, .PreBattleText
 	call PrintText
@@ -156,7 +184,7 @@ VermilionGymLTSurgeText:
 	ld a, SCRIPT_VERMILIONGYM_LT_SURGE_AFTER_BATTLE
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
-.text_script_end
+.done
 	jp TextScriptEnd
 
 .PreBattleText:
@@ -264,4 +292,12 @@ VermilionGymGymGuideText:
 
 .BeatLTSurgeText:
 	text_far _VermilionGymGymGuideBeatLTSurgeText
+	text_end
+	
+SurgeRematchPreBattleText:
+	text_far _SurgeRematchPreBattleText
+	text_end
+	
+SurgeRematchDefeatedText:
+	text_far _SurgeRematchDefeatedText
 	text_end

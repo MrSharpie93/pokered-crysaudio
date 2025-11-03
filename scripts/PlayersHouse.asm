@@ -6,6 +6,7 @@ PlayersHouse_TextPointers:
 	dw_const PlayersHouseMomsLetterText, TEXT_PLAYERSHOUSE_MOMS_LETTER
 	dw_const PlayersHouseTVText,         TEXT_PLAYERSHOUSE_TV
 	dw_const PlayersHousePCText,         TEXT_PLAYERSHOUSE_PC
+	dw_const PlayersHouseMirrorText,     TEXT_PLAYERSHOUSE_MIRROR
 
 PlayersHouseMomsLetterText:
 	text_asm
@@ -54,4 +55,47 @@ PlayersHouseTVText:
 	
 PlayersHousePCText:
 	text_far _PlayersHousePCText
+IF DEF(_DEBUG)
+	text_asm
+	SetEvent EVENT_BECAME_CHAMPION
+	jp TextScriptEnd
+ENDC
+	text_end
+	
+PlayersHouseMirrorText:
+	text_asm
+	ld hl, .ChangeAppearanceText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .doNotChangeAppearance
+	ld a, [wPlayerStyle]
+	xor $01
+	ld [wPlayerStyle], a
+	ld a, TRUE
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .AppearanceChangedText
+	call PrintText
+	call GBFadeOutToBlack
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	jr .done
+.doNotChangeAppearance
+	ld hl, .AppearanceKeptText
+	call PrintText
+.done
+	jp TextScriptEnd
+	
+.ChangeAppearanceText:
+	text_far _ChangeAppearanceText
+	text_end
+	
+.AppearanceChangedText:
+	text_far _AppearanceChangedText
+	text_end
+
+.AppearanceKeptText:
+	text_far _AppearanceKeptText
 	text_end

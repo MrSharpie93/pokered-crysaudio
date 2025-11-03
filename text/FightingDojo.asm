@@ -91,6 +91,11 @@ _FightingDojoBlackbelt3AfterBattleText::
 	text "The only thing"
 	line "that frightens us"
 	cont "is psychic power!"
+	
+	para "…and birds…"
+	
+	para "…and cute little"
+	line "fairies…"
 	done
 
 _FightingDojoBlackbelt4BattleText::
@@ -122,6 +127,12 @@ _FightingDojoHitmonchanPokeBallText::
 	text "You want the"
 	line "piston punching"
 	cont "HITMONCHAN?"
+	done
+	
+_FightingDojoHitmontopPokeBallText::
+	text "You want the"
+	line "rapid spinning"
+	cont "HITMONTOP?"
 	done
 
 _FightingDojoBetterNotGetGreedyText::

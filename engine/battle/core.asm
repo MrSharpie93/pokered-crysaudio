@@ -180,7 +180,15 @@ StartBattle:
 	jp PrintText
 .notOutOfSafariBalls
 	callfar PrintSafariZoneBattleText
-	ld a, [wEnemyMonSpeed + 1]
+;	ld a, [wEnemyMonSpeed + 1]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - make escaping pokemon based on level instead of speed
+	ld a, [wEnemyMonLevel]		
+; using a stat would be about 1.5x more than using level, so accout for this
+	ld b, a
+	srl b
+	add b
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	add a
 	ld b, a ; init b (which is later compared with random value) to (enemy speed % 256) * 2
 	jp c, EnemyRan ; if (enemy speed % 256) > 127, the enemy runs
@@ -965,7 +973,13 @@ AnyEnemyPokemonAliveCheck:
 ; stores whether enemy ran in Z flag
 ReplaceFaintedEnemyMon:
 	ld hl, wEnemyHPBarColor
-	ld e, $30
+	ld e, $30	;get health bar palette of an HP bar E pixels long.
+	
+	;joenote - make the trainer pokeballs red
+	ld a, HP_BAR_GREEN
+	ld [hl], a	;reset the enemy HP bar to green because GetBattleHealthBarColor only works on differing colors
+	ld e, 0	;now prepare to load the color for a 0-pixel health bar (that being red)
+	
 	call GetBattleHealthBarColor
 	callfar DrawEnemyPokeballs
 	ld a, [wLinkState]
@@ -2548,8 +2562,22 @@ PartyMenuOrRockOrRun:
 .notAlreadyOut
 	call HasMonFainted
 	jp z, .partyMonDeselected ; can't switch to fainted mon
+	;;;;;;;;; PureRGBnote: ADDED: set previous type and status indicators so the AI doesn't use super effective moves or status moves cheaply 
+	;;;;;;;;;           against the pokemon we just sent out when we switch using a turn up
+	ld a, [wBattleMonType1]
+	ld [wAITargetMonType1], a 
+	ld a, [wBattleMonType2]
+	ld [wAITargetMonType2], a 
+	ld a, [wBattleMonStatus]
+	ld [wAITargetMonStatus], a
+	;;;;;;;;;
 	ld a, $1
 	ld [wActionResultOrTookBattleTurn], a
+	;;;;;;;;; PureRGBnote: ADDED: helps avoid ai spamming as if they predict you switching pokemon perfectly
+	;;;;;;;;; it was added here vs lower in SwitchPlayerMon because SwitchPlayerMon is also used in the case of in Shift game mode switching
+	inc a ; 2 = player switched pokemon this turn
+	ld [wAIMoveSpamAvoider], a 
+	;;;;;;;;;
 	call GBPalWhiteOut
 	call ClearSprites
 	call LoadHudTilePatterns
@@ -3161,10 +3189,11 @@ SelectEnemyMove:
 	ld e, a
 	call AnyMoveToSelect
 	jr z, .done2
-	ld hl, wEnemyMonMoves 
-	ld a, [wIsInBattle]
-	dec a
-	jr z, .chooseRandomMove ; wild encounter
+	ld hl, wEnemyMonMoves
+;joenote - made redundant; will do this in AIEnemyTrainerChooseMoves
+;	ld a, [wIsInBattle]
+;	dec a
+;	jr z, .chooseRandomMove ; wild encounter
 	callfar AIEnemyTrainerChooseMoves
 .chooseRandomMove
 	push hl
@@ -5714,14 +5743,13 @@ AIGetImmediateTypeEffectiveness:
 AIGetTypeEffectiveness:
 	ld a, [wEnemyMoveType]
 	ld d, a                    ; d = type of enemy move
-	ld hl, wBattleMonType
-	ld b, [hl]                 ; b = type 1 of player's pokemon
-	inc hl
-	ld c, [hl]                 ; c = type 2 of player's pokemon
-	; initialize to neutral effectiveness
+	ld a, [wAITargetMonType1]
+	ld b, a
+	ld a, [wAITargetMonType2]
+	ld c, a
 .load
 	ld a, EFFECTIVE
-	ld [wTypeEffectiveness], a
+	ld [wTypeEffectiveness], a ; initialize to neutral effectiveness
 	ld hl, TypeEffects
 .loop
 	ld a, [hli]
@@ -7268,8 +7296,8 @@ HandleExplodingAnimation:
 	ret nz
 	ld a, ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT
 	ld [wAnimationType], a
-	assert ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
-	; ld a, MEGA_PUNCH
+;	assert ANIMATIONTYPE_SHAKE_SCREEN_HORIZONTALLY_LIGHT == MEGA_PUNCH
+	ld a, MIRROR_MOVE
 ; fallthrough
 PlayMoveAnimation: ; ~$~CHANGED: Separate move anims from other battle anims.~$~
 	ld [wAnimationID], a
@@ -7416,8 +7444,6 @@ _InitBattleCommon:
 	lb bc, 4, 10
 	call ClearScreenArea
 	call ClearSprites
-	ld b, SET_PAL_BATTLE ; ~$~CHANGED: Set palette back to normal here, so HP bars aren't red at start of battle.~$~
-	call RunPaletteCommand
 	ld a, [wIsInBattle]
 	dec a ; is it a wild battle?
 	call z, DrawEnemyHUDAndHPBar ; draw enemy HUD and HP bar if it's a wild battle

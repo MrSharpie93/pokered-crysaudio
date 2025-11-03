@@ -76,6 +76,7 @@ CeruleanGym_TextPointers:
 	dw_const CeruleanGymMistyText,                 TEXT_CERULEANGYM_MISTY
 	dw_const CeruleanGymCooltrainerFText,          TEXT_CERULEANGYM_COOLTRAINER_F
 	dw_const CeruleanGymSwimmerText,               TEXT_CERULEANGYM_SWIMMER
+	dw_const CeruleanGymSwimmer2Text,              TEXT_CERULEANGYM_SWIMMER2
 	dw_const CeruleanGymGymGuideText,              TEXT_CERULEANGYM_GYM_GUIDE
 	dw_const CeruleanGymMistyCascadeBadgeInfoText, TEXT_CERULEANGYM_MISTY_CASCADE_BADGE_INFO
 	dw_const CeruleanGymMistyReceivedTM11Text,     TEXT_CERULEANGYM_MISTY_RECEIVED_TM11
@@ -87,17 +88,47 @@ CeruleanGymTrainerHeader0:
 	trainer EVENT_BEAT_CERULEAN_GYM_TRAINER_0, 3, CeruleanGymBattleText1, CeruleanGymEndBattleText1, CeruleanGymAfterBattleText1
 CeruleanGymTrainerHeader1:
 	trainer EVENT_BEAT_CERULEAN_GYM_TRAINER_1, 3, CeruleanGymBattleText2, CeruleanGymEndBattleText2, CeruleanGymAfterBattleText2
+CeruleanGymTrainerHeader2:
+	trainer EVENT_BEAT_CERULEAN_GYM_TRAINER_2, 3, CeruleanGymBattleText3, CeruleanGymEndBattleText3, CeruleanGymAfterBattleText3
 	db -1 ; end
 
 CeruleanGymMistyText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_MISTY
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM11
 	jr nz, .afterBeat
 	call z, CeruleanGymReceiveTM11
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, MistyRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, MistyRematchDefeatedText
+	ld de, CeruleanGymMistyVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_MISTY
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $2
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .TM11ExplanationText
 	call PrintText
@@ -202,6 +233,24 @@ CeruleanGymEndBattleText2:
 CeruleanGymAfterBattleText2:
 	text_far _CeruleanGymAfterBattleText2
 	text_end
+	
+CeruleanGymSwimmer2Text:
+	text_asm
+	ld hl, CeruleanGymTrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+CeruleanGymBattleText3:
+	text_far _CeruleanGymBattleText3
+	text_end
+
+CeruleanGymEndBattleText3:
+	text_far _CeruleanGymEndBattleText3
+	text_end
+
+CeruleanGymAfterBattleText3:
+	text_far _CeruleanGymAfterBattleText3
+	text_end
 
 CeruleanGymGymGuideText:
 	text_asm
@@ -222,4 +271,12 @@ CeruleanGymGymGuideText:
 
 .BeatMistyText:
 	text_far _CeruleanGymGymGuideBeatMistyText
+	text_end
+	
+MistyRematchPreBattleText:
+	text_far _MistyRematchPreBattleText
+	text_end
+	
+MistyRematchDefeatedText:
+	text_far _MistyRematchDefeatedText
 	text_end

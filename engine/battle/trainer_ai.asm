@@ -2,6 +2,33 @@
 ; creates a set of moves that may be used and returns its address in hl
 ; unused slots are filled with 0, all used slots may be chosen with equal probability
 AIEnemyTrainerChooseMoves:
+;joenote - let's make wild pokemon have some AI in choosing moves
+	ld a, [wIsInBattle]
+	dec a
+	jr nz, .notwildbattle
+	;wild battle confirmed at this point
+	ld hl, wEnemyMonMoves	;restore this address which was clobbered by callba
+	;ret z ; wild encounter	;uncomment this line to restore default wildmon behavior
+	;but let's do a little something else
+	ld a, [wEnemyMon]
+	push hl
+	push de
+	push bc
+	ld hl, SpecialPokemon
+	ld de, 1
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	ret nc
+;	cp MEWTWO
+;	ret nz
+	;~$~Load the Chief class since it uses all AI routines.~$~
+	ld a, CHIEF
+	ld [wTrainerClass], a
+	;should be fine to let AIEnemyTrainerChooseMoves run at this point
+.notwildbattle
+
 	ld a, $a
 	ld hl, wBuffer ; init temporary move selection array. Only the moves with the lowest numbers are chosen in the end
 	ld [hli], a   ; move 1
@@ -144,6 +171,21 @@ AIEnemyTrainerChooseMoves:
 	ld [wAITargetMonStatus], a
 ;;;;;;;;;;
 	ret
+	
+SpecialPokemon:
+	db MEWTWO
+	db MEW
+	db REGIGIGAS
+	db SKELETOPS
+	db OSSIDACTYL
+	db REGISTEEL
+	db REGICE
+	db REGIROCK
+	db MOLTRES
+	db ZAPDOS
+	db ARTICUNO
+	db SPIRITOMB
+	db -1 ; end
 
 AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1

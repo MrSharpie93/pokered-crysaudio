@@ -1,8 +1,8 @@
 Route4WildMons:
 	def_grass_wildmons 20 ; encounter rate
 IF DEF(_RED)
-	db  4, RATTATA   ; 19.9%
 	db  4, SPEAROW   ; 19.9%
+	db  4, RATTATA   ; 19.9%
 	db  3, MANKEY    ; 15.2%
 	db  4, EKANS     ;  9.8%
 	db  3, PSYDUCK   ;  9.8%
@@ -13,8 +13,8 @@ IF DEF(_RED)
 	db  3, SANDSHREW ;  1.2%
 ENDC
 IF DEF(_BLUE)
-	db  4, RATTATA   ; 19.9%
 	db  4, SPEAROW   ; 19.9%
+	db  4, RATTATA   ; 19.9%
 	db  3, MANKEY    ; 15.2%
 	db  4, SANDSHREW ;  9.8%
 	db  3, PSYDUCK   ;  9.8%

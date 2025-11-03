@@ -17,9 +17,9 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEWTWO, 90
 	db MEOWTH, 93
 	db MISSINGNO, 45
-	db GENGAR, 60
-	db LAPRAS, 57
-	db TYROGUE, 25
+	db THUFIZER, 60
+	db RHYHORN, 12
+	db EEVEE, 5
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -91,12 +91,12 @@ IF DEF(_DEBUG)
 	ld [hl], a
 
 ;	; Jolteon gets Thunderbolt.
-;	ld hl, wPartyMon3Moves + 3
-;	ld a, THUNDERBOLT
-;	ld [hl], a
-;	ld hl, wPartyMon3PP + 3
-;	ld a, 15
-;	ld [hl], a
+	ld hl, wPartyMon3Moves + 3
+	ld a, FLASH
+	ld [hl], a
+	ld hl, wPartyMon3PP + 3
+	ld a, 15
+	ld [hl], a
 
 ;	; Articuno gets Fly.
 ;	ld hl, wPartyMon5Moves
@@ -160,10 +160,11 @@ DebugSetPokedexEntries:
 
 DebugItemsList:
 	db BICYCLE, 1
-	db HM_SURF, 1
-	db SURFBOARD, 1
-	db PROTEIN, 99
-	db IRON, 99
+;	db HM_SURF, 1
+	db BIRDWHISTLE, 1
+;	db PROTEIN, 99
+;	db IRON, 99
+	db MIST_STONE, 99
 	db POKE_PEP, 99
 	db FULL_RESTORE, 99
 	db FULL_HEAL, 99
@@ -173,7 +174,7 @@ DebugItemsList:
 	db NUGGET, 99
 	db TOWN_MAP, 1
 	db SECRET_KEY, 1
-	db CARD_KEY, 1
+	db RARE_CARD, 1
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1
@@ -183,10 +184,10 @@ DebugItemsList:
 	db GOOD_ROD, 1
 	db SUPER_ROD, 1
 	db COIN_CASE, 1
-	db MAX_REPEL, 99
-	db HM_WATERFALL, 1
+;	db MAX_REPEL, 99
+;	db HM_WATERFALL, 1
 	db MOON_STONE, 99
-	db SLOWPOKETAIL, 99
+;	db SLOWPOKETAIL, 99
 	db -1 ; end
 
 DebugUnusedList:

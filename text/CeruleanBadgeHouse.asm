@@ -16,3 +16,13 @@ _IcyWindTutorText::
 	para "…Which reminds"
 	line "me…"
 	prompt
+	
+_CeruleanBadgeHouseTrashText::
+	text "“AMAZING SECRETS"
+	line "OF KANTO BADGES"
+	cont "--FIRST EDITION”"
+	
+	para "Most of the info"
+	line "in this book is"
+	cont "very outdated."
+	done

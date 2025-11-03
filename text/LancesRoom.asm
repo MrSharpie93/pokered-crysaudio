@@ -54,11 +54,55 @@ _LancesRoomLanceAfterBattleText::
 	line "another trainer!"
 	cont "His name is..."
 
-	para "<RIVAL>!"
+	para "RED!"
 	line "He beat the ELITE"
 	cont "FOUR before you!"
 
 	para "He is the real"
 	line "#MON LEAGUE"
 	cont "champion!@"
+	text_end
+	
+_LanceRematchText::
+	text "So, you've come"
+	line "back, <PLAYER>!"
+
+	para "Thanks to you,"
+	line "the #MON"
+	cont "LEAGUE's rep has"
+	cont "really taken off!"
+
+	para "I'd feel ashamed"
+	line "to call myself"
+	cont "LANCE the dragon"
+	cont "trainer if I"
+	cont "didn't challenge"
+	cont "you to a battle!"
+	done
+
+_LanceRematchEndBattleText::
+	text "How could"
+	line "I be pushed to"
+	cont "such a point?"
+	prompt
+
+_LanceRematchAfterBattleText::
+	text "There's no way my"
+	line "dragon brigade is"
+	cont "weak..."
+
+	para "Your strength is"
+	line "truly incredible!"
+
+	para "Now then..."
+	line "<PLAYER>."
+
+	para "You know what's"
+	line "next, don't you?"
+
+	para "That's right!"
+	line "<RIVAL> awaits"
+	cont "you on the stage"
+	cont "of your greatest"
+	cont "battle yet!@"
 	text_end

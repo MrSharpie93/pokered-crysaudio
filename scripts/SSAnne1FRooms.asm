@@ -15,7 +15,7 @@ SSAnne1FRooms_ScriptPointers:
 
 SSAnne1FRooms_TextPointers:
 	def_text_pointers
-	dw_const SSAnne1FRoomsGentleman1Text,    TEXT_SSANNE1FROOMS_GENTLEMAN1
+	dw_const SSAnne1FRoomsNurseText,         TEXT_SSANNE1FROOMS_NURSE
 	dw_const SSAnne1FRoomsGentleman2Text,    TEXT_SSANNE1FROOMS_GENTLEMAN2
 	dw_const SSAnne1FRoomsYoungsterText,     TEXT_SSANNE1FROOMS_YOUNGSTER
 	dw_const SSAnne1FRoomsCooltrainerFText,  TEXT_SSANNE1FROOMS_COOLTRAINER_F
@@ -28,9 +28,9 @@ SSAnne1FRooms_TextPointers:
 	dw_const SSAnne1FRoomsGentleman3Text,    TEXT_SSANNE1FROOMS_GENTLEMAN3
 
 SSAnne8TrainerHeaders:
-	def_trainers
-SSAnne8TrainerHeader0:
-	trainer EVENT_BEAT_SS_ANNE_8_TRAINER_0, 2, SSAnne1FRoomsGentleman1BattleText, SSAnne1FRoomsGentleman1EndBattleText, SSAnne1FRoomsGentleman1AfterBattleText
+	def_trainers 2
+;SSAnne8TrainerHeader0:
+;	trainer EVENT_BEAT_SS_ANNE_8_TRAINER_0, 2, SSAnne1FRoomsGentleman1BattleText, SSAnne1FRoomsGentleman1EndBattleText, SSAnne1FRoomsGentleman1AfterBattleText
 SSAnne8TrainerHeader1:
 	trainer EVENT_BEAT_SS_ANNE_8_TRAINER_1, 3, SSAnne1FRoomsGentleman2BattleText, SSAnne1FRoomsGentleman2EndBattleText, SSAnne1FRoomsGentleman2AfterBattleText
 SSAnne8TrainerHeader2:
@@ -39,10 +39,9 @@ SSAnne8TrainerHeader3:
 	trainer EVENT_BEAT_SS_ANNE_8_TRAINER_3, 2, SSAnne1FRoomsCooltrainerFBattleText, SSAnne1FRoomsCooltrainerFEndBattleText, SSAnne1FRoomsCooltrainerFAfterBattleText
 	db -1 ; end
 
-SSAnne1FRoomsGentleman1Text:
+SSAnne1FRoomsNurseText:
 	text_asm
-	ld hl, SSAnne8TrainerHeader0
-	call TalkToTrainer
+	call SSAnne1FRoomsNurseHealScript
 	jp TextScriptEnd
 
 SSAnne1FRoomsGentleman2Text:
@@ -136,4 +135,34 @@ SSAnne1FRoomsGirl2Text:
 
 SSAnne1FRoomsGentleman3Text:
 	text_far _SSAnne1FRoomsGentleman3Text
+	text_end
+	
+SSAnne1FRoomsNurseHealScript:
+	ld hl, SSAnne1FRoomsNurseYouShouldRestText
+	call PrintText
+	call GBFadeOutToWhite
+	call ReloadMapData
+	predef HealParty
+	ld a, MUSIC_PKMN_HEALED
+;	ld [wNewSoundID], a
+	call PlayMusic
+
+	call WaitForSongToFinish
+;.next
+;	ld a, [wChannelSoundIDs]
+;	cp MUSIC_PKMN_HEALED
+;	jr z, .next
+
+	ld a, [wMapMusicSoundID]
+;	ld [wNewSoundID], a
+	call PlayMusic
+	call GBFadeInFromWhite
+	ld hl, SSAnne1FRoomsNurseLookingGreatText
+	jp PrintText
+
+SSAnne1FRoomsNurseYouShouldRestText:
+	text_far _SSAnne1FRoomsRestAWhileText
+	text_end
+SSAnne1FRoomsNurseLookingGreatText:
+	text_far _SSAnne1FRoomsKeepAtItText
 	text_end

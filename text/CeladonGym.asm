@@ -238,3 +238,18 @@ _CeladonGymAfterBattleText8::
 	para "Wait 'til next"
 	line "time!"
 	done
+	
+_ErikaRematchPreBattleText::
+	text "…Zzz…zzz…"
+	
+	para "Oh, good day to"
+	line "you. …Hm? A"
+	cont "battle? But of"
+	cont "course, I would"
+	cont "be delighted to."
+	done
+	
+_ErikaRematchDefeatedText::
+	text "Simply"
+	line "marvelous!"
+	prompt

@@ -89,4 +89,5 @@ KeyItemFlags:
 	dbit TRUE  ; RARE_CARD
 	dbit TRUE  ; ODD_KEYSTONE
 	dbit TRUE  ; BIRDWHISTLE
+	dbit FALSE ; MIST_STONE
 	end_bit_array NUM_ITEMS

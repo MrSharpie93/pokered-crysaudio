@@ -83,7 +83,8 @@ _CeruleanGymBattleText1::
 	text "I'm more than good"
 	line "enough for you!"
 
-	para "MISTY can wait!"
+	para "My little sis"
+	line "can wait!"
 	done
 
 _CeruleanGymEndBattleText1::
@@ -101,13 +102,13 @@ _CeruleanGymAfterBattleText1::
 _CeruleanGymBattleText2::
 	text "Splash!"
 
-	para "I'm first up!"
-	line "Let's do it!"
+	para "Like, get ready"
+	line "and stuff!"
 	done
 
 _CeruleanGymEndBattleText2::
-	text "That"
-	line "can't be!"
+	text "No"
+	line "way!"
 	prompt
 
 _CeruleanGymAfterBattleText2::
@@ -126,11 +127,11 @@ _CeruleanGymGymGuideChampInMakingText::
 
 	para "The LEADER, MISTY,"
 	line "is a pro who uses"
-	cont "water #MON!"
+	cont "WATER #MON!"
 
 	para "You can drain all"
 	line "their water with"
-	cont "plant #MON!"
+	cont "GRASS #MON!"
 
 	para "Or, zap them with"
 	line "electricity!"
@@ -144,3 +145,35 @@ _CeruleanGymGymGuideBeatMistyText::
 	line "we make a pretty"
 	cont "darn good team!"
 	done
+	
+_CeruleanGymBattleText3::
+	text "Hm? Me? I'm one"
+	line "of the SENSATIONAL"
+	cont "SISTERS!"
+	done
+
+_CeruleanGymEndBattleText3::
+	text "I'm"
+	line "soaked!"
+	prompt
+
+_CeruleanGymAfterBattleText3::
+	text "Ugh, that battle"
+	line "totally ruined my"
+	cont "hair!"
+	done
+	
+_MistyRematchPreBattleText::
+	text "You're back!"
+	
+	para "My #MON and I"
+	line "just have to"
+	cont "battle you again!"
+	cont "Got it? No"
+	cont "refusing!"
+	done
+	
+_MistyRematchDefeatedText::
+	text "Hmph!"
+	line "How annoying!"
+	prompt

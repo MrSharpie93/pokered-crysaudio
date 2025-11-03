@@ -254,6 +254,7 @@
 	const DEX_REGIGIGAS  ; 248
 	const DEX_MEWTWO     ; 249 ; Cerulean Cave B1F (Static)
 	const DEX_MEW        ; 250
+DEF DIPLOMA_POKEMON EQU const_value - 1
 	const DEX_YOSHI      ; 251
 	const DEX_MISSINGNO  ; 252 ; Glitch City
 

@@ -3,8 +3,8 @@ SSAnneCaptainsRoom_Script:
 	jp EnableAutoTextBoxDrawing
 
 SSAnneCaptainsRoomEventScript:
-	CheckEvent EVENT_RUBBED_CAPTAINS_BACK
-	ret nz
+;	CheckEvent EVENT_RUBBED_CAPTAINS_BACK ; EVENT_IS_CHAMPION
+;	ret nz
 	ld hl, wStatusFlags3
 	set BIT_NO_NPC_FACE_PLAYER, [hl]
 	ret
@@ -14,29 +14,30 @@ SSAnneCaptainsRoom_TextPointers:
 	dw_const SSAnneCaptainsRoomCaptainText,     TEXT_SSANNECAPTAINSROOM_CAPTAIN
 	dw_const SSAnneCaptainsRoomTrashText,       TEXT_SSANNECAPTAINSROOM_TRASH
 	dw_const SSAnneCaptainsRoomSeasickBookText, TEXT_SSANNECAPTAINSROOM_SEASICK_BOOK
+	dw_const SSAnneCaptainsRoomCutShelfText,    TEXT_SSANNECAPTAINSROOM_CUT_SHELF
 
 SSAnneCaptainsRoomCaptainText:
 	text_asm
-	CheckEvent EVENT_GOT_HM01
-	jr nz, .got_item
-	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
-	call PrintText
-	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
-	call PrintText
-	lb bc, HM_CUT, 1
-	call GiveItem
-	jr nc, .bag_full
-	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
-	call PrintText
-	SetEvent EVENT_GOT_HM01
-	jr .done
-.bag_full
-	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
-	call PrintText
-	ld hl, wStatusFlags3
-	set BIT_NO_NPC_FACE_PLAYER, [hl]
-	jr .done
-.got_item
+;	CheckEvent EVENT_GOT_HM01
+;	jr nz, .got_item
+;	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
+;	call PrintText
+;	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
+;	call PrintText
+;	lb bc, HM_CUT, 1
+;	call GiveItem
+;	jr nc, .bag_full
+;	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
+;	call PrintText
+;	SetEvent EVENT_GOT_HM01
+;	jr .done
+;.bag_full
+;	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
+;	call PrintText
+;	ld hl, wStatusFlags3
+;	set BIT_NO_NPC_FACE_PLAYER, [hl]
+;	jr .done
+;.got_item
 	ld hl, SSAnneCaptainsRoomCaptainNotSickAnymoreText
 	call PrintText
 .done
@@ -44,7 +45,7 @@ SSAnneCaptainsRoomCaptainText:
 
 SSAnneCaptainsRoomRubCaptainsBackText:
 	text_far _SSAnneCaptainsRoomRubCaptainsBackText
-	text_asm
+	text_end
 ;	ld a, [wAudioROMBank]
 ;	cp BANK("Audio Engine 3")
 ;	ld [wAudioSavedROMBank], a
@@ -55,21 +56,21 @@ SSAnneCaptainsRoomRubCaptainsBackText:
 ;	ld a, 0 ; BANK(Music_PkmnHealed)
 ;	ld [wAudioROMBank], a
 ;.not_audio_engine_3
-	ld a, MUSIC_PKMN_HEALED
+;	ld a, MUSIC_PKMN_HEALED
 ;	ld [wNewSoundID], a
-	call PlayMusic
-
-	call WaitForSongToFinish
+;	call PlayMusic
+;
+;	call WaitForSongToFinish
 ;.loop
 ;	ld a, [wChannelSoundIDs]
 ;	cp MUSIC_PKMN_HEALED
 ;	jr z, .loop
-
-	call PlayDefaultMusic
-	SetEvent EVENT_RUBBED_CAPTAINS_BACK
-	ld hl, wStatusFlags3
-	res BIT_NO_NPC_FACE_PLAYER, [hl]
-	jp TextScriptEnd
+;
+;	call PlayDefaultMusic
+;	SetEvent EVENT_RUBBED_CAPTAINS_BACK
+;	ld hl, wStatusFlags3
+;	res BIT_NO_NPC_FACE_PLAYER, [hl]
+;	jp TextScriptEnd
 
 SSAnneCaptainsRoomCaptainIFeelMuchBetterText:
 	text_far _SSAnneCaptainsRoomCaptainIFeelMuchBetterText
@@ -95,3 +96,28 @@ SSAnneCaptainsRoomTrashText:
 SSAnneCaptainsRoomSeasickBookText:
 	text_far _SSAnneCaptainsRoomSeasickBookText
 	text_end
+	
+SSAnneCaptainsRoomCutShelfText:
+	text_asm
+	CheckEvent EVENT_GOT_HM01
+	jr nz, .got_item
+	ld hl, SSAnneCaptainsRoomRubCaptainsBackText
+	call PrintText
+	lb bc, HM_CUT, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, SSAnneCaptainsRoomCaptainReceivedHM01Text
+	call PrintText
+	SetEvent EVENT_GOT_HM01
+	jr .done
+.bag_full
+	ld hl, SSAnneCaptainsRoomCaptainHM01NoRoomText
+	call PrintText
+;	ld hl, wStatusFlags3
+;	set BIT_NO_NPC_FACE_PLAYER, [hl]
+	jr .done
+.got_item
+	ld hl, SSAnneCaptainsRoomCaptainIFeelMuchBetterText
+	call PrintText
+.done
+	jp TextScriptEnd

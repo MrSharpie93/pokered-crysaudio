@@ -31,6 +31,20 @@ ViridianGym_ScriptPointers:
 	dw_const ViridianGymGiovanniPostBattle,         SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 
 ViridianGymDefaultScript:
+	
+	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	jr z, .skipGymGuide
+	CheckEvent EVENT_2ND_ROUTE22_RIVAL_BATTLE
+	jr nz, .skipGymGuide
+	ld a, [wYCoord]
+	cp 15
+	jr nz, .skipGymGuide
+	ld a, TEXT_VIRIDIANGYM_GYM_GUIDE_GIVE_EARTH_BADGE
+	ldh [hTextID], a
+	call DisplayTextID
+	call ViridianGymReceiveBadgeFromGymGuide
+	
+.skipGymGuide
 	callfar CheckStartStopSpinning
 	; we're doing this here because CheckFightingMapTrainers needs to be run while we're in this map's bank
 	ld hl, wMovementFlags
@@ -50,6 +64,16 @@ ViridianGymReceiveTM27:
 	ldh [hTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	
+	; deactivate gym trainers
+	SetEventRange EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7
+	
+	jp ViridianGymResetScripts
+	
+ViridianGymReceiveBadgeFromGymGuide:
+	ld a, TEXT_VIRIDIANGYM_ORIGINAL_EARTH_BADGE_INFO
+	ldh [hTextID], a
+	call DisplayTextID
 	lb bc, TM_FISSURE, 1
 	call GiveItem
 	jr nc, .bag_full
@@ -67,9 +91,6 @@ ViridianGymReceiveTM27:
 	set BIT_EARTHBADGE, [hl]
 	ld hl, wBeatGymFlags
 	set BIT_EARTHBADGE, [hl]
-
-	; deactivate gym trainers
-	SetEventRange EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0, EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7
 
 	ld a, HS_ROUTE_22_RIVAL_2
 	ld [wMissableObjectIndex], a
@@ -93,6 +114,8 @@ ViridianGym_TextPointers:
 	dw_const ViridianGymGiovanniEarthBadgeInfoText, TEXT_VIRIDIANGYM_GIOVANNI_EARTH_BADGE_INFO
 	dw_const ViridianGymGiovanniReceivedTM27Text,   TEXT_VIRIDIANGYM_GIOVANNI_RECEIVED_TM27
 	dw_const ViridianGymGiovanniTM27NoRoomText,     TEXT_VIRIDIANGYM_GIOVANNI_TM27_NO_ROOM
+	dw_const ViridianGymGymGuideGiveEarthBadgeText, TEXT_VIRIDIANGYM_GYM_GUIDE_GIVE_EARTH_BADGE
+	dw_const EarthBadgeOriginalInfoText,            TEXT_VIRIDIANGYM_ORIGINAL_EARTH_BADGE_INFO
 
 ViridianGymTrainerHeaders:
 	def_trainers 2
@@ -116,26 +139,54 @@ ViridianGymTrainerHeader7:
 
 ViridianGymGiovanniText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM27
 	jr nz, .afterBeat
 	call z, ViridianGymReceiveTM27
 	call DisableWaitingAfterTextDisplay
-	jr .text_script_end
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, GeorgeRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_WEIRD_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, GeorgeRematchDefeatedText
+	ld de, .GiovanniVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_GEORGE
+	ld [wCurOpponent], a
+	ld a, 2
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $8
+	ld [wGymLeaderNo], a
+	jr .done
+;;;
 .afterBeat
-	ld a, $1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+;	ld a, $1
+;	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, .PostBattleAdviceText
 	call PrintText
-	call GBFadeOutToBlack
-	ld a, HS_VIRIDIAN_GYM_GIOVANNI
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	call UpdateSprites
-	call Delay3
-	call GBFadeInFromBlack
-	jr .text_script_end
+;	call GBFadeOutToBlack
+;	ld a, HS_VIRIDIAN_GYM_GIOVANNI
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+;	call UpdateSprites
+;	call Delay3
+;	call GBFadeInFromBlack
+	jr .done
 .beforeBeat
 	ld hl, .PreBattleText
 	call PrintText
@@ -153,7 +204,7 @@ ViridianGymGiovanniText:
 	ld [wGymLeaderNo], a
 	ld a, SCRIPT_VIRIDIANGYM_GIOVANNI_POST_BATTLE
 	ld [wViridianGymCurScript], a
-.text_script_end
+.done
 	jp TextScriptEnd
 
 .PreBattleText:
@@ -162,7 +213,7 @@ ViridianGymGiovanniText:
 
 .ReceivedEarthBadgeText:
 	text_far _ViridianGymGiovanniReceivedEarthBadgeText
-	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
+;	sound_get_key_item ; ~$~CHANGED: All Badges just play key item SFX.~$~
 	text_end
 	
 .GiovanniVictoryText:
@@ -171,7 +222,7 @@ ViridianGymGiovanniText:
 
 .PostBattleAdviceText:
 	text_far _ViridianGymGiovanniPostBattleAdviceText
-	text_waitbutton
+;	text_waitbutton
 	text_end
 
 ViridianGymGiovanniEarthBadgeInfoText:
@@ -336,12 +387,18 @@ ViridianGymCooltrainerM3AfterBattleText:
 
 ViridianGymGymGuideText:
 	text_asm
-	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	CheckEvent EVENT_2ND_ROUTE22_RIVAL_BATTLE
 	jr nz, .afterBeat
 	ld hl, ViridianGymGuidePreBattleText
 	call PrintText
 	jr .done
 .afterBeat
+	CheckEventReuseA EVENT_GOT_TM27
+	jr nz, .gotFissure
+	call z, ViridianGymReceiveBadgeFromGymGuide
+	call DisableWaitingAfterTextDisplay
+	jr .done
+.gotFissure
 	ld hl, ViridianGymGuidePostBattleText
 	call PrintText
 .done
@@ -353,4 +410,21 @@ ViridianGymGuidePreBattleText:
 
 ViridianGymGuidePostBattleText:
 	text_far _ViridianGymGuidePostBattleText
+	text_end
+	
+ViridianGymGymGuideGiveEarthBadgeText:
+	text_far _ViridianGymGuideGiveEarthBadgeText
+	sound_get_key_item
+	text_end
+	
+EarthBadgeOriginalInfoText:
+	text_far _EarthBadgeOriginalInfoText
+	text_end
+	
+GeorgeRematchPreBattleText:
+	text_far _GeorgeRematchPreBattleText
+	text_end
+	
+GeorgeRematchDefeatedText:
+	text_far _GeorgeRematchDefeatedText
 	text_end

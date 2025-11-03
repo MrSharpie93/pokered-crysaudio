@@ -53,11 +53,35 @@ DrawStartMenu::
 	call PrintStartMenuItem
 	ld de, StartMenuOptionText
 	call PrintStartMenuItem
+	jr nz, .printDayNightText
 	ld de, StartMenuExitText
 	call PlaceString
+; ~$~ADDED: Day/Night cycle, ported from EvoYellow, with code from Maize and Spark Yellow.~$~
+.printDayNightText ;EvoYellow comment: credit to base daynight goes to makers of maize and pokesparkyellow, I just fixed it so it wasn't completely bugged in viridian/caves.
+	call PlaceString
+	; display night or day
+	hlcoord 1, 0 ; $c3aa
+	lb bc, 3, 7
+	call TextBoxBorder
+	hlcoord 3, 2
+	call CheckDayNight
+	jr nc, .night
+	ld de, DayText
+	jr .gotText
+.night
+	ld de,NightText
+.gotText
+	call PlaceString
+;;;
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	ret
+	
+DayText:
+	db " DAY@"
+	
+NightText:
+	db "NIGHT@"
 
 StartMenuPokedexText:
 	db "POKéDEX@"

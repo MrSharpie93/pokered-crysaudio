@@ -103,6 +103,7 @@ SubanimationPointers:
 	dw Subanim_3GemRises
 	dw Subanim_3EvilEye
 	dw Subanim_0StringShot2
+	dw Subanim_3SuperFang
 	assert_table_length NUM_SUBANIMS
 
 ; format:
@@ -1061,3 +1062,7 @@ Subanim_3EvilEye:
 	subanim SUBANIMTYPE_HFLIP, 2
 	db FRAMEBLOCK_0B, BASECOORD_10, FRAMEBLOCKMODE_00
 	db FRAMEBLOCK_0C, BASECOORD_10, FRAMEBLOCKMODE_00
+	
+Subanim_3SuperFang:
+	subanim SUBANIMTYPE_HFLIP, 1
+	db FRAMEBLOCK_68, BASECOORD_10, FRAMEBLOCKMODE_00

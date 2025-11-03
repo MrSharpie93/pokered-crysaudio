@@ -18,6 +18,12 @@ LoadWildData::
 	ld de, wGrassMons ; otherwise, load grass data
 	ld bc, $14
 	call CopyData
+	call CheckDayNight
+	jr c, .day
+	ld hl, HandleNightMons
+	ld b, BANK(HandleNightMons)
+	rst _Bankswitch
+.day
 	pop hl
 	ld bc, $14
 	add hl, bc

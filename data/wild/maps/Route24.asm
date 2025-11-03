@@ -4,7 +4,7 @@ IF DEF(_RED)
 	db  3, WEEDLE     ; 19.9%
 	db  3, KAKUNA     ; 19.9%
 	db  4, PIDGEY     ; 15.2%
-	db  4, ODDISH     ;  9.8%
+	db  4, HOPPIP     ;  9.8%
 	db  4, PSYDUCK    ;  9.8%
 	db  3, ABRA       ;  9.8%
 	db  3, ODDISH     ;  5.1%
@@ -16,7 +16,7 @@ IF DEF(_BLUE)
 	db  3, CATERPIE   ; 19.9%
 	db  3, METAPOD    ; 19.9%
 	db  4, PIDGEY     ; 15.2%
-	db  4, BELLSPROUT ;  9.8%
+	db  4, HOPPIP     ;  9.8%
 	db  4, PSYDUCK    ;  9.8%
 	db  3, ABRA       ;  9.8%
 	db  3, BELLSPROUT ;  5.1%

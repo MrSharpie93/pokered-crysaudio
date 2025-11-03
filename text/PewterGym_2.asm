@@ -155,3 +155,22 @@ _PewterGymGuidePostBattleText::
 	line "You're #MON"
 	cont "champ material!"
 	done
+	
+_BrockRematchPreBattleText::
+	text "It's good to see"
+	line "you again."
+	
+	para "Allow me the"
+	line "privilege to face"
+	cont "you once more,"
+	cont "and show you the"
+	cont "true rock-hard"
+	cont "strength of my"
+	cont "#MON!"
+	done
+	
+_BrockRematchDefeatedText::
+	text "I knew"
+	line "you were strong,"
+	cont "but this…"
+	prompt

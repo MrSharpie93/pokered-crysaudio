@@ -21,8 +21,43 @@ CeladonMansion3FGraphicArtistText:
 	text_end
 
 CeladonMansion3FWriterText:
-	text_far _CeladonMansion3FWriterText
+	text_asm
+	ld hl, .HeyHowsItGoingText
+	call PrintText
+	ldh a, [hRandomAdd]
+	cp 180 ; 76/256 chance of 1st dialogue
+	jr c, .not_dialog_1
+	ld hl, .GameHint1Text
+	jr .done
+.not_dialog_1
+	cp 100 ; 80/256 chance of 2nd dialogue
+	jr c, .not_dialog_2
+	ld hl, .GameHint2Text
+	jr .done
+.not_dialog_2
+	ld hl, .GameHint3Text
+.done
+	call PrintText
+	jp TextScriptEnd
+
+.HeyHowsItGoingText:
+	text_far _CeladonMansion3FSharpieHeyHowsItGoingText
 	text_end
+
+.GameHint1Text:
+	text_far CeladonMansion3FSharpieGameHint1Text
+	text_end
+
+.GameHint2Text:
+	text_far CeladonMansion3FSharpieGameHint2Text
+	text_end
+
+.GameHint3Text:
+	text_far CeladonMansion3FSharpieGameHint3Text
+	text_end
+
+;	text_far _CeladonMansion3FWriterText
+;	text_end
 
 CeladonMansion3FGameDesignerText:
 	text_asm
@@ -30,7 +65,7 @@ CeladonMansion3FGameDesignerText:
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp NUM_POKEMON - 1 ; discount Mew
+	cp DIPLOMA_POKEMON ; discount Yoshi/Missingno.
 	jr nc, .completed_dex
 	ld hl, .Text
 	jr .done

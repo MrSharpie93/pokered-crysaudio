@@ -89,6 +89,7 @@ ItemNames::
 	li "RARE CARD"
 	li "ODD KEYSTONE"
 	li "BIRDWHISTLE"
+	li "MIST STONE"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

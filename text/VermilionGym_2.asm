@@ -37,7 +37,7 @@ _TM24ExplanationText::
 	line "THUNDERBOLT!"
 
 	para "Teach it to an"
-	line "electric #MON!"
+	line "ELECTRIC #MON!"
 	done
 
 _VermilionGymLTSurgeTM24NoRoomText::
@@ -81,21 +81,24 @@ _VermilionGymGentlemanAfterBattleText::
 	done
 
 _VermilionGymSuperNerdBattleText::
-	text "I'm a lightweight,"
-	line "but I'm good with"
-	cont "electricity!"
+	text "I'm an excellent"
+	line "repairman! They"
+	cont "call me MR.FIX!"
 	done
 
 _VermilionGymSuperNerdEndBattleText::
-	text "Fried!"
+	text "Oof,"
+	line "scrapped!"
 	prompt
 
 _VermilionGymSuperNerdAfterBattleText::
-	text "OK, I'll talk!"
+	text "These switches?"
 
-	para "LT.SURGE said he"
-	line "hid door switches"
-	cont "inside something!"
+	para "I'm the one who"
+	line "got them working!"
+	
+	para "What's with that"
+	line "angry look?"
 	done
 
 _VermilionGymSailorBattleText::
@@ -149,3 +152,19 @@ _VermilionGymGymGuideBeatLTSurgeText::
 	text "Whew! That match"
 	line "was electric!"
 	done
+	
+_SurgeRematchPreBattleText::
+	text "Ten-hut!"
+	
+	para "You're looking"
+	line "soft, punk!"
+	cont "Looks like I'll"
+	cont "have to whip your"
+	cont "carcass back into"
+	cont "shape!"
+	done
+	
+_SurgeRematchDefeatedText::
+	text "You"
+	line "still got it, kid!"
+	prompt

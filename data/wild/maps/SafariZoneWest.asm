@@ -26,7 +26,7 @@ IF DEF(_BLUE)
 ENDC
 	end_grass_wildmons
 
-	def_water_wildmons 3 ; encounter rate
+	def_water_wildmons 10 ; encounter rate
 	db  5, SHELLDER  ; 19.9%
 	db  5, SHELLDER  ; 19.9%
 	db  5, SHELLDER  ; 15.2%

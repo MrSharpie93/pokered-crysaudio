@@ -518,7 +518,7 @@ _ViridianSchoolNotebookText1::
 	line "random words"
 	cont "that don't seem"
 	cont "related…"
-	done
+	prompt
 
 ;	para "# BALLs are"
 ;	line "used to catch"

@@ -105,7 +105,8 @@ ItemUsePtrTable:
 	dw UnusableItem      ; SLOWPOKETAIL
 	dw UnusableItem      ; RARE_CARD
 	dw UnusableItem      ; ODD_KEYSTONE
-	dw UnusableItem;ItemUseBirdwhistle      ; BIRDWHISTLE
+	dw ItemUseBirdwhistle      ; BIRDWHISTLE
+	dw ItemUseEvoStone   ; MIST_STONE
 
 ItemUseBall:
 
@@ -258,10 +259,12 @@ ItemUseBall:
 
 ; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
 	ld a, [wCurItem]
-	cp GREAT_BALL
-	ld a, 12
-	jr nz, .skip1
+	;cp GREAT_BALL
+	cp SAFARI_BALL ;joenote - great balls now have factor of 12 and safari balls now have factor of 8
+	ld a, 12		; This is because a lower ball factor helps catch pokemon that have fuller HP
+	jr nz, .skip1	; So this was probably intended for the safari zone since pokemon there can't be weakened
 	ld a, 8
+
 
 .skip1
 ; Note that the results of all division operations are floored.
@@ -850,6 +853,17 @@ ItemUseMedicine:
 	ld e, a
 	ld [wCurSpecies], a
 	pop af
+; this is where Yellow puts the Pikachu happiness shit
+;	push af
+;	ld a, [wWhichPokemon]
+;	ld hl, wPartyMon1CatchRate
+;	ld bc, wPartyMon2 - wPartyMon1
+;	call AddNTimes
+;	ld a, [hl]
+;	ld b, a
+;	
+;	pop af
+;;;	
 	ld [wCurItem], a
 	pop af
 	ld [wWhichPokemon], a
@@ -919,6 +933,8 @@ ItemUseMedicine:
 	xor a
 	ld [wBattleMonStatus], a ; remove the status ailment in the in-battle pokemon data
 	ld [wPlayerToxicCounter], a	;clear toxic counter
+	inc a ; ~$~ADDED: PureRGB bit for preventing AI status spam on heal.~$~
+	ld [wAIMoveSpamAvoider], a
 	ld bc, wPartyMon1Stats - wPartyMon1Status
 	add hl, bc ; hl now points to party stats
 	ld de, wBattleMonStats
@@ -1547,6 +1563,13 @@ BaitRockCommon:
 	cp 5
 	jr nc, .randomLoop
 	inc a ; increment the random number, giving a range from 1 to 5 inclusive
+	
+	;joenote - There is a bug here. 
+;		- The 1-to-5 number is always decremented when PrintSafariZoneBattleText runs.
+;		- So getting a number of 1 will decrement immediately to zero and do nothing to the eating/angry state.
+;		- To get an effective 1-to-5 turns, increment once more to bump the range to 2-to-6
+	inc a
+	
 	ld b, a
 	ld a, [hl]
 	add b ; increase bait factor (for bait), increase escape factor (for rock)
@@ -1742,6 +1765,10 @@ ItemUsePokeFlute:
 ; if it's a trainer battle
 	ld hl, wEnemyMon1Status
 	call WakeUpEntireParty
+;;;;;;;;;; PureRGBnote: ADDED: prevents AI from instantly preferring reapplying sleep after having healed it
+	ld a, 1
+	ld [wAIMoveSpamAvoider], a ; load this value so the AI doesn't spam status moves right after you heal them
+;;;;;;;;;;
 .skipWakingUpEnemyParty
 	ld hl, wBattleMonStatus
 	ld a, [hl]
@@ -2988,3 +3015,50 @@ CheckMapForMon:
 	jr nz, .loop
 	dec hl
 	ret
+	
+ItemUseBirdwhistle:
+	ld a, [wIsInBattle]
+	and a
+	jp nz, ItemUseNotTime
+	ld hl, UsedBirdwhistleText
+	call PrintText
+	ld a, SFX_POKEFLUTE_IN_BATTLE ; TODO: Give this its own SFX?
+	call PlaySound
+	call WaitForSoundToFinish
+	call CheckIfInOutsideMap
+	jr z, .canFly
+; new block to make "open-air" maps flyable
+	ld a, [wCurMap]
+	cp CELADON_MART_ROOF
+	jr z, .canFly
+	cp CELADON_MANSION_ROOF
+	jr z, .canFly
+	cp VERMILION_DOCK
+	jr z, .canFly
+	cp SS_ANNE_BOW
+	jr z, .canFly
+; end of new block to make "open-air" maps flyable
+.nope
+	ld hl, BirdwhistleFailText
+	call PrintText
+	jr .done
+.canFly
+	call ChooseFlyDestination
+	ld a, [wStatusFlags6]
+	bit BIT_FLY_WARP, a
+	jr nz, .goBackToMap
+	call LoadFontTilePatterns
+	ld hl, wStatusFlags4
+	set BIT_UNKNOWN_4_1, [hl]
+.goBackToMap
+	call RestoreScreenTilesAndReloadTilePatterns
+.done
+	jp ItemUseReloadOverworldData
+
+UsedBirdwhistleText:
+	text_far _UsedBirdwhistleText
+	text_end
+
+BirdwhistleFailText:
+	text_far _BirdwhistleFailText
+	text_end

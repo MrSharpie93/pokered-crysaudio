@@ -1,28 +1,41 @@
 _Route6CooltrainerM1BattleText::
-	text "Who's there?"
-	line "Quit listening in"
-	cont "on us!"
+	text "I'm doing this"
+	line "out of love."
+	cont "Leave me alone!"
 	done
 
 _Route6CooltrainerM1EndBattleText::
-	text "I"
-	line "just can't win!"
+	text "No,"
+	line "this can't be…"
 	prompt
 
-_Route6CooltrainerAfterBattleText::
-	text "Whisper..."
-	line "whisper..."
+_Route6CooltrainerM1AfterBattleText::
+	text "My love will leave"
+	line "me in disgust."
 	done
 
 _Route6CooltrainerF1BattleText::
-	text "Excuse me! This"
-	line "is a private"
-	cont "conversation!"
+	text "Some people call"
+	line "me a star, but"
+	cont "I'm just GISELLE!"
 	done
 
 _Route6CooltrainerF1EndBattleText::
-	text "Ugh!"
-	line "I hate losing!"
+	text "My"
+	line "textbook never…"
+	prompt
+
+_Route6CooltrainerF1AfterBattleText::
+	text "Now I understand,"
+	line "#MON isn't"
+	cont "about calculated"
+	cont "numbers."
+	done
+	
+_Route6CooltrainerF1LossText::
+	text "Really?"
+	line "And you have how"
+	cont "many badges?"
 	prompt
 
 _Route6Youngster1BattleText::

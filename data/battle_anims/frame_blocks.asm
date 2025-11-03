@@ -1137,7 +1137,7 @@ FrameBlock65:
 	dbsprite  0,  4,  0,  0, $1c, 0
 	dbsprite  1,  4,  0,  0, $1d, 0
 
-FrameBlock66:
+FrameBlock66: ; blizzard crystal
 	db 2 ; #
 	dbsprite  0,  0,  0,  0, $03, 0
 	dbsprite  0,  1,  0,  0, $13, 0

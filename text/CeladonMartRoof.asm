@@ -15,6 +15,8 @@ _CeladonMartRoofLittleGirlYayFreshWaterText::
 	text_end
 
 _CeladonMartRoofLittleGirlReceivedTM13Text::
+_CeladonMartRoofLittleGirlReceivedTM48Text::
+_CeladonMartRoofLittleGirlReceivedTM49Text::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
@@ -31,7 +33,7 @@ _CeladonMartRoofLittleGirlTM13ExplanationText::
 
 	para "It weakens the"
 	line "power of the foe's"
-	line "physical attacks!@"
+	cont "physical attacks!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYaySodaPopText::
@@ -45,12 +47,12 @@ _CeladonMartRoofLittleGirlYaySodaPopText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM48Text::
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
+;_CeladonMartRoofLittleGirlReceivedTM48Text::
+;	text "<PLAYER> received"
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!@"
+;	text_end
 
 _CeladonMartRoofLittleGirlTM48ExplanationText::
 	text_start
@@ -62,7 +64,7 @@ _CeladonMartRoofLittleGirlTM48ExplanationText::
 
 	para "It weakens the"
 	line "power of the foe's"
-	line "special attacks!@"
+	cont "special attacks!@"
 	text_end
 
 _CeladonMartRoofLittleGirlYayLemonadeText::
@@ -76,10 +78,10 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM49Text::
-	text "<PLAYER> received"
-	line "TM49!@"
-	text_end
+;_CeladonMartRoofLittleGirlReceivedTM49Text::
+;	text "<PLAYER> received"
+;	line "TM49!@" ; Why hardcoded???~$~
+;	text_end
 
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
@@ -89,12 +91,12 @@ _CeladonMartRoofLittleGirlTM49ExplanationText::
 	
 	para "It prevents status"
 	line "problems for your"
-	line "#MON!@"
+	cont "#MON!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::
-	text "You don't have"
-	line "space for this!@"
+	text "How many drinks"
+	line "do you have?@"
 	text_end
 
 _CeladonMartRoofLittleGirlImNotThirstyText::

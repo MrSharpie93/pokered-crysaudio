@@ -141,9 +141,10 @@ _SaffronGymYoungster1EndBattleText::
 	prompt
 
 _SaffronGymYoungster1AfterBattleText::
-	text "Psychic #MON"
-	line "fear only ghosts"
-	cont "and bugs!"
+	text "PSYCHIC #MON"
+	line "fear only GHOST,"
+	cont "BUG and DARK-type"
+	cont "#MON!"
 	done
 
 _SaffronGymChanneler2BattleText::
@@ -245,3 +246,23 @@ _SaffronGymYoungster4AfterBattleText::
 	line "used telepathy to"
 	cont "read your mind!"
 	done
+	
+_SabrinaRematchPreBattleText::
+	text "I foresaw your"
+	line "return."
+	
+	para "I won't be relying"
+	line "on just PSYCHIC"
+	cont "power this time."
+	
+	para "My true strength,"
+	line "my true self…"
+	cont "Allow me to test"
+	cont "them against you!"
+	done
+	
+_SabrinaRematchDefeatedText::
+	text "I"
+	line "never envisioned"
+	cont "this happening."
+	prompt

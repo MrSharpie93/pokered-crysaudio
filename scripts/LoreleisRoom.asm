@@ -16,7 +16,7 @@ LoreleiShowOrHideExitBlock:
 	ret z
 	ld hl, wElite4Flags
 	set BIT_STARTED_ELITE_4, [hl]
-	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	CheckEitherEventSet EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, EVENT_BEAT_LORELEIS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $5
 	jr .setExitBlock
@@ -125,12 +125,26 @@ LoreleisRoomTrainerHeaders:
 	def_trainers
 LoreleisRoomTrainerHeader0:
 	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_0, 0, LoreleisRoomLoreleiBeforeBattleText, LoreleisRoomLoreleiEndBattleText, LoreleisRoomLoreleiAfterBattleText
+LoreleisRoomTrainerHeader1: ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	trainer EVENT_BEAT_LORELEIS_ROOM_TRAINER_1, 0, LoreleiRematchText, LoreleiRematchEndBattleText, LoreleiRematchAfterBattleText
 	db -1 ; end
 
 LoreleisRoomLoreleiText:
 	text_asm
 	ld hl, LoreleisRoomTrainerHeader0
+; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip
+	ld hl, LoreleisRoomTrainerHeader1
+.skip
 	call TalkToTrainer
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip2
+	ld a, [wTrainerNo]
+	inc a
+	ld [wTrainerNo], a
+.skip2
+;;;
 	ld a, $9 ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
 	ld [wGymLeaderNo], a
 	jp TextScriptEnd
@@ -148,5 +162,17 @@ LoreleisRoomLoreleiAfterBattleText:
 	text_end
 
 LoreleisRoomLoreleiDontRunAwayText:
-	text_far _LoreleisRoomLoreleiDontRunAwayText
+	text_far _EliteFourDontRunAwayText
+	text_end
+	
+LoreleiRematchText:
+	text_far _LoreleiRematchText
+	text_end
+
+LoreleiRematchEndBattleText:
+	text_far _LoreleiRematchEndBattleText
+	text_end
+
+LoreleiRematchAfterBattleText:
+	text_far _LoreleiRematchAfterBattleText
 	text_end

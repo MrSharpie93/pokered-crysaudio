@@ -105,13 +105,41 @@ CeladonGymTrainerHeader6:
 
 CeladonGymErikaText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_ERIKA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM21
 	jr nz, .afterBeat
 	call z, CeladonGymReceiveTM21
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, ErikaRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, ErikaRematchDefeatedText
+	ld de, .ErikaVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_ERIKA
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $4
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
@@ -304,4 +332,12 @@ CeladonGymEndBattleText8:
 
 CeladonGymAfterBattleText8:
 	text_far _CeladonGymAfterBattleText8
+	text_end
+	
+ErikaRematchPreBattleText:
+	text_far _ErikaRematchPreBattleText
+	text_end
+	
+ErikaRematchDefeatedText:
+	text_far _ErikaRematchDefeatedText
 	text_end

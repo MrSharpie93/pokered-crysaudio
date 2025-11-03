@@ -8,7 +8,7 @@ SilphCo1F_Script:
 ;	ld [wMissableObjectIndex], a
 ;	predef_jump ShowObject
 	ld hl, SilphCo1F_ScriptPointers
-	ld a, [wSilphCo1FCurScript] ; test
+	ld a, [wSilphCo1FCurScript]
 	jp CallFunctionInTable
 	
 SilphCo1F_ScriptPointers:

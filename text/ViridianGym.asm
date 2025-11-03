@@ -1,55 +1,70 @@
 _ViridianGymGiovanniPreBattleText::
-	text "Fwahahaha! This is"
-	line "my hideout!"
+	text "You must be one"
+	line "of those chump"
+	cont "challengers!"
 
-	para "I planned to"
-	line "resurrect TEAM"
-	cont "ROCKET here!"
+	para "I'm GEORGE, and"
+	line "this is MY GYM"
+	cont "now! Bwahaha!"
 
-	para "But, you have"
-	line "caught me again!"
-	cont "So be it! This"
-	cont "time, I'm not"
-	cont "holding back!"
+	para "When that weird"
+	line "old dude left,"
+	cont "my mommy told me"
+	cont "I could be the"
+	cont "new LEADER!"
 
-	para "Once more, you"
-	line "shall face"
-	cont "GIOVANNI, the"
-	cont "greatest trainer!"
+	para "She always tells"
+	line "me I'm special,"
+	cont "and I'll prove it"
+	cont "when I send you"
+	cont "crying home to"
+	cont "your mommy! NYEH!"
 	done
 
 _ViridianGymGiovanniReceivedEarthBadgeText::
-	text "Ha!"
-	line "That was a truly"
-	cont "intense fight!"
-	cont "You have won!"
-	cont "As proof, here is"
-	cont "the EARTHBADGE!@"
-	text_end
+	text "WHAT!"
+	line "B-but, I'm not"
+	cont "supposed to lose!"
+	
+	para "You cheated! I"
+	line "know it, and I'm"
+	cont "gonna tell!"
+	prompt
 	
 _ViridianGymGiovanniVictoryText::
-	text "A mere"
-	line "child like you"
-	cont "can never compete"
-	cont "with me. Begone!"
+	text "DUH!"
+	line "Of course you"
+	cont "lost!"
+	
+	para "GEORGE rules,"
+	line "and you drools!"
+	prompt
+	
+
+;	text "A mere" ; Might want this for something else.~$~
+;	line "child like you"
+;	cont "can never compete"
+;	cont "with me. Begone!"
 
 _ViridianGymGiovanniPostBattleAdviceText::
-	text "Having lost, I"
-	line "cannot face my"
-	cont "underlings!"
-	cont "TEAM ROCKET is"
-	cont "finished forever!"
-
-	para "I will dedicate my"
-	line "life to the study"
-	cont "of #MON!"
-
-	para "Let us meet again"
-	line "some day!"
-	cont "Farewell!@"
-	text_end
+	text "You're still here?"
+	line "Get lost, dork!"
+	done
 
 _ViridianGymGiovanniEarthBadgeInfoText::
+	text "What, you want a"
+	line "BADGE?! No way!"
+	cont "Cheaters like you"
+	cont "don't get BADGEs!"
+	
+	para "Now get out and"
+	line "stay out until"
+	cont "you learn to"
+	cont "fight fair!"
+	cont "…sniffle…"
+	done
+
+_EarthBadgeOriginalInfoText::	
 	text "The EARTHBADGE"
 	line "makes #MON of"
 	cont "any level obey!"
@@ -62,9 +77,7 @@ _ViridianGymGiovanniEarthBadgeInfoText::
 	line "enter the #MON"
 	cont "LEAGUE!"
 
-	para "It is my gift for"
-	line "your #MON"
-	cont "LEAGUE challenge!"
+	para "Take this, too!"
 	done
 
 _ViridianGymGiovanniReceivedTM27Text::
@@ -80,9 +93,9 @@ _ViridianGymGiovanniTM27ExplanationText::
 	cont "#MON with just"
 	cont "one hit!"
 
-	para "I made it when I"
-	line "ran the GYM here,"
-	cont "too long ago..."
+	para "Apparently, the"
+	line "old LEADER made it"
+	cont "a while ago…"
 	done
 
 _ViridianGymGiovanniTM27NoRoomText::
@@ -105,6 +118,10 @@ _ViridianGymCooltrainerM1AfterBattleText::
 	text "You need power to"
 	line "keep up with our"
 	cont "GYM LEADER!"
+	
+	para "You need patience"
+	line "to put up with our"
+	cont "replacement…"
 	done
 
 _ViridianGymHiker1BattleText::
@@ -137,6 +154,11 @@ _ViridianGymRocker1AfterBattleText::
 	text "Do you know the"
 	line "identity of our"
 	cont "GYM LEADER?"
+	
+	para "Seriously, do you?"
+	line "Who is that brat,"
+	cont "and where did he"
+	cont "come from?"
 	done
 
 _ViridianGymHiker2BattleText::
@@ -152,7 +174,7 @@ _ViridianGymHiker2EndBattleText::
 _ViridianGymHiker2AfterBattleText::
 	text "If my #MON"
 	line "were as good at"
-	cont "Karate as I..."
+	cont "Karate as I…"
 	done
 
 _ViridianGymCooltrainerM2BattleText::
@@ -166,8 +188,8 @@ _ViridianGymCooltrainerM2EndBattleText::
 	prompt
 
 _ViridianGymCooltrainerM2AfterBattleText::
-	text "The LEADER will"
-	line "scold me!"
+	text "Where did our"
+	line "real LEADER GO?"
 	done
 
 _ViridianGymHiker3BattleText::
@@ -205,8 +227,8 @@ _ViridianGymRocker2AfterBattleText::
 _ViridianGymCooltrainerM3BattleText::
 	text "VIRIDIAN GYM was"
 	line "closed for a long"
-	cont "time, but now our"
-	cont "LEADER is back!"
+	cont "time, and now our"
+	cont "LEADER is gone?!"
 	done
 
 _ViridianGymCooltrainerM3EndBattleText::
@@ -217,8 +239,8 @@ _ViridianGymCooltrainerM3EndBattleText::
 _ViridianGymCooltrainerM3AfterBattleText::
 	text "You can go onto"
 	line "#MON LEAGUE"
-	cont "only by defeating"
-	cont "our GYM LEADER!"
+	cont "only by earning"
+	cont "all 8 GYM BADGEs!"
 	done
 
 _ViridianGymGuidePreBattleText::
@@ -226,21 +248,66 @@ _ViridianGymGuidePreBattleText::
 	line "making!"
 
 	para "Even I don't know"
-	line "VIRIDIAN LEADER's"
-	cont "identity!"
+	line "what's going on"
+	cont "anymore!"
 
-	para "This will be the"
-	line "toughest of all"
-	cont "the GYM LEADERs!"
+	para "VIRIDIAN LEADER"
+	line "just up and left,"
+	cont "and now that kid"
+	cont "thinks he's in"
+	cont "charge?!"
 
-	para "I heard that the"
-	line "trainers here"
-	cont "like ground-type"
-	cont "#MON!"
+	para "All I can say is"
+	line "to be ready for"
+	cont "anything!"
 	done
 
 _ViridianGymGuidePostBattleText::
-	text "Blow me away!"
-	line "GIOVANNI was the"
-	cont "GYM LEADER here?"
+	text "Best of luck on"
+	line "your journey."
+	
+	para "Hope I see you"
+	line "at INDIGO PLATEAU!"
 	done
+
+_ViridianGymGuideGiveEarthBadgeText::
+	text "Look, sorry about"
+	line "the kid."
+	
+	para "He's not a bad"
+	line "trainer, just a"
+	cont "little immature."
+	
+	para "His mother's an"
+	line "admin with the"
+	cont "#MON LEAGUE,"
+	cont "and put him here"
+	cont "in the meantime"
+	cont "hoping he'd learn"
+	cont "from real battles."
+	
+	para "Here's the badge"
+	line "he owes you:"
+
+	para "<PLAYER> received"
+	line "the EARTHBADGE!@"
+	text_end
+	
+_GeorgeRematchPreBattleText::
+	text "What're you doing"
+	line "here again?!"
+	
+	para "Oh, I get it, you"
+	line "want another beat-"
+	cont "ing from yours"
+	cont "truly. Then get"
+	cont "ready, because"
+	cont "here I come!"
+	done
+	
+_GeorgeRematchDefeatedText::
+	text "You must"
+	line "be using like, a"
+	cont "GAMESHARK or"
+	cont "something…"
+	prompt

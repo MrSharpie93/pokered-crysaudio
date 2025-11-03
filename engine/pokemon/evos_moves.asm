@@ -83,6 +83,14 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, b
 	cp EVOLVE_ITEM
 	jp z, .checkItemEvo
+; ~$~ CHANGED: Mist Stone can be used to force a level evolution at any level.~$~	
+	ld a, [wCurItem]
+	cp MIST_STONE
+	jr nz, .skipMistThing
+	xor a
+	ld [wForceEvolution], a
+.skipMistThing
+;;;
 	ld a, [wForceEvolution]
 	and a
 	jr nz, Evolution_PartyMonLoop
@@ -174,8 +182,18 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; was the evolution item in this entry used?
 	jp nz, .nextEvoEntry1 ; if not, go to the next evolution entry
 .checkLevel
+; ~$~ CHANGED: Mist Stone can be used to force a level evolution at any level.~$~
+	ld a, [wCurItem]
+	cp MIST_STONE
+	jr nz, .noMistStone
+	ld a, [hli] ; level requirement
+	ld b, 1
+	jr .continueEvolution
+;;;
+.noMistStone
 	ld a, [hli] ; level requirement
 	ld b, a
+.continueEvolution
 	ld a, [wLoadedMonLevel]
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, .nextEvoEntry2 ; if so, go the next evolution entry

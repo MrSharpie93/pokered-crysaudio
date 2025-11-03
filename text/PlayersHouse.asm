@@ -35,8 +35,27 @@ _PlayersHouseTVBigLebowskiMovieText::
 _PlayersHousePCText::
 	text "It's your old"
 	line "clunker PC."
-	
+IF DEF(_DEBUG)
+	para "boolProp setEvent"
+	line "BECAME-CHAMPION"
+ELSE
 	para "It can't do much"
 	line "besides play"
 	cont "SOLITAIRE…"
+ENDC
+	done
+	
+_ChangeAppearanceText::
+	text "It's a mirror."
+	
+	para "Change your"
+	line "appearance?"
+	done
+
+_AppearanceChangedText::
+	text "Just a second…"
+	done
+
+_AppearanceKeptText::
+	text "Maybe later."
 	done

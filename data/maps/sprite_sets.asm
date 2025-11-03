@@ -197,6 +197,6 @@ SpriteSets:
 	db SPRITE_SWIMMER
 	db SPRITE_YOUNGSTER
 	db SPRITE_POKE_BALL
-	db SPRITE_FOSSIL
+	db SPRITE_SLOWPOKE ; ~$~CHANGED: Was fossil.~$~
 
 	assert_table_length NUM_SPRITE_SETS

@@ -23,5 +23,5 @@ BookshelfTileIDs:
 	bookshelf_tile POKECENTER,   $55, PokemonStuffText
 	bookshelf_tile LOBBY,        $50, PokemonStuffText
 	bookshelf_tile LOBBY,        $52, PokemonStuffText
-	bookshelf_tile SHIP,         $36, BookOrSculptureText
+;	bookshelf_tile SHIP,         $36, BookOrSculptureText
 	db -1 ; end

@@ -14,7 +14,7 @@ BrunoShowOrHideExitBlock:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	CheckEitherEventSet EVENT_BEAT_BRUNOS_ROOM_TRAINER_0, EVENT_BEAT_BRUNOS_ROOM_TRAINER_1
 	jr z, .blockExitToNextRoom
 	ld a, $5
 	jp .setExitBlock
@@ -123,12 +123,26 @@ BrunosRoomTrainerHeaders:
 	def_trainers
 BrunosRoomTrainerHeader0:
 	trainer EVENT_BEAT_BRUNOS_ROOM_TRAINER_0, 0, BrunoBeforeBattleText, BrunoEndBattleText, BrunoAfterBattleText
+BrunosRoomTrainerHeader1: ; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	trainer EVENT_BEAT_BRUNOS_ROOM_TRAINER_1, 0, BrunoRematchText, BrunoRematchEndBattleText, BrunoRematchAfterBattleText
 	db -1 ; end
 
 BrunosRoomBrunoText:
 	text_asm
 	ld hl, BrunosRoomTrainerHeader0
+; ~$~ADDED: Elite Four rematches. Ported from KEP.~$~
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip
+	ld hl, BrunosRoomTrainerHeader1
+.skip
 	call TalkToTrainer
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr z, .skip2
+	ld a, [wTrainerNo]
+	inc a
+	ld [wTrainerNo], a
+.skip2
+;;;
 	ld a, $a ; ~$~CHANGED: Elite Four plays Gym Leader music.~$~
 	ld [wGymLeaderNo], a
 	jp TextScriptEnd
@@ -146,5 +160,17 @@ BrunoAfterBattleText:
 	text_end
 
 BrunosRoomBrunoDontRunAwayText:
-	text_far _BrunosRoomBrunoDontRunAwayText
+	text_far _EliteFourDontRunAwayText
+	text_end
+	
+BrunoRematchText:
+	text_far _BrunoRematchText
+	text_end
+
+BrunoRematchEndBattleText:
+	text_far _BrunoRematchEndBattleText
+	text_end
+
+BrunoRematchAfterBattleText:
+	text_far _BrunoRematchAfterBattleText
 	text_end

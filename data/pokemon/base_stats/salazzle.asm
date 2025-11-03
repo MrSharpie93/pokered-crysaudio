@@ -7,7 +7,7 @@
 	db 45 ; catch rate
 	db 187 ; base exp
 
-	INCBIN "gfx/pokemon/front/salandit.pic", 0, 1 ; sprite dimensions
+	INCBIN "gfx/pokemon/front/salazzle.pic", 0, 1 ; sprite dimensions
 	dw SalazzlePicFront, SalazzlePicBack
 
 	; move tutor compatibility flags

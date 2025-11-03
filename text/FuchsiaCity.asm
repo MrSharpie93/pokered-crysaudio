@@ -102,6 +102,14 @@ _FuchsiaCityLaprasSignText::
 	para "A.K.A. the ruler"
 	line "of the seas."
 	prompt
+	
+_FuchsiaCityRhydonSignText::
+	text "Name: RHYDON"
+
+	para "An intelligent"
+	line "evolution of"
+	cont "RHYHORN."
+	prompt
 
 _FuchsiaCityFossilSignOmanyteText::
 	text "Name: OMANYTE"
@@ -119,9 +127,9 @@ _FuchsiaCityFossilSignKabutoText::
 	cont "from a fossil."
 	prompt
 
-_FuchsiaCityFossilSignUndeterminedText::
-	text "..."
-	done
+;_FuchsiaCityFossilSignUndeterminedText::
+;	text "..."
+;	done
 	
 _SubstituteMoveTutorText::
 	text "Aww, I wish I was"

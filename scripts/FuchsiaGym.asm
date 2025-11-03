@@ -105,13 +105,41 @@ FuchsiaGymTrainerHeader5:
 
 FuchsiaGymKogaText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_KOGA
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM06
 	jr nz, .afterBeat
 	call z, FuchsiaGymReceiveTM06
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, KogaRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, KogaRematchDefeatedText
+	ld de, .KogaVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_KOGA
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $5
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
@@ -305,4 +333,12 @@ FuchsiaGymGymGuideText:
 
 .BeatKogaText:
 	text_far _FuchsiaGymGymGuideBeatKogaText
+	text_end
+	
+KogaRematchPreBattleText:
+	text_far _KogaRematchPreBattleText
+	text_end
+	
+KogaRematchDefeatedText:
+	text_far _KogaRematchDefeatedText
 	text_end

@@ -11,8 +11,6 @@ DrawEnemyPokeballs:
 	jp SetupEnemyPartyPokeballs
 
 LoadPartyPokeballGfx:
-	ld b, SET_PAL_BATTLEBALLS ; ~$~ADDED: Pokeballs at start of battle are red/white.~$~
-	call RunPaletteCommand
 	ld de, PokeballTileGraphics
 	ld hl, vSprites tile $31
 	lb bc, BANK(PokeballTileGraphics), (PokeballTileGraphicsEnd - PokeballTileGraphics) / $10

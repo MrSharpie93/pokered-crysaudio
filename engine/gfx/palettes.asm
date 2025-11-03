@@ -26,16 +26,6 @@ SetPal_BattleBlack:
 
 ; uses PalPacket_Empty to build a packet based on mon IDs and health color
 SetPal_Battle:
-	call SetPal_BattleCommon1
-	add PAL_GREENBAR
-	ld [hli], a
-	inc hl
-	ld a, [wEnemyHPBarColor]
-	add PAL_GREENBAR
-	jp SetPal_BattleCommon2
-
-; ~$~CHANGED: Split the majority of this code into two functions that SetPal_Battle and SetPal_BattleBalls can share.~$~
-SetPal_BattleCommon1:
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
 	ld bc, $10
@@ -50,9 +40,11 @@ SetPal_BattleCommon1:
 	ld c, a
 	ld hl, wPalPacket + 1
 	ld a, [wPlayerHPBarColor]
-	ret
-
-SetPal_BattleCommon2:
+	add PAL_GREENBAR
+	ld [hli], a
+	inc hl
+	ld a, [wEnemyHPBarColor]
+	add PAL_GREENBAR
 	ld [hli], a
 	inc hl
 	ld a, b
@@ -65,16 +57,6 @@ SetPal_BattleCommon2:
 	ld a, SET_PAL_BATTLE
 	ld [wDefaultPaletteCommand], a
 	ret
-;;;
-	
-SetPal_BattleBalls: ; ~$~ADDED: Pokeballs at start of battle are red/white.~$~
-	call SetPal_BattleCommon1
-	add PAL_0F
-	ld [hli], a
-	inc hl
-	ld a, [wEnemyHPBarColor]
-	add PAL_0F
-	jp SetPal_BattleCommon2
 
 SetPal_TownMap:
 	ld hl, PalPacket_TownMap
@@ -151,6 +133,7 @@ SetPal_GameFreakIntro:
 	ld [wDefaultPaletteCommand], a
 	ret
 
+; ~$~CHANGED: Dynamically change the palettes according to the day/night cycle. Complete shitshow, but seems to work so far.~$~
 ; uses PalPacket_Empty to build a packet based on the current map
 SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	ld hl, PalPacket_Empty
@@ -162,6 +145,8 @@ SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	jr z, .PokemonTowerOrAgatha
 	cp CAVERN
 	jr z, .caveOrBruno
+	cp FOREST
+	jr z, .forestMap
 	ld a, [wCurMap]
 	cp FIRST_INDOOR_MAP
 	jr c, .townOrRoute
@@ -177,11 +162,31 @@ SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	jr z, .caveOrBruno
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
+	cp NUM_CITY_MAPS
+	jr c, .townIndoor
+	ld a, PAL_ROUTE - 1
+.townIndoor
+	push af
+	jr .daytime
+.forestMap
+	ld a, [wLastMap]
 .townOrRoute
 	cp NUM_CITY_MAPS
 	jr c, .town
 	ld a, PAL_ROUTE - 1
 .town
+	push af
+	call CheckDayNight
+	jr c, .daytime
+	ld a, 3
+	ld [wMapPalOffset], a
+	jr .gotTime
+.daytime
+	xor a
+	ld [wMapPalOffset], a
+.gotTime
+	pop af
+.flash
 	inc a ; a town's palette ID is its map ID + 1
 	ld hl, wPalPacket + 1
 	ld [hld], a
@@ -191,9 +196,13 @@ SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	ret
 .PokemonTowerOrAgatha
 	ld a, PAL_GREYMON - 1
-	jr .town
+	jr .townIndoor
 .caveOrBruno
 	ld a, [wCurMap]
+	cp ROCK_TUNNEL_1F
+	jr z, .rockTunnel
+	cp ROCK_TUNNEL_B1F
+	jr z, .rockTunnel
 	cp SEAFOAM_ISLANDS_B1F
 	jr c, .regularCave
 	cp SEAFOAM_ISLANDS_B4F + 1
@@ -208,16 +217,19 @@ SetPal_Overworld: ; ~$~CHANGED: Certain maps have unique palettes now.~$~
 	jr z, .ceruleanCave
 .regularCave
 	ld a, PAL_CAVE - 1
-	jr .town
+	jr .townIndoor
 .powerPlant
 	ld a, PAL_GREYMON_Y - 1
-	jr .town
+	jr .townIndoor
 .seafoamOrLorelei
 	ld a, PAL_CYANMON_Y - 1
-	jr .town
+	jr .townIndoor
 .ceruleanCave
 	ld a, PAL_GREYSCALE - 1
-	jr .town
+	jr .townIndoor
+.rockTunnel
+	ld a, PAL_CAVE - 1
+	jr .flash
 
 ; used when a Pokemon is the only thing on the screen
 ; such as evolution, trading and the Hall of Fame
@@ -302,7 +314,6 @@ SetPalFunctions:
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
 	dw SetPal_DexBalls
-	dw SetPal_BattleBalls
 
 ; The length of the blk data of each badge on the Trainer Card.
 ; The Rainbow Badge has 3 entries because of its many colors.

@@ -1,5 +1,7 @@
 FuchsiaCity_Script:
-	jp EnableAutoTextBoxDrawing
+	call EnableAutoTextBoxDrawing
+	ResetEvent EVENT_LAB_STILL_REVIVING_FOSSIL
+	ret
 
 FuchsiaCity_TextPointers:
 	def_text_pointers
@@ -10,9 +12,9 @@ FuchsiaCity_TextPointers:
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_CHANSEY
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_VOLTORB
 	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_KANGASKHAN
-	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_SLOWPOKE
+	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_RHYDON
 	dw_const FuchsiaCityLaprasText,          TEXT_FUCHSIACITY_LAPRAS
-	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_FOSSIL
+	dw_const FuchsiaCityPokemonText,         TEXT_FUCHSIACITY_SLOWPOKE
 	dw_const SubstituteMoveTutorText,        TEXT_FUCHSIACITY_MOVE_TUTOR
 	dw_const FuchsiaCitySignText,            TEXT_FUCHSIACITY_SIGN1
 	dw_const FuchsiaCitySafariGameSignText,  TEXT_FUCHSIACITY_SAFARI_GAME_SIGN
@@ -24,9 +26,9 @@ FuchsiaCity_TextPointers:
 	dw_const FuchsiaCityChanseySignText,     TEXT_FUCHSIACITY_CHANSEY_SIGN
 	dw_const FuchsiaCityVoltorbSignText,     TEXT_FUCHSIACITY_VOLTORB_SIGN
 	dw_const FuchsiaCityKangaskhanSignText,  TEXT_FUCHSIACITY_KANGASKHAN_SIGN
-	dw_const FuchsiaCitySlowpokeSignText,    TEXT_FUCHSIACITY_SLOWPOKE_SIGN
+	dw_const FuchsiaCityRhydonSignText,      TEXT_FUCHSIACITY_RHYDON_SIGN
 	dw_const FuchsiaCityLaprasSignText,      TEXT_FUCHSIACITY_LAPRAS_SIGN
-	dw_const FuchsiaCityFossilSignText,      TEXT_FUCHSIACITY_FOSSIL_SIGN
+	dw_const FuchsiaCitySlowpokeSignText,    TEXT_FUCHSIACITY_SLOWPOKE_SIGN
 
 FuchsiaCityYoungster1Text:
 	text_far _FuchsiaCityYoungster1Text
@@ -135,41 +137,53 @@ FuchsiaCityLaprasSignText:
 .Text:
 	text_far _FuchsiaCityLaprasSignText
 	text_end
-
-FuchsiaCityFossilSignText:
+	
+FuchsiaCityRhydonSignText:
 	text_asm
-	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .got_dome_fossil
-	CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
-	jr nz, .got_helix_fossil
-	ld hl, .UndeterminedText
+	ld hl, .Text
 	call PrintText
-	jr .done
-.got_dome_fossil
-	ld hl, .OmanyteText
-	call PrintText
-	ld a, OMANYTE
-	jr .display
-.got_helix_fossil
-	ld hl, .KabutoText
-	call PrintText
-	ld a, KABUTO
-.display
+	ld a, RHYDON
 	call DisplayPokedex
-.done
 	jp TextScriptEnd
 
-.OmanyteText:
-	text_far _FuchsiaCityFossilSignOmanyteText
+.Text:
+	text_far _FuchsiaCityRhydonSignText
 	text_end
 
-.KabutoText:
-	text_far _FuchsiaCityFossilSignKabutoText
-	text_end
+; FuchsiaCityFossilSignText:
+	; text_asm
+	; CheckEvent EVENT_GOT_DOME_FOSSIL
+	; jr nz, .got_dome_fossil
+	; CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
+	; jr nz, .got_helix_fossil
+	; ld hl, .UndeterminedText
+	; call PrintText
+	; jr .done
+; .got_dome_fossil
+	; ld hl, .OmanyteText
+	; call PrintText
+	; ld a, OMANYTE
+	; jr .display
+; .got_helix_fossil
+	; ld hl, .KabutoText
+	; call PrintText
+	; ld a, KABUTO
+; .display
+	; call DisplayPokedex
+; .done
+	; jp TextScriptEnd
 
-.UndeterminedText:
-	text_far _FuchsiaCityFossilSignUndeterminedText
-	text_end
+; .OmanyteText:
+	; text_far _FuchsiaCityFossilSignOmanyteText
+	; text_end
+
+; .KabutoText:
+	; text_far _FuchsiaCityFossilSignKabutoText
+	; text_end
+
+; .UndeterminedText:
+	; text_far _FuchsiaCityFossilSignUndeterminedText
+	; text_end
 	
 FuchsiaCityLaprasText:
 	text_far _NewBarkTownLaprasText

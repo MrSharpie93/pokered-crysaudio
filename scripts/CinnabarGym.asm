@@ -211,13 +211,41 @@ CinnabarGymStartBattleScript:
 
 CinnabarGymBlaineText:
 	text_asm
+	CheckEvent EVENT_BECAME_CHAMPION
+	jr nz, .rematch
 	CheckEvent EVENT_BEAT_BLAINE
 	jr z, .beforeBeat
 	CheckEventReuseA EVENT_GOT_TM38
 	jr nz, .afterBeat
 	call z, CinnabarGymReceiveTM38
 	call DisableWaitingAfterTextDisplay
+	jp .done
+; ~$~ADDED: Gym Leader rematches. Ported from KEP.~$~
+.rematch
+	ld hl, BlaineRematchPreBattleText
+	call PrintText
+	ld c, BANK(Music_MeetMaleTrainer)
+	ld a, MUSIC_MEET_MALE_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	ldh a, [hSpriteIndex]
+	ld [wSpriteIndex], a
+	ld hl, BlaineRematchDefeatedText
+	ld de, .BlaineVictoryText
+	call SaveEndBattleTextPointers
+	call EngageMapTrainer
+	ld a, OPP_BLAINE
+	ld [wCurOpponent], a
+	ld a, 8
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	ld a, $7
+	ld [wGymLeaderNo], a
 	jr .done
+;;;
 .afterBeat
 	ld hl, .PostBattleAdviceText
 	call PrintText
@@ -502,4 +530,12 @@ CinnabarGymGymGuideText:
 
 .BeatBlaineText:
 	text_far _CinnabarGymGymGuideBeatBlaineText
+	text_end
+	
+BlaineRematchPreBattleText:
+	text_far _BlaineRematchPreBattleText
+	text_end
+	
+BlaineRematchDefeatedText:
+	text_far _BlaineRematchDefeatedText
 	text_end

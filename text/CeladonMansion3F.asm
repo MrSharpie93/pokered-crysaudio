@@ -46,22 +46,74 @@ _CeladonMansion3FGameProgramPCText::
 	text "It's the game"
 	line "program! Messing"
 	cont "with it could bug"
-	cont "out the game!"
+	cont "out the game…"
+	
+	para "Even worse!"
 	done
 
 _CeladonMansion3FPlayingGamePCText::
-	text "Someone's playing"
-	line "a game instead of"
-	cont "working!"
+	text "There's a lot of"
+	line "art projects open!"
+	
+	para "Some of them seem"
+	line "inappropriate."
 	done
 
 _CeladonMansion3FGameScriptPCText::
-	text "It's the script!"
-	line "Better not look"
-	cont "at the ending!"
+	text "It's a game being"
+	line "playtested."
+	
+	para "A cap-wearing"
+	line "character is in"
+	cont "some kind of"
+	cont "office, looking"
+	cont "at a PC monitor."
 	done
 
 _CeladonMansion3FDevRoomSignText::
 	text "GAME FREAK"
 	line "Development Room"
+	done
+	
+_CeladonMansion3FSharpieHeyHowsItGoingText::
+	text "Hey how's it going?"
+	line "I'm SHARPIE."
+
+	para "I made this mod."
+	line "Here's a hint:"
+	prompt
+
+CeladonMansion3FSharpieGameHint1Text::
+	text "There's an island"
+	line "you can travel to"
+	cont "after you become"
+	cont "CHAMPION."
+	
+	para "The S.S. CAPTAIN"
+	line "should be less"
+	cont "nauseous by then."
+	done
+
+CeladonMansion3FSharpieGameHint2Text::
+	text "There's a way into"
+	line "BILL's garden."
+	
+	para "He just needs a"
+	line "bribe in the form"
+	cont "of a high-value"
+	cont "collectible."
+	
+	para "Ask around in town"
+	line "while you're here."
+	done
+
+CeladonMansion3FSharpieGameHint3Text::
+	text "A certain club"
+	line "leader might know"
+	cont "where to find a"
+	cont "rare #MON."
+	
+	para "Be advised though,"
+	line "her methods are a"
+	cont "bit unrefined."
 	done

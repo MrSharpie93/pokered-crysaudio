@@ -4,7 +4,7 @@ IF DEF(_RED)
 	db  4, HOPPIP     ; 19.9%
 	db  5, RATTATA    ; 19.9%
 	db  3, MAREEP     ; 15.2%
-	db  3, CHIMEOW    ;  9.8%
+	db  3, JIGGLYPUFF ;  9.8%
 	db  2, CHIMEOW    ;  9.8%
 	db  5, HOPPIP     ;  9.8%
 	db  2, MAREEP     ;  5.1%
@@ -16,7 +16,7 @@ IF DEF(_BLUE)
 	db  4, HOPPIP     ; 19.9%
 	db  5, RATTATA    ; 19.9%
 	db  3, MAREEP     ; 15.2%
-	db  3, MEOWTH     ;  9.8%
+	db  3, JIGGLYPUFF ;  9.8%
 	db  2, MEOWTH     ;  9.8%
 	db  5, HOPPIP     ;  9.8%
 	db  2, MAREEP     ;  5.1%

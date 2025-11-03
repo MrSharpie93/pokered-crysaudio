@@ -19,7 +19,7 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1,2,3,4 ; SUPER_NERD
 	move_choices 1,4     ; HIKER
 	move_choices 1,2,3   ; BIKER
-	move_choices 1,2,3,4 ; BURGLAR
+	move_choices 1,3,4   ; BURGLAR
 	move_choices 1,2,3   ; ENGINEER
 	move_choices 1,2,3,4 ; JESSIE_JAMES
 	move_choices 1,3     ; FISHER
@@ -34,7 +34,7 @@ TrainerClassMoveChoiceModifications:
 	move_choices 1,2     ; BIRD_KEEPER
 	move_choices 1,2,3   ; BLACKBELT
 	move_choices 1,3     ; RIVAL1 (GREEN)
-	move_choices 1       ; PROF_OAK
+	move_choices 1,2,3,4 ; PROF_OAK
 	move_choices 1,2,3,4 ; CHIEF
 	move_choices 1,2,4   ; SCIENTIST
 	move_choices 1,2,3,4 ; GIOVANNI
