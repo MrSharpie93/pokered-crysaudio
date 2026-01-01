@@ -18,7 +18,6 @@ SafariZoneCenterRestHouseScientistText:
 	
 SafariZoneCenterRestHouseDetailsText:
 	text_far _SafariZoneRestHousePosterText
-	text_end
 	text_far _SafariZoneCenterRestHouseDetailsText
 	text_end
 	

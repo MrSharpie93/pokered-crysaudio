@@ -89,47 +89,47 @@ _Route24Youngster2AfterBattleText::
 	line "have no regrets!"
 	done
 	
-	_Route24DamianText1::
-	text "I'm not good at"
-	line "raising #MON."
+_Route24DamianText1::
+	text "Look at this weak"
+	line "little #MON!"
 
 	para "I should release"
 	line "my CHARMANDER"
-	cont "because I haven't"
-	cont "raised it well..."
+	cont "because it's so"
+	cont "darn wimpy…"
 
-	para "If you promise me"
-	line "you'll care for"
-	cont "it, it's yours."
+	para "Better yet, why"
+	line "don't you take"
+	cont "the stupid thing?"
 	done
 
 _Route24DamianText2::
-	text "Take good care of"
-	line "my CHARMANDER!@"
+	text "Great, now it's"
+	line "your problem!@"
 	text_end
 
 _Route24DamianText3::
-	text "Oh... I'd better"
-	line "release it then."
+	text "Figures nobody"
+	line "wants it…"
 	done
 
 _Route24DamianText4::
-	text "How's CHARMANDER"
-	line "doing?"
+	text "Right, get lost,"
+	line "then."
 	done
 	
 _Route24DamianText5::
-	text "I'm not good at"
-	line "raising #MON."
+	text "Wow! Now that"
+	line "CHARMANDER looks"
+	cont "strong!"
 
 	para "But it looks like"
-	line "you are, your"
-	cont "CHARMANDER seems"
-	cont "to love you."
+	line "it could be even"
+	cont "stronger…"
 	
 	para "You should have"
-	line "this as a symbol"
-	cont "of your bond."
+	line "this to power it"
+	cont "up even more!"
 	prompt
 
 _Route24DamianText6::

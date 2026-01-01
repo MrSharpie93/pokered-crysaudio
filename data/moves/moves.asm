@@ -21,7 +21,7 @@ Moves:
 	move ICE_PUNCH,    FREEZE_SIDE_EFFECT,          75, ICE,          100, 15
 	move THUNDERPUNCH, PARALYZE_SIDE_EFFECT1,       75, ELECTRIC,     100, 15
 	move SCRATCH,      NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35
-	move VICEGRIP,     FLINCH_SIDE_EFFECT1,         55, NORMAL,       100, 25
+	move VICEGRIP,     THUNDER_FANG_EFFECT,         55, NORMAL,       100, 20
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,        30,  5
 	move RAZOR_WIND,   NO_ADDITIONAL_EFFECT,        90, FLYING,        90, 10 ; high crit
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,       100, 20

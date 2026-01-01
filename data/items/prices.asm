@@ -47,7 +47,7 @@ ItemPrices::
 	bcd3 0     ; BIKE_VOUCHER
 	bcd3 2000  ; X_ACCURACY
 	bcd3 2100  ; LEAF_STONE
-	bcd3 0     ; CARD_KEY
+	bcd3 1500  ; LUCKY_EGG
 	bcd3 10000 ; NUGGET
 	bcd3 12000 ; POKE_PEP
 	bcd3 1000  ; POKE_DOLL

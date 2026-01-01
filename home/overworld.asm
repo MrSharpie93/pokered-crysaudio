@@ -813,7 +813,8 @@ ExtraWarpCheck::
 	ld hl, IsWarpTileInFrontOfPlayer
 .doBankswitch
 	ld b, BANK(IsWarpTileInFrontOfPlayer)
-	jp Bankswitch
+	rst _Bankswitch;jp Bankswitch
+	ret
 
 MapEntryAfterBattle::
 	farcall IsPlayerStandingOnWarp ; for enabling warp testing after collisions
@@ -943,7 +944,7 @@ LoadTilesetTilePatternData::
 	ld a, [wTilesetGfxPtr + 1]
 	ld h, a
 	ld de, vTileset
-	ld bc, $600
+	ld bc, $790
 	ld a, [wTilesetBank]
 	jp FarCopyData2
 
@@ -2527,7 +2528,7 @@ ResetUsingStrengthOutOfBattleBit:
 ForceBikeOrSurf::
 	ld b, BANK(PlayerSprite)
 	ld hl, LoadPlayerSpriteGraphics ; in bank 0
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 	jp PlayDefaultMusic ; update map/player state?
 
 CheckForUserInterruption::

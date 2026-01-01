@@ -31,6 +31,7 @@ Route6GateDefaultScript:
 	call Route6GateMovePlayerDownScript
 	ld a, SCRIPT_ROUTE6GATE_PLAYER_MOVING
 	ld [wRoute6GateCurScript], a
+	SetEvent EVENT_GUARD_ASKED_FOR_TEA
 	ret
 .have_drink
 	ld hl, wStatusFlags1

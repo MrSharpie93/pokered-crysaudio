@@ -1,4 +1,6 @@
 SafariZoneWest_Script:
+	ld a, $62
+	ld [wGrassTile], a
 	jp EnableAutoTextBoxDrawing
 
 SafariZoneWest_TextPointers:

@@ -120,3 +120,11 @@ _ViridianForestLeavingSignText::
 	line "VIRIDIAN FOREST"
 	cont "PEWTER CITY AHEAD"
 	done
+	
+_MossRockText::
+	text "This rock is"
+	line "covered in moss."
+	
+	para "It is pleasantly"
+	line "cool feeling."
+	done

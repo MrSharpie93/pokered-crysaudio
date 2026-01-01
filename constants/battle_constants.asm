@@ -92,7 +92,7 @@ DEF EFFECTIVENESS_MASK EQU %01111111
 	const USING_X_ACCURACY    ; 0
 	const PROTECTED_BY_MIST   ; 1
 	const GETTING_PUMPED      ; 2 ; Focus Energy
-	const_skip                ; 3 ; unused
+	const USING_KINGS_ROCK    ; 3 ; ~$~ Was unused.~$~
 	const HAS_SUBSTITUTE_UP   ; 4
 	const NEEDS_TO_RECHARGE   ; 5 ; Hyper Beam
 	const CURSED              ; 6 ; ~$~ Was USING_RAGE.~$~
@@ -105,3 +105,8 @@ DEF EFFECTIVENESS_MASK EQU %01111111
 	const HAS_REFLECT_UP      ; 2
 	const TRANSFORMED         ; 3
 	const HAS_SAFEGUARD_UP    ; 4 ; ~$~ADDED~$~
+	
+; wShinPokeBattleFlags ; ~$~ADDED~$~
+	const_def
+	const ENEMY_ACTED         ; 0
+	const COUNTER_FAILS       ; 1

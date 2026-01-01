@@ -16,9 +16,9 @@ GroundRoseText::
 BoulderText:: ; ~$~CHANGED: Overworld HM usage.~$~
 	text_far _BoulderText
 	text_asm
-	ld a, [wObtainedBadges]
-	bit BIT_RAINBOWBADGE, a ; RAINBOW BADGE
-	jr z, .done 
+	ld a, [wBeatGymFlags]
+	cp 3
+	jr c, .done 
 	ld d, STRENGTH
 	callfar HasPartyMove
 	ld a, [wWhichTrade]

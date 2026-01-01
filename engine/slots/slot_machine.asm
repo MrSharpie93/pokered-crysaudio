@@ -5,7 +5,7 @@ PromptUserToPlaySlots: ; ~$~CHANGED: Fixed bugs, and pulled various snippets fro
 	ld [wAutoTextBoxDrawingControl], a ; 1 << BIT_NO_AUTO_TEXT_BOX
 	ld b, a ; BANK(DisplayTextIDInit)
 	ld hl, DisplayTextIDInit
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 	ld hl, PlaySlotMachineText
 	call PrintText
 	call YesNoChoice

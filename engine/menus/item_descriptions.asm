@@ -105,7 +105,7 @@ ItemDescriptionPointers:
 	text_end
 	text_far _LeafStoneDescription
 	text_end
-	text_far _CardKeyDescription
+	text_far _LuckyEggDescription;CardKey
 	text_end
 	text_far _NuggetDescription
 	text_end

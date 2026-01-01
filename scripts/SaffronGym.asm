@@ -81,8 +81,11 @@ SaffronGymSabrinaReceiveTM46Script:
 .gymVictory
 	ld hl, wObtainedBadges
 	set BIT_MARSHBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_MARSHBADGE, [hl]
+;	ld hl, wBeatGymFlags
+;	set BIT_MARSHBADGE, [hl]
+	ld a, [wBeatGymFlags]
+	inc a
+	ld [wBeatGymFlags], a
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6

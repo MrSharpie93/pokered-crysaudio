@@ -1,3 +1,6 @@
+	object_const_def
+	const_export CELADONMANSION_ROOF_CURSE_STORYTELLER
+
 CeladonMansionRoof_Object:
 	db $9 ; border block
 
@@ -8,7 +11,9 @@ CeladonMansionRoof_Object:
 
 	def_bg_events
 	bg_event  3,  7, TEXT_CELADONMANSIONROOF_HOUSE_SIGN
+	bg_event  2,  4, TEXT_CELADONMANSIONROOF_GRAFFITI
 
 	def_object_events
+	object_event 1, 10, SPRITE_SILPH_WORKER_F, STAY, DOWN, TEXT_CELADONMANSION_ROOF_CURSE_STORYTELLER
 
 	def_warps_to CELADON_MANSION_ROOF

@@ -32,7 +32,7 @@ _SaffronGymSabrinaReceivedMarshBadgeText::
 	
 _SaffronGymSabrinaVictoryText::
 	text "Hmph."
-	line "As predicted..."
+	line "As predicted…"
 	done
 
 _SaffronGymSabrinaPostBattleAdviceText::
@@ -43,21 +43,12 @@ _SaffronGymSabrinaPostBattleAdviceText::
 	done
 
 _SaffronGymSabrinaMarshBadgeInfoText::
-	text "The MARSHBADGE"
-	line "makes #MON up"
-	cont "to L70 obey you!"
+	text "Your power far"
+	line "exceeds what I"
+	cont "foresaw…"
 
-	para "Stronger #MON"
-	line "will become wild,"
-	cont "ignoring your"
-	cont "orders in battle!"
-
-	para "Just don't raise"
-	line "your #MON too"
-	cont "much!"
-
-	para "Wait, please take"
-	line "this TM with you!"
+	para "Please take this"
+	line "TM with you."
 	done
 
 _SaffronGymSabrinaReceivedTM46Text::

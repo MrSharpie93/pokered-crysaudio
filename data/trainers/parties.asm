@@ -88,8 +88,8 @@ YoungsterData:
 	db 19, SANDSHREW, ZUBAT, -1
 	db 17, RATTATA, RATTATA, RATICATE, -1
 	db 18, NIDORAN_M, NIDORINO, -1
-; Unused
-	db 17, SPEAROW, RATTATA, RATTATA, SPEAROW, -1
+; Was unused (Guards exit to Pewter City)
+	db 10, BULBASAUR, CHARMANDER, SQUIRTLE, -1
 
 BugCatcherData:
 ; Viridian Forest
@@ -144,6 +144,12 @@ LassData:
 	db 10, HOPPIP, HOPPIP, HOPPIP, -1 ; Baabu fanatic
 ; Route 6 (Giselle)
 	db LEVELS, 9, GRAVELER, 12, CUBONE, -1
+; Sayori
+	db LEVELS, 12, SYLVEON, 14, GLOOM, 16, BLISSEY, -1
+; Yuri
+	db LEVELS, 12, KADABRA, 14, SCYTHER, 16, CHANDELURE, -1
+; Natsuki
+	db LEVELS, 12, MUNCHLAX, 14, PERSIAN, 16, GALVANTULA, -1
 
 SailorData:
 ; SS Anne Stern
@@ -505,14 +511,15 @@ BlackbeltData:
 	db 11, MACHOP, MACHOKE, MACHAMP, -1
 
 GreenData: ; Uses JIGGLYPUFF line, CLEFAIRY line, SQUIRTLE line, DITTO, NIDORAN_F line, VULPIX line, BELLSPROUT line, KANGASKHAN, GENGAR
-	db 5, SQUIRTLE, -1
-	db 5, BELLSPROUT, -1
-	db 5, VULPIX, -1
-; Route 22
-	db LEVELS, 9, JIGGLYPUFF, 8, SQUIRTLE, -1
-	db LEVELS, 9, JIGGLYPUFF, 8, BELLSPROUT, -1
-	db LEVELS, 9, JIGGLYPUFF, 8, VULPIX, -1
-; Cerulean City
+; Mt. Moon B2F
+	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, SQUIRTLE, -1
+	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, BELLSPROUT, -1
+	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, VULPIX, -1
+; SS Anne 2F
+	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, SQUIRTLE, -1
+	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, BELLSPROUT, -1
+	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, VULPIX, -1
+; Rocket Hideout B4F
 	db LEVELS, 18, JIGGLYPUFF, 15, DITTO, 15, NIDORAN_F, 17, SQUIRTLE, -1
 	db LEVELS, 18, JIGGLYPUFF, 15, DITTO, 15, NIDORAN_F, 17, BELLSPROUT, -1
 	db LEVELS, 18, JIGGLYPUFF, 15, DITTO, 15, NIDORAN_F, 17, VULPIX, -1
@@ -576,6 +583,7 @@ GiovanniData:
 	db -1
 
 RocketData:
+OfficerData: ; Let the Jennys share their loadout pool with the Rockets, since a lot of them got removed.~$~
 ; Mt. Moon B2F
 	db 13, RATTATA, ZUBAT, -1
 	db 11, SANDSHREW, RATTATA, ZUBAT, -1
@@ -606,8 +614,8 @@ RocketData:
 	db 25, ZUBAT, ZUBAT, GOLBAT, -1
 	db 26, KOFFING, DROWZEE, -1
 	db 23, ZUBAT, RATTATA, RATICATE, ZUBAT, -1
-; Unused
-	db 26, DROWZEE, KOFFING, -1
+; Unused ~$~Now a Jenny in Mt. Moon.~$~
+	db 11, GROWLITHE, GROWLITHE, -1 ; 22
 ; Silph Co. is removed, so too are these Rocket parties.~$~
 ; Silph Co. 2F
 ;	db 29, CUBONE, ZUBAT, -1
@@ -673,6 +681,8 @@ CooltrainerFData:
 ; Route 26
 	db 13, SALAZZLE, -1
 	db LEVELS, 8, RAICHU, 28, BLASTOISE, -1
+; Monika
+	db LEVELS, 13, DITTO, 15, PORYGONZ, 18, MISSINGNO, -1
 
 BrunoData:
 	db MOVES ; Initial
@@ -1055,8 +1065,8 @@ GentlemanData:
 	db 19, NIDORAN_M, NIDORAN_F, -1
 ; SS Anne 2F Rooms/Vermilion Gym
 	db 23, PIKACHU, -1
-; Unused
-	db 48, PRIMEAPE, -1
+; Unused ~$~ Now the Pokemon Fan Club/Cult of Helix leader.~$~
+	db 13, FEAROW, RAPIDASH, -1
 ; SS Anne 2F Rooms
 	db 17, GROWLITHE, PONYTA, -1
 
@@ -1225,10 +1235,6 @@ LanceData:
 		db 83,TYRANITAR,CRUNCH,STONE_EDGE,THUNDERPUNCH,THUNDER_WAVE
 		db 84,DRAGONITE,EXTREMESPEED,OUTRAGE,DRAGON_DANCE,FIRE_PUNCH
 	db -1
-	
-OfficerData:
-	; Placeholders
-	db 5, BULBASAUR, CHARMANDER, SQUIRTLE, -1
 	
 GeorgeData:
 	db MOVES ; Initial

@@ -21,28 +21,28 @@ _PewterCityCooltrainerMText::
 	done
 
 _PewterCitySuperNerd1DidYouCheckOutMuseumText::
-	text "Did you check out"
-	line "the MUSEUM?"
+	text "You seem like an"
+	line "uncultured person."
+	
+	para "Why don't you go"
+	line "check out the"
+	cont "PEWTER MUSEUM."
 	done
 
 _PewterCitySuperNerd1WerentThoseFossilsAmazingText::
-	text "Weren't those"
-	line "fossils from MT."
-	cont "MOON amazing?"
+	text "Glad you agree."
+	line "Come along now!"
 	done
 
 _PewterCitySuperNerd1YouHaveToGoText::
-	text "Really?"
-	line "You absolutely"
-	cont "have to go!"
+	text "Wrong answer, I'm"
+	line "afraid. Come here!"
 	done
 
 _PewterCitySuperNerd1ItsRightHereText::
-	text "It's right here!"
-	line "You have to pay"
-	cont "to get in, but"
-	cont "it's worth it!"
-	cont "See you around!"
+	text "Now you get in"
+	line "there and you"
+	cont "learn something!"
 	done
 
 _PewterCitySuperNerd2DoYouKnowWhatImDoingText::
@@ -54,20 +54,67 @@ _PewterCitySuperNerd2DoYouKnowWhatImDoingText::
 _PewterCitySuperNerd2ThatsRightText::
 	text "That's right!"
 	line "It's hard work!"
-	done
+	prompt
 
 _PewterCitySuperNerd2ImSprayingRepelText::
 	text "I'm spraying REPEL"
 	line "to keep #MON"
 	cont "out of my garden!"
+	prompt
+	
+_PewterCitySuperNerd2HaveSomeRepelsText::
+	text "You know, I have"
+	line "a ton, so why not"
+	cont "take a few for"
+	cont "yourself."
+	prompt
+	
+_PewterCitySuperNerd2GotRepelText::
+	text "<PLAYER> got"
+	line "5 REPELs!@"
+	text_end
+	
+_PewterCitySuperNerd2RepelNoRoomText::
+	text "You can't carry"
+	line "any more stuff."
 	done
 
-_PewterCityYoungsterYoureATrainerFollowMeText::
+_PewterCityYoungsterYoureATrainerText::
 	text "You're a trainer"
 	line "right? BROCK's"
 	cont "looking for new"
 	cont "challengers!"
-	cont "Follow me!"
+	cont "Interested?"
+	done
+	
+_PewterCityYoungsterFollowMeText::
+	text "That's what I"
+	line "like to hear!"
+	
+	para "Follow me!"
+	done
+	
+_PewterCityYoungsterYouWillRegretThisText::
+	text "YOU WILL REGRET"
+	line "THIS!"
+	done
+	
+_RegretEndBattleText::
+	text "Tch!"
+	line "Unbelievable…"
+	prompt
+	
+_RegretVictoryText::
+	text "I"
+	line "warned you…"
+	prompt
+	
+_RegretAfterBattleText::
+	text "You're stronger"
+	line "than I expected."
+	
+	para "Go on ahead, but"
+	line "you will be back."
 	done
 
 _PewterCityYoungsterGoTakeOnBrockText::

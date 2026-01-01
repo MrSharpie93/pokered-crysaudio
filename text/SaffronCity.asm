@@ -39,6 +39,11 @@ _SaffronCityScientistText::
 	text "You beat TEAM"
 	line "ROCKET all alone?"
 	cont "That's amazing!"
+	
+	para "Wait, sorry…"
+	
+	para "I mistook you for"
+	line "someone else…"
 	done
 
 _SaffronCitySilphWorkerMText::
@@ -146,7 +151,11 @@ _SaffronCityMrPsychicsHouseSignText::
 _SaffronCitySilphCoLatestProductSignText::
 	text "SILPH's latest"
 	line "product!"
+	
+	para "# PEP! Unlock"
+	line "your #MON's"
+	cont "true potential!"
 
 	para "Release to be"
-	line "determined..."
+	line "determined…"
 	done

@@ -18,6 +18,8 @@ _SafariZoneEastRestHouseSilphWorkerMText::
 	done
 	
 _SafariZoneEastRestHouseDetailsText::
+	text_start
+
 	para "EXEGGCUTE, RHYHORN"
 	line "LICKITUNG, VIBRAVA"
 	cont "KANGASKHAN, GLIGAR"

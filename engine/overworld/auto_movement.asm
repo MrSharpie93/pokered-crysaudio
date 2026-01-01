@@ -148,9 +148,9 @@ PalletMovementScript_Done:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
-	ld a, HS_PALLET_TOWN_OAK
-	ld [wMissableObjectIndex], a
-	predef HideObject
+;	ld a, HS_PALLET_TOWN_OAK
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
 	ld hl, wStatusFlags5
 	res BIT_SCRIPTED_MOVEMENT_STATE, [hl]
 	ld hl, wStatusFlags4

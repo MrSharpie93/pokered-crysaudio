@@ -14,8 +14,12 @@ _SafariZoneCenterRestHouseScientistText::
 _SafariZoneRestHousePosterText::
 	text "This poster has"
 	line "info on #MON"
-	cont "found in the area:"
+	cont "found in the area:@"
+	text_end
+	
 _SafariZoneCenterRestHouseDetailsText::	
+	text_start
+
 	para "VENONAT, RHYHORN"
 	line "EXEGGCUTE, GLIGAR"
 	cont "SCYTHER, PARASECT"

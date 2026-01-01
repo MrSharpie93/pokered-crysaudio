@@ -3,7 +3,7 @@ CinnabarLabFossilRoom_Script:
 
 CinnabarLabFossilRoom_TextPointers:
 	def_text_pointers
-	dw_const CinnabarLabFossilRoomScientist1Text, TEXT_CINNABARLABFOSSILROOM_SCIENTIST1
+	dw_const CinnabarLabFossilRoomScientist1Text, TEXT_CINNABARLABFOSSILROOM_CARA_LISS
 	dw_const CinnabarLabFossilRoomScientist2Text, TEXT_CINNABARLABFOSSILROOM_SCIENTIST2
 
 ; Lab4Script_GetFossilsInBag:
@@ -83,7 +83,7 @@ CinnabarLabFossilRoomScientist1Text:
 	; jr .done
 
 ; .Text:
-	text_far _CinnabarLabFossilRoomScientist1Text
+	text_far _CinnabarLabFossilRoomCaraLissText
 	text_end
 
 ; .NoFossilsText:

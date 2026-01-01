@@ -14,9 +14,7 @@ _CeladonMartRoofLittleGirlYayFreshWaterText::
 	line "from me!@"
 	text_end
 
-_CeladonMartRoofLittleGirlReceivedTM13Text::
-_CeladonMartRoofLittleGirlReceivedTM48Text::
-_CeladonMartRoofLittleGirlReceivedTM49Text::
+_CeladonMartRoofLittleGirlReceivedTMText::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
@@ -47,13 +45,6 @@ _CeladonMartRoofLittleGirlYaySodaPopText::
 	line "from me!@"
 	text_end
 
-;_CeladonMartRoofLittleGirlReceivedTM48Text::
-;	text "<PLAYER> received"
-;	line "@"
-;	text_ram wStringBuffer
-;	text "!@"
-;	text_end
-
 _CeladonMartRoofLittleGirlTM48ExplanationText::
 	text_start
 
@@ -78,20 +69,41 @@ _CeladonMartRoofLittleGirlYayLemonadeText::
 	line "from me!@"
 	text_end
 
-;_CeladonMartRoofLittleGirlReceivedTM49Text::
-;	text "<PLAYER> received"
-;	line "TM49!@" ; Why hardcoded???~$~
-;	text_end
-
 _CeladonMartRoofLittleGirlTM49ExplanationText::
 	text_start
 
-	para "TM49 contains"
+	para "@"
+	text_ram wStringBuffer
+	text " contains"
 	line "SAFEGUARD!"
 	
 	para "It prevents status"
 	line "problems for your"
 	cont "#MON!@"
+	text_end
+	
+_CeladonMartRoofLittleGirlYayMooMooMilkText::
+	text "Yay!"
+
+	para "MOOMOO MILK!"
+
+	para "Thank you!"
+
+	para "You can have this"
+	line "from me!@"
+	text_end
+	
+_CeladonMartRoofLittleGirlTM17ExplanationText::
+	text_start
+
+	para "@"
+	text_ram wStringBuffer
+	text " contains"
+	line "PROTECT!"
+	
+	para "It keeps your"
+	line "#MON safe"
+	cont "from harm!@"
 	text_end
 
 _CeladonMartRoofLittleGirlNoRoomText::

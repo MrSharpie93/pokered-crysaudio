@@ -9,6 +9,21 @@ _CeladonMansion1FGrannyText::
 	para "MEOWTH even brings"
 	line "money home!"
 	done
+	
+_CeladonMansion1FGrannyTeaText::
+	text "Hm? You'd like"
+	line "some TEA?"
+
+	para "Fresh out, I'm"
+	line "afraid. Sorry,"
+	cont "dear."
+	
+	para "I hear there's a"
+	line "nice young lady"
+	cont "in PALLET TOWN"
+	cont "who makes good"
+	cont "TEA, though…"
+	done
 
 _CeladonMansion1FClefairyText::
 	text "CLEFAIRY: Pi"

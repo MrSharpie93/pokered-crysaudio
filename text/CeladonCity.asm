@@ -17,6 +17,10 @@ _CeladonCityGirlText::
 	text "The GAME CORNER"
 	line "is bad for our"
 	cont "city's image!"
+	
+	para "And it's even"
+	line "worse for our"
+	cont "ESRB rating!"
 	done
 
 _CeladonCityGramps2Text::
@@ -130,15 +134,11 @@ _CeladonCityDeptStoreSignText::
 _CeladonCityTrainerTips2Text::
 	text "TRAINER TIPS"
 
-	para "GUARD SPEC."
-	line "protects #MON"
-	cont "against SPECIAL"
-	cont "attacks such as"
-	cont "fire and water!"
-
-	para "Get your items at"
-	line "CELADON DEPT."
-	cont "STORE!"
+	para "Some rare items"
+	line "like METAL COAT"
+	cont "and KING's ROCK"
+	cont "have different"
+	cont "effects in battle!"
 	done
 
 _CeladonCityPrizeExchangeSignText::

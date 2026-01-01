@@ -82,8 +82,11 @@ VermilionGymLTSurgeReceiveTM24Script:
 .gym_victory
 	ld hl, wObtainedBadges
 	set BIT_THUNDERBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_THUNDERBADGE, [hl]
+;	ld hl, wBeatGymFlags
+;	set BIT_THUNDERBADGE, [hl]
+	ld a, [wBeatGymFlags]
+	inc a
+	ld [wBeatGymFlags], a
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2

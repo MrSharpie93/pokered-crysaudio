@@ -89,8 +89,8 @@ StatusScreen:
 	call LoadHpBarAndStatusTilePatterns
 	ld de, BattleHudTiles1  ; source
 	ld hl, vChars2 tile $6d ; dest
-	lb bc, BANK(BattleHudTiles1), 3
-	call CopyVideoDataDouble ; ·│ :L and halfarrow line end
+	lb bc, BANK(BattleHudTiles1), 1
+	call CopyVideoDataDouble ; ·│
 	ld de, BattleHudTiles2
 	ld hl, vChars2 tile $78
 	lb bc, BANK(BattleHudTiles2), 1
@@ -112,7 +112,7 @@ StatusScreen:
 	call DrawLineBox ; Draws the box around name, HP and status
 	ld de, -6
 	add hl, de
-	ld [hl], "<DOT>"
+	ld [hl], "."
 	dec hl
 	ld [hl], "№"
 	hlcoord 19, 9

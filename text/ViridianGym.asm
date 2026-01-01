@@ -65,15 +65,15 @@ _ViridianGymGiovanniEarthBadgeInfoText::
 	done
 
 _EarthBadgeOriginalInfoText::	
-	text "The EARTHBADGE"
-	line "makes #MON of"
-	cont "any level obey!"
+	text "With all 8 BADGEs,"
+	line "#MON of any"
+	cont "level obey you!"
 
 	para "It is evidence of"
 	line "your mastery as a"
 	cont "#MON trainer!"
 
-	para "With it, you can"
+	para "With them, you can"
 	line "enter the #MON"
 	cont "LEAGUE!"
 
@@ -189,7 +189,7 @@ _ViridianGymCooltrainerM2EndBattleText::
 
 _ViridianGymCooltrainerM2AfterBattleText::
 	text "Where did our"
-	line "real LEADER GO?"
+	line "real LEADER go?"
 	done
 
 _ViridianGymHiker3BattleText::

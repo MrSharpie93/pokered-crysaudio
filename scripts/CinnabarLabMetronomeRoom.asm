@@ -9,10 +9,10 @@ CinnabarLabMetronomeRoom_TextPointers:
 	dw_const CinnabarLabMetronomeRoomPCText,         TEXT_CINNABARLABMETRONOMEROOM_PC_MONITOR
 	dw_const CinnabarLabMetronomeRoomAmberPipeText,  TEXT_CINNABARLABMETRONOMEROOM_AMBER_PIPE
 
-CinnabarLabMetronomeRoomScientist1Text: ; ~$~Will be moved.~$~
+CinnabarLabMetronomeRoomScientist1Text:
 	text_far _CinnabarLabMetronomeRoomScientist1Text
 	text_asm
-	ld a, 28 ; METRONOME
+	ld a, 27 ; SIGNAL_BEAM
 	ld [wWhichTrade], a
 	callfar MoveTutorScript
 	jp TextScriptEnd

@@ -38,9 +38,11 @@ DaycareGentlemanText:
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 	pop af
+	call ReloadTilesetTilePatterns
 	ld hl, .AllRightThenText
 	jp c, .done
 	callfar KnowsHMMove
+	call ReloadTilesetTilePatterns
 	ld hl, .CantAcceptMonWithHMText
 	jp c, .done
 	xor a
@@ -48,6 +50,7 @@ DaycareGentlemanText:
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
+	call ReloadTilesetTilePatterns
 	ld hl, .WillLookAfterMonText
 	call PrintText
 	ld a, 1

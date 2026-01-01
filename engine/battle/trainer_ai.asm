@@ -843,69 +843,89 @@ TrainerAI:
 INCLUDE "data/trainers/ai_pointers.asm"
 
 JugglerAI:
-	cp 25 percent + 1
+	cp 33 percent + 1
 	ret nc
 	jp AISwitchIfEnoughMons
 
-BlackbeltAI:
-	cp 13 percent - 1
+XAttackAI:
+;Blackbelt, Bruno:
+	cp 25 percent - 1
 	ret nc
 	jp AIUseXAttack
-
-GiovanniAI:
-	cp 25 percent + 1
-	ret nc
-	jp AIUseGuardSpec
-
-CooltrainerMAI:
-	cp 25 percent + 1
-	ret nc
-	jp AIUseXAttack
-
-CooltrainerFAI:
-	; The intended 25% chance to consider switching will not apply.
-	; ~$~FIXED: Uncommented the line below to fix this.~$~
-	cp 25 percent + 1
-	ret nc
-	ld a, 10
-	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
-	ld a, 5
-	call AICheckIfHPBelowFraction
-	ret nc
-	jp AISwitchIfEnoughMons
-
-BrockAI:
-; if his active monster has a status condition, use a full heal
-	ld a, [wEnemyMonStatus]
-	and a
-	ret z
-	jp AIUseFullHeal
-
-MistyAI:
+	
+XDefendAI:
+;Pokemaniac, Cue Ball
 	cp 25 percent + 1
 	ret nc
 	jp AIUseXDefend
-
-LtSurgeAI:
+	
+XSpeedAI:
+;Burglar, Surge
 	cp 25 percent + 1
 	ret nc
 	jp AIUseXSpeed
+	
+XSpecialAI:
+;Misty, George
+	cp 25 percent + 1
+	ret nc
+	jp AIUseXSpecial
 
-ErikaAI:
+DireHitAI:
+;Gambler, Tamer
+	cp 25 percent + 1
+	ret nc
+	jp AIUseDireHit
+	
+GuardSpecAI:
+;Scientist, Channeler
+	cp 25 percent + 1
+	ret nc
+	jp AIUseGuardSpec
+	
+KingsRockAI:
+;Koga
+	cp 25 percent + 1
+	ret nc
+	jp AIUseKingsRock
+
+MetalCoatAI:
+;Engineer
+	cp 25 percent + 1
+	ret nc
+	jp AIUseMetalCoat
+
+PotionOrFullHealAI:
+;Brock, Erika, Officer Jenny
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
 	cp 50 percent + 1
 	ret nc
 	ld a, 10
 	call AICheckIfHPBelowFraction
 	ret nc
-	jp AIUseSuperPotion
-
-KogaAI:
-	cp 25 percent + 1
+	jp AIUsePotion
+	
+FullHealAI:
+;Super Nerd, Hiker
+; if the active monster has a status condition, use a full heal
+	ld a, [wEnemyMonStatus]
+	and a
+	ret z
+	jp AIUseFullHeal
+	
+PotionAI:
+;Jr. Trainers, Green
+	cp 15 percent - 1
 	ret nc
-	jp AIUseXAttack
+	ld a, 5
+	call AICheckIfHPBelowFraction
+	ret nc
+	jp AIUsePotion
 
-BlaineAI:
+SuperPotionAI:
+;Jessie & James, Blaine
 	cp 25 percent + 1
 	ret nc
 	ld a, 10 ; ~$~FIXED: Yellow fix for Blaine's AI.~$~
@@ -913,7 +933,8 @@ BlaineAI:
 	ret nc
 	jp AIUseSuperPotion
 
-SabrinaAI:
+HyperPotionAI:
+;Sabrina
 	cp 25 percent + 1
 	ret nc
 	ld a, 10
@@ -921,52 +942,47 @@ SabrinaAI:
 	ret nc
 	jp AIUseHyperPotion
 
-Rival2AI:
-	cp 13 percent - 1
-	ret nc
-	ld a, 5
-	call AICheckIfHPBelowFraction
-	ret nc
-	jp AIUsePotion
-
-Rival3AI:
-	cp 13 percent - 1
+FullRestoreAI:
+;Beauty, Gentleman
+	cp 15 percent - 1
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseFullRestore
 
-LoreleiAI:
-	cp 50 percent + 1
+SwitchOrSuperPotionAI:
+;Cooltrainers, Imakuni
+	cp 8 percent
+	jp c, AISwitchIfEnoughMons
+	cp 25 percent + 1
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseSuperPotion
 
-BrunoAI:
-	cp 25 percent + 1
-	ret nc
-	jp AIUseXDefend
-
-AgathaAI:
+SwitchOrHyperPotionAI:
+;Chief, Lorelei, Agatha
 	cp 8 percent
 	jp c, AISwitchIfEnoughMons
-	cp 50 percent + 1
-	ret nc
-	ld a, 4
-	call AICheckIfHPBelowFraction
-	ret nc
-	jp AIUseSuperPotion
-
-LanceAI:
 	cp 50 percent + 1
 	ret nc
 	ld a, 5
 	call AICheckIfHPBelowFraction
 	ret nc
 	jp AIUseHyperPotion
+
+SwitchOrFullRestoreAI:
+;Giovanni, Lance, Blue, Red, Zinnia
+	cp 8 percent
+	jp c, AISwitchIfEnoughMons
+	cp 50 percent + 1
+	ret nc
+	ld a, 5
+	call AICheckIfHPBelowFraction
+	ret nc
+	jp AIUseFullRestore
 
 GenericAI:
 	and a ; clear carry
@@ -985,6 +1001,7 @@ AIPlayRestoringSFX:
 	jp PlaySoundWaitForCurrent
 
 AIUseFullRestore:
+	call AIPlayRestoringSFX
 	call AICureStatus
 	ld a, FULL_RESTORE
 	ld [wAIItem], a
@@ -1009,21 +1026,24 @@ AIUseFullRestore:
 	jr AIPrintItemUseAndUpdateHPBar
 
 AIUsePotion:
-; enemy trainer heals his monster with a potion
+; enemy trainer heals their monster with a potion
+	call AIPlayRestoringSFX
 	ld a, POTION
 	ld b, 20
 	jr AIRecoverHP
 
 AIUseSuperPotion:
-; enemy trainer heals his monster with a super potion
+; enemy trainer heals their monster with a super potion
+	call AIPlayRestoringSFX
 	ld a, SUPER_POTION
-	ld b, 50
+	ld b, 60
 	jr AIRecoverHP
 
 AIUseHyperPotion:
-; enemy trainer heals his monster with a hyper potion
+; enemy trainer heals their monster with a hyper potion
+	call AIPlayRestoringSFX
 	ld a, HYPER_POTION
-	ld b, 200
+	ld b, 120
 	; fallthrough
 
 AIRecoverHP:
@@ -1186,12 +1206,19 @@ AICureStatus:	;shinpokerednote: CHANGED: modified to be more robust and also und
 	pop af
 	ret
 
-;AIUseXAccuracy: ; unused
-;	call AIPlayRestoringSFX
-;	ld hl, wEnemyBattleStatus2
-;	set USING_X_ACCURACY, [hl]
-;	ld a, X_ACCURACY
-;	jp AIPrintItemUse
+AIUseKingsRock: ; ~$~ADDED~$~
+	call AIPlayRestoringSFX
+	ld hl, wEnemyBattleStatus2
+	set USING_KINGS_ROCK, [hl]
+	ld a, KINGS_ROCK
+	jp AIPrintItemUse
+	
+AIUseMetalCoat: ; ~$~ADDED~$~
+	call AIPlayRestoringSFX
+	ld hl, wEnemyBattleStatus3
+	set HAS_REFLECT_UP, [hl]
+	ld a, METAL_COAT
+	jp AIPrintItemUse
 
 AIUseGuardSpec:
 	call AIPlayRestoringSFX
@@ -1200,7 +1227,7 @@ AIUseGuardSpec:
 	ld a, GUARD_SPEC
 	jp AIPrintItemUse
 
-AIUseDireHit: ; unused
+AIUseDireHit: ;  now used
 	call AIPlayRestoringSFX
 	ld hl, wEnemyBattleStatus2
 	set GETTING_PUMPED, [hl]
@@ -1258,22 +1285,22 @@ AICheckIfHPBelowFraction:
 	ret
 
 AIUseXAttack:
-	ld b, $A
+	ld b, ATTACK_UP2_EFFECT
 	ld a, X_ATTACK
 	jr AIIncreaseStat
 
 AIUseXDefend:
-	ld b, $B
+	ld b, DEFENSE_UP2_EFFECT
 	ld a, X_DEFEND
 	jr AIIncreaseStat
 
 AIUseXSpeed:
-	ld b, $C
+	ld b, SPEED_UP2_EFFECT
 	ld a, X_SPEED
 	jr AIIncreaseStat
 
 AIUseXSpecial:
-	ld b, $D
+	ld b, SPECIAL_UP2_EFFECT
 	ld a, X_SPECIAL
 	jr AIIncreaseStat
 

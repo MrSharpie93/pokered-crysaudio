@@ -28,9 +28,9 @@ MoveTutorMoves: ; A list of all moves taught by move tutors, their location as a
 ; bit 4
 	db WATER_PULSE  ; placeholder
 	db SWIFT        ; Route 12 Gate 2F
-	db SIGNAL_BEAM  ; placeholder
+	db SIGNAL_BEAM  ; Cinnabar Lab (Metronome Guy)
 	db METRONOME    ; placeholder
 	db FLARE_BLITZ  ; placeholder
 	db RAZOR_WIND   ; Celadon City (Softboiled Guy)
 	db SCARY_FACE   ; placeholder
-	db MAGICAL_LEAF ; placeholder
+	db MAGICAL_LEAF ; Celadon Diner

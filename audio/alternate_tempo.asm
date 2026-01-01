@@ -44,8 +44,8 @@ Music_Cities1AlternateTempo::
 	ld c, 100
 	call DelayFrames ; wait for the fade-out to finish
 	ld c, 0 ; BANK(Music_Cities1)
-	ld a, MUSIC_CITIES1
+	ld a, MUSIC_NEW_BARK_TOWN
 	call PlayMusic
 	ld hl, wChannel1MusicAddress
-	ld de, Music_Cities1_Ch1_AlternateTempo
+	ld de, Music_NewBarkTown_Ch1_AlternateTempo
 	jp Audio1_OverwriteChannelPointer

@@ -81,13 +81,10 @@ _PewterGymBrockBoulderBadgeInfoText::
 	line "#MON LEAGUE"
 	cont "BADGE!"
 
-;	para "Its bearer's" ; ~$~REMOVED: Cut this line out for now. Maybe rewrite it later.~$~
-;	line "#MON become"
-;	cont "more powerful!"
-
-	para "The technique"
-	line "FLASH can now be"
-	cont "used any time!"
+	para "#MON of higher" ; ~$~CHANGED: HMs and badges are completely reworked, so talk about obedience instead.~$~
+	line "levels will now"
+	cont "obey you without"
+	cont "question!"
 	prompt
 
 _PewterGymCooltrainerMBattleText::

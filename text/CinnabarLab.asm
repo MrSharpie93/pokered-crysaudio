@@ -20,7 +20,7 @@ _CinnabarLabMeetingRoomSignText::
 
 _CinnabarLabRAndDSignText::
 	text "#MON LAB"
-	line "R-and-D Room"
+	line "R&D Room"
 	done
 
 _CinnabarLabTestingRoomSignText::

@@ -39,6 +39,7 @@ CeladonMartRoofDrinkList:
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
+	db MOOMOO_MILK
 	db 0 ; end
 
 CeladonMartRoofScript_GiveDrinkToGirl:
@@ -85,7 +86,22 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	jr z, .gaveFreshWater
 	cp SODA_POP
 	jr z, .gaveSodaPop
-; gave Lemonade
+	cp LEMONADE
+	jr z, .gaveLemonade
+; gave MooMoo Milk
+	CheckEvent EVENT_GOT_TM17
+	jp nz, .alreadyGaveDrink
+	ld hl, CeladonMartRoofLittleGirlYayMooMooMilkText
+	call PrintText
+	call RemoveItemByIDBank12
+	lb bc, TM_PROTECT, 1
+	call GiveItem
+	jr nc, .bagFull
+	ld hl, CeladonMartRoofLittleGirlReceivedTM17Text
+	call PrintText
+	SetEvent EVENT_GOT_TM17
+	ret
+.gaveLemonade
 	CheckEvent EVENT_GOT_TM49
 	jr nz, .alreadyGaveDrink
 	ld hl, CeladonMartRoofLittleGirlYayLemonadeText
@@ -144,7 +160,7 @@ CeladonMartRoofLittleGirlYayFreshWaterText:
 	text_end
 
 CeladonMartRoofLittleGirlReceivedTM13Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM13Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM13ExplanationText
 	text_waitbutton
@@ -156,7 +172,7 @@ CeladonMartRoofLittleGirlYaySodaPopText:
 	text_end
 
 CeladonMartRoofLittleGirlReceivedTM48Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM48Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM48ExplanationText
 	text_waitbutton
@@ -166,11 +182,23 @@ CeladonMartRoofLittleGirlYayLemonadeText:
 	text_far _CeladonMartRoofLittleGirlYayLemonadeText
 	text_waitbutton
 	text_end
+	
+CeladonMartRoofLittleGirlYayMooMooMilkText:
+	text_far _CeladonMartRoofLittleGirlYayMooMooMilkText
+	text_waitbutton
+	text_end
 
 CeladonMartRoofLittleGirlReceivedTM49Text:
-	text_far _CeladonMartRoofLittleGirlReceivedTM49Text
+	text_far _CeladonMartRoofLittleGirlReceivedTMText
 	sound_get_item_1
 	text_far _CeladonMartRoofLittleGirlTM49ExplanationText
+	text_waitbutton
+	text_end
+	
+CeladonMartRoofLittleGirlReceivedTM17Text:
+	text_far _CeladonMartRoofLittleGirlReceivedTMText
+	sound_get_item_1
+	text_far _CeladonMartRoofLittleGirlTM17ExplanationText
 	text_waitbutton
 	text_end
 

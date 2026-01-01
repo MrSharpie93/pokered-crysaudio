@@ -56,17 +56,17 @@ _CeladonGymErikaPostBattleAdviceText::
 	done
 
 _CeladonGymRainbowBadgeInfoText::
-	text "The RAINBOWBADGE"
-	line "will make #MON"
-	cont "up to L50 obey."
+	text "Such a delightful"
+	line "match. I feel so"
+	cont "inspired."
 
-	para "It also allows"
-	line "#MON to use"
-	cont "STRENGTH in and"
-	cont "out of battle."
+;	para "It also allows"
+;	line "#MON to use"
+;	cont "STRENGTH in and"
+;	cont "out of battle."
 
-	para "Please also take"
-	line "this with you."
+	para "Please, I wish you"
+	line "to have this TM."
 	done
 
 _CeladonGymReceivedTM21Text::

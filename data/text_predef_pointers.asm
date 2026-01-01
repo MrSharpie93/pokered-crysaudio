@@ -4,8 +4,8 @@ MACRO add_tx_pre
 ENDM
 
 TextPredefs::
-	add_tx_pre CardKeySuccessText                   ; 01
-	add_tx_pre CardKeyFailText                      ; 02
+;	add_tx_pre CardKeySuccessText                   ; 01 ; ~$~REMOVED: Silph Co and the Card Key have been removed.~$~
+;	add_tx_pre CardKeyFailText                      ; 02
 	add_tx_pre RedBedroomPCText                     ; 03
 	add_tx_pre RedBedroomSNESText                   ; 04
 	add_tx_pre PushStartText                        ; 05

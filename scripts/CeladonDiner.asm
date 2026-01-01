@@ -12,7 +12,11 @@ CeladonDiner_TextPointers:
 
 CeladonDinerCookText:
 	text_far _CeladonDinerCookText
-	text_end
+	text_asm
+	ld a, 32 ; MAGICAL_LEAF
+	ld [wWhichTrade], a
+	callfar MoveTutorScript
+	jp TextScriptEnd
 
 CeladonDinerMiddleAgedWomanText:
 	text_far _CeladonDinerMiddleAgedWomanText

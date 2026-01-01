@@ -26,6 +26,7 @@ _ViridianMartYoungsterText::
 	done
 
 _ViridianMartCooltrainerMText::
-	text "No! POTIONs are"
-	line "all sold out."
+	text "The shop finally"
+	line "has some POTIONs"
+	cont "in stock."
 	done

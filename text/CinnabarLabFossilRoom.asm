@@ -1,78 +1,70 @@
-_CinnabarLabFossilRoomScientist1Text::
-	text "Hiya!"
+_CinnabarLabFossilRoomCaraLissText::
+	text "Name's CARA LISS."
 
-	para "I am important"
-	line "doctor!"
+	para "I am researching"
+	line "#MON DNA, huh."
 
-	para "I study here rare"
-	line "#MON fossils!"
-
-	para "You! Have you a"
-	line "fossil for me?"
+	para "If you have any"
+	line "DNA samples that"
+	cont "meet the high"
+	cont "standards of CARA"
+	cont "LISS, bring them"
+	cont "here."
 	prompt
 
-_CinnabarLabFossilRoomScientist1NoFossilsText::
-	text "No! Is too bad!"
+_CinnabarLabFossilRoomCaraLissNoBirdsText::
+	text "I guess not."
 	done
 
-_CinnabarLabFossilRoomScientist1GoForAWalkText::
-	text "I take a little"
-	line "time!"
-
-	para "You go for walk a"
-	line "little while!"
+_CinnabarLabFossilRoomCaraLissGoForAWalkText::
+	text "This could take"
+	line "a while. Come"
+	cont "back in a bit."
 	done
 
-_CinnabarLabFossilRoomScientist1FossilIsBackToLifeText::
-	text "Where were you?"
+_CinnabarLabFossilRoomCaraLissThuFiZerLivesText::
+	text "The experiment"
+	line "was a success."
 
-	para "Your fossil is"
-	line "back to life!"
-
-	para "It was @"
-	text_ram wStringBuffer
-	text_start
-	line "like I think!"
+	para "I call it…"
+	line "THU-FI-ZER."
+	
+	para "Please take and"
+	line "care for this"
+	cont "#MON, huh."
 	prompt
 
-_CinnabarLabFossilRoomScientist1SeesFossilText::
-	text "Oh! That is"
-	line "@"
-	text_ram wNameBuffer
-	text "!"
-
-	para "It is fossil of"
-	line "@"
-	text_ram wStringBuffer
-	text ", a"
-	cont "#MON that is"
-	cont "already extinct!"
-
-	para "My Resurrection"
-	line "Machine will make"
-	cont "that #MON live"
-	cont "again!"
-	done
-
-_CinnabarLabFossilRoomScientist1TakesFossilText::
-	text "So! You hurry and"
-	line "give me that!"
-
-	para "<PLAYER> handed"
-	line "over @"
-	text_ram wNameBuffer
-	text "!"
+_CinnabarLabFossilRoomCaraLissTakesDNAText::
+	text "lol needs rewrite"
 	prompt
 
-_CinnabarLabFossilRoomScientist1GoForAWalkText2::
-	text "I take a little"
-	line "time!"
+_CinnabarLabFossilRoomCaraLissGoForAWalkText2::
+	text "OK. It's time."
+	line "Let's unravel the"
+	cont "mysteries of"
+	cont "#MON DNA!"
 
-	para "You go for walk a"
-	line "little while!"
+	para "This could take"
+	line "a while. Come"
+	cont "back in a bit."
 	done
 
-_CinnabarLabFossilRoomScientist1ComeAgainText::
-	text "Aiyah! You come"
-	line "again!"
+_CinnabarLabFossilRoomCaraLissComeAgainText::
+	text "Don't act so"
+	line "haughty."
+	done
+	
+_CinnabarLabFossilRoomCaraLissNotAllBirdsText::
+	text "If you bring me"
+	line "DNA from each, I"
+	cont "could do some-"
+	cont "thing interesting"
+	cont "with them."
+	done
+	
+_CinnabarLabFossilRoomCaraLissGotThuFiZerText::
+	text "The experiment"
+	line "was a success."
+
+	para "You're welcome."
 	done

@@ -12,3 +12,11 @@ _SeafoamIslandsB4FDangerSignText::
 	text "DANGER"
 	line "Fast current!"
 	done
+	
+_IceRockText::
+	text "This rock is"
+	line "encrusted in ice."
+	
+	para "It's bone-chilling"
+	line "to touch."
+	done

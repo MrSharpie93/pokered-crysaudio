@@ -34,7 +34,7 @@ Music:
 	dba Music_DefeatedGymLeader
 	
 	dba Music_RBYTitleScreen
-	dba Music_RBYCredits
+	dba Music_NationalPark;Music_RBYCredits
 	dba Music_RBYHallOfFame
 	dba Music_OaksLab
 	dba Music_JigglypuffSong

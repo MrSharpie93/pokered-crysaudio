@@ -8,53 +8,53 @@ TrainerAIPointers:
 	dbw 3, GenericAI ; Bug Catcher
 	dbw 3, GenericAI ; Lass
 	dbw 3, GenericAI ; Sailor
-	dbw 3, GenericAI ; Jr. Trainer♂
-	dbw 3, GenericAI ; Jr. Trainer♀
-	dbw 3, GenericAI ; Pokemaniac
-	dbw 3, GenericAI ; Super Nerd
-	dbw 3, GenericAI ; Hiker
+	dbw 1, PotionAI  ; Jr. Trainer♂
+	dbw 1, PotionAI  ; Jr. Trainer♀
+	dbw 1, XDefendAI ; Pokemaniac
+	dbw 2, FullHealAI ; Super Nerd
+	dbw 2, FullHealAI ; Hiker
 	dbw 3, GenericAI ; Biker
-	dbw 3, GenericAI ; Burglar
-	dbw 3, GenericAI ; Engineer
-	dbw 3, GenericAI ; ~$~Jessie & James~$~
+	dbw 1, XSpeedAI  ; Burglar
+	dbw 1, MetalCoatAI ; Engineer
+	dbw 1, SuperPotionAI ; ~$~Jessie & James~$~
 	dbw 3, GenericAI ; Fisher
 	dbw 3, GenericAI ; Swimmer♂
-	dbw 3, GenericAI ; Cue Ball
-	dbw 3, GenericAI ; Gambler
-	dbw 3, GenericAI ; Beauty
+	dbw 1, XDefendAI ; Cue Ball
+	dbw 1, DireHitAI ; Gambler
+	dbw 1, FullRestoreAI ; Beauty
 	dbw 3, GenericAI ; Psychic
 	dbw 3, GenericAI ; Rocker
 	dbw 3, JugglerAI ; Juggler
-	dbw 3, GenericAI ; Tamer
+	dbw 1, DireHitAI ; Tamer
 	dbw 3, GenericAI ; Birdkeeper
-	dbw 2, BlackbeltAI ; Blackbelt
-	dbw 3, GenericAI ; Green
+	dbw 1, XAttackAI ; Blackbelt
+	dbw 3, PotionAI  ; Green
 	dbw 3, GenericAI ; Prof. Oak
-	dbw 1, GenericAI ; Chief
-	dbw 3, GenericAI ; Scientist
-	dbw 1, GiovanniAI ; Giovanni
+	dbw 1, SwitchOrHyperPotionAI ; Chief
+	dbw 1, GuardSpecAI ; Scientist
+	dbw 2, SwitchOrFullRestoreAI ; Giovanni
 	dbw 3, GenericAI ; Rocket
-	dbw 2, CooltrainerMAI ; Cooltrainer♂
-	dbw 1, CooltrainerFAI ; Cooltrainer♀
-	dbw 2, BrunoAI ; Bruno
-	dbw 5, BrockAI ; Brock
-	dbw 1, MistyAI ; Misty
-	dbw 1, LtSurgeAI ; Surge
-	dbw 1, ErikaAI ; Erika
-	dbw 2, KogaAI ; Koga
-	dbw 2, BlaineAI ; Blaine
-	dbw 1, SabrinaAI ; Sabrina
-	dbw 3, GenericAI ; Gentleman
-	dbw 1, Rival2AI ; Blue
-	dbw 1, Rival3AI ; Red
-	dbw 2, LoreleiAI ; Lorelei
-	dbw 3, GenericAI ; Channeler
-	dbw 2, AgathaAI ; Agatha
-	dbw 1, LanceAI ; Lance
+	dbw 1, SwitchOrSuperPotionAI ; Cooltrainer♂
+	dbw 1, SwitchOrSuperPotionAI ; Cooltrainer♀
+	dbw 3, XAttackAI ; Bruno
+	dbw 3, PotionOrFullHealAI ; Brock
+	dbw 1, XSpecialAI ; Misty
+	dbw 2, XSpeedAI ; Surge
+	dbw 3, PotionOrFullHealAI ; Erika
+	dbw 1, KingsRockAI ; Koga
+	dbw 2, SuperPotionAI ; Blaine
+	dbw 1, HyperPotionAI ; Sabrina
+	dbw 1, FullRestoreAI ; Gentleman
+	dbw 2, SwitchOrFullRestoreAI ; Blue
+	dbw 2, SwitchOrFullRestoreAI ; Red
+	dbw 2, SwitchOrHyperPotionAI ; Lorelei
+	dbw 1, GuardSpecAI ; Channeler
+	dbw 2, SwitchOrHyperPotionAI ; Agatha
+	dbw 1, SwitchOrFullRestoreAI ; Lance
 ; ~$~ADDED: New trainers.~$~
 	dbw 3, GenericAI ; Swimmer♀
-	dbw 3, GenericAI ; Officer Jenny
-	dbw 3, GenericAI ; George
-	dbw 3, GenericAI ; Imakuni?
-	dbw 3, GenericAI ; Zinnia
+	dbw 1, PotionOrFullHealAI ; Officer Jenny
+	dbw 3, XSpecialAI ; George
+	dbw 2, SwitchOrSuperPotionAI ; Imakuni?
+	dbw 2, SwitchOrFullRestoreAI ; Zinnia
 	assert_table_length NUM_TRAINERS

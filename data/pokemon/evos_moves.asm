@@ -3760,7 +3760,7 @@ MagikarpEvosMoves:
 ; Learnset
 	db 1, SPLASH
 	db 15, TACKLE
-	db 30, DRAGONBREATH
+	db 30, HYDRO_PUMP
 	db 0
 
 GyaradosEvosMoves:
@@ -3817,7 +3817,7 @@ EeveeEvosMoves:
 	db EVOLVE_ITEM, WATER_STONE, 1, VAPOREON
 	db EVOLVE_ITEM, SUN_STONE, 1, ESPEON
 	db EVOLVE_ITEM, MOON_STONE, 1, UMBREON
-	db EVOLVE_MAP, VIRIDIAN_FOREST, LEAFEON ; placeholder
+	db EVOLVE_MAP, HIDDEN_FOREST, LEAFEON ; Where the Moss Rock is placed.
 	db EVOLVE_MAP, SEAFOAM_ISLANDS_1F, GLACEON ; Where the Ice Rock is placed.
 	db EVOLVE_MOVE, CHARM, SYLVEON
 	db 0
@@ -4157,15 +4157,15 @@ AerodactylEvosMoves:
 	db 1, WING_ATTACK
 	db 1, SUPERSONIC
 	db 1, SCARY_FACE
-	db 17, AGILITY
-	db 25, ANCIENTPOWER
+	db 15, AGILITY
+	db 20, ANCIENTPOWER
+	db 25, TAKE_DOWN
 	db 33, CRUNCH
-	db 41, TAKE_DOWN
+	db 41, IRON_HEAD
 	db 49, SKY_ATTACK
-	db 57, IRON_HEAD
-	db 65, HYPER_BEAM
-	db 73, ROCK_SLIDE
-	db 81, GIGA_IMPACT
+	db 57, HYPER_BEAM
+	db 65, ROCK_SLIDE
+	db 73, GIGA_IMPACT
 	db 0
 	
 MunchlaxEvosMoves:
@@ -4179,10 +4179,10 @@ MunchlaxEvosMoves:
 	db 12, LICK
 	db 17, SCREECH
 	db 20, HEADBUTT
-	db 25, REST
+	db 25, METRONOME
 	db 28, AMNESIA
 	db 33, BODY_SLAM
-	db 36, METRONOME
+	db 36, CHARM
 	db 41, CRUNCH
 	db 44, DOUBLE_EDGE
 	db 49, GUNK_SHOT
@@ -4196,7 +4196,7 @@ SnorlaxEvosMoves:
 	db 1, HARDEN ; Defense Curl
 	db 9, MUD_SLAP
 	db 12, LICK
-	db 17, SCREECH
+	db 17, BULLDOZE
 	db 20, HEADBUTT
 	db 25, REST
 	db 28, AMNESIA

@@ -100,25 +100,25 @@ BadgeTextPointers:
 	dw EarthBadgeText
 
 EarthBadgeText:
-	db "EARTHBADGE@"
+	db "8 BADGEs@"
 
 VolcanoBadgeText:
-	db "VOLCANOBADGE@"
+	db "7 BADGEs@"
 
 MarshBadgeText:
-	db "MARSHBADGE@"
+	db "6 BADGEs@"
 
 SoulBadgeText:
-	db "SOULBADGE@"
+	db "5 BADGEs@"
 
 RainbowBadgeText:
-	db "RAINBOWBADGE@"
+	db "4 BADGEs@"
 
 ThunderBadgeText:
-	db "THUNDERBADGE@"
+	db "3 BADGEs@"
 
 CascadeBadgeText:
-	db "CASCADEBADGE@"
+	db "2 BADGEs@"
 
 Route23MovePlayerDownScript:
 	ld a, $1
@@ -198,12 +198,13 @@ Route23CheckForBadgeScript:
 	ld a, [wWhichBadge]
 	inc a
 	ld c, a
-	ld b, FLAG_TEST
-	ld hl, wObtainedBadges
-	predef FlagActionPredef
+	ld a, [wBeatGymFlags];FLAG_TEST
+	ld b, a
+;	ld hl, wObtainedBadges
+;	predef FlagActionPredef
 	ld a, c
-	and a
-	jr nz, .have_badge
+	cp b;and a
+	jr c, .have_badge
 	ld hl, Route23YouDontHaveTheBadgeYetText
 	call PrintText
 	call Route23MovePlayerDownScript

@@ -89,8 +89,11 @@ ViridianGymReceiveBadgeFromGymGuide:
 .gym_victory
 	ld hl, wObtainedBadges
 	set BIT_EARTHBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_EARTHBADGE, [hl]
+;	ld hl, wBeatGymFlags
+;	set BIT_EARTHBADGE, [hl]
+	ld a, [wBeatGymFlags]
+	inc a
+	ld [wBeatGymFlags], a
 
 	ld a, HS_ROUTE_22_RIVAL_2
 	ld [wMissableObjectIndex], a

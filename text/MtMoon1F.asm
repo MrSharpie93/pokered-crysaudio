@@ -10,9 +10,9 @@ _MtMoon1FHikerEndBattleText::
 	prompt
 
 _MtMoon1FHikerAfterBattleText::
-	text "Kids like you"
-	line "shouldn't be"
-	cont "here!"
+	text "I disapprove of" ; Earlier localization text I thought was funnier.~$~
+	line "kids like you"
+	cont "being here."
 	done
 
 _MtMoon1FYoungster1BattleText::
@@ -79,7 +79,7 @@ _MtMoon1FCooltrainerF2AfterBattleText::
 	done
 
 _MtMoon1FYoungster2BattleText::
-	text "Suspicious men"
+	text "Suspicious types"
 	line "are in the cave."
 	cont "What about you?"
 	done
@@ -90,9 +90,12 @@ _MtMoon1FYoungster2EndBattleText::
 	prompt
 
 _MtMoon1FYoungster2AfterBattleText::
-	text "I saw them! I'm"
-	line "sure they're from"
-	cont "TEAM ROCKET!"
+	text "TEAM ROCKET has"
+	line "raided MT.MOON!"
+	
+	para "My sisters have"
+	line "their hands full"
+	cont "dealing with them."
 	done
 
 _MtMoon1FYoungster3BattleText::
@@ -115,5 +118,5 @@ _MtMoon1FYoungster3AfterBattleText::
 
 _MtMoon1FBewareZubatSign::
 	text "Beware! ZUBAT is"
-	line "a blood sucker!"
+	line "a blood-sucker!"
 	done

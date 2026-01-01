@@ -133,32 +133,32 @@ CeruleanCityRivalBattleScript:
 	ld a, TEXT_CERULEANCITY_RIVAL
 	ldh [hTextID], a
 	call DisplayTextID
-	ld hl, wStatusFlags3
-	set BIT_TALKED_TO_TRAINER, [hl]
-	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, CeruleanCityRivalDefeatedText
-	ld de, CeruleanCityRivalVictoryText
-	call SaveEndBattleTextPointers
-	ld a, OPP_RIVAL1
-	ld [wCurOpponent], a
+;	ld hl, wStatusFlags3
+;	set BIT_TALKED_TO_TRAINER, [hl]
+;	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+;	ld hl, CeruleanCityRivalDefeatedText
+;	ld de, CeruleanCityRivalVictoryText
+;	call SaveEndBattleTextPointers
+;	ld a, OPP_RIVAL1
+;	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $7
-	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $8
-	jr .done
-.Charmander
-	ld a, $9
-.done
-	ld [wTrainerNo], a
-	ld a, 1 ; ~$~CHANGED: Trainers are not Pokemon.~$~
-	ld [wIsTrainerBattle], a
+;	ld a, [wRivalStarter]
+;	cp STARTER2
+;	jr nz, .NotSquirtle
+;	ld a, $7
+;	jr .done
+;.NotSquirtle
+;	cp STARTER3
+;	jr nz, .Charmander
+;	ld a, $8
+;	jr .done
+;.Charmander
+;	ld a, $9
+;.done
+;	ld [wTrainerNo], a
+;	ld a, 1 ; ~$~CHANGED: Trainers are not Pokemon.~$~
+;	ld [wIsTrainerBattle], a
 
 	xor a
 	ldh [hJoyHeld], a
@@ -168,11 +168,11 @@ CeruleanCityRivalBattleScript:
 	ret
 
 CeruleanCityRivalDefeatedScript:
-	ld a, [wIsInBattle]
-	cp $ff
-	jp z, CeruleanCityClearScripts
-	xor a ; ~$~CHANGED: Trainers are not Pokemon.~$~
-	ld [wIsTrainerBattle], a
+;	ld a, [wIsInBattle]
+;	cp $ff
+;	jp z, CeruleanCityClearScripts
+;	xor a ; ~$~CHANGED: Trainers are not Pokemon.~$~
+;	ld [wIsTrainerBattle], a
 	call CeruleanCityFaceRivalScript
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
@@ -180,10 +180,10 @@ CeruleanCityRivalDefeatedScript:
 	ld a, TEXT_CERULEANCITY_RIVAL
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, SFX_STOP_ALL_MUSIC
+;	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
-	call PlaySound
-	farcall Music_RivalAlternateStart
+;	call PlaySound
+;	farcall Music_RivalAlternateStart
 	ld a, CERULEANCITY_RIVAL
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF

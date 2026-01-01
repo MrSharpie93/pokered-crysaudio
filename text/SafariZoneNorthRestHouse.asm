@@ -27,6 +27,8 @@ _SafariZoneNorthRestHouseGentlemanText::
 	done
 	
 _SafariZoneNorthRestHouseDetailsText::
+	text_start
+
 	para "PARAS, RHYHORN"
 	line "EXEGGCUTE, TAUROS"
 	cont "KANGASKHAN, HORSEA"

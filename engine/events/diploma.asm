@@ -69,6 +69,7 @@ DisplayDiploma::
 	res BIT_NO_TEXT_DELAY, [hl]
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
+	call ReloadTilesetTilePatterns
 	call Delay3
 	jp GBPalNormal
 

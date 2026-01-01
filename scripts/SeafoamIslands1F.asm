@@ -46,3 +46,8 @@ SeafoamIslands1F_TextPointers:
 	def_text_pointers
 	dw_const BoulderText, TEXT_SEAFOAMISLANDS1F_BOULDER1
 	dw_const BoulderText, TEXT_SEAFOAMISLANDS1F_BOULDER2
+	dw_const IceRockText, TEXT_SEAFOAMISLANDS1F_ICE_ROCK
+	
+IceRockText:
+	text_far _IceRockText
+	text_end

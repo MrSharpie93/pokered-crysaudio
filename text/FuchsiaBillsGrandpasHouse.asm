@@ -16,6 +16,10 @@ _FuchsiaBillsGrandpasHouseBillsGrandpaText::
 	para "He always liked"
 	line "collecting things"
 	cont "even as a child!"
+	
+	para "He's especially"
+	line "fond of rare cards"
+	cont "these days."
 	done
 
 _FuchsiaBillsGrandpasHouseYoungsterText::

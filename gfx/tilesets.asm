@@ -16,17 +16,12 @@ ShipPort_GFX::      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block::    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX::      INCBIN "gfx/tilesets/interior.2bpp"
 Interior_Block::    INCBIN "gfx/blocksets/interior.bst"
-Plateau_GFX::       INCBIN "gfx/tilesets/plateau.2bpp"
-Plateau_Block::     INCBIN "gfx/blocksets/plateau.bst"
 
 
 SECTION "Tilesets 2", ROMX
 
 Gym_GFX::           INCBIN "gfx/tilesets/gym.2bpp"
 Gym_Block::         INCBIN "gfx/blocksets/gym.bst"
-
-Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp"
-Pokecenter_Block::  INCBIN "gfx/blocksets/pokecenter.bst"
 
 ForestGate_GFX::
 Museum_GFX::
@@ -47,8 +42,6 @@ Cemetery_GFX::      INCBIN "gfx/tilesets/cemetery.2bpp"
 Cemetery_Block::    INCBIN "gfx/blocksets/cemetery.bst"
 Cavern_GFX::        INCBIN "gfx/tilesets/cavern.2bpp"
 Cavern_Block::      INCBIN "gfx/blocksets/cavern.bst"
-Lobby_GFX::         INCBIN "gfx/tilesets/lobby.2bpp"
-Lobby_Block::       INCBIN "gfx/blocksets/lobby.bst"
 Ship_GFX::          INCBIN "gfx/tilesets/ship.2bpp"
 Ship_Block::        INCBIN "gfx/blocksets/ship.bst"
 Lab_GFX::           INCBIN "gfx/tilesets/lab.2bpp"
@@ -68,3 +61,12 @@ Dojo_GFX::          INCBIN "gfx/tilesets/dojo.2bpp"
 Dojo_Block::        INCBIN "gfx/blocksets/dojo.bst"
 Mart_GFX::          INCBIN "gfx/tilesets/mart.2bpp"
 Mart_Block::        INCBIN "gfx/blocksets/mart.bst"
+
+SECTION "Tilesets 5", ROMX ; ~$~Overflow tilesets.~$~
+
+Pokecenter_GFX::    INCBIN "gfx/tilesets/pokecenter.2bpp"
+Pokecenter_Block::  INCBIN "gfx/blocksets/pokecenter.bst"
+Lobby_GFX::         INCBIN "gfx/tilesets/lobby.2bpp"
+Lobby_Block::       INCBIN "gfx/blocksets/lobby.bst"
+Plateau_GFX::       INCBIN "gfx/tilesets/plateau.2bpp"
+Plateau_Block::     INCBIN "gfx/blocksets/plateau.bst"

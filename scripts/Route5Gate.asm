@@ -37,6 +37,7 @@ Route5GateDefaultScript:
 	call Route5GateMovePlayerUpScript
 	ld a, SCRIPT_ROUTE5GATE_PLAYER_MOVING
 	ld [wRoute5GateCurScript], a
+	SetEvent EVENT_GUARD_ASKED_FOR_TEA
 	ret
 .have_drink
 	ld a, TEXT_ROUTE5GATE_GUARD_GIVE_DRINK

@@ -1,17 +1,11 @@
 _Route15Gate2FOaksAideExpAllText::
-	text "EXP.ALL gives"
-	line "EXP points to all"
-	cont "the #MON with"
-	cont "you, even if they"
-	cont "don't fight."
-
-	para "It does, however,"
-	line "reduce the amount"
-	cont "of EXP for each"
-	cont "#MON."
+	text "LUCKY EGG boosts"
+	line "the EXP. points"
+	cont "that #MON earn"
+	cont "from battle."
 
 	para "If you don't need"
-	line "it, you should "
+	line "it, you should"
 	cont "store it via PC."
 	done
 

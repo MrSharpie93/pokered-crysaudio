@@ -3,7 +3,14 @@ _CeladonDinerCookText::
 
 	para "We're taking a"
 	line "break now."
-	done
+	
+	para "What? You want to"
+	line "order something"
+	cont "anyway?"
+	
+	para "Fine, then how"
+	line "about this?"
+	prompt
 
 _CeladonDinerMiddleAgedWomanText::
 	text "My #MON are"
@@ -32,13 +39,10 @@ _CeladonDinerGymGuideImFlatOutBustedText::
 	para "I'm flat out"
 	line "busted!"
 
-	para "No more slots for"
-	line "me! I'm going"
-	cont "straight!"
-
-	para "Here! I won't be"
-	line "needing this any-"
-	cont "more!"
+	para "Here, kid! We'll"
+	line "see who's laughing"
+	cont "when you're the"
+	cont "gambling addict!"
 	prompt
 
 _CeladonDinerGymGuideReceivedCoinCaseText::
@@ -49,8 +53,8 @@ _CeladonDinerGymGuideReceivedCoinCaseText::
 	text_end
 
 _CeladonDinerGymGuideCoinCaseNoRoomText::
-	text "Make room for"
-	line "this!"
+	text "Relieve my burden,"
+	line "I beg you!"
 	done
 
 _CeladonDinerGymGuideWinItBackText::

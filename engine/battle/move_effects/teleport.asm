@@ -1,4 +1,7 @@
 SwitchAndTeleportEffect_: ; ~$~CHANGED: Heavily modified version of PureRGB's Teleport effect, allowing for forcing a switch, but without the healing effect.~$~
+	ld a, [wLinkState] ; This effect does not play well with link battles at all, just disable it for now.~$~
+	cp LINK_STATE_BATTLING
+	jp z, .failed
 	ldh a, [hWhoseTurn]
 	and a
 	jr nz, .handleEnemy

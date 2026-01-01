@@ -28,6 +28,12 @@ _CeruleanTrashedHouseGirlText::
 	line "be trying to DIG"
 	cont "their way into no"
 	cont "good!"
+	
+	para "…"
+	
+	para "… …"
+	
+	para "…Geddit?"
 	done
 
 _CeruleanTrashedHouseWallHoleText::

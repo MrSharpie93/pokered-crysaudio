@@ -17,96 +17,96 @@ UseItem_::
 
 ItemUsePtrTable:
 ; entries correspond to item ids
-	dw ItemUseBall       ; MASTER_BALL
-	dw ItemUseBall       ; ULTRA_BALL
-	dw ItemUseBall       ; GREAT_BALL
-	dw ItemUseBall       ; POKE_BALL
-	dw ItemUseTownMap    ; TOWN_MAP
-	dw ItemUseBicycle    ; BICYCLE
-	dw ItemUseSurfboard  ; SURFBOARD
-	dw ItemUseBall       ; SAFARI_BALL
-	dw ItemUsePokedex    ; POKEDEX
-	dw ItemUseEvoStone   ; MOON_STONE
-	dw ItemUseMedicine   ; ANTIDOTE
-	dw ItemUseMedicine   ; BURN_HEAL
-	dw ItemUseMedicine   ; ICE_HEAL
-	dw ItemUseMedicine   ; AWAKENING
-	dw ItemUseMedicine   ; PARLYZ_HEAL
-	dw ItemUseMedicine   ; FULL_RESTORE
-	dw ItemUseMedicine   ; MAX_POTION
-	dw ItemUseMedicine   ; HYPER_POTION
-	dw ItemUseMedicine   ; SUPER_POTION
-	dw ItemUseMedicine   ; POTION
-	dw ItemUseBait       ; SAFARI_BAIT
-	dw ItemUseRock       ; SAFARI_ROCK
-	dw ItemUseEvoStone   ; SUN_STONE
-	dw ItemUseEvoStone   ; SHINY_STONE
-	dw ItemUseEvoStone   ; DUSK_STONE
-	dw ItemUseEvoStone   ; KINGS_ROCK
-	dw ItemUseEvoStone   ; METAL_COAT
-	dw ItemUseEvoStone   ; LINK_CORD
-	dw ItemUseEscapeRope ; ESCAPE_ROPE
-	dw ItemUseRepel      ; REPEL
-	dw UnusableItem      ; OLD_AMBER
-	dw ItemUseEvoStone   ; FIRE_STONE
-	dw ItemUseEvoStone   ; THUNDER_STONE
-	dw ItemUseEvoStone   ; WATER_STONE
-	dw ItemUseVitamin    ; HP_UP
-	dw ItemUseVitamin    ; PROTEIN
-	dw ItemUseVitamin    ; IRON
-	dw ItemUseVitamin    ; CARBOS
-	dw ItemUseVitamin    ; CALCIUM
-	dw ItemUseVitamin    ; RARE_CANDY
-	dw UnusableItem      ; DOME_FOSSIL
-	dw UnusableItem      ; HELIX_FOSSIL
-	dw UnusableItem      ; SECRET_KEY
+	dw ItemUseBall        ; MASTER_BALL
+	dw ItemUseBall        ; ULTRA_BALL
+	dw ItemUseBall        ; GREAT_BALL
+	dw ItemUseBall        ; POKE_BALL
+	dw ItemUseTownMap     ; TOWN_MAP
+	dw ItemUseBicycle     ; BICYCLE
+	dw ItemUseSurfboard   ; SURFBOARD
+	dw ItemUseBall        ; SAFARI_BALL
+	dw ItemUsePokedex     ; POKEDEX
+	dw ItemUseEvoStone    ; MOON_STONE
+	dw ItemUseMedicine    ; ANTIDOTE
+	dw ItemUseMedicine    ; BURN_HEAL
+	dw ItemUseMedicine    ; ICE_HEAL
+	dw ItemUseMedicine    ; AWAKENING
+	dw ItemUseMedicine    ; PARLYZ_HEAL
+	dw ItemUseMedicine    ; FULL_RESTORE
+	dw ItemUseMedicine    ; MAX_POTION
+	dw ItemUseMedicine    ; HYPER_POTION
+	dw ItemUseMedicine    ; SUPER_POTION
+	dw ItemUseMedicine    ; POTION
+	dw ItemUseBait        ; SAFARI_BAIT
+	dw ItemUseRock        ; SAFARI_ROCK
+	dw ItemUseEvoStone    ; SUN_STONE
+	dw ItemUseEvoStone    ; SHINY_STONE
+	dw ItemUseEvoStone    ; DUSK_STONE
+	dw ItemUseKingsRock   ; KINGS_ROCK
+	dw ItemUseMetalCoat   ; METAL_COAT
+	dw ItemUseEvoStone    ; LINK_CORD
+	dw ItemUseEscapeRope  ; ESCAPE_ROPE
+	dw ItemUseRepel       ; REPEL
+	dw UnusableItem       ; OLD_AMBER
+	dw ItemUseEvoStone    ; FIRE_STONE
+	dw ItemUseEvoStone    ; THUNDER_STONE
+	dw ItemUseEvoStone    ; WATER_STONE
+	dw ItemUseVitamin     ; HP_UP
+	dw ItemUseVitamin     ; PROTEIN
+	dw ItemUseVitamin     ; IRON
+	dw ItemUseVitamin     ; CARBOS
+	dw ItemUseVitamin     ; CALCIUM
+	dw ItemUseVitamin     ; RARE_CANDY
+	dw UnusableItem       ; DOME_FOSSIL
+	dw UnusableItem       ; HELIX_FOSSIL
+	dw UnusableItem       ; SECRET_KEY
 	dw UnusableItem;ItemUseAxe      ; AXE
-	dw UnusableItem      ; BIKE_VOUCHER
-	dw ItemUseXAccuracy  ; X_ACCURACY
-	dw ItemUseEvoStone   ; LEAF_STONE
-	dw UnusableItem      ; CARD_KEY ; ~$~REMOVED: Useless function.~$~
-	dw UnusableItem      ; NUGGET
-	dw ItemUseVitamin    ; POKE_PEP
-	dw ItemUsePokeDoll   ; POKE_DOLL
-	dw ItemUseMedicine   ; FULL_HEAL
-	dw ItemUseMedicine   ; REVIVE
-	dw ItemUseMedicine   ; MAX_REVIVE
-	dw ItemUseGuardSpec  ; GUARD_SPEC
-	dw ItemUseSuperRepel ; SUPER_REPEL
-	dw ItemUseMaxRepel   ; MAX_REPEL
-	dw ItemUseDireHit    ; DIRE_HIT
-	dw UnusableItem      ; COIN
-	dw ItemUseMedicine   ; FRESH_WATER
-	dw ItemUseMedicine   ; SODA_POP
-	dw ItemUseMedicine   ; LEMONADE
-	dw UnusableItem      ; S_S_TICKET
-	dw UnusableItem      ; GOLD_TEETH
-	dw ItemUseXStat      ; X_ATTACK
-	dw ItemUseXStat      ; X_DEFEND
-	dw ItemUseXStat      ; X_SPEED
-	dw ItemUseXStat      ; X_SPECIAL
-	dw ItemUseCoinCase   ; COIN_CASE
-	dw ItemUseOaksParcel ; OAKS_PARCEL
-	dw ItemUseItemfinder ; ITEMFINDER
-	dw UnusableItem      ; SILPH_SCOPE
-	dw ItemUsePokeFlute  ; POKE_FLUTE
-	dw UnusableItem      ; LIFT_KEY
-	dw ItemUseTea        ; SUPERHOT_TEA
-	dw ItemUseOldRod     ; OLD_ROD
-	dw ItemUseGoodRod    ; GOOD_ROD
-	dw ItemUseSuperRod   ; SUPER_ROD
-	dw ItemUsePPUp       ; PP_UP
-	dw ItemUsePPRestore  ; ETHER
-	dw ItemUsePPRestore  ; MAX_ETHER
-	dw ItemUsePPRestore  ; ELIXER
-	dw ItemUsePPRestore  ; MAX_ELIXER
+	dw UnusableItem       ; BIKE_VOUCHER
+	dw ItemUseXAccuracy   ; X_ACCURACY
+	dw ItemUseEvoStone    ; LEAF_STONE
+	dw UnusableItem       ; LUCKY_EGG ; ~$~REMOVED: Useless function. Also replaced Card Key.~$~
+	dw UnusableItem       ; NUGGET
+	dw ItemUseVitamin     ; POKE_PEP
+	dw ItemUsePokeDoll    ; POKE_DOLL
+	dw ItemUseMedicine    ; FULL_HEAL
+	dw ItemUseMedicine    ; REVIVE
+	dw ItemUseMedicine    ; MAX_REVIVE
+	dw ItemUseGuardSpec   ; GUARD_SPEC
+	dw ItemUseSuperRepel  ; SUPER_REPEL
+	dw ItemUseMaxRepel    ; MAX_REPEL
+	dw ItemUseDireHit     ; DIRE_HIT
+	dw UnusableItem       ; COIN
+	dw ItemUseMedicine    ; FRESH_WATER
+	dw ItemUseMedicine    ; SODA_POP
+	dw ItemUseMedicine    ; LEMONADE
+	dw UnusableItem       ; S_S_TICKET
+	dw UnusableItem       ; GOLD_TEETH
+	dw ItemUseXStat       ; X_ATTACK
+	dw ItemUseXStat       ; X_DEFEND
+	dw ItemUseXStat       ; X_SPEED
+	dw ItemUseXStat       ; X_SPECIAL
+	dw ItemUseCoinCase    ; COIN_CASE
+	dw ItemUseOaksParcel  ; OAKS_PARCEL
+	dw ItemUseItemfinder  ; ITEMFINDER
+	dw UnusableItem       ; SILPH_SCOPE
+	dw ItemUsePokeFlute   ; POKE_FLUTE
+	dw UnusableItem       ; LIFT_KEY
+	dw ItemUseTea         ; SUPERHOT_TEA
+	dw ItemUseOldRod      ; OLD_ROD
+	dw ItemUseGoodRod     ; GOOD_ROD
+	dw ItemUseSuperRod    ; SUPER_ROD
+	dw ItemUsePPUp        ; PP_UP
+	dw ItemUsePPRestore   ; ETHER
+	dw ItemUsePPRestore   ; MAX_ETHER
+	dw ItemUsePPRestore   ; ELIXER
+	dw ItemUsePPRestore   ; MAX_ELIXER
 ; ~$~ADDED: New items.~$~
-	dw ItemUseMedicine   ; MOOMOO_MILK
-	dw UnusableItem      ; SLOWPOKETAIL
-	dw UnusableItem      ; RARE_CARD
-	dw UnusableItem      ; ODD_KEYSTONE
-	dw ItemUseBirdwhistle      ; BIRDWHISTLE
-	dw ItemUseEvoStone   ; MIST_STONE
+	dw ItemUseMedicine    ; MOOMOO_MILK
+	dw UnusableItem       ; SLOWPOKETAIL
+	dw UnusableItem       ; RARE_CARD
+	dw UnusableItem       ; ODD_KEYSTONE
+	dw ItemUseBirdwhistle ; BIRDWHISTLE
+	dw ItemUseEvoStone    ; MIST_STONE
 
 ItemUseBall:
 
@@ -1683,6 +1683,24 @@ ItemUseDireHit:
 	ld hl, wPlayerBattleStatus2
 	set GETTING_PUMPED, [hl] ; Focus Energy bit
 	jp PrintItemUseTextAndRemoveItem
+	
+; ~$~ADDED: Metal Coat and King's Rock do different things if used in battle.~$~
+ItemUseMetalCoat:
+	ld a, [wIsInBattle]
+	and a
+	jp z, ItemUseEvoStone
+	ld hl, wPlayerBattleStatus3
+	set HAS_REFLECT_UP, [hl] ; Reflect bit
+	jp PrintItemUseTextAndRemoveItem
+	
+ItemUseKingsRock:
+	ld a, [wIsInBattle]
+	and a
+	jp z, ItemUseEvoStone
+	ld hl, wPlayerBattleStatus2
+	set USING_KINGS_ROCK, [hl]
+	jp PrintItemUseTextAndRemoveItem
+;;;
 
 ItemUseXStat:
 	ld a, [wIsInBattle]

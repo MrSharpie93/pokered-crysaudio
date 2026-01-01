@@ -1,19 +1,37 @@
 _CeruleanCityRivalPreBattleText::
-	text "<RIVAL>: Yo!"
-	line "<PLAYER>!"
+	text "BLUE: Oh, hey!"
+	line "Haven't seen you"
+	cont "around before."
 
-	para "You're still"
-	line "struggling along"
-	cont "back here?"
+	para "Name's <PLAYER>,"
+	line "eh? And you've"
+	cont "got a #DEX?"
 
-	para "I'm doing great!"
-	line "I caught a bunch"
-	cont "of strong and"
-	cont "smart #MON!"
+	para "Oh man, don't tell"
+	line "me Gramps got you"
+	cont "caught up in his"
+	cont "research, too!"
 
-	para "Here, let me see"
-	line "what you caught,"
-	cont "<PLAYER>!"
+	para "Tell you what,"
+	line "here's some free"
+	cont "advice:"
+	
+;	para "I went to BILL's"
+;	line "and got him to"
+;	cont "show me his rare"
+;	cont "#MON!"
+
+;	para "That added a lot"
+;	line "of pages to my"
+;	cont "#DEX!"
+
+;	para "After all, BILL's"
+;	line "world famous as a"
+;	cont "#MON fanatic!"
+	
+;	para "Well, I better"
+;	line "get rolling!"
+;	cont "Smell ya later!"
 	done
 
 _CeruleanCityRivalDefeatedText::
@@ -29,10 +47,10 @@ _CeruleanCityRivalVictoryText::
 	prompt
 
 _CeruleanCityRivalIWentToBillsText::
-	text "<RIVAL>: Hey,"
-	line "guess what?"
+;	text "<RIVAL>: Hey,"
+;	line "guess what?"
 
-	para "I went to BILL's"
+	text "I went to BILL's"
 	line "and got him to"
 	cont "show me his rare"
 	cont "#MON!"
@@ -43,15 +61,15 @@ _CeruleanCityRivalIWentToBillsText::
 
 	para "After all, BILL's"
 	line "world famous as a"
-	cont "#MANIAC!"
+	cont "#MON fanatic!"
 
-	para "He invented the"
-	line "#MON Storage"
-	cont "System on PC!"
+;	para "He invented the"
+;	line "#MON Storage"
+;	cont "System on PC!"
 
-	para "Since you're using"
-	line "his system, go"
-	cont "thank him!"
+;	para "Since you're using"
+;	line "his system, go"
+;	cont "thank him!"
 
 	para "Well, I better"
 	line "get rolling!"
@@ -111,8 +129,11 @@ _CeruleanCitySuperNerd1Text::
 	line "front of the shop"
 	cont "is in the way."
 
-	para "There might be a"
-	line "way around."
+	para "Someone should CUT"
+	line "it down."
+	
+	para "Maybe with an AXE"
+	line "or something…"
 	done
 
 _CeruleanCitySuperNerd2Text::
@@ -131,9 +152,14 @@ _CeruleanCityGuardText::
 	cont "behind this most"
 	cont "heinous crime!"
 
-	para "Even our POLICE"
-	line "force has trouble"
+	para "My sisters and I"
+	line "are always having"
+	cont "problems dealing"
 	cont "with the ROCKETs!"
+	
+	para "But that kid sure"
+	line "mopped them up on"
+	cont "their way through…"
 	done
 
 _CeruleanCityCooltrainerF1SlowbroUseSonicboomText::
@@ -150,7 +176,7 @@ _CeruleanCityCooltrainerF1SlowbroPunchText::
 	done
 
 _CeruleanCityCooltrainerF1SlowbroWithdrawText::
-	text "SLOWBRO, WITHDRAW!"
+	text "SLOWBRO, DISABLE!"
 	line "No! That's wrong!"
 
 	para "It's so hard to"
@@ -222,7 +248,7 @@ _CeruleanCityTrainerTipsText::
 _CeruleanCityBikeShopSign::
 	text "Grass and caves"
 	line "handled easily!"
-	cont "BIKE SHOP"
+	cont "MIRACLE CYCLE"
 	done
 
 _CeruleanCityGymSign::

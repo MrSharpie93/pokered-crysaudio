@@ -12,7 +12,7 @@ _CeruleanPokecenterGentlemanText::
 	line "about BILL?"
 
 	para "Everyone calls"
-	line "him a #MANIAC!"
+	line "him a fanatic!" ; Changed to hint towards bringing him the Rare Card, and because he's not a PokeManiac.~$~
 
 	para "I think people"
 	line "are just jealous"

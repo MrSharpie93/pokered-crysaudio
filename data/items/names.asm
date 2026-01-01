@@ -47,7 +47,7 @@ ItemNames::
 	li "BIKE VOUCHER"
 	li "X ACCURACY"
 	li "LEAF STONE"
-	li "CARD KEY"
+	li "LUCKY EGG"
 	li "NUGGET"
 	li "POKé PEP" ; was ITEM_32
 	li "POKé DOLL"

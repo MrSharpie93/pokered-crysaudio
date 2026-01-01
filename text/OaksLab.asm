@@ -329,7 +329,7 @@ _OaksLabOakMyInventionPokedexText::
 	line "complete guide to"
 	cont "all the #MON in"
 	cont "the world."
-	
+IF !DEF(_DEBUG)
 	para "I've invented a"
 	line "device called the"
 	cont "#DEX to help."
@@ -341,6 +341,7 @@ _OaksLabOakMyInventionPokedexText::
 
 	para "It's a hi-tech"
 	line "encyclopedia!"
+ENDC
 	done
 
 _OaksLabOakGotPokedexText::
@@ -354,6 +355,7 @@ _OaksLabOakGotPokedexText::
 
 _OaksLabOakThatWasMyDreamText::
 	text "This will be an"
+IF !DEF(_DEBUG)
 	line "arduous task, so"
 	cont "I'll need all the"
 	cont "help I can get."
@@ -372,6 +374,7 @@ _OaksLabOakThatWasMyDreamText::
 	para "Now get moving!"
 
 	para "This is a great"
+ENDC
 	line "undertaking in"
 	cont "#MON history!"
 	done

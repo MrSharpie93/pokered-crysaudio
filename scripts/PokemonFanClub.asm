@@ -1,22 +1,22 @@
 PokemonFanClub_Script:
 	jp EnableAutoTextBoxDrawing
 
-PokemonFanClub_CheckBikeInBag:
-; check if any bike paraphernalia in bag
-	CheckEvent EVENT_GOT_BIKE_VOUCHER
-	ret nz
-	ld b, BICYCLE
-	call IsItemInBag
-	ret nz
-	ld b, BIKE_VOUCHER
+PokemonFanClub_CheckHelixFossil:
+; check if the Helix Fossil is in your bag
+	ld b, HELIX_FOSSIL
+	jp IsItemInBag
+	
+PokemonFanClub_CheckDomeFossil:
+; check if the Dome Fossil is in your bag
+	ld b, DOME_FOSSIL
 	jp IsItemInBag
 
 PokemonFanClub_TextPointers:
 	def_text_pointers
 	dw_const PokemonFanClubPikachuFanText,   TEXT_POKEMONFANCLUB_PIKACHU_FAN
 	dw_const PokemonFanClubSeelFanText,      TEXT_POKEMONFANCLUB_SEEL_FAN
-	dw_const PokemonFanClubPikachuText,      TEXT_POKEMONFANCLUB_PIKACHU
-	dw_const PokemonFanClubSeelText,         TEXT_POKEMONFANCLUB_SEEL
+	dw_const PokemonFanClubHelixText,        TEXT_POKEMONFANCLUB_PIKACHU
+	dw_const PokemonFanClubHelixText,        TEXT_POKEMONFANCLUB_SEEL
 	dw_const PokemonFanClubChairmanText,     TEXT_POKEMONFANCLUB_CHAIRMAN
 	dw_const PokemonFanClubReceptionistText, TEXT_POKEMONFANCLUB_RECEPTIONIST
 	dw_const PokemonFanClubSign1Text,        TEXT_POKEMONFANCLUB_SIGN_1
@@ -68,35 +68,42 @@ PokemonFanClubSeelFanText:
 	text_far _PokemonFanClubSeelFanBetterText
 	text_end
 
-PokemonFanClubPikachuText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	ld a, PIKACHU
-	call PlayCry
-	call WaitForSoundToFinish
-	jp TextScriptEnd
-
-.Text
-	text_far _PokemonFanClubPikachuText
-	text_end
-
-PokemonFanClubSeelText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	ld a, SEEL
-	call PlayCry
-	call WaitForSoundToFinish
-	jp TextScriptEnd
-
-.Text:
+;PokemonFanClubPikachuText:
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	ld a, PIKACHU
+;	call PlayCry
+;	call WaitForSoundToFinish
+;	jp TextScriptEnd
+;
+;.Text
+;	text_far _PokemonFanClubPikachuText
+;	text_end
+;
+;PokemonFanClubSeelText:
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	ld a, SEEL
+;	call PlayCry
+;	call WaitForSoundToFinish
+;	jp TextScriptEnd
+;
+;.Text:
+PokemonFanClubHelixText:
 	text_far _PokemonFanClubSeelText
 	text_end
 
 PokemonFanClubChairmanText:
 	text_asm
-	call PokemonFanClub_CheckBikeInBag
+	call PokemonFanClub_CheckDomeFossil
+	jr nz, .burnTheHeretic
+	
+	call PokemonFanClub_CheckHelixFossil
+	jr nz, .praiseHisName
+	
+	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	jr nz, .nothingleft
 
 	ld hl, .IntroText
@@ -118,17 +125,63 @@ PokemonFanClubChairmanText:
 	jr .done
 .bag_full
 	ld hl, .BagFullText
-	call PrintText
-	jr .done
+;	call PrintText
+	jr .printAndDone
 .nothanks
 	ld hl, .NoStoryText
-	call PrintText
-	jr .done
+;	call PrintText
+	jr .printAndDone
 .nothingleft
 	ld hl, .FinalText
+.printAndDone
 	call PrintText
 .done
 	jp TextScriptEnd
+.praiseHisName
+	ld hl, .AskForHelixText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .nothanks
+	
+	ld hl, .GaveHelixText
+	call PrintText
+	lb bc, MIST_STONE, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, .BikeVoucherText
+	call PrintText
+	
+	ld a, HELIX_FOSSIL
+	ldh [hItemToRemoveID], a
+	farcall RemoveItemByID
+	jr .done
+.burnTheHeretic
+	ld hl, .LeaderPreBattleText
+	call PrintText
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
+	ld a, 0
+	ld c, a
+	ld a, MUSIC_MEET_EVIL_TRAINER
+	call PlayMusic
+	call Delay3
+	ld a, OPP_GENTLEMAN
+	ld [wCurOpponent], a
+	ld a, 4
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	
+	ld hl, .LeaderDefeatedText
+	ld de, .LeaderVictoryText
+	call SaveEndBattleTextPointers
+	jr .done
 
 .IntroText:
 	text_far _PokemonFanClubChairmanIntroText
@@ -154,6 +207,26 @@ PokemonFanClubChairmanText:
 
 .BagFullText:
 	text_far _PokemonFanClubBagFullText
+	text_end
+
+.AskForHelixText
+	text_far _PokemonFanClubChairAskForHelixText
+	text_end
+
+.GaveHelixText
+	text_far _PokemonFanClubChairGaveHelixText
+	text_end
+	
+.LeaderPreBattleText
+	text_far _LeaderPreBattleText
+	text_end
+
+.LeaderDefeatedText
+	text_far _LeaderDefeatedText
+	text_end
+
+.LeaderVictoryText
+	text_far _LeaderVictoryText
 	text_end
 
 PokemonFanClubReceptionistText:

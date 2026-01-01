@@ -24,7 +24,6 @@ SafariZoneNorthRestHouseGentlemanText:
 	
 SafariZoneNorthRestHouseDetailsText:
 	text_far _SafariZoneRestHousePosterText
-	text_end
 	text_far _SafariZoneNorthRestHouseDetailsText
 	text_end
 	

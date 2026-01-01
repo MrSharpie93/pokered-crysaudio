@@ -164,6 +164,12 @@ _Route17TrainerTips1Text::
 	line "the same type and"
 	cont "level grow at"
 	cont "different rates."
+	
+	para "Try holding START"
+	line "or SELECT before"
+	cont "viewing #MON"
+	cont "stats to see how"
+	cont "yours differ."
 	done
 
 _Route17TrainerTips2Text::

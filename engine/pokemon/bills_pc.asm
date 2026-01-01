@@ -39,10 +39,10 @@ DisplayPCMainMenu::
 .next2
 	call PlaceString
 	hlcoord 2, 4
-	ld de, wPlayerName
-	call PlaceString
-	ld l, c
-	ld h, b
+;	ld de, wPlayerName
+;	call PlaceString
+;	ld l, c
+;	ld h, b
 	ld de, PlayersPCText
 	call PlaceString
 	CheckEvent EVENT_GOT_POKEDEX
@@ -87,7 +87,7 @@ DisplayPCMainMenu::
 
 SomeonesPCText:   db "SOMEONE's PC@"
 BillsPCText:      db "BILL's PC@"
-PlayersPCText:    db "'s PC@"
+PlayersPCText:    db "ITEM STORAGE@"
 OaksPCText:       db "PROF.OAK's PC@"
 PKMNLeaguePCText: db "<PKMN>LEAGUE@"
 LogOffPCText:     db "LOG OFF@"

@@ -1,38 +1,45 @@
 _CinnabarLabMetronomeRoomScientist1Text::
-	text "Tch-tch-tch!"
-	line "I made a cool TM!"
+	text "I've been studying"
+	line "radio waves!"
 
-	para "It can cause all"
-	line "kinds of fun!"
+	para "More specifically,"
+	line "their effects on"
+	cont "#MON!"
+	
+	para "Want to help with"
+	line "my experiments?"
 	prompt
 
-_CinnabarLabMetronomeRoomScientist1ReceivedTM35Text::
-	text "<PLAYER> received "
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
-	text_end
+;_CinnabarLabMetronomeRoomScientist1ReceivedTM35Text::
+;	text "<PLAYER> received "
+;	line "@"
+;	text_ram wStringBuffer
+;	text "!@"
+;	text_end
 
-_CinnabarLabMetronomeRoomScientist1TM35ExplanationText::
-	text "Tch-tch-tch!"
-	line "That's the sound"
-	cont "of a METRONOME!"
+;_CinnabarLabMetronomeRoomScientist1TM35ExplanationText::
+;	text "Tch-tch-tch!"
+;	line "That's the sound"
+;	cont "of a METRONOME!"
 
-	para "It tweaks your"
-	line "#MON's brain"
-	cont "into using moves"
-	cont "it doesn't know!"
-	done
+;	para "It tweaks your"
+;	line "#MON's brain"
+;	cont "into using moves"
+;	cont "it doesn't know!"
+;	done
 
-_CinnabarLabMetronomeRoomScientist1TM35NoRoomText::
-	text "Your pack is"
-	line "crammed full!"
-	done
+;_CinnabarLabMetronomeRoomScientist1TM35NoRoomText::
+;	text "Your pack is"
+;	line "crammed full!"
+;	done
 
 _CinnabarLabMetronomeRoomScientist2Text::
 	text "EEVEE can evolve"
-	line "into 1 of 3 kinds"
+	line "into 1 of 7 kinds"
 	cont "of #MON."
+	
+	para "Maybe more…"
+	line "Imagine…"
 	done
 
 _CinnabarLabMetronomeRoomPCText::

@@ -6,7 +6,7 @@ _VermilionGymLTSurgePostBattleAdviceText::
 	line "sure powerful!"
 
 	para "But, it's useless"
-	line "against ground-"
+	line "against GROUND-"
 	cont "type #MON!"
 	done
 
@@ -15,9 +15,9 @@ _VermilionGymLTSurgeThunderBadgeInfoText:: ; ~$~CHANGED: Line from HGSS instead 
 	line "suits those who've"
 	cont "defeated me!"
 
-	para "It also lets your"
-	line "#MON FLY any"
-	cont "time, kid!"
+;	para "It also lets your"
+;	line "#MON FLY any"
+;	cont "time, kid!"
 
 	para "You're special,"
 	line "kid! Take this!"

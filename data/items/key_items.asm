@@ -47,7 +47,7 @@ KeyItemFlags:
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
-	dbit TRUE  ; CARD_KEY
+	dbit FALSE ; LUCKY_EGG
 	dbit FALSE ; NUGGET
 	dbit FALSE ; POKE_PEP
 	dbit FALSE ; POKE_DOLL

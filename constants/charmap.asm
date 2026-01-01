@@ -28,31 +28,34 @@
 
 ; Actual characters (from gfx/font/font_extra.png)
 
-	charmap "<BOLD_A>",  $60 ; unused
-	charmap "<BOLD_B>",  $61 ; unused
-	charmap "<BOLD_C>",  $62 ; unused
-	charmap "<BOLD_D>",  $63 ; unused
-	charmap "<BOLD_E>",  $64 ; unused
-	charmap "<BOLD_F>",  $65 ; unused
-	charmap "<BOLD_G>",  $66 ; unused
-	charmap "<BOLD_H>",  $67 ; unused
-	charmap "<BOLD_I>",  $68 ; unused
-	charmap "<BOLD_V>",  $69
-	charmap "<BOLD_S>",  $6a
-	charmap "<BOLD_L>",  $6b ; unused
-	charmap "<BOLD_M>",  $6c ; unused
-	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
-	charmap "ぃ",         $6e ; hiragana small i, unused
-	charmap "ぅ",         $6f ; hiragana small u, unused
-	charmap "‘",         $70 ; opening single quote
-	charmap "’",         $71 ; closing single quote
-	charmap "“",         $72 ; opening quote
-	charmap "”",         $73 ; closing quote
-	charmap "·",         $74 ; middle dot, unused
-	charmap "…",         $75 ; ellipsis
-	charmap "ぁ",         $76 ; hiragana small a, unused
-	charmap "ぇ",         $77 ; hiragana small e, unused
-	charmap "ぉ",         $78 ; hiragana small o, unused
+; ~$~CHANGED: Consolidated font to take less unused space.~$~
+;	charmap "<BOLD_A>",  $60 ; unused
+;	charmap "<BOLD_B>",  $61 ; unused
+;	charmap "<BOLD_C>",  $62 ; unused
+;	charmap "<BOLD_D>",  $63 ; unused
+;	charmap "<BOLD_E>",  $64 ; unused
+;	charmap "<BOLD_F>",  $65 ; unused
+;	charmap "<BOLD_G>",  $66 ; unused
+;	charmap "<BOLD_H>",  $67 ; unused
+;	charmap "<BOLD_I>",  $68 ; unused
+;	charmap "<BOLD_V>",  $69
+;	charmap "<BOLD_S>",  $6a
+;	charmap "<BOLD_L>",  $6b ; unused
+;	charmap "<BOLD_M>",  $6c ; unused
+;	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
+;	charmap "ぃ",         $6e ; hiragana small i, unused
+;	charmap "ぅ",         $6f ; hiragana small u, unused
+;	charmap "‘",         $70 ; opening single quote
+;	charmap "’",         $71 ; closing single quote
+;	charmap "“",         $72 ; opening quote
+;	charmap "”",         $73 ; closing quote
+;	charmap "·",         $74 ; middle dot, unused
+;	charmap "…",         $75 ; ellipsis
+;	charmap "ぁ",         $76 ; hiragana small a, unused
+;	charmap "ぇ",         $77 ; hiragana small e, unused
+;	charmap "ぉ",         $78 ; hiragana small o, unused
+
+	charmap "<BALL>",    $75 ; ~$~MOVED: This only needs to be displayed during battles.~$~
 
 	charmap "┌",         $79
 	charmap "─",         $7a
@@ -153,6 +156,12 @@
 	charmap "'s",        $bd
 	charmap "'t",        $be
 	charmap "'v",        $bf
+	
+	charmap "<BOLD_V>",  $db
+	charmap "<BOLD_S>",  $dc
+	charmap "“",         $dd ; opening quote
+	charmap "”",         $de ; closing quote
+	charmap "…",         $df ; ellipsis
 
 	charmap "'",         $e0
 	charmap "<PK>",      $e1
@@ -166,9 +175,9 @@
 	charmap "!",         $e7
 	charmap ".",         $e8
 
-	charmap "ァ",         $e9 ; katakana small a, unused
+	charmap "‘",         $e9 ; ~$~CHANGED: Was katakana small a, now opening single quote~$~
 	charmap "&",         $ea ; ~$~CHANGED: Was katakana small u, now ampersand.~$~
-	charmap "<BALL>",    $eb ; ~$~CHANGED: Was katakana small e, now caught indicator.~$~
+;	charmap "<BALL>",    $eb ; ~$~CHANGED: Was katakana small e, now caught indicator.~$~
 
 	charmap "▷",         $ec
 	charmap "▶",         $ed
@@ -176,7 +185,7 @@
 	charmap "♂",         $ef
 	charmap "¥",         $f0
 	charmap "×",         $f1
-	charmap "<DOT>",     $f2 ; decimal point; same as "." in English
+	charmap "<COLON>",   $f2 ; ~$~CHANGED: was decimal point; same as "." in English | now colon with tinier dots than ":"~$~
 	charmap "/",         $f3
 	charmap ",",         $f4
 	charmap "♀",         $f5

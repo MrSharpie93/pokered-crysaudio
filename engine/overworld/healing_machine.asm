@@ -12,8 +12,9 @@ AnimateHealingMachine:
 	push af
 	ld a, $e0
 	ldh [rOBP1], a
-	ld hl, wShadowOAMSprite33
+	ld hl, wShadowOAMSprite29;33
 	ld de, PokeCenterOAMData
+	call CopyHealingMachineOAM
 	call CopyHealingMachineOAM
 
 	ld a, 4
@@ -70,16 +71,15 @@ AnimateHealingMachine:
 PokeCenterFlashingMonitorAndHealBall:
 	INCBIN "gfx/overworld/heal_machine.2bpp"
 
-PokeCenterOAMData:
-	; heal machine monitor
-	dbsprite  6,  4,  4,  4, $7c, OAM_OBP1
-	; poke balls 1-6
-	dbsprite  6,  5,  0,  3, $7d, OAM_OBP1
-	dbsprite  7,  5,  0,  3, $7d, OAM_OBP1 | OAM_HFLIP
-	dbsprite  6,  6,  0,  0, $7d, OAM_OBP1
-	dbsprite  7,  6,  0,  0, $7d, OAM_OBP1 | OAM_HFLIP
-	dbsprite  6,  6,  0,  5, $7d, OAM_OBP1
-	dbsprite  7,  6,  0,  5, $7d, OAM_OBP1 | OAM_HFLIP
+PokeCenterOAMData: ; ~$~CHANGED: Use RedStar/BlueStar's OAM Data for the healing machines, since I'm using the GSC graphics.~$~
+	db $20,$20,$7C,$10 ; heal machine monitor
+	db $20,$28,$7C,$30
+	db $27,$20,$7D,$10 ; pokeballs 1-6
+	db $27,$28,$7D,$30
+	db $2C,$20,$7D,$10
+	db $2C,$28,$7D,$30
+	db $31,$20,$7D,$10
+	db $31,$28,$7D,$30
 
 ; d = value to xor with palette
 FlashSprite8Times:

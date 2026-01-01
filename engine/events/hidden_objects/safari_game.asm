@@ -11,6 +11,10 @@ IF DEF(_DEBUG)
 	call DebugPressedOrHeldB
 	ret nz
 ENDC
+; ~$~CHANGED: Only subtract steps when you're outdoors in the Safari Zone.~$~	
+	ld a, [wCurMapTileset]
+	cp FOREST
+	ret nz
 	ld a, [wSafariSteps]
 	ld b, a
 	ld a, [wSafariSteps + 1]

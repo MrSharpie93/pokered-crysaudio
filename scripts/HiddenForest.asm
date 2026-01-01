@@ -3,5 +3,8 @@ HiddenForest_Script:
 
 HiddenForest_TextPointers:
 	def_text_pointers
-
-	text_end ; unused
+	dw_const MossRockText, TEXT_HIDDENFOREST_MOSS_ROCK
+	
+MossRockText:
+	text_far _MossRockText
+	text_end

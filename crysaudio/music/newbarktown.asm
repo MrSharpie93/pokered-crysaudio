@@ -5,9 +5,14 @@ Music_NewBarkTown:
 	channel 3, Music_NewBarkTown_Ch3
 
 	db $3 ; unused
+	
+Music_NewBarkTown_Ch1_AlternateTempo::
+	tempo 232
+	sound_loop 0, Music_NewBarkTown_Branch_AltTempo
 
 Music_NewBarkTown_Ch1:
 	tempo 187
+Music_NewBarkTown_Branch_AltTempo:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	vibrato 18, 2, 3

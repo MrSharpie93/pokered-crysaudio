@@ -60,10 +60,10 @@ DrawStartMenu::
 .printDayNightText ;EvoYellow comment: credit to base daynight goes to makers of maize and pokesparkyellow, I just fixed it so it wasn't completely bugged in viridian/caves.
 	call PlaceString
 	; display night or day
-	hlcoord 1, 0 ; $c3aa
+	hlcoord 0, 0 ; $c3aa
 	lb bc, 3, 7
 	call TextBoxBorder
-	hlcoord 3, 2
+	hlcoord 2, 2
 	call CheckDayNight
 	jr nc, .night
 	ld de, DayText

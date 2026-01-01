@@ -18,7 +18,7 @@ TextScript_GameCornerPrizeMenu::
 	ld b, BANK(CeladonPrizeMenu)
 	ld hl, CeladonPrizeMenu
 bankswitchAndContinue::
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 	jp HoldTextDisplayOpen        ; continue to main text-engine function
 
 TextScript_PokemonCenterPC::

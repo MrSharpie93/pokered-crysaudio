@@ -123,6 +123,7 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityMachopText,             TEXT_VERMILIONCITY_MACHOP
 	dw_const VermilionCitySailor2Text,            TEXT_VERMILIONCITY_SAILOR2
 	dw_const VermilionCityOfficerJennyText,       TEXT_VERMILIONCITY_OFFICERJENNY
+	dw_const VermilionCitySuperNerdText,          TEXT_VERMILIONCITY_SUPER_NERD
 	dw_const VermilionCitySignText,               TEXT_VERMILIONCITY_SIGN
 	dw_const VermilionCityNoticeSignText,         TEXT_VERMILIONCITY_NOTICE_SIGN
 	dw_const MartSignText,                        TEXT_VERMILIONCITY_MART_SIGN
@@ -334,6 +335,81 @@ GuardGotHeartStoneText:
 	
 GuardBagFullText:
 	text_far _GuardText7
+	text_end
+	
+VermilionCitySuperNerdText:
+	text_asm
+	CheckEvent EVENT_2ND_LOCK_OPENED
+	jr nz, .switchesAlreadyDisabled
+	ld a, MONEY_BOX
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	xor a
+	ldh [hJoyHeld], a
+	ld hl, DisableSwitchOfferText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .saidNo
+	xor a
+	ld [hMoney], a	
+	ld [hMoney + 2], a
+	ld a, $1A
+	ld [hMoney + 1], a
+	call HasEnoughMoney
+	jr nc, .disableSwitches
+	ld hl, MoneyNoText
+	call PrintText
+	jr .done
+.disableSwitches
+	ld hl, SwitchesDisabledText
+	call PrintText
+	SetEvent EVENT_2ND_LOCK_OPENED
+	xor a
+	ld [wPriceTemp], a
+	ld [wPriceTemp + 2], a
+	ld a, $1A
+	ld [wPriceTemp + 1], a
+	ld hl, wPriceTemp + 2
+	ld de, wPlayerMoney + 2
+	ld c, $3
+	predef SubBCDPredef
+	ld a, MONEY_BOX
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld a, SFX_PURCHASE
+	call PlaySoundWaitForCurrent
+	call WaitForSoundToFinish
+	jr .done
+.saidNo
+	ld hl, SaidNoText
+	call PrintText
+	jr .done
+.switchesAlreadyDisabled
+	ld hl, AlreadyDisabledText
+	call PrintText
+.done
+	jp TextScriptEnd
+	
+DisableSwitchOfferText:
+	text_far _DisableSwitchOfferText
+	text_end
+
+MoneyNoText:
+	text_far _MoneyNoText
+	text_end
+
+SwitchesDisabledText:
+	text_far _SwitchesDisabledText
+	text_end
+
+SaidNoText:
+	text_far _SaidNoText
+	text_end
+
+AlreadyDisabledText:
+	text_far _AlreadyDisabledText
 	text_end
 
 VermilionCitySignText:

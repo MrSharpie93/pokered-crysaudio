@@ -31,6 +31,13 @@ TryDoWildEncounter:
 	cp c
 	ld a, [wGrassRate]
 	jr z, .CanEncounter
+; ~$~KEP snippet for allowing a second tall grass tile.~$~	
+	cp FOREST
+	ld a, $63
+	cp c
+	ld a, [wGrassRate]
+	jr z, .CanEncounter
+;;;	
 	ld a, $14 ; in all tilesets with a water tile, this is its id
 	cp c
 	ld a, [wWaterRate]

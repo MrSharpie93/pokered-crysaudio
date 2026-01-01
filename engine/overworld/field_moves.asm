@@ -17,9 +17,9 @@ TrySurf: ; ~$~TODO: Make this also use variable sprites.~$~
 	ld d, SURF
 	call HasPartyMove
 	jr nz, .no
-	ld a, [wObtainedBadges]
-	bit 4, a ; SOUL BADGE
-	jr z, .no
+	ld a, [wBeatGymFlags]
+	cp 2
+	jr c, .no
 	farcall IsSurfingAllowed
 	ld hl, wStatusFlags1
 	bit 1, [hl]
@@ -59,9 +59,9 @@ TryCut:
 	ld d, CUT
 	call HasPartyMove
 	jr nz, TrySurf.no2
-	ld a, [wObtainedBadges]
-	bit 1, a ; CASCADE BADGE
-	jr z, TrySurf.no2
+	ld a, [wBeatGymFlags]
+	cp 1
+	jr c, TrySurf.no2
 	ld hl, PromptToCutText
 	call PrintText
 	call YesNoChoice

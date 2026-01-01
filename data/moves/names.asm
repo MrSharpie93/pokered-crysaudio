@@ -134,7 +134,7 @@ MoveNames::
 	li "ASTONISH"
 	li "AMNESIA"
 	li "COSMIC POWER"
-	li "SOFTBOILED"
+	li "NUTRIENTS" ; Older localization name, used to better consolidate with Milk Drink.~$~
 	li "HI JUMP KICK"
 	li "GLARE"
 	li "DREAM EATER"

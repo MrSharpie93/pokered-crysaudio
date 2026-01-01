@@ -29,7 +29,7 @@ SSAnne2FDefaultScript:
 ;	ld [wNewSoundID], a
 	call PlaySound
 	ld c, 0 ; BANK(Music_MeetRival)
-	ld a, MUSIC_MEET_RIVAL
+	ld a, MUSIC_MEET_GREEN
 	call PlayMusic
 	ld a, [wCoordIndex]
 	ldh [hSavedCoordIndex], a
@@ -97,7 +97,7 @@ SSAnne2FRivalStartBattleScript:
 	ldh [hTextID], a
 	call DisplayTextID
 	call Delay3
-	ld a, OPP_RIVAL2
+	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
@@ -152,7 +152,9 @@ SSAnne2FRivalAfterBattleScript:
 	ld a, SFX_STOP_ALL_MUSIC
 ;	ld [wNewSoundID], a
 	call PlaySound
-	farcall Music_RivalAlternateStart
+	ld c, 0 ; BANK(Music_MeetRival)
+	ld a, MUSIC_MEET_GREEN
+	call PlayMusic
 	ld a, SCRIPT_SSANNE2F_RIVAL_EXIT
 	ld [wSSAnne2FCurScript], a
 	ret

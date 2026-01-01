@@ -39,18 +39,91 @@ _SafariBallDescription::
 	prompt
 
 _MoonStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It is dark like"
+	line "the night sky."
+	prompt
+
 _SunStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It burns red like"
+	line "the evening sun."
+	prompt
+
 _ShinyStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It shines with a"
+	line "dazzling light."
+	prompt
+
 _DuskStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It holds dark"
+	line "shadows within it."
+	prompt
+
 _KingsRockDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "A symbol of un-"
+	line "flinching pride."
+	prompt
+
 _MetalCoatDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It's a highly"
+	line "reflective film."
+	prompt
+
 _LinkCordDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It exudes a sense"
+	line "of connection."
+	prompt
+
 _FireStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It has a fiery"
+	line "orange heart."
+	prompt
+
 _ThunderStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It has a distinct"
+	line "lightning pattern."
+	prompt
+
 _WaterStoneDescription::
+	text "Evolves certain"
+	line "kinds of #MON."
+	
+	para "It is the clear"
+	line "blue of a pool."
+	prompt
+
 _LeafStoneDescription::
 	text "Evolves certain"
-	next "kinds of #MON."
+	line "kinds of #MON."
+	
+	para "It has a leaf"
+	line "pattern."
 	prompt
 
 _AntidoteDescription::
@@ -80,7 +153,7 @@ _ParlyzHealDescription::
 
 _FullRestoreDescription::
 	text "Fully restores HP"
-	next "and status."
+	next "& cures status."
 	prompt
 
 _MaxPotionDescription::
@@ -149,9 +222,13 @@ _RareCandyDescription::
 	prompt
 
 _DomeFossilDescription::
-_HelixFossilDescription::
 	text "A fossilized"
 	next "#MON shell."
+	prompt
+	
+_HelixFossilDescription::
+	text "Praise be unto"
+	next "Him."
 	prompt
 
 _SecretKeyDescription::
@@ -173,9 +250,9 @@ _XAccuracyDescription::
 	next "(1 BTL)"
 	prompt
 
-_CardKeyDescription::
-	text "Opens shutters in"
-	next "SILPH CO."
+_LuckyEggDescription::
+	text "Boosts EXP. points"
+	next "earned in battle."
 	prompt
 
 _NuggetDescription::

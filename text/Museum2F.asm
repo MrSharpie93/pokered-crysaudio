@@ -27,10 +27,27 @@ _Museum2FBrunetteGirlText::
 	para "I asked my Daddy"
 	line "to catch me one!"
 	done
+	
+_BrunetteGirlAfterTradeText::
+	text "I love my PIKACHU"
+	line "sooo much!"
+
+	para "Thanks Daddy! And"
+	line "thank you, too!"
+	done
 
 _Museum2FHikerText::
 	text "Yeah, a PIKACHU"
 	line "soon, I promise!"
+	
+	para "…Hey kid, mind"
+	line "helping me out?"
+	prompt
+	
+_HikerAfterTradeText::
+	text "Thanks again, pal."
+	line "You really made"
+	cont "her day!"
 	done
 
 _Museum2FSpaceShuttleSignText::

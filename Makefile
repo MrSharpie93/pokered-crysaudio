@@ -184,6 +184,8 @@ gfx/tilesets/reds_house.2bpp: tools/gfx += --preserve=0x48
 
 gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
 
+gfx/font/font_battle_extra.2bpp: tools/gfx += --trim-whitespace
+
 
 ### Catch-all graphics rules
 

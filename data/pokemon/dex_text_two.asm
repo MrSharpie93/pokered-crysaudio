@@ -982,7 +982,7 @@ _GliscorDexEntry::
 	next "its lenghty tail"
 
 	page "to carry off its"
-	next "prey... Then its"
+	next "prey… Then its"
 	next "fangs do the rest"
 	dex
 	

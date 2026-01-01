@@ -29,11 +29,11 @@ _PokemonMansionB1FScientistAfterBattleText::
 	done
 
 _PokemonMansionB1FDiaryText::
-	text "Diary; Sept. 1"
+	text "Diary: Sept. 1"
 	line "MEWTWO is far too"
 	cont "powerful."
 
 	para "We have failed to"
 	line "curb its vicious"
-	cont "tendencies..."
+	cont "tendencies…"
 	done

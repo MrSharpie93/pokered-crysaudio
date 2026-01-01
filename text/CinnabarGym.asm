@@ -34,14 +34,14 @@ _CinnabarGymBlainePostBattleAdviceText::
 	cont "technique!"
 
 	para "Don't waste it on"
-	line "water #MON!"
+	line "WATER #MON!"
 	done
 
 _CinnabarGymBlaineVolcanoBadgeInfoText:: ; ~$~CHANGED: Removed reference to badge boosts.~$~
 	text "Hah!"
 
 	para "The VOLCANOBADGE"
-	line "is proof of your"
+	line "symbolizes your"
 	cont "burning ambition!"
 
 	para "Here, you can"
@@ -64,8 +64,8 @@ _CinnabarGymBlaineTM38ExplanationText::
 	para "Teach it to fire-"
 	line "type #MON!"
 
-	para "CHARMELEON or"
-	line "PONYTA would be"
+	para "CHANDELURE or"
+	line "MAGMAR would be"
 	cont "good bets!"
 	done
 

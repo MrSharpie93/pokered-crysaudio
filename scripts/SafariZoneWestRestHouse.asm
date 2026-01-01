@@ -24,7 +24,6 @@ SafariZoneWestRestHouseSilphWorkerFText:
 	
 SafariZoneWestRestHouseDetailsText:
 	text_far _SafariZoneRestHousePosterText
-	text_end
 	text_far _SafariZoneWestRestHouseDetailsText
 	text_end
 	

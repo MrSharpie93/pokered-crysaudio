@@ -43,6 +43,7 @@ Route7DefaultScript:
 	call Route7GateMovePlayerLeftScript
 	ld a, SCRIPT_ROUTE7GATE_PLAYER_MOVING
 	ld [wRoute7GateCurScript], a
+	SetEvent EVENT_GUARD_ASKED_FOR_TEA
 	ret
 .have_drink
 	ld a, TEXT_ROUTE7GATE_GUARD_GIVE_DRINK

@@ -20,7 +20,26 @@ CeladonMansion1FMeowthText:
 	jp CeladonMansion1_PlayCryScript
 
 CeladonMansion1FGrannyText:
+	text_asm
+	ld a, [wStatusFlags1]
+	bit BIT_GAVE_SAFFRON_GUARDS_DRINK, a
+	jr nz, .noTeaTalk
+	CheckEvent EVENT_GUARD_ASKED_FOR_TEA
+	jr z, .noTeaTalk
+	ld hl, GrannyTeaHintText
+	jr .done
+.noTeaTalk
+	ld hl, GrannyMeowthMoneyText
+.done
+	call PrintText
+	jp TextScriptEnd
+	
+GrannyMeowthMoneyText:
 	text_far _CeladonMansion1FGrannyText
+	text_end
+	
+GrannyTeaHintText:
+	text_far _CeladonMansion1FGrannyTeaText
 	text_end
 
 CeladonMansion1FClefairyText:

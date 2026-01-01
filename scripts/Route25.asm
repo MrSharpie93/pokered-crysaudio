@@ -18,9 +18,9 @@ Route25ShowHideBillScript:
 	CheckEventReuseHL EVENT_MET_BILL_2
 	jr nz, .met_bill
 	ResetEventReuseHL EVENT_BILL_SAID_USE_CELL_SEPARATOR
-	ld a, HS_BILL_POKEMON
-	ld [wMissableObjectIndex], a
-	predef_jump ShowObject
+;	ld a, HS_BILL_POKEMON
+;	ld [wMissableObjectIndex], a
+;	predef_jump ShowObject
 .met_bill
 	CheckEventAfterBranchReuseHL EVENT_GOT_SS_TICKET, EVENT_MET_BILL_2
 	ret z
@@ -28,12 +28,12 @@ Route25ShowHideBillScript:
 	ld a, HS_NUGGET_BRIDGE_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_BILL_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_BILL_2
-	ld [wMissableObjectIndex], a
-	predef_jump ShowObject
+;	ld a, HS_BILL_1
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+;	ld a, HS_BILL_2
+;	ld [wMissableObjectIndex], a
+;	predef_jump ShowObject
 
 Route25_ScriptPointers:
 	def_script_pointers

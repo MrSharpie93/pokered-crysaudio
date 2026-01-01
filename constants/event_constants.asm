@@ -46,7 +46,9 @@
 	const_next $68
 	const EVENT_BOUGHT_MUSEUM_TICKET
 	const EVENT_GOT_OLD_AMBER
-	const_skip 8
+	const EVENT_DIDNT_REGRET_THIS
+	const EVENT_GOT_REPELS
+	const_skip 6
 	const EVENT_BEAT_PEWTER_GYM_TRAINER_0
 	const_skip 3
 	const EVENT_GOT_TM34
@@ -128,7 +130,9 @@
 	const EVENT_GOT_TM48
 	const EVENT_GOT_TM49
 	const EVENT_GOT_TM18
-	const_skip 24
+	const EVENT_GOT_TM04 ; ~$~ADDED~$~
+	const EVENT_GOT_TM17 ; ~$~ADDED~$~
+	const_skip 22
 	const EVENT_GOT_TM21
 	const EVENT_BEAT_ERIKA
 	const EVENT_BEAT_CELADON_GYM_TRAINER_0
@@ -208,7 +212,7 @@
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
 	const EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
 	const EVENT_GOT_HITMON
-	const EVENT_GOT_HITMONCHAN ; now unused
+	const EVENT_GUARD_ASKED_FOR_TEA ; was unnecessary other Hitmon event
 	const_skip 8
 	const EVENT_GOT_TM46
 	const EVENT_BEAT_SABRINA
@@ -220,7 +224,7 @@
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_5
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 	const_skip 46
-	const EVENT_SILPH_CO_RECEPTIONIST_AT_DESK
+	const EVENT_SILPH_CO_RECEPTIONIST_AT_DESK ; no longer needed
 	const_skip 24
 	const EVENT_GOT_TM29
 

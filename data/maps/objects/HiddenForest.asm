@@ -8,6 +8,7 @@ HiddenForest_Object:
 	warp_event 0,  8, VIRIDIAN_FOREST, 7
 
 	def_bg_events
+	bg_event 20,  7, TEXT_HIDDENFOREST_MOSS_ROCK
 
 	def_object_events
 

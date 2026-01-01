@@ -18,8 +18,8 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db MEOWTH, 93
 	db MISSINGNO, 45
 	db THUFIZER, 60
-	db RHYHORN, 12
-	db EEVEE, 5
+	db ONIX, 12
+	db PIKACHU, 5
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -36,6 +36,10 @@ IF DEF(_DEBUG)
 	ld a, ~(1 << BIT_EARTHBADGE)
 	ld [wObtainedBadges], a
 	
+	; disable obedience
+	ld a, 8
+	ld [wBeatGymFlags], a
+	
 	; Get ¥999999.
 	ld a, $99
 	ld hl, wPlayerMoney
@@ -50,13 +54,13 @@ IF DEF(_DEBUG)
 
 	call SetDebugNewGameParty
 
-	; Mewtwo gets four moves for speedrunning battles.
+	; Mewtwo gets four moves for speedrunning/testing battles.
 	ld hl, wPartyMon1Moves
-	ld a, PSYCHIC_M
+	ld a, PSYSTRIKE
 	ld [hli], a
-	ld a, THUNDERBOLT
+	ld a, SHADOW_BALL
 	ld [hli], a
-	ld a, ICE_BEAM
+	ld a, MOONBLAST
 	ld [hli], a
 	ld a, RECOVER
 	ld [hl], a
@@ -90,7 +94,7 @@ IF DEF(_DEBUG)
 ;	ld a, 15
 	ld [hl], a
 
-;	; Jolteon gets Thunderbolt.
+;	; Pokemon 3 gets Flash.
 	ld hl, wPartyMon3Moves + 3
 	ld a, FLASH
 	ld [hl], a
@@ -98,13 +102,25 @@ IF DEF(_DEBUG)
 	ld a, 15
 	ld [hl], a
 
-;	; Articuno gets Fly.
-;	ld hl, wPartyMon5Moves
-;	ld a, FLY
-;	ld [hl], a
-;	ld hl, wPartyMon5PP
+;	; Pokemon 5 gets link battle testing moves.
+	ld hl, wPartyMon5Moves
+	ld a, TELEPORT
+	ld [hli], a
+	ld a, CURSE
+	ld [hli], a
+	ld a, HEAL_BELL
+	ld [hli], a
+	ld a, SPORE
+	ld [hl], a
+	ld hl, wPartyMon5PP
+	ld a, 20
+	ld [hli], a
 ;	ld a, 15
-;	ld [hl], a
+	ld [hli], a
+;	ld a, 5
+	ld [hli], a
+;	ld a, 15
+	ld [hl], a
 
 ;	; Pikachu gets Surf.
 ;	ld hl, wPartyMon6Moves + 2
@@ -160,12 +176,26 @@ DebugSetPokedexEntries:
 
 DebugItemsList:
 	db BICYCLE, 1
+;	db LUCKY_EGG, 1
+	db MOON_STONE, 99
+;	db SUN_STONE, 99
+;	db FIRE_STONE, 99
+;	db WATER_STONE, 99
+;	db THUNDER_STONE, 99
+;	db LEAF_STONE, 99
+;	db LINK_CORD, 99
+;	db SHINY_STONE, 99
+;	db DUSK_STONE, 99
+	db METAL_COAT, 99
+	db KINGS_ROCK, 99
+	db HELIX_FOSSIL, 99
 ;	db HM_SURF, 1
 	db BIRDWHISTLE, 1
 ;	db PROTEIN, 99
 ;	db IRON, 99
-	db MIST_STONE, 99
-	db POKE_PEP, 99
+	db MOOMOO_MILK, 99
+;	db MIST_STONE, 99
+	db POKE_PEP, 1
 	db FULL_RESTORE, 99
 	db FULL_HEAL, 99
 	db ESCAPE_ROPE, 1
@@ -179,14 +209,12 @@ DebugItemsList:
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1
 	db POKE_FLUTE, 1
-;	db EXP_ALL, 1
 	db OLD_ROD, 1
 	db GOOD_ROD, 1
 	db SUPER_ROD, 1
 	db COIN_CASE, 1
-;	db MAX_REPEL, 99
+	db MAX_REPEL, 99
 ;	db HM_WATERFALL, 1
-	db MOON_STONE, 99
 ;	db SLOWPOKETAIL, 99
 	db -1 ; end
 

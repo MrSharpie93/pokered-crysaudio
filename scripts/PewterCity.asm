@@ -24,6 +24,8 @@ PewterCityDefaultScript:
 PewterCityCheckPlayerLeavingEastScript:
 	CheckEvent EVENT_BEAT_BROCK
 	ret nz
+	CheckEvent EVENT_DIDNT_REGRET_THIS
+	ret nz
 IF DEF(_DEBUG)
 	call DebugPressedOrHeldB
 	ret nz
@@ -31,8 +33,8 @@ ENDC
 	ld hl, PewterCityPlayerLeavingEastCoords
 	call ArePlayerCoordsInArray
 	ret nc
-	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
-	ld [wJoyIgnore], a
+;	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+;	ld [wJoyIgnore], a
 	ld a, TEXT_PEWTERCITY_YOUNGSTER
 	ldh [hTextID], a
 	jp DisplayTextID
@@ -113,6 +115,8 @@ PewterCityResetSuperNerd1Script:
 	ret
 
 PewterCityYoungsterShowsPlayerGymScript:
+	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld [wJoyIgnore], a
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
@@ -216,10 +220,11 @@ PewterCitySuperNerd1Text:
 	jr nz, .playerDidNotGoIntoMuseum
 	ld hl, .WerentThoseFossilsAmazingText
 	call PrintText
-	jr .done
+	jr .youWillGoToTheMuseum
 .playerDidNotGoIntoMuseum
 	ld hl, .YouHaveToGoText
 	call PrintText
+.youWillGoToTheMuseum
 	xor a
 	ldh [hJoyPressed], a
 	ldh [hJoyHeld], a
@@ -233,7 +238,7 @@ PewterCitySuperNerd1Text:
 	call GetSpritePosition2
 	ld a, SCRIPT_PEWTERCITY_SUPER_NERD1_SHOWS_PLAYER_MUSEUM
 	ld [wPewterCityCurScript], a
-.done
+;.done
 	jp TextScriptEnd
 
 .DidYouCheckOutMuseumText:
@@ -258,15 +263,30 @@ PewterCitySuperNerd2Text:
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
-	cp $0
+	and a;cp $0
 	jr nz, .playerDoesNotKnow
 	ld hl, .ThatsRightText
 	call PrintText
-	jr .done
+	jr .itemCheck
 .playerDoesNotKnow
 	ld hl, .ImSprayingRepelText
 	call PrintText
+.itemCheck
+	CheckEvent EVENT_GOT_REPELS
+	jr nz, .gotRepels
+	ld hl, .HaveSomeRepelsText
+	call PrintText
+	lb bc, REPEL, 5
+	call GiveItem
+	jr nc, .bag_full
+	SetEvent EVENT_GOT_REPELS
+	ld hl, .GotRepelText
+	jr .done
+.bag_full
+	ld hl, .RepelNoRoomText
 .done
+	call PrintText
+.gotRepels
 	jp TextScriptEnd
 
 .DoYouKnowWhatImDoingText:
@@ -280,11 +300,63 @@ PewterCitySuperNerd2Text:
 .ImSprayingRepelText:
 	text_far _PewterCitySuperNerd2ImSprayingRepelText
 	text_end
+	
+.HaveSomeRepelsText:
+	text_far _PewterCitySuperNerd2HaveSomeRepelsText
+	text_end
+	
+.GotRepelText:
+	text_far _PewterCitySuperNerd2GotRepelText
+	sound_get_item_1
+	text_end
+	
+.RepelNoRoomText:
+	text_far _PewterCitySuperNerd2RepelNoRoomText
+	text_end
 
 PewterCityYoungsterText:
 	text_asm
-	ld hl, .YoureATrainerFollowMeText
+	CheckEvent EVENT_DIDNT_REGRET_THIS
+	jr nz, .didntRegretThis
+	ld hl, .YoureATrainerText
 	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .playerWillRegretThis
+	ld hl, .FollowMeText
+	call PrintText
+	jr .followingToGym
+.playerWillRegretThis
+	ld hl, .YouWillRegretThisText
+	call PrintText
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
+	ld a, 0
+	ld c, a
+	ld a, MUSIC_MEET_EVIL_TRAINER
+	call PlayMusic
+	ld hl, wStatusFlags3
+	set BIT_TALKED_TO_TRAINER, [hl]
+	set BIT_PRINT_END_BATTLE_TEXT, [hl]
+	
+	call Delay3
+	ld a, OPP_YOUNGSTER
+	ld [wCurOpponent], a
+	ld a, 13
+	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
+	
+	ld a, $0
+	ld [wPewterCityCurScript], a
+	
+	ld hl, RegretEndBattleText
+	ld de, RegretVictoryText
+	call SaveEndBattleTextPointers
+	SetEvent EVENT_DIDNT_REGRET_THIS
+	jr .done
+.followingToGym
 	xor a
 	ldh [hJoyHeld], a
 	ld [wNPCMovementScriptFunctionNum], a
@@ -297,14 +369,39 @@ PewterCityYoungsterText:
 	call GetSpritePosition2
 	ld a, SCRIPT_PEWTERCITY_YOUNGSTER_SHOWS_PLAYER_GYM
 	ld [wPewterCityCurScript], a
+	jr .done
+.didntRegretThis
+	ld hl, RegretAfterBattleText
+	call PrintText
+.done
 	jp TextScriptEnd
 
-.YoureATrainerFollowMeText:
-	text_far _PewterCityYoungsterYoureATrainerFollowMeText
+.YoureATrainerText:
+	text_far _PewterCityYoungsterYoureATrainerText
+	text_end
+	
+.FollowMeText:
+	text_far _PewterCityYoungsterFollowMeText
+	text_end
+	
+.YouWillRegretThisText:
+	text_far _PewterCityYoungsterYouWillRegretThisText
 	text_end
 
 PewterCityYoungsterGoTakeOnBrockText:
 	text_far _PewterCityYoungsterGoTakeOnBrockText
+	text_end
+	
+RegretEndBattleText:
+	text_far _RegretEndBattleText
+	text_end
+	
+RegretVictoryText:
+	text_far _RegretVictoryText
+	text_end
+	
+RegretAfterBattleText:
+	text_far _RegretAfterBattleText
 	text_end
 
 PewterCityTrainerTipsText:

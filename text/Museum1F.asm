@@ -43,8 +43,10 @@ _Museum1FScientist1AmberIsFossilizedTreeSapText::
 	done
 
 _Museum1FScientist1GoToOtherSideText::
-	text "Please go to the"
-	line "other side!"
+	text "Sorry, I'm legally"
+	line "not allowed to"
+	cont "sell tickets when"
+	cont "facing this way."
 	done
 
 _Museum1FScientist1TakePlentyOfTimeText::
@@ -53,9 +55,12 @@ _Museum1FScientist1TakePlentyOfTimeText::
 	done
 
 _Museum1FGamblerText::
-	text "That is one"
-	line "magnificent"
-	cont "fossil!"
+	text "These fossils are"
+	line "truly remarkable!"
+	
+	para "They almost look"
+	line "like they've still"
+	cont "got life in them!"
 	done
 
 _Museum1FScientist2TakeThisToAPokemonLabText::

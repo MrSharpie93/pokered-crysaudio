@@ -12,6 +12,10 @@ _CeladonMart4FYoungsterText::
 	line "wild #MON by"
 	cont "distracting them"
 	cont "with a # DOLL!"
+	
+	para "I've also heard"
+	line "they can ward off"
+	cont "evil spirits!"
 	done
 
 _CeladonMart4FCurrentFloorSignText::

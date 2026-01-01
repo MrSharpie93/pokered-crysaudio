@@ -63,8 +63,11 @@ PewterGymScriptReceiveTM34:
 .gymVictory
 	ld hl, wObtainedBadges
 	set BIT_BOULDERBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_BOULDERBADGE, [hl]
+;	ld hl, wBeatGymFlags
+;	set BIT_BOULDERBADGE, [hl]
+	ld a, [wBeatGymFlags]
+	inc a
+	ld [wBeatGymFlags], a
 
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a

@@ -120,11 +120,11 @@ TestBattle: ; unreferenced except in _DEBUG
 	; This function gives you a way to waste a turn, never know when you'll need it.
 	; Alternatively, add a move to test.
 	ld hl, wPartyMon1Moves
-	ld a, ZAP_CANNON ; New move animation test
+	ld a, TRI_ATTACK ; New move animation test
 	ld [hli], a
-	ld a, INFERNO ; New move animation test
+	ld a, NIGHT_SHADE ; New move animation test
 	ld [hli], a
-	ld a, CURSE ; New move animation test
+	ld a, MEDITATE ; New move animation test
 	ld [hli], a
 	ld a, PROTECT ; Skip turn, New move animation test
 	ld [hli], a
@@ -146,6 +146,7 @@ TestBattle: ; unreferenced except in _DEBUG
 
 BattleDebugItemsList:
 	db X_ACCURACY, 99
+	db KINGS_ROCK, 99
 	db FULL_RESTORE, 99
 	db MAX_ELIXER, 99
 	db FULL_HEAL, 99

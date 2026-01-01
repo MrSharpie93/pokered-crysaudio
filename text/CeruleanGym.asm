@@ -33,23 +33,14 @@ _CeruleanGymMistyTM11ExplanationText::
 	done
 
 _CeruleanGymMistyCascadeBadgeInfoText::
-	text "The CASCADEBADGE"
-	line "makes all #MON"
-	cont "up to L30 obey!"
-
-	para "That includes"
-	line "even outsiders!"
+	text "The CASCADEBADGE" ; ~$~CHANGED: Don't talk about specific HMs.~$~
+	line "shows everyone"
+	cont "how good you are"
+	cont "to have beaten me!"
 
 	para "There's more, you"
-	line "can now use CUT"
-	cont "any time!"
-
-	para "You can CUT down"
-	line "small bushes to"
-	cont "open new paths!"
-
-	para "You can also have"
-	line "my favorite TM!"
+	line "can also have my"
+	cont "favorite TM!"
 	done
 
 _CeruleanGymMistyReceivedTM11Text::

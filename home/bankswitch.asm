@@ -5,16 +5,12 @@ BankswitchHome::
 	ldh a, [hLoadedROMBank]
 	ld [wBankswitchHomeSavedROMBank], a
 	ld a, [wBankswitchHomeTemp]
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	ret
+	jr SetCurBank
 
 BankswitchBack::
 ; returns from BankswitchHome
 	ld a, [wBankswitchHomeSavedROMBank]
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	ret
+	jr SetCurBank
 
 Bankswitch::
 ; self-contained bankswitch, use this when not in the home bank
@@ -30,10 +26,6 @@ Bankswitch::
 .Return
 	pop bc
 	ld a, b
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	ret
-	
 SetCurBank:: ; ~$~ADDED: Pret tutorial optimization for homecalls.~$~
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a

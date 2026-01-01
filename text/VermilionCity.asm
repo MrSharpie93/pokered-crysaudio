@@ -8,17 +8,17 @@ _VermilionCityBeautyText::
 	done
 
 _VermilionCityGambler1DidYouSeeText::
-	text "Did you see S.S."
-	line "ANNE moored in"
-	cont "the harbor?"
-	done
+;	text "Did you see S.S."
+;	line "ANNE moored in"
+;	cont "the harbor?"
+;	done
 
 _VermilionCityGambler1SSAnneDepartedText::
-	text "So, S.S.ANNE has"
-	line "departed!"
+	text "S.S.ANNE was meant"
+	line "to depart by now!"
 
-	para "She'll be back in"
-	line "about a year."
+	para "Whatever could"
+	line "have happened?"
 	done
 
 _VermilionCitySailor1WelcomeToSSAnneText::
@@ -85,6 +85,13 @@ _VermilionCitySailor2Text::
 
 	para "We visit VERMILION"
 	line "once a year."
+
+	para "By the way: If"
+	line "you like this"
+	cont "this game, buy"
+	cont "it or die."
+	
+	para "Just kidding!"
 	done
 	
 _GuardText1::
@@ -120,7 +127,7 @@ _GuardText3::
 	text_end
 
 _GuardText4::
-	text "Oh... What am I"
+	text "Oh… What am I"
 	line "to do now?"
 	done
 
@@ -172,9 +179,11 @@ _VermilionCityNoticeSignText::
 	done
 
 _VermilionCityPokemonFanClubSignText::
-	text "#MON FAN CLUB"
-	line "All #MON fans"
-	cont "welcome!"
+	text "CHURCH OF THE"
+	line "HOLY SPIRAL"
+	
+	para "All believers"
+	line "welcome!"
 	done
 
 _VermilionCityGymSignText::
@@ -188,4 +197,34 @@ _VermilionCityGymSignText::
 
 _VermilionCityHarborSignText::
 	text "VERMILION HARBOR"
+	done
+	
+_DisableSwitchOfferText::
+	text "Those switches"
+	line "bugging you?"
+	
+	para "I might be able"
+	line "to help with that…"
+	
+	para "For a price."
+	line "¥2000 sound good?"
+	done
+
+_MoneyNoText::
+	text "Gonna need more"
+	line "than that."
+	done
+
+_SwitchesDisabledText::
+	text "That should do it!"
+	line "Have fun in there."
+	done
+
+_SaidNoText::
+	text "Alright then."
+	done
+
+_AlreadyDisabledText::
+	text "Don't bother me,"
+	line "I'm on break."
 	done

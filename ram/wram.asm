@@ -472,6 +472,7 @@ wAILayer2Encouragement:: db
 wPlayerSubstituteHP:: db
 wEnemySubstituteHP:: db
 
+wShinPokeBattleFlags:: ; ~$~ADDED: Repurpose this stupid thing.~$~
 ; used for TestBattle (unused in non-debug builds)
 wTestBattlePlayerSelectedMove:: db
 
@@ -2120,7 +2121,7 @@ wWalkBikeSurfState:: db
 
 wTownVisitedFlag:: flag_array NUM_FLY_LOCATIONS
 
-; starts at 502
+; starts at 500
 wSafariSteps:: dw
 
 ; item given to cinnabar lab
@@ -2169,7 +2170,7 @@ wUnusedCardKeyGateID:: db
 
 wStatusFlags1:: db
 wLowHealthTonePairs:: db ; ~$~ADDED: Used to shut the low health alarm up.~$~
-wBeatGymFlags:: db ; redundant because it matches wObtainedBadges
+wBeatGymFlags:: db ; ~$~CHANGED: Separated from wObtainedBadges to handle actual number of obtained badges.~$~
 	ds 1
 wStatusFlags2:: db
 wCableClubDestinationMap::

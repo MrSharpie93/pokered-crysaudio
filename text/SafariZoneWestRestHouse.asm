@@ -20,6 +20,8 @@ _SafariZoneWestRestHouseSilphWorkerFText::
 	done
 	
 _SafariZoneWestRestHouseDetailsText::
+	text_start
+
 	para "VENONAT, PARAS"
 	line "LICKITUNG, TAUROS"
 	cont "SCYTHER, BONSLY"

@@ -42,6 +42,7 @@ Route8GateDefaultScript:
 	call Route8GateMovePlayerRightScript
 	ld a, SCRIPT_ROUTE8GATE_PLAYER_MOVING
 	ld [wRoute8GateCurScript], a
+	SetEvent EVENT_GUARD_ASKED_FOR_TEA
 	ret
 .have_drink
 	ld hl, wStatusFlags1

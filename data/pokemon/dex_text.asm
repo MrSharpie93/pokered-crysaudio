@@ -405,7 +405,7 @@ _HitmonleeDexEntry::
 
 	page "stretch and cont-"
 	next "ract. Known as the"
-	next "KICKING MASTER"
+	next "“KICKING MASTER”"
 	dex
 
 _HitmonchanDexEntry::
@@ -611,7 +611,7 @@ _JynxDexEntry::
 _MoltresDexEntry::
 	text "A legendary bird"
 	next "#MON known as"
-	next "the FIRE BIRD."
+	next "the “FIRE BIRD”."
 
 	page "With every flap,"
 	next "its wings flare"

@@ -9,55 +9,68 @@ _SSAnne2FWaiterText::
 	done
 
 _SSAnne2FRivalText::
-	text "<RIVAL>: Bonjour!"
-	line "<PLAYER>!"
+	text "<RIVAL>: Well,"
+	line "fancy seeing you"
+	cont "here, <PLAYER>!"
 
-	para "Imagine seeing"
-	line "you here!"
+	para "This cruise sure"
+	line "is full of uppity"
+	cont "types, yeah?"
 
-	para "<PLAYER>, were you"
-	line "really invited?"
+	para "All of them are"
+	line "really wound up"
+	cont "over the ship not"
+	cont "departing, too!"
 
-	para "So how's your"
-	line "#DEX coming?"
+	para "Say, why don't we"
+	line "battle again?"
 
-	para "I already caught"
-	line "40 kinds, pal!"
-
-	para "Different kinds"
-	line "are everywhere!"
-
-	para "Crawl around in"
-	line "grassy areas!"
+	para "If you win, I'll"
+	line "share some cool"
+	cont "info!"
 	done
 
 _SSAnne2FRivalDefeatedText::
-	text "Humph!"
+	text "Wow!"
 
-	para "At least you're"
-	line "raising your"
-	cont "#MON!"
+	para "Not bad,"
+	line "<PLAYER>!"
 	prompt
 
 _SSAnne2FRivalVictoryText::
 	text "<PLAYER>! What are"
 	line "you, seasick?"
 
-	para "You should shape"
-	line "up, pal!"
+	para "You look worse"
+	line "than the CAPTAIN!"
 	prompt
 
 _SSAnne2FRivalCutMasterText::
-	text "<RIVAL>: I heard"
-	line "there was a CUT"
-	cont "master on board."
+	text "<RIVAL>: OK, as"
+	line "promised:"
 
-	para "But, he was just a"
-	line "seasick, old man!"
+	para "Apparently, the"
+	line "CAPTAIN here is"
+	cont "some legendary"
+	cont "CUT master."
+	
+	para "He didn't seem up"
+	line "for demonstrating"
+	cont "when I saw him,"
+	cont "though…"
 
 	para "But, CUT itself is"
 	line "really useful!"
 
-	para "You should go see"
-	line "him! Smell ya!"
+	para "Maybe you'll find"
+	line "a way to learn"
+	cont "his technique if"
+	cont "you look around"
+	cont "in his room."
+	
+	para "Well, I gotta go"
+	line "before anyone"
+	cont "notices their"
+	cont "valuables missing."
+	cont "Later!"
 	done

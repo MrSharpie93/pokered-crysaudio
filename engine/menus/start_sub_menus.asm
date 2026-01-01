@@ -25,6 +25,7 @@ StartMenu_Pokemon::
 	jr nc, .chosePokemon
 .exitMenu
 	call GBPalWhiteOutWithDelay3
+	call ReloadMapData
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 	jp RedisplayStartMenu
@@ -117,7 +118,8 @@ StartMenu_Pokemon::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wObtainedBadges] ; badges obtained
+;	ld a, [wObtainedBadges] ; badges obtained
+	ld a, [wBeatGymFlags] ; Number of badges obtained.~$~
 	jp hl
 .outOfBattleMovePointers
 	dw .cut
@@ -129,8 +131,8 @@ StartMenu_Pokemon::
 	dw .teleport
 	dw .softboiled
 .fly
-	bit BIT_THUNDERBADGE, a
-	jp z, .newBadgeRequired
+;	bit BIT_THUNDERBADGE, a ; ~$~CHANGED: Fast travel no longer tied to badges.~$~
+;	jp z, .newBadgeRequired
 	call CheckIfInOutsideMap
 	jr z, .canFly
 ; new block to make "open-air" maps flyable
@@ -160,16 +162,20 @@ StartMenu_Pokemon::
 	set BIT_UNKNOWN_4_1, [hl]
 	jp StartMenu_Pokemon
 .cut
-	bit BIT_CASCADEBADGE, a
-	jp z, .newBadgeRequired
+;	bit BIT_CASCADEBADGE, a
+;	jp z, .newBadgeRequired
+	cp 1
+	jp c, .newBadgeRequired
 	predef UsedCut
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
 	jp z, .loop
 	jp CloseTextDisplay
 .surf
-	bit BIT_SOULBADGE, a
-	jp z, .newBadgeRequired
+;	bit BIT_SOULBADGE, a
+;	jp z, .newBadgeRequired
+	cp 2
+	jp c, .newBadgeRequired
 	farcall IsSurfingAllowed
 	ld hl, wStatusFlags1
 	bit BIT_SURF_ALLOWED, [hl]
@@ -196,14 +202,16 @@ StartMenu_Pokemon::
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
 .strength
-	bit BIT_RAINBOWBADGE, a
-	jp z, .newBadgeRequired
+;	bit BIT_RAINBOWBADGE, a
+;	jp z, .newBadgeRequired
+	cp 3
+	jp c, .newBadgeRequired
 	predef PrintStrengthText
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
 .flash
-	bit BIT_BOULDERBADGE, a
-	jp z, .newBadgeRequired
+;	bit BIT_BOULDERBADGE, a ; ~$~CHANGED: Flash no longer tied to badges. You use it once in the vanilla game anyway.~$~
+;	jp z, .newBadgeRequired
 	xor a
 	ld [wMapPalOffset], a
 	ld hl, .flashLightsAreaText
@@ -295,6 +303,7 @@ StartMenu_Pokemon::
 	text_end
 .goBackToMap
 	call RestoreScreenTilesAndReloadTilePatterns
+	call ReloadMapData
 	jp CloseTextDisplay
 .newBadgeRequired
 	ld hl, .newBadgeRequiredText
@@ -438,6 +447,7 @@ StartMenu_Item::
 	jp z, .partyMenuNotDisplayed
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
+	call ReloadMapData
 	pop af
 	ld [wUpdateSpritesEnabled], a
 	jp StartMenu_Item
@@ -463,6 +473,7 @@ StartMenu_Item::
 	jp ItemMenuLoop
 .infoItem
 	farcall DisplayItemDescription
+;	call ReloadMapData
 	jp ItemMenuLoop
 
 CannotUseItemsHereText:
@@ -602,7 +613,7 @@ DrawTrainerInfo: ; ~$~ADDED: Masculine and feminine protagonists.~$~
 	ld de, wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
 	call PrintNumber
-	ld [hl], $d6 ; colon tile ID
+	ld [hl], "<COLON>" ; colon tile ID
 	inc hl
 	ld de, wPlayTimeMinutes ; minutes
 	lb bc, LEADING_ZEROES | 1, 2

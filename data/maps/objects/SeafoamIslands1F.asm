@@ -15,6 +15,7 @@ SeafoamIslands1F_Object:
 	warp_event 23, 15, SEAFOAM_ISLANDS_B1F, 5
 
 	def_bg_events
+	bg_event 15, 10, TEXT_SEAFOAMISLANDS1F_ICE_ROCK
 
 	def_object_events
 	object_event 18, 10, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_SEAFOAMISLANDS1F_BOULDER1

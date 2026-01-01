@@ -49,12 +49,12 @@
 	const RARE_CANDY    ; $28
 	const DOME_FOSSIL   ; $29 ; now not a key item
 	const HELIX_FOSSIL  ; $2A ; now not a key item
-	const SECRET_KEY    ; $2B
+	const SECRET_KEY    ; $2B REPLACE?
 	const AXE           ; $2C ; ~$~ADDED~$~
-	const BIKE_VOUCHER  ; $2D
+	const BIKE_VOUCHER  ; $2D REPLACE
 	const X_ACCURACY    ; $2E
 	const LEAF_STONE    ; $2F
-	const CARD_KEY      ; $30
+	const LUCKY_EGG     ; $30 was CARD_KEY
 	const NUGGET        ; $31
 	const POKE_PEP      ; $32 ; ~$~ADDED~$~
 	const POKE_DOLL     ; $33
@@ -69,14 +69,14 @@
 	const FRESH_WATER   ; $3C
 	const SODA_POP      ; $3D
 	const LEMONADE      ; $3E
-	const S_S_TICKET    ; $3F
-	const GOLD_TEETH    ; $40
+	const S_S_TICKET    ; $3F ~$~TODO: Use this to get to Postgame Island.~$~
+	const GOLD_TEETH    ; $40 REPLACE?
 	const X_ATTACK      ; $41
 	const X_DEFEND      ; $42
 	const X_SPEED       ; $43
 	const X_SPECIAL     ; $44
 	const COIN_CASE     ; $45 ; ~$~TODO: Having this in your bag doubles trainer payouts.~$~
-	const OAKS_PARCEL   ; $46
+	const OAKS_PARCEL   ; $46 REWORK
 	const ITEMFINDER    ; $47
 	const SILPH_SCOPE   ; $48
 	const POKE_FLUTE    ; $49
@@ -142,12 +142,12 @@ MACRO add_hm
 ENDM
 
 DEF HM01 EQU const_value
-	add_hm CUT          ; $C4
-	add_hm FLY          ; $C5
-	add_hm SURF         ; $C6
-	add_hm STRENGTH     ; $C7
-	add_hm FLASH        ; $C8
-	add_hm WATERFALL    ; $C9
+	add_hm CUT          ; $C4 ; SS Anne Captain's Room
+	add_hm FLY          ; $C5 ; 
+	add_hm SURF         ; $C6 ; 
+	add_hm STRENGTH     ; $C7 ; 
+	add_hm FLASH        ; $C8 ; Route 2 Gate
+	add_hm WATERFALL    ; $C9 ; Route 27
 DEF NUM_HMS EQU const_value - HM01
 
 DEF __tmhm_value__ = 1
@@ -163,56 +163,56 @@ MACRO add_tm
 ENDM
 
 DEF TM01 EQU const_value
-	add_tm DRAIN_PUNCH  ; $CA
-	add_tm DRAGON_CLAW  ; $CB
-	add_tm SWORDS_DANCE ; $CC
-	add_tm CURSE        ; $CD
-	add_tm BRUTAL_SWING ; $CE
-	add_tm TOXIC        ; $CF
-	add_tm OMINOUS_WIND ; $D0
-	add_tm BODY_SLAM    ; $D1
-	add_tm GIGA_IMPACT  ; $D2
-	add_tm DOUBLE_EDGE  ; $D3
-	add_tm BUBBLEBEAM   ; $D4
-	add_tm SCALD        ; $D5
-	add_tm ICE_BEAM     ; $D6
-	add_tm BLIZZARD     ; $D7
-	add_tm HYPER_BEAM   ; $D8
-	add_tm LIGHT_SCREEN ; $D9
-	add_tm PROTECT      ; $DA
-	add_tm FOCUS_BLAST  ; $DB
-	add_tm GIGA_DRAIN   ; $DC
-	add_tm SAFEGUARD    ; $DD
-	add_tm FLASH_CANNON ; $DE
-	add_tm SOLARBEAM    ; $DF
-	add_tm IRON_TAIL    ; $E0
-	add_tm THUNDERBOLT  ; $E1
-	add_tm THUNDER      ; $E2
-	add_tm EARTHQUAKE   ; $E3
-	add_tm FISSURE      ; $E4
-	add_tm DIG          ; $E5
-	add_tm PSYCHIC_M    ; $E6
-	add_tm SHADOW_BALL  ; $E7
-	add_tm X_SCISSOR    ; $E8
-	add_tm DOUBLE_TEAM  ; $E9
-	add_tm REFLECT      ; $EA
-	add_tm POISON_JAB   ; $EB
-	add_tm FLAMETHROWER ; $EC
-	add_tm SLUDGE_BOMB  ; $ED
-	add_tm WILL_O_WISP  ; $EE
-	add_tm FIRE_BLAST   ; $EF
-	add_tm ROCK_TOMB    ; $F0
-	add_tm AERIAL_ACE   ; $F1
-	add_tm BULLET_SEED  ; $F2
-	add_tm ZEN_HEADBUTT ; $F3
-	add_tm HURRICANE    ; $F4
-	add_tm REST         ; $F5
-	add_tm THUNDER_WAVE ; $F6
-	add_tm DARK_PULSE   ; $F7
-	add_tm STEEL_WING   ; $F8
-	add_tm ROCK_SLIDE   ; $F9
-	add_tm DAZZLINGLEAM ; $FA
-	add_tm ICICLE_CRASH ; $FB
+	add_tm DRAIN_PUNCH  ; $CA ; 
+	add_tm DRAGON_CLAW  ; $CB ; Victory Road 2F
+	add_tm SWORDS_DANCE ; $CC ; 
+	add_tm CURSE        ; $CD ; Celadon Mansion Roof
+	add_tm BRUTAL_SWING ; $CE ; Route 15
+	add_tm TOXIC        ; $CF ; Koga Gift
+	add_tm OMINOUS_WIND ; $D0 ; Pokemon Tower 3F
+	add_tm BODY_SLAM    ; $D1 ; SS Anne 1F Cabins
+	add_tm GIGA_IMPACT  ; $D2 ; 
+	add_tm DOUBLE_EDGE  ; $D3 ; Rocket Hideout B3F
+	add_tm BUBBLEBEAM   ; $D4 ; Misty Gift
+	add_tm SCALD        ; $D5 ; 
+	add_tm ICE_BEAM     ; $D6 ; 
+	add_tm BLIZZARD     ; $D7 ; Cinnabar Mansion B1F
+	add_tm HYPER_BEAM   ; $D8 ; 
+	add_tm LIGHT_SCREEN ; $D9 ; Give rooftop girl Soda Pop
+	add_tm PROTECT      ; $DA ; Give rooftop girl MooMoo Milk
+	add_tm FOCUS_BLAST  ; $DB ; Victory Road 2F
+	add_tm GIGA_DRAIN   ; $DC ; Erika Gift
+	add_tm SAFEGUARD    ; $DD ; Give rooftop girl Lemonade
+	add_tm FLASH_CANNON ; $DE ; Power Plant
+	add_tm SOLARBEAM    ; $DF ; Route 27
+	add_tm IRON_TAIL    ; $E0 ; 
+	add_tm THUNDERBOLT  ; $E1 ; Surge Gift
+	add_tm THUNDER      ; $E2 ; Power Plant
+	add_tm EARTHQUAKE   ; $E3 ; 
+	add_tm FISSURE      ; $E4 ; George Gift
+	add_tm DIG          ; $E5 ; 
+	add_tm PSYCHIC_M    ; $E6 ; Mr. Psychic's House
+	add_tm SHADOW_BALL  ; $E7 ; Route 12
+	add_tm X_SCISSOR    ; $E8 ; 
+	add_tm DOUBLE_TEAM  ; $E9 ; Safari Zone West
+	add_tm REFLECT      ; $EA ; Give rooftop girl Fresh Water
+	add_tm POISON_JAB   ; $EB ; 
+	add_tm FLAMETHROWER ; $EC ; Cinnabar Mansion B1F
+	add_tm SLUDGE_BOMB  ; $ED ; Safari Zone East
+	add_tm WILL_O_WISP  ; $EE ; 
+	add_tm FIRE_BLAST   ; $EF ; Blaine Gift
+	add_tm ROCK_TOMB    ; $F0 ; Brock Gift
+	add_tm AERIAL_ACE   ; $F1 ; Route 25
+	add_tm BULLET_SEED  ; $F2 ; Route 9
+	add_tm ZEN_HEADBUTT ; $F3 ; Sabrina Gift
+	add_tm HURRICANE    ; $F4 ; Victory Road 1F
+	add_tm REST         ; $F5 ; SS Anne B1F Cabins
+	add_tm THUNDER_WAVE ; $F6 ; Route 24
+	add_tm DARK_PULSE   ; $F7 ; 
+	add_tm STEEL_WING   ; $F8 ; Mt. Silver Celebrity House
+	add_tm ROCK_SLIDE   ; $F9 ; Safari Zone North
+	add_tm DAZZLINGLEAM ; $FA ; 
+	add_tm ICICLE_CRASH ; $FB ; Victory Road 3F
 ASSERT NUM_TMS == const_value - TM01, "NUM_TMS ({d:NUM_TMS}) does not match the number of add_tm definitions"
 
 DEF NUM_TM_HM EQU NUM_TMS + NUM_HMS

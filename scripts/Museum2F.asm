@@ -24,11 +24,48 @@ Museum2FScientistText:
 	text_end
 
 Museum2FBrunetteGirlText:
+	text_asm
+	ld a, [wCompletedInGameTradeFlags]
+	bit TRADE_FOR_SPARKLES, a
+	jr nz, .alreadyTraded
+	ld hl, BrunetteGirlBeforeTradeText
+	jr .printText
+.alreadyTraded
+	ld hl, BrunetteGirlAfterTradeText
+.printText
+	call PrintText
+	jp TextScriptEnd
+	
+BrunetteGirlBeforeTradeText:
 	text_far _Museum2FBrunetteGirlText
+	text_end
+	
+BrunetteGirlAfterTradeText:
+	text_far _BrunetteGirlAfterTradeText
 	text_end
 
 Museum2FHikerText:
+	text_asm
+	ld a, [wCompletedInGameTradeFlags]
+	bit TRADE_FOR_SPARKLES, a
+	jr nz, .alreadyTraded
+	ld hl, HikerBeforeTradeText
+	call PrintText
+	ld a, TRADE_FOR_SPARKLES
+	ld [wWhichTrade], a
+	predef DoInGameTradeDialogue
+	jp TextScriptEnd
+.alreadyTraded
+	ld hl, HikerAfterTradeText
+	call PrintText
+	jp TextScriptEnd
+	
+HikerBeforeTradeText:
 	text_far _Museum2FHikerText
+	text_end
+	
+HikerAfterTradeText:
+	text_far _HikerAfterTradeText
 	text_end
 
 Museum2FSpaceShuttleSignText:

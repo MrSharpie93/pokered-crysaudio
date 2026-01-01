@@ -1,85 +1,90 @@
 _PokemonFanClubPikachuFanNormalText::
-	text "Won't you admire"
-	line "my PIKACHU's"
-	cont "adorable tail?"
+	text "Behold the majesty"
+	line "of my HOLY SPIRAL!"
 	done
 
 _PokemonFanClubPikachuFanBetterText::
-	text "Humph! My PIKACHU"
-	line "is twice as cute"
-	cont "as that one!"
+	text "Humph! My prayers"
+	line "are twice as"
+	cont "fervent as yours!"
 	done
 
 _PokemonFanClubSeelFanNormalText::
 	text "I just love my"
-	line "SEEL!"
+	line "HOLY SPIRAL!"
 
-	para "It squeals when I"
-	line "hug it!"
+	para "I pray to it"
+	line "constantly!"
 	done
 
 _PokemonFanClubSeelFanBetterText::
-	text "Oh dear!"
+	text "Blasphemy!"
 
-	para "My SEEL is far"
-	line "more attractive!"
+	para "My SPIRAL is far"
+	line "more majestic!"
 	done
 
-_PokemonFanClubPikachuText::
-	text "PIKACHU: Chu!"
-	line "Pikachu!"
-	done
+;_PokemonFanClubPikachuText::
+;	text "PIKACHU: Chu!"
+;	line "Pikachu!"
+;	done
 
 _PokemonFanClubSeelText::
-	text "SEEL: Kyuoo!"
+	text "It's a replica of"
+	line "the HELIX FOSSIL."
+
+	para "Everyone here"
+	line "is worshipping"
+	cont "them."
 	done
 
 _PokemonFanClubChairmanIntroText::
-	text "I chair the"
-	line "#MON Fan Club!"
+	text "Be blessed, child."
 
-	para "I have collected"
-	line "over 100 #MON!"
+	para "This is a place"
+	line "to bask in the"
+	cont "splendor of the"
+	cont "HOLY SPIRAL."
 
-	para "I'm very fussy"
-	line "when it comes to"
-	cont "#MON!"
+	para "All of us here"
+	line "give praise to"
+	cont "our LORD daily."
 
-	para "So..."
+	para "So…"
 
 	para "Did you come"
-	line "visit to hear"
-	cont "about my #MON?"
+	line "to hear the"
+	cont "HELIX GOSPEL?"
 	done
 
 _PokemonFanClubChairmanStoryText::
 	text "Good!"
 	line "Then listen up!"
 
-	para "My favorite"
-	line "RAPIDASH..."
+	para "In the"
+	line "beginning…"
 
-	para "It...cute..."
-	line "lovely...smart..."
-	cont "plus...amazing..."
-	cont "you think so?..."
-	cont "oh yes...it..."
-	cont "stunning..."
-	cont "kindly..."
-	cont "love it!"
+	para "He… almighty…"
+	line "created… Earth…"
+	cont "LORD… amazing…"
+	cont "foul sinners…"
+	cont "oh yes… smite…"
+	cont "vengeance…"
+	cont "furious anger…"
+	cont "Praise Him!"
 
-	para "Hug it...when..."
-	cont "sleeping...warm"
-	cont "and cuddly..."
-	cont "spectacular..."
-	cont "ravishing..."
-	cont "...Oops! Look at"
+	para "Prophecy…"
+	line "warns… evil…"
+	cont "vile DOME…"
+	cont "nonbelievers…"
+	cont "condemned…"
+	cont "…Oh my! Look at"
 	cont "the time! I kept"
 	cont "you too long!"
 
-	para "Thanks for hearing"
-	line "me out! I want"
-	cont "you to have this!"
+	para "You are a true"
+	line "believer! Take"
+	cont "this, my child!"
 	prompt
 
 _PokemonFanClubReceivedBikeVoucherText::
@@ -92,54 +97,100 @@ _PokemonFanClubReceivedBikeVoucherText::
 _PokemonFanClubExplainBikeVoucherText::
 	text_start
 
-	para "Exchange that for"
-	line "a BICYCLE!"
+;	para "Exchange that for"
+;	line "a BICYCLE!"
 
-	para "Don't worry, my"
-	line "FEAROW will FLY"
-	cont "me anywhere!"
+;	para "Don't worry, my"
+;	line "FEAROW will FLY"
+;	cont "me anywhere!"
 
-	para "So, I don't need a"
-	line "BICYCLE!"
+;	para "So, I don't need a"
+;	line "BICYCLE!"
 
 	para "I hope you like"
 	line "cycling!"
 	done
 
 _PokemonFanClubNoStoryText::
-	text "Oh. Come back"
-	line "when you want to"
-	cont "hear my story!"
+	text "Oh. Then leave,"
+	line "vile heretic!"
 	done
 
 _PokemonFanClubChairFinalText::
-	text "Hello, <PLAYER>!"
+	text "Hello child!"
 
-	para "Did you come see"
-	line "me about my"
-	cont "#MON again?"
+	para "Have you come to"
+	line "hear more about"
+	cont "His Holiness?"
 
-	para "No? Too bad!"
+	para "No? Shame…"
 	done
 
 _PokemonFanClubBagFullText::
-	text "Make room for"
-	line "this!"
+	text "Thine BAG"
+	line "runneth over!"
 	done
+	
+_PokemonFanClubChairAskForHelixText::
+	text "OH! My child, I"
+	line "feel it! You carry"
+	cont "a piece of our"
+	cont "LORD with you!"
+	
+	para "I beg you, bestow"
+	line "upon us your holy"
+	cont "gift so that we"
+	cont "may grow ever"
+	cont "closer to Him!"
+	done
+	
+_PokemonFanClubChairGaveHelixText::
+	text "HELIX bless you,"
+	line "my child!!"
+	
+	para "Your generosity"
+	line "shall be rewarded!"
+	prompt
+	
+_LeaderPreBattleText::
+	text "I sense the foul"
+	line "aura of the DOME."
+	
+	para "It radiates from"
+	line "you, child."
+	
+	para "In HELIX's name,"
+	line "I cast thee out!"
+	done
+	
+_LeaderDefeatedText::
+	text "No!"
+	line "Blasphemy!"
+	prompt
+	
+_LeaderVictoryText::
+	text "Vile"
+	line "heretic, begone!"
+	prompt
 
 _PokemonFanClubReceptionistText::
-	text "Our Chairman is"
+	text "Our Leader is"
 	line "very vocal about"
-	cont "#MON."
+	cont "the HOLY SPIRAL."
 	done
 
 _PokemonFanClubSign1Text::
-	text "Let's all listen"
-	line "politely to other"
-	cont "trainers!"
+	text "An oil painting"
+	line "depicting a man"
+	cont "given life by the"
+	cont "HOLY SPIRAL."
 	done
 
 _PokemonFanClubSign2Text::
-	text "If someone brags,"
-	line "brag right back!"
+	text "A list of several"
+	line "commandments."
+	
+	para "You don't have"
+	line "time to read"
+	cont "them all."
 	done

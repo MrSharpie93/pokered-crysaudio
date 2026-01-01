@@ -92,6 +92,13 @@ GainExperience:
 	ld a, [wIsInBattle]
 	dec a ; is it a trainer battle?
 	call nz, BoostExp ; if so, boost exp
+; ~$~ADDED: Lucky Egg boosts EXP if in bag.~$~	
+	push hl
+	ld b, LUCKY_EGG
+	call IsItemInBag
+	call nz, BoostExp
+	pop hl
+;;;	
 	inc hl
 	inc hl
 	inc hl

@@ -222,28 +222,28 @@ PrintSafariZoneSteps::
 	ret c
 	cp CERULEAN_CAVE_2F
 	ret nc
-	hlcoord 0, 0
+	hlcoord 0, 11
 	ld b, 3
 	ld c, 7
 	call TextBoxBorder
-	hlcoord 1, 1
+	hlcoord 1, 12
 	ld de, wSafariSteps
 	lb bc, 2, 3
 	call PrintNumber
-	hlcoord 4, 1
+	hlcoord 4, 12
 	ld de, SafariSteps
 	call PlaceString
-	hlcoord 1, 3
+	hlcoord 1, 14
 	ld de, SafariBallText
 	call PlaceString
 	ld a, [wNumSafariBalls]
 	cp 10
 	jr nc, .tenOrMore
-	hlcoord 5, 3
+	hlcoord 5, 14
 	ld a, " "
 	ld [hl], a
 .tenOrMore
-	hlcoord 6, 3
+	hlcoord 6, 14
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	jp PrintNumber

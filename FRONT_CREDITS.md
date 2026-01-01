@@ -106,7 +106,7 @@
 - Ponyta: Game Freak
 - Rapidash: Pia Carrot
 - Salandit: Pia Carrot
-- Salazzle: TBD
+- Salazzle: Sharpie93
 - Slowpoke: Game Freak
 - Slowbro: ???
 - Slowking: Game Freak

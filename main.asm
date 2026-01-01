@@ -67,6 +67,9 @@ INCLUDE "engine/movie/oak_speech/init_player_data.asm"
 INCLUDE "engine/items/get_bag_item_quantity.asm"
 INCLUDE "engine/overworld/pathfinding.asm"
 INCLUDE "engine/gfx/hp_bar.asm"
+
+SECTION "Bookshelves", ROMX
+
 INCLUDE "engine/events/hidden_objects/bookshelves.asm"
 INCLUDE "engine/events/hidden_objects/indigo_plateau_statues.asm"
 INCLUDE "engine/events/hidden_objects/book_or_sculpture.asm"
@@ -250,7 +253,7 @@ INCLUDE "engine/battle/move_effects/paralyze.asm"
 
 SECTION "Hidden Objects 2", ROMX
 
-INCLUDE "engine/events/card_key.asm"
+;INCLUDE "engine/events/card_key.asm" ; ~$~REMOVED: Silph Co and the Card Key have been removed.~$~
 INCLUDE "engine/events/prize_menu.asm"
 INCLUDE "engine/events/hidden_objects/school_notebooks.asm"
 INCLUDE "engine/events/hidden_objects/fighting_dojo.asm"

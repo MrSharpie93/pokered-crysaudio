@@ -287,6 +287,19 @@ EnemyRanText:
 	text_end
 
 MainInBattleLoop:
+;joenote - zero the damage from last round if not using a trapping move
+	ld a, [wEnemyBattleStatus1]
+	bit USING_TRAPPING_MOVE, a
+	jr nz, .no_trapping_moves
+	ld a, [wPlayerBattleStatus1]
+	bit USING_TRAPPING_MOVE, a
+	jr nz, .no_trapping_moves
+	call ZeroLastDamage	;joenote - prevent counter shenanigans of all sorts
+.no_trapping_moves
+	;joenote - clear custom battle flags
+	ld a, [wShinPokeBattleFlags]
+	res COUNTER_FAILS, a	;reset the bit that causes counter to miss
+	ld [wShinPokeBattleFlags], a 
 	call ReadPlayerMonCurHPAndStatus
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -343,7 +356,7 @@ MainInBattleLoop:
 	call LoadScreenTilesFromBuffer1
 	call DrawHUDsAndHPBars
 	pop af
-	jr nz, MainInBattleLoop ; if the player didn't select a move, jump
+	jp nz, MainInBattleLoop ; if the player didn't select a move, jump
 .selectEnemyMove
 	call SelectEnemyMove
 	ld a, [wLinkState]
@@ -369,9 +382,12 @@ MainInBattleLoop:
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-	cp METRONOME ; a MIRROR MOVE check is missing, might lead to a desync in link battles
+	cp MIRROR_MOVE
+	jr z, .mirrorMoveLinkCheck
+	cp METRONOME ; ~$~FIXED~$~ a MIRROR MOVE check is missing, might lead to a desync in link battles
 	             ; when combined with multi-turn moves
 	jr nz, .specialMoveNotUsed
+.mirrorMoveLinkCheck
 	ld [wPlayerSelectedMove], a
 .specialMoveNotUsed
 	callfar SwitchEnemyMon
@@ -433,21 +449,32 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
-.playerMovesFirst
-	call ExecutePlayerMove
+.playerMovesFirst	;joenote - reorganizing this so enemy AI item use and switching has priority over player moves
+;#1 - handle enemy switching or using an item
+	ld a, $1
+	ld [hWhoseTurn], a
+	callfar TrainerAI
+	call c, SetEnemyActedBit	;if carry was set from TrainerAI, set the bit indicating the ai trainer switched or used an item
+;#2 - handle player using a move
+	call ExecutePlayerMove	;note: this function writes zero to H_WHOSETURN
 	ld a, [wEscapedFromBattle]
 	and a ; was Teleport, Roar, or Whirlwind used to escape from battle?
 	ret nz ; if so, return
+	ld a, b
+	and a
+	call z, CheckandResetEnemyActedBit	;reset enemy acted bit if enemy pkmn fainted
 	ld a, b
 	and a
 	jp z, HandleEnemyMonFainted
 	call HandlePoisonBurnLeechSeed
 	jp z, HandlePlayerMonFainted
 	call DrawHUDsAndHPBars
+;#3 - handle enemy using move
+	call CheckandResetEnemyActedBit	;check to see if ai trainer already acted this turn
+	jr nz, .AIActionUsedPlayerFirst	;skip executing enemy move if it already acted
+	;else execute the enemy move
 	ld a, $1
 	ldh [hWhoseTurn], a
-	callfar TrainerAI
-	jr c, .AIActionUsedPlayerFirst
 	call ExecuteEnemyMove
 	ld a, [wEscapedFromBattle]
 	and a ; was Teleport, Roar, or Whirlwind used to escape from battle?
@@ -461,6 +488,35 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
+	
+;joenote - this sets the last damage dealt to zero
+;meant for fixing counter glitches
+ZeroLastDamage:
+	push af
+	push hl
+	ld a, $00
+	ld hl, wDamage
+	ld [hli], a
+	ld [hl], a
+	pop hl
+	pop af
+	ret
+	
+
+;joenote - function for checking and reseting the AI's already-acted bit
+CheckandResetEnemyActedBit:
+	ld a, [wShinPokeBattleFlags]
+	bit ENEMY_ACTED, a	;check a for already-acted bit (sets or clears zero flag)
+	res ENEMY_ACTED, a ; resets the already-acted bit (does not affect flags)
+	ld [wShinPokeBattleFlags], a
+	ret 
+
+;joenote - function for setting the AI's already-acted bit
+SetEnemyActedBit:
+	ld a, [wShinPokeBattleFlags]
+	set ENEMY_ACTED, a ; sets the already-acted bit
+	ld [wShinPokeBattleFlags], a
+	ret
 	
 HandleMovePriority: ; ~$~ADDED: Better move priority system.~$~
 ; This subroutine modifies registers a, hl, bc, and de
@@ -1687,6 +1743,11 @@ TryRunningFromBattle:
 	ld hl, CantEscapeText
 	jr .printCantEscapeOrNoRunningText
 .trainerBattle
+IF DEF(_DEBUG) ; ~$~ADDED: ZetaPhoenix snippet for debugging.~$~
+	call FaintEnemyPokemon
+	call TrainerBattleVictory
+	jp _InitBattleCommon.endOfBattle
+ENDC
 	ld hl, NoRunningText
 .printCantEscapeOrNoRunningText
 	call PrintText
@@ -2546,7 +2607,7 @@ PartyMenuOrRockOrRun:
 	jr .enemyMonPicReloaded
 .doEnemyMonAnimation
 	ld b, BANK(AnimationSubstitute) ; BANK(AnimationMinimizeMon)
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 .enemyMonPicReloaded ; enemy mon pic has been reloaded, so return to the party menu
 	jp .partyMenuWasSelected
 .switchMon
@@ -2796,6 +2857,17 @@ SelectMenuItem:
 	bit BIT_SELECT, a
 	jp nz, SwapMovesInMenu
 	bit BIT_B_BUTTON, a
+	;;;;;;;;;;;;;;;;;;;;;;;
+	;joenote
+	;This is the point where B has been pressed 
+	;to exit out of the move selection menu during battle.
+	;Write 0 to wPlayerMovePower and wPlayerSelectedMove to nullify any previous 
+	;cursor selection when this line is reached. 
+	;This prevents a de-sync and some other Counter shenanigans.
+	ld a, $00
+	ld [wPlayerMovePower], a
+	ld [wPlayerSelectedMove], a
+	;;;;;;;;;;;;;;;;;;;;;;;
 	push af
 	xor a
 	ld [wMenuItemToSwap], a
@@ -3363,7 +3435,7 @@ PlayerCanExecuteMove:
 	ld hl, DecrementPP
 	ld de, wPlayerSelectedMove ; pointer to the move just used
 	ld b, BANK(DecrementPP)
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 	ld a, [wPlayerMoveEffect] ; effect of the move just used
 	ld hl, ResidualEffects1
 	ld de, 1
@@ -3491,6 +3563,18 @@ MirrorMoveCheck:
 	ld a, 1
 	ld [wMoveDidntMiss], a
 .notDone
+ ; ~$~ADDED: King's Rock adds flinch chance to any move.~$~
+	ld hl, wPlayerBattleStatus2
+	bit USING_KINGS_ROCK, [hl]
+	jr z, .noKingsRock
+	ld b, 10 percent + 1 ; chance of flinch
+	call BattleRandom
+	cp b
+	jr nc, .noKingsRock
+	ld hl, wEnemyBattleStatus1
+	set FLINCHED, [hl] ; set mon's status to flinching
+.noKingsRock
+;;;
 	ld a, [wPlayerMoveEffect]
 	ld hl, AlwaysHappenSideEffects
 	ld de, 1
@@ -3771,6 +3855,7 @@ CheckPlayerStatusConditions:
 	ld a, STATUS_AFFECTED_ANIM
 	call PlayAltAnimation
 .NotFlyOrChargeEffect
+	call ZeroLastDamage	;joenote - prevent Counter from working on confusion damage
 	ld hl, ExecutePlayerMoveDone
 	jp .returnToHL ; if using a two-turn move, we need to recharge the first turn
 
@@ -3973,6 +4058,12 @@ MoveIsDisabledText:
 	text_end
 
 HandleSelfConfusionDamage:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
+	ld a, [wShinPokeBattleFlags]
+	set COUNTER_FAILS, a	;setting this bit causes counter to miss
+	ld [wShinPokeBattleFlags], a 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, HurtItselfText
 	call PrintText
 	ld hl, wEnemyMonDefense
@@ -4100,7 +4191,12 @@ PrintMoveFailureText:
 	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
 	                ; even if it was intended to be potential damage/8.
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
+	ld a, [wShinPokeBattleFlags]
+	set COUNTER_FAILS, a	;setting this bit causes counter to miss
+	ld [wShinPokeBattleFlags], a 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wDamageIntention ; PureRGBnote: FIXED: this address now stores the damage that would have been done if it didn't miss
 	ld a, [hli]
 	ld b, [hl]
@@ -4185,47 +4281,59 @@ OHKOText:
 
 ; checks if a traded mon will disobey due to lack of badges
 ; stores whether the mon will use a move in Z flag
-CheckForDisobedience:
+CheckForDisobedience: ; ~$~CHANGED: Obedience affects all Pokemon, and every badge increases the level cap.~$~
 	xor a
 	ld [wMonIsDisobedient], a
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .checkIfMonIsTraded
+	jr nz, .monIsTraded;.checkIfMonIsTraded
 	ld a, $1
 	and a
 	ret
 ; compare the mon's original trainer ID with the player's ID to see if it was traded
-.checkIfMonIsTraded
-	ld hl, wPartyMon1OTID
-	ld bc, wPartyMon2 - wPartyMon1
-	ld a, [wPlayerMonNumber]
-	call AddNTimes
-	ld a, [wPlayerID]
-	cp [hl]
-	jr nz, .monIsTraded
-	inc hl
-	ld a, [wPlayerID + 1]
-	cp [hl]
-	jp z, .canUseMove
+;.checkIfMonIsTraded
+;	ld hl, wPartyMon1OTID
+;	ld bc, wPartyMon2 - wPartyMon1
+;	ld a, [wPlayerMonNumber]
+;	call AddNTimes
+;	ld a, [wPlayerID]
+;	cp [hl]
+;	jr nz, .monIsTraded
+;	inc hl
+;	ld a, [wPlayerID + 1]
+;	cp [hl]
+;	jp z, .canUseMove
 ; it was traded
 .monIsTraded
 ; what level might disobey?
-	ld hl, wObtainedBadges
-	bit BIT_EARTHBADGE, [hl]
-	ld a, 101
-	jr nz, .next
-	bit BIT_MARSHBADGE, [hl]
-	ld a, 70
-	jr nz, .next
-	bit BIT_RAINBOWBADGE, [hl]
-	ld a, 50
-	jr nz, .next
-	bit BIT_CASCADEBADGE, [hl]
-	ld a, 30
-	jr nz, .next
-	ld a, 10
+	ld a, [wBeatGymFlags];ld hl, wObtainedBadges
+	cp 8
+	ld b, 255
+	jr z, .next
+	cp 7
+	ld b, 60
+	jr z, .next
+	cp 6
+	ld b, 55
+	jr z, .next
+	cp 5
+	ld b, 50
+	jr z, .next
+	cp 4
+	ld b, 45
+	jr z, .next
+	cp 3
+	ld b, 40
+	jr z, .next
+	cp 2
+	ld b, 35
+	jr z, .next
+	cp 1
+	ld b, 30
+	jr z, .next
+	ld b, 20
 .next
-	ld b, a
+	ld a, b;ld b, a
 	ld c, a
 	ld a, [wBattleMonLevel]
 	ld d, a
@@ -5047,6 +5155,15 @@ HandleCounterMove: ; ~$~CHANGED: Counter functions like later games. Some code f
 	ret z ; miss if the opponent's last selected move is Counter.
 	cp MIRROR_COAT
 	ret z ; miss if the opponent's last selected move is Mirror Coat.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - If this bit is set, the opponent either hurt itself in confusion or took crash damage.
+;			Make Counter miss and reset the bit.
+	ld a, [wShinPokeBattleFlags]
+	bit COUNTER_FAILS, a	;check a for Counter miss bit
+	res COUNTER_FAILS, a ; resets the bit (does not affect flags)
+	ld [wShinPokeBattleFlags], a
+	ret nz	;return if bit is set causing Counter to miss.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [de]
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
@@ -5070,6 +5187,15 @@ HandleCounterMove: ; ~$~CHANGED: Counter functions like later games. Some code f
 	ret z ; miss if the opponent's last selected move is Counter.
 	cp MIRROR_COAT
 	ret z ; miss if the opponent's last selected move is Mirror Coat.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - If this bit is set, the opponent either hurt itself in confusion or took crash damage.
+;			Make Counter miss and reset the bit.
+	ld a, [wShinPokeBattleFlags]
+	bit COUNTER_FAILS, a	;check a for Counter miss bit
+	res COUNTER_FAILS, a ; resets the bit (does not affect flags)
+	ld [wShinPokeBattleFlags], a
+	ret nz	;return if bit is set causing Counter to miss.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [de]
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
@@ -6092,7 +6218,7 @@ EnemyCanExecuteMove:
 	ld hl, DecrementPP
 	ld de, wEnemySelectedMove ; pointer to the move just used
 	ld b, BANK(DecrementPP)
-	call Bankswitch
+	rst _Bankswitch;call Bankswitch
 ;;;
 	ld a, [wEnemyMoveEffect]
 	ld hl, ResidualEffects1
@@ -6229,6 +6355,18 @@ EnemyCheckIfMirrorMoveEffect:
 	ld a, 1
 	ld [wMoveDidntMiss], a
 .handleExplosionMiss
+ ; ~$~ADDED: King's Rock adds flinch chance to any move.~$~
+	ld hl, wEnemyBattleStatus2
+	bit USING_KINGS_ROCK, [hl]
+	jr z, .enemyNoKingsRock
+	ld b, 10 percent + 1 ; chance of flinch
+	call BattleRandom
+	cp b
+	jr nc, .enemyNoKingsRock
+	ld hl, wPlayerBattleStatus1
+	set FLINCHED, [hl] ; set mon's status to flinching
+.enemyNoKingsRock
+;;;
 	ld a, [wEnemyMoveEffect]
 	ld hl, AlwaysHappenSideEffects
 	ld de, $1
@@ -6398,6 +6536,12 @@ CheckEnemyStatusConditions:
 	call BattleRandom
 	cp $80
 	jr c, .checkIfTriedToUseDisabledMove
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
+	ld a, [wShinPokeBattleFlags]
+	set COUNTER_FAILS, a	;setting this bit causes counter to miss
+	ld [wShinPokeBattleFlags], a 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
 	and 1 << CONFUSED ; if mon hurts itself, clear every other status from wEnemyBattleStatus1
@@ -6487,6 +6631,7 @@ CheckEnemyStatusConditions:
 	ld a, STATUS_AFFECTED_ANIM
 	call PlayAltAnimation
 .notFlyOrChargeEffect
+	call ZeroLastDamage	;joenote - prevent Counter from working on confusion damage
 	ld hl, ExecuteEnemyMoveDone
 	jp .enemyReturnToHL ; if using a two-turn move, enemy needs to recharge the first turn
 .checkIfUsingBide ; ~$~REMOVED: Bide removed, check no longer necessary.~$~
@@ -7370,6 +7515,26 @@ InitBattleCommon:
 	jp _InitBattleCommon
 
 InitWildBattle:
+; ~$~CHANGED: Item duplication when encountering Missingno, and failsafe for odd wild encounter scenarios that might produce 'M.~$~
+	ld a, [wEnemyMonSpecies2]
+	cp MISSINGNO
+	jr z, .itemDuplication
+	and a
+	jr nz, .notMBlock
+	ld a, MISSINGNO
+	ld [wEnemyMonSpecies2], a
+.itemDuplication
+; PureRGB snippet for item duplication.	
+	ld hl, wBagItems + 11 ; sixth item in bag's quantity
+	set 7, [hl] ; adds 128 to the quantity, if you don't already have 128.
+	; PureRGBnote: FIXED: Now we will make sure the player can't have 255 of an item, because it can cause glitches with the item list.
+	ld a, [hl]
+	cp $FF
+	jr nz, .notMBlock
+	dec [hl] ; make it 254 if it was at 255
+;;;
+.notMBlock
+;;;
 	ld a, $1
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
@@ -7448,6 +7613,7 @@ _InitBattleCommon:
 	dec a ; is it a wild battle?
 	call z, DrawEnemyHUDAndHPBar ; draw enemy HUD and HP bar if it's a wild battle
 	call StartBattle
+.endOfBattle ; needed for debug auto-win
 	callfar EndOfBattle
 	pop af
 	ld [wLetterPrintingDelayFlags], a

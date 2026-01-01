@@ -9,7 +9,7 @@ Underground_Coll::
 	coll_tiles $0b, $0c, $13, $15, $18
 
 Overworld_Coll::
-	coll_tiles $00, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b
+	coll_tiles $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b
 
 RedsHouse1_Coll::
 RedsHouse2_Coll::
@@ -28,7 +28,7 @@ Gym_Coll::
 	coll_tiles $11, $16, $19, $2b, $3c, $3d, $3f, $4a, $4c, $4d, $03
 
 Forest_Coll::
-	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f
+	coll_tiles $1e, $20, $2e, $30, $34, $37, $39, $3a, $40, $51, $52, $5a, $5c, $5e, $5f, $62
 
 House_Coll::
 	coll_tiles $01, $12, $14, $28, $32, $37, $44, $54, $5c
@@ -56,7 +56,7 @@ Cavern_Coll::
 	coll_tiles ; unused
 
 Lobby_Coll::
-	coll_tiles $14, $17, $1a, $1c, $20, $38, $45
+	coll_tiles $14, $17, $1a, $1c, $20, $38, $45, $62
 
 Mansion_Coll::
 	coll_tiles $01, $05, $11, $12, $14, $1a, $1c, $2c, $53
@@ -68,7 +68,7 @@ Club_Coll::
 	coll_tiles $0f, $1a, $1f, $26, $28, $29, $2c, $2d, $2e, $2f, $41
 
 Facility_Coll::
-	coll_tiles $01, $10, $11, $13, $1b, $20, $21, $22, $30, $31, $32, $42, $43, $48, $52, $55, $58, $5e
+	coll_tiles $01, $10, $11, $13, $1b, $20, $21, $22, $30, $31, $32, $42, $43, $52, $55, $58, $5e
 
 Plateau_Coll::
 	coll_tiles $1b, $23, $2c, $2d, $3b, $45

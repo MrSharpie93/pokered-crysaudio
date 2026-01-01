@@ -200,7 +200,7 @@ SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText: ; ~$~CHANGED: Poor Man's 
 	ld hl, .MakePaymentText
 	call PrintText
 	ld a, 30
-	ld hl, 502
+	ld hl, 500 ; ~$~CHANGED: Extra 2 steps no longer needed, as steps only decrease when in the forest tileset.~$~
 .poor_mans_discount
 	ld [wNumSafariBalls], a
 	ld a, h

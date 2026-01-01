@@ -34,6 +34,6 @@ PrintBookshelfText::
 .noMatch
 	ld a, $ff
 	ldh [hInteractedWithBookshelf], a
-	farjp PrintCardKeyText
+	ret;farjp PrintCardKeyText ; ~$~REMOVED: Silph Co and the Card Key have been removed.~$~
 
 INCLUDE "data/tilesets/bookshelf_tile_ids.asm"

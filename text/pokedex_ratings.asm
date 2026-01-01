@@ -65,8 +65,8 @@ _DexRatingText_Own80To94:: ; I'm leaving this with the typo, it's hilarious.~$~
 _DexRatingText_Own95To109::
 	text "To evolve, some"
 	line "#MON grow,"
-	cont "others use the"
-	cont "effects of STONES."
+	cont "others use STONEs"
+	cont "or other items."
 	done
 
 _DexRatingText_Own110To124::

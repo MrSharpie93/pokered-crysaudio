@@ -271,8 +271,12 @@ ExplodeEffect:
 	
 ; ~$~ADDED: Red++ code for Tri Attack's effect.~$~
 TriAttackEffect:
+;	ld b, BURN_SIDE_EFFECT1
+;	ld a, [hRandomSub] ; grab a random number
+	call BattleRandom
+	ld d, a
 	ld b, BURN_SIDE_EFFECT1
-	ld a, [hRandomSub] ; grab a random number
+	ld a, d
 	cp 85 ; 85 / 256 chance = 33%
 	jr c, .gotStatusEffect
 	inc b ; FREEZE_SIDE_EFFECT

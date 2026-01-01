@@ -163,8 +163,11 @@ CinnabarGymReceiveTM38:
 .gymVictory
 	ld hl, wObtainedBadges
 	set BIT_VOLCANOBADGE, [hl]
-	ld hl, wBeatGymFlags
-	set BIT_VOLCANOBADGE, [hl]
+;	ld hl, wBeatGymFlags
+;	set BIT_VOLCANOBADGE, [hl]
+	ld a, [wBeatGymFlags]
+	inc a
+	ld [wBeatGymFlags], a
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6

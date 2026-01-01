@@ -88,13 +88,15 @@ Route22Gate_TextPointers:
 
 Route22GateGuardText:
 	text_asm
-	ld a, [wObtainedBadges]
-	bit BIT_BOULDERBADGE, a
+;	ld a, [wObtainedBadges]
+;	bit BIT_BOULDERBADGE, a
+	ld a, [wBeatGymFlags]
+	and a
 	jr nz, .has_boulderbadge
 	ld hl, Route22GateGuardNoBoulderbadgeText
 	call PrintText
 	call Route22GateMovePlayerDownScript
-	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING_2
+	ld a, SCRIPT_ROUTE22GATE_PLAYER_MOVING
 	jr .set_current_script
 .has_boulderbadge
 	ld hl, Route22GateGuardGoRightAheadText

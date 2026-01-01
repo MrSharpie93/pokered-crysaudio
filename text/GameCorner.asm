@@ -48,8 +48,9 @@ _GameCornerMiddleAgedMan1Text::
 	text "Keep this quiet."
 
 	para "It's rumored that"
-	line "this place is run"
-	cont "by TEAM ROCKET."
+	line "ROCKET GAME CORNER"
+	cont "is run by TEAM"
+	cont "ROCKET."
 	done
 
 _GameCornerBeauty2Text::
@@ -74,7 +75,7 @@ _GameCornerFishingGuruDontNeedMyCoinsText::
 	done
 
 _GameCornerFishingGuruWinsComeAndGoText::
-	text "Nothing is certain"
+	text "Nothing is certain" ; Bizarre censored text from the AU version of Crystal.~$~
 	line "in this area."
 	done
 
