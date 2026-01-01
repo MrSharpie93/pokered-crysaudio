@@ -6,7 +6,7 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 
 - Game Freak: Original game.
 - [pret](https://github.com/pret): Decomp, many bug fixes and tutorials.
-- [dannye](https://github.com/dannye): Crystal audio engine, menu icons use 4 colors, Crystal Tracker, snippets from[pokered-gbc](https://github.com/dannye/pokered-gbc) for unique trainer palettes.
+- [dannye](https://github.com/dannye): Crystal audio engine, menu icons use 4 colors, Crystal Tracker, snippets from [pokered-gbc](https://github.com/dannye/pokered-gbc) for unique trainer palettes.
 - [Sanqui](https://github.com/Sanqui): Crystal audio engine.
 - [jojobear13](https://github.com/jojobear13): Substitute HP fix, code for running shoes/faster surfing, biking and spinners, restoring Gym Leader names on trainer card, Move Reminder and Move Deleter, shut up low health alarm, crash damage not 1 HP, level variance for wild encounters and fishing, DVs and stat EXP on status screen, X-Accuracy doesn't work on OHKO moves, better trainer AI, Rest and status healing items restore stats afflicted by BRN/PRZ, basis for trainer level scaling, various improvements to Safari Zone/Balls, better method for red Poke Balls in battle HUD, legendaries use trainer AI for move selection, fixes for various Counter/Mirror Coat shenanigans, enemy AI switching/item use priority fix.
 - [Vortyne](https://github.com/Vortyne): 15th sprite map function removal, slots rework, larger bag space, various optimizations, shut up low health alarm, crash damage not 1 HP, Mist rework, fix for textbox when using Mimic, Teleport effect, Pokemon can't be trapped by moves they're immune to, Good/Super Rod only fails 25% of the time, Pokedex base stats page, better trainer AI, waterfall tile animation, spinner tile optimizations, basis for Poke Pep function, burn damage animation, improvements to move animations, item duplication for Missingno.
@@ -20,8 +20,9 @@ Below is a list of anyone whose work has assisted in the creation of this projec
 - [longlostsoul](https://github.com/longlostsoul): Mirror Coat effect, Day/Night cycle.
 - [ShinyDragonHunter](https://github.com/ShinyDragonHunter): Fixes for GSC textbox arrow placement.
 - [RainbowMetalPigeon](https://github.com/RainbowMetalPigeon): Fly improvements.
-- FroggestSpirit: Snippets from[pokered-gbc](https://github.com/dannye/pokered-gbc) for unique trainer palettes.
+- FroggestSpirit: Snippets from [pokered-gbc](https://github.com/dannye/pokered-gbc) for unique trainer palettes.
 - [Stewmath](https://github.com/Stewmath): Snippets from [pokered-gbc](https://github.com/dannye/pokered-gbc)for unique trainer palettes.
+- [SteppoBlazer](https://github.com/SteppoBlazer): Day/Night cycle.
 
 ## Art
 
