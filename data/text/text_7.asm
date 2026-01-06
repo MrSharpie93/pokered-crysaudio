@@ -41,8 +41,8 @@ _IsItOKToTossItemText::
 	prompt
 
 _TooImportantToTossText::
-	text "That's too impor-"
-	line "tant to toss!"
+	text "But you could"
+	line "never do that!"
 	prompt
 
 _AlreadyKnowsText::
@@ -144,6 +144,9 @@ _AfterTrade2Text::
 	line "traded to me"
 
 	para "went and evolved!"
+	
+	para "What? Don't you"
+	line "believe me?"
 	done
 
 _WannaTrade3Text::
@@ -189,12 +192,12 @@ _AfterTrade3Text::
 	done
 
 _NothingToCutText::
-	text "There isn't"
-	line "anything to CUT!"
+	text "Nothing here"
+	line "needs a trim!"
 	prompt
 
 _UsedCutText::
 	text_ram wNameBuffer
-	text " hacked"
-	line "away with CUT!"
+	text " cut it"
+	line "down to size!"
 	prompt

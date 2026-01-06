@@ -7,16 +7,15 @@ _PewterNidoranHouseLittleBoyText::
 	done
 
 _PewterNidoranHouseMiddleAgedManText::
-	text "Our #MON's an"
-	line "outsider, so it's"
+	text "Our #MON's at"
+	line "a high level, so"
+	cont "it's sometimes"
 	cont "hard to handle."
 
-	para "An outsider is a"
-	line "#MON that you"
-	cont "get in a trade."
-
-	para "It grows fast, but"
-	line "it may ignore an"
+	para "Any #MON you"
+	cont "get that becomes"
+	cont "too strong just"
+	line "may ignore an"
 	cont "unskilled trainer"
 	cont "in battle!"
 

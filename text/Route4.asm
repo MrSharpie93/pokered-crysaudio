@@ -44,6 +44,44 @@ _Route4SignText::
 	cont "is a loser!”"
 	done
 	
+_Route4HikerGiveEscapeRopeText::
+	text "Heading into"
+	line "MT.MOON?"
+	
+	para "Cave exploration"
+	line "can be dangerous"
+	cont "if you're not"
+	cont "prepared."
+	
+	para "Here, take this."
+	prompt
+	
+_Route4HikerGotEscapeRopeText::
+	text "If you ever find"
+	line "yourself lost in"
+	cont "any cave, just"
+	cont "use that ESCAPE"
+	cont "ROPE, and you'll"
+	cont "be out in a jiffy!"
+	
+	para "It's very durable,"
+	line "so you can reuse"
+	cont "it as much as you"
+	cont "need."
+	done
+	
+_Route4HikerBagFullText::
+	text "Seems you're"
+	line "overprepared."
+	done
+	
+_ReceivedEscapeRopeText::
+	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+	
 _MegaPunchGuyText::
 	text "A punch of brutal"
 	line "ferocity!"

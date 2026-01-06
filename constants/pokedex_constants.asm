@@ -26,18 +26,18 @@
 	const DEX_RATICATE   ; 20 ; Route 7/16/21, Cinnabar Mansion 1F/2F
 	const DEX_SPEAROW    ; 21 ; Route 3/4/11/22
 	const DEX_FEAROW     ; 22 ; Route 14/15/16
-	const DEX_EKANS      ; 23 ; Route 3/4/9/11/26/27
+	const DEX_EKANS      ; 23 ; Route 4/9/11/26/27
 	const DEX_ARBOK      ; 24 ; Route 23, Victory Road 1F
 	const DEX_PICHU      ; 25 ; Viridian Forest, Bill's Garden
 	const DEX_PIKACHU    ; 26 ; Route 10, Viridian Forest, Power Plant
 	const DEX_RAICHU     ; 27 ; Cerulean Cave 1F
 	const DEX_GOROCHU    ; 28 ; Evolve Raichu
-	const DEX_SANDSHREW  ; 29 ; Route 3/4/9/11/26/27
+	const DEX_SANDSHREW  ; 29 ; Route 4/9/11/26/27
 	const DEX_SANDSLASH  ; 30 ; Route 23, Victory Road 1F
-	const DEX_NIDORAN_F  ; 31 ; Route 5/22
+	const DEX_NIDORAN_F  ; 31 ; Route 3/5/22
 	const DEX_NIDORINA   ; 32 ; Route 9/13/(Singed)/14(Soaked)/15(Soaked)
 	const DEX_NIDOQUEEN  ; 33 ; Evolve Nidorina
-	const DEX_NIDORAN_M  ; 34 ; Route 5/22
+	const DEX_NIDORAN_M  ; 34 ; Route 3/5/22
 	const DEX_NIDORINO   ; 35 ; Route 9/13(Soaked)/14(Singed)/15(Singed)
 	const DEX_NIDOKING   ; 36 ; Evolve Nidorino
 	const DEX_CLEFFA     ; 37 ; Mt. Moon B2F, Bill's Garden

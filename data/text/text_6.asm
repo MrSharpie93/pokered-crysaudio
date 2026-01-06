@@ -6,9 +6,9 @@ _ItemUseBallText00::
 	line "can't be caught!"
 	prompt
 
-_ItemUseBallText01::
-	text "You missed the"
-	line "#MON!"
+_ItemUseBallText01:: ; ~$~ Darkseed 2 ring toss reference.~$~
+	text "Hey ya missed,"
+	line "pal!"
 	prompt
 
 _ItemUseBallText02::
@@ -123,8 +123,8 @@ _ItemfinderFoundItemText::
 	prompt
 
 _ItemfinderFoundNothingText::
-	text "Nope! ITEMFINDER"
-	line "isn't responding."
+	text "What a useless"
+	line "piece of junk…"
 	prompt
 
 _RaisePPWhichTechniqueText::
@@ -162,12 +162,7 @@ _BootedUpHMText::
 	prompt
 
 _TeachMachineMoveText::
-	text "It contained"
-	line "@"
-	text_ram wStringBuffer
-	text "!"
-
-	para "Teach @"
+	text "Teach @"
 	text_ram wStringBuffer
 	text_start
 	line "to a #MON?"
@@ -180,17 +175,11 @@ _MonCannotLearnMachineMoveText::
 	cont "@"
 	text_ram wStringBuffer
 	text "."
-
-;	para "It can't learn"
-;	line "@"
-;	text_ram wStringBuffer
-;	text "."
 	prompt
 
-_ItemUseNotTimeText::
-	text "OAK: <PLAYER>!"
-	line "This isn't the"
-	cont "time to use that! "
+_ItemUseNotTimeText:: ; ~$~This project's protagonist has no reason to have Oak as a spirit guide, so change this.~$~
+	text "You can't use"
+	line "that here!"
 	prompt
 
 _ItemUseNotYoursToUseText::

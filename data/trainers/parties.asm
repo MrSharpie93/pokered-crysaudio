@@ -104,15 +104,15 @@ BugCatcherData:
 	db 11, JOLTIK, PARAS, -1
 	db 10, CATERPIE, METAPOD, VENONAT, -1
 ; Route 24
-	db 14, SCYTHER, -1
+	db 15, SCYTHER, -1
 ; Route 6
-	db 16, WEEDLE, CATERPIE, JOLTIK, -1
-	db 20, BUTTERFREE, -1
+	db 11, WEEDLE, CATERPIE, JOLTIK, -1
+	db 16, BUTTERFREE, -1
 ; ~$~Was unused. (Samurai)~$~
-	db 9, METAPOD, PINSIR, -1
+	db LEVELS, 7, PINSIR, 15, METAPOD, -1
 ; Route 9
-	db 19, BEEDRILL, BEEDRILL, -1
-	db 20, VENONAT, PARAS, JOLTIK, -1
+	db 9, BEEDRILL, BEEDRILL, BEEDRILL, -1
+	db 13, VENONAT, PARAS, JOLTIK, -1
 
 LassData:
 ; Route 3
@@ -150,6 +150,8 @@ LassData:
 	db LEVELS, 12, KADABRA, 14, SCYTHER, 16, CHANDELURE, -1
 ; Natsuki
 	db LEVELS, 12, MUNCHLAX, 14, PERSIAN, 16, GALVANTULA, -1
+; Viridian Forest
+	db 7, NIDORAN_F, PICHU, -1
 
 SailorData:
 ; SS Anne Stern
@@ -512,13 +514,11 @@ BlackbeltData:
 
 GreenData: ; Uses JIGGLYPUFF line, CLEFAIRY line, SQUIRTLE line, DITTO, NIDORAN_F line, VULPIX line, BELLSPROUT line, KANGASKHAN, GENGAR
 ; Mt. Moon B2F
-	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, SQUIRTLE, -1
-	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, BELLSPROUT, -1
-	db LEVELS, 9, CLEFAIRY, 8, NIDORAN_F, 11, VULPIX, -1
+	db LEVELS, 11, CLEFAIRY, 10, NIDORAN_F, 13, DITTO, -1
 ; SS Anne 2F
-	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, SQUIRTLE, -1
-	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, BELLSPROUT, -1
-	db LEVELS, 10, CLEFAIRY, 10, NIDORAN_F, 13, VULPIX, -1
+	db LEVELS, 12, CLEFAIRY, 12, SQUIRTLE, 14, NIDORINA, 14, DITTO, -1
+	db LEVELS, 12, CLEFAIRY, 12, BELLSPROUT, 14, NIDORINA, 14, DITTO, -1
+	db LEVELS, 12, CLEFAIRY, 12, VULPIX,  14, NIDORINA, 14, DITTO, -1
 ; Rocket Hideout B4F
 	db LEVELS, 18, JIGGLYPUFF, 15, DITTO, 15, NIDORAN_F, 17, SQUIRTLE, -1
 	db LEVELS, 18, JIGGLYPUFF, 15, DITTO, 15, NIDORAN_F, 17, BELLSPROUT, -1
@@ -585,10 +585,10 @@ GiovanniData:
 RocketData:
 OfficerData: ; Let the Jennys share their loadout pool with the Rockets, since a lot of them got removed.~$~
 ; Mt. Moon B2F
-	db 13, RATTATA, ZUBAT, -1
-	db 11, SANDSHREW, RATTATA, ZUBAT, -1
-	db 12, ZUBAT, EKANS, -1
-	db 16, RATICATE, -1
+	db 13, PARAS, ZUBAT, -1 ; Now unused, Super Nerd takes their place.~$~
+	db 14, SQUIRTLE, -1 ; Jenny
+	db 10, PIDGEY, PIDGEY, GROWLITHE, -1 ; Jenny
+	db 16, RATICATE, -1 ; Always hate dealing with this guy, so gotta keep him.~$~
 ; Cerulean City
 	db 17, MACHOP, DROWZEE, -1
 ; Route 24
@@ -615,7 +615,7 @@ OfficerData: ; Let the Jennys share their loadout pool with the Rockets, since a
 	db 26, KOFFING, DROWZEE, -1
 	db 23, ZUBAT, RATTATA, RATICATE, ZUBAT, -1
 ; Unused ~$~Now a Jenny in Mt. Moon.~$~
-	db 11, GROWLITHE, GROWLITHE, -1 ; 22
+	db 10, GROWLITHE, GROWLITHE, -1 ; 22
 ; Silph Co. is removed, so too are these Rocket parties.~$~
 ; Silph Co. 2F
 ;	db 29, CUBONE, ZUBAT, -1

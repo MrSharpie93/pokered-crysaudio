@@ -7069,8 +7069,6 @@ LoadPlayerBackPic:
 	predef_jump CopyUncompressedPicToTilemap
 
 ; ~$~ Removed DoubleOrHalveSelectedStats, since they don't work anyway.~$~
-DoubleOrHalveSelectedStats:
-	jpfar DoubleSelectedStats
 
 
 CheckForHex: ; ~$~ADDED: Hex function from Red++.~$~

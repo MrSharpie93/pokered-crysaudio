@@ -242,7 +242,7 @@ _CursedText::
 _CurseNotEnoughHPText::
 	text "<USER>'s"
 	line "too weak to lay"
-	cont "a curse!"
+	cont "a CURSE!"
 	prompt
 
 _ParalyzedMayNotAttackText::
@@ -262,8 +262,9 @@ _HasSubstituteText::
 	prompt
 
 _TooWeakSubstituteText::
-	text "Too weak to make"
-	line "a SUBSTITUTE!"
+	text "<USER>'s"
+	line "too weak to make"
+	cont "a SUBSTITUTE!"
 	prompt
 
 _CoinsScatteredText::

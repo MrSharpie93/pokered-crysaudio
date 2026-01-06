@@ -66,7 +66,7 @@ MtMoonB2FDefaultScript:
 	jp nz, MtMoonB2FCheckGotAFossil
 	xor a
 	ldh [hJoyHeld], a
-	ld a, TEXT_MTMOONB2F_SUPER_NERD
+	ld a, TEXT_MTMOONB2F_GREEN
 	ldh [hTextID], a
 	jp DisplayTextID
 
@@ -90,7 +90,7 @@ MtMoonB2FDefeatedSuperNerdScript:
 	ret
 
 MtMoonB2FMoveSuperNerdScript:
-	ld a, MTMOONB2F_SUPER_NERD
+	ld a, MTMOONB2F_GREEN
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
 	ld hl, MtMoonB2FPlayerNearDomeFossilCoords
@@ -104,7 +104,7 @@ MtMoonB2FMoveSuperNerdScript:
 .player_near_dome_fossil
 	ld de, MtMoon3FSuperNerdMoveRightMovementData
 .continue
-	ld a, MTMOONB2F_SUPER_NERD
+	ld a, MTMOONB2F_GREEN
 	ldh [hSpriteIndex], a
 	call MoveSprite
 	ld a, SCRIPT_MTMOONB2F_SUPER_NERD_TAKES_OTHER_FOSSIL
@@ -159,7 +159,7 @@ MtMoonB2FSuperNerdTakesOtherFossilScript:
 
 MtMoonB2F_TextPointers:
 	def_text_pointers
-	dw_const MtMoonB2FSuperNerdText,               TEXT_MTMOONB2F_SUPER_NERD
+	dw_const MtMoonB2FGreenText,                   TEXT_MTMOONB2F_GREEN
 	dw_const MtMoonB2FRocket1Text,                 TEXT_MTMOONB2F_ROCKET1
 	dw_const MtMoonB2FRocket2Text,                 TEXT_MTMOONB2F_ROCKET2
 	dw_const MtMoonB2FRocket3Text,                 TEXT_MTMOONB2F_ROCKET3
@@ -183,7 +183,7 @@ MtMoon3TrainerHeader3:
 	trainer EVENT_BEAT_MT_MOON_3_TRAINER_3, 4, MtMoonB2FRocket4BattleText, MtMoonB2FRocket4EndBattleText, MtMoonB2FRocket4AfterBattleText
 	db -1 ; end
 
-MtMoonB2FSuperNerdText:
+MtMoonB2FGreenText:
 	text_asm
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
 	jr z, .beat_super_nerd
@@ -194,13 +194,19 @@ MtMoonB2FSuperNerdText:
 	call PrintText
 	jr .done
 .beat_super_nerd
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
+	ld a, 0
+	ld c, a
+	ld a, MUSIC_MEET_GREEN
+	call PlayMusic
 	ld hl, MtMoonB2FSuperNerdTheyreBothMineText
 	call PrintText
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
-	ld hl, MtMoonB2FSuperNerdOkIllShareText
-	ld de, MtMoonB2FSuperNerdOkIllShareText
+	ld hl, MtMoonB2FGreenDefeatedText
+	ld de, MtMoonB2FGreenVictoryText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -320,8 +326,12 @@ MtMoonB2FSuperNerdTheyreBothMineText:
 	text_far _MtMoonB2FSuperNerdTheyreBothMineText
 	text_end
 
-MtMoonB2FSuperNerdOkIllShareText:
-	text_far _MtMoonB2FSuperNerdOkIllShareText
+MtMoonB2FGreenDefeatedText:
+	text_far _MtMoonB2FGreenDefeatedText
+	text_end
+	
+MtMoonB2FGreenVictoryText:
+	text_far _MtMoonB2FGreenVictoryText
 	text_end
 
 MtMoonB2fSuperNerdEachTakeOneText:

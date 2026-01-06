@@ -1589,7 +1589,7 @@ DisableEffect:
 	jr z, .pickMoveToDisable ; pick another move if this one had 0 PP
 .playerTurnNotLinkBattle
 ; non-link battle enemies have unlimited PP so the previous checks aren't needed
-	;	call BattleRandom
+;	call BattleRandom
 ;	and $7
 ;	inc a ; 1-8 turns disabled
 	ld a, $5 ; ~$~CHANGED: Disable always works for 4 turns.~$~

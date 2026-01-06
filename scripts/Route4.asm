@@ -18,6 +18,7 @@ Route4_TextPointers:
 	dw_const Route4CooltrainerF1Text, TEXT_ROUTE4_COOLTRAINER_F1
 	dw_const Route4CooltrainerF2Text, TEXT_ROUTE4_COOLTRAINER_F2
 	dw_const PickUpItemText,          TEXT_ROUTE4_TM_WHIRLWIND
+	dw_const Route4Hiker1Text,        TEXT_ROUTE4_HIKER1
 	dw_const Route4Hiker2Text,        TEXT_ROUTE4_HIKER2
 	dw_const Route4Hiker3Text,        TEXT_ROUTE4_HIKER3
 	dw_const PokeCenterSignText,      TEXT_ROUTE4_POKECENTER_SIGN
@@ -51,6 +52,28 @@ Route4CooltrainerF2EndBattleText:
 Route4CooltrainerF2AfterBattleText:
 	text_far _Route4CooltrainerF2AfterBattleText
 	text_end
+	
+Route4Hiker1Text:
+	text_asm
+	CheckEvent EVENT_GOT_ESCAPE_ROPE
+	jr nz, .gotRope
+	ld hl, Route4HikerGiveEscapeRopeText
+	call PrintText
+	lb bc, ESCAPE_ROPE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld hl, ReceivedEscapeRopeText
+	call PrintText
+	SetEvent EVENT_GOT_ESCAPE_ROPE
+.gotRope
+	ld hl, Route4HikerGotEscapeRopeText
+	call PrintText
+	jr .Done
+.BagFull
+	ld hl, Route4HikerBagFullText
+	call PrintText
+.Done
+	jp TextScriptEnd
 
 Route4MtMoonSignText:
 	text_far _Route4MtMoonSignText
@@ -58,6 +81,23 @@ Route4MtMoonSignText:
 
 Route4SignText:
 	text_far _Route4SignText
+	text_end
+	
+Route4HikerGiveEscapeRopeText:
+	text_far _Route4HikerGiveEscapeRopeText
+	text_end
+	
+Route4HikerGotEscapeRopeText:
+	text_far _Route4HikerGotEscapeRopeText
+	text_end
+
+Route4HikerBagFullText:
+	text_far _Route4HikerBagFullText
+	text_end
+	
+ReceivedEscapeRopeText:
+	text_far _ReceivedEscapeRopeText
+	sound_get_item_1
 	text_end
 	
 Route4Hiker2Text:

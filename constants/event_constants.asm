@@ -252,7 +252,10 @@
 	const_next $3F0
 	const_skip 2
 	const EVENT_BEAT_ROUTE_4_TRAINER_0
-	const_skip 12
+	const_skip
+	const EVENT_GOT_AXE
+	const EVENT_GOT_ESCAPE_ROPE
+	const_skip 9
 	const EVENT_BOUGHT_MAGIKARP
 
 ; Route 6 events
@@ -540,6 +543,8 @@
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_0
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_1
 	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_2
+	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3
+	const EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_4
 
 ; Mt. Moon events
 	const_next $570

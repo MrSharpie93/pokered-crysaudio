@@ -905,8 +905,8 @@ ClefairyEvosMoves:
 	db 1, GROWL
 	db 5, MIRROR_MOVE ; Copycat
 	db 10, SING
-	db 13, HARDEN ; Defense Curl
-	db 16, DISARM_VOICE
+	db 13, DISARM_VOICE
+	db 16, HARDEN ; Defense Curl
 	db 19, DOUBLE_HIT ; Doubleslap
 	db 22, MINIMIZE
 	db 25, DRAIN_KISS
@@ -968,10 +968,10 @@ IgglybuffEvosMoves:
 	db EVOLVE_MAP, DAYCARE, IGGLYBUFF ; Friendship
 	db 0
 ; Learnset
-	db 1, SING
+	db 1, POUND
 	db 1, CHARM
-	db 5, HARDEN ; Defense Curl
-	db 9, POUND
+	db 5, SING
+	db 9, HARDEN ; Defense Curl
 	db 13, SWEET_KISS
 	db 17, FAKE_TEARS
 	db 25, PLAY_ROUGH
@@ -982,9 +982,9 @@ JigglypuffEvosMoves:
 	db EVOLVE_ITEM, MOON_STONE, 1, WIGGLYTUFF
 	db 0
 ; Learnset
+	db 1, POUND
 	db 1, SING
-	db 5, HARDEN ; Defense Curl
-	db 9, POUND
+	db 9, HARDEN ; Defense Curl
 	db 13, DISABLE
 	db 17, DISARM_VOICE
 	db 21, DOUBLE_HIT ; Doubleslap

@@ -379,7 +379,7 @@ FrameBlock16:
 	dbsprite  4,  1,  0,  0, $39, 0
 	dbsprite  5,  1,  0,  0, $39, OAM_HFLIP
 
-FrameBlock17: ; heart/music note/bell
+FrameBlock17: ; heart/music note/cake
 	db 4 ; #
 	dbsprite  0,  0,  0,  0, $08, 0
 	dbsprite  1,  0,  0,  0, $09, 0

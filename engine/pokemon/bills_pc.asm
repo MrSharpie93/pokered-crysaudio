@@ -264,6 +264,13 @@ BillsPCWithdraw:
 	call PrintText
 	jp BillsPCMenu
 .boxNotEmpty
+; ~$~CHANGED: Can view Pokemon box contents even with full party. Credit to Sandingo's beyondrb.~$~
+	ld hl, wBoxCount
+	call DisplayMonListMenu
+	jp c, BillsPCMenu
+	call DisplayDepositWithdrawMenu
+	jp nc, BillsPCMenu
+;;;
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
 	jr nz, .partyNotFull
@@ -271,11 +278,11 @@ BillsPCWithdraw:
 	call PrintText
 	jp BillsPCMenu
 .partyNotFull
-	ld hl, wBoxCount
-	call DisplayMonListMenu
-	jp c, BillsPCMenu
-	call DisplayDepositWithdrawMenu
-	jp nc, BillsPCMenu
+;	ld hl, wBoxCount
+;	call DisplayMonListMenu
+;	jp c, BillsPCMenu
+;	call DisplayDepositWithdrawMenu
+;	jp nc, BillsPCMenu
 	ld a, [wWhichPokemon]
 	ld hl, wBoxMonNicks
 	call GetPartyMonName

@@ -2,7 +2,7 @@ SFX:
 ; entries correspond to SFX_* constants
 	table_width 3, SFX
 	dbw 0, 0
-	dba SFX_Get_Item1_1
+	dba SFX_Level_Up;dba SFX_Get_Item1_1
 
 	dba SFX_Get_Item2_1
 	dba SFX_Tink_1
@@ -44,7 +44,7 @@ SFX:
 	dba SFX_Pokeflute
 	dba SFX_Safari_Zone_PA
 
-	dba SFX_Level_Up
+	dba SFX_Get_Item1_1;dba SFX_Level_Up
 
 	dba SFX_Ball_Toss
 	dba SFX_Ball_Poof

@@ -61,6 +61,40 @@ _ViridianForestYoungster4AfterBattleText::
 	line "the stuff I"
 	cont "dropped!"
 	done
+	
+_ViridianForestCooltrainerFBattleText::
+	text "Hi, do you know a"
+	line "way out of here?"
+	done
+
+_ViridianForestCooltrainerFEndBattleText::
+	text "Oh no,"
+	line "really?"
+	prompt
+
+_ViridianForestCooltrainerFAfterBattleText::
+	text "I feel like I've"
+	line "been wandering in"
+	cont "circles!"
+	done
+
+_ViridianForestSamuraiBattleText::
+	text "I'm gonna be the"
+	line "best. You just"
+	cont "can't beat me!"
+	done
+
+_ViridianForestSamuraiEndBattleText::
+	text "After"
+	line "all I did…"
+	prompt
+
+_ViridianForestSamuraiAfterBattleText::
+	text "A METAPOD is cool"
+	line "because its"
+	cont "attack is its"
+	cont "defense!"
+	done
 
 _ViridianForestYoungster5Text::
 	text "I ran out of #"

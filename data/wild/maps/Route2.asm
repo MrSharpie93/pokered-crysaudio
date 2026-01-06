@@ -1,8 +1,8 @@
 Route2WildMons:
 	def_grass_wildmons 25 ; encounter rate
 IF DEF(_RED)
-	db  3, RATTATA  ; 19.9%
 	db  3, PIDGEY   ; 19.9%
+	db  3, RATTATA  ; 19.9%
 	db  4, PIDGEY   ; 15.2%
 	db  3, HOPPIP   ;  9.8%
 	db  4, HOPPIP   ;  9.8%
@@ -13,8 +13,8 @@ IF DEF(_RED)
 	db  2, WEEDLE   ;  1.2%
 ENDC
 IF DEF(_BLUE)
-	db  3, RATTATA  ; 19.9%
 	db  3, PIDGEY   ; 19.9%
+	db  3, RATTATA  ; 19.9%
 	db  4, PIDGEY   ; 15.2%
 	db  3, HOPPIP   ;  9.8%
 	db  4, HOPPIP   ;  9.8%

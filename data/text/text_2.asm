@@ -492,11 +492,10 @@ TMNotebookText::
 	para "…"
 
 	para "There are 50 TMs"
-	line "in all."
+	line "and 6 HMs in all."
 
-	para "There are also 5"
-	line "HMs that can be"
-	cont "used repeatedly."
+	para "They all can be"
+	line "used repeatedly."
 
 	para "SILPH CO.@"
 	text_end
@@ -595,10 +594,10 @@ _IndigoPlateauHQText::
 	done
 
 _RedBedroomSNESText::
-	text "Barging into"
-	line "another man's home"
-	cont "uninvited and"
-	cont "playing his N64?"
+	text "Intruding in"
+	line "someone else's"
+	cont "home and playing"
+	cont "their N64?"
 	cont "Shame on you…"
 	done
 	
@@ -1275,6 +1274,7 @@ _GrewLevelText::
 
 _WildMonAppearedText::
 	text "Wild @"
+_EnemyAppearedText::
 	text_ram wEnemyMonNick
 	text_start
 	line "appeared!"
@@ -1288,11 +1288,11 @@ _HookedMonAttackedText::
 	cont "attacked!"
 	prompt
 
-_EnemyAppearedText::
-	text_ram wEnemyMonNick
-	text_start
-	line "appeared!"
-	prompt
+;_EnemyAppearedText::
+;	text_ram wEnemyMonNick
+;	text_start
+;	line "appeared!"
+;	prompt
 
 _TrainerWantsToFightText::
 	text_ram wTrainerName
@@ -1651,11 +1651,8 @@ _ReleaseWhichMonText::
 	done
 
 _OnceReleasedText::
-;	text "Once released,"
-;	line "@"
 	text_ram wStringBuffer
 	text " will"
-;	cont "gone forever. OK?"
 	line "have a happy life"
 	cont "in a faraway"
 	cont "forest. You will"
