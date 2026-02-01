@@ -2,16 +2,17 @@ _CeruleanTrashedHouseFishingGuruTheyStoleATMText::
 	text "Those miserable"
 	line "ROCKETs!"
 
-	para "Look what they"
-	line "did here!"
+	para "They trashed me"
+	line "house an' stole"
+	cont "an expensive TM!"
 
-	para "They stole a TM"
-	line "for teaching"
-	cont "#MON how to"
-	cont "DIG holes!"
+	para "Luckily some lad"
+	line "came through an'"
+	cont "thrashed them!"
 
-	para "That cost me a"
-	line "bundle, it did!"
+	para "I was so grateful"
+	line "I just let him"
+	cont "keep it!"
 	done
 
 _CeruleanTrashedHouseFishingGuruWhatsLostIsLostText::
@@ -37,6 +38,6 @@ _CeruleanTrashedHouseGirlText::
 	done
 
 _CeruleanTrashedHouseWallHoleText::
-	text "TEAM ROCKET left"
-	line "a way out!"
+	text "Who told you about"
+	line "this textbox?"
 	done

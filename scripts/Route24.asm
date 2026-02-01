@@ -120,6 +120,17 @@ Route24CooltrainerM1Text:
 	call PrintText
 	ld hl, .JoinTeamRocketText
 	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	cp $0
+	jr nz, .refuseRocket
+	ld hl, AcceptedRocketText
+	call PrintText
+	jr .done
+.refuseRocket
+	ld hl, RefusedRocketText
+	call PrintText
+.done
 	ld hl, wStatusFlags3
 	set BIT_TALKED_TO_TRAINER, [hl]
 	set BIT_PRINT_END_BATTLE_TEXT, [hl]
@@ -280,6 +291,14 @@ Route24Youngster2EndBattleText:
 
 Route24Youngster2AfterBattleText:
 	text_far _Route24Youngster2AfterBattleText
+	text_end
+	
+RefusedRocketText:
+	text_far _RefusedRocketText
+	text_end
+	
+AcceptedRocketText:
+	text_far _AcceptedRocketText
 	text_end
 	
 Route24CooltrainerM4Text:

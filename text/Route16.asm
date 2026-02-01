@@ -91,21 +91,20 @@ _Route16Biker6AfterBattleText::
 	done
 
 _Route16Text7::
-	text "A sleeping #MON"
-	line "blocks the way!"
+	text "A weird tree is"
+	line "in your way."
 	done
 
 _Route16SnorlaxWokeUpText::
-	text "SNORLAX woke up!"
+	text "The tree appears"
+	line "to hate water."
 
-	para "It attacked in a"
-	line "grumpy rage!"
+	para "It attacks!"
 	done
 
 _Route16SnorlaxReturnedToMountainsText::
-	text "With a big yawn,"
-	line "SNORLAX returned"
-	cont "to the mountains!"
+	text "The weird tree has"
+	line "run far away…"
 	done
 
 _Route16CyclingRoadSignText::
@@ -117,4 +116,23 @@ _Route16SignText::
 	text "ROUTE 16"
 	line "CELADON CITY -"
 	cont "FUCHSIA CITY"
+	done
+	
+_UseWaterText::
+	text "A weird tree is"
+	line "in your way."
+	
+	para "Give it some"
+	line "FRESH WATER?"
+	done
+	
+_UsedWaterText::
+	text "You poured the"
+	line "FRESH WATER on"
+	cont "the weird tree."
+	prompt
+	
+_DidntUseWaterText::
+	text "It's probably not"
+	line "thirsty anyway…"
 	done

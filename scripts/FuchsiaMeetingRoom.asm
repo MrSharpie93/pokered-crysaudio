@@ -116,7 +116,7 @@ FuchsiaMeetingRoomSafariZoneWorker3:
 	call LoadFossilItemAndMonNameBank1D
 	ld hl, .FossilIsBackToLifeText
 	call PrintText
-	SetEvent EVENT_LAB_HANDING_OVER_FOSSIL_MON
+	SetEvents EVENT_LAB_HANDING_OVER_FOSSIL_MON, EVENT_MUSEUM_FOSSILS_ACTIVE
 	ld a, [wFossilMon]
 	ld b, a
 	ld c, 10

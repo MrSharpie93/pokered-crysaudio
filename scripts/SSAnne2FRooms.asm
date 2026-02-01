@@ -42,6 +42,8 @@ SSAnne9TrainerHeader2:
 	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_2, 3, SSAnne2FRoomsGentleman2BattleText, SSAnne2FRoomsGentleman2EndBattleText, SSAnne2FRoomsGentleman2AfterBattleText
 SSAnne9TrainerHeader3:
 	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_3, 2, SSAnne2FRoomsCooltrainerFBattleText, SSAnne2FRoomsCooltrainerFEndBattleText, SSAnne2FRoomsCooltrainerFAfterBattleText
+SSAnne9TrainerHeader4:
+	trainer EVENT_BEAT_SS_ANNE_9_TRAINER_4, 3, SSAnne2FRoomsGentleman5BattleText, SSAnne2FRoomsGentleman5EndBattleText, SSAnne2FRoomsGentleman5AfterBattleText
 	db -1 ; end
 
 SSAnne2FRoomsGentleman1Text:
@@ -104,12 +106,20 @@ SSAnne2FRoomsGrampsText:
 
 SSAnne2FRoomsGentleman5Text:
 	text_asm
-	ld hl, .Text
-	call PrintText
+	ld hl, SSAnne9TrainerHeader4
+	call TalkToTrainer
 	jp TextScriptEnd
 
-.Text:
+SSAnne2FRoomsGentleman5BattleText:
 	text_far _SSAnne2FRoomsGentleman5Text
+	text_end
+	
+SSAnne2FRoomsGentleman5EndBattleText:
+	text_far _SSAnne2FRoomsGentleman5EndBattleText
+	text_end
+	
+SSAnne2FRoomsGentleman5AfterBattleText:
+	text_far _SSAnne2FRoomsGentleman5AfterBattleText
 	text_end
 
 SSAnne2FRoomsLittleBoyText:

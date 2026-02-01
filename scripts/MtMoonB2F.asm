@@ -150,6 +150,9 @@ MtMoonB2FSuperNerdTakesOtherFossilScript:
 .continue
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	ld a, TEXT_MTMOONB2F_POKEMON_LAB
+	ldh [hTextID], a
+	call DisplayTextID
 	xor a
 	ld [wJoyIgnore], a
 	ld a, SCRIPT_MTMOONB2F_DEFAULT
@@ -159,17 +162,18 @@ MtMoonB2FSuperNerdTakesOtherFossilScript:
 
 MtMoonB2F_TextPointers:
 	def_text_pointers
-	dw_const MtMoonB2FGreenText,                   TEXT_MTMOONB2F_GREEN
-	dw_const MtMoonB2FRocket1Text,                 TEXT_MTMOONB2F_ROCKET1
-	dw_const MtMoonB2FRocket2Text,                 TEXT_MTMOONB2F_ROCKET2
-	dw_const MtMoonB2FRocket3Text,                 TEXT_MTMOONB2F_ROCKET3
-	dw_const MtMoonB2FRocket4Text,                 TEXT_MTMOONB2F_ROCKET4
-	dw_const MtMoonB2FDomeFossilText,              TEXT_MTMOONB2F_DOME_FOSSIL
-	dw_const MtMoonB2FHelixFossilText,             TEXT_MTMOONB2F_HELIX_FOSSIL
-	dw_const PickUpItemText,                       TEXT_MTMOONB2F_HP_UP
-	dw_const PickUpItemText,                       TEXT_MTMOONB2F_TM_MEGA_PUNCH
-	dw_const MtMoonB2FSuperNerdThenThisIsMineText, TEXT_MTMOONB2F_SUPER_NERD_THEN_THIS_IS_MINE
-	dw_const MtMoonB2FEasterEggSignText,           TEXT_MTMOONB2F_EASTER_EGG
+	dw_const MtMoonB2FGreenText,                      TEXT_MTMOONB2F_GREEN
+	dw_const MtMoonB2FRocket1Text,                    TEXT_MTMOONB2F_ROCKET1
+	dw_const MtMoonB2FRocket2Text,                    TEXT_MTMOONB2F_ROCKET2
+	dw_const MtMoonB2FRocket3Text,                    TEXT_MTMOONB2F_ROCKET3
+	dw_const MtMoonB2FRocket4Text,                    TEXT_MTMOONB2F_ROCKET4
+	dw_const MtMoonB2FDomeFossilText,                 TEXT_MTMOONB2F_DOME_FOSSIL
+	dw_const MtMoonB2FHelixFossilText,                TEXT_MTMOONB2F_HELIX_FOSSIL
+	dw_const PickUpItemText,                          TEXT_MTMOONB2F_HP_UP
+	dw_const PickUpItemText,                          TEXT_MTMOONB2F_TM_MEGA_PUNCH
+	dw_const MtMoonB2FSuperNerdThenThisIsMineText,    TEXT_MTMOONB2F_SUPER_NERD_THEN_THIS_IS_MINE
+	dw_const MtMoonB2FEasterEggSignText,              TEXT_MTMOONB2F_EASTER_EGG
+	dw_const MtMoonB2FSuperNerdTheresAPokemonLabText, TEXT_MTMOONB2F_POKEMON_LAB
 
 MtMoon3TrainerHeaders:
 	def_trainers 2
@@ -217,7 +221,7 @@ MtMoonB2FGreenText:
 	ld [wCurMapScript], a
 	jr .done
 .got_a_fossil
-	ld hl, MtMoonB2FSuperNerdTheresAPokemonLabText
+	ld hl, MtMoonB2FGreenSeeYaText
 	call PrintText
 .done
 	jp TextScriptEnd
@@ -340,6 +344,7 @@ MtMoonB2fSuperNerdEachTakeOneText:
 
 MtMoonB2FSuperNerdTheresAPokemonLabText:
 	text_far _MtMoonB2FSuperNerdTheresAPokemonLabText
+	text_waitbutton
 	text_end
 
 MtMoonB2FSuperNerdThenThisIsMineText:
@@ -397,4 +402,8 @@ MtMoonB2FRocket4AfterBattleText:
 	
 MtMoonB2FEasterEggSignText:
 	text_far _MtMoonB2FEasterEggSignText
+	text_end
+	
+MtMoonB2FGreenSeeYaText:
+	text_far _MtMoonB2FGreenSeeYaText
 	text_end

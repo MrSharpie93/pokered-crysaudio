@@ -1,102 +1,123 @@
 BikeShop_Script:
+	call CheckIfLastBicycleGone
 	jp EnableAutoTextBoxDrawing
+	
+CheckIfLastBicycleGone:
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	CheckEvent EVENT_GOT_BICYCLE
+	ret nz
+	ld a, $08
+	ld [wNewTileBlockID], a
+	lb bc, 1, 0
+	predef_jump ReplaceTileBlock
 
 BikeShop_TextPointers:
 	def_text_pointers
 	dw_const BikeShopClerkText,             TEXT_BIKESHOP_CLERK
-	dw_const BikeShopMiddleAgedWomanText,   TEXT_BIKESHOP_MIDDLE_AGED_WOMAN
-	dw_const BikeShopYoungsterText,         TEXT_BIKESHOP_YOUNGSTER
+;	dw_const BikeShopMiddleAgedWomanText,   TEXT_BIKESHOP_MIDDLE_AGED_WOMAN
+;	dw_const BikeShopYoungsterText,         TEXT_BIKESHOP_YOUNGSTER
+	dw_const BikeShopSaleSignText,          TEXT_BIKESHOP_SALE_SIGN_1
+	dw_const BikeShopSaleSignText,          TEXT_BIKESHOP_SALE_SIGN_2
 
 BikeShopClerkText:
 	text_asm
 	CheckEvent EVENT_GOT_BICYCLE
 	jr z, .dontHaveBike
-	ld hl, BikeShopClerkHowDoYouLikeYourBicycleText
+	ld hl, BikeShopComeAgainText
 	call PrintText
 	jp .Done
 .dontHaveBike
-	ld b, BIKE_VOUCHER
-	call IsItemInBag
-	jr z, .dontHaveVoucher
+;	ld b, BIKE_VOUCHER
+;	call IsItemInBag
+;	jr z, .dontHaveVoucher
 	ld hl, BikeShopClerkOhThatsAVoucherText
 	call PrintText
 	lb bc, BICYCLE, 1
 	call GiveItem
 	jr nc, .BagFull
-	ld a, BIKE_VOUCHER
-	ldh [hItemToRemoveID], a
-	farcall RemoveItemByID
+;	ld a, BIKE_VOUCHER
+;	ldh [hItemToRemoveID], a
+;	farcall RemoveItemByID
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopExchangedVoucherText
+	call PrintText
+	ld a, $0A
+	ld [wNewTileBlockID], a
+	lb bc, 1, 0
+	predef ReplaceTileBlock
+	ld hl, BikeShopClerkHowDoYouLikeYourBicycleText
 	call PrintText
 	jr .Done
 .BagFull
 	ld hl, BikeShopBagFullText
 	call PrintText
 	jr .Done
-.dontHaveVoucher
-	ld hl, BikeShopClerkWelcomeText
-	call PrintText
-	xor a
-	ld [wCurrentMenuItem], a
-	ld [wLastMenuItem], a
-	ld a, A_BUTTON | B_BUTTON
-	ld [wMenuWatchedKeys], a
-	ld a, $1
-	ld [wMaxMenuItem], a
-	ld a, $2
-	ld [wTopMenuItemY], a
-	ld a, $1
-	ld [wTopMenuItemX], a
-	ld hl, wStatusFlags5
-	set BIT_NO_TEXT_DELAY, [hl]
-	hlcoord 0, 0
-	ld b, 4
-	ld c, 15
-	call TextBoxBorder
-	call UpdateSprites
-	hlcoord 2, 2
-	ld de, BikeShopMenuText
-	call PlaceString
-	hlcoord 8, 3
-	ld de, BikeShopMenuPrice
-	call PlaceString
-	ld hl, BikeShopClerkDoYouLikeItText
-	call PrintText
-	ld hl, wStatusFlags5 ; ~$~FIXED: Yellow fix for Bike Clerk instant tex.~$~
-	res BIT_NO_TEXT_DELAY, [hl]
-	call HandleMenuInput
-	bit BIT_B_BUTTON, a
-	jr nz, .cancel
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .cancel
-	ld hl, BikeShopCantAffordText
-	call PrintText
-.cancel
-	ld hl, BikeShopComeAgainText
-	call PrintText
+;.dontHaveVoucher
+;	ld hl, BikeShopClerkWelcomeText
+;	call PrintText
+;	xor a
+;	ld [wCurrentMenuItem], a
+;	ld [wLastMenuItem], a
+;	ld a, A_BUTTON | B_BUTTON
+;	ld [wMenuWatchedKeys], a
+;	ld a, $1
+;	ld [wMaxMenuItem], a
+;	ld a, $2
+;	ld [wTopMenuItemY], a
+;	ld a, $1
+;	ld [wTopMenuItemX], a
+;	ld hl, wStatusFlags5
+;	set BIT_NO_TEXT_DELAY, [hl]
+;	hlcoord 0, 0
+;	ld b, 4
+;	ld c, 15
+;	call TextBoxBorder
+;	call UpdateSprites
+;	hlcoord 2, 2
+;	ld de, BikeShopMenuText
+;	call PlaceString
+;	hlcoord 8, 3
+;	ld de, BikeShopMenuPrice
+;	call PlaceString
+;	ld hl, BikeShopClerkDoYouLikeItText
+;	call PrintText
+;	ld hl, wStatusFlags5 ; ~$~FIXED: Yellow fix for Bike Clerk instant tex.~$~
+;	res BIT_NO_TEXT_DELAY, [hl]
+;	call HandleMenuInput
+;	bit BIT_B_BUTTON, a
+;	jr nz, .cancel
+;	ld a, [wCurrentMenuItem]
+;	and a
+;	jr nz, .cancel
+;	ld hl, BikeShopCantAffordText
+;	call PrintText
+;.cancel
+;	ld hl, BikeShopComeAgainText
+;	call PrintText
 .Done
 	jp TextScriptEnd
 
-BikeShopMenuText:
-	db   "BICYCLE"
-	next "CANCEL@"
+;BikeShopMenuText:
+;	db   "BICYCLE"
+;	next "CANCEL@"
 
-BikeShopMenuPrice:
-	db "¥1000000@"
+;BikeShopMenuPrice:
+;	db "¥1000000@"
 
-BikeShopClerkWelcomeText:
-	text_far _BikeShopClerkWelcomeText
-	text_end
+;BikeShopClerkWelcomeText:
+;	text_far _BikeShopClerkWelcomeText
+;	text_end
 
-BikeShopClerkDoYouLikeItText:
-	text_far _BikeShopClerkDoYouLikeItText
-	text_end
+;BikeShopClerkDoYouLikeItText:
+;	text_far _BikeShopClerkDoYouLikeItText
+;	text_end
 
-BikeShopCantAffordText:
-	text_far _BikeShopCantAffordText
-	text_end
+;BikeShopCantAffordText:
+;	text_far _BikeShopCantAffordText
+;	text_end
 
 BikeShopClerkOhThatsAVoucherText:
 	text_far _BikeShopClerkOhThatsAVoucherText
@@ -119,30 +140,34 @@ BikeShopBagFullText:
 	text_far _BikeShopBagFullText
 	text_end
 
-BikeShopMiddleAgedWomanText:
-	text_asm
-	ld hl, .Text
-	call PrintText
-	jp TextScriptEnd
+;BikeShopMiddleAgedWomanText:
+;	text_asm
+;	ld hl, .Text
+;	call PrintText
+;	jp TextScriptEnd
+;
+;.Text:
+;	text_far _BikeShopMiddleAgedWomanText
+;	text_end
 
-.Text:
-	text_far _BikeShopMiddleAgedWomanText
-	text_end
+;BikeShopYoungsterText:
+;	text_asm
+;	CheckEvent EVENT_GOT_BICYCLE
+;	ld hl, .CoolBikeText
+;	jr nz, .gotBike
+;	ld hl, .TheseBikesAreExpensiveText
+;.gotBike
+;	call PrintText
+;	jp TextScriptEnd
+;
+;.TheseBikesAreExpensiveText:
+;	text_far _BikeShopYoungsterTheseBikesAreExpensiveText
+;	text_end
+;
+;.CoolBikeText:
+;	text_far _BikeShopYoungsterCoolBikeText
+;	text_end
 
-BikeShopYoungsterText:
-	text_asm
-	CheckEvent EVENT_GOT_BICYCLE
-	ld hl, .CoolBikeText
-	jr nz, .gotBike
-	ld hl, .TheseBikesAreExpensiveText
-.gotBike
-	call PrintText
-	jp TextScriptEnd
-
-.TheseBikesAreExpensiveText:
-	text_far _BikeShopYoungsterTheseBikesAreExpensiveText
-	text_end
-
-.CoolBikeText:
-	text_far _BikeShopYoungsterCoolBikeText
+BikeShopSaleSignText:
+	text_far _BikeShopSaleSignText
 	text_end

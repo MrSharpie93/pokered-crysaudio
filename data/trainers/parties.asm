@@ -104,7 +104,7 @@ BugCatcherData:
 	db 11, JOLTIK, PARAS, -1
 	db 10, CATERPIE, METAPOD, VENONAT, -1
 ; Route 24
-	db 15, SCYTHER, -1
+	db 14, SCYTHER, -1
 ; Route 6
 	db 11, WEEDLE, CATERPIE, JOLTIK, -1
 	db 16, BUTTERFREE, -1
@@ -116,32 +116,32 @@ BugCatcherData:
 
 LassData:
 ; Route 3
-	db 9, PIDGEY, PIDGEY, -1
-	db 10, RATTATA, NIDORAN_M, -1
+	db 9, IGGLYBUFF, PIDGEY, -1
+	db 10, RATTATA, NIDORAN_F, -1
 	db 14, JIGGLYPUFF, -1
 ; Route 4
-	db 31, PARAS, PARAS, PARAS, PARAS, PARAS, PARASECT, -1
+	db 13, PARAS, PARAS, PARAS, PARAS, PARAS, PARASECT, -1
 ; Mt. Moon 1F
 	db 11, ODDISH, BELLSPROUT, -1
 	db 14, CLEFAIRY, -1
 ; Route 24
-	db 16, PIDGEY, NIDORAN_F, -1
-	db 14, PIDGEY, NIDORAN_F, -1
+	db 14, PIKACHU, NIDORINA, -1
+	db 13, PIDGEY, JIGGLYPUFF, -1
 ; Route 25
-	db 15, NIDORAN_M, NIDORAN_F, -1
-	db 13, ODDISH, PIDGEY, ODDISH, -1
+	db 15, NIDORAN_F, MEOWTH, -1
+	db 14, ODDISH, PIDGEY, VULPIX, -1
 ; SS Anne 1F Rooms
-	db 18, PIDGEY, NIDORAN_F, -1
+	db 14, SMOOCHUM, SWINUB, -1
 ; SS Anne 2F Rooms
-	db 18, RATTATA, PIKACHU, -1
+	db 15, WHISMUR, FLAAFFY, -1
 ; Route 8
 	db 23, NIDORAN_F, NIDORINA, -1
 	db 24, MEOWTH, MEOWTH, MEOWTH, -1
 	db 19, PIDGEY, RATTATA, NIDORAN_M, MEOWTH, PIKACHU, -1
 	db 22, CLEFAIRY, CLEFAIRY, -1
 ; Celadon Gym
-	db 23, BELLSPROUT, WEEPINBELL, -1
-	db 10, HOPPIP, HOPPIP, HOPPIP, -1 ; Baabu fanatic
+	db 12, BELLSPROUT, WEEPINBELL, -1
+	db 11, HOPPIP, HOPPIP, HOPPIP, -1 ; Baabu fanatic
 ; Route 6 (Giselle)
 	db LEVELS, 9, GRAVELER, 12, CUBONE, -1
 ; Sayori
@@ -245,7 +245,9 @@ SuperNerdData:
 	db 22, GRIMER, MUK, GRIMER, -1
 	db 26, KOFFING, -1
 ; Unused
-	db 22, KOFFING, MAGNEMITE, WEEZING, -1
+	db MOVES ; Now in SS Anne B1F Rooms.~$~
+		db 28,MACHOKE,STRENGTH,SEISMIC_TOSS,MEDITATE,LOW_SWEEP
+	db -1
 	db 20, MAGNEMITE, MAGNEMITE, KOFFING, MAGNEMITE, -1
 	db 24, MAGNEMITE, VOLTORB, -1
 ; Cinnabar Gym
@@ -1069,6 +1071,7 @@ GentlemanData:
 	db 13, FEAROW, RAPIDASH, -1
 ; SS Anne 2F Rooms
 	db 17, GROWLITHE, PONYTA, -1
+	db 14, RHYHORN, VIBRAVA, GLIGAR, -1 ; ~$~ADDED~$~
 
 BlueData: ; ~$~ Most of these will be removed later.~$~
 ; SS Anne 2F

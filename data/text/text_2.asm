@@ -626,12 +626,23 @@ _AerodactylFossilText::
 	text "AERODACTYL Fossil"
 	line "A primitive and"
 	cont "rare #MON."
-	done
+	prompt
 
 _KabutopsFossilText::
 	text "KABUTOPS Fossil"
 	line "A primitive and"
 	cont "rare #MON."
+	prompt
+	
+_FossilAttacksText::
+	text "It bursts from"
+	line "the glass and"
+	cont "attacks!"
+	done
+	
+_EmptyDisplayText::
+	text "The display is"
+	line "empty."
 	done
 
 _LinkCableHelpText1::

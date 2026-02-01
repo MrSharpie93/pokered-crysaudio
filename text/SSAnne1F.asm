@@ -12,10 +12,15 @@ _SSAnne1FWaiterText::
 	done
 
 _SSAnne1FSailorText::
-	text "The passengers"
-	line "are restless!"
+	text "We've been stuck"
+	line "here for hours!"
+	
+	para "The passengers"
+	line "are extremely"
+	cont "restless."
 
-	para "You might be"
-	line "challenged by the"
-	cont "more bored ones!"
+	para "Almost all of them"
+	line "are looking for"
+	cont "battles to pass"
+	cont "the time."
 	done

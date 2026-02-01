@@ -41,6 +41,8 @@ SSAnne10TrainerHeader4:
 	trainer EVENT_BEAT_SS_ANNE_10_TRAINER_4, 2, SSAnneB1FRoomsSailor5BattleText, SSAnneB1FRoomsSailor5EndBattleText, SSAnneB1FRoomsSailor5AfterBattleText
 SSAnne10TrainerHeader5:
 	trainer EVENT_BEAT_SS_ANNE_10_TRAINER_5, 3, SSAnneB1FRoomsFisherBattleText, SSAnneB1FRoomsFisherEndBattleText, SSAnneB1FRoomsFisherAfterBattleText
+SSAnne10TrainerHeader6:
+	trainer EVENT_BEAT_SS_ANNE_10_TRAINER_6, 3, SSAnneB1FRoomsSuperNerdBattleText, SSAnneB1FRoomsSuperNerdEndBattleText, SSAnneB1FRoomsSuperNerdAfterBattleText
 	db -1 ; end
 
 SSAnneB1FRoomsSailor1Text:
@@ -159,5 +161,19 @@ SSAnneB1FRoomsFisherAfterBattleText:
 	text_end
 
 SSAnneB1FRoomsSuperNerdText:
+	text_asm
+	ld hl, SSAnne10TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+SSAnneB1FRoomsSuperNerdBattleText:
 	text_far _SSAnneB1FRoomsSuperNerdText
+	text_end
+	
+SSAnneB1FRoomsSuperNerdEndBattleText:
+	text_far _SSAnneB1FRoomsSuperNerdEndBattleText
+	text_end
+	
+SSAnneB1FRoomsSuperNerdAfterBattleText:
+	text_far _SSAnneB1FRoomsSuperNerdAfterBattleText
 	text_end

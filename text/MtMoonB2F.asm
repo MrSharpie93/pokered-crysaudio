@@ -56,6 +56,9 @@ _MtMoonB2FGreenVictoryText::
 _MtMoonB2fSuperNerdEachTakeOneText::
 	text "You can have one,"
 	line "but only one!"
+	
+	para "Gotta make some"
+	line "money, you know."
 	done
 
 _MtMoonB2FSuperNerdTheresAPokemonLabText::
@@ -66,8 +69,8 @@ _MtMoonB2FSuperNerdTheresAPokemonLabText::
 	line "And you are?"
 	
 	para "<PLAYER>?"
-	line "Nice to meet ya!"
-	done
+	line "Nice to meet ya!@"
+	text_end
 
 _MtMoonB2FSuperNerdThenThisIsMineText::
 	text "I hear there's"
@@ -157,4 +160,12 @@ _MtMoonB2FEasterEggSignText::
 	line "anything better"
 	cont "to do than read"
 	cont "this sign?"
+	done
+	
+_MtMoonB2FGreenSeeYaText::
+	text "See you later,"
+	line "<PLAYER>!"
+	cont "Who knows, maybe"
+	cont "we'll run into"
+	cont "each other again…"
 	done

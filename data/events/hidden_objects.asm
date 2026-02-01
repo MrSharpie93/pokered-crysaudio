@@ -409,7 +409,7 @@ Route9HiddenObjects:
 SSAnne6HiddenObjects:
 	hidden_object 13,  5, SPRITE_FACING_DOWN, PrintTrashText
 	hidden_object 13,  7, SPRITE_FACING_DOWN, PrintTrashText
-	hidden_object 13,  9, GREAT_BALL, HiddenItems
+	hidden_object 13,  9, SAFARI_BALL, HiddenItems
 	db -1 ; end
 
 SSAnne10HiddenObjects:
@@ -559,12 +559,12 @@ CinnabarLab4HiddenObjects:
 	db -1 ; end
 
 BikeShopHiddenObjects:
-	hidden_object  1,  0, ANY_FACING, PrintNewBikeText
-	hidden_object  2,  1, ANY_FACING, PrintNewBikeText
+;	hidden_object  1,  0, ANY_FACING, PrintNewBikeText
+;	hidden_object  2,  1, ANY_FACING, PrintNewBikeText
 	hidden_object  1,  2, ANY_FACING, PrintNewBikeText
-	hidden_object  3,  2, ANY_FACING, PrintNewBikeText
-	hidden_object  0,  4, ANY_FACING, PrintNewBikeText
-	hidden_object  1,  5, ANY_FACING, PrintNewBikeText
+;	hidden_object  3,  2, ANY_FACING, PrintNewBikeText
+	hidden_object  0,  2, ANY_FACING, PrintNewBikeText
+;	hidden_object  1,  5, ANY_FACING, PrintNewBikeText
 	db -1 ; end
 
 Route11HiddenObjects:

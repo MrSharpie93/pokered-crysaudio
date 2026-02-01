@@ -41,7 +41,7 @@ _SSAnneB1FRoomsSailor3BattleText::
 	done
 
 _SSAnneB1FRoomsSailor3EndBattleText::
-	text "OK, "
+	text "OK,"
 	line "you're not bad."
 	prompt
 
@@ -53,7 +53,7 @@ _SSAnneB1FRoomsSailor3AfterBattleText::
 
 _SSAnneB1FRoomsSailor4BattleText::
 	text "I like feisty"
-	line "kids like you!@"
+	line "types like you!@"
 	text_end
 
 _SSAnneB1FRoomsSailor4EndBattleText::
@@ -75,7 +75,8 @@ _SSAnneB1FRoomsSailor5BattleText::
 
 _SSAnneB1FRoomsSailor5EndBattleText::
 	text "Argh!"
-	line "Beaten by a kid!"
+	line "Beaten by some"
+	cont "landlubber!"
 	prompt
 
 _SSAnneB1FRoomsSailor5AfterBattleText::
@@ -111,4 +112,18 @@ _SSAnneB1FRoomsSuperNerdText::
 	para "He has enough"
 	line "STRENGTH to move"
 	cont "big rocks!"
+	
+	para "See for yourself!"
+	done
+	
+_SSAnneB1FRoomsSuperNerdEndBattleText::
+	text "Now"
+	line "that's what I call"
+	cont "STRENGTH!"
+	prompt
+	
+_SSAnneB1FRoomsSuperNerdAfterBattleText::
+	text "Maybe we need to"
+	line "train with bigger"
+	cont "rocks…"
 	done

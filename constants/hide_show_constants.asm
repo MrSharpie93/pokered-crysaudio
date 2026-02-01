@@ -19,10 +19,10 @@ DEF SHOW EQU $15
 	const HS_GYM_GUY                       ; 04
 ;CeruleanCity
 	const HS_CERULEAN_RIVAL                ; 05
-	const HS_CERULEAN_ROCKET               ; 06
-	const HS_CERULEAN_GUARD_1              ; 07
+;	const HS_CERULEAN_ROCKET               ; 06
+;	const HS_CERULEAN_GUARD_1              ; 07
 	const HS_CERULEAN_CAVE_GUY             ; 08
-	const HS_CERULEAN_GUARD_2              ; 09
+;	const HS_CERULEAN_GUARD_2              ; 09
 ;CeladonCity
 ;	const HS_CELADON_PERVERT
 ;SaffronCity

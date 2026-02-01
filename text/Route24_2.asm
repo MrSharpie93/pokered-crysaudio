@@ -20,8 +20,8 @@ _Route24CooltrainerM3EndBattleText::
 	prompt
 
 _Route24CooltrainerM3AfterBattleText::
-	text "I did my best, I"
-	line "have no regrets!"
+	text "I… have a few"
+	line "regrets, actually."
 	done
 
 _Route24CooltrainerF1BattleText::
@@ -50,8 +50,8 @@ _Route24Youngster1EndBattleText::
 	prompt
 
 _Route24Youngster1AfterBattleText::
-	text "I did my best, I"
-	line "have no regrets!"
+	text "My best I've done,"
+	line "my regrets? None."
 	done
 
 _Route24CooltrainerF2BattleText::
@@ -95,8 +95,8 @@ _Route24DamianText1::
 
 	para "I should release"
 	line "my CHARMANDER"
-	cont "because it's so"
-	cont "darn wimpy…"
+	cont "because it's way"
+	cont "too wimpy…"
 
 	para "Better yet, why"
 	line "don't you take"

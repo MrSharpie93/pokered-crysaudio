@@ -33,20 +33,46 @@ _Route24CooltrainerM1JoinTeamRocketText::
 	cont "using #MON!"
 
 	para "Want to join?"
+	done
+	
+_RefusedRocketText::
+	text "Are you sure?"
 
-	para "Are you sure?"
+	para "Come on, please?"
 
-	para "Come on, join us!"
-
-	para "I'm telling you"
+	para "I'm begging you"
 	line "to join!"
 
-	para "OK, you need"
-	line "convincing!"
+	para "OK, what if I"
+	line "beat you up?"
 
-	para "I'll make you an"
-	line "offer you can't"
-	cont "refuse!"
+	para "Does that scare"
+	line "you any?"
+	done
+	
+_AcceptedRocketText::
+	text "Really? Oh thank"
+	line "goodness!"
+	
+	para "We really need"
+	line "all the help we"
+	cont "can get right now."
+	
+	para "Some terrifying"
+	line "young trainer in"
+	cont "a cap is tearing"
+	cont "through our whole"
+	cont "operation and…"
+	
+	para "Wait a second…"
+	
+	para "I know what you're"
+	line "up to, and I won't"
+	cont "let you sneak in"
+	cont "and destroy us"
+	cont "from the inside."
+	
+	para "Have at you!"
 	done
 
 _Route24CooltrainerM1DefeatedText::

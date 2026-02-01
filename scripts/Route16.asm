@@ -30,16 +30,17 @@ Route16DefaultScript:
 	ld a, TEXT_ROUTE16_SNORLAX_WOKE_UP
 	ldh [hTextID], a
 	call DisplayTextID
-	ld a, SNORLAX
+.sudowoodoBattle
+	ld a, SUDOWOODO
 	ld [wCurOpponent], a
 	ld a, 30
 	ld [wCurEnemyLevel], a
 	xor a ; ~$~CHANGED: Trainers are not Pokemon.~$~
 	ld [wIsTrainerBattle], a
-	ld a, HS_ROUTE_16_SNORLAX
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	call UpdateSprites
+;	ld a, HS_ROUTE_16_SNORLAX
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+;	call UpdateSprites
 	ld a, SCRIPT_ROUTE16_SNORLAX_POST_BATTLE
 	ld [wRoute16CurScript], a
 	ld [wCurMapScript], a
@@ -49,6 +50,9 @@ Route16SnorlaxPostBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route16ResetScripts
+	ld a, HS_ROUTE_16_SNORLAX
+	ld [wMissableObjectIndex], a
+	predef HideObject
 	call UpdateSprites
 	ld a, [wBattleResult]
 	cp $2
@@ -203,6 +207,49 @@ Route16Biker6AfterBattleText:
 	text_end
 
 Route16SnorlaxText:
+	text_asm
+	ld b, FRESH_WATER
+	call IsItemInBag
+	jr nz, .haveWater
+	ld hl, WeirdTreeText
+	call PrintText
+	jr .done
+.haveWater
+	ld hl, UseWaterText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .didntUseWater
+	ld hl, UsedWaterText
+	call PrintText
+	ld a, FRESH_WATER
+	ldh [hItemToRemoveID], a
+	farcall RemoveItemByID
+	ld hl, Route16SnorlaxWokeUpText
+	call PrintText
+	call Route16DefaultScript.sudowoodoBattle
+;	ld a, SUDOWOODO
+;	ld [wCurOpponent], a
+;	ld a, 30
+;	ld [wCurEnemyLevel], a
+;	xor a
+;	ld [wIsTrainerBattle], a
+;	ld a, HS_ROUTE_16_SNORLAX
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+;	call UpdateSprites
+;	ld a, SCRIPT_ROUTE16_SNORLAX_POST_BATTLE
+;	ld [wRoute16CurScript], a
+;	ld [wCurMapScript], a
+	jr .done
+.didntUseWater
+	ld hl, DidntUseWaterText
+	call PrintText
+.done
+	jp TextScriptEnd
+
+WeirdTreeText:
 	text_far _Route16Text7
 	text_end
 
@@ -212,6 +259,18 @@ Route16SnorlaxWokeUpText:
 
 Route16SnorlaxReturnedToMountainsText:
 	text_far _Route16SnorlaxReturnedToMountainsText
+	text_end
+	
+UseWaterText:
+	text_far _UseWaterText
+	text_end
+	
+UsedWaterText:
+	text_far _UsedWaterText
+	text_end
+	
+DidntUseWaterText:
+	text_far _DidntUseWaterText
 	text_end
 
 Route16CyclingRoadSignText:

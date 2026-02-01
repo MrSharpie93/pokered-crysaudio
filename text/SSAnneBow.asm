@@ -48,5 +48,5 @@ _SSAnneBowSailor3AfterBattleText::
 	text "My Pa said there"
 	line "are 100 kinds of"
 	cont "#MON. I think"
-	cont "there are more."
+	cont "there are 200."
 	done

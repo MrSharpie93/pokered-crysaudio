@@ -28,6 +28,19 @@ _SSAnne2FRoomsGentleman5Text::
 	para "It had many rare"
 	line "kinds of #MON!!"
 	done
+	
+_SSAnne2FRoomsGentleman5EndBattleText::
+	text "Good"
+	line "show, old bean!"
+	prompt
+	
+_SSAnne2FRoomsGentleman5AfterBattleText::
+	text "I hear the route"
+	line "to FUCHSIA from"
+	cont "CELADON was made"
+	cont "impassable by a"
+	cont "strange tree."
+	done
 
 _SSAnne2FRoomsLittleBoyText::
 	text "Me and my Daddy"

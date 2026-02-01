@@ -5,6 +5,13 @@ _CeruleanPokecenterSuperNerdText::
 	line "he'll do whatever"
 	cont "it takes to get"
 	cont "rare #MON!"
+	
+	para "Bewteen you and"
+	line "me, I hear he's"
+	cont "got some secret"
+	cont "#MON breeding"
+	cont "ranch in his"
+	cont "backyard…"
 	done
 
 _CeruleanPokecenterGentlemanText::

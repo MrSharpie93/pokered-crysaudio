@@ -25,7 +25,7 @@ _SSAnne1FRoomsGentleman1BattleText::
 
 _SSAnne1FRoomsGentleman1EndBattleText::
 	text "My, my"
-	line "friends..."
+	line "friends…"
 	prompt
 
 _SSAnne1FRoomsGentleman1AfterBattleText::
@@ -40,7 +40,7 @@ _SSAnne1FRoomsGentleman2BattleText::
 
 _SSAnne1FRoomsGentleman2EndBattleText::
 	text "Humph!"
-	line "You rude child!"
+	line "How rude of you!"
 	prompt
 
 _SSAnne1FRoomsGentleman2AfterBattleText::
@@ -54,7 +54,7 @@ _SSAnne1FRoomsYoungsterBattleText::
 	done
 
 _SSAnne1FRoomsYoungsterEndBattleText::
-	text "Wow! "
+	text "Wow!"
 	line "You're great!"
 	prompt
 
@@ -96,6 +96,10 @@ _SSAnne1FRoomsGirl1Text::
 _SSAnne1FRoomsMiddleAgedManText::
 	text "A cruise is so"
 	line "elegant yet cozy!"
+	
+	para "But being docked"
+	line "for so long is"
+	cont "neither…"
 	done
 
 _SSAnne1FRoomsLittleGirlText::

@@ -29,10 +29,15 @@ _SSAnneKitchenCook5Text::
 
 	para "All it does is"
 	line "eat and sleep!"
+	
+	para "Kind of like…"
+	line "Snrk… Snicker…"
+	
+	para "Your mom!"
 	done
 
 _SSAnneKitchenCook6Text::
-	text "Snivel…Sniff…"
+	text "Snivel… Sniff…"
 
 	para "I only get to"
 	line "peel onions…"

@@ -209,12 +209,15 @@ _CeruleanCitySlowbroIgnoredOrdersText::
 	done
 
 _CeruleanCityCooltrainerF2Text::
-	text "I want a bright"
-	line "red BICYCLE!"
-
-	para "I'll keep it at"
-	line "home, so it won't"
-	cont "get dirty!"
+	text "The BIKE SHOP is"
+	line "going out of"
+	cont "business. It's not"
+	cont "a shock, really."
+	
+	para "You can't expect"
+	line "to keep customers"
+	cont "charging ¥1000000"
+	cont "for a BICYCLE."
 	done
 
 _CeruleanCitySuperNerd3Text::
